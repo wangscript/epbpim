@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- ============================= Spring Quartz ================================ -->
+	<!-- ############################################ -->
+	<!-- ############  定时清理超时的登录用户 ########### -->
+	<!-- ############################################ -->
+	<bean id="userInvalidateClearJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+	    <property name="jobClass" value="com.coraise.cms.task.UserInvalidateCleaner" />
+	</bean>
+	<bean id="userInvalidateClearTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail">
+			<ref local="userInvalidateClearJob" />
+		</property>
+		<!-- 启动10分钟后开始执行，每隔1分钟执行一次 -->
+		<property name="startDelay" value="600000"/>
+		<property name="repeatInterval" value="60000"/>
+	</bean>
+	<!-- ############################################ -->
+	<!-- ######### 定时访问NMS接口，进行设备巡检 ######### -->
+	<!-- ############################################ -->
+ 	<bean id="serverStatusDetailJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.coraise.cms.task.ServerStatusDetail" />
+	</bean>
+	<bean id="serverStatusDetailTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail">
+			<ref local="serverStatusDetailJob"/>
+		</property>
+		<!-- 启动1分钟后开始执行，每隔1分钟执行一次 -->
+		<property name="startDelay" value="60000" />
+		<property name="repeatInterval" value="60000" />
+	</bean>
+	<!-- ############################################ -->
+	<!-- ################## 管理日志备份 ############## -->
+	<!-- ############################################ -->
+	<bean id="adminLogBackupJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+	    <property name="jobClass" value="com.coraise.cms.task.AdminLogBackup" />
+	</bean>
+	<bean id="adminLogBackupTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref local="adminLogBackupJob" />
+		</property>
+		<!-- 每个月1号的3点执行一次（秒 分 小时 日期 月 星期 年）为空表示全部 -->
+		<property name="cronExpression" value="* 0 3 1 * ?"/>
+	</bean>
+	<!-- ############################################ -->
+	<!-- ################## 监控日志备份 ############## -->
+	<!-- ############################################ -->
+	<bean id="monitorLogBackupJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+	    <property name="jobClass" value="com.coraise.cms.task.MonitorLogBackup" />
+	</bean>
+	<bean id="monitorLogBackupTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref local="monitorLogBackupJob" />
+		</property>
+		<!-- 每个月1号的3点半执行一次 -->
+		<property name="cronExpression" value="* 30 3 1 * ?"/>
+	</bean>
+		
+	<!-- ########  总调配中心 ########## -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="userInvalidateClearTrigger" />
+				<ref local="adminLogBackupTrigger" />
+				<ref local="monitorLogBackupTrigger" />
+				<!-- <ref local="serverStatusDetailTrigger" /> -->
+			</list>
+		</property>
+	</bean>
+</beans>
