@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page import="com.bpim.common.Constants"%>
+<%@ page import="com.bpim.common.Constants" %>
+<%@ page import="org.apache.commons.lang.StringUtils" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 	<%
+		String username = (String) session.getAttribute(Constants.LOGIN_USER_NAME);
+		if(StringUtils.isEmpty(username)) {
+		response.sendRedirect(request.getContextPath()+"/login/index.jsp");
+		}
 	 int newMessageCount = (Integer)session.getAttribute(Constants.NEW_MESSAGE_COUNT);
 	 %>
 <html>

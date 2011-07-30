@@ -23,9 +23,9 @@
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script type="text/javascript">
 function checkError(){
-	document.getElementById("currentPassword").value = null;
-	document.getElementById("password").value = null;
-	document.getElementById("passwordConfirm").value = null;
+	document.getElementById("currentPassword").value = "";
+	document.getElementById("password").value = "";
+	document.getElementById("passwordConfirm").value = "";
 	var msg = "<s:property value='msg'/>";
 	if(msg!=null && msg!=""){
 		alert(msg);
