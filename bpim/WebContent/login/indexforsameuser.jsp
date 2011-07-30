@@ -14,7 +14,7 @@
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script language="JavaScript">
 
-alert("你所使用的账号已在别处登录");
+alert("你的账号在另一地点登录，您被迫退出。");
 
 function getFocus()
 {
