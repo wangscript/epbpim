@@ -3,18 +3,10 @@ package com.bpim.web.interceptor;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.StrutsStatics;
-
 import com.bpim.common.Constants;
-import com.bpim.web.action.ActionSupportBase;
 import com.bpim.web.action.LoginAction;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
-import com.opensymphony.xwork2.util.ValueStack;
 
 public class SameUserLoginInterceptor implements Interceptor {
 
@@ -57,9 +49,9 @@ public class SameUserLoginInterceptor implements Interceptor {
 		if (null != userSessionList && 1 < userSessionList.size()) {
 			for (Object obj : userSessionList) {
 				Map userSession = (Map) obj;
-				long userLoginTime = (Long) userSession
-						.get(Constants.USER_LOGIN_TIME);
+				long userLoginTime = (Long) userSession.get(Constants.USER_LOGIN_TIME);
 				if (currentUserLoginTime < userLoginTime) { 
+					userSessionList.remove(obj);
 			        return "sameuserlogin";
 				}
 			}
