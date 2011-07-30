@@ -1,5 +1,11 @@
 package com.bpim.web.action;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -23,10 +29,12 @@ public class LoginAction extends ActionSupportBase {
 
 	private UserInfoService userInfoService = new UserInfoServiceImpl();
 	private MessageService messageService = new MessageServiceImpl();
-	
+
 	private String validateCode;
 	private String username;
 	private String password;
+
+	public static Map<String, List> userSessionMap = new HashMap<String, List>();
 
 	public String getValidateCode() {
 		return validateCode;
@@ -82,10 +90,10 @@ public class LoginAction extends ActionSupportBase {
 				LOG.error(via);
 				LOG.error("mobile");
 			} else {
-				//String ip = getIpAddr(request);
+				// String ip = getIpAddr(request);
 				String ip = findClient_IPAddr();
 				LOG.error(ip);
-			
+
 			}
 		}
 		int messageCount = messageService.getNewMessageAcount(userInfo.getId());
@@ -93,27 +101,43 @@ public class LoginAction extends ActionSupportBase {
 		session.put(Constants.LOGIN_USER_ID, userInfo.getId());
 		session.put(Constants.LOGIN_EXPIRE_DATE, userInfo.getExpireDate());
 		session.put(Constants.NEW_MESSAGE_COUNT, messageCount);
+		session.put(Constants.USER_LOGIN_TIME, new Date().getTime());
+		saveUserSession(session);
 		return SUCCESS;
 	}
 
-    private String findClient_IPAddr() {
-        String ip = request.getHeader("X-Forwarded-For");
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("Proxy-Client-IP");
-        }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("WL-Proxy-Client-IP");
-        }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("HTTP_CLIENT_IP");
-        }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-        }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getRemoteAddr();
-        }
-        return ip;
-    }
+	private String findClient_IPAddr() {
+		String ip = request.getHeader("X-Forwarded-For");
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("Proxy-Client-IP");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("WL-Proxy-Client-IP");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("HTTP_CLIENT_IP");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getRemoteAddr();
+		}
+		return ip;
+	}
+
+	private void saveUserSession(Map session) {
+
+		String userid = String.valueOf((Long) session
+				.get(Constants.LOGIN_USER_ID));
+
+		if (null == userSessionMap.get(userid)) {
+			List userSessionList = new ArrayList();
+			userSessionList.add(session);
+			userSessionMap.put(userid, userSessionList);
+		} else {
+			userSessionMap.get(userid).add(session);
+		}
+	}
 
 }
