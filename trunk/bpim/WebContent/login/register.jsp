@@ -50,20 +50,17 @@
 	<li  class="labelLi"><label >邮箱:</label></li>
 	<li class="inputLi"><input name="mailAddress" maxlength="100" id="mailAddress"
 		 /></li>
-	<li><label class="required">*必填</label></li>
 </ul>
 <ul>
 	<li  class="labelLi"><label >公司:</label></li>
 	<li class="inputLi"><input name="company" maxlength="20" id="company"
 		 /></li>
-	<li><label class="required">*必填</label></li>
-	<li><label class="comments">20个字以内</label></li>
 </ul>
 <ul>
 	<li  class="labelLi"><label >手机:</label></li>
 	<li class="inputLi"><input name="mobile" maxlength="20" id="mobile"
 		 /></li>
-	<li></li>
+	<li><label class="required">*必填</label></li>
 	<li><label class="comments">11位手机号</label></li>
 </ul>
 
