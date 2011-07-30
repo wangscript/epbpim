@@ -9,14 +9,14 @@ h3{
 }
 
 .header {
-	height: 170px;
+	height: 140px;
 }
 
 .header .logo {
 	background: none;
 	height: 90px;
 	float: left;
-	padding-top: 30px;
+	padding-top: 10px;
 	padding-left: 40px;
 }
 .header .categoryDiv{
@@ -86,7 +86,7 @@ h3{
 
 
 .content {
-	min-height: 425px;
+	min-height: 455px;
 }
 
 .content .mainbar {
@@ -363,5 +363,4 @@ td {
 }
 
 .analyseResult .entry {
-	
 }
