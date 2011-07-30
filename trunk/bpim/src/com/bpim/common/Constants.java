@@ -5,7 +5,7 @@ package com.bpim.common;
  * 
  */
 public interface Constants {
-	
+
 	final static String DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
 	/**
 	 * 编码格式
@@ -117,7 +117,7 @@ public interface Constants {
 	 * 起始session的索引序号
 	 */
 	final static String REC_SESSION_INDEX = "0";
-	
+
 	/**
 	 * 需要获取的session信息的个数
 	 */
@@ -148,7 +148,7 @@ public interface Constants {
 	 * 用户登录后保存用户名称的参数名
 	 */
 	final static String LOGIN_USER_NAME = "username";
-	
+
 	final static String ADMIN_LOGIN_USER_NAME = "adminUsername";
 
 	/**
@@ -234,24 +234,26 @@ public interface Constants {
 	 * 结果消息
 	 */
 	final static String RESULT_MSG = "resultmsg";
-	
-	/////////////////////////////////  录像统计 /////////////////////////////////////
+
+	// /////////////////////////////// 录像统计
+	// /////////////////////////////////////
 	final static String BUSINESS_CONA = "cona";
-	
+
 	final static String START_INDEX = "startindex";
-	
+
 	final static String SESSION_NUM = "sessionnum";
-	
+
 	final static String TOTAL_NUM = "totalsessionnum";
-	
+
 	final static String SESSION = "session";
-	
+
 	final static String FUNCTION_CONTROL = "control";
-	
+
 	final static String GET = "get";
-	
-	/////////////////////////////////  录像统计 END  /////////////////////////////////////
-	
+
+	// /////////////////////////////// 录像统计 END
+	// /////////////////////////////////////
+
 	final static String ERROR = "Common.Error";
 
 	final static String NO_DELETE = "nodelete";
@@ -309,11 +311,10 @@ public interface Constants {
 	final static String NOTEXIT = "notexit";
 
 	final static String PRIVATEKEY = "private_key";
-	
+
 	final static String CONNECTION_FAIL = "connectionFail";
 
-
-    ////////////////////////////////  与NMS交互使用/////////////////////////////////
+	// ////////////////////////////// 与NMS交互使用/////////////////////////////////
 	final static String REQUEST = "Request";
 
 	final static String REQUEST_INFO = "RequestInfo";
@@ -403,24 +404,24 @@ public interface Constants {
 	final static String PREFIX = "sip:";
 
 	final static String NODELETEMODULE = "nodeletemodule";
-	
+
 	final static String APP = "app";
-	
+
 	final static String CONNECT_ERROR = "connect_error";
-	
-	
-////////////////////////////////  END  /////////////////////////////////
-	
+
+	// ////////////////////////////// END /////////////////////////////////
+
 	// 必选选项
 	final static String OPTION = "option";
 
-	
-	//property 文件路径
+	// property 文件路径
 	static final String PROPERTIES_FILE_PATH = "/WEB-INF/config/bpim.properties";
 
 	static final String PROBATION = "probation";
-	
+
 	static final String ADMINLOGININFO = "adminLoginInfo";
 
 	static final String NEW_MESSAGE_COUNT = "newMessageCount";
+
+	static final String USER_LOGIN_TIME = "userLoginTime";
 }
