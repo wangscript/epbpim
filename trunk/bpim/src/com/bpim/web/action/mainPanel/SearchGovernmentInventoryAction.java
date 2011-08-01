@@ -31,7 +31,7 @@ public class SearchGovernmentInventoryAction extends ActionSupportBase
     
     GovernmentInventoryService service = new GovernmentInventoryServiceImpl();
     
-    public String searchGovernmentQuota()
+    public String searchGovernmentInventory()
     {
         try
         {
