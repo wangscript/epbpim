@@ -12,23 +12,6 @@ public class SearchDataCondition extends VoBase {
 	private Long userInfoId = (long) 0;
 	private Timestamp dataDateAfter;
 	private Timestamp dataDateBefore;
-	private String recordType = "";
-	private String quotaClass = "";
-	private String quotaNum = "";
-	private String quotaName = "";
-	private String recordModel = "";
-	private String recordName = "";
-	private String recordUnit = "";
-	private String dataType = "";
-	private String fromYear = "";
-	private String fromMonth = "";
-	private String toYear = "";
-	private String toMonth = "";
-	private String priceSourceType = "";
-	private String recordCode = "";
-	private String provice = "";
-	private String city = "";
-	private String area = "";
 	private String projectClassNum = "";
 	private String projectNum = "";
 
@@ -49,6 +32,23 @@ public class SearchDataCondition extends VoBase {
 	}
 
 	private String projectName = "";
+	private String recordType = "";
+	private String quotaClass = "";
+	private String quotaNum = "";
+	private String quotaName = "";
+	private String recordModel = "";
+	private String recordName = "";
+	private String recordUnit = "";
+	private String dataType = "";
+	private String fromYear = "";
+	private String fromMonth = "";
+	private String toYear = "";
+	private String toMonth = "";
+	private String priceSourceType = "";
+	private String recordCode = "";
+	private String provice = "";
+	private String city = "";
+	private String area = "";
 	private String fileType = "";
 	private String fileSubType = "";
 	private String filePublishYear = "";
