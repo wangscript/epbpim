@@ -265,6 +265,15 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
+	<package name="searchGovernmentInventory" namespace="/main"
+		extends="bpim-default">
+		<action name="searchGovernmentInventory" method="searchGovernmentInventory"
+			class="com.bpim.web.action.mainPanel.SearchGovernmentInventoryAction">
+			<result>/main/searchGovernmentInventory.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
 	
 	<package name="viewGovernmentQuotaDetail" namespace="/main"
 		extends="bpim-default">
