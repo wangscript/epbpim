@@ -23,20 +23,42 @@
 </script>
 <script type="text/javascript">
 	function setSearchValue() {
-		var projectClassNum = "<s:property value="condition.projectClassNum"/>";
-		if(projectClassNum!="")
+		var projectSuperClassNum = "<s:property value="condition.projectSuperClassNum"/>";
+		changeSuperClass(projectSuperClassNum);
+		if(projectSuperClassNum != "")
 		{
-			
+			var superClassNumObj=document.getElementById("projectSuperClassNum");
+			for(var i=0;i<superClassNumObj.options.length;i++)
+			{
+				if(projectSuperClassNum == superClassNumObj.options[i].value)
+				{
+					superClassNumObj.options[i].selected=true;
+					break;
+				}				
+			}
+		}
+		var projectClassNum = "<s:property value="condition.projectClassNum"/>";
+		if(projectClassNum != "")
+		{
+			var classNumObj=document.getElementById("projectClassNum");
+			for(var i=0;i<classNumObj.options.length;i++)
+			{
+				if(projectClassNum == classNumObj.options[i].value)
+				{
+					classNumObj.options[i].selected=true;
+					break;
+				}				
+			}
 		}
 		var projectNum = "<s:property value="condition.projectNum"/>";
-		if(projectNum!="")
+		if(projectNum != "")
 		{
 			document.getElementById("projectNum").value=projectNum;
 		}		
 		var projectName = "<s:property value="condition.projectName"/>";
-		if(projectName!="")
+		if(projectName != "")
 		{
-			document.getElementById("projectName").value=quotaName;
+			document.getElementById("projectName").value=projectName;
 		}		
 	}
 	function clearPage(updateId){
@@ -146,7 +168,7 @@
 </head>
 <title>清单查询</title>
 </head>
-<body onload="setSearchValue();changeTitleBackground();changeSuperClass();">
+<body onload="setSearchValue();changeTitleBackground();">
 <div id="main"><jsp:include page="mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
@@ -156,7 +178,7 @@
 <div id="searchCondition">
 	<ul>
 		<li style="width:170px;">项目大类：
-			<select style="width: 100px;" onchange="changeSuperClass(this.options[this.selectedIndex].value)"> 
+			<select id="projectSuperClassNum" name="condition.projectSuperClassNum" style="width: 100px;" onchange="changeSuperClass(this.options[this.selectedIndex].value)"> 
 				<option value="">不限</option>
 				<option value="01">建筑工程(01)</option>
 				<option value="02">装饰装修工程(02)</option>
@@ -184,8 +206,8 @@
 <ul>
 	<li style="width: 100px">项目编码</li>
 	<li style="width: 100px">项目名称</li>
-	<li style="width: 100px">项目特征</li>
 	<li style="width: 50px">单位</li>
+	<li style="width: 300px">项目特征</li>	
 	<li style="width: 300px">工程内容</li>	
 </ul>
 <s:if test="datas==null || datas.size()==0">
@@ -202,8 +224,8 @@
 					<s:property value="projectName" />
 				</s:else>
 			</li>
-			<li style="width: 100px"><s:property value="projectNameFeature" /></li>
 			<li style="width: 50px"><s:property value="unit" /></li>
+			<li style="width: 300px"><s:property value="projectNameFeature" /></li>
 			<li style="width: 300px"><s:property value="detail"/></li>
 		</ul>
 	</s:iterator>
