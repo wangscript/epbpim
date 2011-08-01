@@ -81,7 +81,7 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
         }
         if (null != condition.getProjectName() && !"".equals(condition.getProjectName()))
         {
-            sqlSb.append(" AND Lower(PROJECT_NAME) like '%' || ? || '%' escape '/'");
+            sqlSb.append(" AND PROJECT_NAME like ?");
         }
         return sqlSb.toString();
     }
@@ -102,7 +102,7 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
         }
         if (null != condition.getProjectName() && !"".equals(condition.getProjectName()))
         {
-            stat.setString(i, condition.getProjectName());
+            stat.setString(i, "%" + condition.getProjectName() + "%");
             i++;
         }
     }
