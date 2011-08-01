@@ -14,23 +14,6 @@ public class SearchDataCondition extends VoBase {
 	private Timestamp dataDateBefore;
 	private String projectClassNum = "";
 	private String projectNum = "";
-
-	public String getProjectClassNum() {
-		return projectClassNum;
-	}
-
-	public void setProjectClassNum(String projectClassNum) {
-		this.projectClassNum = projectClassNum;
-	}
-
-	public String getProjectNum() {
-		return projectNum;
-	}
-
-	public void setProjectNum(String projectNum) {
-		this.projectNum = projectNum;
-	}
-
 	private String projectName = "";
 	private String recordType = "";
 	private String quotaClass = "";
@@ -571,6 +554,22 @@ public class SearchDataCondition extends VoBase {
 	 */
 	public void setFileEffectiveDateTo(Timestamp fileEffectiveDateTo) {
 		this.fileEffectiveDateTo = fileEffectiveDateTo;
+	}
+
+	public String getProjectClassNum() {
+		return projectClassNum;
+	}
+
+	public void setProjectClassNum(String projectClassNum) {
+		this.projectClassNum = projectClassNum;
+	}
+
+	public String getProjectNum() {
+		return projectNum;
+	}
+
+	public void setProjectNum(String projectNum) {
+		this.projectNum = projectNum;
 	}
 
 }
