@@ -7,7 +7,7 @@ import com.bpim.entity.GovernmentInventory;
 import com.bpim.form.SearchDataCondition;
 
 /**
- * author Delgadoo
+ * author Delgado
  */
 public interface GovernmentInventoryDAO
 {
