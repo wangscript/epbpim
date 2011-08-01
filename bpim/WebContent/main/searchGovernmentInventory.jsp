@@ -23,18 +23,21 @@
 </script>
 <script type="text/javascript">
 	function setSearchValue() {
-		var provice = "<s:property value="condition.provice"/>";
-		if(provice!="")
-		document.getElementById("provice").value=provice;
-		var quotaNum = "<s:property value="condition.quotaNum"/>";
-		if(quotaNum!="")
-		document.getElementById("quotaNum").value=quotaNum;
-		var quotaName = "<s:property value="condition.quotaName"/>";
-		if(quotaName!="")
-		document.getElementById("quotaName").value=quotaName;
-		var quotaClass = "<s:property value="condition.quotaClass"/>";
-		if(quotaClass!="")
-		document.getElementById("quotaClass").value=quotaClass;
+		var projectClassNum = "<s:property value="condition.projectClassNum"/>";
+		if(projectClassNum!="")
+		{
+			
+		}
+		var projectNum = "<s:property value="condition.projectNum"/>";
+		if(projectNum!="")
+		{
+			document.getElementById("projectNum").value=projectNum;
+		}		
+		var projectName = "<s:property value="condition.projectName"/>";
+		if(projectName!="")
+		{
+			document.getElementById("projectName").value=quotaName;
+		}		
 	}
 	function clearPage(updateId){
 		var ps = document.getElementById("ps");
@@ -45,7 +48,7 @@
 		if(pn != null) {
 			pn.options[0].selected = true;
 		}
-		document.getElementById("searchGovernmentQuotaForm").submit();
+		document.getElementById("searchGovernmentInventoryForm").submit();
 	}
 	
 	var onecount=0;
@@ -128,7 +131,7 @@
 
     function changeSuperClass(superClassID)
     {
-    	var subClassObj=document.getElementById("inventorySubClass");
+    	var subClassObj=document.getElementById("projectClassNum");
     	subClassObj.length = 0;      
     	subClassObj.options[subClassObj.length] = new Option("不限", "");
 		for (var i = 0; i < onecount; i++)
@@ -153,8 +156,8 @@
 <div id="searchCondition">
 	<ul>
 		<li style="width:170px;">项目大类：
-			<select id="inventorySuperClass" name="condition.inventorySuperClass" style="width: 100px;" onchange="changeSuperClass(this.options[this.selectedIndex].value)"> 
-				<option value="">--请选择--</option>
+			<select style="width: 100px;" onchange="changeSuperClass(this.options[this.selectedIndex].value)"> 
+				<option value="">不限</option>
 				<option value="01">建筑工程(01)</option>
 				<option value="02">装饰装修工程(02)</option>
 				<option value="03">安装工程(03)</option>
@@ -163,13 +166,13 @@
 			</select>
 		</li>
 		<li style="width:210px;">项目小类：
-			<select id="inventorySubClass" name="condition.inventorySubClass" style="width: 140px;"></select>
+			<select id="projectClassNum" name="condition.projectClassNum" style="width: 140px;"></select>
 		</li>
 		<li>
-			<label class="lb">项目编号：</label><input style="width: 60px" class="inputText" name="condition.inventoryNum" id="inventoryNum">
+			<label class="lb">项目编号：</label><input style="width: 60px" class="inputText" name="condition.projectNum" id="projectNum">
 		</li>
 		<li>
-			<label class="lb">项目名称：</label><input style="width: 120px" class="inputText" name="condition.inventoryName" id="inventoryName">
+			<label class="lb">项目名称：</label><input style="width: 120px" class="inputText" name="condition.projectName" id="projectName">
 		</li>
 		<li>
 			<input type="button" name="searchButton" id="searchButton" class="button" onclick="clearPage()" value="查询">
@@ -179,38 +182,34 @@
 
 <div class="searchResult" id="searchResult" style="margin-top:15px;">
 <ul>
-	<li style="width: 100px">清单大类</li>
-	<li style="width: 100px">编号</li>
-	<li style="width: 300px">名称</li>
-	<li style="width: 50px">查看详情</li>
+	<li style="width: 100px">项目编码</li>
+	<li style="width: 100px">项目名称</li>
+	<li style="width: 100px">项目特征</li>
+	<li style="width: 50px">单位</li>
+	<li style="width: 300px">工程内容</li>	
 </ul>
 <s:if test="datas==null || datas.size()==0">
 </s:if> 
 <s:else>
 	<s:iterator value="datas" status="st">
 		<ul id="<s:property value='id'/>">
-			<li style="width: 100px"><s:property value="governmentQuotaClass" /></li>
-			<li style="width: 140px"><s:property value="governmentQuotaType" /></li>
-			<li style="width: 100px"><s:property value="governmentQuotaNum" /></li>
-			<li style="width: 160px">
-				<s:if test="%{null!=governmentQuotaName&&governmentQuotaName.length()>12}">
-					<s:property value="governmentQuotaName.substring(0, 11)+'...'" />
+			<li style="width: 100px"><s:property value="projectNum" /></li>
+			<li style="width: 100px">
+				<s:if test="%{null!=projectName&&projectName.length()>12}">
+					<s:property value="projectName.substring(0, 11)+'...'" />
 				</s:if>
 				<s:else>
-					<s:property value="governmentQuotaName" />
+					<s:property value="projectName" />
 				</s:else>
 			</li>
-			<li style="width: 60px"><s:property value="governmentQuotaModel" /></li>
-			<li style="width: 60px"><s:property value="governmentQuotaUnit" /></li>
-			<li style="width: 60px"><s:property value='governmentQuotaAmount' /></li>
-			<li style="width: 50px">
-				<input type="button" class="button" onclick="window.location.href = 'viewGovernmentQuotaDetail.do?id=<s:property value='id'/>'" value="查看">
-			</li>
+			<li style="width: 100px"><s:property value="projectNameFeature" /></li>
+			<li style="width: 50px"><s:property value="unit" /></li>
+			<li style="width: 300px"><s:property value="detail"/></li>
 		</ul>
 	</s:iterator>
 	<ul>
 		<jsp:include page="../common/pagination.jsp" flush="true">
-			<jsp:param name="action_page" value="main/searchGovernmentQuota.do"/>
+			<jsp:param name="action_page" value="main/searchGovernmentInventory.do"/>
 		</jsp:include>
 	</ul>
 </s:else></div>
