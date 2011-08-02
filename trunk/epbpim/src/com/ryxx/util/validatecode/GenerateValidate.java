@@ -1,10 +1,9 @@
 package com.ryxx.util.validatecode;
 
+import java.awt.image.BufferedImage;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-//import com.huasheng.app.APP_CONSTANT;
-import java.awt.image.BufferedImage;
 
 public class GenerateValidate {
 	public GenerateValidate(HttpServletRequest request) {
@@ -22,7 +21,7 @@ public class GenerateValidate {
 
 		m_strToken = objGenerateCode.getToken();
 		m_strValidate = objGenerateCode.getCode();
-		m_session.setAttribute(m_strToken, String.valueOf(m_strValidate));// 写入会话
+		m_session.setAttribute(m_strToken, String.valueOf(m_strValidate));// å†™å…¥ä¼šè¯�
 	}
 
 	public String getValidateValue() {
@@ -40,25 +39,25 @@ public class GenerateValidate {
 	}
 
 	/**
-	 * 生成验证的图片
+	 * ç”Ÿæˆ�éªŒè¯�çš„å›¾ç‰‡
 	 * 
 	 * @param token
-	 *            String 写入会话的session名称为 CheckValidate.checkImage()方法验证
+	 *            String å†™å…¥ä¼šè¯�çš„sessionå��ç§°ä¸º CheckValidate.checkImage()æ–¹æ³•éªŒè¯�
 	 */
 	public void genValidateImage(String token) {
 		GenerateCode objGenerateCode = new GenerateCode(4);
 		m_strValidate = objGenerateCode.getCode();
-		m_session.setAttribute(token, m_strValidate);// 写入会话
+		m_session.setAttribute(token, m_strValidate);// å†™å…¥ä¼šè¯�
 	}
 
 	/**
-	 * 取图片请用此方法
+	 * å�–å›¾ç‰‡è¯·ç”¨æ­¤æ–¹æ³•
 	 * 
 	 * @return BufferedImage
 	 */
 	public BufferedImage getValidateImage() {
 		GenerateImage objImage = new GenerateImage();
-		return objImage.creatImage(m_strValidate);// 生成图片,2004-10-15
+		return objImage.creatImage(m_strValidate);// ç”Ÿæˆ�å›¾ç‰‡,2004-10-15
 	}
 
 	private HttpServletRequest m_request = null;

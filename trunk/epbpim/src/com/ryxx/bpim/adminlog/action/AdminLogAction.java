@@ -4,12 +4,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.tomcat.util.buf.TimeStamp;
 
-import com.ryxx.bpim.adminlog.entity.AdminLog;
 import com.ryxx.bpim.adminlog.service.AdminLogService;
-import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.page.PageTools;
-import com.ryxx.util.request.ParamTools;
 
 public class AdminLogAction extends ActionSupportBase {
 	private static final long serialVersionUID = -5620230655376038210L;
