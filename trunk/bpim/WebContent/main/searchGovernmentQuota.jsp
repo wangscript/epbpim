@@ -106,7 +106,7 @@
 		<option value="0">--请选择--</option>
 		<option value="2000土建装饰">土建</option>
 		<option value="2000园林">园林</option>
-		<option value="2000市政定额">市政</option>
+		<option value="2000市政">市政</option>
 		<option value="2000安装">安装</option>
 		<option value="2000公用">公用</option>
 		<option value="2000水利">水利</option>
