@@ -84,7 +84,7 @@
 				<option value="0">--请选择--</option>
 				<option value="1">1</option>
 				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="3">3</option> 
 				<option value="4">4</option>
 				<option value="5">5</option>
 				<option value="6">6</option>
@@ -95,7 +95,7 @@
 				<option value="11">11</option>
 				<option value="12">12</option>
 			</select>月</li>
-			<li><label class="lb">到：</label><select id="toYear"
+			<li style="margin-left:40px;"><label class="lb">到：</label><select id="toYear"
 				name="condition.toYear" style="width: 90px;">
 				<option value="0">--请选择--</option>
 				<option value="2002">2002</option>
@@ -135,14 +135,14 @@
 				<option value="人工">人工</option>
 				<option value="机械">机械</option>
 			</select></li>
-			<li><label class="lb">编号：</label><input style="width: 60px"
+			<li style="margin-left:40px;"><label class="lb">编号：</label><input style="width: 60px"
 				class="inputText" name="condition.recordCode" id="recordCode"></li>
-			<li><label class="lb">工料机名称：</label><input
+			<li style="margin-left:40px;"><label class="lb">工料机名称：</label><input
 				style="width: 120px" class="inputText" name="condition.recordName"
 				id="recordName"></li>
-			<li><label class="lb">单位：</label><input style="width: 40px"
+			<li style="margin-left:40px;"><label class="lb">单位：</label><input style="width: 40px"
 				class="inputText" name="condition.recordUnit" id="recordUnit"></li>
-			<li><input name="searchUserButton" onclick="searchData()"
+			<li style="margin-left:40px;"><input name="searchUserButton" onclick="searchData()"
 				type="button" id="searchButton" class="button" value="查询"></li>
 		</ul>
 </div>
