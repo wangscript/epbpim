@@ -83,18 +83,6 @@ public class LoginAction extends ActionSupportBase {
 				.currentTimeMillis()) {
 			super.addFieldError("name", "用户已过期,请充值后再登录");
 			return INPUT;
-		} else {
-			String via = request.getHeader("Via");
-			request.getHeaderNames();
-			if (via != null && via.toLowerCase().indexOf("wap") > -1) {
-				LOG.error(via);
-				LOG.error("mobile");
-			} else {
-				// String ip = getIpAddr(request);
-				String ip = findClient_IPAddr();
-				LOG.error(ip);
-
-			}
 		}
 		int messageCount = messageService.getNewMessageAcount(userInfo.getId());
 		session.put(Constants.LOGIN_USER_NAME, username);

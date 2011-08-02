@@ -27,5 +27,4 @@ public interface UserInfoService {
 	
 	public String initialPassword(UserInfo userInfo) throws Exception;
 
-	void updatePcMacToDB(UserInfo userInfo) throws SQLException;
 }

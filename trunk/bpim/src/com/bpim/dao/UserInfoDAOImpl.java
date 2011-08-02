@@ -16,7 +16,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	private static UserInfoDAOImpl userInfoDAOImpl = new UserInfoDAOImpl();
 
 	private static final String FINDALLSQL = "SELECT ID, USER_NAME, USER_PASSWORD, REGISTER_DATE, EXPIRE_DATE, EMAIL, COMPANY, PHONE, LAST_PAY_DATE, SERVICE_PLAN_ID, QUESTION, ANSWER FROM USER_INFO";
-	private static final String GETBYLOGINSQL = "SELECT ID, USER_NAME, USER_PASSWORD, EXPIRE_DATE, QUESTION, ANSWER,PC_MAC,MOBILE_IDENTIFY FROM USER_INFO WHERE USER_NAME = ? AND USER_PASSWORD = ?";
+	private static final String GETBYLOGINSQL = "SELECT ID, USER_NAME, USER_PASSWORD, EXPIRE_DATE, QUESTION, ANSWER FROM USER_INFO WHERE USER_NAME = ? AND USER_PASSWORD = ?";
 	private static final String UPDATESQL = "UPDATE USER_INFO SET SERVICE_PLAN_ID = ? WHERE ID = ?";
 	private static final String GETBYIDSQL = "SELECT ID, USER_NAME, USER_PASSWORD, REGISTER_DATE, EXPIRE_DATE, EMAIL, COMPANY, PHONE, LAST_PAY_DATE, SERVICE_PLAN_ID, QUESTION, ANSWER FROM USER_INFO WHERE ID = ?";
 	private static final String GETBYNAMESQL = "SELECT ID, USER_NAME, USER_PASSWORD, REGISTER_DATE, EXPIRE_DATE, EMAIL, COMPANY, PHONE, LAST_PAY_DATE, SERVICE_PLAN_ID, QUESTION, ANSWER FROM USER_INFO WHERE USER_NAME = ?";
@@ -26,7 +26,6 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	private static final String FINDBYID = "select * from USER_INFO where ID = ?";
 	private static final String UPDATEUSER = "update USER_INFO set EMAIL=?, COMPANY=?, PHONE=?,  QUESTION=?, ANSWER=? where USER_NAME=? ";
 	private static final String UPDATEUSERBYPASS = "update USER_INFO set USER_PASSWORD=? where ID=? ";
-	private static final String UPDATEUSERBYMAC = "update USER_INFO set PC_MAC=? where ID=? ";
 	
 	public static UserInfoDAOImpl getInstance() {
 		return userInfoDAOImpl;
@@ -136,8 +135,6 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 		while (result.next()) {
 			userInfo.setExpireDate(result.getTimestamp("EXPIRE_DATE"));
 			userInfo.setId(result.getLong("ID"));
-			userInfo.setPcMac(result.getString("PC_MAC"));
-			userInfo.setPcMac(result.getString("MOBILE_IDENTIFY"));
 			return userInfo;
 		}
 		return null;
@@ -318,10 +315,4 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 		stet.executeUpdate();
 	}
 
-	public void updatePcMacToDB(UserInfo userInfo) throws SQLException {
-		PreparedStatement stet = DBConnUtil.getPrepareStatement(UPDATEUSERBYMAC);
-		stet.setString(1, userInfo.getPcMac());
-		stet.setLong(2, userInfo.getId());
-		stet.executeUpdate();
-	}
 }
