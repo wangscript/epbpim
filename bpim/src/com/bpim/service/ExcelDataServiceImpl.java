@@ -394,6 +394,11 @@ public class ExcelDataServiceImpl implements ExcelDataService {
 				data.setUserInfoId(userId);
 				data.setRecordImportDate(new Timestamp(new Date().getTime()));
 
+				if(trim(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordName))
+						.getStringCellValue()).length()>30){
+					System.out.print(i);
+				}
 				data.setRecordName(trim(row.getCell(
 						tableTitleTable.get(ExcelTitleUtil.recordName))
 						.getStringCellValue()));
