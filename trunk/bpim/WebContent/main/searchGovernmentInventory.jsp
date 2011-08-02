@@ -208,7 +208,7 @@
 	<li style="width: 100px">项目名称</li>
 	<li style="width: 50px">单位</li>
 	<li style="width: 300px">项目特征</li>	
-	<li style="width: 300px">工程内容</li>	
+	<li style="width: 340px;margin-left:10px;">工程内容</li>	
 </ul>
 <s:if test="datas==null || datas.size()==0">
 </s:if> 
@@ -226,7 +226,7 @@
 			</li>
 			<li style="width: 50px"><s:property value="unit" /></li>
 			<li style="width: 300px"><s:property value="projectNameFeature" /></li>
-			<li style="width: 300px"><s:property value="detail"/></li>
+			<li style="width: 350px; margin-left:10px;"><s:property value="detail"/></li>
 		</ul>
 	</s:iterator>
 	<ul>
