@@ -20,7 +20,7 @@ import org.hibernate.Transaction;
 import org.hibernate.jdbc.Work;
 import org.hibernate.stat.SessionStatistics;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial","rawtypes"})
 public class FlushModeSession implements Session {
 	protected Session session;
 	protected FlushMode flushMode;
@@ -55,12 +55,10 @@ public class FlushModeSession implements Session {
 		return session.contains(arg0);
 	}
 
-	@SuppressWarnings("unchecked")
 	public Criteria createCriteria(Class arg0, String arg1) {
 		return session.createCriteria(arg0, arg1);
 	}
 
-	@SuppressWarnings("unchecked")
 	public Criteria createCriteria(Class arg0) {
 		return session.createCriteria(arg0);
 	}
@@ -113,12 +111,10 @@ public class FlushModeSession implements Session {
 		session.flush();
 	}
 
-	@SuppressWarnings("unchecked")
 	public Object get(Class arg0, Serializable arg1, LockMode arg2) throws HibernateException {
 		return session.get(arg0, arg1, arg2);
 	}
 
-	@SuppressWarnings("unchecked")
 	public Object get(Class arg0, Serializable arg1) throws HibernateException {
 		return session.get(arg0, arg1);
 	}
@@ -191,12 +187,10 @@ public class FlushModeSession implements Session {
 		return session.isOpen();
 	}
 
-	@SuppressWarnings("unchecked")
 	public Object load(Class arg0, Serializable arg1, LockMode arg2) throws HibernateException {
 		return session.load(arg0, arg1, arg2);
 	}
 
-	@SuppressWarnings("unchecked")
 	public Object load(Class arg0, Serializable arg1) throws HibernateException {
 		return session.load(arg0, arg1);
 	}

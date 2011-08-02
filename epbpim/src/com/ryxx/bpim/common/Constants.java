@@ -33,37 +33,37 @@ public interface Constants {
 	/**
 	 * 操作类型：创建
 	 */
-	final static int OPER_TYPE_CREATE = 1;
+	final static Long OPER_TYPE_CREATE = 1L;
 
 	/**
 	 * 操作类型：修改
 	 */
-	final static int OPER_TYPE_MODIFY = 2;
+	final static Long OPER_TYPE_MODIFY = 2L;
 
 	/**
 	 * 操作类型：禁止
 	 */
-	final static int OPER_TYPE_FORBID = 3;
+	final static Long OPER_TYPE_FORBID = 3L;
 
 	/**
 	 * 操作类型：恢复
 	 */
-	final static int OPER_TYPE_RESUME = 4;
+	final static Long OPER_TYPE_RESUME = 4L;
 
 	/**
 	 * 操作类型：删除
 	 */
-	final static int OPER_TYPE_DELETE = 5;
+	final static Long OPER_TYPE_DELETE = 5L;
 
 	/**
 	 * 操作类型：登录
 	 */
-	final static int OPER_TYPE_LOGIN = 6;
+	final static Long OPER_TYPE_LOGIN = 6L;
 
 	/**
 	 * 操作类型：登出
 	 */
-	final static int OPER_TYPE_LOGOUT = 7;
+	final static Long OPER_TYPE_LOGOUT = 7L;
 
 	/**
 	 * 默认密码

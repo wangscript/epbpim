@@ -10,11 +10,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ryxx.bpim.dao.AbstractBaseDAO;
-import com.ryxx.bpim.dao.BaseDAO;
-import com.ryxx.bpim.dao.UserInfoDAO;
-import com.ryxx.bpim.entity.UserInfo;
-
 public class GenerateClass {
 	private static String filenameTemp;
 
