@@ -45,5 +45,4 @@ public interface UserInfoDAO {
 	
 	boolean initialPassword(UserInfo userInfo) throws SQLException;
 
-	void updatePcMacToDB(UserInfo userInfo) throws SQLException;
 }

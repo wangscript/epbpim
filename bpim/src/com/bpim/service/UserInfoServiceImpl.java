@@ -129,10 +129,4 @@ public class UserInfoServiceImpl implements UserInfoService {
 		DBConnUtil.close();
 	}
 
-	public void updatePcMacToDB(UserInfo userInfo) throws SQLException {
-		DBConnUtil.getConnection();
-		DBConnUtil.startTransaction(true);
-		userInfoDAO.updatePcMacToDB(userInfo);
-		DBConnUtil.close();
-	}
 }
