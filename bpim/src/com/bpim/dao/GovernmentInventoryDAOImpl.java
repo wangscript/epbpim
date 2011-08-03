@@ -16,9 +16,9 @@ import com.bpim.form.SearchDataCondition;
 public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
 {
     
-    String queryGovernmentInventory = "SELECT * FROM GOVERNMENT_INVENTORY_2003 WHERE 1=1";
+    String queryGovernmentInventory = "SELECT * FROM GOVERNMENT_INVENTORY WHERE 1=1";
     
-    String countQueryGovernmentQuota = "SELECT count(*) FROM GOVERNMENT_INVENTORY_2003 WHERE 1=1";
+    String countQueryGovernmentQuota = "SELECT count(*) FROM GOVERNMENT_INVENTORY WHERE 1=1";
     
     int i = 1;
     
@@ -38,8 +38,8 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
         {
             GovernmentInventory data = new GovernmentInventory();
             data.setId(result.getLong("ID"));
-            data.setProjectClassName(result.getString("PROJECT_CLASS_NAME"));
-            data.setProjectClassNum(result.getString("PROJECT_CLASS_NUM"));
+            data.setProjectClassLevel1Num(result.getString("PROJECT_CLASS_LEVEL_1_NUM"));
+            data.setProjectClassLevel2Num(result.getString("PROJECT_CLASS_LEVEL_2_NUM"));
             data.setProjectNum(result.getString("PROJECT_NUM"));
             data.setProjectName(result.getString("PROJECT_NAME"));
             data.setProjectNameFeature(result.getString("PROJECT_NAME_FEATURE"));
@@ -73,11 +73,11 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
         StringBuilder sqlSb = new StringBuilder(sql);
         if (null != condition.getProjectSuperClassNum() && !"".equals(condition.getProjectSuperClassNum()))
         {
-            sqlSb.append(" AND PROJECT_CLASS_NUM like ?");
+            sqlSb.append(" AND PROJECT_CLASS_LEVEL_1_NUM = ?");
         }
         if (null != condition.getProjectClassNum() && !"".equals(condition.getProjectClassNum()))
         {
-            sqlSb.append(" AND PROJECT_CLASS_NUM = ?");
+            sqlSb.append(" AND PROJECT_CLASS_LEVEL_2_NUM = ?");
         }
         if (null != condition.getProjectNum() && !"".equals(condition.getProjectNum()))
         {
@@ -96,7 +96,7 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
         i = 1;
         if (null != condition.getProjectSuperClassNum() && !"".equals(condition.getProjectSuperClassNum()))
         {
-            stat.setString(i, condition.getProjectSuperClassNum() + "%");
+            stat.setString(i, condition.getProjectSuperClassNum());
             i++;
         }
         if (null != condition.getProjectClassNum() && !"".equals(condition.getProjectClassNum()))
