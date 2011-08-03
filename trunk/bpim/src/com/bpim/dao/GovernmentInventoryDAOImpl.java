@@ -71,6 +71,10 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
     private String getQuerySql(String sql, SearchDataCondition condition)
     {
         StringBuilder sqlSb = new StringBuilder(sql);
+        if (null != condition.getProjectSuperClassNum() && !"".equals(condition.getProjectSuperClassNum()))
+        {
+            sqlSb.append(" AND PROJECT_CLASS_NUM like ?");
+        }
         if (null != condition.getProjectClassNum() && !"".equals(condition.getProjectClassNum()))
         {
             sqlSb.append(" AND PROJECT_CLASS_NUM = ?");
@@ -90,6 +94,11 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
         throws SQLException
     {
         i = 1;
+        if (null != condition.getProjectSuperClassNum() && !"".equals(condition.getProjectSuperClassNum()))
+        {
+            stat.setString(i, condition.getProjectSuperClassNum() + "%");
+            i++;
+        }
         if (null != condition.getProjectClassNum() && !"".equals(condition.getProjectClassNum()))
         {
             stat.setString(i, condition.getProjectClassNum());
