@@ -5,8 +5,8 @@ package com.bpim.entity;
 public class GovernmentInventory {
 
 	private Long id;
-	private String projectClassName;
-	private String projectClassNum;
+	private String projectClassLevel1Num;
+	private String projectClassLevel2Num;
 	private String projectNum;
 	private String projectName;
 	private String projectNameFeature;
@@ -109,33 +109,26 @@ public class GovernmentInventory {
 	 */
 	public void setComments(String comments) {
 		this.comments = comments;
-	}
-	/**
-	 * @return the projectClassName
-	 */
-	public String getProjectClassName() {
-		return projectClassName;
-	}
-	/**
-	 * @param projectClassName the projectClassName to set
-	 */
-	public void setProjectClassName(String projectClassName) {
-		this.projectClassName = projectClassName;
-	}
-	/**
-	 * @return the projectClassNum
-	 */
-	public String getProjectClassNum() {
-		return projectClassNum;
-	}
-	/**
-	 * @param projectClassNum the projectClassNum to set
-	 */
-	public void setProjectClassNum(String projectClassNum) {
-		this.projectClassNum = projectClassNum;
-	}
-	
-	
-	
+    }
+    
+    public String getProjectClassLevel1Num()
+    {
+        return projectClassLevel1Num;
+    }
+    
+    public void setProjectClassLevel1Num(String projectClassLevel1Num)
+    {
+        this.projectClassLevel1Num = projectClassLevel1Num;
+    }
+    
+    public String getProjectClassLevel2Num()
+    {
+        return projectClassLevel2Num;
+    }
+    
+    public void setProjectClassLevel2Num(String projectClassLevel2Num)
+    {
+        this.projectClassLevel2Num = projectClassLevel2Num;
+    }	
 }
 
