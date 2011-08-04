@@ -149,6 +149,16 @@
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width4Lb">角色:</label>
+								<select name="projectBean.majorType">
+									<option value="0">-----请选择-----</option>
+									<option value="无">总经理</option>
+									<option value="咨询1部">部门经理</option>
+									<option value="咨询1部">普通员工</option>
+							</select>
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">备注:</label><input
 								class="width350Input" name="projectBean.number" id="projectNum" />
 							</li>
