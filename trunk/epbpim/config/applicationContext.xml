@@ -6,11 +6,12 @@
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="/WEB-INF/classes/bpim-config.properties"/>
 	</bean>
+	<import resource="classpath:com/ryxx/bpim/user/dao/applicationContext-db.xml"/> 
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" lazy-init="true">
 		<property name="mappingResources">
 			<list>
-				<value>hbm.xml</value>
+				<value>classpath:com/ryxx/bpim/user/entity/adminrole.hbm.xml</value>
 			</list>
 		</property>
 		<property name="dataSource" ref="dataSourceCdm" />

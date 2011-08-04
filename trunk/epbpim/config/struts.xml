@@ -11,7 +11,7 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     
     <!-- 是否为开发模式,发布版本应改为false -->
-    <constant name="struts.devMode" value="false" />
+    <constant name="struts.devMode" value="true" />
     
 	<!-- 编码设置
 	<constant name="struts.locale" value="zh_CN" /> -->
@@ -35,7 +35,8 @@
 	<constant name="struts.configuration.xml.reload" value="true" />
 	
 	<include file="bpim-default-struts.xml"/>
-    <include file="bpim-struts.xml"/>
+    <!-- <include file="bpim-struts.xml"/> -->
+    <include file="classpath:com/ryxx/bpim/user/action/adminrole-struts.xml"/>
 	
     <!-- Add packages or include other files here -->
 

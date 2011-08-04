@@ -5,27 +5,21 @@ import org.apache.tomcat.util.buf.TimeStamp;
 import com.ryxx.bpim.entity.VoBase;
 
 public class AdminLog extends VoBase {
-	private static final long serialVersionUID = -7195395829054471936L;
+	private static final long serialVersionUID = 9099318722246620482L;
 	
 	private Long id;
 	private String userName;
 	private Long actionType;
 	private String userIp;
 	private TimeStamp logTime;
-	private Integer moduleId;
-	private String logRemark;
+	private Long moduleId;
+	private String remark;
 	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getUserIp() {
-		return userIp;
-	}
-	public void setUserIp(String userIp) {
-		this.userIp = userIp;
 	}
 	public String getUserName() {
 		return userName;
@@ -39,23 +33,29 @@ public class AdminLog extends VoBase {
 	public void setActionType(Long actionType) {
 		this.actionType = actionType;
 	}
+	public String getUserIp() {
+		return userIp;
+	}
+	public void setUserIp(String userIp) {
+		this.userIp = userIp;
+	}
 	public TimeStamp getLogTime() {
 		return logTime;
 	}
 	public void setLogTime(TimeStamp logTime) {
 		this.logTime = logTime;
 	}
-	public Integer getModuleId() {
+	public Long getModuleId() {
 		return moduleId;
 	}
-	public void setModuleId(Integer moduleId) {
+	public void setModuleId(Long moduleId) {
 		this.moduleId = moduleId;
 	}
-	public String getLogRemark() {
-		return logRemark;
+	public String getRemark() {
+		return remark;
 	}
-	public void setLogRemark(String logRemark) {
-		this.logRemark = logRemark;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 }
 
