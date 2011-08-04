@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="bpim-adminrole" namespace="/adminrole" extends="bpim-default">
+		<action name="save" class="com.ryxx.bpim.user.action.AdminRoleAction">
+			<result name="input">/login/index.jsp</result>
+			<result type="redirect-action">../main/main.do</result>
+		</action>
+		<action name="edit" class="com.ryxx.bpim.user.action.AdminRoleAction">
+			<result name="input">/login/index.jsp</result>
+			<result type="redirect-action">../main/main.do</result>
+		</action>
+		<action name="delete" class="com.ryxx.bpim.user.action.AdminRoleAction">
+			<result name="input">/login/index.jsp</result>
+			<result type="redirect-action">../main/main.do</result>
+		</action>
+		<action name="search" class="com.ryxx.bpim.user.action.AdminRoleAction">
+			<result name="input">/login/index.jsp</result>
+			<result type="redirect-action">../main/main.do</result>
+		</action>
+	</package>
+</struts>

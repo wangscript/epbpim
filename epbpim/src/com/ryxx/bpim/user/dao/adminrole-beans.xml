@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="adminRoleDAO" class="com.ryxx.bpim.user.dao.AdminRoleDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="adminRoleServiceTarget" class="com.ryxx.bpim.user.service.AdminRoleServiceImpl">
+		<property name="adminRoleDAO">
+			<ref local="adminRoleDAO"/>
+		</property>
+	</bean>
+	<bean id="adminRoleService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="adminRoleServiceTarget"/>
+	</bean>
+	<bean id="adminRoleAction" class="com.ryxx.bpim.web.action.UserInfoAction" scope="prototype">
+		<property name="adminRoleService">
+			<ref local="adminRoleService"/>
+		</property>
+	</bean>
+</beans>
