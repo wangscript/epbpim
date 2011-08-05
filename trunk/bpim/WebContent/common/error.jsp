@@ -20,7 +20,7 @@
 <div class="content_resize">
 <div class="mainbar">
 <h2 class="title">出错了，请联系管理员</h2>
-<a href="../index.jsp">返回首页</a>
+<a href="../main/main.jsp">返回主页面</a>
 </div>
 <jsp:include page="../login/advertisement.jsp" />
 
