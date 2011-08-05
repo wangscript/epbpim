@@ -6,19 +6,18 @@
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="/WEB-INF/classes/bpim-config.properties"/>
 	</bean>
-	<import resource="classpath:com/ryxx/bpim/user/dao/applicationContext-db.xml"/> 
+	<import resource="classpath*:com/ryxx/bpim/user/dao/adminrole-bean.xml"/> 
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" lazy-init="true">
-		<property name="mappingResources">
+		<property name="mappingLocations">
 			<list>
-				<value>classpath:com/ryxx/bpim/user/entity/adminrole.hbm.xml</value>
+				<value>classpath*:com/ryxx/bpim/user/entity/adminrole.hbm.xml</value>
 			</list>
 		</property>
 		<property name="dataSource" ref="dataSourceCdm" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>
 				<prop key="hibernate.max_fetch_depth">2</prop>
 				<prop key="hibernate.connection.pool_size">50</prop>
 				<prop key="hibernate.dbcp.initialSize">5</prop>
