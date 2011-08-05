@@ -7,7 +7,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>咨询公司管理系统</title>
+<title>建设工程信息数据管理系统</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="../css/index.css" rel="stylesheet" type="text/css"
@@ -38,10 +38,16 @@ function getFocus()
 		<li><a target="_self" href="findPassword.jsp" tabindex="8"
 			title="找回密码" class="forget">忘记密码了?</a></li>
 	</ul>
-	
+	<ul>
+		<li><label class="lb">验证码:</label></li>
+		<li><input name="validateCode" maxlength="10" id="validateCode" tabindex="3"/></li>	
+		<li><img align="absmiddle" id="randNumIMG" src="${pageContext.request.contextPath}/image.jsp" style="cursor:hand" onclick="javascript:reloadIMG();" alt="点击换验证码" /><s:fielderror theme="Struts"><s:param>validateCode</s:param></s:fielderror></li>
+	</ul>
 	<s:fielderror theme="Struts">
 		<ul>
-			<li><input type="button" onclick="window.location.href ='../main/main.jsp';" class="button" style="width:70px" value="登 录"></li>
+			<li><input type="submit" class="button" style="width:70px" value="登 录"></li>
+			<li><input type="button" style="width:70px" onclick="toRegister();" class="button"
+				value="注 册"></li>
 			<li><input type="button" onclick="window.location.href ='introduce.jsp';"
 				 class="button" value="产品介绍"></li>
 		</ul>
@@ -49,6 +55,7 @@ function getFocus()
 	</s:fielderror>
 	</div>
 </s:form></div>
+<jsp:include page="../login/advertisement.jsp" />
 
 <div class="clr"></div>
 </div>

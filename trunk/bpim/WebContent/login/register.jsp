@@ -301,6 +301,7 @@
 
 
 </div>
+<jsp:include page="advertisement.jsp" />
 
 <!-- end #content -->
 
