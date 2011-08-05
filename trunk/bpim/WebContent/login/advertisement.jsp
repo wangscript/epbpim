@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <body>
-<div class="sidebar" style="width:550px;">
+<div class="sidebar" style="width:410px;">
 <div class="gadget">
 <h2 class="star">合作伙伴</h2>
 <ul class="sb_menu" id="parterUl">
