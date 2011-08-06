@@ -226,7 +226,7 @@
 			</li>
 			<li style="width: 50px"><s:property value="unit" /></li>
 			<li style="width: 300px"><s:property value="projectNameFeature" /></li>
-			<li style="width: 350px; margin-left:10px;"><s:property value="detail"/></li>
+			<li style="width: 340px; margin-left:10px;"><s:property value="detail"/></li>
 		</ul>
 	</s:iterator>
 	<ul>
