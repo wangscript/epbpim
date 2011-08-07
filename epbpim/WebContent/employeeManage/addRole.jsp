@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="com.ryxx.util.cache.CacheMap" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.ryxx.bpim.common.Constants" %>
+<%@ page import="com.ryxx.bpim.user.entity.AdminMenu" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,24 +31,34 @@
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
 								<li class="width200Li"><label class="width4Lb">角色名称:</label><input
-									class="width100Input" name="projectBean.number" id="projectNum" />
+									class="width100Input" name="name" id="name" />
 								</li>
 								<li class="width300Li"><label class="width9Lb">该角色用户最大数量:</label><input
-									class="width150Input" name="projectBean.number" id="projectNum" />
+									class="width150Input" name="roleCount" id="roleCount" />
 								</li>
-								<li class="width400Li"><label class="width4Lb">角色说明:</label><input
-									class="width300Input" name="projectBean.number" id="projectNum" />
+								<li class="width400Li"><label class="width4Lb">角色说明:</label>
+								<input
+									class="width300Input" name="remark" id="remark" />
 								</li>
 							</ul>
 							<ul class="barUl">
 								<li id="leftBar">
 									<h4>权限列表:</h4> <select name="possible" MULTIPLE
-									class="multiSelect" id="fromList">
-										<option value="1">营业执照
-										<option value="2">税务登记执照
-										<option value="3">ISO文件查询
-										<option value="4">典型工程查询
-										<option value="5">ISO文件上传
+									class="multiSelect" id="fromList" align="left">
+									<%
+										List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE);
+										request.setAttribute("menus", menus);
+									%>
+									<s:if test="#request.menus!=null && #request.menus.size()>0">
+										<s:iterator value="#request.menus" status="st">
+											<s:if test="subMenus !=null && subMenus.size()>0">
+												<option value="<s:property value="id"/>,<s:property value="parentId"/>"><s:property value="name"/></option>
+												<s:iterator value="subMenus" status="st1">
+													<option value="<s:property value="id"/>,<s:property value="parentId"/>">&nbsp;&nbsp;|---<s:property value="name"/></option>
+												</s:iterator>
+											</s:if>
+										</s:iterator>
+									</s:if>
 								</select>
 								</li>
 								<li id="linkLi"><input type="button" id="addProject"
@@ -57,7 +71,7 @@
 
 								<li id="rightBar">
 									<h4>已选择权限:</h4> <select MULTIPLE class="multiSelect"  name="chosen" 
-									id="toList">
+									id="menuList">
 								</select></li>
 							</ul>
 							<ul class="fullScreenUl">

@@ -12,17 +12,24 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <listener>
-        <listener-class>
-        	org.springframework.web.context.ContextLoaderListener
-        </listener-class>
-    </listener>
+    <servlet>
+    	<servlet-name>initServlet</servlet-name>
+    	<servlet-class>com.ryxx.bpim.user.web.servlet.InitCacheService</servlet-class>
+    	<load-on-startup>5</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+		<servlet-name>initServlet</servlet-name>
+		<url-pattern>/initServlet</url-pattern>
+	</servlet-mapping>
     <context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/classes/applicationContext.xml,
-			/WEB-INF/classes/dataSource.xml,
-			<!-- /WEB-INF/classes/quartz-beans.xml, -->
 		</param-value>
 	</context-param>
+	<listener>
+        <listener-class>
+        	org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
 </web-app>

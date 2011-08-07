@@ -1,5 +1,7 @@
 package com.ryxx.bpim.user.entity;
 
+import java.util.List;
+
 import com.ryxx.bpim.entity.VoBase;
 
 public class AdminRole extends VoBase {
@@ -9,6 +11,7 @@ public class AdminRole extends VoBase {
 	private String name;
 	private Integer roleCount;
 	private String remark;
+	private List<AdminMenu> menuList;
 	
 	public Long getId() {
 		return id;
@@ -33,6 +36,12 @@ public class AdminRole extends VoBase {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public List<AdminMenu> getMenuList() {
+		return menuList;
+	}
+	public void setMenuList(List<AdminMenu> menuList) {
+		this.menuList = menuList;
 	}
 }
 

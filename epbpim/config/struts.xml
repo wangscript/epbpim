@@ -34,9 +34,12 @@
 	<!-- 指定XSLT Result是否使用样式表缓存。发布时设为false -->
 	<constant name="struts.configuration.xml.reload" value="true" />
 	
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<constant name="struts.i18n.reload" value="true" />
+	
 	<include file="bpim-default-struts.xml"/>
     <!-- <include file="bpim-struts.xml"/> -->
-    <include file="classpath:com/ryxx/bpim/user/action/adminrole-struts.xml"/>
+    <include file="classpath:com/ryxx/bpim/user/action/admin-struts.xml"/>
 	
     <!-- Add packages or include other files here -->
 
