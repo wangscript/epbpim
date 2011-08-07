@@ -76,7 +76,7 @@ textarea {
 select {
 	text-shadow: #5f5f5f -1px 1px 2px;
 	color: #5f5f5f;
-	text-align: center;
+	text-align: left;
 }
 
 input {

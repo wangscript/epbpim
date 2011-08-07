@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.ryxx.bpim.user.entity.AdminMenu;
 import com.ryxx.bpim.user.entity.AdminRole;
+import com.ryxx.bpim.user.service.AdminMenuService;
 import com.ryxx.bpim.user.service.AdminRoleService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 
@@ -18,16 +20,24 @@ public class AdminRoleAction extends ActionSupportBase {
 	private String name;
 	private Integer roleCount;
 	private String remark;
+	private List<AdminMenu> menuList;
 	
 	private AdminRoleService adminRoleService;
-	private List<AdminRole> adminRoles;
+	private AdminMenuService adminMenuService;
 	
 	public String save() {
 		AdminRole role = new AdminRole();
 		role.setName(name);
 		role.setRoleCount(roleCount);
 		role.setRemark(remark);
+		role.setMenuList(menuList);
 		adminRoleService.save(role);
+		return SUCCESS;
+	}
+	
+	public String newRole() {
+		AdminRole role = new AdminRole();
+		role.setMenuList(adminMenuService.list());
 		return SUCCESS;
 	}
 	
@@ -63,6 +73,14 @@ public class AdminRoleAction extends ActionSupportBase {
 		this.remark = remark;
 	}
 
+	public AdminMenuService getAdminMenuService() {
+		return adminMenuService;
+	}
+
+	public void setAdminMenuService(AdminMenuService adminMenuService) {
+		this.adminMenuService = adminMenuService;
+	}
+
 	public AdminRoleService getAdminRoleService() {
 		return adminRoleService;
 	}
@@ -71,11 +89,12 @@ public class AdminRoleAction extends ActionSupportBase {
 		this.adminRoleService = adminRoleService;
 	}
 
-	public List<AdminRole> getAdminRoles() {
-		return adminRoles;
+	public List<AdminMenu> getMenuList() {
+		return menuList;
 	}
 
-	public void setAdminRoles(List<AdminRole> adminRoles) {
-		this.adminRoles = adminRoles;
+	public void setMenuList(List<AdminMenu> menuList) {
+		this.menuList = menuList;
 	}
+
 }

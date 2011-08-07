@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="com.ryxx.util.cache.CacheMap" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.ryxx.bpim.common.Constants" %>
+<%@ page import="com.ryxx.bpim.user.entity.AdminMenu" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script type="text/javascript">
@@ -54,7 +59,17 @@ function changeTitleBackground(){
 	function unDisplayCategory(id){
 		 document.getElementById(id).style.display="NONE";
 	}
+	function addMenu(parentId, id, url, name) {
+		var obj = document.getElementById(parentId);
+		if(obj != null) {
+			var newObj = document.createElement("li");
+			newObj.id = id;
+			newObj.innerHTML = "<a href=\"url\">"+name+"</a>";
+			obj.appendChild(newObj);
+		}
+	}
 </script>
+<script language="javascript" src="../js/fasonTree.js"></script>
 <body>
 <div class="header">
 <div class="header_resize">
@@ -73,54 +88,25 @@ function changeTitleBackground(){
 </div>
 <div class="categoryDiv">
 <ul class="category">
-	<li onmouseover="displayCategory('publicInfo')"
-		onmouseout="unDisplayCategory('publicInfo')"><a>公共信息平台</a>
-	<ul id="publicInfo" style="display: none">
-		<li id="#"><a href="../publicInfo/businessLicense.jsp">营业执照</a></li>
-		<li id="#"><a href="../publicInfo/taxLicense.jsp">税务登记执照</a></li>
-		<li id="#"><a href="../publicInfo/isoFileQuery.jsp">ISO文件查询</a></li>
-		<li id="#"><a href="../publicInfo/historyProject.jsp">典型工程查询</a></li>
-		<li id="#"><a href="../publicInfo/isoFileUpload.jsp">ISO文件上传</a></li>
-		<li id="#"><a href="../publicInfo/messagePublish.jsp">发布通知</a></li>
-	</ul>
-	</li>
-	<li onmouseover="displayCategory('businessFileManage')"
-		onmouseout="unDisplayCategory('businessFileManage')"><a>业务文件管理</a>
-	<ul id="businessFileManage" style="display: none">
-		<li id="#"><a href="../businessFile/businessFileUpload.jsp">文件上传</a></li>
-		<li id="#"><a href="../businessFile/businessFileManage.jsp">业务文件查询</a></li>
-	</ul>
-	</li>
-	<li onmouseover="displayCategory('employeeManage')"
-		onmouseout="unDisplayCategory('employeeManage')"><a>人力资源管理</a>
-	<ul id="employeeManage" style="display: none">
-		<li id="#"><a href="../employeeManage/employeeQuery.jsp">员工查询</a></li>
-		<li id="#"><a href="../employeeManage/addEmployee.jsp">新增员工</a></li>
-		<li id="#"><a href="../employeeManage/addRole.jsp">新增角色</a></li>
-		<li id="#"><a href="../employeeManage/roleQuery.jsp">角色查询</a></li>
-	</ul>
-	</li>
-	<li onmouseover="displayCategory('projectManage')"
-		onmouseout="unDisplayCategory('projectManage')"><a>工程项目管理</a>
-	<ul id="projectManage" style="display: none">
-		<li id="addProject"><a href="../projectManage/addProject.jsp">项目录入</a></li>
-		<li id="projectManage"><a
-			href="../projectManage/projectManage.jsp">项目查询</a></li>
-	</ul>
-	</li>
-	<li onmouseover="displayCategory('managerFileManage')"
-		onmouseout="unDisplayCategory('managerFileManage')"><a>总经理文件管理</a>
-	<ul id="managerFileManage" style="display: none">
-		<li id="#"><a href="../managerFile/managerFileUpload.jsp">文件上传</a></li>
-		<li id="#"><a href="../managerFile/managerFileManage.jsp">文件查询</a></li>
-	</ul>
-	</li>
-	<li onmouseover="displayCategory('logManage')"
-		onmouseout="unDisplayCategory('logManage')"><a>日志管理</a>
-	<ul id="logManage" style="display: none">
-		<li id="#"><a href="../logManage/logQuery.jsp">日志查询</a></li>
-	</ul>
-	</li>
+	<%
+		List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE);
+		request.setAttribute("menus", menus);
+	%>
+	<s:if test="#request.menus!=null && #request.menus.size()>0">
+		<s:iterator value="#request.menus" status="st">
+			<s:if test="subMenus !=null && subMenus.size()>0">
+				<li onmouseover="displayCategory('<s:property value="id"/>')"	onmouseout="unDisplayCategory('<s:property value="id"/>')"><a><s:property value="name"/></a>
+				<ul id="<s:property value="id"/>" style="display: none">
+			</s:if>
+					<s:iterator value="subMenus" status="st1">
+						<li id="<s:property value="id"/>"><a href="<s:property value="url"/>"><s:property value="name"/></a></li>
+					</s:iterator>
+			<s:if test="subMenus !=null && subMenus.size()>0">
+				</ul>
+			</li>
+			</s:if>
+		</s:iterator>
+	</s:if>
 	<li class="otherCategory"></li>
 </ul>
 </div>
