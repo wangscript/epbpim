@@ -298,6 +298,6 @@ String.prototype.trim = function () {
 	return this.replace(/(^\s*)|(\s*$)/g, "");
 };
 
-function obj(id){
+function $(id){
 	return document.getElementById(id);
 }
