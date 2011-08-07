@@ -16,6 +16,7 @@
 	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
+<script type='text/javascript' src='../js/common.js'></script>
 </head>
 <body>
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
@@ -187,13 +188,13 @@
 									onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
 								<li class="width50Li">
 									<input type="button" class="mediumLeftButton"
-									onclick="deleteLicense(1)" value="删除">
+									onclick="deleteLicense(1);" value="删除">
 								</li>
 							</ul>
 						</div>
 						<ul class="fullScreenUl">
 							<li><input type="button" class="mediumLeftButton"
-								onclick="addLicense()" value="新增职业资质">
+								onclick="addLicense();" value="新增职业资质">
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
@@ -223,7 +224,7 @@
 </body>
 <script type="text/javascript">
 	function addLicense() {
-		var employeeLicences = document.getElementById("employeeLicences");
+		var employeeLicences = $("employeeLicences");
 		var ul = document.createElement("ul");
 		ul.className = "fullScreenUl";
 		var li1 = document.createElement("li");
@@ -260,9 +261,9 @@
 	}
 	
 	function deleteLicense(id){ 
-		if(confirm("确定删除该职业资质？"){
-			var employeeLicences = document.getElementById("employeeLicences");
-			var ul = document.getElementById(id);
+		if(confirm("确定删除该职业资质？")){
+			var employeeLicences = $("employeeLicences");
+			var ul = $(id);
 			employeeLicences.removeChild(ul);
 		}
 	}
