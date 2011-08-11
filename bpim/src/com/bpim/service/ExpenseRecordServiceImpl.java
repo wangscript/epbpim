@@ -44,7 +44,6 @@ public class ExpenseRecordServiceImpl implements ExpenseRecordService {
 
 	public boolean insertRepenseRecord(UserInfo userInfo) throws Exception {
 		DBConnUtil.getConnection();
-		DBConnUtil.startTransaction(true);
 		UserInfo info = userInfoDAO.get(userInfo);
 		ExpenseRecord expenseRecord = new ExpenseRecord();
 		expenseRecord.setUserId(userInfo.getId());
@@ -53,9 +52,9 @@ public class ExpenseRecordServiceImpl implements ExpenseRecordService {
 		servicePlan.setId(userInfo.getServicePlanId());
 		servicePlan = servicePlanDAO.get(servicePlan);
 		if(servicePlan == null) {
+			DBConnUtil.close();
 			return false;
 		} else {
-			DBConnUtil.getConnection();
 			DBConnUtil.startTransaction(false);
 			expenseRecord.setDevice(servicePlan);
 			Timestamp date = expenseRecordDAO.save(expenseRecord);
@@ -66,7 +65,7 @@ public class ExpenseRecordServiceImpl implements ExpenseRecordService {
 				newUserInfo.setExpireDate(date);
 				flag = userInfoDAO.updateExpireDate(newUserInfo);
 			}
-//			DBConnUtil.endTransaction();
+			DBConnUtil.endTransaction();
 			DBConnUtil.close();
 			return flag;
 		}
