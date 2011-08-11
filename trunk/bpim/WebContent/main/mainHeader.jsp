@@ -29,8 +29,10 @@ function changeTitleBackground(){
 		 document.getElementById("searchData").className = className;
 	 }else if(sURL.indexOf("searchGovernmentQuota")>0||sURL.indexOf("searchGovernmentQuota")>0){
 		 document.getElementById("searchGovernmentQuota").className = className;
-	 }else if(sURL.indexOf("searchGovernmentInventory")>0||sURL.indexOf("searchGovernmentInventory")>0){
-		 document.getElementById("searchGovernmentInventory").className = className;
+	 }else if(sURL.indexOf("searchGovernmentInventory_2003")>0||sURL.indexOf("searchGovernmentInventory_2003")>0){
+		 document.getElementById("searchGovernmentInventory_2003").className = className;
+	 }else if(sURL.indexOf("searchGovernmentInventory_2008")>0||sURL.indexOf("searchGovernmentInventory_2008")>0){
+		 document.getElementById("searchGovernmentInventory_2008").className = className;
 	 }else if(sURL.indexOf("searchGovernmentFile")>0||sURL.indexOf("searchGovernmentFile")>0){
 		 document.getElementById("searchGovernmentFile").className = className;
 	 }else if(sURL.indexOf("uploadCustomPriceData")>0||sURL.indexOf("uploadCustomPriceData")>0){
@@ -87,10 +89,10 @@ function changeTitleBackground(){
 	<ul id="publicInfo" style="display: none">
 		<li id="searchGovernmentQuota"><a
 			href="searchGovernmentQuota.jsp">定额查询</a></li>
-		<li id="searchGovernmentInventory"><a
-			href="searchGovernmentInventory.jsp">2003清单查询</a></li>
-			<li id="searchGovernmentInventory"><a
-			href="searchGovernmentInventory.jsp">2008清单查询</a></li>
+		<li id="searchGovernmentInventory_2003"><a
+			href="searchGovernmentInventory_2003.jsp">2003清单查询</a></li>
+			<li id="searchGovernmentInventory_2008"><a
+			href="searchGovernmentInventory_2008.jsp">2008清单查询</a></li>
 		<li id="searchGovernmentFile"><a href="searchGovernmentFile.jsp">文件查询</a></li>
 		<li id="searchGuidePriceData"><a href="searchGuidePriceData.jsp">政府指导价查询</a></li>
 	</ul>
