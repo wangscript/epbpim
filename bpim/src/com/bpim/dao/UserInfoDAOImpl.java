@@ -68,7 +68,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 				findByCountSql.append(" AND USER_NAME LIKE ?");
 			}
 			if (userInfo1.isCheckExpire()) {
-				findByCountSql.append(" AND EXPIRE_DATE > now()");
+				findByCountSql.append(" AND now() > EXPIRE_DATE");
 			}
 			findByCountSql.append(" ORDER BY ID DESC LIMIT ?, ?");
 		}
@@ -114,7 +114,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 				sql.append(" AND USER_NAME LIKE ?");
 			}
 			if (userInfo.isCheckExpire()) {
-				sql.append(" AND EXPIRE_DATE > now()");
+				sql.append(" AND now() > EXPIRE_DATE");
 			}
 		}
 		PreparedStatement stet = DBConnUtil.getPrepareStatement(sql.toString());
