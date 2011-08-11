@@ -148,8 +148,24 @@
     subcat[34] = new Array("园路、园桥、假山工程(0502)","05","0502");
    
     subcat[35] = new Array("园林景观工程(0503)","05","0503");   
+    
+    subcat[36] = new Array("FA人防","人防","FA人防"); 
+    
+    subcat[37] = new Array("FC装饰","人防","FC装饰"); 
+    
+    subcat[38] = new Array("y1冶金","冶金","y1冶金"); 
+    
+    subcat[39] = new Array("y2冶金","冶金","y2冶金"); 
+    
+    subcat[40] = new Array("y3冶金","冶金","y3冶金"); 
+    
+    subcat[41] = new Array("y4冶金","冶金","y4冶金"); 
+    
+    subcat[42] = new Array("y5冶金","冶金","y5冶金"); 
+    
+    subcat[43] = new Array("y6冶金","冶金","y6冶金"); 
 		 
-    onecount=36;
+    onecount=44;
 
     function changeSuperClass(superClassID)
     {
@@ -186,6 +202,8 @@
 				<option value="03">安装工程(03)</option>
 				<option value="04">市政工程(04)</option>
 				<option value="05">园林绿化工程(05)</option>
+				<option value="人防">人防</option>
+				<option value="冶金">冶金</option>
 			</select>
 		</li>
 		<li style="width:210px;">项目小类：
