@@ -48,14 +48,26 @@ public class SearchGovernmentInventoryAction extends ActionSupportBase
             else
             {
                 super.addNotFoundErrorMsg();
-                return SUCCESS;
             }
         }
         catch (SQLException e)
         {
             LOG.error(e);
         }
-        return SUCCESS;
+        
+        if ("2003".equals(condition.getInventoryType()))
+        {
+            return "inventory2003";
+        }
+        else if ("2008".equals(condition.getInventoryType()))
+        {
+            return "inventory2008";
+        }
+        else
+        {
+            return SUCCESS;
+        }
+        
     }
     
     /**
@@ -67,7 +79,8 @@ public class SearchGovernmentInventoryAction extends ActionSupportBase
     }
     
     /**
-     * @param condition the condition to set
+     * @param condition
+     *            the condition to set
      */
     public void setCondition(SearchDataCondition condition)
     {
