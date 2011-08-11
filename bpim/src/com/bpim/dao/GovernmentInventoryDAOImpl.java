@@ -38,6 +38,7 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
         {
             GovernmentInventory data = new GovernmentInventory();
             data.setId(result.getLong("ID"));
+            data.setGovernmentInventoryType(result.getString("GOVERNMENT_INVENTORY_TYPE"));
             data.setProjectClassLevel1Num(result.getString("PROJECT_CLASS_LEVEL_1_NUM"));
             data.setProjectClassLevel2Num(result.getString("PROJECT_CLASS_LEVEL_2_NUM"));
             data.setProjectNum(result.getString("PROJECT_NUM"));
@@ -71,6 +72,11 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
     private String getQuerySql(String sql, SearchDataCondition condition)
     {
         StringBuilder sqlSb = new StringBuilder(sql);
+        
+        if (null != condition.getInventoryType() && !"".equals(condition.getInventoryType()))
+        {
+            sqlSb.append(" AND GOVERNMENT_INVENTORY_TYPE = ?");
+        }
         if (null != condition.getProjectSuperClassNum() && !"".equals(condition.getProjectSuperClassNum()))
         {
             sqlSb.append(" AND PROJECT_CLASS_LEVEL_1_NUM = ?");
@@ -94,6 +100,11 @@ public class GovernmentInventoryDAOImpl implements GovernmentInventoryDAO
         throws SQLException
     {
         i = 1;
+        if (null != condition.getInventoryType() && !"".equals(condition.getInventoryType()))
+        {
+            stat.setString(i, condition.getInventoryType());
+            i++;
+        }
         if (null != condition.getProjectSuperClassNum() && !"".equals(condition.getProjectSuperClassNum()))
         {
             stat.setString(i, condition.getProjectSuperClassNum());
