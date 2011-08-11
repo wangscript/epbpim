@@ -17,6 +17,8 @@ public class SearchDataCondition extends VoBase
     
     private Timestamp dataDateBefore;
     
+    private String inventoryType = "";
+    
     private String projectSuperClassNum = "";
     
     private String projectClassNum = "";
@@ -690,6 +692,16 @@ public class SearchDataCondition extends VoBase
     public void setProjectNum(String projectNum)
     {
         this.projectNum = projectNum;
+    }
+
+    public String getInventoryType()
+    {
+        return inventoryType;
+    }
+
+    public void setInventoryType(String inventoryType)
+    {
+        this.inventoryType = inventoryType;
     }
     
 }
