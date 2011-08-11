@@ -7,7 +7,7 @@
     <div class="header_resize">
       <div class="nav_menu">
         <ul>
-        	<li><a href="../index.jsp">首页</a></li>
+        	<li><a href="index.jsp">首页</a></li>
 			<li><a href="javascript: setHomepage()">设为首页</a></li>
 			<li><a href="javascript: addFavorite()">添加收藏</a></li>
 			<li><a href="contactus.jsp">联系我们</a></li>

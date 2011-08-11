@@ -472,8 +472,6 @@ public class ExcelDataServiceImpl implements ExcelDataService {
 				|| isBlank(row.getCell(tableTitleTable
 						.get(ExcelTitleUtil.recordAmount)))
 				|| isBlank(row.getCell(tableTitleTable
-						.get(ExcelTitleUtil.recordTotalPrice)))
-				|| isBlank(row.getCell(tableTitleTable
 						.get(ExcelTitleUtil.recordType)))
 				|| isBlank(row.getCell(tableTitleTable
 						.get(ExcelTitleUtil.recordGuideDate)))

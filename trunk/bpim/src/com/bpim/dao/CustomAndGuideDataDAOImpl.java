@@ -48,16 +48,52 @@ public class CustomAndGuideDataDAOImpl implements CustomAndGuideDataDAO {
 			SearchDataCondition condition) throws SQLException {
 		String sql = searchGovermentGuidePriceSql;
 		condition.setUserInfoId((long) 0);
-		return searchGuideOrCustomPrice(sql, condition, PropertyConstants.GOVGUIDEPRICE);
+		return searchGuidePrice(sql, condition, PropertyConstants.GOVGUIDEPRICE);
 	}
 
+	private List<CustomAndGuideData> searchGuidePrice(String sql,
+			SearchDataCondition condition, String type) throws SQLException {
+		StringBuilder sb = new StringBuilder(sql);
+		sql = getSql(sb, condition);
+		sql = sql + " LIMIT ?, ?";
+		PreparedStatement stat = DBConnUtil.getPrepareStatement(sql.toString());
+		i = 1;
+		stat = setStatValue(stat, condition);
+		stat.setInt(i, condition.getStartRow());
+		stat.setInt(i + 1, condition.getPageSize());
+		ResultSet result = stat.executeQuery();
+		List<CustomAndGuideData> datas = new ArrayList<CustomAndGuideData>();
+		while (result.next()) {
+			CustomAndGuideData data = new CustomAndGuideData();
+			data.setArea(result.getString("AREA"));
+
+			data.setId(result.getLong("ID"));
+			data.setQuotaClass(result.getString("GOVERNMENT_QUOTA_CLASS"));
+			data.setRecordModel(result.getString("RECORD_MODEL"));
+			data.setRecordGross(result.getDouble("RECORD_GROSS"));
+			data.setRecordImportDate(result.getTimestamp("RECORD_IMPORT_DATE"));
+			data.setRecordName(result.getString("RECORD_NAME"));
+			data.setRecordNum(result.getString("RECORD_NUM"));
+			data.setRecordPrice(result.getDouble("RECORD_PRICE"));
+			data.setRecordTotalPrice(result.getDouble("RECORD_TOTAL_PRICE"));
+			data.setRecordPercent(result.getDouble("RECORD_PERCENT"));
+			data.setRecordDate(result.getTimestamp("RECORD_DATE"));
+			data.setRecordType(result.getString("RECORD_TYPE"));
+			data.setRecordUnit(result.getString("RECORD_UNIT"));
+			data.setUserInfoId(result.getLong("USER_INFO_ID"));
+			data.setRecordSource(type);
+			datas.add(data);
+		}
+		return datas;
+	}
+	
 	public List<CustomAndGuideData> searchCustomPrice(
 			SearchDataCondition condition) throws SQLException {
 		String sql = searchCustomPriceSql;
-		return searchGuideOrCustomPrice(sql, condition, PropertyConstants.CUSTDEFINEDPRICE);
+		return searchCustomPrice(sql, condition, PropertyConstants.CUSTDEFINEDPRICE);
 	}
 
-	private List<CustomAndGuideData> searchGuideOrCustomPrice(String sql,
+	private List<CustomAndGuideData> searchCustomPrice(String sql,
 			SearchDataCondition condition, String type) throws SQLException {
 		StringBuilder sb = new StringBuilder(sql);
 		sql = getSql(sb, condition);
@@ -105,6 +141,10 @@ public class CustomAndGuideDataDAOImpl implements CustomAndGuideDataDAO {
 		}
 		if (!StringUtils.isEmpty(condition.getRecordUnit())) {
 			sql.append(" AND RECORD_UNIT = ?");
+		}
+		if (!StringUtils.isEmpty(condition.getQuotaClass())
+				&& !"0".equals(condition.getQuotaClass())) {
+			sql.append(" AND GOVERNMENT_QUOTA_CLASS = ?");
 		}
 		if ((!"".equals(condition.getDataDateAfter()))
 				&& null != condition.getDataDateAfter()
@@ -185,6 +225,11 @@ public class CustomAndGuideDataDAOImpl implements CustomAndGuideDataDAO {
 		}
 		if (!StringUtils.isEmpty(condition.getRecordUnit())) {
 			stat.setString(i, condition.getRecordUnit());
+			i++;
+		}
+		if (!StringUtils.isEmpty(condition.getQuotaClass())
+				&& !"0".equals(condition.getQuotaClass())) {
+			stat.setString(i, condition.getQuotaClass());
 			i++;
 		}
 		if ((!"".equals(condition.getDataDateAfter()))

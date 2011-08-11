@@ -61,7 +61,7 @@
 			document.getElementById("fileSubTypeLi").style.display="NONE";
 			document.getElementById("proviceLi").style.display="NONE";
 		}
-		if(document.getElementById("fileSubType").value=="市建交委及相关部门"||document.getElementById("fileSubType").value=="市政府"){
+		if(document.getElementById("fileSubType").value=="市建交委及相关部门"||document.getElementById("fileSubType").value=="市政府"||document.getElementById("fileSubType").value=="市建筑建材业管理部门"){
 			document.getElementById("proviceLi").style.display="BLOCK";
 		}else{
 			document.getElementById("proviceLi").style.display="NONE";
@@ -217,6 +217,7 @@
 			<option value="部委">部委</option>
 			<option value="市政府">市政府</option>
 			<option value="市建交委及相关部门">市建交委及相关部门</option>
+			<option value="市建筑建材业管理部门">市建筑建材业管理部门</option>
 		</select></li>
 
 		<li style="width: 200px; display: none" id="proviceLi"><label
@@ -276,7 +277,7 @@
 	<div class="searchResult" id="searchResult" style="margin-top: 15px;">
 	<ul>
 		<li style="width: 100px">文件类别</li>
-		<li style="width: 110px">小类</li>
+		<li style="width: 120px">小类</li>
 		<li style="width: 100px">地区</li>
 		<li style="width: 360px">文件名</li>
 
@@ -289,7 +290,7 @@
 		<s:iterator value="datas" status="st">
 			<ul id="<s:property value='id'/>">
 				<li style="width: 100px"><s:property value="fileType" /></li>
-				<li style="width: 110px"><s:property value="fileSubType" /></li>
+				<li style="width: 120px"><s:property value="fileSubType" /></li>
 				<li style="width: 100px"><s:property value="area" /></li>
 				<li style="width: 360px">
 				<s:if

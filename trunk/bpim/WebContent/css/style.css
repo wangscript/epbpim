@@ -7,7 +7,7 @@ body {
 }
 
 <!--
-text-shadow: #5f5f5f  -1px  1px  2px ;  -->html,.main {
+text-shadow: #5f5f5f   -1px   1px   2px  ; -->html,.main {
 	padding: 0;
 	margin: 0;
 	background-color: #fff;
@@ -50,7 +50,7 @@ h2 {
 }
 
 h4 {
-	margin-bottom:3px;
+	margin-bottom: 3px;
 }
 
 p {
@@ -77,6 +77,7 @@ select {
 	text-shadow: #5f5f5f -1px 1px 2px;
 	color: #5f5f5f;
 	text-align: center;
+	font: normal 12px/1.8em Arial, Helvetica, sans-serif;
 }
 
 input {
@@ -97,6 +98,28 @@ input {
 
 .footer_resize {
 	text-align: center;
+}
+
+.adviceDiv {
+	margin-left: 200px;
+	width: 500px;
+	height: 100px;
+}
+
+.adviceDiv h4 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	float: left;
+}
+
+.adviceDiv textarea {
+	width: 500px;
+	height: 50px;
+	margin-top: 4px;
+}
+
+.adviceDiv button {
+	float: right;
 }
 
 .header_resize,.hbg_resize {
@@ -190,12 +213,12 @@ input {
 	height: 25px;
 	margin-right: 4px;
 	display: block;
-	float: left;
 	text-align: center;
 	background: url(../images/a_bg.gif) repeat-x center center;
 	text-decoration: none;
 	color: #5F5F5F;
 	text-shadow: #5f5f5f -1px 1px 2px;
+	font: normal 12px/1.8em Arial, Helvetica, sans-serif;
 }
 
 ul.sb_menu,ul.ex_menu {

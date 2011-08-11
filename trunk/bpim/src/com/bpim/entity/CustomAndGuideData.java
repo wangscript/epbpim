@@ -9,6 +9,7 @@ public class CustomAndGuideData {
 	private Long id=(long)0;
 	private String area = "";
 	private Long userInfoId = (long)0;
+	private String quotaClass = "";
 	private String recordName = "";
 	private String recordNum = "";
 	private String recordModel = "";
@@ -215,6 +216,12 @@ public class CustomAndGuideData {
 	 */
 	public void setRecordSource(String recordSource) {
 		this.recordSource = recordSource;
+	}
+	public String getQuotaClass() {
+		return quotaClass;
+	}
+	public void setQuotaClass(String quotaClass) {
+		this.quotaClass = quotaClass;
 	}
 	
 	

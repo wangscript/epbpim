@@ -90,7 +90,8 @@ h3{
 }
 
 .content .mainbar {
-	width: 900px;
+	width: 950px;
+	float: none;
 }
 
 #leftPanel {
@@ -167,15 +168,15 @@ h3{
 }
 
 #searchCondition {
-	width: 900px;
+	width: 950px;
 	align: center;
 }
 
 #searchCondition ul {
-	width: 900px;
+	width: 950px;
 	margin-top: 5px;
 	margin-bottom: 0;
-	margin-left: 0;
+	margin-left: 40px;
 	padding: 0;
 	list-style: none;
 	float: left;
@@ -188,11 +189,11 @@ h3{
 
 .searchResult {
 	align: center;
-	width: 900px;
+	width: 950px;
 }
 
 .searchResult ul{
-	width: 900px;
+	width: 950px;
 	list-style: none;
 	float: left;
 }
@@ -337,12 +338,12 @@ td {
 .analyseResult {
 	float: right;
 	margin-top:20px; 
-	width:900px;
+	width:950px;
 }
 
 
 .analyseResult ul{
-	width: 900px;
+	width: 950px;
 	list-style: none;
 	float: left;
 }
