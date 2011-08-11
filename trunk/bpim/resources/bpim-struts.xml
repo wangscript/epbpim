@@ -269,7 +269,8 @@
 		extends="bpim-default">
 		<action name="searchGovernmentInventory" method="searchGovernmentInventory"
 			class="com.bpim.web.action.mainPanel.SearchGovernmentInventoryAction">
-			<result>/main/searchGovernmentInventory.jsp</result>
+			<result name="inventory2003">/main/searchGovernmentInventory_2003.jsp</result>
+			<result name="inventory2008">/main/searchGovernmentInventory_2008.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
