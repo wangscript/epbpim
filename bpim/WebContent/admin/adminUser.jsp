@@ -133,7 +133,7 @@ function clearPage(updateId){
 			<td style="width: 90px">手机号</td>
 			<td style="width: 70px">选择套餐</td>
 			<td style="width: 80px">初始化密码</td>
-			<td style="width: 80px">为该用户充值</td>
+			<td style="width: 80px">用户充值</td>
 			<td style="width: 70px">操作</td>
 		</tr>
 		<s:if test="userInfos==null || userInfos.size()==0">
@@ -157,7 +157,7 @@ function clearPage(updateId){
 					<td><s:select name="servicePlanId" list="servicePlans"
 						listKey="id" listValue="serviceName" multiple="false"
 						required="true" onchange="" headerKey="0"
-						headerValue="---------请选择---------" /></td>
+						headerValue="--请选择--" /></td>
 					<td><input type="button" class="button"
 						onclick='updatePassword(<s:property value="#st.index+1"/>);'
 						value="初始化"></td>

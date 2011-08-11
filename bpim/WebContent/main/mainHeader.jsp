@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="com.bpim.common.Constants"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<%
+	 int newMessageCount = (Integer)session.getAttribute(Constants.NEW_MESSAGE_COUNT);
+	 %>
 <html>
 <script type="text/javascript">
 function changeTitleBackground(){
@@ -40,8 +45,7 @@ function changeTitleBackground(){
 		 document.getElementById("personalQuotaAnalyse").className = className;
 	 }
 	 
-	 var messageCount = "1";
-	 //var messageCount = "<%//=newMessageCount%>";
+	 var messageCount = "<%=newMessageCount%>";
 	 if(messageCount>0){
 		var message = document.getElementById("message");
 		message.innerHTML = messageCount+"条新消息";
@@ -55,66 +59,64 @@ function changeTitleBackground(){
 		 document.getElementById(id).style.display="NONE";
 	}
 </script>
-<body>
+<body onload="changeTitleBackground();">
 <div class="header">
 <div class="header_resize">
 <div class="nav_menu">
 <ul>
-	<li id="userInfoManage"><a href="#">用户信息管理</a></li>
+	<li id="backToMain"><a href="main.do">查看公告</a></li>
+	<li id="userInfoManage"><a href="userInfoManage.do">用户信息管理</a></li>
 	<!-- <li id="rechargeMain"><a href="rechargeMain.jsp">充值续费</a></li> -->
-	<li id="messageMain"><a id="message" href="../main/messageMain.jsp"><font
-		color="red">有1个待办事项</font></a></li>
-	<li id="help"><a href="#">用户手册</a></li>
-	<li id="index"><a href="#">退出</a></li>
+	<li id="messageMain"><a id="message" href="messageMain.do">消息</a></li>
+	<li id="help"><a href="../userGuide/user_guide.doc">用户手册</a></li>
+	<li id="index"><a href="../login/logout.do">退出</a></li>
 </ul>
 </div>
 <div class="logo">
-<h1>咨询公司综合信息管理系统 <small>欢迎您！尊敬的用户。</small> <small></small></h1>
+<h1>建设工程综合信息管理系统 <s:if test="#session.username != null">
+	<small>欢迎您！尊敬的用户<s:property value="#session.username" />。您的有效期至<s:date
+		name="#session.expireDate" format="yyyy年MM月dd日" /></small>
+</s:if> <s:else>
+	<small>尊敬的用户，您的用户登录超时，请重新登录。</small>
+</s:else></h1>
 </div>
 <div class="categoryDiv">
 <ul class="category">
 	<li onmouseover="displayCategory('publicInfo')"
-		onmouseout="unDisplayCategory('publicInfo')"><a>公共信息平台</a>
+		onmouseout="unDisplayCategory('publicInfo')"><a>公共信息查询</a>
 	<ul id="publicInfo" style="display: none">
-		<li id="#"><a href="../publicInfo/businessLicense.jsp">营业执照</a></li>
-		<li id="#"><a href="../publicInfo/taxLicense.jsp">税务登记执照</a></li>
-		<li id="#"><a href="../publicInfo/isoFileQuery.jsp">ISO文件查询</a></li>
-		<li id="#"><a href="../publicInfo/historyProject.jsp">典型工程查询</a></li>
-		<li id="#"><a href="../publicInfo/isoFileUpload.jsp">ISO文件上传</a></li>
-		<li id="#"><a href="../publicInfo/messagePublish.jsp">发布通知</a></li>
+		<li id="searchGovernmentQuota"><a
+			href="searchGovernmentQuota.jsp">定额查询</a></li>
+		<li id="searchGovernmentInventory"><a
+			href="searchGovernmentInventory.jsp">2003清单查询</a></li>
+			<li id="searchGovernmentInventory"><a
+			href="searchGovernmentInventory.jsp">2008清单查询</a></li>
+		<li id="searchGovernmentFile"><a href="searchGovernmentFile.jsp">文件查询</a></li>
+		<li id="searchGuidePriceData"><a href="searchGuidePriceData.jsp">政府指导价查询</a></li>
 	</ul>
 	</li>
-	<li onmouseover="displayCategory('businessFileManage')"
-		onmouseout="unDisplayCategory('businessFileManage')"><a>业务文件管理</a>
-	<ul id="businessFileManage" style="display: none">
-		<li id="#"><a href="../businessFile/businessFileUpload.jsp">文件上传</a></li>
-		<li id="#"><a href="../businessFile/businessFileManage.jsp">业务文件查询</a></li>
+	<li onmouseover="displayCategory('personData')"
+		onmouseout="unDisplayCategory('personData')"><a>个人数据管理</a>
+	<ul id="personData" style="display: none">
+		<li id="templateDownload"><a href="templateDownload.jsp">下载模板</a></li>
+		<li id="uploadData"><a href="uploadData.jsp">历史数据导入</a></li>
+		<li id="uploadCustomPriceData"><a
+			href="uploadCustomPriceData.jsp">自定义价导入</a></li>
+		<li id="searchData"><a href="searchData.jsp">历史数据管理</a></li>
+		<li id="searchCustomPriceData"><a
+			href="searchCustomPriceData.jsp">自定义价管理</a></li>
 	</ul>
 	</li>
-	<li onmouseover="displayCategory('employeeManage')"
-		onmouseout="unDisplayCategory('employeeManage')"><a>人力资源管理</a>
-	<ul id="employeeManage" style="display: none">
-		<li id="#"><a href="../employeeManage/employeeQuery.jsp">员工查询</a></li>
-		<li id="#"><a href="../employeeManage/addEmployee.jsp">新增员工</a></li>
+	<li onmouseover="displayCategory('personDataAnal')"
+		onmouseout="unDisplayCategory('personDataAnal')"><a>数据分析</a>
+	<ul id="personDataAnal" style="display: none">
+		<li id="personalQuotaAnalyse"><a href="personalQuotaAnalyse.jsp">定额分析</a></li>
+		<li id="personalRecordAnalyse"><a
+			href="personalRecordAnalyse.jsp">工料机价格分析</a></li>
 	</ul>
 	</li>
-	<li onmouseover="displayCategory('projectManage')"
-		onmouseout="unDisplayCategory('projectManage')"><a>工程项目管理</a>
-	<ul id="projectManage" style="display: none">
-		<li id="addProject"><a href="../projectManage/addProject.jsp">项目录入</a></li>
-		<li id="projectManage"><a
-			href="../projectManage/projectManage.jsp">项目查询</a></li>
-	</ul>
+	<li class="otherCategory">
 	</li>
-	<li onmouseover="displayCategory('managerFileManage')"
-		onmouseout="unDisplayCategory('managerFileManage')"><a>总经理文件管理</a>
-	<ul id="managerFileManage" style="display: none">
-		<li id="#"><a href="../managerFile/managerFileUpload.jsp">文件上传</a></li>
-		<li id="#"><a href="../managerFile/managerFileManage.jsp">文件查询</a></li>
-	</ul>
-	</li>
-
-	<li class="otherCategory"></li>
 </ul>
 </div>
 </div>
