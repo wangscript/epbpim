@@ -44,7 +44,7 @@
 							</li>
 							<li class="width200Li"><label>该角色用户最大数量</label>
 							</li>
-							<li class="width500Li"><label>角色说明</label>
+							<li class="width400Li"><label>角色说明</label>
 							</li>
 							<li class="width50Li"><label>查看</label>
 							</li>
@@ -56,7 +56,7 @@
 							</li>
 							<li class="width200Li"><label>1</label>
 							</li>
-							<li class="width500Li"><label>最高权限，可以进行全部操作及查看页面</label>
+							<li class="width400Li"><label>最高权限，可以进行全部操作及查看页面</label>
 							</li>
 							<li class="width50Li"><input type="button"
 								id="searchProject" class="mediumRightButton"
@@ -72,7 +72,7 @@
 							</li>
 							<li class="width200Li"><label>2</label>
 							</li>
-							<li class="width500Li"><label>进行部门管理</label>
+							<li class="width400Li"><label>进行部门管理</label>
 							</li>
 							<li class="width50Li"><input type="button"
 								id="searchProject" class="mediumRightButton"
