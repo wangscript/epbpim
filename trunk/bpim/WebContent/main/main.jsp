@@ -20,24 +20,22 @@
 				<div class="mainbar">
 					<div class="entry">
 						<h3 class="title">最新公告</h3>
-						<table style="width: 900px">
-							<s:iterator value="newsAnnounces" status="st">
-								<tr>
-									<td align="left"><s:hidden name="id" />
-										<h3>
-											<s:property value="newsTitle" />
-										</h3></td>
-								</tr>
-								<tr>
-									<td align="left"><s:date name="addTimeTemp"
-											format="yyyy-MM-dd" /> <s:hidden name="addTime" /></td>
-								</tr>
-								<tr>
-									<td align="left" style="text-align: left"><s:property
-											value="content" /></td>
-								</tr>
-							</s:iterator>
-						</table>
+						<s:iterator value="newsAnnounces" status="st">
+							<ul>
+								<li ><s:hidden name="id" />
+									<h4>
+										<s:property value="newsTitle" />
+										(<s:date name="addTimeTemp"
+										format="yyyy-MM-dd" /> <s:hidden name="addTime" />)
+									</h4>
+								</li>
+							</ul>
+							<ul>
+								<li ><s:property
+										value="content" />
+								</li>
+							</ul>
+						</s:iterator>
 					</div>
 				</div>
 

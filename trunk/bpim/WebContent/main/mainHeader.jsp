@@ -3,9 +3,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="com.bpim.common.Constants"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	<%
-	 int newMessageCount = (Integer)session.getAttribute(Constants.NEW_MESSAGE_COUNT);
-	 %>
+<%
+	int newMessageCount = (Integer) session
+			.getAttribute(Constants.NEW_MESSAGE_COUNT);
+%>
 <html>
 <script type="text/javascript">
 function changeTitleBackground(){
@@ -19,6 +20,8 @@ function changeTitleBackground(){
 		 document.getElementById("messageMain").className = className;
 	 }else if(sURL.indexOf("index")>0||sURL.indexOf("messageMain")>0){
 	 document.getElementById("index").className = className;
+	}else if(sURL.indexOf("userAdvice")>0||sURL.indexOf("userAdvice")>0){
+	 document.getElementById("userAdvice").className = className;
 	}
 	 
 	 if(sURL.indexOf("templateDownload")>0||sURL.indexOf("templateDownload")>0){
@@ -48,80 +51,110 @@ function changeTitleBackground(){
 	 }
 	 
 	 var messageCount = "<%=newMessageCount%>";
-	 if(messageCount>0){
-		var message = document.getElementById("message");
-		message.innerHTML = messageCount+"条新消息";
-}
+		if (messageCount > 0) {
+			var message = document.getElementById("message");
+			message.innerHTML = messageCount + "条新消息";
+		}
 
 	}
-	function displayCategory(id){
-		 document.getElementById(id).style.display="BLOCK";
+	function displayCategory(id) {
+		document.getElementById(id).style.display = "BLOCK";
 	}
-	function unDisplayCategory(id){
-		 document.getElementById(id).style.display="NONE";
+	function unDisplayCategory(id) {
+		document.getElementById(id).style.display = "NONE";
 	}
 </script>
 <body onload="changeTitleBackground();">
-<div class="header">
-<div class="header_resize">
-<div class="nav_menu">
-<ul>
-	<li id="backToMain"><a href="main.do">查看公告</a></li>
-	<li id="userInfoManage"><a href="userInfoManage.do">用户信息管理</a></li>
-	<!-- <li id="rechargeMain"><a href="rechargeMain.jsp">充值续费</a></li> -->
-	<li id="messageMain"><a id="message" href="messageMain.do">消息</a></li>
-	<li id="help"><a href="../userGuide/user_guide.doc">用户手册</a></li>
-	<li id="index"><a href="../login/logout.do">退出</a></li>
-</ul>
-</div>
-<div class="logo">
-<h1>建设工程综合信息管理系统 <s:if test="#session.username != null">
-	<small>欢迎您！尊敬的用户<s:property value="#session.username" />。您的有效期至<s:date
-		name="#session.expireDate" format="yyyy年MM月dd日" /></small>
-</s:if> <s:else>
-	<small>尊敬的用户，您的用户登录超时，请重新登录。</small>
-</s:else></h1>
-</div>
-<div class="categoryDiv">
-<ul class="category">
-	<li onmouseover="displayCategory('publicInfo')"
-		onmouseout="unDisplayCategory('publicInfo')"><a>公共信息查询</a>
-	<ul id="publicInfo" style="display: none">
-		<li id="searchGovernmentQuota"><a
-			href="searchGovernmentQuota.jsp">定额查询</a></li>
-		<li id="searchGovernmentInventory_2003"><a
-			href="searchGovernmentInventory_2003.jsp">2003清单查询</a></li>
-			<li id="searchGovernmentInventory_2008"><a
-			href="searchGovernmentInventory_2008.jsp">2008清单查询</a></li>
-		<li id="searchGovernmentFile"><a href="searchGovernmentFile.jsp">文件查询</a></li>
-		<li id="searchGuidePriceData"><a href="searchGuidePriceData.jsp">政府指导价查询</a></li>
-	</ul>
-	</li>
-	<li onmouseover="displayCategory('personData')"
-		onmouseout="unDisplayCategory('personData')"><a>个人数据管理</a>
-	<ul id="personData" style="display: none">
-		<li id="templateDownload"><a href="templateDownload.jsp">下载模板</a></li>
-		<li id="uploadData"><a href="uploadData.jsp">历史数据导入</a></li>
-		<li id="uploadCustomPriceData"><a
-			href="uploadCustomPriceData.jsp">自定义价导入</a></li>
-		<li id="searchData"><a href="searchData.jsp">历史数据管理</a></li>
-		<li id="searchCustomPriceData"><a
-			href="searchCustomPriceData.jsp">自定义价管理</a></li>
-	</ul>
-	</li>
-	<li onmouseover="displayCategory('personDataAnal')"
-		onmouseout="unDisplayCategory('personDataAnal')"><a>数据分析</a>
-	<ul id="personDataAnal" style="display: none">
-		<li id="personalQuotaAnalyse"><a href="personalQuotaAnalyse.jsp">定额分析</a></li>
-		<li id="personalRecordAnalyse"><a
-			href="personalRecordAnalyse.jsp">工料机价格分析</a></li>
-	</ul>
-	</li>
-	<li class="otherCategory">
-	</li>
-</ul>
-</div>
-</div>
-</div>
+	<div class="header">
+		<div class="header_resize">
+			<div class="nav_menu">
+				<ul>
+					<li id="userAdvice"><a href="userAdvice.jsp">用户反馈</a>
+					</li>
+					<li id="backToMain"><a href="main.do">查看公告</a>
+					</li>
+					<li id="userInfoManage"><a href="userInfoManage.do">用户管理</a>
+					</li>
+					<!-- <li id="rechargeMain"><a href="rechargeMain.jsp">充值续费</a></li> -->
+					<li id="messageMain"><a id="message" href="messageMain.do">消息</a>
+					</li>
+					<li id="help"><a href="../userGuide/user_guide.doc">用户手册</a>
+					</li>
+					<li id="index"><a href="../login/logout.do">退出</a>
+					</li>
+				</ul>
+			</div>
+			<div class="logo">
+				<h1>
+					建设工程综合信息管理系统
+					<s:if test="#session.username != null">
+						<small>欢迎您！尊敬的用户<s:property value="#session.username" />。您的有效期至<s:date
+								name="#session.expireDate" format="yyyy年MM月dd日" />
+						</small>
+					</s:if>
+					<s:else>
+						<small>尊敬的用户，您的用户登录超时，请重新登录。</small>
+					</s:else>
+				</h1>
+			</div>
+			<div class="categoryDiv">
+				<ul class="category">
+					<li onmouseenter="displayCategory('publicInfo')" 
+						onmouseleave="unDisplayCategory('publicInfo')"
+						onmouseover="displayCategory('publicInfo')" 
+						onmouseout="unDisplayCategory('publicInfo')"><a>公共信息查询</a>
+						<ul id="publicInfo" style="display: none">
+							<li id="searchGovernmentQuota"><a
+								href="searchGovernmentQuota.jsp">定额查询</a>
+							</li>
+							<li id="searchGovernmentInventory_2003"><a
+								href="searchGovernmentInventory_2003.jsp">2003清单查询</a>
+							</li>
+							<li id="searchGovernmentInventory_2008"><a
+								href="searchGovernmentInventory_2008.jsp">2008清单查询</a>
+							</li>
+							<li id="searchGovernmentFile"><a
+								href="searchGovernmentFile.jsp">文件查询</a>
+							</li>
+							<li id="searchGuidePriceData"><a
+								href="searchGuidePriceData.jsp">政府指导价查询</a>
+							</li>
+						</ul></li> 
+					<li  onmouseenter="displayCategory('personData')" 
+						onmouseleave="unDisplayCategory('personData')"
+						onmouseover="displayCategory('personData')" 
+						onmouseout="unDisplayCategory('personData')"><a>个人数据管理</a>
+						<ul id="personData" style="display: none">
+							<li id="templateDownload"><a href="templateDownload.jsp">下载模板</a>
+							</li>
+							<li id="uploadData"><a href="uploadData.jsp">历史数据导入</a>
+							</li>
+							<li id="uploadCustomPriceData"><a
+								href="uploadCustomPriceData.jsp">自定义价导入</a>
+							</li>
+							<li id="searchData"><a href="searchData.jsp">历史数据管理</a>
+							</li>
+							<li id="searchCustomPriceData"><a
+								href="searchCustomPriceData.jsp">自定义价管理</a>
+							</li>
+						</ul></li>
+					<li onmouseenter="displayCategory('personDataAnal')" 
+						onmouseleave="unDisplayCategory('personDataAnal')"
+						onmouseover="displayCategory('personDataAnal')" 
+						onmouseout="unDisplayCategory('personDataAnal')"
+						><a>数据分析</a>
+						<ul id="personDataAnal" style="display: none">
+							<li id="personalQuotaAnalyse"><a
+								href="personalQuotaAnalyse.jsp">定额分析</a>
+							</li>
+							<li id="personalRecordAnalyse"><a
+								href="personalRecordAnalyse.jsp">工料机价格分析</a>
+							</li>
+						</ul></li>
+					<li class="otherCategory"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
