@@ -365,3 +365,9 @@ td {
 
 .analyseResult .entry {
 }
+
+ul{
+	width: 950px;
+	list-style: none;
+	float: left;
+}

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="keywords" content="" />
+<meta name="keywords" content="任远,造价,建造,信息查询,清单,03,08,数据分析,定额分析,文件查询,法律文件,政府文件,工料机,数据管理,数据导入" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>建设工程信息数据管理系统</title>

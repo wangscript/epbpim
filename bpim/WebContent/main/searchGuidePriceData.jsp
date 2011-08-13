@@ -138,10 +138,8 @@
 								<li style="width: 150px;">专业类别：<select id="quotaClass"
 									name="condition.quotaClass" style="width: 80px;">
 										<option value="0">--请选择--</option>
-										<option value="土建装饰">土建</option>
-										<option value="园林">园林</option>
+										<option value="土建">土建</option>
 										<option value="市政">市政</option>
-										<option value="安装">安装</option>
 										<option value="公用">公用</option>
 										<option value="水利">水利</option>
 										<option value="人防">人防</option>
