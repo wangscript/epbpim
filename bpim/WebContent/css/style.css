@@ -538,3 +538,16 @@ ol li .send {
 	color: #5F5F5F;
 	text-shadow: #5f5f5f -1px 1px 2px;
 }
+
+.helpImg{
+	width: 25px;
+	height: 25px;	
+}
+
+ul{
+	list-style: none;
+	float: left;
+}
+.helpDiv{
+	display:none;	
+}
