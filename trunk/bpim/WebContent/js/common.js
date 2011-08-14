@@ -297,3 +297,7 @@ function getEleValue(element) {
 String.prototype.trim = function () {
 	return this.replace(/(^\s*)|(\s*$)/g, "");
 };
+
+function $(id){
+	return document.getElementById(id);
+}

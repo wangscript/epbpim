@@ -1,10 +1,10 @@
 .button {
 	width: 50px;
 	margin-left: 10px;
-	cursor:pointer;
+	cursor: pointer;
 }
 
-h3{
+h3 {
 	margin: 0px;
 }
 
@@ -19,71 +19,96 @@ h3{
 	padding-top: 10px;
 	padding-left: 40px;
 }
-.header .categoryDiv{
+
+.header .categoryDiv {
 	width: 970px;
-	float: left;	
+	float: left;
 }
+
 .header .category {
 	text-align: center;
 	height: 90px;
-    float: left;
-    height: 43px;
-    list-style: none outside none;
-    width: 950px;
-    margin-left:30px;
+	float: left;
+	height: 43px;
+	list-style: none outside none;
+	width: 950px;
+	margin-left: 30px;
 }
 
 .header .category .otherCategory {
-	background: url("../images/menu.gif") repeat-x scroll center top transparent;
+	background: url("../images/menu.gif") repeat-x scroll center top
+		transparent;
 	height: 43px;
 	float: left;
 	width: 580px;
-	margin-left:1px;
+	margin-left: 1px;
 }
-
 
 .header .category li {
-	background: url("../images/menu.gif") repeat-x scroll center top transparent;
-	height: 43px;
+	background: url("../images/menu.gif") repeat-x scroll center top
+		transparent;
+	height: 40px;
 	float: left;
 	width: 120px;
-	margin-left:1px;
+	margin-left: 1px;
 }
 
-.header .category li ul{
-	position :relative;
-	width: auto;
+.header .category li ul {
+	position: relative;
+	width: 110px;
+	float: left;
+	margin-top:0px;
+	padding-top:0px;
 	list-style: none outside none;
 }
 
-.header .category li ul li{
+.header .category li ul li {
 	width: 110px;
 	float: left;
-	background: url("../images/menu.gif") repeat-x scroll center top transparent;
-		
+	margin-top:0px;
+	padding-top:0px;
+	background: url("../images/menu.gif") repeat-x scroll center top
+		transparent;
 }
 
+.header .category li ul li ul{
+	height: 40px;
+	width: auto;
+	margin-top:0px;
+	padding-top:0px;
+}
 
-.header .category li a:hover{
-	cursor:pointer;
+.header .category li ul li ul .helpLi{
+	display:none;	
+	width: auto;
+	float: right;
+	background: url("../images/menu.gif") repeat-x scroll center top
+		transparent;
+}
+
+.header .category li ul li ul .helpLi .helpA{
+	cursor: none;
+	color: #5F5F5F;
+}
+
+.header .category li a:hover {
+	cursor: pointer;
 	color: #47add9;
 }
 
 .header .category li a {
-	cursor:pointer;
+	cursor: pointer;
 	color: #5F5F5F;
-    display: block;
-    font-weight: bold;
-    margin: 0;
-    padding: 14px 8px;
-    text-decoration: none;
+	display: block;
+	font-weight: bold;
+	margin: 0;
+	padding: 9px 8px;
+	text-decoration: none;
 }
 
-.header .category li.active a{
+.header .category li.active a {
 	color: #47add9;
 }
-
-
 
 .content {
 	min-height: 455px;
@@ -118,13 +143,13 @@ h3{
 
 #leftPanel li li {
 	margin-left: 15px;
-	margin-top:5px;
-	padding-top:0px;
+	margin-top: 5px;
+	padding-top: 0px;
 	text-align: left;
 }
 
 #leftPanel li li a {
-	font: 13px/1.8em Arial,Helvetica,sans-serif;
+	font: 13px/1.8em Arial, Helvetica, sans-serif;
 	padding-left: 18px;
 	background: url(../images/li.gif) no-repeat left center;
 }
@@ -141,7 +166,8 @@ h3{
 	text-align: justify;
 	color: #847F7E;
 }
-#leftPanel .active a{
+
+#leftPanel .active a {
 	font-weight: bold;
 	color: #47ADD9;
 }
@@ -192,18 +218,18 @@ h3{
 	width: 950px;
 }
 
-.searchResult ul{
+.searchResult ul {
 	width: 950px;
 	list-style: none;
 	float: left;
 }
 
-.searchResult li{
+.searchResult li {
 	text-align: center;
 	float: left;
 }
 
-.searchResult .button{
+.searchResult .button {
 	margin: 0px;
 	padding: 0px;
 }
@@ -290,6 +316,7 @@ td {
 	width: 100px;
 	margin-right: 10px;
 }
+
 #detail  li input {
 	width: 180px;
 	margin-right: 20px;
@@ -300,13 +327,14 @@ td {
 	width: 300px;
 	margin-right: 10px;
 }
+
 #detail  li .label3 {
 	float: left;
 	width: 180px;
 	margin-right: 23px;
 }
 
-#messageMain{
+#messageMain {
 	
 }
 
@@ -316,15 +344,15 @@ td {
 	text-align: center;
 	height: 35px;
 	width: 750px;
-	margin:0px 0px 0px 0px;
-    padding:0px 0px 0px 0px;	
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
 }
 
 #messageMain  li {
 	float: left;
 	text-align: center;
-	margin:0px 0px 0px 0px;
-    padding:0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
 	height: 40px;
 }
 
@@ -337,12 +365,11 @@ td {
 
 .analyseResult {
 	float: right;
-	margin-top:20px; 
-	width:950px;
+	margin-top: 20px;
+	width: 950px;
 }
 
-
-.analyseResult ul{
+.analyseResult ul {
 	width: 950px;
 	list-style: none;
 	float: left;
@@ -353,20 +380,21 @@ td {
 	font-weight: bold;
 }
 
-.analyseResult li{
+.analyseResult li {
 	text-align: center;
 	float: left;
 }
 
-.analyseResult .button{
+.analyseResult .button {
 	margin: 0px;
 	padding: 0px;
 }
 
 .analyseResult .entry {
+	
 }
 
-ul{
+ul {
 	width: 950px;
 	list-style: none;
 	float: left;
