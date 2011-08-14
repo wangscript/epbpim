@@ -27,7 +27,7 @@
 	    	<result name="requireddata">/common/required.jsp</result>
 	    	<result name="success">/common/success.jsp</result>
 			<result name="error">/common/error.jsp</result>
-			<result name="glberror">/common/glberror.jsp</result>
+			<result name="glberror">/common/error.jsp</result>
 			<result name="nosession">/index.jsp</result>
 			<result name="nosessionadmin">/admin/adminLogin.jsp</result>
 			<result name="norigth">/common/norigth.jsp</result>
