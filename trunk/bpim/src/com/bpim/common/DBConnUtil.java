@@ -35,23 +35,19 @@ public class DBConnUtil {
 	//返回一个数据库连接
 	public static Connection getConnection() throws SQLException{
 		conn = ds.getConnection();
-		System.out.println("current connection number are: "+ds.getNumActive());
 		return conn;
 	}   
 	
 	public static ResultSet getStatement(String sql) throws SQLException {
 		Statement stet = conn.createStatement();
-		System.out.println("current connection number are: "+ds.getNumActive());
 		return stet.executeQuery(sql);
 	}
 	
 	public static PreparedStatement getPrepareStatement(String sql) throws SQLException {
-		System.out.println("current connection number are: "+ds.getNumActive());
 		return conn.prepareStatement(sql);
 	}
 	
 	public static void startTransaction(boolean isAutoCommit) throws SQLException {
-		System.out.println("current connection number are: "+ds.getNumActive());
 		conn.setAutoCommit(isAutoCommit);
 	}
 	
@@ -62,23 +58,6 @@ public class DBConnUtil {
 	public static void close() throws SQLException {
 		if(conn!=null && !conn.isClosed()) {
 			conn.close();
-		}
-	}
-	
-	public static void main(String[] args) {
-		try {
-			DBConnUtil.getConnection();
-			DBConnUtil.getPrepareStatement("select * from dual");
-			DBConnUtil.getPrepareStatement("select * from dual");
-			DBConnUtil.getPrepareStatement("select * from dual");
-			DBConnUtil.getPrepareStatement("select * from dual");
-			DBConnUtil.getPrepareStatement("select * from dual");
-			DBConnUtil.getPrepareStatement("select * from dual");
-			DBConnUtil.getPrepareStatement("select * from dual");
-			DBConnUtil.getPrepareStatement("select * from dual");
-			DBConnUtil.getPrepareStatement("select * from dual");
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 	}
 }
