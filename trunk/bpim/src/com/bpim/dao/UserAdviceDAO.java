@@ -18,4 +18,7 @@ public interface UserAdviceDAO
     int countQueryUserAdvice(SearchDataCondition condition)
         throws SQLException;
     
+    public void insertUserAdvice(UserAdvice userAdvice)
+        throws SQLException;
+    
 }
