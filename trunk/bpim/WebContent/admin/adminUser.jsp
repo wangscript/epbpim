@@ -4,14 +4,7 @@
 <%@ page import="com.bpim.common.Constants"%>
 <%@ page import="org.apache.commons.lang.StringUtils"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%
-	String username = (String) session
-			.getAttribute(Constants.ADMIN_LOGIN_USER_NAME);
-	if (StringUtils.isEmpty(username)) {
-		response.sendRedirect(request.getContextPath()
-				+ "/admin/adminLogin.jsp");
-	}
-%>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="keywords" content="" />
@@ -126,10 +119,10 @@ function clearPage(updateId){
 	<table>
 		<tr>
 			<td style="width: 80px;">用户名</td>
-			<td style="width: 100px">注册日期</td>
-			<td style="width: 100px">过期日期</td>
+			<td style="width: 120px">注册日期</td>
+			<td style="width: 120px">过期日期</td>
 			<td style="width: 150px">邮箱地址</td>
-			<td style="width: 150px">所在公司</td>
+			<td style="width: 180px">所在公司</td>
 			<td style="width: 90px">手机号</td>
 			<td style="width: 70px">选择套餐</td>
 			<td style="width: 80px">初始化密码</td>
@@ -164,8 +157,6 @@ function clearPage(updateId){
 					<td><input type="button" class="button"
 						onclick='insertRepenseRecord(<s:property value="#st.index+1"/>);'
 						value="充值"></td>
-					<td><input type="button" class="button"
-						onclick='update(<s:property value="#st.index+1"/>);' value="更新"></td>
 				</tr>
 			</s:iterator>
 			<jsp:include page="../common/pagination.jsp" flush="true">
