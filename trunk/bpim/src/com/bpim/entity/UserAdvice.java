@@ -12,9 +12,9 @@ public class UserAdvice
     
     private Long userID;
     
-    private String ADVICE_CONTENT;
+    private String adviceContent;
     
-    private Timestamp ADVICE_DATE;
+    private Timestamp adviceDate;
     
     public Long getId()
     {
@@ -36,24 +36,23 @@ public class UserAdvice
         this.userID = userID;
     }
     
-    public String getADVICE_CONTENT()
+    public String getAdviceContent()
     {
-        return ADVICE_CONTENT;
+        return adviceContent;
     }
     
-    public void setADVICE_CONTENT(String aDVICE_CONTENT)
+    public void setAdviceContent(String adviceContent)
     {
-        ADVICE_CONTENT = aDVICE_CONTENT;
+        this.adviceContent = adviceContent;
     }
     
-    public Timestamp getADVICE_DATE()
+    public Timestamp getAdviceDate()
     {
-        return ADVICE_DATE;
+        return adviceDate;
     }
     
-    public void setADVICE_DATE(Timestamp aDVICE_DATE)
+    public void setAdviceDate(Timestamp adviceDate)
     {
-        ADVICE_DATE = aDVICE_DATE;
+        this.adviceDate = adviceDate;
     }
-    
 }
