@@ -12,7 +12,7 @@ public class UserAdvice
     
     private Long userID;
     
-    private Long userName;
+    private String userName;
     
     private String adviceContent;
     
@@ -38,12 +38,12 @@ public class UserAdvice
         this.userID = userID;
     }
     
-    public Long getUserName()
+    public String getUserName()
     {
         return userName;
     }
     
-    public void setUserName(Long userName)
+    public void setUserName(String userName)
     {
         this.userName = userName;
     }
