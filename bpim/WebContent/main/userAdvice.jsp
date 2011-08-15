@@ -22,27 +22,37 @@
 <script language="javascript" type="text/javascript"
 	src="../js/common.js"></script>
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
+<script type="text/javascript">
+	function showMsg()
+	{
+		var msg='<s:property value="msg" />';
+		if(msg)
+		{
+			alert(msg);
+		}		
+	}
+</script>
 </head>
-<body>
+<body onload="showMsg()">
 	<div id="main"><jsp:include page="mainHeader.jsp" />
-		<div class="content">
-			<div class="content_resize">
-				<div class="mainbar">
-					<h3>意见反馈</h3>
-					<div class="adviceDiv">
-						<textarea></textarea>
-						<input type="button" class="button" onclick="" value="提交">
+		<s:form	action="addUserAdvice.do" method="post" name="addUserAdviceForm" id="addUserAdviceForm">
+			<div class="content">
+				<div class="content_resize">
+					<div class="mainbar">
+						<h3>意见反馈</h3>
+						<div class="adviceDiv">
+							<textarea name="userAdvice.adviceContent"></textarea>
+							<input type="submit" class="button" value="提交">
+						</div>
 					</div>
+					<!-- end #content -->
+					<div class="clr"></div>
 				</div>
-
-				<!-- end #content -->
-
-
-				<div class="clr"></div>
 			</div>
-		</div>
+		</s:form>
 		<!-- end #page -->
-		<jsp:include page="../common/footer.jsp" /></div>
+		<jsp:include page="../common/footer.jsp" />
+    </div>
 
 </body>
 <script type='text/javascript' src='../dwr/engine.js'></script>
