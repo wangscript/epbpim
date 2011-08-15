@@ -30,6 +30,11 @@
 			<result>/admin/adminUser.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
+		<action name="listua" method="searchUserAdvice"
+			class="com.bpim.web.action.mainPanel.UserAdviceAction">
+			<result>/admin/searchUserAdvice.jsp</result>
+			<interceptor-ref name="manager"/>
+		</action>
 		<action name="adminl" method="adminLogin"
 			class="com.bpim.web.action.UserInfoAction">
 			<result name="input">/admin/adminLogin.jsp</result>
@@ -331,13 +336,6 @@
 			<result>/main/userAdvice.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
-		</action>
-	</package>
-	<package name="searchUserAdvice" namespace="/admin" extends="bpim-default">
-		<action name="searchUserAdvice" method="searchUserAdvice"
-			class="com.bpim.web.action.mainPanel.UserAdviceAction">
-			<result>/admin/searchUserAdvice.jsp</result>
-			<interceptor-ref name="manager"/>
 		</action>
 	</package>	
 </struts>
