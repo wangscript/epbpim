@@ -1,14 +1,18 @@
 package com.ryxx.bpim.user.action;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.ryxx.bpim.common.Constants;
+import com.ryxx.bpim.user.entity.AdminLog;
 import com.ryxx.bpim.user.entity.AdminMenu;
 import com.ryxx.bpim.user.entity.AdminRole;
+import com.ryxx.bpim.user.service.AdminLogService;
 import com.ryxx.bpim.user.service.AdminMenuService;
 import com.ryxx.bpim.user.service.AdminRoleService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
@@ -29,6 +33,7 @@ public class AdminRoleAction extends ActionSupportBase {
 	
 	private AdminRoleService adminRoleService;
 	private AdminMenuService adminMenuService;
+	private AdminLogService adminLogService;
 	
 	public String save() {
 		AdminRole role = new AdminRole();
@@ -48,6 +53,15 @@ public class AdminRoleAction extends ActionSupportBase {
 		adminRoleService.evict(adminRole);
 		AdminRole adminRole2 = adminRoleService.fetchById(adminRole.getId());
 		CacheMap.getInstance().addCache(Constants.ROLE+role.getId(), adminMenuService.getMenuTree(adminRole2.getMenuList()));
+		
+		AdminLog log = new AdminLog();
+		log.setLogTime(new Timestamp(System.currentTimeMillis()));
+		log.setModuleId(14);
+		log.setActionType(Constants.OPER_TYPE_CREATE);
+		log.setUserName("Admin");   //session.get(Constants.LOGIN_UID).toString());
+		log.setUserIp(request.getRemoteAddr());
+		log.setRemark("add role '" + name + "' success");
+		adminLogService.save(log);
 		return SUCCESS;
 	}
 	
@@ -58,6 +72,15 @@ public class AdminRoleAction extends ActionSupportBase {
 	
 	public String delete() {
 		adminRoleService.delete(id);
+		
+		AdminLog log = new AdminLog();
+		log.setLogTime(new Timestamp(System.currentTimeMillis()));
+		log.setModuleId(15);
+		log.setActionType(Constants.OPER_TYPE_DELETE);
+		log.setUserName("Admin");   //session.get(Constants.LOGIN_UID).toString());
+		log.setUserIp(request.getRemoteAddr());
+		log.setRemark("delete node (Id: '" + name + "') success");
+		adminLogService.save(log);
 		return SUCCESS;
 	}
 	
@@ -94,6 +117,15 @@ public class AdminRoleAction extends ActionSupportBase {
 			CacheMap.getInstance().removeCache(Constants.ROLE+role.getId());
 		}
 		CacheMap.getInstance().addCache(Constants.ROLE+role.getId(), adminMenuService.getMenuTree(adminRole2.getMenuList()));
+		
+		AdminLog log = new AdminLog();
+		log.setLogTime(new Timestamp(System.currentTimeMillis()));
+		log.setModuleId(15);
+		log.setActionType(Constants.OPER_TYPE_UPDATE);
+		log.setUserName("Admin");   //session.get(Constants.LOGIN_UID).toString());
+		log.setUserIp(request.getRemoteAddr());
+		log.setRemark("update role '" + name + "' success");
+		adminLogService.save(log);
 		return SUCCESS;
 	}
 	
@@ -167,5 +199,13 @@ public class AdminRoleAction extends ActionSupportBase {
 
 	public void setMenuList(List<AdminMenu> menuList) {
 		this.menuList = menuList;
+	}
+
+	public AdminLogService getAdminLogService() {
+		return adminLogService;
+	}
+
+	public void setAdminLogService(AdminLogService adminLogService) {
+		this.adminLogService = adminLogService;
 	}
 }

@@ -36,7 +36,7 @@ public interface Constants {
 	/**
 	 * 操作类型：修改
 	 */
-	final static int OPER_TYPE_MODIFY = 2;
+	final static int OPER_TYPE_UPDATE = 2;
 
 	/**
 	 * 操作类型：禁止

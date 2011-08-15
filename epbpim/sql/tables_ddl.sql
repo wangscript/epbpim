@@ -18,7 +18,7 @@ CREATE TABLE ADMIN_MENU (
 CREATE TABLE ADMIN_LOG (
   LOG_ID BIGINT(15) NOT NULL AUTO_INCREMENT,
   USER_NAME VARCHAR(50) NOT NULL,               
-  ACTION_TYPE     BIGINT(15) NOT NULL default '0',        
+  ACTION_TYPE     INT(15) NOT NULL default '0',        
   USER_IP         varchar(15),        
   LOG_TIME        TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',      
   MODULE_ID       INT(11) NOT NULL default '0',        
