@@ -8,4 +8,5 @@ import com.ryxx.bpim.user.entity.AdminMenu;
 
 public interface AdminMenuService extends BaseService<AdminMenu,AdminMenuDAO, Long> {
 	public List<AdminMenu> list();
+	public List<AdminMenu> getMenuTree(List<AdminMenu> nodes);
 }

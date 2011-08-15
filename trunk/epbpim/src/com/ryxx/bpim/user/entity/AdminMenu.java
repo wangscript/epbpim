@@ -13,9 +13,8 @@ public class AdminMenu extends VoBase {
 	private Integer parentId;
 	private Integer enable;
 	private Integer index;
-	private List<AdminMenu> subMenus;
-	
 	private List<AdminRole> roleList;
+	private List<AdminMenu> subMenus;
 	
 	public List<AdminRole> getRoleList() {
 		return roleList;

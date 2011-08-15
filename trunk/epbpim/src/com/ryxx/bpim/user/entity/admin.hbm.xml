@@ -10,11 +10,11 @@
 		<property name="parentId" column="PARENT_MENU_ID" type="java.lang.Integer"></property>
 		<property name="enable" column="MENU_ENABLE" type="java.lang.Integer"></property>
 		<property name="index" column="MENU_INDEX" type="java.lang.Integer"></property>
-		<bag name="roleList" table="ROLE_MENU_RESTRACTION" cascade="save-update" lazy="true" inverse="true">
+		<bag name="roleList" table="ROLE_MENU_RESTRACTION" fetch="select" cascade="save-update" lazy="true" inverse="true">
 			<key>
 				<column name="MENU_ID" />
 			</key>
-			<many-to-many class="com.ryxx.bpim.user.entity.AdminRole" column="ROLE_ID"/>
+			<many-to-many class="AdminRole" column="ROLE_ID"/>
 		</bag>
 	</class>
 	
@@ -23,13 +23,13 @@
 			<generator class="identity"></generator>
 		</id>
 		<property name="name" column="ROLE_NAME" type="java.lang.String"></property>
-		<property name="roleCount" column="ROLE_COUNT" type="java.lang.Long"></property>
-		<property name="remark" column="ROLE_REMARK" type="java.lang.Integer"></property>
-		<bag name="menuList" table="ROLE_MENU_RESTRACTION" cascade="save-update" lazy="true">
+		<property name="roleCount" column="ROLE_COUNT" type="java.lang.Integer"></property>
+		<property name="remark" column="ROLE_REMARK" type="java.lang.String"></property>
+		<bag name="menuList" table="ROLE_MENU_RESTRACTION" fetch="select" lazy="true" inverse="false">
 			<key>
 				<column name="ROLE_ID" />
 			</key>
-			<many-to-many class="com.ryxx.bpim.user.entity.AdminMenu" column="MENU_ID"/>
+			<many-to-many class="AdminMenu" column="MENU_ID"/>
 		</bag>
 	</class>
 </hibernate-mapping>

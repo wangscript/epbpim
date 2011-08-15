@@ -10,4 +10,10 @@ public class AdminLogServiceImpl  extends AbstractService<AdminMenu,AdminMenuDAO
 	public List<AdminMenu> list() {
 		return this.getDao().findAll();
 	}
+
+	@Override
+	public List<AdminMenu> getMenuTree(List<AdminMenu> nodes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

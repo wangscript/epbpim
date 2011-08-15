@@ -38,65 +38,63 @@
 							</li>
 						</ul>
 					</div>
-					<div class="searchResult" id="searchResult" style="display: none">
-						<ul class="fullScreenUl">
-							<li class="width100Li"><label>角色名</label>
-							</li>
-							<li class="width200Li"><label>该角色用户最大数量</label>
-							</li>
-							<li class="width400Li"><label>角色说明</label>
-							</li>
-							<li class="width50Li"><label>查看</label>
-							</li>
-							<li class="width50Li"><label>删除</label>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width100Li"><label>总经理</label>
-							</li>
-							<li class="width200Li"><label>1</label>
-							</li>
-							<li class="width400Li"><label>最高权限，可以进行全部操作及查看页面</label>
-							</li>
-							<li class="width50Li"><input type="button"
-								id="searchProject" class="mediumRightButton"
-								onclick="displayResult();" class="button" value="查看">
-							</li>
-							<li class="width50Li"><input type="button"
-								id="searchProject" class="mediumRightButton"
-								onclick="displayResult();" class="button" value="删除">
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width100Li"><label>副总经理</label>
-							</li>
-							<li class="width200Li"><label>2</label>
-							</li>
-							<li class="width400Li"><label>进行部门管理</label>
-							</li>
-							<li class="width50Li"><input type="button"
-								id="searchProject" class="mediumRightButton"
-								onclick="displayResult();" class="button" value="查看">
-							</li>
-							<li class="width50Li"><input type="button"
-								id="searchProject" class="mediumRightButton"
-								onclick="displayResult();" class="button" value="删除">
-							</li>
-						</ul>
-					</div>
-					<div></div>
-
-
-				</div>
-
-
+					
+					<s:if test="roleList==null || roleList.size()==0">
+						<tr>
+							<td>
+							<h3>没数据</h3>
+							</td>
+						</tr>
+					</s:if>
+					<s:else>
+						<div class="searchResult" id="searchResult">
+							<ul class="fullScreenUl">
+								<li class="width100Li"><label>角色名</label>
+								</li>
+								<li class="width200Li"><label>角色最大数量</label>
+								</li>
+								<li class="width400Li"><label>角色说明</label>
+								</li>
+								<li class="width50Li"><label>查看</label>
+								</li>
+								<li class="width50Li"><label>删除</label>
+								</li>
+							</ul>
+							<s:iterator value="roleList" status="st">
+								<ul class="fullScreenUl">
+									<li class="width100Li"><s:property value="name" /></li>
+									<li class="width200Li"><s:property value="roleCount" /></li>
+									<li class="width400Li"><s:property value="remark" /></li>
+									<li class="width50Li">
+										<form action="getRole.do" id='getrole<s:property value="id" />'>
+											<input type="button" onclick='getRole("getrole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="查看"><s:hidden name="id" />
+										</form>
+									</li>
+									<li class="width50Li">
+										<form action="deleteRole.do" id='deleterole<s:property value="id" />'>
+											<input type="button" onclick='deleteRole("deleterole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="删除"><s:hidden name="id" />
+										</form>
+									</li>
+								</ul>
+							</s:iterator>
+						</div>
+					</s:else>
 				<div class="clr"></div>
 			</div>
 		</div>
-		<!-- end #page -->
-		<jsp:include page="../common/footer.jsp" /></div>
+	</div>
+	<!-- end #page -->
+	<jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
+	function deleteRole(id){
+		if(confirm("是否删除?")){
+			document.getElementById(id).submit();
+		}
+	}
+	function getRole(id){
+		document.getElementById(id).submit();
+	}
 	function displayResult(){
 		document.getElementById("searchResult").style.display="block";
 	}

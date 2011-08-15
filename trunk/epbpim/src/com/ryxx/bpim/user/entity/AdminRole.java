@@ -2,6 +2,9 @@ package com.ryxx.bpim.user.entity;
 
 import java.util.List;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import com.ryxx.bpim.entity.VoBase;
 
 public class AdminRole extends VoBase {
@@ -42,6 +45,19 @@ public class AdminRole extends VoBase {
 	}
 	public void setMenuList(List<AdminMenu> menuList) {
 		this.menuList = menuList;
+	}
+	public boolean equals(Object obj) {
+		if((this==obj)) {
+			return true;
+		}
+		if(!(obj instanceof AdminRole)) {
+			return false;
+		}
+		AdminRole adminRole = (AdminRole)obj;
+		return new EqualsBuilder().append(this.getId(), adminRole.getId()).isEquals();
+	}
+	public int hashCode() {
+		return new HashCodeBuilder().append(getId()).toHashCode();
 	}
 }
 

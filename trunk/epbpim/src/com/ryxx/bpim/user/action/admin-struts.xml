@@ -4,22 +4,21 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="bpim-adminrole" namespace="/adminrole" extends="bpim-default">
-		<action name="save" class="com.ryxx.bpim.user.action.AdminRoleAction">
-			<result name="input">/login/index.jsp</result>
-			<result type="redirect-action">../main/main.do</result>
+	<package name="bpim-adminrole" namespace="/employeeManage" extends="bpim-default">
+		<action name="saveRole" method="save" class="adminRoleAction">
+			<result type="redirect-action">listRole.do</result>
 		</action>
-		<action name="edit" class="com.ryxx.bpim.user.action.AdminRoleAction">
-			<result name="input">/login/index.jsp</result>
-			<result type="redirect-action">../main/main.do</result>
+		<action name="listRole" method="list" class="adminRoleAction">
+			<result>/employeeManage/roleQuery.jsp</result>
 		</action>
-		<action name="delete" class="com.ryxx.bpim.user.action.AdminRoleAction">
-			<result name="input">/login/index.jsp</result>
-			<result type="redirect-action">../main/main.do</result>
+		<action name="getRole" method="get" class="adminRoleAction">
+			<result>/employeeManage/updateRole.jsp</result>
 		</action>
-		<action name="search" class="com.ryxx.bpim.user.action.AdminRoleAction">
-			<result name="input">/login/index.jsp</result>
-			<result type="redirect-action">../main/main.do</result>
+		<action name="updateRole" method="update" class="adminRoleAction">
+			<result type="redirect-action">listRole.do</result>
+		</action>
+		<action name="deleteRole" method="delete" class="adminRoleAction">
+			<result type="redirect-action">listRole.do</result>
 		</action>
 	</package>
 </struts>
