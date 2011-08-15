@@ -324,6 +324,20 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
-	
-	
+	<!--  用户反馈 -->	
+	<package name="addUserAdvice" namespace="/main" extends="bpim-default">
+		<action name="addUserAdvice" method="addUserAdvice"
+			class="com.bpim.web.action.mainPanel.UserAdviceAction">
+			<result>/main/userAdvice.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="searchUserAdvice" namespace="/admin" extends="bpim-default">
+		<action name="searchUserAdvice" method="searchUserAdvice"
+			class="com.bpim.web.action.mainPanel.UserAdviceAction">
+			<result>/admin/searchUserAdvice.jsp</result>
+			<interceptor-ref name="manager"/>
+		</action>
+	</package>	
 </struts>
