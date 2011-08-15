@@ -1,19 +1,24 @@
 package com.ryxx.bpim.user.web.servlet;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Hibernate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.ryxx.bpim.common.Constants;
+import com.ryxx.bpim.user.entity.AdminMenu;
+import com.ryxx.bpim.user.entity.AdminRole;
 import com.ryxx.bpim.user.service.AdminMenuService;
+import com.ryxx.bpim.user.service.AdminRoleService;
 import com.ryxx.util.cache.CacheMap;
 
 public class InitCacheService extends HttpServlet {
@@ -26,7 +31,18 @@ public class InitCacheService extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
         ApplicationContext app = (ApplicationContext) WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
-		AdminMenuService menuService = (AdminMenuService) app.getBean("com.ryxx.bpim.user.service.AdminMenuService");
+        AdminRoleService roleService = (AdminRoleService) app.getBean("com.ryxx.bpim.user.service.AdminRoleService");
+        AdminMenuService menuService = (AdminMenuService) app.getBean("com.ryxx.bpim.user.service.AdminMenuService");
+        List<AdminRole> roleList = roleService.findRolesWithMenus();
+//        
+//        if(roleList != null && roleList.size()>0) {
+//        	for(int i=0; i<roleList.size(); i++) {
+//        		AdminRole role = roleService.fetchById(roleList.get(i).getId());
+//        		Hibernate.initialize(role.getMenuList());
+//        		List<AdminMenu> menu = role.getMenuList();
+//            	CacheMap.getInstance().addCache(Constants.ROLE+role.getId(), menuService.getMenuTree(menu));
+//        	}
+//        }
 		CacheMap.getInstance().addCache(Constants.MENU_CACHE, menuService.list());
 	}
 	
@@ -37,6 +53,14 @@ public class InitCacheService extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		CacheMap.getInstance().clearCache();
 		ApplicationContext app = (ApplicationContext) WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
+		AdminRoleService roleService = (AdminRoleService) app.getBean("com.ryxx.bpim.user.service.AdminRoleService");
+        List<AdminRole> roleList = roleService.findAll();
+        if(roleList != null && roleList.size()>0) {
+        	for(int i=0; i<roleList.size(); i++) {
+        		AdminRole role = roleList.get(i);
+            	CacheMap.getInstance().addCache("role"+role.getId(), role.getMenuList());
+        	}
+        }
 		AdminMenuService menuService = (AdminMenuService) app.getBean("com.ryxx.bpim.user.service.AdminMenuService");
 		CacheMap.getInstance().addCache(Constants.MENU_CACHE, menuService.list());
 		PrintWriter out = response.getWriter();

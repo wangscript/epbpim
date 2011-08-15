@@ -9,12 +9,15 @@ import com.ryxx.bpim.dao.AbstractBaseDAO;
 import com.ryxx.bpim.user.entity.AdminMenu;
 
 public class AdminMenuDAOImpl extends AbstractBaseDAO<AdminMenu, Long> implements AdminMenuDAO{
+	
+	@Override
 	public List<AdminMenu> findAllParentNode() {
 		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.eq("parentId", 0)};
 		return findByCriteria(crits);
 	}
 	
-	public List<AdminMenu> findAllSubNode(Integer parentId) {
+	@Override
+	public List<AdminMenu> findAllSubNode (Integer parentId) {
 		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.eq("parentId", parentId)};
 		return findByCriteria(crits);
 	}

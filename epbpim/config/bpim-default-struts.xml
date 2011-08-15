@@ -6,7 +6,7 @@
 <struts>
 	<package name="bpim-default" namespace="/" extends="struts-default">
 		<!-- 拦截器声明 -->
-		<interceptors>
+		<!-- <interceptors>
 			<interceptor name="login_intercept" class="com.ryxx.bpim.web.interceptor.LoginInterceptor"/>
 			<interceptor name="adminlogin_intercept" class="com.ryxx.bpim.web.interceptor.AdminLoginInterceptor"/>
 			<interceptor-stack name="user">
@@ -17,7 +17,7 @@
 				<interceptor-ref name="adminlogin_intercept"/>
 				<interceptor-ref name="defaultStack"/>
 			</interceptor-stack>
-		</interceptors>
+		</interceptors> -->
 		
 		<!-- 全局Result定义 -->
 	    <global-results>

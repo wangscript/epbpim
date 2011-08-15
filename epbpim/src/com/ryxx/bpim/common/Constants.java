@@ -422,4 +422,6 @@ public interface Constants {
 	static final String USER_LOGIN_TIME = "userLoginTime";
 	
 	static final String MENU_CACHE = "menuCache";
+	
+	static final String ROLE = "role";
 }

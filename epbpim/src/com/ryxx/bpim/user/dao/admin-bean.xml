@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
-	<bean id="com.ryxx.bpim.user.dao.AdminRoleDAO" class="com.ryxx.bpim.user.dao.AdminRoleDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	
-	<bean id="com.ryxx.bpim.user.service.AdminRoleService.target" class="com.ryxx.bpim.user.service.AdminRoleServiceImpl">
-	</bean>
-	<bean id="com.ryxx.bpim.user.service.AdminRoleService" parent="baseTransactionProxyCdm">
-		<property name="target" ref="com.ryxx.bpim.user.service.AdminRoleService.target" />
-	</bean>
-
 	<bean id="com.ryxx.bpim.user.dao.AdminMenuDAO" class="com.ryxx.bpim.user.dao.AdminMenuDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -24,7 +14,25 @@
 	<bean id="com.ryxx.bpim.user.dao.AdminDeptDAO" class="com.ryxx.bpim.user.dao.AdminDeptDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+
+	<bean id="com.ryxx.bpim.user.dao.AdminRoleDAO" class="com.ryxx.bpim.user.dao.AdminRoleDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	
+	<bean id="com.ryxx.bpim.user.service.AdminRoleService.target" class="com.ryxx.bpim.user.service.AdminRoleServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminRoleService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.AdminRoleService.target" />
+	</bean>
+	<bean id="adminRoleAction" class="com.ryxx.bpim.user.action.AdminRoleAction" scope="prototype">
+		<property name="adminRoleService">
+			<ref local="com.ryxx.bpim.user.service.AdminRoleService"/>
+		</property>
+		<property name="adminMenuService">
+			<ref local="com.ryxx.bpim.user.service.AdminMenuService"/>
+		</property>
+	</bean>
+
 	<bean id="com.ryxx.bpim.user.service.AdminDeptService.target" class="com.ryxx.bpim.user.service.AdminDeptServiceImpl">
 	</bean>
 	<bean id="com.ryxx.bpim.user.service.AdminDeptService" parent="baseTransactionProxyCdm">

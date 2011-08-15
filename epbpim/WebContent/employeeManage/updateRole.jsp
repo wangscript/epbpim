@@ -11,7 +11,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>新增角色</title>
+<title>更新角色</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="../css/main.css" rel="stylesheet" type="text/css"
@@ -26,30 +26,39 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="saveRole.do" method="post">
-						<h3 class="title">新增角色</h3>
+					<s:form action="updateRole.do" method="post">
+						<h3 class="title">更新角色</h3> 
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
-								<li class="width200Li"><label class="width4Lb">角色名称:</label><input
-									class="width100Input" name="name" id="name" /></li>
-								<li class="width300Li"><label class="width9Lb">角色所属用户最大数:</label><input
-									class="width150Input" name="roleCount" id="roleCount" /></li>
+								<li class="width200Li"><label class="width4Lb">角色名称:</label>
+									<s:textfield cssClass="width100Input" name="name" /><s:hidden name="id" />
+								</li>
+								<li class="width300Li"><label class="width9Lb">角色所属用户最大数:</label>
+									<s:textfield cssClass="width150Input" name="roleCount" />
+								</li>
 								<li class="width400Li"><label class="width4Lb">角色说明:</label>
-									<input class="width300Input" name="remark" id="remark" /></li>
+									<s:textfield cssClass="width300Input" name="remark" />
+								</li>
 							</ul>
 							<h4>权限列表:</h4>
 							<%
-										List<AdminMenu> menus = (List<AdminMenu>)CacheMap.getInstance().getCache(Constants.MENU_CACHE);
-										request.setAttribute("menus", menus);
-									%>
+								List<AdminMenu> menus = (List<AdminMenu>)CacheMap.getInstance().getCache(Constants.MENU_CACHE);
+								request.setAttribute("menus", menus);
+							%>
 							<s:if test="#request.menus!=null && #request.menus.size()>0">
-								<s:iterator value="#request.menus" status="st">
+								<s:iterator value="#request.menus" status="st" id="cacheMenu">
 									<s:if test="subMenus !=null && subMenus.size()>0">
+										
 										<ul class="fullScreenUlNoHeight">
 											<li class="width200Li"><h4>
 													<input type="checkbox"
 														onclick="checkAllSub('<s:property value='id'/>,<s:property value='parentId'/>');"
 														name="listCheck" value="<s:property value="id"/>"
+														<s:iterator value="#request.menuList" status="st2" id="showMenu">
+															<s:if test="#cacheMenu.id eq id">
+																checked
+															</s:if>
+														</s:iterator>
 														id="<s:property value="id"/>,<s:property value="parentId"/>" />
 													<s:property value="name" />
 												</h4></li>
@@ -59,6 +68,11 @@
 												<li class="width200Li"><input type="checkbox"
 													onclick="checkSelfAndParent('<s:property value='id'/>,<s:property value='parentId'/>');"
 													name="listCheck" value="<s:property value="id"/>"
+													<s:iterator value="#request.menuList" status="st2" id="showMenu">
+														<s:if test="#cacheMenu.id eq id">
+															checked
+														</s:if>
+													</s:iterator>
 													id="<s:property value="id"/>,<s:property value="parentId"/>" />
 													<s:property value="name" /></li>
 
@@ -71,7 +85,7 @@
 							</ul>
 							<ul class="fullScreenUl">
 								<li><input type="submit" id="addProject"
-									class="mediumLeftButton" value="保存">
+									class="mediumLeftButton" value="更新">
 								</li>
 							</ul>
 						</div>
