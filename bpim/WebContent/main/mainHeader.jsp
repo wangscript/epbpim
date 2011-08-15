@@ -2,10 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="com.bpim.common.Constants"%>
+<%@ page import="org.apache.commons.lang.StringUtils"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-	int newMessageCount = (Integer) session
-			.getAttribute(Constants.NEW_MESSAGE_COUNT);
+int newMessageCount = 0;
+String username = "";
+if (session != null) {
+	username = (String) session
+			.getAttribute(Constants.LOGIN_USER_NAME);
+	if(session.getAttribute(Constants.NEW_MESSAGE_COUNT)!= null){
+		newMessageCount = (Integer) session.getAttribute(Constants.NEW_MESSAGE_COUNT);
+	}
+}
 %>
 <html>
 <script language="javascript" type="text/javascript"
@@ -14,6 +22,10 @@
 	src="../js/displayHelp.js"></script>
 <script type="text/javascript">
 function changeTitleBackground(){
+	if(<%=username%>==null||<%=username%>==""){
+		var index = "<%=request.getContextPath()%>"+"/index.jsp";
+		window.location.href = index;
+	}
 	 var sURL = window.location.href.toString();
 	 var className= "active";
 	 if(sURL.indexOf("userInfoManage")>0||sURL.indexOf("changePassword")>0){
@@ -53,6 +65,7 @@ function changeTitleBackground(){
 	 }else if(sURL.indexOf("personalQuotaAnalyse")>0||sURL.indexOf("personalQuotaAnalyse")>0){
 		 document.getElementById("personalQuotaAnalyse").className = className;
 	 }
+	 
 	 
 	 var messageCount = "<%=newMessageCount%>";
 		if (messageCount > 0) {
@@ -103,19 +116,25 @@ function changeTitleBackground(){
 						onmouseout="unDisplayCategory('publicInfo');"><a>公共信息查询</a>
 						<ul id="publicInfo" style="display: none">
 							<li id="searchGovernmentQuota"
-								onmouseenter="displayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp',searchQuotaMenuHelp,'320px')"
+								onmouseenter="displayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp',searchQuotaMenuHelp,'350px')"
 								onmouseleave="unDisplayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp')"
-								onmouseover="displayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp',searchQuotaMenuHelp,'320px')"
-								onmouseout="unDisplayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp')"
-								>
-								
+								onmouseover="displayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp',searchQuotaMenuHelp,'350px')"
+								onmouseout="unDisplayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp')">	
 								<ul>
 									<li><a href="searchGovernmentQuota.jsp">定额查询 </a></li>
 									<li class="helpLi" id="searchGovernmentQuotaHelpLi"><a
 										class="helpA" id="searchGovernmentQuotaHelp"></a></li>
 								</ul></li>
-							<li id="searchGovernmentInventory_2003"><a
-								href="searchGovernmentInventory_2003.jsp">2003清单查询</a></li>
+							<li id="searchGovernmentInventory_2003"
+							onmouseenter="displayMenuHelp('searchGovernmentInventory_2003','searchGovernmentInventory_2003_Help',searchGovernmentInventory_2003_menu_Help,'650px')"
+								onmouseleave="unDisplayMenuHelp('searchGovernmentInventory_2003','searchGovernmentInventory_2003_Help')"
+								onmouseover="displayMenuHelp('searchGovernmentInventory_2003','searchGovernmentInventory_2003_Help',searchGovernmentInventory_2003_menu_Help,'650px')"
+								onmouseout="unDisplayMenuHelp('searchGovernmentInventory_2003','searchGovernmentInventory_2003_Help')">
+								<ul>
+									<li><a href="searchGovernmentInventory_2003.jsp">2003清单查询</a></li>
+									<li class="helpLi" id="searchGovernmentInventory_2003_HelpLi"><a
+										class="helpA" id="searchGovernmentInventory_2003_Help"></a></li>
+								</ul></li>
 							<li id="searchGovernmentInventory_2008"><a
 								href="searchGovernmentInventory_2008.jsp">2008清单查询</a></li>
 							<li id="searchGovernmentFile"><a

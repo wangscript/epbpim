@@ -1,9 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.bpim.common.Constants"%>
+<%@ page import="org.apache.commons.lang.StringUtils"%>
 	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+String username = "";
+if (session != null) {
+	username = (String) session
+			.getAttribute(Constants.ADMIN_LOGIN_USER_NAME);
+}
+%>
 <html>
 <script type="text/javascript">
 function changeTitleBackground(){
+	if(<%=username%>==null||<%=username%>==""){
+		var index = "<%=request.getContextPath()%>"+"/admin/adminLogin.jsp";
+		window.location.href = index;
+	}
 	 var sURL = window.location.href.toString();
 	 var className= "active";
 	 if(sURL.indexOf("listui.do")>0||sURL.indexOf("adminUser")>0){

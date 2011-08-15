@@ -4,13 +4,7 @@
 <%@ page import="com.bpim.common.Constants"%>
 <%@ page import="org.apache.commons.lang.StringUtils"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%
-	String username = (String) session
-			.getAttribute(Constants.LOGIN_USER_NAME);
-	if (StringUtils.isEmpty(username)) {
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
-	}
-%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -90,7 +84,12 @@
 	action="searchGovernmentFile.do" method="post"
 	name="searchGovernmentFileForm" id="searchGovernmentFileForm">
 	<div class="mainbar">
-	<h3 class="title">文件查询</h3>
+	<h3 class="title">文件查询<img onmouseenter="displayHelp('helpDiv',searchGovernmentFileHelp)"
+								onmouseleave="unDisplayHelp('helpDiv')"
+								onmouseover="displayHelp('helpDiv',searchGovernmentFileHelp)"
+								onmouseout="unDisplayHelp('helpDiv')" class="helpImg"
+								src="../images/help.png">
+							<div id="helpDiv" class="helpDiv"></div></h3>
 	<div id="searchCondition">
 	<ul>
 		<li style="width: 160px;">发布时间：<select id="filePublishYear"
