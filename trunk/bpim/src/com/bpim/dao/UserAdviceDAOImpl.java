@@ -16,11 +16,12 @@ import com.bpim.form.SearchDataCondition;
 public class UserAdviceDAOImpl implements UserAdviceDAO
 {
     
-    String queryUserAdvice = "SELECT * FROM USER_ADVINCE WHERE 1=1";
+    String queryUserAdvice =
+        "SELECT ua.*,ui.USER_NAME FROM USER_ADVINCE ua, USER_INFO ui WHERE ua.USER_ID=ui.ID AND 1=1";
     
     String countQueryUserAdvice = "SELECT count(*) FROM USER_ADVINCE WHERE 1=1";
     
-    String insertUserAdvice = "INSERT INTO USER_ADVINCE (USER_ID,ADVICE_CONTENT) values (?,?,now())";
+    String insertUserAdvice = "INSERT INTO USER_ADVINCE (USER_ID,ADVICE_CONTENT,ADVICE_DATE) values (?,?,now())";
     
     int i = 1;
     
@@ -40,7 +41,10 @@ public class UserAdviceDAOImpl implements UserAdviceDAO
         {
             UserAdvice data = new UserAdvice();
             data.setId(result.getLong("ID"));
-            
+            data.setUserID(result.getLong("USER_ID"));
+            data.setUserName(result.getString("USER_NAME"));
+            data.setAdviceContent(result.getString("ADVICE_CONTENT"));
+            data.setAdviceDate(result.getTimestamp("ADVICE_DATE"));
             datas.add(data);
         }
         return datas;
@@ -66,7 +70,7 @@ public class UserAdviceDAOImpl implements UserAdviceDAO
     {
         PreparedStatement stat = DBConnUtil.getPrepareStatement(insertUserAdvice);
         stat.setLong(1, userAdvice.getUserID());
-        stat.setString(2, userAdvice.getADVICE_CONTENT());
+        stat.setString(2, userAdvice.getAdviceContent());
         stat.execute();
     }
     
@@ -74,7 +78,7 @@ public class UserAdviceDAOImpl implements UserAdviceDAO
     {
         StringBuilder sqlSb = new StringBuilder(sql);
         
-        if (null != condition.getUserInfoId() && !"".equals(condition.getUserInfoId()))
+        if (null != condition.getUserInfoId() && 0 != condition.getUserInfoId())
         {
             sqlSb.append(" AND USER_ID = ?");
         }
@@ -97,7 +101,7 @@ public class UserAdviceDAOImpl implements UserAdviceDAO
         throws SQLException
     {
         i = 1;
-        if (null != condition.getUserInfoId() && !"".equals(condition.getUserInfoId()))
+        if (null != condition.getUserInfoId() && 0 != condition.getUserInfoId())
         {
             stat.setLong(i, condition.getUserInfoId());
             i++;
