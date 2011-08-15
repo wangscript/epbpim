@@ -12,6 +12,8 @@ public class UserAdvice
     
     private Long userID;
     
+    private Long userName;
+    
     private String adviceContent;
     
     private Timestamp adviceDate;
@@ -34,6 +36,16 @@ public class UserAdvice
     public void setUserID(Long userID)
     {
         this.userID = userID;
+    }
+    
+    public Long getUserName()
+    {
+        return userName;
+    }
+    
+    public void setUserName(Long userName)
+    {
+        this.userName = userName;
     }
     
     public String getAdviceContent()
