@@ -1,5 +1,6 @@
 package com.bpim.web.interceptor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -51,6 +52,9 @@ public class SameUserLoginInterceptor implements Interceptor
         List userSessionList = LoginAction.userSessionMap.get(currentUserid);
         if (null != userSessionList && 1 < userSessionList.size())
         {
+            
+            boolean sameUserLoginFlag = false;
+            List invalidSessionList = new ArrayList();
             for (Object obj : userSessionList)
             {
                 Map userSession = (Map)obj;
@@ -63,14 +67,21 @@ public class SameUserLoginInterceptor implements Interceptor
                 }
                 catch (Exception e)
                 {
-                    userSessionList.remove(obj);
+                    invalidSessionList.add(obj);
                     continue;
                 }
                 
                 if (currentUserLoginTime < userLoginTime)
                 {
-                    return "sameuserlogin";
+                    sameUserLoginFlag = true;
+                    break;
                 }
+            }
+            userSessionList.removeAll(invalidSessionList);
+            
+            if (sameUserLoginFlag)
+            {
+                return "sameuserlogin";
             }
         }
         
