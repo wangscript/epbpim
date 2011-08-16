@@ -11,7 +11,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>更新角色</title>
+<title><s:text name="AdminRole.ModifyRole" /></title>
 <link href="../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="../css/main.css" rel="stylesheet" type="text/css"
@@ -27,20 +27,20 @@
 			<div class="content_resize">
 				<div class="mainbar">
 					<s:form action="updateRole.do" method="post">
-						<h3 class="title">更新角色</h3> 
+						<h3 class="title"><s:text name="AdminRole.ModifyRole" /></h3> 
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
-								<li class="width200Li"><label class="width4Lb">角色名称:</label>
+								<li class="width200Li"><label class="width4Lb"><s:text name="AdminRole.RoleName" />:</label>
 									<s:textfield cssClass="width100Input" name="name" /><s:hidden name="id" />
 								</li>
-								<li class="width300Li"><label class="width9Lb">角色所属用户最大数:</label>
+								<li class="width300Li"><label class="width9Lb"><s:text name="AdminRole.RoleCount" />:</label>
 									<s:textfield cssClass="width150Input" name="roleCount" />
 								</li>
-								<li class="width400Li"><label class="width4Lb">角色说明:</label>
+								<li class="width400Li"><label class="width4Lb"><s:text name="AdminRole.Remark" />:</label>
 									<s:textfield cssClass="width300Input" name="remark" />
 								</li>
 							</ul>
-							<h4>权限列表:</h4>
+							<h4><s:text name="AdminRole.RoleList" />:</h4>
 							<%
 								List<AdminMenu> menus = (List<AdminMenu>)CacheMap.getInstance().getCache(Constants.MENU_CACHE);
 								request.setAttribute("menus", menus);
@@ -85,7 +85,7 @@
 							</ul>
 							<ul class="fullScreenUl">
 								<li><input type="submit" id="addProject"
-									class="mediumLeftButton" value="更新">
+									class="mediumLeftButton" value="<s:text name="Common.Update" />">
 								</li>
 							</ul>
 						</div>
