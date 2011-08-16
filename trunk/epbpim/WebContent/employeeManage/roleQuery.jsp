@@ -7,7 +7,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>角色查询</title>
+<title><s:text name="AdminRole.QueryRole" /></title>
 <link href="../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="../css/main.css" rel="stylesheet" type="text/css"
@@ -25,16 +25,16 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h3 class="title">角色查询</h3>
+					<h3 class="title"><s:text name="AdminRole.QueryRole" /></h3>
 					<div id="searchCondition">
 						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width4Lb">角色名称:</label>
+							<li class="width200Li"><label class="width4Lb"><s:text name="AdminRole.RoleName" />:</label>
 								<input class="width100Input" name="projectBean.deptName"
 								id="deptName" />
 							</li>
 							<li><input type="button" id="searchProject"
 								class="mediumRightButton" onclick="displayResult();"
-								class="button" value="查询">
+								class="button" value="<s:text name="Common.Query" />">
 							</li>
 						</ul>
 					</div>
@@ -42,22 +42,22 @@
 					<s:if test="roleList==null || roleList.size()==0">
 						<tr>
 							<td>
-							<h3>没数据</h3>
+							<h3><s:text name="Common.Nodata" /></h3>
 							</td>
 						</tr>
 					</s:if>
 					<s:else>
 						<div class="searchResult" id="searchResult">
 							<ul class="fullScreenUl">
-								<li class="width100Li"><label>角色名</label>
+								<li class="width100Li"><label><s:text name="AdminRole.RoleName" /></label>
 								</li>
-								<li class="width200Li"><label>角色最大数量</label>
+								<li class="width200Li"><label><s:text name="AdminRole.RoleCount" /></label>
 								</li>
-								<li class="width400Li"><label>角色说明</label>
+								<li class="width400Li"><label><s:text name="AdminRole.Remark" /></label>
 								</li>
-								<li class="width50Li"><label>查看</label>
+								<li class="width50Li"><label><s:text name="Common.Query" /></label>
 								</li>
-								<li class="width50Li"><label>删除</label>
+								<li class="width50Li"><label><s:text name="Common.Delete" /></label>
 								</li>
 							</ul>
 							<s:iterator value="roleList" status="st">
@@ -67,12 +67,12 @@
 									<li class="width400Li"><s:property value="remark" /></li>
 									<li class="width50Li">
 										<form action="getRole.do" id='getrole<s:property value="id" />'>
-											<input type="button" onclick='getRole("getrole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="查看"><s:hidden name="id" />
+											<input type="button" onclick='getRole("getrole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Query" />"><s:hidden name="id" />
 										</form>
 									</li>
 									<li class="width50Li">
 										<form action="deleteRole.do" id='deleterole<s:property value="id" />'>
-											<input type="button" onclick='deleteRole("deleterole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="删除"><s:hidden name="id" />
+											<input type="button" onclick='deleteRole("deleterole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />"><s:hidden name="id" />
 										</form>
 									</li>
 								</ul>
@@ -88,7 +88,7 @@
 </body>
 <script type="text/javascript">
 	function deleteRole(id){
-		if(confirm("是否删除?")){
+		if(confirm('<s:text name="AdminRole.IfDelete" />')){
 			document.getElementById(id).submit();
 		}
 	}
