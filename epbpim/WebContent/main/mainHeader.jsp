@@ -95,7 +95,7 @@ function changeTitleBackground(){
 	<s:if test="#request.menus!=null && #request.menus.size()>0">
 		<s:iterator value="#request.menus" status="st">
 			<s:if test="subMenus !=null && subMenus.size()>0">
-				<li onmouseover="displayCategory('<s:property value="id"/>')"	onmouseout="unDisplayCategory('<s:property value="id"/>')"><a><s:property value="name"/></a>
+				<li onmouseenter="displayCategory('<s:property value="id"/>')"	onmouseleave="unDisplayCategory('<s:property value="id"/>')" onmouseover="displayCategory('<s:property value="id"/>')"	onmouseout="unDisplayCategory('<s:property value="id"/>')" ><a><s:property value="name"/></a>
 				<ul id="<s:property value="id"/>" style="display: none">
 			</s:if>
 					<s:iterator value="subMenus" status="st1">

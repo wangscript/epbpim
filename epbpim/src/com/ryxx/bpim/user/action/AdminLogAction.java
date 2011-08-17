@@ -1,8 +1,10 @@
 package com.ryxx.bpim.user.action;
 
+import java.sql.Timestamp;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.tomcat.util.buf.TimeStamp;
+
 
 import com.ryxx.bpim.user.service.AdminLogService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
@@ -19,7 +21,7 @@ public class AdminLogAction extends ActionSupportBase {
 
 	private Long id;
 	private String actionName;
-	private TimeStamp logTime;
+	private Timestamp logTime;
 	private Integer moduleId;
 	private String logRemark;
 
@@ -55,11 +57,11 @@ public class AdminLogAction extends ActionSupportBase {
 		this.actionName = actionName;
 	}
 
-	public TimeStamp getLogTime() {
+	public Timestamp getLogTime() {
 		return logTime;
 	}
 
-	public void setLogTime(TimeStamp logTime) {
+	public void setLogTime(Timestamp logTime) {
 		this.logTime = logTime;
 	}
 

@@ -17,7 +17,6 @@
 
 </div>
 
-<jsp:include page="../main/leftSidebar.jsp" />
 
 <!-- end #content -->
 

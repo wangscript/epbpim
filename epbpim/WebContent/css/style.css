@@ -413,6 +413,11 @@ ol li .send {
 	width: 450px;
 }
 
+.width500Li {
+	float: left;
+	width: 500px;
+}
+
 .width600Li {
 	float: left;
 	width: 600px;
