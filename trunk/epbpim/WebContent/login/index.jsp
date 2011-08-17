@@ -7,7 +7,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>咨询公司管理系统</title>
+<title><s:text name="Product.Name" /></title>
 <link href="../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="../css/index.css" rel="stylesheet" type="text/css"
@@ -26,24 +26,20 @@ function getFocus()
 <div class="content_resize">
 <div class="mainbar"><s:form action="login.do" name="login"
 	method="post" id="loginForm">
-	<h2 class="title">用户登录</h2> 
+	<h2 class="title"><s:text name="Index.UserLogin" /></h2> 
 	<div id= "loginbar">
 	<ul>
-		<li><label>用户名</label></li>
+		<li><label><s:text name="Index.UserName" /></label></li>
 		<li><input name="username" maxlength="10" id="idInput" tabindex="1"></li>
 	</ul>
 	<ul>
-		<li><label>密 码</label></li>
+		<li><label><s:text name="Index.Password" /></label></li>
 		<li><input type="password" name="password" tabindex="2" tabindex="2"></li>
-		<li><a target="_self" href="findPassword.jsp" tabindex="8"
-			title="找回密码" class="forget">忘记密码了?</a></li>
 	</ul>
 	
 	<s:fielderror theme="Struts">
 		<ul>
-			<li><input type="button" onclick="window.location.href ='../main/main.jsp';" class="button" style="width:70px" value="登 录"></li>
-			<li><input type="button" onclick="window.location.href ='introduce.jsp';"
-				 class="button" value="产品介绍"></li>
+			<li><input type="button" onclick="window.location.href ='../main/main.jsp';" class="button" style="width:70px" value="<s:text name="Index.Login" />"></li>
 		</ul>
 		<s:param>name</s:param>
 	</s:fielderror>

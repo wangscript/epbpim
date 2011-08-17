@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="clr"></div>
-      <div class="logo"><h1>建设工程信息数据管理系统<small></small></h1></div>
+      <div class="logo"><h1><s:text name="Product.Name" /><small></small></h1></div>
     </div>
   </div>
 </body>
