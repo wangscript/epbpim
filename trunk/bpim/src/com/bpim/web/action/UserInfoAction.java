@@ -116,4 +116,12 @@ public class UserInfoAction extends ActionSupportBase {
 	public void setUserInfos(List<UserInfo> userInfos) {
 		this.userInfos = userInfos;
 	}
+
+	public boolean isCheckExpire() {
+		return checkExpire;
+	}
+
+	public void setCheckExpire(boolean checkExpire) {
+		this.checkExpire = checkExpire;
+	}
 }
