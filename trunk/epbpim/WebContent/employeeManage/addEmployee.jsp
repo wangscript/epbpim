@@ -33,6 +33,9 @@
 							<li class="width250Li"><label class="width4Lb">编号:</label> <input
 								class="width150Input" name="projectBean.number" id="projectNum" />
 							</li>
+							<li class="width200Li"><label class="width4Lb">用户名:</label> <input
+								class="width100Input" name="projectBean.name" id="projectName" />
+							</li>
 							<li class="width200Li"><label class="width4Lb">性别:</label><select
 								id="projectType" name="projectBean.majorType">
 									<option value="人防">--------男--------</option>

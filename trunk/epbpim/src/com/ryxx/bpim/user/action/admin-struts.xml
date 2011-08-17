@@ -9,7 +9,7 @@
 			<result type="redirect-action">listRole.do</result>
 		</action>
 		<action name="listRole" method="list" class="adminRoleAction">
-			<result>/employeeManage/roleQuery.jsp</result>
+			<result>/employeeManage/queryRole.jsp</result>
 		</action>
 		<action name="getRole" method="get" class="adminRoleAction">
 			<result>/employeeManage/updateRole.jsp</result>
