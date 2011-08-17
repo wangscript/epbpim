@@ -42,15 +42,15 @@
 									<option value="房修">--------女--------</option>
 							</select>
 							</li>
+							
+						</ul>
+						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width4Lb">出生年月:</label><input
 								class="Wdate width100Input" name="projectBean.startDate"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
-						</ul>
-						<ul class="fullScreenUl">
-
-							<li class="width450Li"><label class="width4Lb">身份证:</label><input
-								class="width350Input" name="projectBean.number" id="projectNum" />
+							<li class="width250Li"><label class="width4Lb">身份证:</label><input
+								class="width150Input" name="projectBean.number" id="projectNum" />
 							</li>
 							<li class="width200Li"><label class="width4Lb">人事档案:</label><input
 								class="width100Input" name="projectBean.number" id="projectNum" />
@@ -105,14 +105,6 @@
 									<option value="咨询1部">咨询1部</option>
 									<option value="咨询1部">咨询2部</option>
 									<option value="咨询1部">咨询3部</option>
-							</select>
-							</li>
-							<li class="width250Li"><label class="width4Lb">职务:</label> <select
-								id="projectType" name="projectBean.majorType">
-									<option value="0">-----请选择-----</option>
-									<option value="咨询1部">部门经理</option>
-									<option value="咨询1部">造价师</option>
-									<option value="咨询1部">普通员工</option>
 							</select>
 							</li>
 							<li class="width200Li"><label class="width4Lb">入职日期:</label><input
