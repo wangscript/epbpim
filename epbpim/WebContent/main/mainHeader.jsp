@@ -75,8 +75,7 @@ function changeTitleBackground(){
 <div class="header_resize">
 <div class="nav_menu">
 <ul>
-	<li id="userInfoManage"><a href="#">用户信息管理</a></li>
-	<!-- <li id="rechargeMain"><a href="rechargeMain.jsp">充值续费</a></li> -->
+	<li id="userInfoManage"><a href="#"><s:text name="Header.Name" /></a></li>
 	<li id="messageMain"><a id="message" href="../main/messageMain.jsp"><font
 		color="red">有1个待办事项</font></a></li>
 	<li id="help"><a href="#">用户手册</a></li>
@@ -84,7 +83,7 @@ function changeTitleBackground(){
 </ul>
 </div>
 <div class="logo">
-<h1>咨询公司综合信息管理系统 <small>欢迎您！尊敬的用户。</small> <small></small></h1>
+<h1><s:text name="Product.Name" /> <small>欢迎您！尊敬的用户。</small> <small></small></h1>
 </div>
 <div class="categoryDiv">
 <ul class="category">
