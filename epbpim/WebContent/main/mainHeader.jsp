@@ -75,11 +75,11 @@ function changeTitleBackground(){
 <div class="header_resize">
 <div class="nav_menu">
 <ul>
-	<li id="userInfoManage"><a href="#"><s:text name="Header.Name" /></a></li>
+	<li id="userInfoManage"><a href="#"><s:text name="Header.UserManage" /></a></li>
 	<li id="messageMain"><a id="message" href="../main/messageMain.jsp"><font
 		color="red">有1个待办事项</font></a></li>
 	<li id="help"><a href="#">用户手册</a></li>
-	<li id="index"><a href="#">退出</a></li>
+	<li id="index"><a href="#"><s:text name="Header.Logout" /></a></li>
 </ul>
 </div>
 <div class="logo">
