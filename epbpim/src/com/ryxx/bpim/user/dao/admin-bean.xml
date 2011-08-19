@@ -32,10 +32,14 @@
 			<ref local="com.ryxx.bpim.user.service.AdminMenuService"/>
 		</property>
 	</bean>
-
-	<bean id="com.ryxx.bpim.user.service.AdminDeptService.target" class="com.ryxx.bpim.user.service.AdminDeptServiceImpl">
+	<bean id="adminDeptAction" class="com.ryxx.bpim.user.action.AdminDeptAction" scope="prototype">
+		<property name="adminDeptService">
+			<ref local="com.ryxx.bpim.user.service.AdminDeptService"/>
+		</property>
 	</bean>
 	<bean id="com.ryxx.bpim.user.service.AdminDeptService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.user.service.AdminDeptService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminDeptService.target" class="com.ryxx.bpim.user.service.AdminDeptServiceImpl">
 	</bean>
 </beans>
