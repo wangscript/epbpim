@@ -7,13 +7,13 @@ import com.ryxx.bpim.user.entity.AdminDept;
 
 public interface AdminDeptDAO extends BaseDAO<AdminDept, Long>
 {
-    void addAdminDept(AdminDept adminDept);
+    void saveAdminDept(AdminDept adminDept);
     
-    void modAdminDept(AdminDept adminDept);
+    void updateAdminDept(AdminDept adminDept);
     
-    void delAdminDept(AdminDept adminDept);
+    void deleteAdminDept(AdminDept adminDept);
     
-    List<AdminDept> schAdminDeptList(AdminDept adminDept);
+    List<AdminDept> listAdminDept(AdminDept adminDept);
     
     int getRowCount(AdminDept adminDept);
 }
