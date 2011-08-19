@@ -14,26 +14,26 @@ public class AdminDeptDAOImpl extends AbstractBaseDAO<AdminDept, Long> implement
 {
     
     @Override
-    public void addAdminDept(AdminDept adminDept)
+    public void saveAdminDept(AdminDept adminDept)
     {
         save(adminDept);
     }
     
     @Override
-    public void modAdminDept(AdminDept adminDept)
+    public void updateAdminDept(AdminDept adminDept)
     {
         save(adminDept);
         
     }
     
     @Override
-    public void delAdminDept(AdminDept adminDept)
+    public void deleteAdminDept(AdminDept adminDept)
     {
         
     }
     
     @Override
-    public List<AdminDept> schAdminDeptList(AdminDept adminDept)
+    public List<AdminDept> listAdminDept(AdminDept adminDept)
     {
         return findPageByPage(adminDept.getStartRow(), adminDept.getPageSize(), wrapCriterion(adminDept));
     }
