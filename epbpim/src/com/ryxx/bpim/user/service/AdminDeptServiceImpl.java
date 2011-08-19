@@ -11,27 +11,25 @@ public class AdminDeptServiceImpl extends AbstractService<AdminDept, AdminDeptDA
 {
     
     @Override
-    public void addAdminDept(AdminDept adminDept)
+    public void saveAdminDept(AdminDept adminDept)
     {
         getDao().addAdminDept(adminDept);
-        
     }
     
     @Override
-    public void modAdminDept(AdminDept adminDept)
+    public void updateAdminDept(AdminDept adminDept)
     {
         getDao().addAdminDept(adminDept);
-        
     }
     
     @Override
-    public void delAdminDept(AdminDept adminDept)
+    public void deleteAdminDept(AdminDept adminDept)
     {
         
     }
     
     @Override
-    public List<AdminDept> schAdminDeptList(AdminDept adminDept, PageTools page)
+    public List<AdminDept> listAdminDept(AdminDept adminDept, PageTools page)
     {
         if (page != null)
         {
@@ -45,5 +43,4 @@ public class AdminDeptServiceImpl extends AbstractService<AdminDept, AdminDeptDA
         }
         return getDao().schAdminDeptList(adminDept);
     }
-    
 }
