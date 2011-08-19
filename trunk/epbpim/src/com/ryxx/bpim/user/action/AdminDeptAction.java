@@ -27,6 +27,10 @@ public class AdminDeptAction extends ActionSupportBase
     {
         try
         {
+            if (null == adminDept)
+            {
+                adminDept = new AdminDept();
+            }
             int pageNo = ParamTools.getIntParameter(request, Constants.PARA_PAGE_NO, 1);
             int pageSize = ParamTools.getIntParameter(request, Constants.PARA_PAGE_SIZE, 0);
             PageTools page = new PageTools(pageNo, pageSize);
@@ -88,7 +92,7 @@ public class AdminDeptAction extends ActionSupportBase
         catch (Exception e)
         {
             LOG.warn(e);
-            return ERROR;
+            // return ERROR;
         }
         return SUCCESS;
     }
