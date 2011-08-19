@@ -32,7 +32,7 @@ public class AdminDeptAction extends ActionSupportBase
             PageTools page = new PageTools(pageNo, pageSize);
             adminDept.setRowCount(pageNo);
             adminDept.setPageSize(pageSize);
-            adminDeptList = adminDeptService.schAdminDeptList(adminDept, page);
+            adminDeptList = adminDeptService.listAdminDept(adminDept, page);
             if (adminDeptList != null && adminDeptList.size() > 0)
             {
                 this.page = page;
@@ -54,7 +54,7 @@ public class AdminDeptAction extends ActionSupportBase
     {
         try
         {
-            adminDeptService.addAdminDept(adminDept);
+            adminDeptService.saveAdminDept(adminDept);
         }
         catch (Exception e)
         {
@@ -68,7 +68,7 @@ public class AdminDeptAction extends ActionSupportBase
     {
         try
         {
-            adminDeptService.modAdminDept(adminDept);
+            adminDeptService.updateAdminDept(adminDept);
         }
         catch (Exception e)
         {
@@ -83,7 +83,7 @@ public class AdminDeptAction extends ActionSupportBase
     {
         try
         {
-            adminDeptService.delAdminDept(adminDept);
+            adminDeptService.deleteAdminDept(adminDept);
         }
         catch (Exception e)
         {
