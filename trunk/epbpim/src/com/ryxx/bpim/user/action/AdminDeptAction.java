@@ -83,7 +83,7 @@ public class AdminDeptAction extends ActionSupportBase
         return SUCCESS;
     }
     
-    public String delAdminDept()
+    public String aabbcc()
     {
         try
         {
