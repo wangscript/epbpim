@@ -17,4 +17,21 @@
 			<ref local="userInfoService"/>
 		</property>
 	</bean>
+	
+	<bean id="adminDeptDAO" class="com.ryxx.bpim.dao.AdminDeptDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="adminDeptServiceTarget" class="com.ryxx.bpim.service.AdminDeptServiceImpl">
+		<property name="adminDeptDAO">
+			<ref local="adminDeptDAO"/>
+		</property>
+	</bean>
+	<bean id="adminDeptService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="adminDeptServiceTarget"/>
+	</bean>
+	<bean id="adminDeptAction" class="com.ryxx.bpim.web.action.UserInfoAction" scope="prototype">
+		<property name="adminDeptService">
+			<ref local="adminDeptService"/>
+		</property>
+	</bean>
 </beans>
