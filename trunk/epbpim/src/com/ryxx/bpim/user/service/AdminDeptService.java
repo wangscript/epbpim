@@ -9,12 +9,11 @@ import com.ryxx.util.page.PageTools;
 
 public interface AdminDeptService extends BaseService<AdminDept, AdminDeptDAO, Long>
 {
-    void addAdminDept(AdminDept adminDept);
+    void saveAdminDept(AdminDept adminDept);
     
-    void modAdminDept(AdminDept adminDept);
+    void updateAdminDept(AdminDept adminDept);
     
-    void delAdminDept(AdminDept adminDept);
+    void deleteAdminDept(AdminDept adminDept);
     
-    List<AdminDept> schAdminDeptList(AdminDept adminDept, PageTools page);
-    
+    List<AdminDept> listAdminDept(AdminDept adminDept, PageTools page);
 }
