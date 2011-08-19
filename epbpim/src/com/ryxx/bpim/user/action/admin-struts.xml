@@ -20,5 +20,17 @@
 		<action name="deleteRole" method="delete" class="adminRoleAction">
 			<result type="redirect-action">listRole.do</result>
 		</action>
+		<action name="addAdminDept" method="addAdminDept" class="AdminDeptAction">
+			<result type="redirect-action">schAdminDeptList.do</result>
+		</action>
+		<action name="delAdminDept" method="delAdminDept" class="AdminDeptAction">
+			<result type="redirect-action">schAdminDeptList.do</result>
+		</action>
+		<action name="modAdminDept" method="modAdminDept" class="AdminDeptAction">
+			<result type="redirect-action">schAdminDeptList.do</result>
+		</action>
+		<action name="schAdminDeptList" method="schAdminDeptList" class="AdminDeptAction">
+			<result>/department/queryDepartment.jsp</result>
+		</action>
 	</package>
 </struts>
