@@ -23,12 +23,12 @@
 						<div id="addDepartmentTable">
 							<ul class="fullScreenUl">
 								<li class="width200Li"><label class="width4Lb"><s:text name="Department.DepartmentName" />:</label>
-								<input class="width100Input" name="name" id="name" /></li>
+								<input class="width100Input" name="adminDept.name" id="adminDept.name" /></li>
 							</ul>						
 							<ul class="fullScreenUl" style="height: 200px">
 								<li class="width600Li">
 									<label class="width4Lb"><s:text name="Department.DepartmentDesc" />:</label>
-									<textarea name="desc" id="desc" style="height:150px;width: 300px"></textarea></li>
+									<textarea name="adminDept.remark" id="adminDept.remark" style="height:150px;width: 300px"></textarea></li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li>
