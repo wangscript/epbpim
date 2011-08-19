@@ -19,11 +19,13 @@
 		</action>
 		<action name="deleteRole" method="delete" class="adminRoleAction">
 			<result type="redirect-action">listRole.do</result>
-		</action>
-		<action name="addAdminDept" method="addAdminDept" class="adminDeptAction">
+		</action>		
+	</package>
+	 <package name="bpim-admindept" namespace="/department" extends="bpim-default">
+	    <action name="addAdminDept" method="addAdminDept" class="adminDeptAction">
 			<result type="redirect-action">schAdminDeptList.do</result>
 		</action>
-		<action name="delAdminDept" method="delAdminDept" class="adminDeptAction">
+		<action name="delAdminDept" method="aabbcc" class="adminDeptAction">
 			<result type="redirect-action">schAdminDeptList.do</result>
 		</action>
 		<action name="modAdminDept" method="modAdminDept" class="adminDeptAction">
