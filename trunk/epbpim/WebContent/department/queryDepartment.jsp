@@ -19,7 +19,7 @@
 			<div class="content_resize">
 				<div class="mainbar">
 					<h3 class="title"><s:text name="Department.QueryDepartment" /></h3>
-					<form action="schAdminDeptList.do" method="post">
+					<form id="queryForm" action="schAdminDeptList.do" method="post">
 						<div id="searchCondition">
 							<ul class="fullScreenUl">
 								<li class="width200Li"><label class="width4Lb"><s:text name="Department.DepartmentName" />:</label>
@@ -53,8 +53,8 @@
 									<li class="width100Li"><s:property value="name" /></li>
 									<li class="width600Li"><s:property value="remark" /></li>
 									<li class="width100Li">
-										<form action="delAdminDept.do" id='deleterole<s:property value="id" />'>
-											<s:hidden name="adminDept.id" />
+										<form action="delAdminDept.do" method="post" id='deleterole<s:property value="id" />'>
+											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
 											<input type="button" onclick='deleteRole("deleterole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
 										</form>
 									</li>
