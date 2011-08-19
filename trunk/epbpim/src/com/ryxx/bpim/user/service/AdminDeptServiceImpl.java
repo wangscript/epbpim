@@ -13,13 +13,13 @@ public class AdminDeptServiceImpl extends AbstractService<AdminDept, AdminDeptDA
     @Override
     public void saveAdminDept(AdminDept adminDept)
     {
-        getDao().addAdminDept(adminDept);
+        getDao().saveAdminDept(adminDept);
     }
     
     @Override
     public void updateAdminDept(AdminDept adminDept)
     {
-        getDao().addAdminDept(adminDept);
+        getDao().saveAdminDept(adminDept);
     }
     
     @Override
@@ -41,6 +41,6 @@ public class AdminDeptServiceImpl extends AbstractService<AdminDept, AdminDeptDA
             adminDept.setStartRow(page.getPageStartRow());
             adminDept.setPageSize(page.getPageSize());
         }
-        return getDao().schAdminDeptList(adminDept);
+        return getDao().listAdminDept(adminDept);
     }
 }
