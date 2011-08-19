@@ -44,4 +44,11 @@
 			<many-to-many class="AdminMenu" column="MENU_ID"/>
 		</bag>
 	</class>
+	<class name="AdminDept" table="ADMIN_DEPT">
+		<id name="id" column="DEPT_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="name" column="DEPT_NAME" type="java.lang.String"></property>
+		<property name="remark" column="DEPT_REMARK" type="java.lang.String"></property>
+	</class>
 </hibernate-mapping>
