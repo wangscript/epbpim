@@ -56,9 +56,11 @@ public class AdminDeptDAOImpl extends AbstractBaseDAO<AdminDept, Long> implement
                 list.add(criterion1);
             }
         }
+        
         Criterion[] criterions = {};
         if (list != null && list.size() > 0)
         {
+            criterions = new Criterion[list.size()];
             for (int i = 0; i < list.size(); i++)
             {
                 criterions[i] = list.get(i);
