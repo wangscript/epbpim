@@ -18,21 +18,21 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="saveDepartment.do" method="post">
+					<s:form action="addAdminDept.do" method="post">
 						<h3 class="title"><s:text name="Department.AddDepartment" /></h3>
 						<div id="addDepartmentTable">
 							<ul class="fullScreenUl">
 								<li class="width200Li"><label class="width4Lb"><s:text name="Department.DepartmentName" />:</label>
 								<input class="width100Input" name="name" id="name" /></li>
-								<li class="width600Li"><label class="width4Lb"><s:text name="Department.DepartmentDesc" />:</label>
-								<input class="width150Input" name="desc" id="desc" /></li>
+							</ul>						
+							<ul class="fullScreenUl" style="height: 200px">
+								<li class="width600Li">
+									<label class="width4Lb"><s:text name="Department.DepartmentDesc" />:</label>
+									<textarea name="desc" id="desc" style="height:150px;width: 300px"></textarea></li>
 							</ul>
-						
 							<ul class="fullScreenUl">
-							</ul>
-							<ul class="fullScreenUl">
-								<li><input type="submit" id="addDepartment"
-									class="mediumLeftButton" value="<s:text name="Common.Save" />">
+								<li>
+									<input type="submit" id="addDepartment" class="mediumLeftButton" value="<s:text name="Common.Save" />">
 								</li>
 							</ul>
 						</div>
