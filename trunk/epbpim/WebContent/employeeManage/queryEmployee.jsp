@@ -38,7 +38,7 @@
 							<li class="width200Li"><label class="width4Lb">员工编号:</label>
 								<input class="width100Input" name="projectBean.deptName"
 								id="deptName" /></li>
-							<li class="width200Li"><label class="width3Lb">员工名:</label>
+							<li class="width200Li"><label class="width3Lb">姓名:</label>
 								<input class="width100Input" name="projectBean.deptName"
 								id="deptName" /></li>
 							<li class="width250Li"><label class="width2Lb">状态:</label> <select
@@ -53,6 +53,16 @@
 
 						</ul>
 						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width2Lb">职务:</label> <select
+								id="projectType" name="projectBean.majorType">
+									<option value="0">------请选择------</option>
+									<option value="咨询1部">造价工程师</option>
+									<option value="咨询1部">造价员</option>
+									<option value="咨询1部">招标工程师</option>
+									<option value="咨询1部">一级建造师</option>
+									<option value="咨询1部">咨询(投资)工程师</option>
+							</select>
+							</li>
 							<li class="width200Li"><label class="width2Lb">资质:</label> <select
 								id="projectType" name="projectBean.majorType">
 									<option value="0">------请选择------</option>
