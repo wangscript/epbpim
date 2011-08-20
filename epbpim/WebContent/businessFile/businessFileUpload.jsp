@@ -21,41 +21,60 @@
 <div class="mainbar">
 <h3 class="title">业务文件上传</h3>
 <div id="">
-<ul class="fullScreenUl">
-	<li class="width200Li"><label>文件类别：</label><select
-		id="uploadUserProjectDataType" name="uploadUserProjectDataType">
-		<option value="0">--请选择--</option>
-	</select></li>
-</ul>
-<ul class="fullScreenUl">
-	<li><s:file name="uploadUserProjectData"
-		id="uploadUserProjectDataFile"
-		onchange="getObject('uploadUserProjectDataInput').value=this.value" />
-	<input type="text" class="file" name="uploadUserProjectDataInput"
-		style="display: none" id="uploadUserProjectDataInput"> <!-- <input type="button" value="选择" class="button"
-		onClick="getObject('uploadUserProjectDataFile').click()"> --></li>
-	<li><input type="button"
-		onclick="upload('uploadUserProjectData');" class="button"
-		style="width: 70px;" value="上传"></li>
-</ul>
-
-
+	<s:form action="uploadBusinessFile.do" method="post">
+		<ul class="fullScreenUl">
+			<li class="width200Li">
+			<label>文件类别：</label>
+				<select name="businessFile.fileType" id="businessFile.fileType" >
+					<option value="0">--请选择--</option>
+					<option value="1">类型1</option>
+				</select>
+			</li>
+			<li class="width600Li">
+				<s:file name="uploadFile" id="uploadFile" size="50" onchange="chooseFile()" />
+				<input type="hidden" name="businessFile.fileName" id="businessFile.fileName">
+			</li>
+		</ul>	
+		<ul class="fullScreenUl">	
+			<li class="width200Li">
+				<input type="submit" class="button" style="width: 70px;" value="上传" onclick="return checkParam();">
+			</li>
+		</ul>
+	</s:form>
 </div>
 </div>
-
 <!-- end #content -->
-
-
 <div class="clr"></div>
 </div>
 </div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
+<!-- end #page --> 
+<jsp:include page="../common/footer.jsp" />
+</div>
 
 </body>
 <script type='text/javascript' src='../dwr/engine.js'></script>
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script type='text/javascript' src='../dwr/interface/MessageService.js'></script>
 <script type="text/javascript">
-
+function chooseFile()
+{
+	var uploadFile = $('uploadFile');
+	var filePath=uploadFile.value;
+    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length);
+    document.getElementById('businessFile.fileName').value=fileName;
+}
+function checkParam()
+{
+	if("0"==document.getElementById('businessFile.fileType').value)
+    {
+		alert("请选择文件类别！");
+		return false;
+    }
+	if(!document.getElementById('businessFile.fileName').value)
+    {
+		alert("请选择文件！");
+		return false;
+    }	
+}
 </script>
 </html>
