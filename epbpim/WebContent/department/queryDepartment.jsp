@@ -25,7 +25,7 @@
 								<li class="width200Li"><label class="width4Lb"><s:text name="Department.DepartmentName" />:</label>
 									<input class="width100Input" name="adminDept.name" id="adminDept.name" value='<s:property value="adminDept.name"/>'/>
 								</li>
-								<li><input type="submit" id="searchProject" class="mediumRightButton" value="<s:text name="Common.Query" />">
+								<li class="width100Li"><input type="submit" id="searchProject" class="mediumRightButton" value="<s:text name="Common.Query" />">
 								</li>
 							</ul>
 						</div>
@@ -45,14 +45,14 @@
 								</li>
 								<li class="width600Li"><label><s:text name="AdminRole.Remark" /></label>
 								</li>
-								<li class="width100Li"><label><s:text name="Common.Delete" /></label>
+								<li class="width50Li"><label><s:text name="Common.Delete" /></label>
 								</li>
 							</ul>
 							<s:iterator value="adminDeptList" status="st">
 								<ul class="fullScreenUl">
 									<li class="width100Li"><s:property value="name" /></li>
 									<li class="width600Li"><s:property value="remark" /></li>
-									<li class="width100Li">
+									<li class="width50Li">
 										<form action="delAdminDept.do" method="post" id='deleterole<s:property value="id" />'>
 											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
 											<input type="button" onclick='deleteRole("deleterole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
