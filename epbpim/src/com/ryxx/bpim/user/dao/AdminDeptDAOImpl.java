@@ -29,7 +29,7 @@ public class AdminDeptDAOImpl extends AbstractBaseDAO<AdminDept, Long> implement
     @Override
     public void deleteAdminDept(AdminDept adminDept)
     {
-        
+        remove(adminDept);
     }
     
     @Override
