@@ -187,10 +187,10 @@ input {
 
 .button {
 	cursor: pointer;
+	width :auto;
 	height: 25px;
 	margin-right: 4px;
 	display: block;
-	float: left;
 	text-align: center;
 	background: url(../images/a_bg.gif) repeat-x center center;
 	text-decoration: none;
