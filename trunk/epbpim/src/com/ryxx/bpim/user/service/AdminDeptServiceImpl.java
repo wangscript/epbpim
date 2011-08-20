@@ -25,7 +25,7 @@ public class AdminDeptServiceImpl extends AbstractService<AdminDept, AdminDeptDA
     @Override
     public void deleteAdminDept(AdminDept adminDept)
     {
-        
+        getDao().deleteAdminDept(adminDept);
     }
     
     @Override
