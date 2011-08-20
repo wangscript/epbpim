@@ -27,21 +27,26 @@
 <div class="mainbar">
 <h3 class="title">业务文件管理</h3>
 <div id="searchCondition">
-<ul class="fullScreenUl">
-	<li class="width200Li"><label>文件类别：</label><select
-		id="uploadUserProjectDataType" name="uploadUserProjectDataType">
-		<option value="0">--请选择--</option>
-		<option value="0">董事会文件</option>
-		<option value="0">财税文件</option>
-		<option value="0">工商文件</option>
-	</select></li>
-	<li class="width200Li"><label>文件名:</label> <input
-		class="width100Input" name="projectBean.deptName" id="deptName" /></li>
-	<li><input type="button" id="searchProject" class="mediumButton"
-		style="float: right" onclick="displayResult();" class="button"
-		value="查询"></li>
-</ul>
-
+	<s:form action="queryBusinessFileList.do" method="post">
+		<ul class="fullScreenUl">
+			<li class="width200Li">
+				<label>文件类别：</label>
+				<select id="businessFile.fileType" name="businessFile.fileType">
+					<option value="0">--请选择--</option>
+					<option value="1">董事会文件</option>
+					<option value="2">财税文件</option>
+					<option value="3">工商文件</option>
+				</select>
+			</li>
+			<li class="width200Li">
+				<label>文件名:</label>
+				<input type="text" class="" name="businessFile.fileName" id="businessFile.fileName" />
+			</li>
+			<li>
+				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
+			</li>
+		</ul>
+	</s:form>
 </div>
 <div class="searchResult" id="searchResult" style="display: none">
 <ul class="fullScreenUl">
@@ -57,44 +62,16 @@
 	<li class="width50Li"><input type="button" class="button"
 		value="下载"></li>
 </ul>
-<ul class="fullScreenUl">
-	<li class="width600Li">公共机构节能条例[中华人民共和国国务院令第531号]2008-08-01 2008-10-01</li>
-	<li class="width100Li">任远</li>
-	<li class="width100Li">业务技术文件</li>
-	<li class="width50Li"><input type="button" class="button"
-		value="下载"></li>
-</ul>
-<ul class="fullScreenUl">
-	<li class="width600Li">城市房地产开发经营管理条例 [中华人民共和国国务院令 第248号 ] 1988-07-20</li>
-	<li class="width100Li">建惠</li>
-	<li class="width100Li">业务技术文件</li>
-	<li class="width50Li"><input type="button" class="button"
-		value="下载"></li>
-</ul>
-<ul class="fullScreenUl">
-	<li class="width600Li">建设工程勘察设计管理条例(中华人民共和国国务院令第293号) 2000-09-25</li>
-	<li class="width100Li">建惠</li>
-	<li class="width100Li">业务技术文件</li>
-	<li class="width50Li"><input type="button" class="button"
-		value="下载"></li>
-</ul>
 
 </div>
 <div></div>
-
-
 </div>
-
-
 <div class="clr"></div>
 </div>
 </div>
 <!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
-	function displayResult(){
-		document.getElementById("searchResult").style.display="block";
-	}
 
 </script>
 </html>
