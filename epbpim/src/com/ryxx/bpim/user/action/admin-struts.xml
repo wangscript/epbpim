@@ -25,7 +25,7 @@
 	    <action name="addAdminDept" method="addAdminDept" class="adminDeptAction">
 			<result type="redirect-action">schAdminDeptList.do</result>
 		</action>
-		<action name="delAdminDept" method="aabbcc" class="adminDeptAction">
+		<action name="delAdminDept" method="delAdminDept" class="adminDeptAction">
 			<result type="redirect-action">schAdminDeptList.do</result>
 		</action>
 		<action name="modAdminDept" method="modAdminDept" class="adminDeptAction">
