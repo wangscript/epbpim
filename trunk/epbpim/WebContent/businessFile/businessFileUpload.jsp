@@ -27,7 +27,9 @@
 			<label>文件类别：</label>
 				<select name="businessFile.fileType" id="businessFile.fileType" >
 					<option value="0">--请选择--</option>
-					<option value="1">类型1</option>
+					<option value="1">董事会文件</option>
+					<option value="2">财税文件</option>
+					<option value="3">工商文件</option>
 				</select>
 			</li>
 			<li class="width600Li">
