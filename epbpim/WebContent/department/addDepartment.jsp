@@ -22,7 +22,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="addAdminDept.do" onsubmit="return checkAndSubmit();"
+					<s:form action="addAdminDept.do" onsubmit="return validate(this);"
 						method="post">
 						<h3 class="title">
 							<s:text name="Department.AddDepartment" />
@@ -33,6 +33,7 @@
 											name="Department.DepartmentName" />:</label> <input
 									class="width100Input" name="adminDept.name" id="name"
 									maxlength="50" />
+									<textValidate field="adminDept.name" lableText="<s:text name='Department.DepartmentName' />" isValidate="true" min="0" max="50">  
 								</li>
 							</ul>
 							<ul class="fullScreenUl" style="height: 200px">
@@ -40,6 +41,7 @@
 											name="Department.DepartmentDesc" />:</label> <textarea
 										name="adminDept.remark" id="remark"
 										style="height: 150px; width: 300px"></textarea>
+									<textValidate field="adminDept.remark" lableText="<s:text name='Department.DepartmentDesc' />" isValidate="true" max="255">  
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
@@ -58,18 +60,6 @@
 		<jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script language="JavaScript">
-	
-	function checkAndSubmit() {
-		if (!checkInputBlank($('name'),
-				'<s:text name="Department.DepartmentName" />')) {
-			return false;
-		}
-		if (!checkInputMaxLength($('name'),
-				'<s:text name="Department.DepartmentName" />')) {
-			return false;
-		}
-		return true;
-	}
 </script>
 
 </html>

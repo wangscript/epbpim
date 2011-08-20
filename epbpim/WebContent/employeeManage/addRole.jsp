@@ -24,16 +24,19 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="saveRole.do" method="post" onsubmit="return checkAndSubmit();">
+					<s:form action="saveRole.do" method="post" onsubmit="return validate(this);">
 						<h3 class="title"><s:text name="AdminRole.AddRole" /></h3>
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
 								<li class="width200Li"><label class="width4Lb"><s:text name="AdminRole.RoleName" />:</label>
-								<input class="width100Input" name="name" id="name" maxlength="100"/></li>
+								<input class="width100Input" name="name" id="name" maxlength="100"/>
+								<textValidate field="name" lableText="<s:text name='AdminRole.RoleName' />" isValidate="true" min="0" max="100">  </li>
 								<li class="width300Li"><label class="width9Lb"><s:text name="AdminRole.RoleCount" />:</label>
-								<input class="width150Input" name="roleCount" id="roleCount" /></li>
+								<input class="width150Input" name="roleCount" id="roleCount" />
+								<textValidate field="roleCount" lableText="<s:text name='AdminRole.RoleCount' />" isValidate="true" min="0" max="3" maxValue="100" dataType="int"></li>
 								<li class="width400Li"><label class="width4Lb"><s:text name="AdminRole.Remark" />:</label>
-									<input class="width300Input" name="remark" id="remark" maxlength="255"/></li>
+									<input class="width300Input" name="remark" id="remark" maxlength="255"/>
+									<textValidate field="remark" lableText="<s:text name='AdminRole.Remark' />" isValidate="true" max="255"></li>
 							</ul>
 							<h4><s:text name="AdminRole.RoleList" />:</h4>
 							<%
@@ -135,34 +138,6 @@ var checkBoxValue;//迭代中checkbox value
 				checkBoxValue.length);
 	}
 	
-	
-	function checkAndSubmit() {
-		if(!checkInputBlank($('name'),
-		'<s:text name="AdminRole.RoleName" />')){
-			return false;
-		}
-		if(!checkInputMaxLength($('name'),
-		'<s:text name="AdminRole.RoleName" />')){
-			return false;
-		}
-		if(!checkInputBlank($('roleCount'),
-		'<s:text name="AdminRole.RoleCount" />')){
-			return false;
-		}
-		if(!checkInputIsNumber($('roleCount'),
-		'<s:text name="AdminRole.RoleCount" />')){
-			return false;
-		}
-		if(!checkInputMaxValue($('roleCount'),
-				'<s:text name="AdminRole.RoleCount" />',100)){
-			return false;
-		}
-		if(!checkInputMaxLength($('remark'),
-		'<s:text name="AdminRole.Remark" />')){
-			return false;
-		}
-		return true;
-	}
 	
 </script>
 
