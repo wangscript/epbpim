@@ -83,7 +83,7 @@ public class AdminDeptAction extends ActionSupportBase
         return SUCCESS;
     }
     
-    public String aabbcc()
+    public String delAdminDept()
     {
         try
         {
@@ -92,7 +92,7 @@ public class AdminDeptAction extends ActionSupportBase
         catch (Exception e)
         {
             LOG.warn(e);
-            // return ERROR;
+            return ERROR;
         }
         return SUCCESS;
     }
