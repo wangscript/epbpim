@@ -10,7 +10,7 @@ public class AdminFile extends VoBase
     /** 序列号 */
     private static final long serialVersionUID = 4691370091966904625L;
     
-    private String id;
+    private long id;
     
     private String fileModule;
     
@@ -24,12 +24,12 @@ public class AdminFile extends VoBase
     
     private Timestamp uploadDate;
     
-    public String getId()
+    public long getId()
     {
         return id;
     }
     
-    public void setId(String id)
+    public void setId(long id)
     {
         this.id = id;
     }
