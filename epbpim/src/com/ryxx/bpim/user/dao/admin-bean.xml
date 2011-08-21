@@ -32,6 +32,7 @@
 			<ref local="com.ryxx.bpim.user.service.AdminMenuService"/>
 		</property>
 	</bean>
+	
 	<bean id="adminDeptAction" class="com.ryxx.bpim.user.action.AdminDeptAction" scope="prototype">
 		<property name="adminDeptService">
 			<ref local="com.ryxx.bpim.user.service.AdminDeptService"/>
@@ -41,5 +42,16 @@
 		<property name="target" ref="com.ryxx.bpim.user.service.AdminDeptService.target" />
 	</bean>
 	<bean id="com.ryxx.bpim.user.service.AdminDeptService.target" class="com.ryxx.bpim.user.service.AdminDeptServiceImpl">
+	</bean>
+	
+	<bean id="adminFileAction" class="com.ryxx.bpim.user.action.AdminFileAction" scope="prototype">
+		<property name="adminFileService">
+			<ref local="com.ryxx.bpim.user.service.AdminFileService"/>
+		</property>
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminFileService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.AdminFileService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminFileService.target" class="com.ryxx.bpim.user.service.AdminFileServiceImpl">
 	</bean>
 </beans>
