@@ -51,4 +51,15 @@
 		<property name="name" column="DEPT_NAME" type="java.lang.String"></property>
 		<property name="remark" column="DEPT_REMARK" type="java.lang.String"></property>
 	</class>
+	<class name="AdminFile" table="ADMIN_FILE">
+		<id name="id" column="FILE_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="fileModule" column="FILE_MODULE" type="java.lang.String"></property>
+		<property name="fileName" column="FILE_NAME" type="java.lang.String"></property>
+		<property name="filePath" column="FILE_PATH" type="java.lang.String"></property>
+		<property name="fileType" column="FILE_TYPE" type="java.lang.String"></property>
+		<property name="fileContent" column="FILE_CONTENT" type="java.lang.String"></property>
+		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
+	</class>
 </hibernate-mapping>
