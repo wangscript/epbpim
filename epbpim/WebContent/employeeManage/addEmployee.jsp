@@ -115,6 +115,20 @@
 									<option value="咨询1部">咨询2部</option>
 									<option value="咨询1部">咨询3部</option>
 							</select></li>
+							<li class="width200Li"><label class="width4Lb">职称:</label>
+								<select id="projectType" name="projectBean.majorType">
+									<option value="0">-----请选择-----</option>
+									<option value="咨询1部">正高工</option>
+									<option value="咨询1部">副高工</option>
+									<option value="咨询1部">工程师</option>
+									<option value="咨询1部">助理工程师</option>
+									<option value="咨询1部">技术员</option>
+									<option value="咨询1部">高级经济师</option>
+									<option value="咨询1部">经济师</option>
+									<option value="咨询1部">高级会计师</option>
+									<option value="咨询1部">中级会计师</option>
+									<option value="咨询1部">会计师</option>
+							</select></li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li><input type="button" class="mediumLeftButton"
