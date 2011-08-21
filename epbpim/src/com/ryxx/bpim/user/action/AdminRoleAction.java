@@ -2,7 +2,6 @@ package com.ryxx.bpim.user.action;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -79,7 +78,7 @@ public class AdminRoleAction extends ActionSupportBase {
 		log.setActionType(Constants.OPER_TYPE_DELETE);
 		log.setUserName("Admin");   //session.get(Constants.LOGIN_UID).toString());
 		log.setUserIp(request.getRemoteAddr());
-		log.setRemark("delete node (Id: '" + name + "') success");
+		log.setRemark("delete node (Id: '" + id + "') success");
 		adminLogService.save(log);
 		return SUCCESS;
 	}

@@ -7,7 +7,7 @@
 		</id>
 		<property name="userName" column="USER_NAME" type="java.lang.String"></property>
 		<property name="actionType" column="ACTION_TYPE" type="java.lang.Integer"></property>
-		<property name="userIp" column="USER_IP" type="java.lang.Integer"></property>
+		<property name="userIp" column="USER_IP" type="java.lang.String"></property>
 		<property name="logTime" column="LOG_TIME" type="java.sql.Timestamp"></property>
 		<property name="moduleId" column="MODULE_ID" type="java.lang.Integer"></property>
 		<property name="remark" column="LOG_REMARK" type="java.lang.String"></property>
