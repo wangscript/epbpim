@@ -28,6 +28,7 @@
 <h3 class="title">业务文件管理</h3>
 <div id="searchCondition">
 	<s:form action="queryBusinessFileList.do" method="post">
+		<input type="hidden" name="businessFile.fileModule" id="businessFile.fileModule">
 		<ul class="fullScreenUl">
 			<li class="width200Li">
 				<label>文件类别：</label>
