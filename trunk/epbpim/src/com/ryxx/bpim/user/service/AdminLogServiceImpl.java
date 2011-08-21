@@ -1,19 +1,8 @@
 package com.ryxx.bpim.user.service;
 
-import java.util.List;
-
 import com.ryxx.bpim.service.AbstractService;
-import com.ryxx.bpim.user.dao.AdminMenuDAO;
-import com.ryxx.bpim.user.entity.AdminMenu;
+import com.ryxx.bpim.user.dao.AdminLogDAO;
+import com.ryxx.bpim.user.entity.AdminLog;
 
-public class AdminLogServiceImpl  extends AbstractService<AdminMenu,AdminMenuDAO, Long> implements AdminMenuService{
-	public List<AdminMenu> list() {
-		return this.getDao().findAll();
-	}
-
-	@Override
-	public List<AdminMenu> getMenuTree(List<AdminMenu> nodes) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public class AdminLogServiceImpl  extends AbstractService<AdminLog,AdminLogDAO, Long> implements AdminLogService{
 }

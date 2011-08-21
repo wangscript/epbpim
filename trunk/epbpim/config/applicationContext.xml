@@ -68,6 +68,7 @@
 				<prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
 				<prop key="fetch*">PROPAGATION_REQUIRED,readOnly</prop>
 				<prop key="evict*">PROPAGATION_REQUIRED</prop>
+				<prop key="merge*">PROPAGATION_REQUIRED</prop>
 			</props>
 		</property>
 	</bean>
