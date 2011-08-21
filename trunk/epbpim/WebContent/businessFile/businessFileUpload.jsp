@@ -21,7 +21,8 @@
 <div class="mainbar">
 <h3 class="title">业务文件上传</h3>
 <div id="">
-	<s:form action="uploadBusinessFile.do" method="post">
+	<s:form action="uploadBusinessFile.do" enctype="multipart/form-data" method="post">
+		<input type="hidden" name="businessFile.fileModule" id="businessFile.fileModule">
 		<ul class="fullScreenUl">
 			<li class="width200Li">
 			<label>文件类别：</label>
