@@ -19,7 +19,7 @@ public class AdminDeptServiceImpl extends AbstractService<AdminDept, AdminDeptDA
     @Override
     public void updateAdminDept(AdminDept adminDept)
     {
-        getDao().saveAdminDept(adminDept);
+        getDao().updateAdminDept(adminDept);
     }
     
     @Override
