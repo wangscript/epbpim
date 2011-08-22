@@ -81,7 +81,7 @@
 						<s:text name="工商文件" />
 					</s:elseif>
 				</li>
-				<li class="width200Li"><s:date name="uploadDate" format="yyyy-MM-dd" /></li>
+				<li class="width200Li"><s:date name="uploadDate" format="yyyy-MM-dd hh:mm:ss" /></li>
 				<li class="width50Li">
 					<form action="schBusinessFile.do" method="post" id='searchfile<s:property value="id" />'>
 						<input type="hidden" name="adminFile.id" value='<s:property value="id" />' />
