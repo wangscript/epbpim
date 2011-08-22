@@ -55,7 +55,7 @@
 									<li class="width50Li">
 										<form action="delAdminDept.do" method="post" id='deleterole<s:property value="id" />'>
 											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
-											<input type="button" onclick='deleteRole("deleterole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+											<input type="button" onclick='deleteDept"deleterole"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
 										</form>
 									</li>
 								</ul>
@@ -70,7 +70,7 @@
 	<jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
-	function deleteRole(id){
+	function deleteDept(id){
 		if(confirm('<s:text name="AdminRole.IfDelete" />')){
 			document.getElementById(id).submit();
 		}
