@@ -161,8 +161,8 @@ input {
 }
 
 .content .mainbar {
-	float: right;
-	width: 630px;
+	float: left;
+	width: 920px;
 }
 
 .content .mainbar .article img {
