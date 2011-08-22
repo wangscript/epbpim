@@ -24,10 +24,12 @@
 }
 
 .kandyTabs .tabtitle .tabbtn {
-	margin: 0 4px 0 0;
+	text-align: center;
+	width: 120px;
+	margin: 0 2px 0 0;
 	padding: 0 5px;
 	display: inline-block;
-	background: #e5e5e5;
+	background: url(../images/menu.gif) repeat-x top;
 	border: 1px solid #DDD;
 	border-width: 1px 1px 0;
 	cursor: pointer;
