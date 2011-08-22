@@ -21,12 +21,12 @@
 <div class="mainbar">
 <h3 class="title">业务文件上传</h3>
 <div id="">
-	<s:form action="uploadBusinessFile.do" enctype="multipart/form-data" method="post">
-		<input type="hidden" name="businessFile.fileModule" id="businessFile.fileModule">
+	<s:form action="addBusinessFile.do" enctype="multipart/form-data" method="post">
+		<input type="hidden" name="adminFile.fileModule" id="adminFile.fileModule" value="1">
 		<ul class="fullScreenUl">
 			<li class="width200Li">
 			<label>文件类别：</label>
-				<select name="businessFile.fileType" id="businessFile.fileType" >
+				<select name="adminFile.fileType" id="adminFile.fileType" >
 					<option value="0">--请选择--</option>
 					<option value="1">董事会文件</option>
 					<option value="2">财税文件</option>
@@ -35,7 +35,7 @@
 			</li>
 			<li class="width600Li">
 				<s:file name="uploadFile" id="uploadFile" size="50" onchange="chooseFile()" />
-				<input type="hidden" name="businessFile.fileName" id="businessFile.fileName">
+				<input type="hidden" name="adminFile.fileName" id="adminFile.fileName">
 			</li>
 		</ul>	
 		<ul class="fullScreenUl">	
@@ -64,16 +64,16 @@ function chooseFile()
 	var uploadFile = $('uploadFile');
 	var filePath=uploadFile.value;
     var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length);
-    document.getElementById('businessFile.fileName').value=fileName;
+    document.getElementById('adminFile.fileName').value=fileName;
 }
 function checkParam()
 {
-	if("0"==document.getElementById('businessFile.fileType').value)
+	if("0"==document.getElementById('adminFile.fileType').value)
     {
 		alert("请选择文件类别！");
 		return false;
     }
-	if(!document.getElementById('businessFile.fileName').value)
+	if(!document.getElementById('adminFile.fileName').value)
     {
 		alert("请选择文件！");
 		return false;
