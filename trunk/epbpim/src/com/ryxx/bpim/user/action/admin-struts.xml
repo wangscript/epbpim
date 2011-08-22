@@ -37,10 +37,10 @@
 	</package>
 	<package name="bpim-adminfile" namespace="/businessFile" extends="bpim-default">
 	    <action name="addBusinessFile" method="addAdminFile" class="adminFileAction">
-			<result type="redirect-action">schAdminFileList.do</result>
+			<result type="redirect-action">schBusinessFileList.do</result>
 		</action>
 		<action name="delBusinessFile" method="delAdminFile" class="adminFileAction">
-			<result type="redirect-action">schAdminFileList.do</result>
+			<result type="redirect-action">schBusinessFileList.do</result>
 		</action>
 		<action name="schBusinessFileList" method="schAdminFileList" class="adminFileAction">
 			<result>/businessFile/businessFileManage.jsp</result>
