@@ -2,6 +2,7 @@ package com.ryxx.bpim.user.enums;
 
 public enum UserStatusEnum {
 	
+	PLSSELECT(0,"-----请选择-----"),
 	INCUMBENT(1,"在职"),
 	LEAVE(2,"离职"),
 	BACK(3,"返聘"),

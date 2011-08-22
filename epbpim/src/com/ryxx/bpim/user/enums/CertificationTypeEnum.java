@@ -2,6 +2,7 @@ package com.ryxx.bpim.user.enums;
 
 public enum CertificationTypeEnum {
 	
+	PLSSELECT(0,"------请选择------"),
 	REGIST_SPECIALIST_SETUP(1,"注册造价师（安装）"),
 	REGIST_SPECIALIST_BUILD(2,"注册造价师（土建）"),
 	REGIST_CONSULT(3,"注册咨询师"),
