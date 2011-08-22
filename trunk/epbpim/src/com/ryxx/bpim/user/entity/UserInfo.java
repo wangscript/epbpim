@@ -11,7 +11,7 @@ public class UserInfo extends VoBase {
 	private Long id;
 	private String realName;
 	private String identify;
-	private String username;
+	private String userName;
 	private Integer sex;
 	private String idCard;
 	private String humenFile;
@@ -57,11 +57,11 @@ public class UserInfo extends VoBase {
 	public void setIdentify(String identify) {
 		this.identify = identify;
 	}
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public Integer getSex() {
 		return sex;
