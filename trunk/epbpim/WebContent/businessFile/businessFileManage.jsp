@@ -94,7 +94,7 @@
 				<li class="width50Li">
 					<form action="delBusinessFile.do" method="post" id='deletefile<s:property value="id" />'>
 						<input type="hidden" name="adminFile.id" value='<s:property value="id" />' />
-						<input type="hidden" name="adminFile.fileModule" value='<s:property value="adminFile.fileModule" />' />						
+						<input type="hidden" name="adminFile.fileModule" value="1" />						
 						<input type="hidden" name="adminFile.filePath" value='<s:property value="filePath" />' />
 						<input type="button" onclick='deleteFile("deletefile"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name='Common.Delete' />">
 					</form>
