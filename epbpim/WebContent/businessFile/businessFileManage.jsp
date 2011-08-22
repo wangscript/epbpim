@@ -27,21 +27,21 @@
 <div class="mainbar">
 <h3 class="title">业务文件管理</h3>
 <div id="searchCondition">
-	<s:form action="queryBusinessFileList.do" method="post">
-		<input type="hidden" name="businessFile.fileModule" id="businessFile.fileModule">
+	<s:form action="schBusinessFileList.do" method="post">
+		<input type="hidden" name="adminFile.fileModule" id="adminFile.fileModule" value="1">
 		<ul class="fullScreenUl">
 			<li class="width200Li">
 				<label>文件类别：</label>
-				<select id="businessFile.fileType" name="businessFile.fileType">
-					<option value="0">--请选择--</option>
-					<option value="1">董事会文件</option>
-					<option value="2">财税文件</option>
-					<option value="3">工商文件</option>
+				<select id="adminFile.fileType" name="adminFile.fileType">
+					<option value="">--请选择--</option>
+					<option value="1" <s:if test="1==adminFile.fileType">selected</s:if>>董事会文件</option>
+					<option value="2" <s:if test="2==adminFile.fileType">selected</s:if>>财税文件</option>
+					<option value="3" <s:if test="3==adminFile.fileType">selected</s:if>>工商文件</option>
 				</select>
 			</li>
 			<li class="width200Li">
 				<label>文件名:</label>
-				<input type="text" class="" name="businessFile.fileName" id="businessFile.fileName" />
+				<input type="text" class="" name="adminFile.fileName" id="adminFile.fileName" value="<s:property value='adminFile.fileName' />"/>
 			</li>
 			<li>
 				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
@@ -49,22 +49,61 @@
 		</ul>
 	</s:form>
 </div>
-<div class="searchResult" id="searchResult" style="display: none">
-<ul class="fullScreenUl">
-	<li class="width600Li"><label>文件名</label></li>
-	<li class="width100Li"><label>公司</label></li>
-	<li class="width100Li"><label>文件类别</label></li>
-	<li class="width50Li"><label>操作</label></li>
-</ul>
-<ul class="fullScreenUl">
-	<li class="width600Li">《国务院关于预防煤矿生产安全事故的特别规定》[中华人民共和国国务院令 第446号] 2005-09-03</li>
-	<li class="width100Li">建惠</li>
-	<li class="width100Li">业务技术文件</li>
-	<li class="width50Li"><input type="button" class="button"
-		value="下载"></li>
-</ul>
 
-</div>
+<s:if test="adminFileList==null || adminFileList.size()==0">
+	<tr>
+		<td>
+		<h3><s:text name="Common.Nodata" /></h3>
+		</td>
+	</tr>
+</s:if>
+<s:else>
+	<div class="searchResult" id="searchResult">
+		<ul class="fullScreenUl">
+			<li class="width200Li"><label><s:text name="文件名" /></label></li>
+			<li class="width200Li"><label><s:text name="文件类型" /></label></li>
+			<li class="width200Li"><label><s:text name="上传时间" /></label></li>
+			<li class="width50Li"><label><s:text name="预览" /></label></li>
+			<li class="width50Li"><label><s:text name="下载" /></label></li>
+			<li class="width50Li"><label><s:text name="删除" /></label></li>
+		</ul>
+		<s:iterator value="adminFileList" status="st">
+			<ul class="fullScreenUl">
+				<li class="width200Li"><s:property value="fileName" /></li>
+				<li class="width200Li">
+					<s:if test="1==fileType">
+						<s:text name="董事会文件" />
+					</s:if>
+					<s:elseif test="2==fileType">
+						<s:text name="财税文件" />
+					</s:elseif>
+					<s:elseif test="3==fileType">
+						<s:text name="工商文件" />
+					</s:elseif>
+				</li>
+				<li class="width200Li"><s:date name="uploadDate" format="yyyy-MM-dd" /></li>
+				<li class="width50Li">
+					<form action="schBusinessFile.do" method="post" id='searchfile<s:property value="id" />'>
+						<input type="hidden" name="adminFile.id" value='<s:property value="id" />' />
+						<input type="button" onclick='searchFile("searchfile"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name='预览' />">
+					</form>
+				</li>
+				<li class="width50Li">
+					<a href="<s:property value='filePath' />"><input type="button" onclick="this.parentNode.click();" class="mediumRightButton" class="button" value="<s:text name='下载' />"></a>
+				</li>
+				<li class="width50Li">
+					<form action="delBusinessFile.do" method="post" id='deletefile<s:property value="id" />'>
+						<input type="hidden" name="adminFile.id" value='<s:property value="id" />' />
+						<input type="hidden" name="adminFile.fileModule" value='<s:property value="adminFile.fileModule" />' />						
+						<input type="hidden" name="adminFile.filePath" value='<s:property value="filePath" />' />
+						<input type="button" onclick='deleteFile("deletefile"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name='Common.Delete' />">
+					</form>
+				</li>
+			</ul>
+		</s:iterator>
+	</div>
+</s:else>
+
 <div></div>
 </div>
 <div class="clr"></div>
@@ -73,6 +112,10 @@
 <!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
-
+function deleteFile(id){
+	if(confirm('<s:text name="AdminRole.IfDelete" />')){
+		document.getElementById(id).submit();
+	}
+}
 </script>
 </html>
