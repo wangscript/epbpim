@@ -112,10 +112,16 @@
 <!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
-function deleteFile(id){
-	if(confirm('<s:text name="AdminRole.IfDelete" />')){
-		document.getElementById(id).submit();
+	function searchFile(id)
+	{
+		// document.getElementById(id).submit();
 	}
-}
+	function deleteFile(id)
+	{
+		if(confirm('<s:text name="AdminRole.IfDelete" />'))
+		{
+			document.getElementById(id).submit();
+		}
+	}
 </script>
 </html>
