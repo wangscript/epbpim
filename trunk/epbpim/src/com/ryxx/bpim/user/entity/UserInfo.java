@@ -1,137 +1,97 @@
 package com.ryxx.bpim.user.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import com.ryxx.bpim.entity.VoBase;
 
 public class UserInfo extends VoBase {
 	private static final long serialVersionUID = -5736014916018823802L;
+	
 	private Long id;
-	private String userName;
+	private String realName;
+	private String identify;
+	private String username;
+	private Integer sex;
+	private String idCard;
+	private String humenFile;
+	private Timestamp birthday;
+	private String familyAddress;
+	private String phone;
+	private String mobilePhone;
+	private String party;
+	private Integer eduBackground;
+	private String school;
+	private String major;
+	private Integer eduCountinue;
+	private Timestamp graduateDate;
+	private Timestamp onboardDate;
+	private Timestamp leaveDate;
+	private String relation;
+	private Integer status;
+	private Integer insuranceType;
+	private String remark;
 	private String password;
 	private Timestamp registerDate;
-	private Timestamp expireDate;
-	private Timestamp registerDateTmp;
-	private Timestamp expireDateTmp;
 	private String email;
-	private String company;
-	private String phone;
-	private Timestamp lastPayDate;
-	private Long servicePlanId;
-	private String pcMac;
-	private String mobileIdentify;
+	private Integer title;
+	private List<AdminRole> role;
+	private List<AdminDept> dept;
+	private List<UserCertification> certifies;
 	
-	public Long getServicePlanId() {
-		return servicePlanId;
-	}
-	public void setServicePlanId(Long servicePlanId) {
-		this.servicePlanId = servicePlanId;
-	}
-	private String question;
-	private String answer;
-	
-	private boolean checkExpire;
-	public boolean isCheckExpire() {
-		return checkExpire;
-	}
-	public void setCheckExpire(boolean checkExpire) {
-		this.checkExpire = checkExpire;
-	}
-	/**
-	 * @return the id
-	 */
 	public Long getId() {
 		return id;
 	}
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
-	/**
-	 * @return the userName
-	 */
-	public String getUserName() {
-		return userName;
+	public String getRealName() {
+		return realName;
 	}
-	/**
-	 * @param userName the userName to set
-	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
+	public String getIdentify() {
+		return identify;
 	}
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setIdentify(String identify) {
+		this.identify = identify;
 	}
-	/**
-	 * @return the registerDate
-	 */
-	public Timestamp getRegisterDate() {
-		return registerDate;
+	public String getUsername() {
+		return username;
 	}
-	/**
-	 * @param registerDate the registerDate to set
-	 */
-	public void setRegisterDate(Timestamp registerDate) {
-		this.registerDate = registerDate;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	/**
-	 * @return the expireDate
-	 */
-	public Timestamp getExpireDate() {
-		return expireDate;
+	public Integer getSex() {
+		return sex;
 	}
-	/**
-	 * @param expireDate the expireDate to set
-	 */
-	public void setExpireDate(Timestamp expireDate) {
-		this.expireDate = expireDate;
+	public void setSex(Integer sex) {
+		this.sex = sex;
 	}
-	public Timestamp getRegisterDateTmp() {
-		return registerDateTmp;
+	public String getIdCard() {
+		return idCard;
 	}
-	public void setRegisterDateTmp(Timestamp registerDateTmp) {
-		this.registerDateTmp = registerDateTmp;
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
 	}
-	public Timestamp getExpireDateTmp() {
-		return expireDateTmp;
+	public String getHumenFile() {
+		return humenFile;
 	}
-	public void setExpireDateTmp(Timestamp expireDateTmp) {
-		this.expireDateTmp = expireDateTmp;
+	public void setHumenFile(String humenFile) {
+		this.humenFile = humenFile;
 	}
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
+	public Timestamp getBirthday() {
+		return birthday;
 	}
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setBirthday(Timestamp birthday) {
+		this.birthday = birthday;
 	}
-	/**
-	 * @return the company
-	 */
-	public String getCompany() {
-		return company;
+	public String getFamilyAddress() {
+		return familyAddress;
 	}
-	/**
-	 * @param company the company to set
-	 */
-	public void setCompany(String company) {
-		this.company = company;
+	public void setFamilyAddress(String familyAddress) {
+		this.familyAddress = familyAddress;
 	}
 	public String getPhone() {
 		return phone;
@@ -139,61 +99,125 @@ public class UserInfo extends VoBase {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Timestamp getLastPayDate() {
-		return lastPayDate;
+	public String getMobilePhone() {
+		return mobilePhone;
 	}
-	public void setLastPayDate(Timestamp lastPayDate) {
-		this.lastPayDate = lastPayDate;
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
 	}
-	/**
-	 * @return the question
-	 */
-	public String getQuestion() {
-		return question;
+	public String getParty() {
+		return party;
 	}
-	/**
-	 * @param question the question to set
-	 */
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setParty(String party) {
+		this.party = party;
 	}
-	/**
-	 * @return the answer
-	 */
-	public String getAnswer() {
-		return answer;
+	public Integer getEduBackground() {
+		return eduBackground;
 	}
-	/**
-	 * @param answer the answer to set
-	 */
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setEduBackground(Integer eduBackground) {
+		this.eduBackground = eduBackground;
 	}
-	/**
-	 * @return the pcMac
-	 */
-	public String getPcMac() {
-		return pcMac;
+	public String getSchool() {
+		return school;
 	}
-	/**
-	 * @param pcMac the pcMac to set
-	 */
-	public void setPcMac(String pcMac) {
-		this.pcMac = pcMac;
+	public void setSchool(String school) {
+		this.school = school;
 	}
-	/**
-	 * @return the mobileIdentify
-	 */
-	public String getMobileIdentify() {
-		return mobileIdentify;
+	public String getMajor() {
+		return major;
 	}
-	/**
-	 * @param mobileIdentify the mobileIdentify to set
-	 */
-	public void setMobileIdentify(String mobileIdentify) {
-		this.mobileIdentify = mobileIdentify;
+	public void setMajor(String major) {
+		this.major = major;
 	}
-	
-	
+	public Integer getEduCountinue() {
+		return eduCountinue;
+	}
+	public void setEduCountinue(Integer eduCountinue) {
+		this.eduCountinue = eduCountinue;
+	}
+	public Timestamp getGraduateDate() {
+		return graduateDate;
+	}
+	public void setGraduateDate(Timestamp graduateDate) {
+		this.graduateDate = graduateDate;
+	}
+	public Timestamp getOnboardDate() {
+		return onboardDate;
+	}
+	public void setOnboardDate(Timestamp onboardDate) {
+		this.onboardDate = onboardDate;
+	}
+	public Timestamp getLeaveDate() {
+		return leaveDate;
+	}
+	public void setLeaveDate(Timestamp leaveDate) {
+		this.leaveDate = leaveDate;
+	}
+	public String getRelation() {
+		return relation;
+	}
+	public void setRelation(String relation) {
+		this.relation = relation;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public Integer getInsuranceType() {
+		return insuranceType;
+	}
+	public void setInsuranceType(Integer insuranceType) {
+		this.insuranceType = insuranceType;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Timestamp getRegisterDate() {
+		return registerDate;
+	}
+	public void setRegisterDate(Timestamp registerDate) {
+		this.registerDate = registerDate;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Integer getTitle() {
+		return title;
+	}
+	public void setTitle(Integer title) {
+		this.title = title;
+	}
+	public List<AdminRole> getRole() {
+		return role;
+	}
+	public void setRole(List<AdminRole> role) {
+		this.role = role;
+	}
+	public List<AdminDept> getDept() {
+		return dept;
+	}
+	public void setDept(List<AdminDept> dept) {
+		this.dept = dept;
+	}
+	public List<UserCertification> getCertifies() {
+		return certifies;
+	}
+	public void setCertifies(List<UserCertification> certifies) {
+		this.certifies = certifies;
+	}
 }
 

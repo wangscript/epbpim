@@ -2,6 +2,7 @@ package com.ryxx.bpim.user.enums;
 
 public enum InsuranceTypeEnum {
 	
+	PLSSELECT(0,"-----请选择-----"),
 	INSURANCE_CITY(1,"城保"),
 	INSURANCE_TOWN(2,"镇保"),
 	INSURANCE_BLANKET(3,"综合保险");
