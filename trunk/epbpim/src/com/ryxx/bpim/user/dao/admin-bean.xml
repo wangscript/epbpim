@@ -20,10 +20,6 @@
 		<property name="target" ref="com.ryxx.bpim.user.service.AdminLogService.target" />
 	</bean>
 
-	<bean id="com.ryxx.bpim.user.dao.AdminDeptDAO" class="com.ryxx.bpim.user.dao.AdminDeptDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-
 	<bean id="com.ryxx.bpim.user.dao.AdminRoleDAO" class="com.ryxx.bpim.user.dao.AdminRoleDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -45,6 +41,9 @@
 		</property>
 	</bean>
 	
+	<bean id="com.ryxx.bpim.user.dao.AdminDeptDAO" class="com.ryxx.bpim.user.dao.AdminDeptDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	<bean id="adminDeptAction" class="com.ryxx.bpim.user.action.AdminDeptAction" scope="prototype">
 		<property name="adminDeptService">
 			<ref local="com.ryxx.bpim.user.service.AdminDeptService"/>
@@ -56,6 +55,9 @@
 	<bean id="com.ryxx.bpim.user.service.AdminDeptService.target" class="com.ryxx.bpim.user.service.AdminDeptServiceImpl">
 	</bean>
 	
+	<bean id="com.ryxx.bpim.user.dao.AdminFileDAO" class="com.ryxx.bpim.user.dao.AdminFileDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	<bean id="adminFileAction" class="com.ryxx.bpim.user.action.AdminFileAction" scope="prototype">
 		<property name="adminFileService">
 			<ref local="com.ryxx.bpim.user.service.AdminFileService"/>
