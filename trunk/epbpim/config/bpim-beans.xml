@@ -34,4 +34,21 @@
 			<ref local="adminDeptService"/>
 		</property>
 	</bean>
+	
+	<bean id="adminFileDAO" class="com.ryxx.bpim.dao.AdminFileDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="adminFileServiceTarget" class="com.ryxx.bpim.service.AdminFileServiceImpl">
+		<property name="adminFileDAO">
+			<ref local="adminFileDAO"/>
+		</property>
+	</bean>
+	<bean id="adminFileService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="adminFileServiceTarget"/>
+	</bean>
+	<bean id="adminFileAction" class="com.ryxx.bpim.web.action.UserInfoAction" scope="prototype">
+		<property name="adminFileService">
+			<ref local="adminFileService"/>
+		</property>
+	</bean>
 </beans>
