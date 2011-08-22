@@ -10,6 +10,15 @@
 	<bean id="com.ryxx.bpim.user.service.AdminMenuService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.user.service.AdminMenuService.target" />
 	</bean>
+	
+	<bean id="com.ryxx.bpim.user.dao.AdminLogDAO" class="com.ryxx.bpim.user.dao.AdminLogDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminLogService.target" class="com.ryxx.bpim.user.service.AdminLogServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminLogService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.AdminLogService.target" />
+	</bean>
 
 	<bean id="com.ryxx.bpim.user.dao.AdminDeptDAO" class="com.ryxx.bpim.user.dao.AdminDeptDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -30,6 +39,9 @@
 		</property>
 		<property name="adminMenuService">
 			<ref local="com.ryxx.bpim.user.service.AdminMenuService"/>
+		</property>
+		<property name="adminLogService">
+			<ref local="com.ryxx.bpim.user.service.AdminLogService"/>
 		</property>
 	</bean>
 	
