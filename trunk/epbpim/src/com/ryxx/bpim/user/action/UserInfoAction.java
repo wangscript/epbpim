@@ -82,7 +82,6 @@ public class UserInfoAction extends ActionSupportBase {
 			UserInfo userInfo = new UserInfo();
 			userInfo.setUserName(userName);
 //			userInfo.setPhone(request.getParameter("groupName"));
-			userInfo.setCheckExpire(checkExpire);
 			userInfo.setRowCount(pageNo);
 			userInfo.setPageSize(pageSize);
 			userInfos = userInfoService.listPage(userInfo, page);
