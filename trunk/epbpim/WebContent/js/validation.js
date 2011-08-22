@@ -78,7 +78,7 @@ function validate(frm) {
 				if (!/^[0-9]+$/g.test(field.value)) {
 					return alertAndFocus(lable + mustBeNumber);
 				}
-				if (maxValue && field.value > maxValue) {
+				if (maxValue && Number(field.value) > Number(maxValue)) {
 					return alertAndFocus(lable + mustLessThan + maxValue + exclamation );
 				}
 			} else if (datatype == accountType) {
