@@ -19,10 +19,6 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 				Criterion criterion1 = Restrictions.like("userName", "%" + userInfo.getUserName() + "%");
 				list.add(criterion1);
 			}
-			if (userInfo.isCheckExpire()) {
-				Criterion criterion2 = Restrictions.gt("expireDate", new Date());
-				list.add(criterion2);
-			}
 		}
 		Criterion[] criterions = {};
 		if(list != null && list.size() > 0) {
@@ -39,10 +35,6 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 			if(!StringUtils.isEmpty(userInfo1.getUserName())) {
 				Criterion criterion1 = Restrictions.like("userName", "%" + userInfo1.getUserName() + "%");
 				list.add(criterion1);
-			}
-			if (userInfo1.isCheckExpire()) {
-				Criterion criterion2 = Restrictions.gt("expireDate", new Date());
-				list.add(criterion2);
 			}
 		}
 		Criterion[] criterions = {};
