@@ -1,12 +1,18 @@
 package com.ryxx.bpim.user.action;
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.user.entity.AdminFile;
 import com.ryxx.bpim.user.service.AdminFileService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.io.FileUtil;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 
@@ -15,6 +21,9 @@ public class AdminFileAction extends ActionSupportBase
     
     /** 序列号  */
     private static final long serialVersionUID = 273482916839420012L;
+    
+    /** 目录分隔符 */
+    private final String FILE_SEAPRATOR = System.getProperty("file.separator");
     
     private AdminFile adminFile;
     
@@ -59,13 +68,22 @@ public class AdminFileAction extends ActionSupportBase
     
     public String addAdminFile()
     {
+        File newUploadFile = null;
         try
         {
+            newUploadFile = dealWithUploadFile();
+            
             adminFileService.saveAdminFile(adminFile);
         }
         catch (Exception e)
         {
             LOG.warn(e);
+            
+            if (null != newUploadFile)
+            {
+                newUploadFile.delete();
+            }
+            
             return ERROR;
         }
         return SUCCESS;
@@ -75,6 +93,20 @@ public class AdminFileAction extends ActionSupportBase
     {
         try
         {
+            String fileDir =
+                request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + adminFile.getFileModule();
+            
+            String filePath = adminFile.getFilePath();
+            if (null != filePath)
+            {
+                String delFileName = filePath.substring(filePath.lastIndexOf("/") + 1, filePath.length());
+                
+                if (!StringUtils.isEmpty(delFileName))
+                {
+                    new File(fileDir + FILE_SEAPRATOR + delFileName).delete();
+                }
+            }
+            
             adminFileService.deleteAdminFile(adminFile);
         }
         catch (Exception e)
@@ -83,6 +115,42 @@ public class AdminFileAction extends ActionSupportBase
             return ERROR;
         }
         return SUCCESS;
+    }
+    
+    private File dealWithUploadFile()
+        throws Exception
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String newFileName = sdf.format(new Date());
+        
+        String oldFileName = adminFile.getFileName();
+        if (oldFileName.contains("."))
+        {
+            newFileName += oldFileName.substring(oldFileName.lastIndexOf("."), oldFileName.length());
+        }
+        
+        String fileDir =
+            request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + adminFile.getFileModule();
+        
+        File fileDirFile = new File(fileDir);
+        if (!fileDirFile.exists())
+        {
+            fileDirFile.mkdirs();
+        }
+        File newUploadFile = new File(fileDir + FILE_SEAPRATOR + newFileName);
+        
+        FileUtil.copy(uploadFile, newUploadFile, false);
+        
+        String filePath =
+            "http://" + request.getLocalAddr() + ":" + request.getLocalPort() + request.getContextPath()
+                + "/uploadfile/" + adminFile.getFileModule() + "/" + newFileName;
+        
+        adminFile.setFilePath(filePath);
+        
+        adminFile.setUploadDate(new Timestamp(new Date().getTime()));
+        
+        return newUploadFile;
+        
     }
     
     public AdminFile getAdminFile()
