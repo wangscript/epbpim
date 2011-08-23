@@ -48,51 +48,41 @@
 										id="projectName" />*</li>
 									<li class="width250Li"><label class="width4Lb">编号:</label>
 										<input class="width150Input" name="projectBean.number"
-										id="projectNum" />
-									</li>
+										id="projectNum" /></li>
 									<li class="width200Li"><label class="width4Lb">用户名:</label>
 										<input class="width100Input" name="projectBean.name"
-										id="projectName" />
-									</li>
+										id="projectName" /></li>
 									<li class="width200Li"><label class="width4Lb">性别:</label><select
 										id="projectType" name="projectBean.majorType">
 											<option value="人防">--------男--------</option>
 											<option value="房修">--------女--------</option>
-									</select>
-									</li>
+									</select></li>
 
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width4Lb">出生年月:</label><input
 										class="Wdate width100Input" name="projectBean.startDate"
-										onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-									</li>
+										onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
 									<li class="width250Li"><label class="width4Lb">身份证:</label><input
 										class="width150Input" name="projectBean.number"
-										id="projectNum" />
-									</li>
+										id="projectNum" /></li>
 									<li class="width200Li"><label class="width4Lb">人事档案:</label><input
 										class="width100Input" name="projectBean.number"
-										id="projectNum" />
-									</li>
+										id="projectNum" /></li>
 									<li class="width200Li"><label class="width4Lb">党派:</label><input
 										class="width100Input" name="projectBean.number"
-										id="projectNum" />
-									</li>
+										id="projectNum" /></li>
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width450Li"><label class="width4Lb">家庭住址:</label><input
 										class="width350Input" name="projectBean.number"
-										id="projectNum" />
-									</li>
+										id="projectNum" /></li>
 									<li class="width200Li"><label class="width4Lb">电话:</label><input
 										class="width100Input" name="projectBean.number"
-										id="projectNum" />
-									</li>
+										id="projectNum" /></li>
 									<li class="width200Li"><label class="width4Lb">手机:</label><input
 										class="width100Input" name="projectBean.number"
-										id="projectNum" />
-									</li>
+										id="projectNum" /></li>
 
 								</ul>
 							</dd>
@@ -113,17 +103,19 @@
 											<option value="咨询1部">硕士</option>
 											<option value="咨询1部">博士</option>
 											<option value="咨询1部">博士后</option>
-									</select></li>
+									</select>
+									</li>
 									<li class="width250Li"><label class="width4Lb">学校名称:</label><input
 										class="width150Input" name="projectBean.number"
-										id="projectNum" /></li>
+										id="projectNum" />
+									</li>
 									<li class="width200Li"><label class="width4Lb">专业:</label><input
 										class="width100Input" name="projectBean.number"
-										id="projectNum" /></li>
+										id="projectNum" />
+									</li>
 									<li class="width200Li"><label class="width4Lb">毕业日期:</label><input
 										class="Wdate width100Input" name="projectBean.startDate"
-										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-									</li>
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">继续教育情况:</label>
@@ -131,7 +123,8 @@
 											<option value="0">---请选择---</option>
 											<option value="咨询1部">通过</option>
 											<option value="咨询1部">不通过</option>
-									</select></li>
+									</select>
+									</li>
 								</ul>
 							</dd>
 							<dt>
@@ -140,14 +133,46 @@
 								</h4>
 							</dt>
 							<dd>
-								<ul class="fullScreenUl" id="dept">
-									<li class="width200Li"><label class="width4Lb">所属部门:</label>
-										<select id="projectType" name="projectBean.majorType">
-											<option value="0">-----请选择-----</option>
-											<option value="咨询1部">咨询1部</option>
-											<option value="咨询1部">咨询2部</option>
-											<option value="咨询1部">咨询3部</option>
-									</select></li>
+								<ul class="fullScreenUlNoHeight">
+									<li class="width100Li"><label class="width4Lb">所属部门:</label>
+									</li>
+									<li><ul class="width800UlNoHeight"><li class="widthAutoLi"><label >财务部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >行政部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >咨询一部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >财务部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >行政部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >咨询一部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >财务部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >行政部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >咨询一部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >财务部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >行政部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >咨询一部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >财务部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >行政部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >咨询一部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >财务部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >行政部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >咨询一部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >财务部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >行政部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >咨询一部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >财务部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >行政部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >咨询一部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >财务部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >行政部</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >咨询一部</label> <input type="checkbox" > </li></ul></li>
+									
+								</ul>
+								<ul class="fullScreenUlNoHeight" id="role">
+									<li class="width100Li"><label class="width4Lb">职务:</label>
+										</li>
+									<li class="widthAutoLi"><label >总经理</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >副总经理</label> <input type="checkbox" > </li>
+									<li class="widthAutoLi"><label >项目总监</label> <input type="checkbox" > </li>
+								</ul>
+								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width4Lb">职称:</label>
 										<select id="projectType" name="projectBean.majorType">
 											<option value="0">-----请选择-----</option>
@@ -161,45 +186,20 @@
 											<option value="咨询1部">高级会计师</option>
 											<option value="咨询1部">中级会计师</option>
 											<option value="咨询1部">会计师</option>
-									</select></li>
-								</ul>
-								<ul class="fullScreenUl">
-									<li><input type="button" class="mediumLeftButton"
-										onclick="addDept();" value="新增所属部门">
-									</li>
-								</ul>
-								<ul class="fullScreenUl" id="role">
-									<li class="width200Li"><label class="width4Lb">职务:</label>
-										<select name="projectBean.majorType">
-											<option value="0">-----请选择-----</option>
-											<option value="无">总经理</option>
-											<option value="咨询1部">部门经理</option>
-											<option value="咨询1部">普通员工</option>
 									</select>
-									</li>
-								</ul>
-								<ul class="fullScreenUl">
-									<li><input type="button" class="mediumLeftButton"
-										onclick="addRole();" value="新增所处职务">
-									</li>
-								</ul>
-								<ul class="fullScreenUl">
 									</li>
 									<li class="width200Li"><label class="width4Lb">入职日期:</label><input
 										class="Wdate width100Input" name="projectBean.startDate"
-										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-									</li>
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
 									<li class="width200Li"><label class="width4Lb">离职日期:</label><input
 										class="Wdate width100Input" name="projectBean.startDate"
-										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-									</li>
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
 
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width4Lb">关联人:</label>
 										<input class="width100Input" name="projectBean.number"
-										id="projectNum" />
-									</li>
+										id="projectNum" /></li>
 									<li class="width250Li"><label class="width4Lb">状态:</label>
 										<select id="projectType" name="projectBean.majorType">
 											<option value="0">-----请选择-----</option>
@@ -207,8 +207,7 @@
 											<option value="咨询1部">离职</option>
 											<option value="咨询1部">返聘</option>
 											<option value="咨询1部">实习</option>
-									</select>
-									</li>
+									</select></li>
 
 									<li class="width200Li"><label class="width4Lb">缴纳保险:</label>
 										<select name="projectBean.majorType">
@@ -216,13 +215,13 @@
 											<option value="无">城保</option>
 											<option value="咨询1部">镇保</option>
 											<option value="咨询1部">综保</option>
-									</select>
-									</li>
+									</select></li>
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width450Li"><label class="width4Lb">备注:</label><input
 										class="width350Input" name="projectBean.number"
-										id="projectNum" /></li>
+										id="projectNum" />
+									</li>
 								</ul>
 							</dd>
 							<dt>
@@ -241,32 +240,30 @@
 												<option value="咨询1部">招标工程师</option>
 												<option value="咨询1部">一级建造师</option>
 												<option value="咨询1部">咨询(投资)工程师</option>
-										</select>
-										</li>
+										</select></li>
 										<li class="width250Li"><label class="width4Lb">证书编号:</label><input
 											class="width150Input" name="projectBean.number"
-											id="projectNum" /></li>
-										<li class="width200Li"><label class="width4Lb">专业:</label><input
-											class="width100Input" name="projectBean.number"
-											id="projectNum" /></li>
-										<li class="width200Li"><label class="width4Lb">有效期:</label><input
+											id="projectNum" />
+										</li>
+										<li class="width200Li"><label class="width3Lb">有效期:</label><input
 											class="Wdate width100Input" name="projectBean.startDate"
-											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
+											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+										</li>
+										<li class="width200Li"><label class="width2Lb">备注:</label><input
+											class="width150Input" name="projectBean.number"
+											id="projectNum" />
+										</li>
 										<li class="width50Li"><input type="button"
 											class="mediumLeftButton" onclick="deleteLicense(1);"
-											value="删除"></li>
+											value="删除">
+										</li>
 									</ul>
 								</div>
 								<ul class="fullScreenUl">
 									<li><input type="button" class="mediumLeftButton"
-										onclick="addLicense();" value="新增执业资格">
-									</li>
+										onclick="addLicense();" value="新增执业资格"></li>
 								</ul>
-								<ul class="fullScreenUl">
-									<li class="width450Li"><label class="width4Lb">备注:</label><input
-										class="width350Input" name="projectBean.number"
-										id="projectNum" /></li>
-								</ul>
+
 							</dd>
 						</dl>
 						<ul class="fullScreenUl">
@@ -306,9 +303,9 @@
 		var li2 = document.createElement("li");
 		li2.innerHTML = "<label class='width4Lb'>证书编号:</label><input class='width150Input' name='projectBean.number' id='projectNum' />";
 		var li3 = document.createElement("li");
-		li3.innerHTML = "<label class='width4Lb'>专业:</label><input class='width100Input' name='projectBean.number' id='projectNum' />";
+		li3.innerHTML = "<label class='width3Lb'>有效期:</label><input class='Wdate width100Input' name='projectBean.startDate' onfocus=WdatePicker({dateFmt:'yyyy-MM-dd'}) />";
 		var li4 = document.createElement("li");
-		li4.innerHTML = "<label class='width4Lb'>有效期:</label><input class='Wdate width100Input' name='projectBean.startDate' onfocus=WdatePicker({dateFmt:'yyyy-MM-dd'}) />";
+		li4.innerHTML = "<label class='width2Lb'>备注:</label><input class='width150Input' name='projectBean.number'	 id='projectNum' />";
 		var li5 = document.createElement("li");
 		var t = employeeLicences.children.length;
 		var id = "licence" + (t + 1);

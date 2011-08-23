@@ -422,6 +422,10 @@ ol li .send {
 	float: left;
 	width: 600px;
 }
+.widthAutoLi {
+	float: left;
+	width: auto;
+}
 
 .width50Input {
 	float: left;
