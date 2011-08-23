@@ -147,7 +147,7 @@ h3 {
 }
 
 .mainbar li {
-	margin-top: 5px;
+	
 }
 
 .mainbar .file {
@@ -273,6 +273,13 @@ h3 {
 	list-style: none outside none;
 	width: 900px;
 	margin-left: 30px;
+	margin-top:5px;
+	margin-bottom:10px;
+}
+.width800UlNoHeight{
+	float: left;
+	list-style: none outside none;
+	width: 800px;
 
 }
 
