@@ -292,7 +292,7 @@
 		var ul = document.createElement("ul");
 		ul.className = "fullScreenUl";
 		var li1 = document.createElement("li");
-		li1.innerHTML = "<label class='width4Lb'>资质:</label>"
+		li1.innerHTML = "<label class='width4Lb'>执业资格:</label>"
 				+ "<select id='projectType' name='projectBean.majorType'>"
 				+ "<option value='0'>------请选择------</option>"
 				+ "<option value='咨询1部'>造价工程师</option>"
