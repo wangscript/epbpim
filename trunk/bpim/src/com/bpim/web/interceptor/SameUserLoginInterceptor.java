@@ -54,20 +54,18 @@ public class SameUserLoginInterceptor implements Interceptor
         {
             
             boolean sameUserLoginFlag = false;
-            List invalidSessionList = new ArrayList();
             for (Object obj : userSessionList)
             {
                 Map userSession = (Map)obj;
                 
                 long userLoginTime = 0;
-                // 如果session无效,则会抛出异常,此时将session从用户列表中移除
+                // 如果session无效,则会抛出异常
                 try
                 {
                     userLoginTime = (Long)userSession.get(Constants.USER_LOGIN_TIME);
                 }
                 catch (Exception e)
                 {
-                    invalidSessionList.add(obj);
                     continue;
                 }
                 
@@ -77,7 +75,6 @@ public class SameUserLoginInterceptor implements Interceptor
                     break;
                 }
             }
-            userSessionList.removeAll(invalidSessionList);
             
             if (sameUserLoginFlag)
             {
