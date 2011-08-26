@@ -12,8 +12,18 @@
 <link href="../css/main.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
+<script type="text/javascript">
+	function showMsg()
+	{
+		var msg='<s:property value="msg" />';
+		if(msg)
+		{
+			alert(msg);
+		}		
+	}
+</script>
 </head>
-<body>
+<body onload="showMsg()">
 	<div id="main"><jsp:include page="mainHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
@@ -21,23 +31,33 @@
 					<div class="entry">
 						<h3 class="title">最新公告</h3>
 						<s:iterator value="newsAnnounces" status="st">
-							<ul>
-								<li ><s:hidden name="id" />
+							<ul style="margin-bottom: 5px; heigth: auto;">
+								<li><s:hidden name="id" />
 									<h4>
 										<s:property value="newsTitle" />
-										(<s:date name="addTimeTemp"
-										format="yyyy-MM-dd" /> <s:hidden name="addTime" />)
+										(
+										<s:date name="addTimeTemp" format="yyyy-MM-dd" />
+										<s:hidden name="addTime" />
+										)
 									</h4>
 								</li>
-							</ul>
-							<ul>
-								<li ><s:property
-										value="content" />
+								<li><s:property value="content" />
 								</li>
 							</ul>
 						</s:iterator>
+						<h3 style="padding-top: 20px;">意见反馈</h3>
+						<s:form action="addUserAdviceMain.do" method="post" onsubmit="alert('提交成功，感谢您的参与！')"
+							name="addUserAdviceForm" id="addUserAdviceForm">
+							<textarea style="width: 500px; height: 100px; margin-top: 4px;"
+								name="userAdvice.adviceContent"></textarea>
+							<input type="submit" class="button" value="提交">
+							<!-- end #content -->
+						</s:form>
 					</div>
+
 				</div>
+
+
 
 
 			</div>

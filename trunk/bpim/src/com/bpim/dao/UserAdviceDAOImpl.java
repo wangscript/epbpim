@@ -30,7 +30,7 @@ public class UserAdviceDAOImpl implements UserAdviceDAO
     {
         
         String sql = getQuerySql(queryUserAdvice, condition);
-        sql = sql + " ORDER BY ADVICE_DATE LIMIT ?,?";
+        sql = sql + " ORDER BY ADVICE_DATE DESC LIMIT ?,?";
         PreparedStatement stat = DBConnUtil.getPrepareStatement(sql);
         setConditionValue(stat, condition);
         stat.setInt(i, condition.getStartRow());
