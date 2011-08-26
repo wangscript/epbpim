@@ -30,7 +30,6 @@
 <div class="searchResult" id="searchResult">
 <ul>
 	<li style="width: 50px">类型</li>
-	<li style="width: 100px">编号</li>
 	<li style="width: 300px">名称</li>
 	<li style="width: 100px">规格</li>
 	<li style="width: 60px">单位</li>
@@ -40,7 +39,6 @@
 	<s:iterator value="datas" status="st">
 		<ul id="<s:property value='id'/>">
 			<li style="width: 50px"><s:property value="recordType" /></li>
-			<li style="width: 100px"><s:property value="recordNum" /></li>
 			<li style="width: 300px"><s:if
 				test="%{null!=recordName&&recordName.length()>30}">
 				<s:property value="recordName.substring(0, 29)+'...'" />

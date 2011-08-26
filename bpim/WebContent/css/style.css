@@ -101,13 +101,15 @@ input {
 }
 
 .adviceDiv {
-	height: 100px;
+	padding-top:30px;
+	width: 500px;
+	height: 140px;
 }
 
 
 .adviceDiv textarea {
 	width: 500px;
-	height: 250px;
+	height: 100px;
 	margin-top: 4px;
 }
 
@@ -178,7 +180,9 @@ input {
 .content .mainbar {
 	float: right;
 	width: 630px;
+	min-height: 455px;
 }
+
 
 .content .mainbar .article img {
 	border: 1px solid #dedede;

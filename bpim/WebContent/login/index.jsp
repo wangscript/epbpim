@@ -24,7 +24,7 @@ function getFocus()
 <div id="main"><jsp:include page="indexHeader.jsp" />
 <div class="content">
 <div class="content_resize">
-<div class="mainbar"><s:form action="login.do" name="login"
+<div class="mainbar indexMainbar"><s:form action="login.do" name="login"
 	method="post" id="loginForm">
 	<h2 class="title">用户登录</h2> 
 	<div id= "loginbar">
@@ -65,7 +65,7 @@ function getFocus()
 <script type="text/javascript">
 
 function toRegister(){
-	window.location.href = "../login/register.jsp";
+	window.location.href = "register.jsp";
 }
 function reloadIMG()
 {	

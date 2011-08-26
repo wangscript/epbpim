@@ -19,7 +19,8 @@
 }
 
 .content .mainbar {
-	width: 330px;	
+	width: 330px;
+	min-height: 230px;	
 }
 
 .mainbar ul{

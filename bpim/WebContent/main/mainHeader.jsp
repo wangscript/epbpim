@@ -115,26 +115,10 @@ function changeTitleBackground(){
 						onmouseover="displayCategory('publicInfo');"
 						onmouseout="unDisplayCategory('publicInfo');"><a>公共信息查询</a>
 						<ul id="publicInfo" style="display: none">
-							<li id="searchGovernmentQuota"
-								onmouseenter="displayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp',searchQuotaMenuHelp,'350px')"
-								onmouseleave="unDisplayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp')"
-								onmouseover="displayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp',searchQuotaMenuHelp,'350px')"
-								onmouseout="unDisplayMenuHelp('searchGovernmentQuota','searchGovernmentQuotaHelp')">	
-								<ul>
-									<li><a href="searchGovernmentQuota.jsp">定额查询 </a></li>
-									<li class="helpLi" id="searchGovernmentQuotaHelpLi"><a
-										class="helpA" id="searchGovernmentQuotaHelp"></a></li>
-								</ul></li>
-							<li id="searchGovernmentInventory_2003"
-							onmouseenter="displayMenuHelp('searchGovernmentInventory_2003','searchGovernmentInventory_2003_Help',searchGovernmentInventory_2003_menu_Help,'650px')"
-								onmouseleave="unDisplayMenuHelp('searchGovernmentInventory_2003','searchGovernmentInventory_2003_Help')"
-								onmouseover="displayMenuHelp('searchGovernmentInventory_2003','searchGovernmentInventory_2003_Help',searchGovernmentInventory_2003_menu_Help,'650px')"
-								onmouseout="unDisplayMenuHelp('searchGovernmentInventory_2003','searchGovernmentInventory_2003_Help')">
-								<ul>
-									<li><a href="searchGovernmentInventory_2003.jsp">2003清单查询</a></li>
-									<li class="helpLi" id="searchGovernmentInventory_2003_HelpLi"><a
-										class="helpA" id="searchGovernmentInventory_2003_Help"></a></li>
-								</ul></li>
+							<li id="searchGovernmentQuota">	
+								<a href="searchGovernmentQuota.jsp">定额查询 </a></li>
+							<li id="searchGovernmentInventory_2003">
+									<a href="searchGovernmentInventory_2003.jsp">2003清单查询</a></li>
 							<li id="searchGovernmentInventory_2008"><a
 								href="searchGovernmentInventory_2008.jsp">2008清单查询</a></li>
 							<li id="searchGovernmentFile"><a
