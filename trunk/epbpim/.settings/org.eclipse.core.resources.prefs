@@ -1,8 +1,17 @@
-#Sat Aug 13 00:57:12 CST 2011
+#Fri Aug 26 01:10:15 CST 2011
 eclipse.preferences.version=1
+encoding//config/globalMessages-src.properties=UTF-8
+encoding//config/globalMessages.properties=UTF-8
+encoding//sql/tables_ddl.sql=UTF-8
 encoding//sql/tables_dml.sql=UTF-8
 encoding//src/com/ryxx/bpim/common/Constants.java=UTF-8
 encoding//src/com/ryxx/bpim/user/action/AdminRoleAction.java=UTF-8
 encoding//src/com/ryxx/bpim/user/action/UserInfoAction.java=UTF-8
+encoding//src/com/ryxx/bpim/user/entity/UserInfo.java=UTF-8
+encoding//src/com/ryxx/bpim/user/enums/CertificationTypeEnum.java=UTF-8
+encoding//src/com/ryxx/bpim/user/enums/EduBackgroundEnum.java=UTF-8
+encoding//src/com/ryxx/bpim/user/enums/InsuranceTypeEnum.java=UTF-8
+encoding//src/com/ryxx/bpim/user/enums/UserStatusEnum.java=UTF-8
+encoding//src/com/ryxx/bpim/user/enums/UserTitleEnum.java=UTF-8
 encoding//src/com/ryxx/bpim/user/web/servlet/InitCacheService.java=UTF-8
 encoding//src/com/ryxx/util/validatecode/GenerateValidate.java=UTF-8

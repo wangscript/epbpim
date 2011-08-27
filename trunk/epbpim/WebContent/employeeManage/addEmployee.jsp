@@ -283,7 +283,7 @@
 		var li2 = document.createElement("li");
 		li2.innerHTML = "<label class='width4Lb'>证书编号:</label><input class='width150Input' name='certifies["+certifisCount+"].identity' id='certifies["+certifisCount+"].identity' />";
 		var li3 = document.createElement("li");
-		li3.innerHTML = "<label class='width3Lb'>有效期:</label><input class='Wdate width100Input' name='certifies["+certifisCount+"].expireDate' onfocus=WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'}) />";
+		li3.innerHTML = "<label class='width3Lb'>有效期:</label><input class='Wdate width100Input' name='certifies["+certifisCount+"].expireDate' onfocus=WdatePicker({dateFmt:'yyyy-MM-dd'}) />";
 		var li4 = document.createElement("li");
 		li4.innerHTML = "<label class='width2Lb'>备注:</label><input class='width150Input' name='certifies["+certifisCount+"].remark'	 id='certifies["+certifisCount+"].remark' />";
 		var li5 = document.createElement("li");
