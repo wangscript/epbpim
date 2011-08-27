@@ -15,6 +15,7 @@ public class AdminRole extends VoBase {
 	private Integer roleCount;
 	private String remark;
 	private List<AdminMenu> menuList;
+	private List<UserInfo> users;
 	
 	public Long getId() {
 		return id;
@@ -45,6 +46,12 @@ public class AdminRole extends VoBase {
 	}
 	public void setMenuList(List<AdminMenu> menuList) {
 		this.menuList = menuList;
+	}
+	public List<UserInfo> getUsers() {
+		return users;
+	}
+	public void setUsers(List<UserInfo> users) {
+		this.users = users;
 	}
 	public boolean equals(Object obj) {
 		if((this==obj)) {

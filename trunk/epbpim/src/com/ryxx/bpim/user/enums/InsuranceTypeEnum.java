@@ -37,7 +37,7 @@ public enum InsuranceTypeEnum {
                 return type;
             }
         }
-        return INSURANCE_CITY;
+        return PLSSELECT;
     }
 	
 	public static InsuranceTypeEnum getType(String name) {
@@ -46,6 +46,6 @@ public enum InsuranceTypeEnum {
 	        	return type;
 	    	}
 		}
-		return INSURANCE_CITY;
+		return PLSSELECT;
 	}
 }

@@ -43,7 +43,7 @@ public enum EduBackgroundEnum {
                 return type;
             }
         }
-        return JUNIOR;
+        return PLSSELECT;
     }
 	
 	public static EduBackgroundEnum getType(String name) {
@@ -52,6 +52,6 @@ public enum EduBackgroundEnum {
 	        	return type;
 	    	}
 		}
-		return JUNIOR;
+		return PLSSELECT;
 	}
 }

@@ -4,39 +4,48 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.ryxx.bpim.entity.VoBase;
+import com.ryxx.bpim.user.enums.EduBackgroundEnum;
+import com.ryxx.bpim.user.enums.InsuranceTypeEnum;
+import com.ryxx.bpim.user.enums.UserStatusEnum;
+import com.ryxx.bpim.user.enums.UserTitleEnum;
 
 public class UserInfo extends VoBase {
 	private static final long serialVersionUID = -5736014916018823802L;
 	
 	private Long id;
 	private String realName;
-	private String identify;
+	private String identity;
 	private String userName;
 	private Integer sex;
 	private String idCard;
 	private String humenFile;
 	private Timestamp birthday;
+	private String birthdayTmp;
 	private String familyAddress;
 	private String phone;
 	private String mobilePhone;
 	private String party;
-	private Integer eduBackground;
+	private EduBackgroundEnum eduBackground;
 	private String school;
 	private String major;
 	private Integer eduCountinue;
 	private Timestamp graduateDate;
+	private String graduateDateTmp;
 	private Timestamp onboardDate;
+	private String onboardDateTmp;
 	private Timestamp leaveDate;
+	private String leaveDateTmp;
 	private String relation;
-	private Integer status;
-	private Integer insuranceType;
+	private UserStatusEnum status;
+	private InsuranceTypeEnum insuranceType;
 	private String remark;
 	private String password;
 	private Timestamp registerDate;
+	private String registerDateTmp;
 	private String email;
-	private Integer title;
-	private List<AdminRole> role;
-	private List<AdminDept> dept;
+	private UserTitleEnum title;
+	private List<AdminRole> roles;
+	private List<AdminDept> depts;
 	private List<UserCertification> certifies;
 	
 	public Long getId() {
@@ -51,11 +60,11 @@ public class UserInfo extends VoBase {
 	public void setRealName(String realName) {
 		this.realName = realName;
 	}
-	public String getIdentify() {
-		return identify;
+	public String getIdentity() {
+		return identity;
 	}
-	public void setIdentify(String identify) {
-		this.identify = identify;
+	public void setIdentity(String identity) {
+		this.identity = identity;
 	}
 	public String getUserName() {
 		return userName;
@@ -111,12 +120,6 @@ public class UserInfo extends VoBase {
 	public void setParty(String party) {
 		this.party = party;
 	}
-	public Integer getEduBackground() {
-		return eduBackground;
-	}
-	public void setEduBackground(Integer eduBackground) {
-		this.eduBackground = eduBackground;
-	}
 	public String getSchool() {
 		return school;
 	}
@@ -159,18 +162,6 @@ public class UserInfo extends VoBase {
 	public void setRelation(String relation) {
 		this.relation = relation;
 	}
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-	public Integer getInsuranceType() {
-		return insuranceType;
-	}
-	public void setInsuranceType(Integer insuranceType) {
-		this.insuranceType = insuranceType;
-	}
 	public String getRemark() {
 		return remark;
 	}
@@ -195,29 +186,77 @@ public class UserInfo extends VoBase {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getTitle() {
+	public UserTitleEnum getTitle() {
 		return title;
 	}
-	public void setTitle(Integer title) {
+	public void setTitle(UserTitleEnum title) {
 		this.title = title;
 	}
-	public List<AdminRole> getRole() {
-		return role;
+	public List<AdminRole> getRoles() {
+		return roles;
 	}
-	public void setRole(List<AdminRole> role) {
-		this.role = role;
+	public void setRoles(List<AdminRole> roles) {
+		this.roles = roles;
 	}
-	public List<AdminDept> getDept() {
-		return dept;
+	public List<AdminDept> getDepts() {
+		return depts;
 	}
-	public void setDept(List<AdminDept> dept) {
-		this.dept = dept;
+	public void setDepts(List<AdminDept> depts) {
+		this.depts = depts;
 	}
 	public List<UserCertification> getCertifies() {
 		return certifies;
 	}
 	public void setCertifies(List<UserCertification> certifies) {
 		this.certifies = certifies;
+	}
+	public EduBackgroundEnum getEduBackground() {
+		return eduBackground;
+	}
+	public void setEduBackground(EduBackgroundEnum eduBackground) {
+		this.eduBackground = eduBackground;
+	}
+	public UserStatusEnum getStatus() {
+		return status;
+	}
+	public void setStatus(UserStatusEnum status) {
+		this.status = status;
+	}
+	public InsuranceTypeEnum getInsuranceType() {
+		return insuranceType;
+	}
+	public void setInsuranceType(InsuranceTypeEnum insuranceType) {
+		this.insuranceType = insuranceType;
+	}
+	public String getBirthdayTmp() {
+		return birthdayTmp;
+	}
+	public void setBirthdayTmp(String birthdayTmp) {
+		this.birthdayTmp = birthdayTmp;
+	}
+	public String getGraduateDateTmp() {
+		return graduateDateTmp;
+	}
+	public void setGraduateDateTmp(String graduateDateTmp) {
+		this.graduateDateTmp = graduateDateTmp;
+	}
+	public String getOnboardDateTmp() {
+		return onboardDateTmp;
+	}
+	public void setOnboardDateTmp(String onboardDateTmp) {
+		this.onboardDateTmp = onboardDateTmp;
+	}
+	public String getLeaveDateTmp() {
+		return leaveDateTmp;
+	}
+	public void setLeaveDateTmp(String leaveDateTmp) {
+		this.leaveDateTmp = leaveDateTmp;
+	}
+	public String getRegisterDateTmp() {
+		return registerDateTmp;
+	}
+	public void setRegisterDateTmp(String registerDateTmp) {
+		this.registerDateTmp = registerDateTmp;
 	}
 }
 
