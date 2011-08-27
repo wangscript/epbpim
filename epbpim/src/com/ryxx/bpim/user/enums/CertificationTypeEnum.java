@@ -17,45 +17,45 @@ public enum CertificationTypeEnum {
 	COST_MEMBER_BUILD(12,"造价员（建筑）"),
 	COST_MEMBER_CITY(13,"造价员（市政）");
 	
-	private String certifiName;
-	private int certifiKey;
+	private String value;
+	private int key;
 	
 	CertificationTypeEnum(int key, String value) {
-		this.certifiName = value;
-		this.certifiKey = key;
+		this.value = value;
+		this.key = key;
 	}
 
-	public String getCertifiName() {
-		return certifiName;
+	public String getValue() {
+		return value;
 	}
 
-	public void setCertifiName(String certifiName) {
-		this.certifiName = certifiName;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
-	public int getCertifiKey() {
-		return certifiKey;
+	public int getKey() {
+		return key;
 	}
 
-	public void setCertifiKey(int certifiKey) {
-		this.certifiKey = certifiKey;
+	public void setKey(int key) {
+		this.key = key;
 	}
-	
-	public static CertificationTypeEnum getType(int value) {
+
+	public static CertificationTypeEnum getType(int key) {
         for (CertificationTypeEnum type : CertificationTypeEnum.values()) {
-            if (type.certifiKey == value) {
+            if (type.key == key) {
                 return type;
             }
         }
-        return REGIST_SPECIALIST_SETUP;
+        return PLSSELECT;
     }
 	
-	public static CertificationTypeEnum getType(String name) {
+	public static CertificationTypeEnum getType(String value) {
 		for (CertificationTypeEnum type : CertificationTypeEnum.values()) {
-	    	if (type.certifiName.equals(name)) {
+	    	if (type.value.equals(value)) {
 	        	return type;
 	    	}
 		}
-		return REGIST_SPECIALIST_SETUP;
+		return PLSSELECT;
 	}
 }

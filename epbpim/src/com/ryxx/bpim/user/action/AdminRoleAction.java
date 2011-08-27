@@ -14,6 +14,7 @@ import com.ryxx.bpim.user.entity.AdminRole;
 import com.ryxx.bpim.user.service.AdminLogService;
 import com.ryxx.bpim.user.service.AdminMenuService;
 import com.ryxx.bpim.user.service.AdminRoleService;
+import com.ryxx.bpim.user.service.UserCertificationService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.cache.CacheMap;
 

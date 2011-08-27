@@ -6,6 +6,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath:bpim-config.properties</value>
+				<value>classpath:conversion.properties</value>
 			</list>
 		</property>
 	</bean>

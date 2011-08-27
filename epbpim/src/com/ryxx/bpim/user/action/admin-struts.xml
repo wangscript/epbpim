@@ -20,6 +20,16 @@
 		<action name="deleteRole" method="delete" class="adminRoleAction">
 			<result type="redirect-action">listRole.do</result>
 		</action>		
+		
+		<action name="newUserInfo" method="newUserInfo" class="userInfoAction">
+			<result>addEmployee.jsp</result>
+		</action>
+	    <action name="saveUsers" method="saveUsers" class="userInfoAction">
+			<result type="redirect-action">listUserInfo.do</result>
+		</action>
+		<action name="listUserInfo" method="listUserInfo" class="userInfoAction">
+			<result>/employeeManage/queryEmployee.jsp</result>
+		</action>
 	</package>
 	<package name="bpim-admindept" namespace="/department" extends="bpim-default">
 	    <action name="addAdminDept" method="addAdminDept" class="adminDeptAction">

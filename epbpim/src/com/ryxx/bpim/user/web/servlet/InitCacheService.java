@@ -34,15 +34,6 @@ public class InitCacheService extends HttpServlet {
         AdminRoleService roleService = (AdminRoleService) app.getBean("com.ryxx.bpim.user.service.AdminRoleService");
         AdminMenuService menuService = (AdminMenuService) app.getBean("com.ryxx.bpim.user.service.AdminMenuService");
         List<AdminRole> roleList = roleService.findRolesWithMenus();
-//        
-//        if(roleList != null && roleList.size()>0) {
-//        	for(int i=0; i<roleList.size(); i++) {
-//        		AdminRole role = roleService.fetchById(roleList.get(i).getId());
-//        		Hibernate.initialize(role.getMenuList());
-//        		List<AdminMenu> menu = role.getMenuList();
-//            	CacheMap.getInstance().addCache(Constants.ROLE+role.getId(), menuService.getMenuTree(menu));
-//        	}
-//        }
 		CacheMap.getInstance().addCache(Constants.MENU_CACHE, menuService.list());
 	}
 	
