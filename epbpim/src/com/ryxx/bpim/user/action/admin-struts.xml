@@ -22,7 +22,7 @@
 		</action>		
 		
 		<action name="newUserInfo" method="newUserInfo" class="userInfoAction">
-			<result>addEmployee.jsp</result>
+			<result>/employeeManage/addEmployee.jsp</result>
 		</action>
 	    <action name="saveUsers" method="saveUsers" class="userInfoAction">
 			<result type="redirect-action">listUserInfo.do</result>
