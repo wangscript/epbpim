@@ -131,7 +131,7 @@
 			</key>
 			<many-to-many class="AdminDept" column="DEPT_ID"/>
 		</bag>
-		<bag name="certifies" cascade="all-delete-orphan" lazy="true" inverse="false">
+		<bag name="certifies" table="USER_CERTIFICATION" cascade="all">
 			<key>
 				<column name="USER_ID" />
 			</key>

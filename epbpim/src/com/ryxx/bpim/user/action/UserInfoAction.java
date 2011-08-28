@@ -54,6 +54,25 @@ public class UserInfoAction extends ActionSupportBase {
 	private List<Long> deptGroup;
 	private List<Long> roleGroup;
 	
+	private String realName;
+	private String identify;
+	
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
+	public String getIdentify() {
+		return identify;
+	}
+
+	public void setIdentify(String identify) {
+		this.identify = identify;
+	}
+
 	private PageTools page;
 	public PageTools getPage() {
 		return page;
@@ -144,12 +163,40 @@ public class UserInfoAction extends ActionSupportBase {
 			int pageSize = ParamTools.getIntParameter(request,
 					Constants.PARA_PAGE_SIZE, 0);
 			PageTools page = new PageTools(pageNo, pageSize);
-			UserInfo userInfo = new UserInfo();
-			userInfo.setUserName(userInfo.getUserName());
-//			userInfo.setPhone(request.getParameter("groupName"));
-			userInfo.setRowCount(pageNo);
-			userInfo.setPageSize(pageSize);
-			userInfos = userInfoService.listPage(userInfo, page);
+			UserInfo userInfo1 = new UserInfo();
+			List<AdminRole> roles = adminRoleService.findAll();
+			userInfo = new UserInfo();
+			userInfo.setRoles(roles);
+			List<AdminDept> depts = adminDeptService.findAll();
+			userInfo.setDepts(depts);
+//			if(deptGroup != null) {
+//				List<AdminDept> depts = new ArrayList<AdminDept>();
+//				for(Long id: deptGroup) {
+//					AdminDept dept = new AdminDept();
+//					dept.setId(id);
+//					depts.add(dept);
+//				}
+//				userInfo1.setDepts(depts);
+//			}
+//			if(roleGroup != null) {
+//				List<AdminRole> roles = new ArrayList<AdminRole>();
+//				for(Long id: roleGroup) {
+//					AdminRole role = new AdminRole();
+//					role.setId(id);
+//					roles.add(role);
+//				}
+//				userInfo1.setRoles(roles);
+//			}
+//			userInfo1.setRealName(userInfo.getRealName());
+//			userInfo1.setIdentity(userInfo.getIdentity());
+			userInfo.setStatus(UserStatusEnum.getType(status==null?0:status));
+//			if(certifies != null) {
+//				certifies.get(0).setTypeId(CertificationTypeEnum.getType(certifies.get(0).getSelectId()));
+//			}
+//			userInfo1.setCertifies(certifies);
+			userInfo1.setRowCount(pageNo);
+			userInfo1.setPageSize(pageSize);
+			userInfos = userInfoService.listPage(userInfo1, page);
 			if (userInfos != null && userInfos.size() > 0) {
 				this.page = page;
 			} else {
