@@ -18,12 +18,25 @@
 	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
+<script type="text/javascript" src="../js/common.js"></script>
 <script type='text/javascript' src='../dwr/engine.js'></script>
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
+<script type="text/javascript">
+function clearPage(updateId){
+	var ps = document.getElementById("ps");
+	var pn = document.getElementById("pn");
+	if(ps != null) {
+		ps.options[1].selected = true;
+	}
+	if(pn != null) {
+		pn.options[0].selected = true;
+	}
+}
+</script>
 </head>
 <body>
-	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
+	<div id="main"><jsp:include page="../main/mainHeader.jsp" /><s:form>
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
@@ -79,7 +92,7 @@
 								class="button" value="查询"></li>
 						</ul>
 					</div>
-					<div class="searchResult" id="searchResult" style="display: none">
+					<div class="searchResult" id="searchResult">
 						<ul class="fullScreenUl">
 							<li class="width100Li"><label>部门</label></li>
 							<li class="width200Li"><label>姓名</label></li>
@@ -108,7 +121,7 @@
 										</s:iterator>
 									</label>
 								</li>
-								<li class="width100Li"><label><s:property value="id" /></label></li>
+								<li class="width100Li"><label><s:property value="mobilePhone" /></label></li>
 								<li class="width100Li">
 									<label>
 										<s:iterator value="certifies" status="certindx">
@@ -125,9 +138,11 @@
 									class="button" value="删除"></li>
 							</ul>
 						</s:iterator>
+						<ul class="fullScreenUl" align="center">
 						<jsp:include page="../common/pagination.jsp" flush="true">
 							<jsp:param name="action_page" value="employeeManage/listUserInfo.do" />
 						</jsp:include>
+						</ul>
 					</div>
 					<div></div>
 
@@ -137,7 +152,7 @@
 
 				<div class="clr"></div>
 			</div>
-		</div>
+		</div></s:form>
 		<!-- end #page -->
 		<jsp:include page="../common/footer.jsp" /></div>
 </body>
