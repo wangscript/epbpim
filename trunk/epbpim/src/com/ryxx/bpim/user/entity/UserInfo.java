@@ -47,6 +47,8 @@ public class UserInfo extends VoBase {
 	private List<AdminRole> roles;
 	private List<AdminDept> depts;
 	private List<UserCertification> certifies;
+	private Long roleId;
+	private Long deptId;
 	
 	public Long getId() {
 		return id;
@@ -257,6 +259,18 @@ public class UserInfo extends VoBase {
 	}
 	public void setRegisterDateTmp(String registerDateTmp) {
 		this.registerDateTmp = registerDateTmp;
+	}
+	public Long getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
+	public Long getDeptId() {
+		return deptId;
+	}
+	public void setDeptId(Long deptId) {
+		this.deptId = deptId;
 	}
 }
 

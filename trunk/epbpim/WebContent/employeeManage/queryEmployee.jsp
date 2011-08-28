@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="com.ryxx.bpim.user.enums.UserStatusEnum"%>
+<%@ page import="com.ryxx.bpim.user.enums.CertificationTypeEnum"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,50 +30,49 @@
 					<h3 class="title">员工查询</h3>
 					<div id="searchCondition">
 						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width2Lb">部门:</label><select
-								id="uploadUserProjectDataType" name="uploadUserProjectDataType">
-									<option value="0">--------请选择-------</option>
-									<option value="1">部门1</option>
-									<option value="2">部门2</option>
-									<option value="3">部门3</option>
-							</select></li>
-							<li class="width200Li"><label class="width4Lb">员工编号:</label>
-								<input class="width100Input" name="projectBean.deptName"
-								id="deptName" /></li>
-							<li class="width200Li"><label class="width3Lb">姓名:</label>
-								<input class="width100Input" name="projectBean.deptName"
-								id="deptName" /></li>
-							<li class="width250Li"><label class="width2Lb">状态:</label> <select
-								id="projectType" name="projectBean.majorType">
-									<option value="0">-----请选择-----</option>
-									<option value="无">在职</option>
-									<option value="咨询1部">离职</option>
-									<option value="咨询1部">返聘</option>
-									<option value="咨询1部">实习</option>
-							</select>
+							<li class="width200Li"><label class="width2Lb">部门:</label>
+								<s:select name="userInfo.deptId" list="userInfo.depts"
+									listKey="id" listValue="name" multiple="false"
+									required="true" onchange="" headerKey="0"
+									headerValue="--------请选择-------" />
 							</li>
-
+							<li class="width200Li"><label class="width4Lb">员工编号:</label>
+								<input class="width100Input" name="userInfo.identity"
+								id="userInfo.identity" /></li>
+							<li class="width200Li"><label class="width3Lb">姓名:</label>
+								<input class="width100Input" name="userInfo.realName"
+								id="userInfo.realName" /></li>
+								
+							<li class="width250Li"><label class="width2Lb">状态:</label>
+								<%
+									UserStatusEnum[] userStatus = UserStatusEnum.values();
+									request.setAttribute("userStatus", userStatus);
+								%>
+								<select id="status" name="status">
+									<s:iterator value="#request.userStatus" status="st">
+										<option value="<s:property value='key'/>"><s:property value='value'/></option>
+									</s:iterator>
+								</select>
+							</li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width2Lb">职务:</label> <select
-								id="projectType" name="projectBean.majorType">
-									<option value="0">------请选择------</option>
-									<option value="咨询1部">造价工程师</option>
-									<option value="咨询1部">造价员</option>
-									<option value="咨询1部">招标工程师</option>
-									<option value="咨询1部">一级建造师</option>
-									<option value="咨询1部">咨询(投资)工程师</option>
-							</select>
+							<li class="width200Li"><label class="width2Lb">职务:</label>
+							<s:select name="userInfo.roleId" list="userInfo.roles"
+									listKey="id" listValue="name" multiple="false"
+									required="true" onchange="" headerKey="0"
+									headerValue="--------请选择-------" />
 							</li>
-							<li class="width200Li"><label class="width2Lb">资质:</label> <select
-								id="projectType" name="projectBean.majorType">
-									<option value="0">------请选择------</option>
-									<option value="咨询1部">造价工程师</option>
-									<option value="咨询1部">造价员</option>
-									<option value="咨询1部">招标工程师</option>
-									<option value="咨询1部">一级建造师</option>
-									<option value="咨询1部">咨询(投资)工程师</option>
-							</select>
+							
+							<li class="width200Li"><label class="width4Lb">执业资格:</label>
+								<%
+									CertificationTypeEnum[] certifiTypes = CertificationTypeEnum.values();
+									request.setAttribute("certifiTypes", certifiTypes);
+								%>
+								<select id="certifies[0].selectId" name="certifies[0].selectId">
+									<s:iterator value="#request.certifiTypes" status="st">
+										<option value="<s:property value='key'/>"><s:property value='value'/></option>
+									</s:iterator>
+								</select>
 							</li>
 							<li><input type="button" id="searchProject"
 								class="mediumRightButton" onclick="displayResult();"
@@ -88,33 +89,45 @@
 							<li class="width50Li"><label>查看</label></li>
 							<li class="width50Li"><label>删除</label></li>
 						</ul>
-						<ul class="fullScreenUl">
-							<li class="width100Li"><label>部门1</label></li>
-							<li class="width200Li"><label>高志峰</label></li>
-							<li class="width200Li"><label>经理</label></li>
-							<li class="width100Li"><label>1293405966</label></li>
-							<li class="width100Li"><label>造价工程师</label></li>
-							<li class="width50Li"><input type="button" id="searchProject"
-								class="mediumRightButton" onclick="displayResult();"
-								class="button" value="查看"></li>
+						<s:iterator value="userInfos" status="st">
+							<ul class="fullScreenUl">
+								<li class="width100Li"><s:hidden name="id" />
+									<label>
+										<s:iterator value="depts" status="depindx">
+											<s:property value="name" />
+											<s:if test="!#depindx.last">,</s:if>
+										</s:iterator>
+									</label>
+								</li>
+								<li class="width200Li"><label><s:property value="realName" /></label></li>
+								<li class="width200Li">
+									<label>
+										<s:iterator value="roles" status="rolindx">
+											<s:property value="name" />
+											<s:if test="!#rolindx.last">,</s:if>
+										</s:iterator>
+									</label>
+								</li>
+								<li class="width100Li"><label><s:property value="id" /></label></li>
+								<li class="width100Li">
+									<label>
+										<s:iterator value="certifies" status="certindx">
+											<s:property value="remark" />
+											<s:if test="!#certindx.last">,</s:if>
+										</s:iterator>
+									</label>
+								</li>
 								<li class="width50Li"><input type="button" id="searchProject"
-								class="mediumRightButton" onclick="displayResult();"
-								class="button" value="删除"></li>
-						</ul>
-						<ul class="fullScreenUl"> 
-							<li class="width100Li"><label>部门2</label></li>
-							<li class="width200Li"><label>杨祚</label></li>
-							<li class="width200Li"><label>副经理</label></li>
-							<li class="width100Li"><label>13033405966</label></li>
-							<li class="width100Li"><label>造价工程师</label></li>
-								<li class="width50Li"><input type="button" id="searchProject"
-								class="mediumRightButton" onclick="displayResult();"
-								class="button" value="查看"></li>
-								<li class="width50Li"><input type="button" id="searchProject"
-								class="mediumRightButton" onclick="displayResult();"
-								class="button" value="删除"></li>
-						</ul>
-
+									class="mediumRightButton" onclick="displayResult();"
+									class="button" value="查看"></li>
+									<li class="width50Li"><input type="button" id="searchProject"
+									class="mediumRightButton" onclick="displayResult();"
+									class="button" value="删除"></li>
+							</ul>
+						</s:iterator>
+						<jsp:include page="../common/pagination.jsp" flush="true">
+							<jsp:param name="action_page" value="employeeManage/listUserInfo.do" />
+						</jsp:include>
 					</div>
 					<div></div>
 
