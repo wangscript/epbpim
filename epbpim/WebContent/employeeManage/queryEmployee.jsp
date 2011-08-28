@@ -95,7 +95,7 @@
 									<label>
 										<s:iterator value="depts" status="depindx">
 											<s:property value="name" />
-											<s:if test="!#depindx.last">,</s:if>
+											<s:if test="!#depindx.last"><br/></s:if>
 										</s:iterator>
 									</label>
 								</li>
@@ -104,7 +104,7 @@
 									<label>
 										<s:iterator value="roles" status="rolindx">
 											<s:property value="name" />
-											<s:if test="!#rolindx.last">,</s:if>
+											<s:if test="!#rolindx.last"><br/></s:if>
 										</s:iterator>
 									</label>
 								</li>
@@ -112,8 +112,8 @@
 								<li class="width100Li">
 									<label>
 										<s:iterator value="certifies" status="certindx">
-											<s:property value="remark" />
-											<s:if test="!#certindx.last">,</s:if>
+											<s:property value="typeId.value" />
+											<s:if test="!#certindx.last"><br/></s:if>
 										</s:iterator>
 									</label>
 								</li>
