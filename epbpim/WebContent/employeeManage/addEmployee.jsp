@@ -27,6 +27,7 @@
 <script type='text/javascript' src='../js/common.js'></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/delgado.pack.js"></script>
+<script type='text/javascript' src='../js/validation.js'></script>
 <script type="text/javascript">
 	$(function() {
 		$("dl").KandyTabs({
@@ -41,7 +42,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="saveUsers.do" method="post">
+					<s:form action="saveUsers.do" method="post" onsubmit="return validate(this);">
 					<h3 class="title">新增员工</h3>
 					<div id="addProjectTable">
 						<dl>
@@ -53,12 +54,14 @@
 									<li class="width200Li"><label class="width4Lb">姓名:</label>
 										<input class="width100Input" name="userInfo.realName"
 										id="userInfo.realName" />*</li>
+									<textValidate field="userInfo.realName" lableText="<s:text name='姓名' />" isValidate="true" min="0" max="100">
 									<li class="width250Li"><label class="width4Lb">编号:</label>
 										<input class="width150Input" name="userInfo.identity"
 										id="userInfo.identity" /></li>
 									<li class="width200Li"><label class="width4Lb">用户名:</label>
 										<input class="width100Input" name="userInfo.userName"
 										id="userInfo.userName" /></li>
+									<textValidate field="userInfo.userName" lableText="<s:text name='用户名' />" isValidate="true" min="0" max="100">
 									<li class="width200Li"><label class="width4Lb">性别:</label>
 									<select	id="userInfo.sex" name="userInfo.sex">
 											<option value="0">--------男--------</option>
@@ -72,6 +75,7 @@
 									<li class="width250Li"><label class="width4Lb">身份证:</label><input
 										class="width150Input" name="userInfo.idCard"
 										id="userInfo.idCard" /></li>
+									<textValidate field="roleCount" lableText="<s:text name='userInfo.idCard' />" isValidate="true" min="0" max="18"  dataType="int">
 									<li class="width200Li"><label class="width4Lb">人事档案:</label><input
 										class="width100Input" name="userInfo.humenFile"
 										id="userInfo.humenFile" /></li>
@@ -176,12 +180,12 @@
 									<li class="width200Li"><label class="width4Lb">关联人:</label>
 										<input class="width100Input" name="userInfo.relation"
 										id="userInfo.relation" /></li>
-									<li class="width250Li"><label class="width4Lb">状态:</label>
+									<li class="width200Li"><label class="width4Lb">状态:</label>
 									<%
 									UserStatusEnum[] userStatus = UserStatusEnum.values();
 										request.setAttribute("userStatus", userStatus);
 									%>
-									<select id="status" name="status">
+									<select id="status" name="status" class="width100Select">
 										<s:iterator value="#request.userStatus" status="st">
 											<option value="<s:property value='key'/>"><s:property value='value'/></option>
 										</s:iterator>
@@ -213,12 +217,12 @@
 							<dd>
 								<div id="employeeLicences">
 									<ul class="fullScreenUl" id="1">
-										<li class="width200Li"><label class="width4Lb">执业资格:</label>
+										<li class="width250Li"><label class="width4Lb">执业资格:</label>
 										<%
 										CertificationTypeEnum[] certifiTypes = CertificationTypeEnum.values();
 										request.setAttribute("certifiTypes", certifiTypes);
 									%>
-										<select id="certifies[0].selectId" name="certifies[0].selectId">
+										<select id="certifies[0].selectId" name="certifies[0].selectId" class="width150Select"> 
 											<s:iterator value="#request.certifiTypes" status="st">
 												<option value="<s:property value='key'/>"><s:property value='value'/></option>
 											</s:iterator>
@@ -227,12 +231,12 @@
 											class="width150Input" name="certifies[0].identity"
 											id="certifies[0].identity" />
 										</li>
-										<li>
+										<li class="width200Li">
 											<label class='width3Lb'>有效期:</label>
 											<input class='Wdate width100Input' name='certifies[0].expireDateFromPage' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 										</li>
-										<li class="width200Li"><label class="width2Lb">备注:</label><input
-											class="width150Input" name="certifies[0].remark"
+										<li class="width150Li"><label class="width2Lb">备注:</label><input
+											class="width100Input" name="certifies[0].remark"
 											id="certifies[0].remark" />
 										</li>
 										<li class="width50Li"><input type="button"
@@ -275,7 +279,7 @@
 		ul.className = "fullScreenUl";
 		var li1 = document.createElement("li");
 		li1.innerHTML = "<label class='width4Lb'>执业资格:</label>"
-				+ '<select id="certifies['+certifisCount+'].selectId" name="certifies['+certifisCount+'].selectId">'
+				+ '<select id="certifies['+certifisCount+'].selectId" name="certifies['+certifisCount+'].selectId" class="width150Select">'
 				+ '<s:iterator value="#request.certifiTypes" status="st">'
 				+ '<option value="<s:property value='key'/>"><s:property value='value'/></option>'
 				+ '</s:iterator>'
@@ -285,16 +289,16 @@
 		var li3 = document.createElement("li");
 		li3.innerHTML = "<label class='width3Lb'>有效期:</label><input class='Wdate width100Input' name='certifies["+certifisCount+"].expireDateFromPage' onfocus=WdatePicker({dateFmt:'yyyy-MM-dd'}) />";
 		var li4 = document.createElement("li");
-		li4.innerHTML = "<label class='width2Lb'>备注:</label><input class='width150Input' name='certifies["+certifisCount+"].remark'	 id='certifies["+certifisCount+"].remark' />";
+		li4.innerHTML = "<label class='width2Lb'>备注:</label><input class='width100Input' name='certifies["+certifisCount+"].remark'	 id='certifies["+certifisCount+"].remark' />";
 		var li5 = document.createElement("li");
 		var t = employeeLicences.children.length;
 		var id = "licence" + (t + 1);
 		li5.innerHTML = "<input type='button' class='mediumLeftButton' onclick='deleteLicense("
 				+ id + ")' value='删除'>";
-		li1.className = "width200Li";
+		li1.className = "width250Li";
 		li2.className = "width250Li";
 		li3.className = "width200Li";
-		li4.className = "width200Li";
+		li4.className = "width150Li";
 		li5.className = "width50Li";
 		ul.appendChild(li1);
 		ul.appendChild(li2);

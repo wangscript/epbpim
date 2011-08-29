@@ -74,7 +74,6 @@ textarea {
 }
 
 select {
-	text-shadow: #5f5f5f -1px 1px 2px;
 	color: #5f5f5f;
 	text-align: left;
 }
@@ -195,7 +194,6 @@ input {
 	background: url(../images/a_bg.gif) repeat-x center center;
 	text-decoration: none;
 	color: #5F5F5F;
-	text-shadow: #5f5f5f -1px 1px 2px;
 }
 
 ul.sb_menu,ul.ex_menu {
@@ -371,56 +369,67 @@ ol li .send {
 .width50Li {
 	float: left;
 	width: 50px;
+	min-height: 21px;
 }
 
 .width100Li {
 	float: left;
 	width: 100px;
+	min-height: 21px;
 }
 
 .width150Li {
 	float: left;
 	width: 150px;
+	min-height: 21px;
 }
 
 .width200Li {
 	float: left;
 	width: 200px;
+	min-height: 21px;
 }
 
 .width250Li {
 	float: left;
 	width: 250px;
+	min-height: 21px;
 }
 
 .width300Li {
 	float: left;
 	width: 300px;
+	min-height: 21px;
 }
 
 .width350Li {
 	float: left;
 	width: 350px;
+	min-height: 21px;
 }
 
 .width400Li {
 	float: left;
 	width: 400px;
+	min-height: 21px;
 }
 
 .width450Li {
 	float: left;
 	width: 450px;
+	min-height: 21px;
 }
 
 .width500Li {
 	float: left;
 	width: 500px;
+	min-height: 21px;
 }
 
 .width600Li {
 	float: left;
 	width: 600px;
+	min-height: 21px;
 }
 .widthAutoLi {
 	float: left;
@@ -470,6 +479,36 @@ ol li .send {
 .width500Input {
 	float: left;
 	width: 500px;
+}
+
+.width50Select {
+	float: left;
+	width: 50px;
+}
+
+.width100Select {
+	float: left;
+	width: 100px;
+}
+
+.width150Select {
+	float: left;
+	width: 150px;
+}
+
+.width200Select {
+	float: left;
+	width: 200px;
+}
+
+.width250Select {
+	float: left;
+	width: 250px;
+}
+
+.width300Select {
+	float: left;
+	width: 300px;
 }
 
 .width1Lb {
@@ -527,7 +566,6 @@ ol li .send {
 	background: url(../images/a_bg.gif) repeat-x center center;
 	text-decoration: none;
 	color: #5F5F5F;
-	text-shadow: #5f5f5f -1px 1px 2px;
 }
 
 .mediumLeftButton {
@@ -540,5 +578,4 @@ ol li .send {
 	background: url(../images/a_bg.gif) repeat-x center center;
 	text-decoration: none;
 	color: #5F5F5F;
-	text-shadow: #5f5f5f -1px 1px 2px;
 }
