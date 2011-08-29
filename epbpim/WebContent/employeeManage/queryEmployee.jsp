@@ -94,7 +94,7 @@ function clearPage(updateId){
 					</div>
 					<div class="searchResult" id="searchResult">
 						<ul class="fullScreenUl">
-							<li class="width200Li"><label>部门</label></li>
+							<li class="width150Li"><label>部门</label></li>
 							<li class="width50Li"><label>姓名</label></li>
 							<li class="width200Li"><label>职务</label></li>
 							<li class="width50Li"><label>手机号</label></li>
@@ -104,7 +104,7 @@ function clearPage(updateId){
 						</ul>
 						<s:iterator value="userInfos" status="st">
 							<ul class="fullScreenUl">
-								<li class="width200Li"><s:hidden name="id" />
+								<li class="width150Li"><s:hidden name="id" />
 									<label>
 										<s:iterator value="depts" status="depindx">
 											<s:property value="name" />
