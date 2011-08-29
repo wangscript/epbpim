@@ -94,17 +94,17 @@ function clearPage(updateId){
 					</div>
 					<div class="searchResult" id="searchResult">
 						<ul class="fullScreenUl">
-							<li class="width100Li"><label>部门</label></li>
-							<li class="width200Li"><label>姓名</label></li>
+							<li class="width200Li"><label>部门</label></li>
+							<li class="width50Li"><label>姓名</label></li>
 							<li class="width200Li"><label>职务</label></li>
-							<li class="width100Li"><label>手机号</label></li>
-							<li class="width100Li"><label>职业资质</label></li>
+							<li class="width50Li"><label>手机号</label></li>
+							<li class="width300Li"><label>职业资质</label></li>
 							<li class="width50Li"><label>查看</label></li>
 							<li class="width50Li"><label>删除</label></li>
 						</ul>
 						<s:iterator value="userInfos" status="st">
 							<ul class="fullScreenUl">
-								<li class="width100Li"><s:hidden name="id" />
+								<li class="width200Li"><s:hidden name="id" />
 									<label>
 										<s:iterator value="depts" status="depindx">
 											<s:property value="name" />
@@ -112,7 +112,7 @@ function clearPage(updateId){
 										</s:iterator>
 									</label>
 								</li>
-								<li class="width200Li"><label><s:property value="realName" /></label></li>
+								<li class="width50Li"><label><s:property value="realName" /></label></li>
 								<li class="width200Li">
 									<label>
 										<s:iterator value="roles" status="rolindx">
@@ -121,8 +121,8 @@ function clearPage(updateId){
 										</s:iterator>
 									</label>
 								</li>
-								<li class="width100Li"><label><s:property value="mobilePhone" /></label></li>
-								<li class="width100Li">
+								<li class="width50Li"><label><s:property value="mobilePhone" /></label></li>
+								<li class="width300Li">
 									<label>
 										<s:iterator value="certifies" status="certindx">
 											<s:property value="typeId.value" />
@@ -138,11 +138,9 @@ function clearPage(updateId){
 									class="button" value="删除"></li>
 							</ul>
 						</s:iterator>
-						<ul class="fullScreenUl" align="center">
 						<jsp:include page="../common/pagination.jsp" flush="true">
 							<jsp:param name="action_page" value="employeeManage/listUserInfo.do" />
 						</jsp:include>
-						</ul>
 					</div>
 					<div></div>
 
