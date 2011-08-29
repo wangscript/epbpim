@@ -7,7 +7,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>修改角色</title>
+<title>修改职务</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="../css/main.css" rel="stylesheet" type="text/css"
@@ -23,16 +23,16 @@
 			<div class="content_resize">
 				<div class="mainbar">
 					<form >
-						<h3 class="title">修改角色</h3>
+						<h3 class="title">修改职务</h3>
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
-								<li class="width200Li"><label class="width4Lb">角色名称:</label><input
+								<li class="width200Li"><label class="width4Lb">职务名称:</label><input
 									class="width100Input" name="projectBean.number" id="projectNum" />
 								</li>
-								<li class="width300Li"><label class="width9Lb">该角色用户最大数量:</label><input
+								<li class="width300Li"><label class="width9Lb">该职务用户最大数量:</label><input
 									class="width150Input" name="projectBean.number" id="projectNum" />
 								</li>
-								<li class="width400Li"><label class="width4Lb">角色说明:</label><input
+								<li class="width400Li"><label class="width4Lb">职务说明:</label><input
 									class="width300Input" name="projectBean.number" id="projectNum" />
 								</li>
 							</ul>
