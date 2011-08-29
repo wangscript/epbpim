@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
@@ -13,35 +14,42 @@ import com.ryxx.bpim.user.entity.UserInfo;
 public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements UserInfoDAO{
 	public int getRowCount(UserInfo userInfo) {
 		List<Criterion> list = new ArrayList<Criterion>();
+		Criteria criteria = getSession().createCriteria(UserInfo.class);
 		if(userInfo != null) {
-			if(!StringUtils.isEmpty(userInfo.getUserName())) {
-				Criterion criterion1 = Restrictions.like("userName", "%" + userInfo.getUserName() + "%");
-				list.add(criterion1);
+			if(!StringUtils.isEmpty(userInfo.getRealName())) {
+				criteria.add(Restrictions.like("realName", "%" + userInfo.getRealName() + "%"));
+			}
+			if(!StringUtils.isEmpty(userInfo.getIdentity())) {
+				criteria.add(Restrictions.like("identity", "%" + userInfo.getIdentity() + "%"));
+			}
+			if(userInfo.getDeptId() != null && userInfo.getDeptId()>0L) {
+				criteria.createCriteria("depts").add(Restrictions.in("id", new Object[]{userInfo.getDeptId()}));
+			}
+			if(userInfo.getRoleId() != null && userInfo.getRoleId()>0L) {
+				criteria.createCriteria("roles").add(Restrictions.in("id", new Object[]{userInfo.getRoleId()}));
 			}
 		}
-		Criterion[] criterions = {};
-		if(list != null && list.size() > 0) {
-			for(int i=0; i<list.size(); i++) {
-				criterions[i] = list.get(i);
-			}
-		}
-		return findByCriteria(criterions).size();
+		return criteria.list().size();
 	}
 	
-	public List<UserInfo> findByCount(UserInfo userInfo1) {
-		List<Criterion> list = new ArrayList<Criterion>();
-		if(userInfo1 != null) {
-			if(!StringUtils.isEmpty(userInfo1.getUserName())) {
-				Criterion criterion1 = Restrictions.like("userName", "%" + userInfo1.getUserName() + "%");
-				list.add(criterion1);
+	public List<UserInfo> findByCount(UserInfo userInfo) {
+		Criteria criteria = getSession().createCriteria(UserInfo.class);
+		if(userInfo != null) {
+			if(!StringUtils.isEmpty(userInfo.getRealName())) {
+				criteria.add(Restrictions.like("realName", "%" + userInfo.getRealName() + "%"));
+			}
+			if(!StringUtils.isEmpty(userInfo.getIdentity())) {
+				criteria.add(Restrictions.like("identity", "%" + userInfo.getIdentity() + "%"));
+			}
+			if(userInfo.getDeptId() != null && userInfo.getDeptId()>0L) {
+				criteria.createCriteria("depts").add(Restrictions.in("id", new Object[]{userInfo.getDeptId()}));
+			}
+			if(userInfo.getRoleId() != null && userInfo.getRoleId()>0L) {
+				criteria.createCriteria("roles").add(Restrictions.in("id", new Object[]{userInfo.getRoleId()}));
 			}
 		}
-		Criterion[] criterions = {};
-		if(list != null && list.size() > 0) {
-			for(int i=0; i<list.size(); i++) {
-				criterions[i] = list.get(i);
-			}
-		}
-		return findPageByPage(userInfo1.getStartRow(), userInfo1.getPageSize(), criterions);
+		criteria.setFirstResult(userInfo.getStartRow());
+		criteria.setMaxResults(userInfo.getPageSize());
+		return criteria.list();
 	}
 }

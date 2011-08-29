@@ -164,31 +164,21 @@ public class UserInfoAction extends ActionSupportBase {
 					Constants.PARA_PAGE_SIZE, 0);
 			PageTools page = new PageTools(pageNo, pageSize);
 			UserInfo userInfo1 = new UserInfo();
+			if(userInfo == null) {
+				userInfo = new UserInfo();
+			}
 			List<AdminRole> roles = adminRoleService.findAll();
-			userInfo = new UserInfo();
 			userInfo.setRoles(roles);
 			List<AdminDept> depts = adminDeptService.findAll();
 			userInfo.setDepts(depts);
-//			if(deptGroup != null) {
-//				List<AdminDept> depts = new ArrayList<AdminDept>();
-//				for(Long id: deptGroup) {
-//					AdminDept dept = new AdminDept();
-//					dept.setId(id);
-//					depts.add(dept);
-//				}
-//				userInfo1.setDepts(depts);
-//			}
-//			if(roleGroup != null) {
-//				List<AdminRole> roles = new ArrayList<AdminRole>();
-//				for(Long id: roleGroup) {
-//					AdminRole role = new AdminRole();
-//					role.setId(id);
-//					roles.add(role);
-//				}
-//				userInfo1.setRoles(roles);
-//			}
-//			userInfo1.setRealName(userInfo.getRealName());
-//			userInfo1.setIdentity(userInfo.getIdentity());
+			if(userInfo.getDeptId() != null && userInfo.getDeptId()>0L) {
+				userInfo1.setDeptId(userInfo.getDeptId());
+			}
+			if(userInfo.getRoleId() != null && userInfo.getRoleId()>0L) {
+				userInfo1.setRoleId(userInfo.getRoleId());
+			}
+			userInfo1.setRealName(userInfo.getRealName());
+			userInfo1.setIdentity(userInfo.getIdentity());
 			userInfo.setStatus(UserStatusEnum.getType(status==null?0:status));
 //			if(certifies != null) {
 //				certifies.get(0).setTypeId(CertificationTypeEnum.getType(certifies.get(0).getSelectId()));

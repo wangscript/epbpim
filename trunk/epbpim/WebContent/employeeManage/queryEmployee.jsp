@@ -87,8 +87,8 @@ function clearPage(updateId){
 									</s:iterator>
 								</select>
 							</li>
-							<li><input type="button" id="searchProject"
-								class="mediumRightButton" onclick="displayResult();"
+							<li><input type="submit" id="searchProject"
+								class="mediumRightButton"
 								class="button" value="查询"></li>
 						</ul>
 					</div>
@@ -138,9 +138,11 @@ function clearPage(updateId){
 									class="button" value="删除"></li>
 							</ul>
 						</s:iterator>
-						<jsp:include page="../common/pagination.jsp" flush="true">
-							<jsp:param name="action_page" value="employeeManage/listUserInfo.do" />
-						</jsp:include>
+						<ul class="fullScreenUl">
+							<jsp:include page="../common/pagination.jsp" flush="true">
+								<jsp:param name="action_page" value="employeeManage/listUserInfo.do" />
+							</jsp:include>
+						</ul>
 					</div>
 					<div></div>
 
