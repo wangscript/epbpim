@@ -75,7 +75,7 @@
 									<li class="width250Li"><label class="width4Lb">身份证:</label><input
 										class="width150Input" name="userInfo.idCard"
 										id="userInfo.idCard" /></li>
-									<textValidate field="roleCount" lableText="<s:text name='userInfo.idCard' />" isValidate="true" min="0" max="18"  dataType="int">
+									<textValidate field="roleCount" lableText="<s:text name='userInfo.idCard' />" isValidate="true" dataType="codeType">
 									<li class="width200Li"><label class="width4Lb">人事档案:</label><input
 										class="width100Input" name="userInfo.humenFile"
 										id="userInfo.humenFile" /></li>
