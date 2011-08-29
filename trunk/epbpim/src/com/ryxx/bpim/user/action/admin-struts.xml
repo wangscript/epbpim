@@ -27,6 +27,12 @@
 	    <action name="saveUsers" method="saveUsers" class="userInfoAction">
 			<result type="redirect-action">listUserInfo.do</result>
 		</action>
+		<action name="showUser" method="showUser" class="userInfoAction">
+			<result>/employeeManage/getEmployee.jsp</result>
+		</action>
+		<action name="updateUser" method="updateUser" class="userInfoAction">
+			<result type="redirect-action">listUserInfo.do</result>
+		</action>
 		<action name="listUserInfo" method="listUserInfo" class="userInfoAction">
 			<result>/employeeManage/queryEmployee.jsp</result>
 		</action>

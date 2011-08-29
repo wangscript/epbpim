@@ -99,7 +99,7 @@ function clearPage(updateId){
 							<li class="width200Li"><label>职务</label></li>
 							<li class="width50Li"><label>手机号</label></li>
 							<li class="width300Li"><label>职业资质</label></li>
-							<li class="width50Li"><label>查看</label></li>
+							<li class="width50Li"><label>修改</label></li>
 							<li class="width50Li"><label>删除</label></li>
 						</ul>
 						<s:iterator value="userInfos" status="st">
@@ -130,9 +130,12 @@ function clearPage(updateId){
 										</s:iterator>
 									</label>
 								</li>
-								<li class="width50Li"><input type="button" id="searchProject"
-									class="mediumRightButton" onclick="displayResult();"
-									class="button" value="查看"></li>
+								<li class="width50Li">
+									<s:form action="showUser.do">
+									<input type="submit" id="searchProject"
+										class="mediumRightButton" class="button" value="修改">
+									</s:form>
+								</li>
 									<li class="width50Li"><input type="button" id="searchProject"
 									class="mediumRightButton" onclick="displayResult();"
 									class="button" value="删除"></li>
