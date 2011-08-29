@@ -40,6 +40,7 @@ public class UserInfoAction extends ActionSupportBase {
 	private UserCertificationService userCertificationService;
 	private AdminLogService adminLogService;
 	
+	private Long id;
 	private Integer eduBackGround;
 	private Integer title;
 	private Integer status;
@@ -73,6 +74,14 @@ public class UserInfoAction extends ActionSupportBase {
 		this.identify = identify;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	private PageTools page;
 	public PageTools getPage() {
 		return page;
@@ -92,6 +101,21 @@ public class UserInfoAction extends ActionSupportBase {
 		userInfo.setRoles(roles);
 		List<AdminDept> depts = adminDeptService.findAll();
 		userInfo.setDepts(depts);
+		userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
+		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
+		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
+		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
+		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+		return SUCCESS;
+	}
+	
+	public String showUser() {
+//		List<AdminRole> roles = adminRoleService.findAll();
+		userInfo = new UserInfo();
+//		userInfo = userInfoService.findById(id);
+//		userInfo.setRoles(roles);
+//		List<AdminDept> depts = adminDeptService.findAll();
+//		userInfo.setDepts(depts);
 		userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
 		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
 		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
@@ -136,24 +160,6 @@ public class UserInfoAction extends ActionSupportBase {
 		}
 		userInfoService.save(userInfo);
 		return SUCCESS;
-	}
-	
-	public String adminLogin() { 
-		try {
-			String[] passUser = ParamTools.getProperty(request, Constants.ADMINLOGININFO).split(",");
-			for(int i=0;i<passUser.length;i++) {
-				String[] users = passUser[i].split(":");
-				if(userInfo.getUserName().equals(users[0]) && userInfo.getPassword().equals(users[1])) {
-					session.put(Constants.ADMIN_LOGIN_USER_NAME, userInfo.getUserName());
-					return SUCCESS;
-				}
-			}
-			super.addFieldError("validateCode", super.getText("ç”¨æˆ·å��æˆ–å¯†ç �é”™è¯¯"));
-			return INPUT;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return ERROR;
-		}
 	}
 
 	public String listUserInfo() {
