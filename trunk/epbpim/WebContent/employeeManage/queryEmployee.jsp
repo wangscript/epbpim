@@ -104,7 +104,7 @@ function clearPage(updateId){
 						</ul>
 						<s:iterator value="userInfos" status="st">
 							<ul class="fullScreenUl">
-								<li class="width150Li"><s:hidden name="id" />
+								<li class="width150Li">
 									<label>
 										<s:iterator value="depts" status="depindx">
 											<s:property value="name" />
@@ -131,10 +131,9 @@ function clearPage(updateId){
 									</label>
 								</li>
 								<li class="width50Li">
-									<s:form action="showUser.do">
-									<input type="submit" id="searchProject"
-										class="mediumRightButton" class="button" value="修改">
-									</s:form>
+									<form action="showUser.do" id='showUser<s:property value="id"/>'>
+										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="修改"><s:hidden name="id" />
+									</form>
 								</li>
 									<li class="width50Li"><input type="button" id="searchProject"
 									class="mediumRightButton" onclick="displayResult();"

@@ -112,7 +112,7 @@ public class UserInfoAction extends ActionSupportBase {
 	public String showUser() {
 //		List<AdminRole> roles = adminRoleService.findAll();
 		userInfo = new UserInfo();
-//		userInfo = userInfoService.findById(id);
+		setUserInfo(userInfoService.fetchById(id));
 //		userInfo.setRoles(roles);
 //		List<AdminDept> depts = adminDeptService.findAll();
 //		userInfo.setDepts(depts);

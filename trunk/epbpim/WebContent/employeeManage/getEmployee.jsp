@@ -52,48 +52,50 @@
 							<dd>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width4Lb">姓名:</label>
-										<input class="width100Input" name="userInfo.realName"
-										id="userInfo.realName" />*</li>
+										<s:textfield cssClass="width100Input" name="userInfo.realName" />
+									*</li>
 									<textValidate field="userInfo.realName" lableText="<s:text name='姓名' />" isValidate="true" min="0" max="100">
 									<li class="width250Li"><label class="width4Lb">编号:</label>
-										<input class="width150Input" name="userInfo.identity"
-										id="userInfo.identity" /></li>
+										<s:textfield cssClass="width150Input" name="userInfo.identity" />
+									</li>
 									<li class="width200Li"><label class="width4Lb">用户名:</label>
-										<input class="width100Input" name="userInfo.userName"
-										id="userInfo.userName" /></li>
+										<s:textfield cssClass="width100Input" name="userInfo.userName" />
+									</li>
 									<textValidate field="userInfo.userName" lableText="<s:text name='用户名' />" isValidate="true" min="0" max="100">
 									<li class="width200Li"><label class="width4Lb">性别:</label>
-									<select	id="userInfo.sex" name="userInfo.sex">
-											<option value="0">--------男--------</option>
-											<option value="1">--------女--------</option>
-									</select></li>
+										<s:select name="userInfo.sex"
+									       list="#{'0':'男','1':'女'}"
+									       listKey="key"
+									       listValue="value"
+									       multiple="false"
+					       				onchange=""/>
+									</li>
 								</ul>
 								<ul class="fullScreenUl">
-									<li class="width200Li"><label class="width4Lb">出生年月:</label><input
-										class="Wdate width100Input" name="userInfo.birthdayTmp"
-										onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
-									<li class="width250Li"><label class="width4Lb">身份证:</label><input
-										class="width150Input" name="userInfo.idCard"
-										id="userInfo.idCard" /></li>
+									<li class="width200Li"><label class="width4Lb">出生年月:</label>
+										<s:textfield cssClass="Wdate width100Input" name="userInfo.birthdayTmp" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+									</li>
+									<li class="width250Li"><label class="width4Lb">身份证:</label>
+										<s:textfield cssClass="width150Input" name="userInfo.idCard" />
+									</li>
 									<textValidate field="roleCount" lableText="<s:text name='userInfo.idCard' />" isValidate="true" dataType="codeType">
-									<li class="width200Li"><label class="width4Lb">人事档案:</label><input
-										class="width100Input" name="userInfo.humenFile"
-										id="userInfo.humenFile" /></li>
-									<li class="width200Li"><label class="width4Lb">党派:</label><input
-										class="width100Input" name="userInfo.party"
-										id="userInfo.party" /></li>
+									<li class="width200Li"><label class="width4Lb">人事档案:</label>
+										<s:textfield cssClass="width100Input" name="userInfo.humenFile" />
+									</li>
+									<li class="width200Li"><label class="width4Lb">党派:</label>
+										<s:textfield cssClass="width100Input" name="userInfo.party" />
+									</li>
 								</ul>
 								<ul class="fullScreenUl">
-									<li class="width450Li"><label class="width4Lb">家庭住址:</label><input
-										class="width350Input" name="userInfo.familyAddress"
-										id="userInfo.familyAddress" /></li>
-									<li class="width200Li"><label class="width4Lb">电话:</label><input
-										class="width100Input" name="userInfo.phone"
-										id="userInfo.phone" /></li>
-									<li class="width200Li"><label class="width4Lb">手机:</label><input
-										class="width100Input" name="userInfo.mobilePhone"
-										id="userInfo.mobilePhone" /></li>
-
+									<li class="width450Li"><label class="width4Lb">家庭住址:</label>
+										<s:textfield cssClass="width350Input" name="userInfo.familyAddress" />
+									</li>
+									<li class="width200Li"><label class="width4Lb">电话:</label>
+										<s:textfield cssClass="width100Input" name="userInfo.phone" />
+									</li>
+									<li class="width200Li"><label class="width4Lb">手机:</label>
+										<s:textfield cssClass="width100Input" name="userInfo.mobilePhone" />
+									</li>
 								</ul>
 							</dd>
 							<dt>
@@ -112,25 +114,24 @@
 										</s:iterator>
 									</select>
 									</li>
-									<li class="width250Li"><label class="width4Lb">学校名称:</label><input
-										class="width150Input" name="userInfo.school"
-										id="userInfo.school" />
+									<li class="width250Li"><label class="width4Lb">学校名称:</label>
+										<s:textfield cssClass="width150Input" name="userInfo.school" />
 									</li>
-									<li class="width200Li"><label class="width4Lb">专业:</label><input
-										class="width100Input" name="userInfo.major"
-										id="userInfo.major" />
+									<li class="width200Li"><label class="width4Lb">专业:</label>
+										<s:textfield cssClass="width100Input" name="userInfo.major" />
 									</li>
-									<li class="width200Li"><label class="width4Lb">毕业日期:</label><input
-										class="Wdate width100Input" name="userInfo.graduateDateTmp"
-										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
+									<li class="width200Li"><label class="width4Lb">毕业日期:</label>
+										<s:textfield cssClass="Wdate width100Input" name="userInfo.graduateDateTmp" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+									</li>
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">继续教育情况:</label>
-										<select id="userInfo.eduCountinue" name="userInfo.eduCountinue">
-											<option value="0">---请选择---</option>
-											<option value="1">通过</option>
-											<option value="2">不通过</option>
-									</select>
+										<s:select name="userInfo.eduCountinue"
+									       list="#{'0':'---请选择---','1':'通过','2':'不通过'}"
+									       listKey="key"
+									       listValue="value"
+									       multiple="false"
+					       				   onchange=""/>
 									</li>
 								</ul>
 							</dd>
@@ -145,7 +146,11 @@
 									</li>
 									<li><ul class="width800UlNoHeight">
 									<s:iterator value="userInfo.depts" status="st">
-										<li class="widthAutoLi"><input type="checkbox" value="<s:property value="id"/>" name="deptGroup" id="<s:property value='id'/>"><label ><s:property value='name'/></label></li>
+										<li class="widthAutoLi">
+											<s:checkboxlist list="depts" name="capabilityCode_chkbox" listKey="code" 
+											listValue="name" onchange="chgChkBoxValue('capabilityCode',this)" />
+											<input type="checkbox" value="<s:property value="id"/>" name="deptGroup" id="<s:property value='id'/>"><label ><s:property value='name'/></label>
+										</li>
 									</s:iterator>
 									</ul></li>
 									
