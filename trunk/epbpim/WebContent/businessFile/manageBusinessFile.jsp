@@ -20,31 +20,46 @@
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 </head>
-<body>
+<body onload="setValue()">
 <div id="main"><jsp:include page="../main/mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
 <h3 class="title">业务文件管理</h3>
 <div id="searchCondition">
-	<s:form action="schBusinessFileList.do" method="post">
+	<s:form id="searchFileForm" action="schBusinessFileList.do" method="post">
 		<input type="hidden" name="adminFile.fileModule" id="adminFile.fileModule" value="1">
 		<ul class="fullScreenUl">
-			<li class="width200Li">
-				<label>文件类别：</label>
-				<select id="adminFile.fileType" name="adminFile.fileType">
-					<option value="">--请选择--</option>
-					<option value="1" <s:if test="1==adminFile.fileType">selected</s:if>>董事会文件</option>
-					<option value="2" <s:if test="2==adminFile.fileType">selected</s:if>>财税文件</option>
-					<option value="3" <s:if test="3==adminFile.fileType">selected</s:if>>工商文件</option>
-				</select>
+			<li class="width300Li">
+				<table>
+					<tr>
+						<td><label>文件类别：</label></td>
+						<td>
+							<div id="moveSpan1" style="position:relative;" >
+							<span style="margin-left:147px;width:175px;overflow:hidden;position:relative;" id="devmodelNamespan">
+							<select id="devmodelBak" name="mainDevInfo.deviceModelId" style="width:165px;margin-left:-147px;BORDER-LEFT:#9DE4FF 1px solid;BORDER-RIGHT:#9DE4FF 1px solid;FONT-SIZE: 9pt;HEIGHT:21px;"  onchange="fillFileType(this)">
+								<option value="">--请选择--</option>
+								<option value="董事会文件">董事会文件</option>
+								<option value="财税文件">财税文件</option>
+								<option value="工商文件">工商文件</option>
+				     			<s:iterator id="model" value="#request.mainDevInfo" status="stats">
+				         			<option value="${model.deviceModelId }"><s:property value="#model.deviceModelName"/></option>
+								</s:iterator>
+							</select>
+							</span>
+							<input id="adminFile.fileType" name="adminFile.fileType" type="text" style="width:142px;position:absolute;left:0px;BORDER-RIGHT:#9DE4FF 1px solid;FONT-SIZE: 9pt;HEIGHT:15px;color: #cdcdcd;" value="<s:property value='adminFile.fileType' />"
+									onclick="clearValue(this)" onblur="setValue()" maxlength="50"/>
+							</div>
+						</td>
+					</tr>
+				</table>
 			</li>
 			<li class="width200Li">
 				<label>文件名:</label>
 				<input type="text" class="" name="adminFile.fileName" id="adminFile.fileName" value="<s:property value='adminFile.fileName' />"/>
 			</li>
 			<li>
-				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
+				<input type="button" class="mediumButton" style="float: right" class="button" onclick="searchFileList()" value="查询">
 			</li>
 		</ul>
 	</s:form>
@@ -70,17 +85,7 @@
 		<s:iterator value="adminFileList" status="st">
 			<ul class="fullScreenUl">
 				<li class="width200Li"><s:property value="fileName" /></li>
-				<li class="width200Li">
-					<s:if test="1==fileType">
-						<s:text name="董事会文件" />
-					</s:if>
-					<s:elseif test="2==fileType">
-						<s:text name="财税文件" />
-					</s:elseif>
-					<s:elseif test="3==fileType">
-						<s:text name="工商文件" />
-					</s:elseif>
-				</li>
+				<li class="width200Li"><s:property value="fileType" /></li>
 				<li class="width200Li"><s:date name="uploadDate" format="yyyy-MM-dd hh:mm:ss" /></li>
 				<li class="width50Li">
 					<form action="schBusinessFile.do" method="post" id='searchfile<s:property value="id" />'>
@@ -112,6 +117,15 @@
 <!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
+	function searchFileList()
+	{
+		var obj=document.getElementById("adminFile.fileType");
+		if(obj.value=="<s:text name='请输入文件类别'/>")
+		{
+	       obj.value="";
+		}
+		document.getElementById("searchFileForm").submit();
+	}
 	function searchFile(id)
 	{
 		// document.getElementById(id).submit();
@@ -122,6 +136,35 @@
 		{
 			document.getElementById(id).submit();
 		}
+	}
+	
+	function fillFileType(obj)
+	{
+		document.getElementById("adminFile.fileType").value= obj.options[obj.selectedIndex].value;
+		setValue(document.getElementById("adminFile.fileType"));
+	}
+
+	function clearValue(obj)
+	{
+		if(obj.style.color=="#cdcdcd")
+		{
+			obj.value="";
+			obj.style.color="";
+		}				   
+	}
+	//set input value when input is logindomain
+	function setValue()
+	{
+	   var obj=document.getElementById("adminFile.fileType");
+	   if(obj.value!=""&&obj.value!="<s:text name='请输入文件类别'/>")
+	   {
+	       obj.style.color="";
+	   }
+	   else if(obj.value==''||obj.value=="<s:text name='请输入文件类别'/>")
+	   {
+	       obj.value="<s:text name='请输入文件类别'/>";
+	       obj.style.color="#cdcdcd";
+	   }
 	}
 </script>
 </html>
