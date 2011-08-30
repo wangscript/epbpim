@@ -36,12 +36,13 @@ function clearPage(updateId){
 </script>
 </head>
 <body>
-	<div id="main"><jsp:include page="../main/mainHeader.jsp" /><s:form>
+	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
 					<h3 class="title">员工查询</h3>
 					<div id="searchCondition">
+					<s:form>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width2Lb">部门:</label>
 								<s:select name="userInfo.deptId" list="userInfo.depts"
@@ -91,6 +92,7 @@ function clearPage(updateId){
 								class="mediumRightButton"
 								class="button" value="查询"></li>
 						</ul>
+						</s:form>
 					</div>
 					<div class="searchResult" id="searchResult">
 						<ul class="fullScreenUl">
@@ -154,7 +156,7 @@ function clearPage(updateId){
 
 				<div class="clr"></div>
 			</div>
-		</div></s:form>
+		</div>
 		<!-- end #page -->
 		<jsp:include page="../common/footer.jsp" /></div>
 </body>

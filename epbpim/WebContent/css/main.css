@@ -47,7 +47,7 @@ h3 {
 .header .category li {
 	background: url("../images/menu.gif") repeat-x scroll center top
 		transparent;
-	height: 43px;
+	height: 40px;
 	float: left;
 	width: 120px;
 	margin-left: 1px;
@@ -77,7 +77,7 @@ h3 {
 	display: block;
 	font-weight: bold;
 	margin: 0;
-	padding: 14px 8px;
+	padding: 9px 8px;
 	text-decoration: none;
 }
 
