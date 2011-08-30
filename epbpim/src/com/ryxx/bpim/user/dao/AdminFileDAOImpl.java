@@ -50,7 +50,7 @@ public class AdminFileDAOImpl extends AbstractBaseDAO<AdminFile, Long> implement
             }
             if (!StringUtils.isEmpty(adminFile.getFileType()))
             {
-                Criterion criterion2 = Restrictions.eq("fileType", adminFile.getFileType());
+                Criterion criterion2 = Restrictions.like("fileType", "%" + adminFile.getFileType() + "%");
                 list.add(criterion2);
             }
         }
