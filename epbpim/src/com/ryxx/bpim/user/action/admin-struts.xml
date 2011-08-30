@@ -59,7 +59,7 @@
 			<result type="redirect-action">schBusinessFileList.do</result>
 		</action>
 		<action name="schBusinessFileList" method="schAdminFileList" class="adminFileAction">
-			<result>/businessFile/businessFileManage.jsp</result>
+			<result>/businessFile/manageBusinessFile.jsp</result>
 		</action>
 	</package>
 </struts>
