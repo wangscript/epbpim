@@ -89,6 +89,11 @@ function checkParam()
 		alert("请输入文件类别！");
 		return false;
     }
+	if(!document.getElementById('adminFile.fileName').value)
+    {
+		alert("请选择文件！");
+		return false;
+    }	
 }
 
 function fillFileType(obj)
