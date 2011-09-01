@@ -42,6 +42,17 @@ public class AdminFileAction extends ActionSupportBase
             if (null == adminFile)
             {
                 adminFile = new AdminFile();
+                
+                String requestURI = request.getRequestURI();
+                
+                if (requestURI.toLowerCase().contains("business"))
+                {
+                    adminFile.setFileModule("1");
+                }
+                else if (requestURI.toLowerCase().contains("iso"))
+                {
+                    adminFile.setFileModule("2");
+                }
             }
             int pageNo = ParamTools.getIntParameter(request, Constants.PARA_PAGE_NO, 1);
             int pageSize = ParamTools.getIntParameter(request, Constants.PARA_PAGE_SIZE, 0);
