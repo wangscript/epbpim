@@ -43,6 +43,11 @@ public class AdminFileDAOImpl extends AbstractBaseDAO<AdminFile, Long> implement
         List<Criterion> list = new ArrayList<Criterion>();
         if (adminFile != null)
         {
+            if (!StringUtils.isEmpty(adminFile.getFileModule()))
+            {
+                Criterion criterion3 = Restrictions.eq("fileModule", adminFile.getFileModule());
+                list.add(criterion3);
+            }
             if (!StringUtils.isEmpty(adminFile.getFileName()))
             {
                 Criterion criterion1 = Restrictions.like("fileName", "%" + adminFile.getFileName() + "%");
