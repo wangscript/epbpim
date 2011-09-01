@@ -22,7 +22,7 @@ VALUES(13,'典型工程查询','../publicInfo/queryHistoryProject.jsp',1,1,4);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
 VALUES(20,'文件上传','../businessFile/uploadBusinessFile.jsp',2,1,1);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(21,'文件查询','../businessFile/queryBusinessFile.jsp',2,1,2);
+VALUES(21,'文件查询','../businessFile/schBusinessFileList.do',2,1,2);
 
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
 VALUES(30,'录入项目','../projectManage/addProject.jsp',3,1,1);
