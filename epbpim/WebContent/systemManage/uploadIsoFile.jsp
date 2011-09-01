@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>iso文件上传</title>
+<title>业务文件上传</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="../css/main.css" rel="stylesheet" type="text/css"
@@ -19,48 +19,52 @@
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
-<h3 class="title">iso文件上传</h3>
+<h3 class="title">业务文件上传</h3>
 <div id="">
-<ul class="fullScreenUl">
-	<li class="width200Li"><label>文件类别：</label><select id="uploadUserProjectDataType" name="uploadUserProjectDataType"
-		>
-		<option value="0">--请选择--</option>
-		<option value="0">董事会文件</option>
-		<option value="0">财税文件</option>
-		<option value="0">工商文件</option>
-	</select></li>
-	</ul>
-	<ul class="fullScreenUl">
-	<li>
-		<s:file name="uploadUserProjectData"  id="uploadUserProjectDataFile" 
-		onchange="getObject('uploadUserProjectDataInput').value=this.value" />	
-		<input type="text" class="file" name="uploadUserProjectDataInput" style="display:none"
-		id="uploadUserProjectDataInput">
-		<!-- <input type="button" value="选择" class="button"
-		onClick="getObject('uploadUserProjectDataFile').click()"> -->
-	</li>
-	<li><input type="button"
-		onclick="upload('uploadUserProjectData');"
-		class="button" style="width: 70px;" value="上传"></li>
-	</ul>
-
-
+	<s:form action="addIsoFile.do" enctype="multipart/form-data" method="post">
+		<input type="hidden" name="adminFile.fileModule" id="adminFile.fileModule" value="2">
+		<ul class="fullScreenUl">
+			<li class="width300Li">
+				<s:file name="uploadFile" id="uploadFile" size="40" onchange="chooseFile()" />
+				<input type="hidden" name="adminFile.fileName" id="adminFile.fileName">
+			</li>
+		</ul>	
+		<ul class="fullScreenUl">	
+			<li class="width200Li">
+				<input type="submit" class="button" style="width: 70px;" value="上传" onclick="return checkParam();">
+			</li>
+		</ul>
+	</s:form>
 </div>
 </div>
-
 <!-- end #content -->
-
-
 <div class="clr"></div>
 </div>
 </div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
+<!-- end #page --> 
+<jsp:include page="../common/footer.jsp" />
+</div>
 
 </body>
 <script type='text/javascript' src='../dwr/engine.js'></script>
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script type='text/javascript' src='../dwr/interface/MessageService.js'></script>
 <script type="text/javascript">
+function chooseFile()
+{
+	var uploadFile = $('uploadFile');
+	var filePath=uploadFile.value;
+    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length);
+    document.getElementById('adminFile.fileName').value=fileName;
+}
 
+function checkParam()
+{
+	if(!document.getElementById('adminFile.fileName').value)
+    {
+		alert("请选择文件！");
+		return false;
+    }
+}
 </script>
 </html>
