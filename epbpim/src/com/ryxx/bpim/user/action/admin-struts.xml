@@ -62,4 +62,17 @@
 			<result>/businessFile/manageBusinessFile.jsp</result>
 		</action>
 	</package>
+	<package name="bpim-isofilesch" namespace="/publicInfo" extends="bpim-default">
+		<action name="delIsoList" method="delAdminFile" class="adminFileAction">
+			<result type="redirect-action">schIsoList.do</result>
+		</action>
+		<action name="schIsoList" method="schAdminFileList" class="adminFileAction">
+			<result>/publicInfo/queryIsoFile.jsp</result>
+		</action>
+	</package>
+	<package name="bpim-isofileupadd" namespace="/systemManage" extends="bpim-default">
+		<action name="addIsoFile" method="addAdminFile" class="adminFileAction">
+			<result type="redirect-action">../publicInfo/schIsoList.do</result>
+		</action>
+	</package>
 </struts>
