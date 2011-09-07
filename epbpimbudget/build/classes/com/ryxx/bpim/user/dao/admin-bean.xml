@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="com.ryxx.bpim.user.dao.AdminMenuDAO" class="com.ryxx.bpim.user.dao.AdminMenuDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="com.ryxx.bpim.user.service.AdminMenuService.target" class="com.ryxx.bpim.user.service.AdminMenuServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminMenuService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.AdminMenuService.target" />
+	</bean>
+	
+	<bean id="com.ryxx.bpim.user.dao.AdminLogDAO" class="com.ryxx.bpim.user.dao.AdminLogDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminLogService.target" class="com.ryxx.bpim.user.service.AdminLogServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminLogService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.AdminLogService.target" />
+	</bean>
+
+	<bean id="com.ryxx.bpim.user.dao.AdminRoleDAO" class="com.ryxx.bpim.user.dao.AdminRoleDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="com.ryxx.bpim.user.service.AdminRoleService.target" class="com.ryxx.bpim.user.service.AdminRoleServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminRoleService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.AdminRoleService.target" />
+	</bean>
+	<bean id="adminRoleAction" class="com.ryxx.bpim.user.action.AdminRoleAction" scope="prototype">
+		<property name="adminRoleService">
+			<ref local="com.ryxx.bpim.user.service.AdminRoleService"/>
+		</property>
+		<property name="adminMenuService">
+			<ref local="com.ryxx.bpim.user.service.AdminMenuService"/>
+		</property>
+		<property name="adminLogService">
+			<ref local="com.ryxx.bpim.user.service.AdminLogService"/>
+		</property>
+	</bean>
+	
+	<bean id="com.ryxx.bpim.user.dao.AdminDeptDAO" class="com.ryxx.bpim.user.dao.AdminDeptDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminDeptService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.AdminDeptService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminDeptService.target" class="com.ryxx.bpim.user.service.AdminDeptServiceImpl">
+	</bean>
+	<bean id="adminDeptAction" class="com.ryxx.bpim.user.action.AdminDeptAction" scope="prototype">
+		<property name="adminDeptService">
+			<ref local="com.ryxx.bpim.user.service.AdminDeptService"/>
+		</property>
+	</bean>
+	
+	<bean id="com.ryxx.bpim.user.dao.UserCertificationDAO" class="com.ryxx.bpim.user.dao.UserCertificationDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.UserCertificationService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.UserCertificationService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.UserCertificationService.target" class="com.ryxx.bpim.user.service.UserCertificationServiceImpl">
+	</bean>
+	
+	<bean id="com.ryxx.bpim.user.dao.UserInfoDAO" class="com.ryxx.bpim.user.dao.UserInfoDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.UserInfoService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.UserInfoService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.UserInfoService.target" class="com.ryxx.bpim.user.service.UserInfoServiceImpl">
+	</bean>
+	<bean id="userInfoAction" class="com.ryxx.bpim.user.action.UserInfoAction" scope="prototype">
+		<property name="userInfoService">
+			<ref local="com.ryxx.bpim.user.service.UserInfoService"/>
+		</property>
+		<property name="adminDeptService">
+			<ref local="com.ryxx.bpim.user.service.AdminDeptService"/>
+		</property>
+		<property name="adminRoleService">
+			<ref local="com.ryxx.bpim.user.service.AdminRoleService"/>
+		</property>
+		<property name="userCertificationService">
+			<ref local="com.ryxx.bpim.user.service.UserCertificationService"/>
+		</property>
+		<property name="adminLogService">
+			<ref local="com.ryxx.bpim.user.service.AdminLogService"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="com.ryxx.bpim.user.dao.AdminFileDAO" class="com.ryxx.bpim.user.dao.AdminFileDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="adminFileAction" class="com.ryxx.bpim.user.action.AdminFileAction" scope="prototype">
+		<property name="adminFileService">
+			<ref local="com.ryxx.bpim.user.service.AdminFileService"/>
+		</property>
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminFileService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.AdminFileService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminFileService.target" class="com.ryxx.bpim.user.service.AdminFileServiceImpl">
+	</bean>
+</beans>
