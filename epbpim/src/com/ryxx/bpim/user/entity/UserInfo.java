@@ -3,6 +3,9 @@ package com.ryxx.bpim.user.entity;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import com.ryxx.bpim.entity.VoBase;
 import com.ryxx.bpim.user.enums.EduBackgroundEnum;
 import com.ryxx.bpim.user.enums.InsuranceTypeEnum;
@@ -271,6 +274,19 @@ public class UserInfo extends VoBase {
 	}
 	public void setDeptId(Long deptId) {
 		this.deptId = deptId;
+	}
+	public boolean equals(Object obj) {
+		if((this==obj)) {
+			return true;
+		}
+		if(!(obj instanceof UserInfo)) {
+			return false;
+		}
+		UserInfo userInfo = (UserInfo)obj;
+		return new EqualsBuilder().append(this.getId(), userInfo.getId()).isEquals();
+	}
+	public int hashCode() {
+		return new HashCodeBuilder().append(getId()).toHashCode();
 	}
 }
 

@@ -144,7 +144,7 @@
 									<li class="width100Li"><label class="width4Lb">所属部门:</label>
 									</li>
 									<li><ul class="width800UlNoHeight">
-									<s:iterator value="userInfo.depts" status="st">
+									<s:iterator value="allDepts" status="st">
 										<li class="widthAutoLi"><input type="checkbox" value="<s:property value="id"/>" name="deptGroup" id="<s:property value='id'/>"><label ><s:property value='name'/></label></li>
 									</s:iterator>
 									</ul></li>
@@ -152,7 +152,7 @@
 								</ul>
 								<ul class="fullScreenUlNoHeight" id="role">
 									<li class="width100Li"><label class="width4Lb">职务:</label></li>
-									<s:iterator value="userInfo.roles" status="st">
+									<s:iterator value="allRoles" status="st">
 										<li class="widthAutoLi"><input type="checkbox" name="roleGroup" value="<s:property value="id"/>" id="<s:property value='id'/>"><label ><s:property value='name'/></label></li>
 									</s:iterator>
 								</ul>
@@ -219,9 +219,9 @@
 									<ul class="fullScreenUl" id="1">
 										<li class="width250Li"><label class="width4Lb">执业资格:</label>
 										<%
-										CertificationTypeEnum[] certifiTypes = CertificationTypeEnum.values();
-										request.setAttribute("certifiTypes", certifiTypes);
-									%>
+											CertificationTypeEnum[] certifiTypes = CertificationTypeEnum.values();
+											request.setAttribute("certifiTypes", certifiTypes);
+										%>
 										<select id="certifies[0].selectId" name="certifies[0].selectId" class="width150Select"> 
 											<s:iterator value="#request.certifiTypes" status="st">
 												<option value="<s:property value='key'/>"><s:property value='value'/></option>
