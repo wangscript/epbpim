@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.httpclient.util.DateUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -45,12 +46,15 @@ public class UserInfoAction extends ActionSupportBase {
 	private Integer title;
 	private Integer status;
 	private Integer type;
-	private List<String> certifiTypes;
+	private List<Integer> certifiTypes;
 	private Timestamp stamp;
 	
 	private List<UserInfo> userInfos;
 	private UserInfo userInfo;
 	private List<UserCertification> certifies;
+	
+	private List<AdminRole> allRoles;
+	private List<AdminDept> allDepts;
 	
 	private List<Long> deptGroup;
 	private List<Long> roleGroup;
@@ -98,9 +102,9 @@ public class UserInfoAction extends ActionSupportBase {
 	public String newUserInfo() {
 		List<AdminRole> roles = adminRoleService.findAll();
 		userInfo = new UserInfo();
-		userInfo.setRoles(roles);
+		setAllRoles(roles);
 		List<AdminDept> depts = adminDeptService.findAll();
-		userInfo.setDepts(depts);
+		setAllDepts(depts);
 		userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
 		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
 		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
@@ -110,17 +114,35 @@ public class UserInfoAction extends ActionSupportBase {
 	}
 	
 	public String showUser() {
-//		List<AdminRole> roles = adminRoleService.findAll();
-		userInfo = new UserInfo();
+		List<AdminRole> roles = adminRoleService.findAll();
+		setAllRoles(roles);
+		List<AdminDept> depts = adminDeptService.findAll();
+		setAllDepts(depts);
 		setUserInfo(userInfoService.fetchById(id));
-//		userInfo.setRoles(roles);
-//		List<AdminDept> depts = adminDeptService.findAll();
-//		userInfo.setDepts(depts);
-		userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
-		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
-		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
-		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
+		setEduBackGround(userInfo.getEduBackground().getKey());
+		setTitle(userInfo.getTitle().getKey());
+		setStatus(userInfo.getStatus().getKey());
+		setType(userInfo.getInsuranceType().getKey());
+		List<Long> deptGp = new ArrayList<Long>();
+		for(AdminDept dept: userInfo.getDepts()) {
+			deptGp.add(dept.getId());
+		}
+		setDeptGroup(deptGp);
+		List<Long> roleGp = new ArrayList<Long>();
+		for(AdminRole role: userInfo.getRoles()) {
+			roleGp.add(role.getId());
+		}
+		for(UserCertification certification: userInfo.getCertifies()) {
+			certification.setSelectId(certification.getTypeId().getKey());
+			certification.setExpireDateFromPage(DateUtil.formatDate(certification.getExpireDate(), "yyyy-MM-dd"));
+		}
+		setCertifies(userInfo.getCertifies());
+		userInfo.setBirthdayTmp(DateUtil.formatDate(userInfo.getBirthday(), "yyyy-MM-dd"));
+		userInfo.setGraduateDateTmp(DateUtil.formatDate(userInfo.getGraduateDate(), "yyyy-MM-dd"));
+		userInfo.setLeaveDateTmp(DateUtil.formatDate(userInfo.getLeaveDate(), "yyyy-MM-dd"));
+		userInfo.setOnboardDateTmp(DateUtil.formatDate(userInfo.getOnboardDate(), "yyyy-MM-dd"));
 		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+		setRoleGroup(roleGp);
 		return SUCCESS;
 	}
 	
@@ -158,6 +180,55 @@ public class UserInfoAction extends ActionSupportBase {
 			}
 			userInfo.setRoles(roles);
 		}
+		userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
+		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
+		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
+		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
+		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+		userInfoService.save(userInfo);
+		return SUCCESS;
+	}
+	
+	public String updateUser() {
+		if(certifies != null) {
+			List<UserCertification> certifs = new ArrayList<UserCertification>();
+			for(UserCertification certification: certifies) {
+				if(certification.getSelectId()>0) {
+					certification.setTypeId(CertificationTypeEnum.getType(certification.getSelectId()));
+					certification.setExpireDate(new Timestamp(StringTools.string2date(certification.getExpireDateFromPage()+" 00:00:00").getTime()));
+					certifs.add(certification);
+				}
+			}
+			userInfo.setCertifies(certifs);
+		}
+		userInfo.setEduBackground(EduBackgroundEnum.getType(eduBackGround));
+		userInfo.setTitle(UserTitleEnum.getType(title));
+		userInfo.setStatus(UserStatusEnum.getType(status));
+		userInfo.setInsuranceType(InsuranceTypeEnum.getType(type));
+		if(deptGroup != null) {
+			List<AdminDept> depts = new ArrayList<AdminDept>();
+			for(Long id: deptGroup) {
+				AdminDept dept = new AdminDept();
+				dept.setId(id);
+				depts.add(dept);
+			}
+			userInfo.setDepts(depts);
+		}
+		if(roleGroup != null) {
+			List<AdminRole> roles = new ArrayList<AdminRole>();
+			for(Long id: roleGroup) {
+				AdminRole role = new AdminRole();
+				role.setId(id);
+				roles.add(role);
+			}
+			userInfo.setRoles(roles);
+		}
+		userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
+		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
+		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
+		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
+		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+		userInfo.setId(id);
 		userInfoService.save(userInfo);
 		return SUCCESS;
 	}
@@ -289,11 +360,11 @@ public class UserInfoAction extends ActionSupportBase {
 		this.type = type;
 	}
 
-	public List<String> getCertifiTypes() {
+	public List<Integer> getCertifiTypes() {
 		return certifiTypes;
 	}
 
-	public void setCertifiTypes(List<String> certifiTypes) {
+	public void setCertifiTypes(List<Integer> certifiTypes) {
 		this.certifiTypes = certifiTypes;
 	}
 
@@ -336,6 +407,22 @@ public class UserInfoAction extends ActionSupportBase {
 
 	public void setRoleGroup(List<Long> roleGroup) {
 		this.roleGroup = roleGroup;
+	}
+
+	public List<AdminRole> getAllRoles() {
+		return allRoles;
+	}
+
+	public void setAllRoles(List<AdminRole> allRoles) {
+		this.allRoles = allRoles;
+	}
+
+	public List<AdminDept> getAllDepts() {
+		return allDepts;
+	}
+
+	public void setAllDepts(List<AdminDept> allDepts) {
+		this.allDepts = allDepts;
 	}
 
 	public static void main(String[] args) {

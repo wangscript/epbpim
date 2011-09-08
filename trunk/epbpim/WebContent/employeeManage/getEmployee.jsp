@@ -7,6 +7,8 @@
 <%@ page import="com.ryxx.bpim.user.enums.UserStatusEnum"%>
 <%@ page import="com.ryxx.bpim.user.enums.InsuranceTypeEnum"%>
 <%@ page import="com.ryxx.bpim.user.enums.CertificationTypeEnum"%>
+<%@ page import="com.ryxx.bpim.user.entity.UserCertification"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,7 +44,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="saveUsers.do" method="post" onsubmit="return validate(this);">
+					<s:form action="updateUser.do" method="post" onsubmit="return validate(this);">
 					<h3 class="title">修改员工</h3>
 					<div id="addProjectTable">
 						<dl>
@@ -52,7 +54,7 @@
 							<dd>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width4Lb">姓名:</label>
-										<s:textfield cssClass="width100Input" name="userInfo.realName" />
+										<s:textfield cssClass="width100Input" name="userInfo.realName" /><s:hidden name="id" />
 									*</li>
 									<textValidate field="userInfo.realName" lableText="<s:text name='姓名' />" isValidate="true" min="0" max="100">
 									<li class="width250Li"><label class="width4Lb">编号:</label>
@@ -107,12 +109,13 @@
 									<%
 										EduBackgroundEnum[] ebk = EduBackgroundEnum.values();
 										request.setAttribute("ebk", ebk);
-									%>
-									<select id="eduBackGround" name="eduBackGround">
-										<s:iterator value="#request.ebk" status="st">
-											<option value="<s:property value='key'/>"><s:property value='value'/></option>
-										</s:iterator>
-									</select>
+									%>				
+									<s:select name="eduBackGround"
+									       list="#request.ebk"
+									       listKey="key"
+									       listValue="value"
+									       multiple="false"
+					       				   onchange=""/>
 									</li>
 									<li class="width250Li"><label class="width4Lb">学校名称:</label>
 										<s:textfield cssClass="width150Input" name="userInfo.school" />
@@ -145,21 +148,15 @@
 									<li class="width100Li"><label class="width4Lb">所属部门:</label>
 									</li>
 									<li><ul class="width800UlNoHeight">
-									<s:iterator value="userInfo.depts" status="st">
-										<li class="widthAutoLi">
-											<s:checkboxlist list="depts" name="capabilityCode_chkbox" listKey="code" 
-											listValue="name" onchange="chgChkBoxValue('capabilityCode',this)" />
-											<input type="checkbox" value="<s:property value="id"/>" name="deptGroup" id="<s:property value='id'/>"><label ><s:property value='name'/></label>
-										</li>
-									</s:iterator>
+									<s:checkboxlist list="allDepts" name="deptGroup" listKey="id"
+											listValue="name" />
 									</ul></li>
 									
 								</ul>
 								<ul class="fullScreenUlNoHeight" id="role">
 									<li class="width100Li"><label class="width4Lb">职务:</label></li>
-									<s:iterator value="userInfo.roles" status="st">
-										<li class="widthAutoLi"><input type="checkbox" name="roleGroup" value="<s:property value="id"/>" id="<s:property value='id'/>"><label ><s:property value='name'/></label></li>
-									</s:iterator>
+									<s:checkboxlist list="allRoles" name="roleGroup" listKey="id"
+											listValue="name" />
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width4Lb">职称:</label>
@@ -167,50 +164,53 @@
 									UserTitleEnum[] userTitles = UserTitleEnum.values();
 										request.setAttribute("userTitles", userTitles);
 									%>
-									<select id="title" name="title">
-										<s:iterator value="#request.userTitles" status="st">
-											<option value="<s:property value='key'/>"><s:property value='value'/></option>
-										</s:iterator>
-									</select>
+									<s:select name="title"
+									       list="#request.userTitles"
+									       listKey="key"
+									       listValue="value"
+									       multiple="false"
+					       				   onchange=""/>
 									</li>
-									<li class="width200Li"><label class="width4Lb">入职日期:</label><input
-										class="Wdate width100Input" name="userInfo.onboardDateTmp"
-										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
-									<li class="width200Li"><label class="width4Lb">离职日期:</label><input
-										class="Wdate width100Input" name="userInfo.leaveDateTmp"
-										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
-
+									<li class="width200Li"><label class="width4Lb">入职日期:</label>
+										<s:textfield cssClass="Wdate width100Input" name="userInfo.onboardDateTmp" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+									</li>
+									<li class="width200Li"><label class="width4Lb">离职日期:</label>
+										<s:textfield cssClass="Wdate width100Input" name="userInfo.leaveDateTmp" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+									</li>
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width4Lb">关联人:</label>
-										<input class="width100Input" name="userInfo.relation"
-										id="userInfo.relation" /></li>
+										<s:textfield cssClass="width100Input" name="userInfo.relation" />
+									</li>
 									<li class="width200Li"><label class="width4Lb">状态:</label>
 									<%
-									UserStatusEnum[] userStatus = UserStatusEnum.values();
+										UserStatusEnum[] userStatus = UserStatusEnum.values();
 										request.setAttribute("userStatus", userStatus);
 									%>
-									<select id="status" name="status" class="width100Select">
-										<s:iterator value="#request.userStatus" status="st">
-											<option value="<s:property value='key'/>"><s:property value='value'/></option>
-										</s:iterator>
-									</select></li>
+									<s:select name="status"
+									       list="#request.userStatus"
+									       listKey="key"
+									       listValue="value"
+									       multiple="false"
+					       				   onchange=""/>
+									</li>
 
 									<li class="width200Li"><label class="width4Lb">缴纳保险:</label>
 									<%
 										InsuranceTypeEnum[] insuranceTypes = InsuranceTypeEnum.values();
 										request.setAttribute("insuranceTypes", insuranceTypes);
 									%>
-									<select name="type" id="type">
-										<s:iterator value="#request.insuranceTypes" status="st">
-											<option value="<s:property value='key'/>"><s:property value='value'/></option>
-										</s:iterator>
-									</select></li>
+									<s:select name="type"
+									       list="#request.insuranceTypes"
+									       listKey="key"
+									       listValue="value"
+									       multiple="false"
+					       				   onchange=""/>
+									</li>
 								</ul>
 								<ul class="fullScreenUl">
-									<li class="width450Li"><label class="width4Lb">备注:</label><input
-										class="width350Input" name="userInfo.remark"
-										id="userInfo.remark" />
+									<li class="width450Li"><label class="width4Lb">备注:</label>
+										<s:textfield cssClass="width350Input" name="userInfo.remark" />
 									</li>
 								</ul>
 							</dd>
@@ -221,17 +221,19 @@
 							</dt>
 							<dd>
 								<div id="employeeLicences">
-									<ul class="fullScreenUl" id="1">
-										<li class="width250Li"><label class="width4Lb">执业资格:</label>
-										<%
+									<%
 										CertificationTypeEnum[] certifiTypes = CertificationTypeEnum.values();
 										request.setAttribute("certifiTypes", certifiTypes);
 									%>
-										<select id="certifies[0].selectId" name="certifies[0].selectId" class="width150Select"> 
-											<s:iterator value="#request.certifiTypes" status="st">
-												<option value="<s:property value='key'/>"><s:property value='value'/></option>
-											</s:iterator>
-										</select></li>
+									<s:if test="certifies.size() == 0">
+										<li class="width250Li"><label class="width4Lb">执业资格:</label>
+										<s:select name="certifies"
+									       list="#request.certifiTypes"
+									       listKey="key"
+									       listValue="value"
+									       multiple="false"
+					       				   onchange=""/>
+										</li>
 										<li class="width250Li"><label class="width4Lb">证书编号:</label><input
 											class="width150Input" name="certifies[0].identity"
 											id="certifies[0].identity" />
@@ -248,7 +250,34 @@
 											class="mediumLeftButton" onclick="deleteLicense(1);"
 											value="删除">
 										</li>
-									</ul>
+									</s:if>
+									<s:else>
+										<s:iterator value="certifies" status="st">
+											<ul class="fullScreenUl" id="1">
+												<li class="width250Li"><label class="width4Lb">执业资格:</label>
+												<s:select id="#st.index"
+											       list="#request.certifiTypes"
+											       listKey="key"
+											       listValue="value"
+											       multiple="false"
+							       				   onchange=""/><s:hidden id="%{st.index}" name="certifies[0].id"/>
+												</li>
+												<li class="width250Li"><label class="width4Lb">证书编号:</label>
+													<s:textfield cssClass="width150Input" name="certifies[0].identity" />
+												</li>
+												<li class="width200Li"><label class='width3Lb'>有效期:</label>
+													<s:textfield cssClass="Wdate width100Input" name="certifies[0].expireDateFromPage" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+												</li>
+												<li class="width150Li"><label class="width2Lb">备注:</label>
+													<s:textfield cssClass="width100Input" name="certifies[0].remark" />
+												</li>
+												<li class="width50Li"><input type="button"
+													class="mediumLeftButton" onclick="deleteLicense(1);"
+													value="删除">
+												</li>
+											</ul>
+										</s:iterator>
+									</s:else>
 								</div>
 								<ul class="fullScreenUl">
 									<li><input type="button" class="mediumLeftButton"

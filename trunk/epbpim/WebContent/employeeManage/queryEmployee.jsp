@@ -133,7 +133,7 @@ function clearPage(updateId){
 									</label>
 								</li>
 								<li class="width50Li">
-									<form action="showUser.do" id='showUser<s:property value="id"/>'>
+									<form action="showUser.do" id='showUser<s:property value="id"/>' method="post">
 										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="修改"><s:hidden name="id" />
 									</form>
 								</li>
