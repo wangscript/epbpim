@@ -102,6 +102,7 @@ input {
 	margin: 0 auto;
 	padding: 0;
 	width: 970px;
+	background: url(../images/header_bg.gif) repeat-x top;
 }
 
 .content_resize,.fbg_resize {
@@ -111,7 +112,6 @@ input {
 /* header */
 .header {
 	height: 150px;
-	background: url(../images/header_bg.gif) repeat-x top;
 }
 
 .header .nav_menu ul {
