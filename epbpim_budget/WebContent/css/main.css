@@ -1,0 +1,364 @@
+.button {
+	width: 50px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+h3 {
+	margin: 0px;
+}
+
+.header {
+	height: 140px;
+}
+
+.header .logo {
+	background: none;
+	height: 90px;
+	float: left;
+	padding-top: 10px;
+	padding-left: 40px;
+}
+
+.header .categoryDiv {
+	width: 970px;
+	float: left;
+}
+
+.header .category {
+	text-align: center;
+	height: 90px;
+	float: left;
+	height: 43px;
+	list-style: none outside none;
+	width: 950px;
+	margin-left: 30px;
+}
+
+.header .category .otherCategory {
+	background: url("../images/menu.gif") repeat-x scroll center top
+		transparent;
+	height: 43px;
+	float: left;
+	width: 220px;
+	margin-left: 1px;
+}
+
+.header .category li {
+	background: url("../images/menu.gif") repeat-x scroll center top
+		transparent;
+	height: 40px;
+	float: left;
+	width: 120px;
+	margin-left: 1px;
+}
+
+.header .category li ul {
+	position: relative;
+	width: auto;
+	list-style: none outside none;
+}
+
+.header .category li ul li {
+	width: 110px;
+	float: left;
+	background: url("../images/menu.gif") repeat-x scroll center top
+		transparent;
+}
+
+.header .category li a:hover {
+	cursor: pointer;
+	color: #47add9;
+}
+
+.header .category li a {
+	cursor: pointer;
+	color: #5F5F5F;
+	display: block;
+	font-weight: bold;
+	margin: 0;
+	padding: 9px 8px;
+	text-decoration: none;
+}
+
+.header .category li.active a {
+	color: #47add9;
+}
+
+.content {
+	min-height: 455px;
+}
+
+.content .mainbar {
+	width: 920px;
+}
+
+#leftPanel {
+	float: left;
+	width: 135px;
+	margin: 0px;
+	font-size: 14px;
+}
+
+#leftPanel ul {
+	padding-top: 20px;
+	list-style: none;
+}
+
+#leftPanel li {
+	margin: 0;
+	padding-top: 15px;
+}
+
+#leftPanel li ul {
+	margin: 0px 0px;
+	padding-top: 0px;
+}
+
+#leftPanel li li {
+	margin-left: 15px;
+	margin-top: 5px;
+	padding-top: 0px;
+	text-align: left;
+}
+
+#leftPanel li li a {
+	font: 13px/1.8em Arial, Helvetica, sans-serif;
+	padding-left: 18px;
+	background: url(../images/li.gif) no-repeat left center;
+}
+
+#leftPanel a {
+	color: #5F5F5F;
+	padding-left: 18px;
+	background: url(../images/li.gif) no-repeat left center;
+}
+
+#leftPanel p {
+	margin: 0 0px;
+	padding: 0px 20px 20px 20px;
+	text-align: justify;
+	color: #847F7E;
+}
+
+#leftPanel .active a {
+	font-weight: bold;
+	color: #47ADD9;
+}
+
+.mainbar li {
+	
+}
+
+.mainbar .file {
+	float: left;
+}
+
+.post {
+	padding: 0;
+	min-height: 380px;
+}
+
+.post .entry {
+	padding: 0;
+}
+
+.inputText {
+	width: 100px;
+}
+
+#searchCondition {
+	width: 900px;
+	align: center;
+}
+
+#uploadDataPanel ul {
+	list-style: none;
+	padding-top: 20px;
+	height: 30px;
+}
+
+#uploadDataPanel li {
+	float: left;
+	margin-right: 10px;
+}
+
+/* userInfoTable */
+#userInfoTable {
+	
+}
+
+#userInfoTable  ul {
+	list-style: none outside none;
+	width: 600px;
+	margin-bottom: 0;
+	float: left
+}
+
+#userInfoTable  li {
+	float: left;
+	margin-left: 10px;
+}
+
+#userInfoTable  li label {
+	float: left;
+	width: 150px;
+	margin-right: 10px;
+}
+
+#userInfoTable  li .required {
+	float: left;
+	width: 50px;
+	margin-left: 10px;
+}
+
+#userInfoTable  li input {
+	float: left;
+	width: 150px;
+}
+
+#detail {
+	
+}
+
+#detail  ul {
+	list-style: none outside none;
+	width: 700px;
+	margin-bottom: 0;
+	float: left
+}
+
+#detail  li {
+	float: left;
+	margin-left: 10px;
+}
+
+#detail  li .label1 {
+	float: left;
+	width: 100px;
+	margin-right: 10px;
+}
+
+#detail  li input {
+	width: 180px;
+	margin-right: 20px;
+}
+
+#detail  li .label2 {
+	float: left;
+	width: 300px;
+	margin-right: 10px;
+}
+
+#detail  li .label3 {
+	float: left;
+	width: 180px;
+	margin-right: 23px;
+}
+
+#messageMain {
+	text-align: center;
+}
+
+.fullScreenUl {
+	float: left;
+	min-height: 33px;
+	list-style: none outside none;
+	width: 900px;
+	margin-left: 30px;
+}
+
+.fullScreenUlNoHeight {
+	float: left;
+	list-style: none outside none;
+	width: 900px;
+	margin-left: 30px;
+	margin-top:5px;
+	margin-bottom:10px;
+}
+.width800UlNoHeight{
+	float: left;
+	list-style: none outside none;
+	width: 800px;
+
+}
+
+.barUl {
+	float: left;
+	height: 300px;
+	overflow: auto;
+	padding: 10px;
+	width: 480px;
+}
+
+.searchResult {
+	text-align: center;
+}
+
+#leftBar {
+	list-style: none outside none;
+	height: 250px;
+	width: 181px;
+	float: left;
+}
+
+#leftUl {
+	float: left;
+	border: 1px solid;
+	height: 250px;
+	overflow: auto;
+	padding: 10px;
+	width: 160px;
+}
+
+#leftBar .multiSelect {
+	background: none repeat scroll 0 0;
+	cursor: pointer;
+	height: 250px;
+	line-height: 1.8;
+	list-style: none outside none;
+	margin: 3px 0;
+	width: 150px;
+}
+
+#rightBar {
+	list-style: none outside none;
+	height: 250px;
+	width: 181px;
+	float: left;
+}
+
+#rightUl {
+	float: left;
+	border: 1px solid;
+	height: 250px;
+	overflow: auto;
+	padding: 10px;
+	width: 160px;
+}
+
+#rightBar .multiSelect {
+	cursor: pointer;
+	height: 250px;
+	line-height: 1.8;
+	list-style: none outside none;
+	margin: 3px 0;
+	width: 150px;
+}
+
+#leftBar h4 {
+	float: left;
+	width: 100px;
+}
+
+#rightBar h4 {
+	width: 100px;
+}
+
+#linkLi {
+	float: left;
+	height: 50px;
+	width: 80px;
+	list-style: none outside none;
+	margin-top: 100px;
+}
