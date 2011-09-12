@@ -30,11 +30,11 @@ public class InitCacheService extends HttpServlet {
 	
 	public void init() throws ServletException {
 		super.init();
-        ApplicationContext app = (ApplicationContext) WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
-        AdminRoleService roleService = (AdminRoleService) app.getBean("com.ryxx.bpim.user.service.AdminRoleService");
-        AdminMenuService menuService = (AdminMenuService) app.getBean("com.ryxx.bpim.user.service.AdminMenuService");
-        List<AdminRole> roleList = roleService.findRolesWithMenus();
-		CacheMap.getInstance().addCache(Constants.MENU_CACHE, menuService.list());
+//        ApplicationContext app = (ApplicationContext) WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
+//        AdminRoleService roleService = (AdminRoleService) app.getBean("com.ryxx.bpim.user.service.AdminRoleService");
+//        AdminMenuService menuService = (AdminMenuService) app.getBean("com.ryxx.bpim.user.service.AdminMenuService");
+//        List<AdminRole> roleList = roleService.findRolesWithMenus();
+//		CacheMap.getInstance().addCache(Constants.MENU_CACHE, menuService.list());
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -42,19 +42,19 @@ public class InitCacheService extends HttpServlet {
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		CacheMap.getInstance().clearCache();
-		ApplicationContext app = (ApplicationContext) WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
-		AdminRoleService roleService = (AdminRoleService) app.getBean("com.ryxx.bpim.user.service.AdminRoleService");
-        List<AdminRole> roleList = roleService.findAll();
-        if(roleList != null && roleList.size()>0) {
-        	for(int i=0; i<roleList.size(); i++) {
-        		AdminRole role = roleList.get(i);
-            	CacheMap.getInstance().addCache("role"+role.getId(), role.getMenuList());
-        	}
-        }
-		AdminMenuService menuService = (AdminMenuService) app.getBean("com.ryxx.bpim.user.service.AdminMenuService");
-		CacheMap.getInstance().addCache(Constants.MENU_CACHE, menuService.list());
-		PrintWriter out = response.getWriter();
-		out.println("Cache size is: "+CacheMap.getInstance().getCacheSize());
+//		CacheMap.getInstance().clearCache();
+//		ApplicationContext app = (ApplicationContext) WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
+//		AdminRoleService roleService = (AdminRoleService) app.getBean("com.ryxx.bpim.user.service.AdminRoleService");
+//        List<AdminRole> roleList = roleService.findAll();
+//        if(roleList != null && roleList.size()>0) {
+//        	for(int i=0; i<roleList.size(); i++) {
+//        		AdminRole role = roleList.get(i);
+//            	CacheMap.getInstance().addCache("role"+role.getId(), role.getMenuList());
+//        	}
+//        }
+//		AdminMenuService menuService = (AdminMenuService) app.getBean("com.ryxx.bpim.user.service.AdminMenuService");
+//		CacheMap.getInstance().addCache(Constants.MENU_CACHE, menuService.list());
+//		PrintWriter out = response.getWriter();
+//		out.println("Cache size is: "+CacheMap.getInstance().getCacheSize());
 	}
 }
