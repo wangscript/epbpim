@@ -38,7 +38,7 @@
 	<constant name="struts.i18n.reload" value="true" />
 	
 	<include file="bpim-default-struts.xml"/>
-    <!-- <include file="bpim-struts.xml"/> -->
+    <include file="bpim-struts.xml"/>
     <!-- <include file="com/ryxx/bpim/user/action/admin-struts.xml"/> -->
 	
     <!-- Add packages or include other files here -->
