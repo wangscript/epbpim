@@ -18,8 +18,8 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width5Lb">公司名称:</label>
 								</li>
-								<li class="width200Li"><input name="userName"
-									maxlength="10" id="userName" />
+								<li class="width200Li"><input name="companyName"
+									maxlength="20" id="companyName" />
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
