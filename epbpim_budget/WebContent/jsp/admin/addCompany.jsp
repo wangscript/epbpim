@@ -58,6 +58,15 @@
 								<li class="width100Li"><label class="comments width5Lb">11位手机号</label>
 								</li>
 							</ul>
+							
+							<ul class="fullScreenUl">
+								<li class="width100Li"><label class="width6Lb">业务所在地区:</label>
+								</li>
+								<li class="width200Li"><select><option>上海</option> </select>
+								</li>
+								<li class="width100Li"><label class="required width5Lb">*必选</label>
+								</li>
+							</ul>
 
 							<ul class="fullScreenUl">
 								<li><input type="button" id="register-submit"
