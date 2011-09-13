@@ -14,6 +14,15 @@
 	padding-left: 40px;
 }
 
+.header_resize,.hbg_resize {
+	margin: 0 auto;
+	padding: 0;
+	width: 970px;
+	height: 140px;
+	background: url(../images/header_bg.gif) repeat-x top;
+}
+
+
 .content{
 	min-height:460px;
 }
@@ -21,17 +30,6 @@
 	width: 930px;	
 }
 
-.mainbar ul{
-	margin-top:20px;
-	float:left;
-	width: 930px;
-}
-
-.mainbar ul li {
-	margin-left: 10px;
-	float:left;
-	list-style:none;
-}
 
 .mainbar ul .labelLi {
 	width: 100px;
