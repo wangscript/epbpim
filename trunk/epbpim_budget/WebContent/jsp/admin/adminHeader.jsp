@@ -21,20 +21,6 @@ function changeTitleBackground(){
 	 var className= "active";
 	 if(sURL.indexOf("listui.do")>0||sURL.indexOf("adminUser")>0){
 		 document.getElementById("adminUser").className = className;
-	 }else if(sURL.indexOf("adminOperation")>0||sURL.indexOf("lister")>0){
-		 document.getElementById("adminOperation").className = className;
-	 }else if(sURL.indexOf("listsp.do")>0||sURL.indexOf("adminScheme")>0){
-		 document.getElementById("adminScheme").className = className;
-	 }else if(sURL.indexOf("adminGovernmentGuidePriceImport")>0||sURL.indexOf("uploadGuideData")>0){
-		 document.getElementById("adminGovernmentGuidePriceImport").className = className;
-	 }else if(sURL.indexOf("adminDeleteGuideData")>0||sURL.indexOf("deleteGuideData")>0){
-		 document.getElementById("adminDeleteGuideData").className = className;
-	 }else if(sURL.indexOf("importGovernmentQuota")>0||sURL.indexOf("governmentQuotaOperating")>0||sURL.indexOf("deleteGovernmentQuota")>0||sURL.indexOf("importGovernmentQuota")>0 ){
-		 document.getElementById("governmentQuotaOperating").className = className;
-	 }else if(sURL.indexOf("adminGovernmentFileImport")>0||sURL.indexOf("importGovernmentFile")>0){
-		 document.getElementById("adminGovernmentFileImport").className = className;
-	 }else if(sURL.indexOf("listua.do")>0||sURL.indexOf("adminUserAdvice")>0){
-		 document.getElementById("adminUserAdvice").className = className;
 	 }
 }
 </script>
@@ -43,18 +29,16 @@ function changeTitleBackground(){
     <div class="header_resize">
       <div class="nav_menu">
 		<ul>
-			<li id="adminUser"><a href="listui.do">用户操作</a></li>
+			<li id="adminUser"><a href="listui.do">企业查询</a></li>
 			<li id="adminOperation"><a href="lister.do">充值查询</a></li>
-			<li id="adminScheme"><a href="listsp.do">套餐修改</a></li>
 			<li id="adminScheme"><a href="listnews.do">消息发布</a></li>
 			<li id="adminGovernmentGuidePriceImport"><a href="adminGovernmentGuidePriceImport.jsp">政府指导价导入</a></li>
 			<li id="adminDeleteGuideData"><a href="adminDeleteGuideData.jsp">政府指导价删除</a></li>
-			<li id="governmentQuotaOperating"><a href="governmentQuotaOperating.jsp">2000定额操作</a></li>
 			<li id="adminGovernmentFileImport"><a href="adminGovernmentFileImport.jsp">政府文件导入</a></li>
 			<li id="adminUserAdvice"><a href="listua.do">用户反馈</a></li>
 		 </ul>
       </div>
-      <div class="logo"><h1>建设工程综合信息管理系统<small></small></h1></div>
+      <div class="logo"><h1>任远建筑造价平台<small></small></h1></div>
     </div>
   </div>
 </body>
