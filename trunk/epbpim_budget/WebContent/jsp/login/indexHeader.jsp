@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="clr"></div>
-      <div class="logo"><h1><s:text name="Product.Name" /><small></small></h1></div>
+      <div class="logo"><h1>建筑行业造价平台<small></small></h1></div>
     </div>
   </div>
 </body>
