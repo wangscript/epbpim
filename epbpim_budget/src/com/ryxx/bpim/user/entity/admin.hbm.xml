@@ -13,6 +13,15 @@
 		<property name="remark" column="LOG_REMARK" type="java.lang.String"></property>
 	</class>
 	
+	<class name="EnterpriseInfo" table="ENTERPRISE_INFO">
+		<id name="id" column="ENTERPRISE_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="enterpriseName" column="ENTERPRISE_NAME" type="java.lang.String"></property>
+		<property name="enterpriseAddress" column="ENTERPRISE_ADDRESS" type="java.lang.String"></property>
+		<property name="logTime" column="LOG_TIME" type="java.sql.Timestamp"></property>
+	</class>
+	
 	<class name="AdminMenu" table="ADMIN_MENU">
 		<id name="id" column="MENU_ID" type="java.lang.Integer">
 			<generator class="identity"></generator>
@@ -22,132 +31,5 @@
 		<property name="parentId" column="PARENT_MENU_ID" type="java.lang.Integer"></property>
 		<property name="enable" column="MENU_ENABLE" type="java.lang.Integer"></property>
 		<property name="index" column="MENU_INDEX" type="java.lang.Integer"></property>
-		<bag name="roleList" table="ROLE_MENU_RESTRACTION" fetch="select" cascade="save-update" lazy="true" inverse="true">
-			<key>
-				<column name="MENU_ID" />
-			</key>
-			<many-to-many class="AdminRole" column="ROLE_ID"/>
-		</bag>
-	</class>
-	
-	<class name="AdminRole" table="ADMIN_ROLE">
-		<id name="id" column="ROLE_ID" type="java.lang.Long">
-			<generator class="identity"></generator>
-		</id>
-		<property name="name" column="ROLE_NAME" type="java.lang.String"></property>
-		<property name="roleCount" column="ROLE_COUNT" type="java.lang.Integer"></property>
-		<property name="remark" column="ROLE_REMARK" type="java.lang.String"></property>
-		<bag name="menuList" table="ROLE_MENU_RESTRACTION" fetch="select" lazy="true" inverse="false">
-			<key>
-				<column name="ROLE_ID" />
-			</key>
-			<many-to-many class="AdminMenu" column="MENU_ID"/>
-		</bag>
-		<bag name="users" table="ROLE_USER_RESTRACTION" fetch="select" cascade="save-update" lazy="true" inverse="true">
-			<key>
-				<column name="ROLE_ID" />
-			</key>
-			<many-to-many class="UserInfo" column="USER_ID"/>
-		</bag>
-	</class>
-	
-	<class name="AdminDept" table="ADMIN_DEPT">
-		<id name="id" column="DEPT_ID" type="java.lang.Long">
-			<generator class="identity"></generator>
-		</id>
-		<property name="name" column="DEPT_NAME" type="java.lang.String"></property>
-		<property name="remark" column="DEPT_REMARK" type="java.lang.String"></property>
-	</class>
-	
-	<class name="UserCertification" table="USER_CERTIFICATION">
-		<id name="id" column="CERTIFICATION_ID" type="java.lang.Integer">
-			<generator class="identity"></generator>
-		</id>
-		<property name="typeId" column="CERTIFICATION_TYPE_ID">         
-	        <type name="org.hibernate.type.EnumType">            
-	            <param name="enumClass">com.ryxx.bpim.user.enums.CertificationTypeEnum</param>         
-	        </type>
-	    </property>
-		<property name="identity" column="CERTIFICATION_IDENTIFY" type="java.lang.String"></property>
-		<property name="expireDate" column="EXPIRE_DATE" type="java.sql.Timestamp"></property>
-		<property name="remark" column="REMARK" type="java.lang.String"></property>
-	</class>
-
-	<class name="UserInfo" table="USER_INFO">
-		<id name="id" column="USER_ID" type="java.lang.Long">
-			<generator class="identity"></generator>
-		</id>
-		<property name="realName" 		column="USER_REAL_NAME"  	type="java.lang.String"></property>
-		<property name="identity" 		column="USER_IDENTIFIER" 	type="java.lang.String"></property>
-		<property name="userName" 		column="USER_NAME" 	   		type="java.lang.String"></property>
-		<property name="sex" 	  		column="USER_SEX" 	   		type="java.lang.Integer"></property>
-		<property name="idCard"   		column="USER_IDCARD" 	   	type="java.lang.String"></property>
-		<property name="humenFile" 		column="HUMEN_FILES" 		type="java.lang.String"></property>
-		<property name="birthday" 		column="USER_BIRTHDAY" 		type="java.sql.Timestamp"></property>
-		<property name="familyAddress" 	column="FAMILY_ADDRESS" 	type="java.lang.String"></property>
-		<property name="phone" 			column="PHONE" 				type="java.lang.String"></property>
-		<property name="mobilePhone" 	column="MOBILE_PHONE" 		type="java.lang.String"></property>
-		<property name="party" 			column="PARTY" 				type="java.lang.String"></property>
-		<property name="eduBackground"  column="EDU_BACKGROUND">         
-	        <type name="org.hibernate.type.EnumType">            
-	            <param name="enumClass">com.ryxx.bpim.user.enums.EduBackgroundEnum</param>
-	        </type>
-	    </property>
-		<property name="school" 		column="SCHOOL" 			type="java.lang.String"></property>
-		<property name="major" 			column="MAJOR" 				type="java.lang.String"></property>
-		<property name="eduCountinue" 	column="EDU_COUNTINU" 		type="java.lang.Integer"></property>
-		<property name="graduateDate" 	column="GRADUATE_DATE" 		type="java.sql.Timestamp"></property>
-		<property name="onboardDate" 	column="ONBOARD_DATE" 		type="java.sql.Timestamp"></property>
-		<property name="leaveDate" 		column="LEAVE_DATE" 		type="java.sql.Timestamp"></property>
-		<property name="relation" 		column="USER_RELATION" 		type="java.lang.String"></property>
-		<property name="status" 		column="USER_STATUS">
-	        <type name="org.hibernate.type.EnumType">            
-	            <param name="enumClass">com.ryxx.bpim.user.enums.UserStatusEnum</param>         
-	        </type>
-	    </property>
-		<property name="insuranceType" 	column="INSURANCE_TYPE">
-	        <type name="org.hibernate.type.EnumType">            
-	            <param name="enumClass">com.ryxx.bpim.user.enums.InsuranceTypeEnum</param>         
-	        </type>
-	    </property>
-		<property name="remark" 		column="USER_REMARK" 		type="java.lang.String"></property>
-		<property name="password" 		column="USER_PASSWORD" 		type="java.lang.String"></property>
-		<property name="registerDate" 	column="REGISTER_DATE" 		type="java.sql.Timestamp"></property>
-		<property name="email" 			column="EMAIL" 				type="java.lang.String"></property>
-		<property name="title" 	column="USER_TITLE">
-	        <type name="org.hibernate.type.EnumType">            
-	            <param name="enumClass">com.ryxx.bpim.user.enums.UserTitleEnum</param>         
-	        </type>
-	    </property>
-		<bag name="roles" table="ROLE_USER_RESTRACTION" fetch="select" lazy="true" inverse="false">
-			<key>
-				<column name="USER_ID" />
-			</key>
-			<many-to-many class="AdminRole" column="ROLE_ID"/>
-		</bag>
-		<bag name="depts" table="DEPT_USER_RESTRACTION" fetch="select" lazy="true" inverse="false">
-			<key>
-				<column name="USER_ID" />
-			</key>
-			<many-to-many class="AdminDept" column="DEPT_ID"/>
-		</bag>
-		<bag name="certifies" table="USER_CERTIFICATION" cascade="all">
-			<key>
-				<column name="USER_ID" />
-			</key>
-			<one-to-many class="UserCertification" />
-		</bag>
-	</class>
-	
-	<class name="AdminFile" table="ADMIN_FILE">
-		<id name="id" column="FILE_ID" type="java.lang.Long">
-			<generator class="identity"></generator>
-		</id>
-		<property name="fileModule" column="FILE_MODULE" type="java.lang.String"></property>
-		<property name="fileName" column="FILE_NAME" type="java.lang.String"></property>
-		<property name="filePath" column="FILE_PATH" type="java.lang.String"></property>
-		<property name="fileType" column="FILE_TYPE" type="java.lang.String"></property>
-		<property name="fileContent" column="FILE_CONTENT" type="java.lang.String"></property>
-		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
 	</class>
 </hibernate-mapping>
