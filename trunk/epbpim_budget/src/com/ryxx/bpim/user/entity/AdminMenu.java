@@ -13,15 +13,8 @@ public class AdminMenu extends VoBase {
 	private Integer parentId;
 	private Integer enable;
 	private Integer index;
-	private List<AdminRole> roleList;
 	private List<AdminMenu> subMenus;
 	
-	public List<AdminRole> getRoleList() {
-		return roleList;
-	}
-	public void setRoleList(List<AdminRole> roleList) {
-		this.roleList = roleList;
-	}
 	public Integer getEnable() {
 		return enable;
 	}
