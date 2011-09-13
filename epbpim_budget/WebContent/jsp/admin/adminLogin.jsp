@@ -44,7 +44,7 @@ function getFocus()
 	</s:fielderror>
 	</div>
 </s:form></div>
-<jsp:include page="../login/advertisement.jsp" />
+<!--<jsp:include page="../login/advertisement.jsp" />-->
 
 <div class="clr"></div>
 </div>
