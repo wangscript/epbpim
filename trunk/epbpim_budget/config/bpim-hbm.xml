@@ -21,7 +21,7 @@
 		<property name="enterpriseAddress" column="ENTERPRISE_ADDRESS" type="java.lang.String"></property>
 		<property name="logTime" column="LOG_TIME" type="java.sql.Timestamp"></property>
 	</class>
-	<class name="AdminUserInfo" table="ADMIN_USER">
+	<class name="AdminUser" table="ADMIN_USER">
 		<id name="id" column="ADMIN_USER_ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>

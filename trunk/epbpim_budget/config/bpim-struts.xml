@@ -4,62 +4,10 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<!-- <package name="bpim-adminrole" namespace="/employeeManage" extends="bpim-default">
-		<action name="saveRole" method="save" class="adminRoleAction">
-			<result type="redirect-action">listRole.do</result>
-		</action>
-		<action name="listRole" method="list" class="adminRoleAction">
-			<result>/employeeManage/queryRole.jsp</result>
-		</action>
-		<action name="getRole" method="get" class="adminRoleAction">
-			<result>/employeeManage/updateRole.jsp</result>
-		</action>
-		<action name="updateRole" method="update" class="adminRoleAction">
-			<result type="redirect-action">listRole.do</result>
-		</action>
-		<action name="deleteRole" method="delete" class="adminRoleAction">
-			<result type="redirect-action">listRole.do</result>
-		</action>		
-		
-		<action name="newUserInfo" method="newUserInfo" class="userInfoAction">
-			<result>/employeeManage/addEmployee.jsp</result>
-		</action>
-	    <action name="saveUsers" method="saveUsers" class="userInfoAction">
-			<result type="redirect-action">listUserInfo.do</result>
-		</action>
-		<action name="showUser" method="showUser" class="userInfoAction">
-			<result>/employeeManage/getEmployee.jsp</result>
-		</action>
-		<action name="updateUser" method="updateUser" class="userInfoAction">
-			<result type="redirect-action">listUserInfo.do</result>
-		</action>
-		<action name="listUserInfo" method="listUserInfo" class="userInfoAction">
-			<result>/employeeManage/queryEmployee.jsp</result>
+	<package name="bpim-adminuser" namespace="/adminuser" extends="bpim-default">
+	    <action name="login" method="login" class="adminUserAction">
+	    	<result name="input">/admin/adminLogin.jsp</result>
+			<result type="redirect-action">schAdminDeptList.do</result>
 		</action>
 	</package>
-	<package name="bpim-admindept" namespace="/department" extends="bpim-default">
-	    <action name="addAdminDept" method="addAdminDept" class="adminDeptAction">
-			<result type="redirect-action">schAdminDeptList.do</result>
-		</action>
-		<action name="delAdminDept" method="delAdminDept" class="adminDeptAction">
-			<result type="redirect-action">schAdminDeptList.do</result>
-		</action>
-		<action name="modAdminDept" method="modAdminDept" class="adminDeptAction">
-			<result type="redirect-action">schAdminDeptList.do</result>
-		</action>
-		<action name="schAdminDeptList" method="schAdminDeptList" class="adminDeptAction">
-			<result>/department/queryDepartment.jsp</result>
-		</action>
-	</package>
-	<package name="bpim-adminfile" namespace="/businessFile" extends="bpim-default">
-	    <action name="addBusinessFile" method="addAdminFile" class="adminFileAction">
-			<result type="redirect-action">schBusinessFileList.do</result>
-		</action>
-		<action name="delBusinessFile" method="delAdminFile" class="adminFileAction">
-			<result type="redirect-action">schBusinessFileList.do</result>
-		</action>
-		<action name="schBusinessFileList" method="schAdminFileList" class="adminFileAction">
-			<result>/businessFile/manageBusinessFile.jsp</result>
-		</action>
-	</package> -->
 </struts>
