@@ -2,7 +2,7 @@ package com.ryxx.bpim.entity;
 
 import java.sql.Timestamp;
 
-public class AdminUserInfo extends VoBase {
+public class AdminUser extends VoBase {
 	
 	private static final long serialVersionUID = -3699089574630795142L;
 	

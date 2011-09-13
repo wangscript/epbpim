@@ -19,6 +19,20 @@
 	<bean id="com.ryxx.bpim.service.AdminLogService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.service.AdminLogService.target" />
 	</bean>
+	
+	<bean id="com.ryxx.bpim.dao.AdminUserDAO" class="com.ryxx.bpim.dao.AdminUserDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.service.AdminUserService.target" class="com.ryxx.bpim.service.AdminUserServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.service.AdminUserService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.AdminUserService.target" />
+	</bean>
+	<bean id="adminUserAction" class="com.ryxx.bpim.action.AdminUserAction" scope="prototype">
+		<property name="adminUserService">
+			<ref local="com.ryxx.bpim.service.AdminUserService"/>
+		</property>
+	</bean>
 
 	<!-- <bean id="com.ryxx.bpim.dao.AdminRoleDAO" class="com.ryxx.bpim.dao.AdminRoleDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>

@@ -24,7 +24,7 @@ function getFocus()
 <div id="main"><jsp:include page="../login/indexHeader.jsp" />
 <div class="content">
 <div class="content_resize">
-<div class="mainbar"><s:form action="adminl.do" name="login"
+<div class="mainbar"><s:form action="/adminuser/login.do" name="login"
 	method="post" id="loginForm">
 	<h2 class="title">用户登录</h2> 
 	<div id= "loginbar">
@@ -51,8 +51,4 @@ function getFocus()
 </div>
 <!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
 </body>
-<script type="text/javascript">
-
-
-</script>
 </html>
