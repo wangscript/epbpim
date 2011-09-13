@@ -1,0 +1,9 @@
+package com.ryxx.bpim.dao;
+
+import java.util.List;
+
+import com.ryxx.bpim.entity.EnterpriseInfo;
+
+public interface EnterpriseInfoDAO extends BaseDAO<EnterpriseInfo, Long> {
+	public List<EnterpriseInfo> list();
+}

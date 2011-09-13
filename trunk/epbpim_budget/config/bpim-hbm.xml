@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ryxx.bpim.entity">
+	<class name="AdminLog" table="ADMIN_LOG">
+		<id name="id" column="LOG_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="userName" column="USER_NAME" type="java.lang.String"></property>
+		<property name="actionType" column="ACTION_TYPE" type="java.lang.Integer"></property>
+		<property name="userIp" column="USER_IP" type="java.lang.String"></property>
+		<property name="logTime" column="LOG_TIME" type="java.sql.Timestamp"></property>
+		<property name="moduleId" column="MODULE_ID" type="java.lang.Integer"></property>
+		<property name="remark" column="LOG_REMARK" type="java.lang.String"></property>
+	</class>
+	
+	<class name="EnterpriseInfo" table="ENTERPRISE_INFO">
+		<id name="id" column="ENTERPRISE_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="enterpriseName" column="ENTERPRISE_NAME" type="java.lang.String"></property>
+		<property name="enterpriseAddress" column="ENTERPRISE_ADDRESS" type="java.lang.String"></property>
+		<property name="logTime" column="LOG_TIME" type="java.sql.Timestamp"></property>
+	</class>
+	<class name="AdminUserInfo" table="ADMIN_USER">
+		<id name="id" column="ADMIN_USER_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="password" column="ADMIN_USER_PASSWORD" type="java.lang.String"></property>
+		<property name="realName" column="ADMIN_USER_REAL_NAME" type="java.lang.String"></property>
+		<property name="userName" column="ADMIN_USER_NAME" type="java.lang.String"></property>
+		<property name="mobilePhone" column="ADMIN_MOBILE_PHONE" type="java.lang.String"></property>
+		<property name="registerDate" column="ADMIN_REGISTER_DATE" type="java.sql.Timestamp"></property>
+		<property name="remark" column="ADMIN_USER_REMARK" type="java.lang.String"></property>
+		<property name="email" column="ADMIN_EMAIL" type="java.lang.String"></property>
+	</class>
+	<class name="UserInfo" table="USER_INFO">
+		<id name="id" column="USER_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="password" column="USER_PASSWORD" type="java.lang.String"></property>
+		<property name="realName" column="USER_REAL_NAME" type="java.lang.String"></property>
+		<property name="identifier" column="USER_IDENTIFIER" type="java.lang.String"></property>
+		<property name="userName" column="USER_NAME" type="java.lang.String"></property>
+		<property name="sex" column="USER_SEX" type="java.lang.String"></property>
+		<property name="idCard" column="USER_IDCARD" type="java.lang.String"></property>
+		<property name="birthday" column="USER_BIRTHDAY" type="java.lang.String"></property>
+		<property name="familyAdd" column="FAMILY_ADDRESS" type="java.lang.String"></property>
+		<property name="mobilePhone" column="MOBILE_PHONE" type="java.lang.String"></property>
+		<property name="roleType" column="ROLE_ID" type="java.lang.String"></property>
+		<property name="registerDate" column="REGISTER_DATE" type="java.sql.Timestamp"></property>
+		<property name="remark" column="USER_REMARK" type="java.lang.String"></property>
+		<property name="email" column="ADMIN_EMAIL" type="java.lang.String"></property>
+		<many-to-one name="enterpriseInfo" class="EnterpriseInfo" column="ENTERPRISE_ID"></many-to-one>
+	</class>
+	
+	<class name="AdminMenu" table="ADMIN_MENU">
+		<id name="id" column="MENU_ID" type="java.lang.Integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="name" column="MENU_NAME" type="java.lang.String"></property>
+		<property name="url" column="MENU_URL" type="java.lang.String"></property>
+		<property name="parentId" column="PARENT_MENU_ID" type="java.lang.Integer"></property>
+		<property name="enable" column="MENU_ENABLE" type="java.lang.Integer"></property>
+		<property name="index" column="MENU_INDEX" type="java.lang.Integer"></property>
+	</class>
+</hibernate-mapping>

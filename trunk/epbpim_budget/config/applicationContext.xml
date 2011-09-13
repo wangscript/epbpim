@@ -22,7 +22,7 @@
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" lazy-init="true">
 		<property name="mappingResources">
 			<list>
-				<!-- <value>com/ryxx/bpim/user/entity/admin.hbm.xml</value> -->
+				<value>bpim-hbm.xml</value>
 			</list>
 		</property>
 		<property name="dataSource" ref="dataSourceCdm" />
@@ -73,5 +73,5 @@
 			</props>
 		</property>
 	</bean>
-	<!-- <import resource="com/ryxx/bpim/user/dao/admin-bean.xml"/> -->
+	<import resource="bpim-bean.xml"/>
 </beans>

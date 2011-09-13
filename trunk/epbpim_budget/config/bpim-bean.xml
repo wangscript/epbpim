@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="com.ryxx.bpim.dao.AdminMenuDAO" class="com.ryxx.bpim.dao.AdminMenuDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="com.ryxx.bpim.service.AdminMenuService.target" class="com.ryxx.bpim.service.AdminMenuServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.service.AdminMenuService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.AdminMenuService.target" />
+	</bean>
+	
+	<bean id="com.ryxx.bpim.dao.AdminLogDAO" class="com.ryxx.bpim.dao.AdminLogDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.service.AdminLogService.target" class="com.ryxx.bpim.service.AdminLogServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.service.AdminLogService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.AdminLogService.target" />
+	</bean>
+
+	<!-- <bean id="com.ryxx.bpim.dao.AdminRoleDAO" class="com.ryxx.bpim.dao.AdminRoleDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="com.ryxx.bpim.service.AdminRoleService.target" class="com.ryxx.bpim.service.AdminRoleServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.service.AdminRoleService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.AdminRoleService.target" />
+	</bean>
+	<bean id="adminRoleAction" class="com.ryxx.bpim.action.AdminRoleAction" scope="prototype">
+		<property name="adminRoleService">
+			<ref local="com.ryxx.bpim.service.AdminRoleService"/>
+		</property>
+		<property name="adminMenuService">
+			<ref local="com.ryxx.bpim.service.AdminMenuService"/>
+		</property>
+		<property name="adminLogService">
+			<ref local="com.ryxx.bpim.service.AdminLogService"/>
+		</property>
+	</bean> -->
+</beans>
