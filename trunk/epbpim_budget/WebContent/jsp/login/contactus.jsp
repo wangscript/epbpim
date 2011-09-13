@@ -42,7 +42,7 @@
 </div>
 </div>
 
-<jsp:include page="../login/advertisement.jsp" /> <!-- end #content -->
+<!--<jsp:include page="../login/advertisement.jsp" /> <!-- end #content -->
 
 
 <div class="clr"></div>

@@ -56,7 +56,7 @@
 
 </div>
 
-<jsp:include page="advertisement.jsp" />
+<!--<jsp:include page="advertisement.jsp" />-->
 
 <!-- end #content -->
 
