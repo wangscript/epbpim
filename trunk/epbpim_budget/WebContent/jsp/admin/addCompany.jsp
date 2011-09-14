@@ -12,15 +12,12 @@
 			<div class="content_resize">
 				<div class="mainbar">
 					<h4 class="title">新增企业账号</h4>
-					<form action="addCompany.do" name="addCompanyForm" method="post"
-						id="addCompanyForm">
+					<form action="addEnterpriseInfo.do" name="addCompanyForm" method="post"	id="addCompanyForm">
 						<div>
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width5Lb">公司名称:</label>
 								</li>
-								<li class="width200Li"><input name="companyName"
-									maxlength="20" id="companyName" />
-								</li>
+								<li class="width200Li"><s:textfield name="enterpriseInfo.name"/></li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
 								<li class="width200Li"><label class="comments">由6-10位字母数字组成</label>
@@ -30,9 +27,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width5Lb">联系人姓名:</label>
 								</li>
-								<li class="width200Li"><input name="contacter"
-									maxlength="100" id="contacter" />
-								</li>
+								<li class="width200Li"><s:textfield name="enterpriseInfo.principal"/></li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
 							</ul>
@@ -40,9 +35,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width5Lb">邮箱:</label>
 								</li>
-								<li class="width200Li"><input name="mailAddress"
-									maxlength="100" id="mailAddress" />
-								</li>
+								<li class="width200Li"><s:textfield name="enterpriseInfo.email"/></li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
 							</ul>
@@ -50,9 +43,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width5Lb">联系人手机:</label>
 								</li>
-								<li class="width200Li"><input name="mobile" maxlength="20"
-									id="mobile" />
-								</li>
+								<li class="width200Li"><s:textfield name="enterpriseInfo.phone"/></li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
 								<li class="width100Li"><label class="comments width5Lb">11位手机号</label>
@@ -60,9 +51,13 @@
 							</ul>
 							
 							<ul class="fullScreenUl">
-								<li class="width100Li"><label class="width6Lb">业务所在地区:</label>
+								<li class="width100Li"><label class="width6Lb">业务主要地区:</label>
 								</li>
-								<li class="width200Li"><select><option>上海</option> </select>
+								<li class="width200Li">
+								<s:select name="enterpriseInfo.favorite" list="provinceCities"
+									listKey="city" listValue="city" multiple="false"
+									required="true" onchange="" headerKey="0"
+									headerValue="--请选择--" />
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必选</label>
 								</li>

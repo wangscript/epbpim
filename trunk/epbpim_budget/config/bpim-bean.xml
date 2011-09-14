@@ -33,25 +33,30 @@
 			<ref local="com.ryxx.bpim.service.AdminUserService"/>
 		</property>
 	</bean>
-
-	<!-- <bean id="com.ryxx.bpim.dao.AdminRoleDAO" class="com.ryxx.bpim.dao.AdminRoleDAOImpl">
+	
+	<bean id="com.ryxx.bpim.dao.ProvinceCityDAO" class="com.ryxx.bpim.dao.ProvinceCityDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
-	<bean id="com.ryxx.bpim.service.AdminRoleService.target" class="com.ryxx.bpim.service.AdminRoleServiceImpl">
+	<bean id="com.ryxx.bpim.service.ProvinceCityService.target" class="com.ryxx.bpim.service.ProvinceCityServiceImpl">
 	</bean>
-	<bean id="com.ryxx.bpim.service.AdminRoleService" parent="baseTransactionProxyCdm">
-		<property name="target" ref="com.ryxx.bpim.service.AdminRoleService.target" />
+	<bean id="com.ryxx.bpim.service.ProvinceCityService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.ProvinceCityService.target" />
 	</bean>
-	<bean id="adminRoleAction" class="com.ryxx.bpim.action.AdminRoleAction" scope="prototype">
-		<property name="adminRoleService">
-			<ref local="com.ryxx.bpim.service.AdminRoleService"/>
+
+	<bean id="com.ryxx.bpim.dao.EnterpriseInfoDAO" class="com.ryxx.bpim.dao.EnterpriseInfoDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.service.EnterpriseInfoService.target" class="com.ryxx.bpim.service.EnterpriseInfoServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.service.EnterpriseInfoService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.EnterpriseInfoService.target" />
+	</bean>
+	<bean id="enterpriseInfoAction" class="com.ryxx.bpim.web.action.EnterpriseInfoAction" scope="prototype">
+		<property name="enterpriseInfoService">
+			<ref local="com.ryxx.bpim.service.EnterpriseInfoService"/>
 		</property>
-		<property name="adminMenuService">
-			<ref local="com.ryxx.bpim.service.AdminMenuService"/>
+		<property name="provinceCityService">
+			<ref local="com.ryxx.bpim.service.ProvinceCityService"/>
 		</property>
-		<property name="adminLogService">
-			<ref local="com.ryxx.bpim.service.AdminLogService"/>
-		</property>
-	</bean> -->
+	</bean>
 </beans>

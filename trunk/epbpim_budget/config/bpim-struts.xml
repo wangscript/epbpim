@@ -4,10 +4,21 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="bpim-adminuser" namespace="/adminuser" extends="bpim-default">
+	<package name="bpim-adminuser" namespace="/admin" extends="bpim-default">
 	    <action name="login" method="login" class="adminUserAction">
-	    	<result name="input">/admin/adminLogin.jsp</result>
-			<result type="redirect-action">schAdminDeptList.do</result>
+	    	<result name="input">/jsp/admin/adminLogin.jsp</result>
+			<result type="redirect-action">listEnterpriseInfo.do</result>
+		</action>
+	</package>
+	<package name="bpim-enterpriseinfo" namespace="/admin" extends="bpim-default">
+		<action name="listEnterpriseInfo" method="list" class="enterpriseInfoAction">
+			<result type="redirect-action">/jsp/admin/listCompany.jsp</result>
+		</action>
+		<action name="addEnterpriseInfo" method="add" class="enterpriseInfoAction">
+			<result type="redirect-action">listEnterpriseInfo.do</result>
+		</action>
+		<action name="newEnterpriseInfo" method="newEnterpriseInfo" class="enterpriseInfoAction">
+			<result>/jsp/admin/addCompany.jsp</result>
 		</action>
 	</package>
 </struts>

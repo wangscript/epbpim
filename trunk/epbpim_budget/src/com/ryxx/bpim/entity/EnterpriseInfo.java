@@ -4,29 +4,43 @@ import java.sql.Timestamp;
 
 public class EnterpriseInfo extends VoBase {
 	private static final long serialVersionUID = 9099318722246620482L;
-	
+
 	private Long id;
-	private String enterpriseName;
-	private String enterpriseAddress;
+	private String name;
+	private String email;
+	private String phone;
+	private String principal;
+	private String favorite;
 	private Timestamp logTime;
-	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getEnterpriseName() {
-		return enterpriseName;
+	public String getName() {
+		return name;
 	}
-	public void setEnterpriseName(String enterpriseName) {
-		this.enterpriseName = enterpriseName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getEnterpriseAddress() {
-		return enterpriseAddress;
+	public String getEmail() {
+		return email;
 	}
-	public void setEnterpriseAddress(String enterpriseAddress) {
-		this.enterpriseAddress = enterpriseAddress;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getPrincipal() {
+		return principal;
+	}
+	public void setPrincipal(String principal) {
+		this.principal = principal;
 	}
 	public Timestamp getLogTime() {
 		return logTime;
@@ -34,5 +48,12 @@ public class EnterpriseInfo extends VoBase {
 	public void setLogTime(Timestamp logTime) {
 		this.logTime = logTime;
 	}
+	public String getFavorite() {
+		return favorite;
+	}
+	public void setFavorite(String favorite) {
+		this.favorite = favorite;
+	}
+	
 }
 

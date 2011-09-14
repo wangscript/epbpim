@@ -12,13 +12,15 @@
 		<property name="moduleId" column="MODULE_ID" type="java.lang.Integer"></property>
 		<property name="remark" column="LOG_REMARK" type="java.lang.String"></property>
 	</class>
-	
 	<class name="EnterpriseInfo" table="ENTERPRISE_INFO">
 		<id name="id" column="ENTERPRISE_ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
-		<property name="enterpriseName" column="ENTERPRISE_NAME" type="java.lang.String"></property>
-		<property name="enterpriseAddress" column="ENTERPRISE_ADDRESS" type="java.lang.String"></property>
+		<property name="name" column="ENTERPRISE_NAME" type="java.lang.String"></property>
+		<property name="email" column="ENTERPRISE_EMAIL" type="java.lang.String"></property>
+		<property name="phone" column="ENTERPRISE_PHONE" type="java.lang.String"></property>
+		<property name="principal" column="ENTERPRISE_PRINCIPAL" type="java.lang.String"></property>
+		<property name="favorite" column="ENTERPRISE_FAVORITE" type="java.lang.String"></property>
 		<property name="logTime" column="LOG_TIME" type="java.sql.Timestamp"></property>
 	</class>
 	<class name="AdminUser" table="ADMIN_USER">
