@@ -76,4 +76,48 @@
 		<property name="enable" column="MENU_ENABLE" type="java.lang.Integer"></property>
 		<property name="index" column="MENU_INDEX" type="java.lang.Integer"></property>
 	</class>
+	<class name="GovernmentFile" table="GOVERNMENT_FILE">
+		<id name="id" column="ID" type="java.lang.Integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="fileTitle" column="FILE_TITLE" type="java.lang.String"></property>
+		<property name="fileType" column="FILE_TYPE" type="java.lang.String"></property>
+		<property name="fileSubType" column="FILE_SUB_TYPE" type="java.lang.String"></property>
+		<property name="area" column="AREA" type="java.lang.String"></property>
+		<property name="sourceCode" column="SOURCE_CODE" type="java.lang.String"></property>
+		<property name="filePublishDate" column="FILE_PUBLISH_DATE" type="java.sql.Timestamp"></property>
+		<property name="fileEffectiveDate" column="FILE_EFFECTIVE_DATE" type="java.sql.Timestamp"></property>
+		<property name="effective" column="EFFECTIVE" type="java.lang.Integer"></property>
+	</class>
+	<class name="GovernmentInventory" table="GOVERNMENT_INVENTORY">
+		<id name="id" column="ID" type="java.lang.Integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="governmentInventoryType" column="GOVERNMENT_INVENTORY_TYPE" type="java.lang.String"></property>
+		<property name="projectClassLevel1Num" column="PROJECT_CLASS_LEVEL_1_NUM" type="java.lang.String"></property>
+		<property name="projectClassLevel2Num" column="PROJECT_CLASS_LEVEL_2_NUM" type="java.lang.String"></property>
+		<property name="projectNum" column="PROJECT_NUM" type="java.lang.String"></property>
+		<property name="projectName" column="PROJECT_NAME" type="java.lang.String"></property>
+		<property name="projectNameFeature" column="PROJECT_NAME_FEATURE" type="java.lang.String"></property>
+		<property name="unit" column="UNIT" type="java.lang.String"></property>
+		<property name="amount" column="AMOUNT" type="java.lang.Double"></property>
+		<property name="detail" column="DETAIL" type="java.lang.String"></property>
+		<property name="comments" column="COMMENTS" type="java.lang.String"></property>
+	</class>
+	<class name="NewsAnnouncement" table="NEWS_ANNOUNCEMENT">
+		<id name="id" column="ID" type="java.lang.Integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="newsTitle" column="NEWS_TITLE" type="java.lang.String"></property>
+		<property name="content" column="NEWS_CONTENT" type="java.lang.String"></property>
+		<property name="addTime" column="ADD_TIME" type="java.sql.Timestamp"></property>
+	</class>
+	<class name="UserAdvice" table="USER_ADVINCE">
+		<id name="id" column="ID" type="java.lang.Integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="userID" column="USER_ID" type="java.lang.String"></property>
+		<property name="adviceContent" column="ADVICE_CONTENT" type="java.lang.String"></property>
+		<property name="adviceDate" column="ADVICE_DATE" type="java.sql.Timestamp"></property>
+	</class>
 </hibernate-mapping>
