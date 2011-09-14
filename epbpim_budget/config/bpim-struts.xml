@@ -51,7 +51,7 @@
 			<result>/jsp/admin/addCompany.jsp</result>
 		</action>
 	</package>
-	<package name="searchGovernmentInventory" namespace="/main" extends="bpim-default">
+	<package name="bpim-searchGovernmentInventory" namespace="/main" extends="bpim-default">
 		<action name="searchGovernmentInventory" method="searchGovernmentInventory"
 			class="com.ryxx.bpim.web.action.mianPanel.SearchGovernmentInventoryAction">
 			<result name="inventory2003">/main/searchGovernmentInventory_2003.jsp</result>
@@ -60,7 +60,7 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
-	<package name="searchGovernmentFile" namespace="/main" extends="bpim-default">
+	<package name="bpim-searchGovernmentFile" namespace="/main" extends="bpim-default">
 		<action name="searchGovernmentFile" method="searchGovernmentFile"
 			class="com.ryxx.bpim.web.action.mianPanel.SearchGovernmentFileAction">
 			<result>/main/searchGovernmentFile.jsp</result>
@@ -68,7 +68,7 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
-	<package name="viewGovernmentFile" namespace="/main" extends="bpim-default">
+	<package name="bpim-viewGovernmentFile" namespace="/main" extends="bpim-default">
 		<action name="viewGovernmentFile" method="viewGovernmentFile"
 			class="com.ryxx.bpim.web.action.mianPanel.SearchGovernmentFileAction">
 			<result>/main/viewGovernmentFileDetail.jsp</result>
@@ -90,7 +90,7 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>	
-	<package name="addUserAdvice" namespace="/main" extends="bpim-default">
+	<package name="bpim-addUserAdvice" namespace="/main" extends="bpim-default">
 		<action name="addUserAdvice" method="addUserAdvice"
 			class="com.ryxx.bpim.web.action.UserAdviceAction">
 			<result>/main/userAdvice.jsp</result>
