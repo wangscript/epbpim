@@ -29,6 +29,7 @@ function clearPage(updateId){
 	<div id="main"><jsp:include page="adminHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
+				<form>
 				<div class="mainbar">
 					<h3 class="title">企业信息显示</h3>
 					<div class="searchResult" id="searchResult">
@@ -50,19 +51,13 @@ function clearPage(updateId){
 								<li class="width200Li"><label><s:property value="email" /></label></li>
 								<li class="width100Li"><label><s:property value="favorite" /></label></li>
 								<li class="width50Li">
-									<form action="showUser.do" id='showUser<s:property value="id"/>' method="post">
-										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="进入"><s:hidden name="id" />
-									</form>
+									<a href="showUser.do?id=<s:property value="id"/>" target="self">进入</a>
 								</li>
 								<li class="width50Li">
-									<form action="showEnterpriseInfo.do" id='showEnterpriseInfo<s:property value="id"/>' method="post">
-										<input type="submit" id="showButton<s:property value="id"/>" class="mediumRightButton" class="button" value="修改"><s:hidden name="id" />
-									</form>
+									<a href="showEnterpriseInfo.do?id=<s:property value="id"/>" target="self">修改</a>
 								</li>
 								<li class="width50Li">
-									<form action="deleteEnterpriseInfo.do" id='deleteEnterpriseInfo<s:property value="id"/>' method="post">
-										<input type="submit" id="deleteButton<s:property value="id"/>" class="mediumRightButton" class="button" value="删除"><s:hidden name="id" />
-									</form>
+									<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>" target="self">删除</a>
 								</li>
 							</ul>
 						</s:iterator>
@@ -74,11 +69,8 @@ function clearPage(updateId){
 					</div>
 					
 					<div></div>
-
-
 				</div>
-
-
+				</form>
 				<div class="clr"></div>
 			</div>
 		</div>
