@@ -6,9 +6,9 @@
 <html> 
 <head>
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
-<link href="../../css/style.css" rel="stylesheet" type="text/css"
+<link href="../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
-<link href="../../css/admin.css" rel="stylesheet" type="text/css"
+<link href="../css/admin.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
