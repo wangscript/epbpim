@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page import="com.ryxx.util.cache.CacheMap" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.ryxx.bpim.common.Constants" %>
-<%@ page import="com.ryxx.bpim.user.entity.AdminMenu" %>
+<%@ page import="com.ryxx.util.cache.CacheMap"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.ryxx.bpim.common.Constants"%>
+<%@ page import="com.ryxx.bpim.user.entity.AdminMenu"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="../css/style.css" rel="stylesheet" type="text/css"
+	media="screen" />
+<link href="../css/main.css" rel="stylesheet" type="text/css"
+	media="screen" />
+<link href="../images/logo.ico" rel="SHORTCUT ICON" />
+
+</head>
 <script type="text/javascript">
 function changeTitleBackground(){
 	 var sURL = window.location.href.toString();
@@ -46,67 +55,88 @@ function changeTitleBackground(){
 	 }
 	 
 	 var messageCount = "1";
-	 //var messageCount = "<%//=newMessageCount%>";
-	 if(messageCount>0){
-		var message = document.getElementById("message");
-		message.innerHTML = messageCount+"条新消息";
-}
+	 //var messageCount = "<%//=newMessageCount%>
+	";
+		if (messageCount > 0) {
+			var message = document.getElementById("message");
+			message.innerHTML = messageCount + "条新消息";
+		}
 
 	}
-	function displayCategory(id){
-		 document.getElementById(id).style.display="BLOCK";
+	function displayCategory(id) {
+		document.getElementById(id).style.display = "BLOCK";
 	}
-	function unDisplayCategory(id){
-		 document.getElementById(id).style.display="NONE";
+	function unDisplayCategory(id) {
+		document.getElementById(id).style.display = "NONE";
 	}
 	function addMenu(parentId, id, url, name) {
 		var obj = document.getElementById(parentId);
-		if(obj != null) {
+		if (obj != null) {
 			var newObj = document.createElement("li");
 			newObj.id = id;
-			newObj.innerHTML = "<a href=\"url\">"+name+"</a>";
+			newObj.innerHTML = "<a href=\"url\">" + name + "</a>";
 			obj.appendChild(newObj);
 		}
 	}
 </script>
 <body>
-<div class="header">
-<div class="header_resize">
-<div class="nav_menu">
-<ul>
-	<li id="userInfoManage"><a href="#"><s:text name="Header.UserManage" /></a></li>
-	<li id="messageMain"><a id="message" href="../main/messageMain.jsp"><font
-		color="red">有1个待办事项</font></a></li>
-	<li id="help"><a href="#">用户手册</a></li>
-	<li id="index"><a href="#"><s:text name="Header.Logout" /></a></li>
-</ul>
-</div>
-<div class="logo">
-<h1><s:text name="Product.Name" /> <small>欢迎您！尊敬的用户。</small> <small></small></h1>
-</div>
-<div class="categoryDiv">
-<ul class="category">
-	<%
-		List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE);
-		request.setAttribute("menus", menus);
-	%>
-	<s:if test="#request.menus!=null && #request.menus.size()>0">
-		<s:iterator value="#request.menus" status="st">
-			<s:if test="subMenus !=null && subMenus.size()>0">
-				<li onmouseenter="displayCategory('<s:property value="id"/>')"	onmouseleave="unDisplayCategory('<s:property value="id"/>')" onmouseover="displayCategory('<s:property value="id"/>')"	onmouseout="unDisplayCategory('<s:property value="id"/>')" ><a><s:property value="name"/></a>
-				<ul id="<s:property value="id"/>" style="display: none">
-					<s:iterator value="subMenus" status="st1">
-						<li id="<s:property value="id"/>"><a href="<s:property value="url"/>"><s:property value="name"/></a></li>
-					</s:iterator>
+	<div class="header">
+		<div class="header_resize">
+			<div class="nav_menu">
+				<ul>
+					<li id="userInfoManage"><a href="#"><s:text
+								name="Header.UserManage" />
+					</a>
+					</li>
+					<li id="messageMain"><a id="message"
+						href="../main/messageMain.jsp"><font color="red">有1个待办事项</font>
+					</a>
+					</li>
+					<li id="help"><a href="#">用户手册</a>
+					</li>
+					<li id="index"><a href="#"><s:text name="Header.Logout" />
+					</a>
+					</li>
 				</ul>
-			</li>
-			</s:if>
-		</s:iterator>
-	</s:if>
-	<li class="otherCategory"></li>
-</ul>
-</div>
-</div>
-</div>
+			</div>
+			<div class="logo">
+				<h1>
+					<s:text name="Product.Name" />
+					<small>欢迎您！尊敬的用户。</small> <small></small>
+				</h1>
+			</div>
+			<div class="categoryDiv">
+				<ul class="category">
+					<%
+						List<AdminMenu> menus = (List) CacheMap.getInstance().getCache(
+								Constants.MENU_CACHE);
+						request.setAttribute("menus", menus);
+					%>
+					<s:if test="#request.menus!=null && #request.menus.size()>0">
+						<s:iterator value="#request.menus" status="st">
+							<s:if test="subMenus !=null && subMenus.size()>0">
+								<li onmouseenter="displayCategory('<s:property value="id"/>')"
+									onmouseleave="unDisplayCategory('<s:property value="id"/>')"
+									onmouseover="displayCategory('<s:property value="id"/>')"
+									onmouseout="unDisplayCategory('<s:property value="id"/>')"><a><s:property
+											value="name" />
+								</a>
+									<ul id="<s:property value="id"/>" style="display: none">
+										<s:iterator value="subMenus" status="st1">
+											<li id="<s:property value="id"/>"><a
+												href="<s:property value="url"/>"><s:property
+														value="name" />
+											</a>
+											</li>
+										</s:iterator>
+									</ul></li>
+							</s:if>
+						</s:iterator>
+					</s:if>
+					<li class="otherCategory"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
