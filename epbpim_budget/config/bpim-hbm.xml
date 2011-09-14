@@ -12,6 +12,17 @@
 		<property name="moduleId" column="MODULE_ID" type="java.lang.Integer"></property>
 		<property name="remark" column="LOG_REMARK" type="java.lang.String"></property>
 	</class>
+	
+	<class name="ProvinceCity" table="PROVINCE_CITY">
+		<id name="id" column="PROVINCE_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="city" column="CITY" type="java.lang.String"></property>
+		<property name="parentId" column="PARENT_ID" type="java.lang.Integer"></property>
+		<property name="sort" column="SORT" type="java.lang.Integer"></property>
+		<property name="enable" column="ENABLE" type="java.lang.Integer"></property>
+	</class>
+	
 	<class name="EnterpriseInfo" table="ENTERPRISE_INFO">
 		<id name="id" column="ENTERPRISE_ID" type="java.lang.Long">
 			<generator class="identity"></generator>

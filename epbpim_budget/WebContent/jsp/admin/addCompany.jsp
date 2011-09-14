@@ -72,7 +72,7 @@
 							</ul>
 
 							<ul class="fullScreenUl">
-								<li class="width100Li"><input type="button"
+								<li class="width100Li"><input type="submit"
 									class="mediumLeftButton" onclick="validateCommit();" value="保存">
 								</li>
 							</ul>

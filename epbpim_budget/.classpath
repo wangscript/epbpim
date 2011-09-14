@@ -62,5 +62,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jurt-3.0.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ridl-3.0.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/unoil-3.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-email-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

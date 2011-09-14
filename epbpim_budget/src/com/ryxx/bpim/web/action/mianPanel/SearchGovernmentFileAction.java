@@ -16,10 +16,10 @@ import org.apache.commons.lang.StringUtils;
 
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.GovernmentFile;
-import com.ryxx.bpim.helper.PageTools;
-import com.ryxx.bpim.helper.ParamTools;
 import com.ryxx.bpim.service.GovernmentFileService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.page.PageTools;
+import com.ryxx.util.request.ParamTools;
 
 /**
  * author Delgado
@@ -27,7 +27,7 @@ import com.ryxx.bpim.web.action.ActionSupportBase;
 public class SearchGovernmentFileAction extends ActionSupportBase
 {
     
-    /** 序列号 */
+    /** åº�åˆ—å�· */
     private static final long serialVersionUID = 3895966524415236488L;
     
     GovernmentFile condition = new GovernmentFile();

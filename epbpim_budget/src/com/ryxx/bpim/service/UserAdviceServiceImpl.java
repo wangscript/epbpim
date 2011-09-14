@@ -6,7 +6,7 @@ import java.util.List;
 import com.ryxx.bpim.dao.UserAdviceDAO;
 import com.ryxx.bpim.dao.UserAdviceDAOImpl;
 import com.ryxx.bpim.entity.UserAdvice;
-import com.ryxx.bpim.helper.PageTools;
+import com.ryxx.util.page.PageTools;
 
 /**
  * author Delgado

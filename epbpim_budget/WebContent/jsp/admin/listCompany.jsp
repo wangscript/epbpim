@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page import=""%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,6 +8,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>企业账号查询</title>
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
+<script language="javascript" type="text/javascript" src="../js/common.js"></script>
 <script type='text/javascript' src='../dwr/engine.js'></script>
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
@@ -33,21 +33,27 @@ function clearPage(updateId){
 					<h3 class="title">企业信息显示</h3>
 					<div class="searchResult" id="searchResult">
 						<ul class="fullScreenUl">
-							<li class="width300Li"><label>公司</label></li>
-							<li class="width50Li"><label>联系人姓名</label></li>
+							<li class="width200Li"><label>公司</label></li>
+							<li class="width100Li"><label>联系人姓名</label></li>
 							<li class="width150Li"><label>联系人手机</label></li>
 							<li class="width200Li"><label>邮箱</label></li>
-							<li class="width150Li"><label>业务主要地区</label></li>
+							<li class="width100Li"><label>业务主要地区</label></li>
+							<li class="width50Li"><label>用户信息</label></li>
 							<li class="width50Li"><label>修改</label></li>
 							<li class="width50Li"><label>删除</label></li>
-						</ul>	
-						<s:iterator value="userInfos" status="st">
+						</ul>
+						<s:iterator value="enterpriseInfos" status="st">
 							<ul class="fullScreenUl">
-								<li class="width300Li"><label><s:hidden name="id"/><s:property value="name" /></label></li>
-								<li class="width50Li"><label><s:property value="principal" /></label></li>
+								<li class="width200Li"><label><s:hidden name="id"/><s:property value="name" /></label></li>
+								<li class="width100Li"><label><s:property value="principal" /></label></li>
 								<li class="width150Li"><label><s:property value="phone" /></label></li>
 								<li class="width200Li"><label><s:property value="email" /></label></li>
-								<li class="width150Li"><label><s:property value="favorite" /></label></li>
+								<li class="width100Li"><label><s:property value="favorite" /></label></li>
+								<li class="width50Li">
+									<form action="showUser.do" id='showUser<s:property value="id"/>' method="post">
+										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="进入"><s:hidden name="id" />
+									</form>
+								</li>
 								<li class="width50Li">
 									<form action="showUser.do" id='showUser<s:property value="id"/>' method="post">
 										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="修改"><s:hidden name="id" />
@@ -55,14 +61,14 @@ function clearPage(updateId){
 								</li>
 								<li class="width50Li">
 									<form action="showUser.do" id='showUser<s:property value="id"/>' method="post">
-										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="修改"><s:hidden name="id" />
+										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="删除"><s:hidden name="id" />
 									</form>
 								</li>
 							</ul>
 						</s:iterator>
 						<ul class="fullScreenUl">
 							<jsp:include page="../common/pagination.jsp" flush="true">
-								<jsp:param name="action_page" value="employeeManage/listUserInfo.do" />
+								<jsp:param name="action_page" value="admin/listEnterpriseInfo.do" />
 							</jsp:include>
 						</ul>
 					</div>

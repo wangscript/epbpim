@@ -6,9 +6,9 @@ import java.util.List;
 
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.UserAdvice;
-import com.ryxx.bpim.helper.PageTools;
-import com.ryxx.bpim.helper.ParamTools;
 import com.ryxx.bpim.service.UserAdviceService;
+import com.ryxx.util.page.PageTools;
+import com.ryxx.util.request.ParamTools;
 
 /**
  * author Delgado
@@ -28,7 +28,7 @@ public class UserAdviceAction extends ActionSupportBase
     
     private UserAdvice userAdvice;
     
-    private String msg = "提交成功，感谢您的参与！";
+    private String msg = "æ��äº¤æˆ�åŠŸï¼Œæ„Ÿè°¢æ‚¨çš„å�‚ä¸Žï¼�";
     
     private UserAdviceService service;
     
@@ -69,7 +69,7 @@ public class UserAdviceAction extends ActionSupportBase
         }
         catch (SQLException e)
         {
-            msg = "提交失败";
+            msg = "æ��äº¤å¤±è´¥";
             LOG.error(e);
         }
         
