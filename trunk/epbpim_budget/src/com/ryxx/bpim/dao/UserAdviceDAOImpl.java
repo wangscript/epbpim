@@ -55,7 +55,7 @@ public class UserAdviceDAOImpl extends AbstractBaseDAO<UserAdvice, Long> impleme
             //                    sqlSb.append(" AND DATE_SUB(CURDATE(), INTERVAL 1 MONTH) <= DATE(ADVICE_DATE)");
             //                }
             //            }
-           
+            
         }
         
         Criterion[] criterions = {};
