@@ -116,5 +116,5 @@
 	<bean id="com.ryxx.bpim.service.UserAdviceService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.service.UserAdviceService.target" />
 	</bean>
-	<bean id="com.ryxx.bpim.service.UserAdviceService.target" class="com.ryxx.bpim.service.AdminFileServiceImpl"></bean>
+	<bean id="com.ryxx.bpim.service.UserAdviceService.target" class="com.ryxx.bpim.service.UserAdviceServiceImpl"></bean>
 </beans>
