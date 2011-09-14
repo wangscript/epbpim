@@ -50,13 +50,13 @@ function clearPage(updateId){
 								<li class="width200Li"><label><s:property value="email" /></label></li>
 								<li class="width100Li"><label><s:property value="favorite" /></label></li>
 								<li class="width50Li">
-									<a href="showUser.do?id=<s:property value="id"/>" target="self">进入</a>
+									<a href="showUser.do?id=<s:property value="id"/>">进入</a>
 								</li>
 								<li class="width50Li">
-									<a href="showEnterpriseInfo.do?id=<s:property value="id"/>" target="self">修改</a>
+									<a href="showEnterpriseInfo.do?id=<s:property value="id"/>">修改</a>
 								</li>
 								<li class="width50Li">
-									<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>" target="self">删除</a>
+									<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>">删除</a>
 								</li>
 							</ul>
 						</s:iterator>
