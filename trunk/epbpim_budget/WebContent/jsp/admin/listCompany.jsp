@@ -29,7 +29,6 @@ function clearPage(updateId){
 	<div id="main"><jsp:include page="adminHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
-				<form>
 				<div class="mainbar">
 					<h3 class="title">企业信息显示</h3>
 					<div class="searchResult" id="searchResult">
@@ -62,15 +61,16 @@ function clearPage(updateId){
 							</ul>
 						</s:iterator>
 						<ul class="fullScreenUl">
+							<s:form>
 							<jsp:include page="../common/pagination.jsp" flush="true">
 								<jsp:param name="action_page" value="admin/listEnterpriseInfo.do" />
 							</jsp:include>
+							</s:form>
 						</ul>
 					</div>
 					
 					<div></div>
 				</div>
-				</form>
 				<div class="clr"></div>
 			</div>
 		</div>
