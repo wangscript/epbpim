@@ -55,13 +55,13 @@ function clearPage(updateId){
 									</form>
 								</li>
 								<li class="width50Li">
-									<form action="showUser.do" id='showUser<s:property value="id"/>' method="post">
-										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="修改"><s:hidden name="id" />
+									<form action="showEnterpriseInfo.do" id='showEnterpriseInfo<s:property value="id"/>' method="post">
+										<input type="submit" id="showButton<s:property value="id"/>" class="mediumRightButton" class="button" value="修改"><s:hidden name="id" />
 									</form>
 								</li>
 								<li class="width50Li">
-									<form action="showUser.do" id='showUser<s:property value="id"/>' method="post">
-										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="删除"><s:hidden name="id" />
+									<form action="deleteEnterpriseInfo.do" id='deleteEnterpriseInfo<s:property value="id"/>' method="post">
+										<input type="submit" id="deleteButton<s:property value="id"/>" class="mediumRightButton" class="button" value="删除"><s:hidden name="id" />
 									</form>
 								</li>
 							</ul>
@@ -72,6 +72,7 @@ function clearPage(updateId){
 							</jsp:include>
 						</ul>
 					</div>
+					
 					<div></div>
 
 
