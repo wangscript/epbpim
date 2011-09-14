@@ -6,19 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>员工查询</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link rel="stylesheet"
-	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
+<title>企业账号查询</title>
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
-<script type="text/javascript" src="../js/common.js"></script>
 <script type='text/javascript' src='../dwr/engine.js'></script>
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
@@ -36,7 +26,7 @@ function clearPage(updateId){
 </script>
 </head>
 <body>
-	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
+	<div id="main"><jsp:include page="adminHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">

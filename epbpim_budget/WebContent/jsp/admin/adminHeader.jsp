@@ -5,11 +5,12 @@
 	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html> 
 <head>
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
-<link href="../css/style.css" rel="stylesheet" type="text/css"
+<link href="../../images/logo.ico" rel="SHORTCUT ICON" />
+<link href="../../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
-<link href="../css/admin.css" rel="stylesheet" type="text/css"
+<link href="../../css/admin.css" rel="stylesheet" type="text/css"
 	media="screen" />
+<script type="text/javascript" src="../../js/common.js"></script>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 <body>
@@ -17,7 +18,7 @@
     <div class="header_resize">
       <div class="nav_menu">
 		<ul>
-			<li id="adminUser"><a href="listui.do">企业查询</a></li>
+			<li id="adminUser"><a href="listCompany.jsp">企业查询</a></li>
 			<li id="adminUser"><a href="addCompany.jsp">新增企业账号</a></li>
 			<li id="adminOperation"><a href="lister.do">充值查询</a></li>
 			<li id="adminScheme"><a href="listnews.do">消息发布</a></li>
