@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.ryxx.bpim.dao.GovernmentFileDAO;
 import com.ryxx.bpim.entity.GovernmentFile;
-import com.ryxx.bpim.helper.PageTools;
+import com.ryxx.util.page.PageTools;
 
 /**
  * author Delgado

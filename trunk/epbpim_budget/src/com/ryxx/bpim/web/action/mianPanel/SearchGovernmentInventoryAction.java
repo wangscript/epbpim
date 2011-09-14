@@ -6,10 +6,10 @@ import java.util.List;
 
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.GovernmentInventory;
-import com.ryxx.bpim.helper.PageTools;
-import com.ryxx.bpim.helper.ParamTools;
 import com.ryxx.bpim.service.GovernmentInventoryService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.page.PageTools;
+import com.ryxx.util.request.ParamTools;
 
 /**
  * author Delgado

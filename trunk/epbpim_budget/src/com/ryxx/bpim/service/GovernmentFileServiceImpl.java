@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 import com.ryxx.bpim.dao.GovernmentFileDAO;
 import com.ryxx.bpim.entity.GovernmentFile;
-import com.ryxx.bpim.helper.PageTools;
+import com.ryxx.util.page.PageTools;
 
 /**
  * author Delgado
@@ -38,7 +38,7 @@ public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, G
         setAttr(data, fileName);
         data.setSourceCode(compileCode(readHtml(file.getAbsolutePath())));
         getDao().saveGovernmentFile(data);
-        return "导入成功";
+        return "å¯¼å…¥æˆ�åŠŸ";
     }
     
     public String viewGovernmentFile(Long id)
@@ -99,7 +99,7 @@ public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, G
         fileName = fileName.substring(0, blankIndex).trim();
         String publishDateString = "";
         String fileTitle = "";
-        if (fileName.endsWith("无"))
+        if (fileName.endsWith("æ— "))
         {
             publishDateString = effectiveDateString;
             fileTitle = fileName.substring(0, fileName.length() - 1);
@@ -111,7 +111,7 @@ public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, G
             publishDateString = fileName.substring(fileName.length() - 10, fileName.length());
             fileTitle = fileName.substring(0, fileName.length() - 10);
         }
-        else if (!fileName.endsWith("无") && !fileName.endsWith(" "))
+        else if (!fileName.endsWith("æ— ") && !fileName.endsWith(" "))
         {
             publishDateString = effectiveDateString;
             fileTitle = fileName.substring(0, fileName.length());
@@ -125,7 +125,7 @@ public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, G
         data.setFileEffectiveDate(new Timestamp(fileEffectiveDate.getTime()));
     }
     
-    static final String mbs = "&amp;#(\\d+);"; // like "ロ"
+    static final String mbs = "&amp;#(\\d+);"; // like "ãƒ­"
     
     private String compileCode(String paramStr)
     {

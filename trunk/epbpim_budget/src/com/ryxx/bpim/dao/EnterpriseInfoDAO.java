@@ -1,9 +1,12 @@
 package com.ryxx.bpim.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.ryxx.bpim.entity.EnterpriseInfo;
 
 public interface EnterpriseInfoDAO extends BaseDAO<EnterpriseInfo, Long> {
-	public List<EnterpriseInfo> list();
+	List<EnterpriseInfo> findByCount(EnterpriseInfo enterpriseInfo);
+	
+	int getRowCount(EnterpriseInfo enterpriseInfo);
 }

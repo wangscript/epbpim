@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.ryxx.bpim.dao.GovernmentInventoryDAO;
 import com.ryxx.bpim.entity.GovernmentInventory;
-import com.ryxx.bpim.helper.PageTools;
+import com.ryxx.util.page.PageTools;
 
 /**
  * author Delgado
