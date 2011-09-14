@@ -2,7 +2,6 @@ package com.ryxx.bpim.dao;
 
 import java.util.List;
 
-import com.ryxx.bpim.entity.NewsAnnouncement;
 import com.ryxx.bpim.entity.UserAdvice;
 
 /**
