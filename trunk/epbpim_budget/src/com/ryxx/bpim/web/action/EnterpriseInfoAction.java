@@ -25,6 +25,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 	private List<EnterpriseInfo> enterpriseInfos;
 	private EnterpriseInfo enterpriseInfo;
 	private List<ProvinceCity> provinceCities;
+	private Long id;
 	
 	private PageTools page;
 	
@@ -40,12 +41,10 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 			int pageSize = ParamTools.getIntParameter(request,
 					Constants.PARA_PAGE_SIZE, 0);
 			PageTools page = new PageTools(pageNo, pageSize);
-			if(enterpriseInfo == null) {
-				enterpriseInfo = new EnterpriseInfo();
-			}
-			enterpriseInfo.setRowCount(pageNo);
-			enterpriseInfo.setPageSize(pageSize);
-			enterpriseInfos = enterpriseInfoService.listPage(enterpriseInfo, page);
+			EnterpriseInfo enterpriseInfo1 = new EnterpriseInfo();
+			enterpriseInfo1.setRowCount(pageNo);
+			enterpriseInfo1.setPageSize(pageSize);
+			enterpriseInfos = enterpriseInfoService.listPage(enterpriseInfo1, page);
 			if (enterpriseInfos != null && enterpriseInfos.size() > 0) {
 				this.page = page;
 			} else {
@@ -64,6 +63,26 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 	public String add() {
 		enterpriseInfo.setLogTime(new Timestamp(System.currentTimeMillis()));
 		enterpriseInfoService.save(enterpriseInfo);
+		return SUCCESS;
+	}
+	
+	public String get() {
+		enterpriseInfo = enterpriseInfoService.findById(id);
+		provinceCities = provinceCityService.list();
+		return SUCCESS;
+	}
+	
+	public String update() {
+		enterpriseInfoService.save(enterpriseInfo);
+		return SUCCESS;
+	}
+	
+	public String delete() {
+		if(id != null) {
+			EnterpriseInfo enterpriseInfo1 = new EnterpriseInfo();
+			enterpriseInfo1.setId(id);
+			enterpriseInfoService.delete(enterpriseInfo1);
+		}
 		return SUCCESS;
 	}
 
@@ -114,5 +133,12 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 	public void setProvinceCities(List<ProvinceCity> provinceCities) {
 		this.provinceCities = provinceCities;
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }
