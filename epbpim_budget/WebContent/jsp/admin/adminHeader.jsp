@@ -22,6 +22,7 @@
 			<li id="adminUser"><a href="listEnterpriseInfo.do">企业查询</a></li>
 			<li id="adminUser"><a href="newEnterpriseInfo.do">新增企业账号</a></li>
 			<li id="adminOperation"><a href="lister.do">充值查询</a></li>
+			<li id="adminOperation"><a href="lister.do">订阅查询</a></li>
 			<li id="adminScheme"><a href="listNews.do">消息发布</a></li>
 			<li id="adminGovernmentGuidePriceImport"><a href="importGovernmentGuidePrice.do">政府指导价导入</a></li>
 			<li id="adminDeleteGuideData"><a href="deleteGuideData.do">政府指导价删除</a></li>

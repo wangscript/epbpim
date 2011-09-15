@@ -21,7 +21,7 @@
 								</s:form>
 							</li>
 						</ul>
-						<ul class="fullScreenUl">
+						<ul class="fullScreenResultUl">
 							<li class="width600Li">标题</li>
 							<li class="width200Li">创建时间</li>
 							<li class="width100Li">操作</li>
@@ -30,7 +30,7 @@
 						</s:if>
 						<s:else>
 							<s:iterator value="newsAnnounces" status="st">
-								<ul class="fullScreenUl">
+								<ul class="fullScreenResultUl">
 									<li class="width600Li"><s:hidden name="id" /><a
 										href="showNews.do?id=<s:property value="id" />"><s:property
 												value="newsTitle" />
