@@ -38,7 +38,7 @@ public class SearchGovernmentInventoryAction extends ActionSupportBase
             PageTools page = new PageTools(pageNo, pageSize);
             condition.setRowCount(pageNo);
             condition.setPageSize(pageSize);
-            datas = service.searchGovernmentInventory(condition, page);
+            datas = service.listGovernmentInventory(condition, page);
             if (datas != null && datas.size() > 0)
             {
                 this.page = page;

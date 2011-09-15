@@ -56,7 +56,7 @@ public class SearchGovernmentFileAction extends ActionSupportBase
         String keyword = request.getParameter("keyword");
         try
         {
-            sourceCode = service.viewGovernmentFile(id);
+            sourceCode = service.getGovernmentFile(id);
         }
         catch (SQLException e)
         {
@@ -114,7 +114,7 @@ public class SearchGovernmentFileAction extends ActionSupportBase
             condition.setPageSize(pageSize);
             condition.setKeyword(toUnicode(condition.getKeyword()));
             setQueryDate(condition);
-            datas = service.searchGovernmentFile(condition, page);
+            datas = service.listGovernmentFile(condition, page);
             condition.setKeyword(compileCode(condition.getKeyword()));
             if (datas != null && datas.size() > 0)
             {
