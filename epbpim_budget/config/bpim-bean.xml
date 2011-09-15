@@ -51,7 +51,7 @@
 	<bean id="com.ryxx.bpim.service.EnterpriseInfoService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.service.EnterpriseInfoService.target" />
 	</bean>
-	<bean id="enterpriseInfoAction" class="com.ryxx.bpim.web.action.EnterpriseInfoAction" scope="prototype">
+	<bean id="enterpriseInfoAction" class="com.ryxx.bpim.web.action.admin.EnterpriseInfoAction" scope="prototype">
 		<property name="enterpriseInfoService">
 			<ref local="com.ryxx.bpim.service.EnterpriseInfoService"/>
 		</property>
