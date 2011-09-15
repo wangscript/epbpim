@@ -17,7 +17,7 @@ public class UserAdviceServiceImpl extends AbstractService<UserAdvice, UserAdvic
     
     UserAdviceDAO dao = new UserAdviceDAOImpl();
     
-    public List<UserAdvice> searchUserAdvice(UserAdvice condition, PageTools page)
+    public List<UserAdvice> listUserAdvice(UserAdvice condition, PageTools page)
         throws SQLException
     {
         if (page != null)
@@ -34,7 +34,7 @@ public class UserAdviceServiceImpl extends AbstractService<UserAdvice, UserAdvic
     }
     
     @Override
-    public void addUserAdvice(UserAdvice userAdvice)
+    public void saveUserAdvice(UserAdvice userAdvice)
         throws SQLException
     {
         getDao().save(userAdvice);
