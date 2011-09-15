@@ -9,6 +9,9 @@
 	    	<result name="input">/jsp/admin/adminLogin.jsp</result>
 			<result type="redirect-action">listEnterpriseInfo.do</result>
 		</action>
+		<action name="listUser" method="list" class="adminUserAction">
+	    	<result>/jsp/admin/listUser.jsp</result>
+		</action>
 		<action name="listNews" method="listNewsAnnounces" class="newAnnounceAction">
 			<result>/jsp/admin/listNews.jsp</result>
 			<interceptor-ref name="manager"/>

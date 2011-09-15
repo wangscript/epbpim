@@ -59,7 +59,12 @@
 		<property name="birthday" column="USER_BIRTHDAY" type="java.lang.String"></property>
 		<property name="familyAdd" column="FAMILY_ADDRESS" type="java.lang.String"></property>
 		<property name="mobilePhone" column="MOBILE_PHONE" type="java.lang.String"></property>
-		<property name="roleType" column="ROLE_ID" type="java.lang.String"></property>
+		<property name="roleType" column="ROLE_ID">         
+	        <type name="org.hibernate.type.EnumType">            
+	            <param name="enumClass">com.ryxx.bpim.enums.RoleEnum</param>
+	            <param name="type">12</param>
+	        </type>
+	    </property>
 		<property name="registerDate" column="REGISTER_DATE" type="java.sql.Timestamp"></property>
 		<property name="remark" column="USER_REMARK" type="java.lang.String"></property>
 		<property name="email" column="ADMIN_EMAIL" type="java.lang.String"></property>

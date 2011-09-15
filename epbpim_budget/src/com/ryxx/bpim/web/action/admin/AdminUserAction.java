@@ -30,8 +30,12 @@ public class AdminUserAction extends ActionSupportBase {
 				return SUCCESS;
 			}
 		}
-		super.addFieldError("validateCode", super.getText("用户名或密码错误"));
+		super.addFieldError("validateCode", super.getText("ç”¨æˆ·å��æˆ–å¯†ç �é”™è¯¯"));
 		return INPUT;
+	}
+	
+	public String list() {
+		return SUCCESS;
 	}
 
 	public String getUserName() {
