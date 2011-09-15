@@ -26,7 +26,7 @@
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
-								<li class="width200Li"><label class="comments">由6-10位字母数字组成</label>
+								<li class="width200Li"><label class="comments">请如实填写企业或部门名称</label>
 								</li>
 							</ul>
 
@@ -39,6 +39,8 @@
 										isValidate="true" min="0" max="10" datatype="chinese">
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
+								</li>
+								<li class="width200Li"><label class="comments">您的真实姓名</label>
 								</li>
 							</ul>
 
