@@ -12,9 +12,9 @@ import com.ryxx.util.page.PageTools;
  */
 public interface UserAdviceService extends BaseService<UserAdvice, UserAdviceDAO, Long>
 {
-    List<UserAdvice> searchUserAdvice(UserAdvice condition, PageTools page)
+    List<UserAdvice> listUserAdvice(UserAdvice condition, PageTools page)
         throws SQLException;
     
-    void addUserAdvice(UserAdvice userAdvice)
+    void saveUserAdvice(UserAdvice userAdvice)
         throws SQLException;
 }
