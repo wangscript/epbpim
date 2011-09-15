@@ -13,32 +13,28 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
+					<h4 class="title">新增公告:</h4>
 					<s:form action="addNews.do" name="addNewsForm" method="post"
 						id="addNewsForm">
 						<div>
 							<ul class="fullScreenUl">
 								<li class="width50Li">标题:</li>
-								<li class="width300Li"><s:textfield name="title"
-										cssClass="width300Input" maxLength="100" />
-								</li>
+								<li class="width350Li"><s:textfield name="title"
+										cssClass="width300Input" maxLength="100" /></li>
 								<li class="width200Li"><label class="comments">输入在100个字符以内</label>
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width50Li"><label>内容:</label>
-								</li>
-								<li class="width300Li"><s:textarea name="content" />
-								</li>
+								<li class="width50Li"><label>内容:</label></li>
+								<li class="width300Li"><s:textarea name="content" /></li>
 								<li></li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width50Li"><s:submit cssClass="mediumLeftButton"
-										value="新增" />
-								</li>
+										value="新增" /></li>
 								<li class="width50Li"><input type="button"
 									class="mediumLeftButton" value="返回"
-									onclick="window.location.href = 'listNews.do'">
-								</li>
+									onclick="window.location.href = 'listNews.do'"></li>
 							</ul>
 						</div>
 					</s:form>
