@@ -16,7 +16,7 @@
 				<div class="adminContent">
 					<div class="entry">
 						<ul class="fullScreenUl">
-							<li class="width100Li"><s:form action="addNews.jsp">
+							<li class="width100Li"><s:form action="addNews.do">
 									<input type="submit" class="mediumLeftButton" value="新增">
 								</s:form>
 							</li>
