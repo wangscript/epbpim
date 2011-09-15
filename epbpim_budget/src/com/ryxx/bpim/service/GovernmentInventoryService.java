@@ -12,6 +12,6 @@ import com.ryxx.util.page.PageTools;
  */
 public interface GovernmentInventoryService extends BaseService<GovernmentInventory, GovernmentInventoryDAO, Long>
 {
-    List<GovernmentInventory> searchGovernmentInventory(GovernmentInventory condition, PageTools page)
+    List<GovernmentInventory> listGovernmentInventory(GovernmentInventory condition, PageTools page)
         throws SQLException;
 }

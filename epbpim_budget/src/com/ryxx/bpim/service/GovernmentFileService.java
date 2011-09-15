@@ -15,13 +15,13 @@ import com.ryxx.util.page.PageTools;
 public interface GovernmentFileService extends BaseService<GovernmentFile, GovernmentFileDAO, Long>
 {
     
-    List<GovernmentFile> searchGovernmentFile(GovernmentFile condition, PageTools page)
+    List<GovernmentFile> listGovernmentFile(GovernmentFile condition, PageTools page)
         throws SQLException;
     
-    String importGovernmentFile(String fileType, String fileSubType, String provice, File importGovernmentFile)
+    String saveGovernmentFile(String fileType, String fileSubType, String provice, File importGovernmentFile)
         throws ParseException, SQLException;
     
-    String viewGovernmentFile(Long id)
+    String getGovernmentFile(Long id)
         throws SQLException;
     
 }

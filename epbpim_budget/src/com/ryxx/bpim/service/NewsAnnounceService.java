@@ -11,7 +11,7 @@ public interface NewsAnnounceService extends BaseService<NewsAnnouncement, NewsA
     
     public NewsAnnouncement getNews(NewsAnnouncement newsAnnouncement);
     
-    boolean insertNews(NewsAnnouncement newsAnnouncement);
+    boolean saveNews(NewsAnnouncement newsAnnouncement);
     
     boolean updateNews(NewsAnnouncement newsAnnouncement);
     
