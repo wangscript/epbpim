@@ -21,8 +21,8 @@
 								</li>
 								<li class="width200Li"><s:textfield
 										cssClass="width150Input" name="enterpriseInfo.name" /> <textValidate
-										field="enterpriseInfo.name" lableText="公司名称"
-										isValidate="true" min="0" max="30">
+										field="enterpriseInfo.name" labelText="公司名称"
+										isValidate="true" min="0" max="30" datatype="chinese">
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
@@ -36,7 +36,7 @@
 								<li class="width200Li"><s:textfield
 										cssClass="width150Input" name="enterpriseInfo.principal" />
 								<textValidate
-										field="enterpriseInfo.name" lableText="联系人姓名"
+										field="enterpriseInfo.principal" labelText="联系人姓名"
 										isValidate="true" min="0" max="10" datatype="chinese"></li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
@@ -48,8 +48,8 @@
 								<li class="width200Li"><s:textfield
 										cssClass="width150Input" name="enterpriseInfo.email" />
 										<textValidate
-										field="enterpriseInfo.email" lableText="邮箱"
-										isValidate="true" min="0" max="10" datatype="email"></li>
+										field="enterpriseInfo.email" labelText="邮箱"
+										isValidate="true" min="0" max="40" datatype="email"></li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
 							</ul>
@@ -60,7 +60,7 @@
 								<li class="width200Li"><s:textfield
 										cssClass="width150Input" name="enterpriseInfo.phone" />
 									<textValidate
-										field="enterpriseInfo.phone" lableText="联系人手机"
+										field="enterpriseInfo.phone" labelText="联系人手机"
 										isValidate="true" min="0" max="15" datatype="phone"></li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
@@ -75,7 +75,7 @@
 										name="enterpriseInfo.favorite" list="provinceCities"
 										listKey="city" listValue="city" multiple="false"
 										required="true" onchange="" headerKey="0"
-										headerValue="--请选择--" />
+										 />
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必选</label>
 								</li>
