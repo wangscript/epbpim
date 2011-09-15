@@ -45,7 +45,7 @@ function clearPage(updateId){
 								<li class="width200Li"><s:property value="email" /></li>
 								<li class="width100Li"><s:property value="favorite" /></li>
 								<li class="width50Li">
-									<a href="listUser.do?id=<s:property value="id"/>">进入</a>
+									<a href="listUser.do?eId=<s:property value="id"/>">进入</a>
 								</li>
 								<li class="width50Li">
 									<a href="showEnterpriseInfo.do?id=<s:property value="id"/>">修改</a>

@@ -19,4 +19,8 @@ public class UserInfoServiceImpl  extends AbstractService<UserInfo,UserInfoDAO, 
 //		return getDao().findByCount(userInfo);
 		return null;
 	}
+	
+	public List<UserInfo> list(Long enterpriseId) {
+		return getDao().list(enterpriseId);
+	}
 }
