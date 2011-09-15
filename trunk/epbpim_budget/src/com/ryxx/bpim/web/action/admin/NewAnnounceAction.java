@@ -85,7 +85,7 @@ public class NewAnnounceAction extends ActionSupportBase
             NewsAnnouncement ewsAnnounce = new NewsAnnouncement();
             ewsAnnounce.setNewsTitle(title);
             ewsAnnounce.setContent(content);
-            service.insertNews(ewsAnnounce);
+            service.saveNews(ewsAnnounce);
             return SUCCESS;
         }
         catch (Exception ex)

@@ -42,7 +42,7 @@ public class UserAdviceAction extends ActionSupportBase
             PageTools page = new PageTools(pageNo, pageSize);
             condition.setRowCount(pageNo);
             condition.setPageSize(pageSize);
-            datas = service.searchUserAdvice(condition, page);
+            datas = service.listUserAdvice(condition, page);
             if (datas != null && datas.size() > 0)
             {
                 this.page = page;
@@ -66,7 +66,7 @@ public class UserAdviceAction extends ActionSupportBase
         
         try
         {
-            service.addUserAdvice(userAdvice);
+            service.saveUserAdvice(userAdvice);
         }
         catch (SQLException e)
         {
