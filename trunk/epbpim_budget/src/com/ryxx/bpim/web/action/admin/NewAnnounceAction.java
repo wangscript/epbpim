@@ -1,10 +1,11 @@
-package com.ryxx.bpim.web.action;
+package com.ryxx.bpim.web.action.admin;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 import com.ryxx.bpim.entity.NewsAnnouncement;
 import com.ryxx.bpim.service.NewsAnnounceService;
+import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.string.StringTools;
 
 public class NewAnnounceAction extends ActionSupportBase

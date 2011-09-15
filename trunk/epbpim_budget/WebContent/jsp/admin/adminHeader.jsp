@@ -10,7 +10,7 @@
 	media="screen" />
 <link href="../css/admin.css" rel="stylesheet" type="text/css"
 	media="screen" />
-<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 <body>
@@ -18,14 +18,14 @@
     <div class="header_resize">
       <div class="nav_menu">
 		<ul>
-			<li id="adminUser"><a href="listCompany.jsp">企业查询</a></li>
-			<li id="adminUser"><a href="addCompany.jsp">新增企业账号</a></li>
+			<li id="adminUser"><a href="listEnterpriseInfo.do">企业查询</a></li>
+			<li id="adminUser"><a href="newEnterpriseInfo.do">新增企业账号</a></li>
 			<li id="adminOperation"><a href="lister.do">充值查询</a></li>
-			<li id="adminScheme"><a href="listnews.do">消息发布</a></li>
-			<li id="adminGovernmentGuidePriceImport"><a href="adminGovernmentGuidePriceImport.jsp">政府指导价导入</a></li>
-			<li id="adminDeleteGuideData"><a href="adminDeleteGuideData.jsp">政府指导价删除</a></li>
-			<li id="adminGovernmentFileImport"><a href="adminGovernmentFileImport.jsp">政府文件导入</a></li>
-			<li id="adminUserAdvice"><a href="listua.do">用户反馈</a></li>
+			<li id="adminScheme"><a href="listNews.do">消息发布</a></li>
+			<li id="adminGovernmentGuidePriceImport"><a href="importGovernmentGuidePrice.jsp">政府指导价导入</a></li>
+			<li id="adminDeleteGuideData"><a href="deleteGuideData.jsp">政府指导价删除</a></li>
+			<li id="adminGovernmentFileImport"><a href="importGovernmentFile.jsp">政府文件导入</a></li>
+			<li id="adminUserAdvice"><a href="listUserAdvice.do">用户反馈</a></li>
 		 </ul>
       </div>
       <div class="logo"><h1><small></small></h1></div>

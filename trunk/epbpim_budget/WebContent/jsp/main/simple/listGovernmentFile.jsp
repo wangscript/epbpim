@@ -1,22 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page import="com.ryxx.bpim.common.Constants"%>
-<%@ page import="org.apache.commons.lang.StringUtils"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="../css/style.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
-<script language="javascript" type="text/javascript"
-	src="../js/common.js">
-
-</script>
 <script type="text/javascript">
 	function setSearchValue() {
 		var provice = "<s:property value="condition.provice"/>";
@@ -78,7 +67,7 @@
 <title>文件查询</title>
 </head>
 <body onload="setSearchValue();changeTitleBackground();">
-<div id="main"><jsp:include page="mainHeader.jsp" />
+<div id="main"><jsp:include page="../mainHeader.jsp" />
 <div class="content">
 <div class="content_resize"><s:form
 	action="searchGovernmentFile.do" method="post"
@@ -308,7 +297,7 @@
 			</ul>
 		</s:iterator>
 		<ul>
-		<jsp:include page="../common/pagination.jsp" flush="true">
+		<jsp:include page="../../common/pagination.jsp" flush="true">
 			<jsp:param name="action_page" value="main/searchGovernmentFile.do" />
 		</jsp:include>
 		</ul>
@@ -320,7 +309,7 @@
 <div class="clr"></div>
 </div>
 </div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
+<!-- end #page --> <jsp:include page="../../common/footer.jsp" /></div>
 
 </body>
 

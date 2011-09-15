@@ -7,11 +7,6 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>企业账号查询</title>
-<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
-<script language="javascript" type="text/javascript" src="../js/common.js"></script>
-<script type='text/javascript' src='../dwr/engine.js'></script>
-<script type='text/javascript' src='../dwr/util.js'></script>
-<script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 <script type="text/javascript">
 function clearPage(updateId){
 	var ps = document.getElementById("ps");
@@ -30,25 +25,25 @@ function clearPage(updateId){
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h3 class="title">企业信息显示</h3>
+					<h4 class="title">企业信息显示</h4>
 					<div class="searchResult" id="searchResult">
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label>公司</label></li>
-							<li class="width100Li"><label>联系人姓名</label></li>
-							<li class="width150Li"><label>联系人手机</label></li>
-							<li class="width200Li"><label>邮箱</label></li>
-							<li class="width100Li"><label>业务主要地区</label></li>
-							<li class="width50Li"><label>用户信息</label></li>
-							<li class="width50Li"><label>修改</label></li>
-							<li class="width50Li"><label>删除</label></li>
+						<ul class="fullScreenResultUl">
+							<li class="width200Li">公司</li>
+							<li class="width100Li">联系人姓名</li>
+							<li class="width150Li">联系人手机</li>
+							<li class="width200Li">邮箱</li>
+							<li class="width100Li">业务主要地区</li>
+							<li class="width50Li">用户信息</li>
+							<li class="width50Li">修改</li>
+							<li class="width50Li">删除</li>
 						</ul>
 						<s:iterator value="enterpriseInfos" status="st">
-							<ul class="fullScreenUl">
-								<li class="width200Li"><label><s:hidden name="id"/><s:property value="name" /></label></li>
-								<li class="width100Li"><label><s:property value="principal" /></label></li>
-								<li class="width150Li"><label><s:property value="phone" /></label></li>
-								<li class="width200Li"><label><s:property value="email" /></label></li>
-								<li class="width100Li"><label><s:property value="favorite" /></label></li>
+							<ul class="fullScreenResultUl">
+								<li class="width200Li"><s:hidden name="id"/><s:property value="name" /></li>
+								<li class="width100Li"><s:property value="principal" /></li>
+								<li class="width150Li"><s:property value="phone" /></li>
+								<li class="width200Li"><s:property value="email" /></li>
+								<li class="width100Li"><s:property value="favorite" /></li>
 								<li class="width50Li">
 									<a href="showUser.do?id=<s:property value="id"/>">进入</a>
 								</li>
@@ -60,7 +55,7 @@ function clearPage(updateId){
 								</li>
 							</ul>
 						</s:iterator>
-						<ul class="fullScreenUl">
+						<ul class="fullScreenResultUl">
 							<s:form>
 							<jsp:include page="../common/pagination.jsp" flush="true">
 								<jsp:param name="action_page" value="admin/listEnterpriseInfo.do" />

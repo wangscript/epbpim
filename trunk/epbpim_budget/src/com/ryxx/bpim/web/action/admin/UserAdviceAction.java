@@ -1,4 +1,4 @@
-package com.ryxx.bpim.web.action;
+package com.ryxx.bpim.web.action.admin;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.List;
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.UserAdvice;
 import com.ryxx.bpim.service.UserAdviceService;
+import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 
@@ -28,7 +29,7 @@ public class UserAdviceAction extends ActionSupportBase
     
     private UserAdvice userAdvice;
     
-    private String msg = "æ��äº¤æˆ�åŠŸï¼Œæ„Ÿè°¢æ‚¨çš„å�‚ä¸Žï¼�";
+    private String msg = "提交成功，感谢您的参与！";
     
     private UserAdviceService service;
     
@@ -69,7 +70,7 @@ public class UserAdviceAction extends ActionSupportBase
         }
         catch (SQLException e)
         {
-            msg = "æ��äº¤å¤±è´¥";
+            msg = "数据库错误";
             LOG.error(e);
         }
         
