@@ -1,4 +1,4 @@
-package com.ryxx.bpim.web.action;
+package com.ryxx.bpim.web.action.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,6 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.AdminUser;
 import com.ryxx.bpim.service.AdminUserService;
+import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.string.StringTools;
 
 public class AdminUserAction extends ActionSupportBase {

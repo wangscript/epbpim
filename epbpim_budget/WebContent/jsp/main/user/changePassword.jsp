@@ -1,26 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page import="com.ryxx.bpim.common.Constants" %>
-<%@ page import="org.apache.commons.lang.StringUtils" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%
-	String username = (String) session.getAttribute(Constants.LOGIN_USER_NAME);
-	if(StringUtils.isEmpty(username)) {
-		response.sendRedirect(request.getContextPath()+"/login/index.jsp");
-	}
-%>
 <html>
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>用户密码修改</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script type="text/javascript">
 function checkError(){
 	document.getElementById("currentPassword").value = null;
@@ -35,7 +20,7 @@ function checkError(){
 </script>
 </head>
 <body onload="checkError(); changeTitleBackground();">
-<div id="main"><jsp:include page="mainHeader.jsp" />
+<div id="main"><jsp:include page="../mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
@@ -76,7 +61,7 @@ function checkError(){
 <div class="clr"></div>
 </div>
 </div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" />
+<!-- end #page --> <jsp:include page="../../common/footer.jsp" />
 </div>
 
 </body>

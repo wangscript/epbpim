@@ -4,15 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title><s:text name="Product.Name" /></title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../../css/index.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../../images/logo.ico" rel="SHORTCUT ICON" />
+<title>建筑行业造价平台</title>
+
 <script language="JavaScript">
 function getFocus()
 {
@@ -28,18 +22,18 @@ function getFocus()
 	method="post" id="loginForm">
 	<h2 class="title"><s:text name="Index.UserLogin" /></h2> 
 	<div id= "loginbar">
-	<ul>
-		<li><label><s:text name="Index.UserName" /></label></li>
-		<li><input name="username" maxlength="10" id="idInput" tabindex="1"></li>
+	<ul class="fullScreenNoMarginUl">
+		<li class="width50Li"><label><s:text name="Index.UserName" /></label></li>
+		<li class="width150Li"><input class="width150Input" name="username" maxlength="10" id="idInput" tabindex="1"></li>
 	</ul>
-	<ul>
-		<li><label><s:text name="Index.Password" /></label></li>
-		<li><input type="password" name="password" tabindex="2" tabindex="2"></li>
+	<ul class="fullScreenNoMarginUl">
+		<li class="width50Li"><label><s:text name="Index.Password" /></label></li>
+		<li class="width150Li"><input class="width150Input" type="password" name="password" tabindex="2" tabindex="2"></li>
 	</ul>
 	
 	<s:fielderror theme="Struts">
-		<ul>
-			<li><input type="button" onclick="window.location.href ='../main/main.jsp';" class="button" style="width:70px" value="<s:text name="Index.Login" />"></li>
+		<ul class="fullScreenNoMarginUl">
+			<li><input type="button" onclick="window.location.href ='../main/main.jsp';" class="button"  value="<s:text name="Index.Login" />"></li>
 		</ul>
 		<s:param>name</s:param>
 	</s:fielderror>

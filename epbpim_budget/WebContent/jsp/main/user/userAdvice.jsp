@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page import="com.ryxx.bpim.common.Constants"%>
-<%@ page import="org.apache.commons.lang.StringUtils"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -28,7 +26,7 @@
 </script>
 </head>
 <body onload="showMsg()">
-	<div id="main"><jsp:include page="mainHeader.jsp" />
+	<div id="main"><jsp:include page="../mainHeader.jsp" />
 		<s:form	action="addUserAdvice.do" method="post" name="addUserAdviceForm" id="addUserAdviceForm">
 			<div class="content">
 				<div class="content_resize">
@@ -45,7 +43,7 @@
 			</div>
 		</s:form>
 		<!-- end #page -->
-		<jsp:include page="../common/footer.jsp" />
+		<jsp:include page="../../common/footer.jsp" />
     </div>
 
 </body>

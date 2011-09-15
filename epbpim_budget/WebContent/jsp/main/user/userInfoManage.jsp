@@ -9,7 +9,7 @@
 <title>用户信息修改</title>
 </head>
 <body onload="createCode(); changeTitleBackground(); checkError()">
-	<div id="main"><jsp:include page="mainHeader.jsp" />
+	<div id="main"><jsp:include page="../mainHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
@@ -88,7 +88,7 @@
 			</div>
 		</div>
 		<!-- end #page -->
-		<jsp:include page="../common/footer.jsp" />
+		<jsp:include page="../../common/footer.jsp" />
 	</div>
 
 </body>

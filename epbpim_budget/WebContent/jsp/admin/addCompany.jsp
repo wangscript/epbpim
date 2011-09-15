@@ -18,7 +18,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width5Lb">公司名称:</label>
 								</li>
-								<li class="width200Li"><s:textfield
+								<li class="width200Li"><s:textfield cssClass="width150Input"
 										name="enterpriseInfo.name" />
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
@@ -30,7 +30,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width5Lb">联系人姓名:</label>
 								</li>
-								<li class="width200Li"><s:textfield
+								<li class="width200Li"><s:textfield cssClass="width150Input"
 										name="enterpriseInfo.principal" />
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
@@ -40,7 +40,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width5Lb">邮箱:</label>
 								</li>
-								<li class="width200Li"><s:textfield
+								<li class="width200Li"><s:textfield cssClass="width150Input"
 										name="enterpriseInfo.email" />
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
@@ -50,7 +50,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width5Lb">联系人手机:</label>
 								</li>
-								<li class="width200Li"><s:textfield
+								<li class="width200Li"><s:textfield cssClass="width150Input"
 										name="enterpriseInfo.phone" />
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
@@ -62,7 +62,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li"><label class="width6Lb">业务主要地区:</label>
 								</li>
-								<li class="width200Li"><s:select
+								<li class="width200Li"><s:select cssClass="width150Select"
 										name="enterpriseInfo.favorite" list="provinceCities"
 										listKey="city" listValue="city" multiple="false"
 										required="true" onchange="" headerKey="0"

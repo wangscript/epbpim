@@ -14,8 +14,8 @@
 				<interceptor-ref name="defaultStack"/>
 			</interceptor-stack>
 			<interceptor-stack name="manager">
-				<interceptor-ref name="adminlogin_intercept"/>
-				<interceptor-ref name="defaultStack"/>
+				<!--<interceptor-ref name="adminlogin_intercept"/>
+				<interceptor-ref name="defaultStack"/>-->
 			</interceptor-stack>
 		</interceptors>
 		

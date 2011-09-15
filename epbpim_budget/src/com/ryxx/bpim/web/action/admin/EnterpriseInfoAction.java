@@ -1,4 +1,4 @@
-package com.ryxx.bpim.web.action;
+package com.ryxx.bpim.web.action.admin;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -11,6 +11,7 @@ import com.ryxx.bpim.entity.EnterpriseInfo;
 import com.ryxx.bpim.entity.ProvinceCity;
 import com.ryxx.bpim.service.EnterpriseInfoService;
 import com.ryxx.bpim.service.ProvinceCityService;
+import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 

@@ -6,16 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>待办事项</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<script language="javascript" type="text/javascript"
-	src="../js/common.js"></script>
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
 </head>
 <body>
-<div id="main"><jsp:include page="mainHeader.jsp" />
+<div id="main"><jsp:include page="../mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
@@ -47,7 +40,7 @@
 <div class="clr"></div>
 </div>
 </div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
+<!-- end #page --> <jsp:include page="../../common/footer.jsp" /></div>
 
 </body>
 <script type='text/javascript' src='../dwr/engine.js'></script>
