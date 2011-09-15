@@ -28,9 +28,23 @@
 	<bean id="com.ryxx.bpim.service.AdminUserService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.service.AdminUserService.target" />
 	</bean>
-	<bean id="adminUserAction" class="com.ryxx.bpim.action.AdminUserAction" scope="prototype">
+	<bean id="adminUserAction" class="com.ryxx.bpim.web.action.admin.AdminUserAction" scope="prototype">
 		<property name="adminUserService">
 			<ref local="com.ryxx.bpim.service.AdminUserService"/>
+		</property>
+	</bean>
+	
+	<bean id="com.ryxx.bpim.dao.UserInfoDAO" class="com.ryxx.bpim.dao.UserInfoDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.service.UserInfoService.target" class="com.ryxx.bpim.service.UserInfoServiceImpl">
+	</bean>
+	<bean id="com.ryxx.bpim.service.UserInfoService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.UserInfoService.target" />
+	</bean>
+	<bean id="userInfoAction" class="com.ryxx.bpim.web.action.admin.UserInfoAction" scope="prototype">
+		<property name="adminUserService">
+			<ref local="com.ryxx.bpim.service.UserInfoService"/>
 		</property>
 	</bean>
 	
@@ -57,6 +71,9 @@
 		</property>
 		<property name="provinceCityService">
 			<ref local="com.ryxx.bpim.service.ProvinceCityService"/>
+		</property>
+		<property name="userInfoService">
+			<ref local="com.ryxx.bpim.service.UserInfoService"/>
 		</property>
 	</bean>
 	

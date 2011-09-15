@@ -9,11 +9,15 @@ import org.apache.commons.logging.LogFactory;
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.EnterpriseInfo;
 import com.ryxx.bpim.entity.ProvinceCity;
+import com.ryxx.bpim.entity.UserInfo;
+import com.ryxx.bpim.enums.RoleEnum;
 import com.ryxx.bpim.service.EnterpriseInfoService;
 import com.ryxx.bpim.service.ProvinceCityService;
+import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
+import com.ryxx.util.string.StringTools;
 
 public class EnterpriseInfoAction extends ActionSupportBase {
 	private static final long serialVersionUID = -5620230655376038210L;
@@ -22,6 +26,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 
 	private EnterpriseInfoService enterpriseInfoService;
 	private ProvinceCityService provinceCityService;
+	private UserInfoService userInfoService;
 	
 	private List<EnterpriseInfo> enterpriseInfos;
 	private EnterpriseInfo enterpriseInfo;
@@ -64,6 +69,19 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 	public String add() {
 		enterpriseInfo.setLogTime(new Timestamp(System.currentTimeMillis()));
 		enterpriseInfoService.save(enterpriseInfo);
+		UserInfo userInfo = new UserInfo();
+		userInfo.setEmail(enterpriseInfo.getEmail());
+		userInfo.setEnterpriseInfo(enterpriseInfo);
+		List<UserInfo> users = userInfoService.findAll();
+		if(users == null || users.size() == 0) {
+			userInfo.setIdentifier(StringTools.generateIdentify(1L));
+		} else {
+			userInfo.setIdentifier(StringTools.generateIdentify(users.size()+1));
+		}
+		userInfo.setMobilePhone(enterpriseInfo.getPhone());
+		userInfo.setRoleType(RoleEnum.ENTERPRISE_USER);
+		userInfo.setRegisterDate(enterpriseInfo.getLogTime());
+		userInfoService.save(userInfo);
 		return SUCCESS;
 	}
 	
@@ -141,5 +159,13 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public UserInfoService getUserInfoService() {
+		return userInfoService;
+	}
+
+	public void setUserInfoService(UserInfoService userInfoService) {
+		this.userInfoService = userInfoService;
 	}
 }
