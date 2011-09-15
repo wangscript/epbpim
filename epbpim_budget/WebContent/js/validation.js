@@ -3,7 +3,7 @@ var textValidateName = "textValidate";
 var radioValidateName = "radioValidate";
 var selectValidateName = "selectValidate";
 var isValidateName = "isValidate";
-var lableName = "lableText";
+var labelName = "labelText";
 var minName = "min";
 var maxName = "max";
 var maxValueName = "maxValue";
@@ -25,7 +25,7 @@ var emailType = "email";
 
 // 常规属性变量
 var isValidate;
-var lable;
+var label;
 var min;
 var max;
 var maxValue;
@@ -45,7 +45,7 @@ var cannotMoreThan = '不能超过';
 var mustLessThan = '只能小于等于';
 var mustBeNumber = '只能是数字';
 var mustBeAccount = '只能是数字，字母和下划线！';
-var mustBePhone = "电话号码格式不正确，正确格式：0511-4405222 或 021-87888822";
+var mustBePhone = "手机号码格式不正确";
 var mustBePostcode = "邮政编码不正确";
 var mustBeCode = "身份证号码不正确";
 var mustBeOther = "输入格式不正确！";
@@ -60,7 +60,7 @@ function validate(frm) {
 		if (isValidate == falseName) {
 			continue;
 		}
-		lable = textValidate[i].getAttribute(lableName);
+		label = textValidate[i].getAttribute(labelName);
 		min = textValidate[i].getAttribute(minName);
 		max = textValidate[i].getAttribute(maxName);
 		maxValue = textValidate[i].getAttribute(maxValueName);
@@ -69,50 +69,50 @@ function validate(frm) {
 		field = document.getElementsByName(textValidate[i]
 				.getAttribute(fieldName))[0];
 		if (min && min == 0 && field.value.length == min) {
-			return alertAndFocus(lable+cannotBeBlank);
+			return alertAndFocus(label+cannotBeBlank);
 		}
 		if (min && min.length > 0 && field.value.length <= min) {
-			return alertAndFocus(lable+ cannotLessThan + min + char);
+			return alertAndFocus(label+ cannotLessThan + min + char);
 		}
 		if (max && max.length > 0
 				&& field.value.replace(/[^x00-xff]/g, "aa").length > max) {
-			return alertAndFocus(lable + cannotMoreThan + max + char);
+			return alertAndFocus(label + cannotMoreThan + max + char);
 		}
 		if (datatype && datatype.length > 0) {
 			if (datatype == intType) {
 				if (!/^[0-9]+$/g.test(field.value)) {
-					return alertAndFocus(lable + mustBeNumber);
+					return alertAndFocus(label + mustBeNumber);
 				}
 				if (maxValue && Number(field.value) > Number(maxValue)) {
-					return alertAndFocus(lable + mustLessThan + maxValue + exclamation );
+					return alertAndFocus(label + mustLessThan + maxValue + exclamation );
 				}
 			} else if (datatype == accountType) {
 				if (!/^[a-zA-Z0-9_]+$/g.test(field.value)) {
-					return alertAndFocus(lable + mustBeAccount);
+					return alertAndFocus(label + mustBeAccount);
 				}
 			} else if (datatype == phoneType) {
-				if (!/^d{3}-d{8}|d{4}-d{7}$/g.test(field.value)) {
-					return alertAndFocus(mustBePhone);
+				if (field.value.length != 11) {
+					return alertAndFocus(label +mustBePhone);
 				}
 			} else if (datatype == postcodeType) {
 				if (!/^[1-9]d{5}(?!d)$/g.test(field.value)) {
-					return alertAndFocus(mustBePostcode);
+					return alertAndFocus(label +mustBePostcode);
 				}
 			} else if (datatype == codeType) {
 				if (!/^d{15}|d{18}$/g.test(field.value)) {
-					return alertAndFocus(mustBeCode);
+					return alertAndFocus(label +mustBeCode);
 				}
 			} else if (datatype == chineseType) {
-				if (!"^[\u4e00-\u9fa5]+$".test(field.value)) {
-					return alertAndFocus(mustBeChinese);
+				if (!/^[\u4e00-\u9fa5]+$/g.test(field.value)) {
+					return alertAndFocuslabel +(mustBeChinese);
 				}
 			} else if (datatype == emailType) {
-				if (!"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*".test(field.value)) {
-					return alertAndFocus(mustBeEmail);
+				if (!/^([a-zA-Z0-9]|[._])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test(field.value)) {
+					return alertAndFocus(label +mustBeEmail);
 				}
 			} else {
 				if (!new RegExp(datatype, "g").test(field.value)) {
-					return alertAndFocus(lable + mustBeOther);
+					return alertAndFocus(label + mustBeOther);
 				}
 			}
 		}
@@ -123,7 +123,7 @@ function validate(frm) {
 		if (isValidate == falseName) {
 			continue;
 		}
-		lable = radioValidate[i].getAttribute(lableName);
+		label = radioValidate[i].getAttribute(labelName);
 		alt = textValidate[i].getAttribute(altName);
 		field = document.getElementsByName(radioValidate[i]
 				.getAttribute(fieldName));
@@ -135,7 +135,7 @@ function validate(frm) {
 			}
 		}
 		if (flag) {
-			return alertAndFocus(lable + mustRequird);
+			return alertAndFocus(label + mustRequird);
 		}
 	}
 	var selectValidate = frm.getElementsByTagName(selectValidateName);
@@ -144,13 +144,13 @@ function validate(frm) {
 		if (isValidate == falseName) {
 			continue;
 		}
-		lable = selectValidate[i].getAttribute(lableName);
+		label = selectValidate[i].getAttribute(labelName);
 		alt = textValidate[i].getAttribute(altName);
 		noValue = selectValidate[i].getAttribute(noValueName);
 		field = document.getElementsByName(selectValidate[i]
 				.getAttribute(fieldName))[0];
 		if (field.value == noValue) {
-			return alertAndFocus(lable + mustRequird);
+			return alertAndFocus(label + mustRequird);
 		}
 	}
 	return true;
