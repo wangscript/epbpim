@@ -12,7 +12,7 @@ public class NewAnnounceAction extends ActionSupportBase
 {
     private static final long serialVersionUID = 4274988765242874229L;
     
-    NewsAnnounceService service;
+    private NewsAnnounceService service;
     
     private List<NewsAnnouncement> newsAnnounces;
     
