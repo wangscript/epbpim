@@ -37,7 +37,7 @@ public class GovernmentFileAction extends ActionSupportBase
         }
         try
         {
-            msg = service.importGovernmentFile(fileType, fileSubType, provice, importGovernmentFile);
+            msg = service.saveGovernmentFile(fileType, fileSubType, provice, importGovernmentFile);
         }
         catch (Exception e)
         {
