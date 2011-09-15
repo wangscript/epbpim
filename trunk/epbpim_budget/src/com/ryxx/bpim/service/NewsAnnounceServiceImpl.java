@@ -11,7 +11,7 @@ public class NewsAnnounceServiceImpl extends AbstractService<NewsAnnouncement, N
     
     public List<NewsAnnouncement> findAll()
     {
-        return getDao().listNewsAnnouncement(null);
+        return getDao().listNewsAnnouncement(new NewsAnnouncement());
     }
     
     public NewsAnnouncement getNews(NewsAnnouncement newsAnnouncement)
@@ -19,7 +19,7 @@ public class NewsAnnounceServiceImpl extends AbstractService<NewsAnnouncement, N
         return getDao().viewNewsAnnouncement(newsAnnouncement);
     }
     
-    public boolean insertNews(NewsAnnouncement newsAnnouncement)
+    public boolean saveNews(NewsAnnouncement newsAnnouncement)
     {
         getDao().save(newsAnnouncement);
         return true;

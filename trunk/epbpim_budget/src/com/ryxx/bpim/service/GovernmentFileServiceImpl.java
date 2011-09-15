@@ -25,7 +25,7 @@ import com.ryxx.util.page.PageTools;
 public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, GovernmentFileDAO, Long> implements
     GovernmentFileService
 {
-    public String importGovernmentFile(String fileType, String fileSubType, String provice, File file)
+    public String saveGovernmentFile(String fileType, String fileSubType, String provice, File file)
         throws ParseException, SQLException
     {
         
@@ -38,17 +38,17 @@ public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, G
         setAttr(data, fileName);
         data.setSourceCode(compileCode(readHtml(file.getAbsolutePath())));
         getDao().saveGovernmentFile(data);
-        return "å¯¼å…¥æˆ�åŠŸ";
+        return "导入成功";
     }
     
-    public String viewGovernmentFile(Long id)
+    public String getGovernmentFile(Long id)
         throws SQLException
     {
         GovernmentFile governmentFile = getDao().viewGovernmentFile(id);
         return null != governmentFile ? governmentFile.getSourceCode() : "";
     }
     
-    public List<GovernmentFile> searchGovernmentFile(GovernmentFile condition, PageTools page)
+    public List<GovernmentFile> listGovernmentFile(GovernmentFile condition, PageTools page)
         throws SQLException
     {
         if (page != null)

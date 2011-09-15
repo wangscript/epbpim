@@ -14,7 +14,7 @@ public class GovernmentInventoryServiceImpl extends AbstractService<GovernmentIn
     implements GovernmentInventoryService
 {
     
-    public List<GovernmentInventory> searchGovernmentInventory(GovernmentInventory condition, PageTools page)
+    public List<GovernmentInventory> listGovernmentInventory(GovernmentInventory condition, PageTools page)
         throws SQLException
     {
         if (page != null)
