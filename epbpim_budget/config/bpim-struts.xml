@@ -9,36 +9,47 @@
 	    	<result name="input">/jsp/admin/adminLogin.jsp</result>
 			<result type="redirect-action">listEnterpriseInfo.do</result>
 		</action>
-		<action name="listNews" method="listNewsAnnounces" class="com.ryxx.bpim.web.action.admin.NewAnnounceAction">
+		<action name="listNews" method="listNewsAnnounces" class="newAnnounceAction">
 			<result>/jsp/admin/listNews.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
-		<action name="addNews" method="insertNewsAnnounces" class="com.ryxx.bpim.web.action.admin.NewAnnounceAction">
+		<action name="addNews" method="insertNewsAnnounces" class="newAnnounceAction">
 			<result type="redirect-action">listNews.do</result>
 			<interceptor-ref name="manager"/>
 		</action>
-		<action name="showNews" method="getDetailNewsAnnounces" class="com.ryxx.bpim.web.action.admin.NewAnnounceAction">
+		<action name="showNews" method="getDetailNewsAnnounces" class="newAnnounceAction">
 			<result>/jsp/admin/updateNews.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>						  
-		<action name="updateNews" method="updateNewsAnnounces" class="com.ryxx.bpim.web.action.admin.NewAnnounceAction">
+		<action name="updateNews" method="updateNewsAnnounces" class="newAnnounceAction">
 			<result type="redirect-action">listNews.do</result>
 			<interceptor-ref name="manager"/>
 		</action>
-		<action name="deleteNews" method="deleteNewsAnnounces" class="com.ryxx.bpim.web.action.admin.NewAnnounceAction">
+		<action name="deleteNews" method="deleteNewsAnnounces" class="newAnnounceAction">
 			<result type="redirect-action">listNews.do</result>
 			<interceptor-ref name="manager"/>
 		</action>
-		<action name="listUserAdvice" method="searchUserAdvice"
-			class="com.ryxx.bpim.web.action.admin.UserAdviceAction">
+		<action name="listUserAdvice" method="searchUserAdvice" class="userAdviceAction">
 			<result>/jsp/admin/listUserAdvice.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>		
-		<action name="importGovernmentFile" method="importGovernmentFile"
-			class="com.ryxx.bpim.web.action.admin.GovernmentFileAction">
-			<result>/admin/importGovernmentFile.jsp</result>
+		<action name="importGovernmentFile" method="importGovernmentFile" class="governmentFileAction">
+			<result>jsp/admin/importGovernmentFile.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
+		<action name="preAddNews">
+			<result>/jsp/admin/addNews.jsp</result>
+		</action>
+		<action name="importGovernmentGuidePrice">
+			<result>/jsp/admin/importGovernmentGuidePrice.jsp</result>
+		</action>
+		<action name="deleteGuideData">
+			<result>/jsp/admin/deleteGuideData.jsp</result>
+		</action>
+		<action name="importGovernmentFile">
+			<result>/jsp/admin/importGovernmentFile.jsp</result>
+		</action>
+		
 	</package>
 	<package name="bpim-enterpriseinfo" namespace="/admin" extends="bpim-default">
 		<action name="listEnterpriseInfo" method="list" class="enterpriseInfoAction">
@@ -52,48 +63,42 @@
 		</action>
 	</package>
 	<package name="bpim-searchGovernmentInventory" namespace="/main" extends="bpim-default">
-		<action name="searchGovernmentInventory" method="searchGovernmentInventory"
-			class="com.ryxx.bpim.web.action.mianPanel.SearchGovernmentInventoryAction">
-			<result name="inventory2003">/main/simple/searchGovernmentInventory_2003.jsp</result>
-			<result name="inventory2008">/main/simple/searchGovernmentInventory_2008.jsp</result>
+		<action name="searchGovernmentInventory" method="searchGovernmentInventory" class="searchGovernmentInventoryAction">
+			<result name="inventory2003">jsp/main/simple/searchGovernmentInventory_2003.jsp</result>
+			<result name="inventory2008">jsp/main/simple/searchGovernmentInventory_2008.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-searchGovernmentFile" namespace="/main" extends="bpim-default">
-		<action name="searchGovernmentFile" method="searchGovernmentFile"
-			class="com.ryxx.bpim.web.action.mianPanel.SearchGovernmentFileAction">
-			<result>/main/simple/listGovernmentFile.jsp</result>
+		<action name="searchGovernmentFile" method="searchGovernmentFile" class="searchGovernmentFileAction">
+			<result>jsp/main/simple/listGovernmentFile.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-viewGovernmentFile" namespace="/main" extends="bpim-default">
-		<action name="viewGovernmentFile" method="viewGovernmentFile"
-			class="com.ryxx.bpim.web.action.mianPanel.SearchGovernmentFileAction">
-			<result>/main/simple/showGovernmentFileDetail.jsp</result>
+		<action name="viewGovernmentFile" method="viewGovernmentFile" class="searchGovernmentFileAction">
+			<result>jsp/main/simple/showGovernmentFileDetail.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-main" namespace="/main" extends="bpim-default">
-		<action name="main" method="listNewsAnnounces" 
-			class="com.ryxx.bpim.web.action.admin.NewAnnounceAction">
-			<result>/main/main.jsp</result>
+		<action name="main" method="listNewsAnnounces" class="newAnnounceAction">
+			<result>jsp/main/main.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
-		<action name="showNews" method="getDetailNewsAnnounces" 
-			class="com.ryxx.bpim.web.action.admin.NewAnnounceAction">
-			<result>/main/showNews.jsp</result>
+		<action name="showNews" method="getDetailNewsAnnounces" class="newAnnounceAction">
+			<result>jsp/main/user/showNews.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 	</package>	
 	<package name="bpim-addUserAdvice" namespace="/main" extends="bpim-default">
-		<action name="addUserAdvice" method="addUserAdvice"
-			class="com.ryxx.bpim.web.action.admin.UserAdviceAction">
-			<result>/main/user/userAdvice.jsp</result>
+		<action name="addUserAdvice" method="addUserAdvice" class="userAdviceAction">
+			<result>jsp/main/user/userAdvice.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
