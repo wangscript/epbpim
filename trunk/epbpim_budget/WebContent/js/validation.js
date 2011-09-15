@@ -13,14 +13,17 @@ var fieldName ="field";
 var falseName = "false";
 var noValueName = "noValue";
 
-//常规类型
+// 常规类型
 var intType = "int";
 var accountType = "account";
 var phoneType = "phone";
 var postcodeType = "postcode";
 var codeType = "code";
+var chineseType = "chinese";
+var emailType = "email";
+	
 
-//常规属性变量
+// 常规属性变量
 var isValidate;
 var lable;
 var min;
@@ -31,9 +34,9 @@ var alt;
 var field;
 var noValue;
 
-//正则
+// 正则
 
-//提示信息
+// 提示信息
 var exclamation = "！";
 var char = '位！';
 var cannotBeBlank = '不能为空';
@@ -47,6 +50,8 @@ var mustBePostcode = "邮政编码不正确";
 var mustBeCode = "身份证号码不正确";
 var mustBeOther = "输入格式不正确！";
 var mustRequird = "为必选项！";
+var mustBeChinese = "必须是中文！";
+var mustBeEmail = "不符合邮件地址格式";
 
 function validate(frm) {
 	var textValidate = frm.getElementsByTagName(textValidateName);
@@ -96,6 +101,14 @@ function validate(frm) {
 			} else if (datatype == codeType) {
 				if (!/^d{15}|d{18}$/g.test(field.value)) {
 					return alertAndFocus(mustBeCode);
+				}
+			} else if (datatype == chineseType) {
+				if (!"^[\u4e00-\u9fa5]+$".test(field.value)) {
+					return alertAndFocus(mustBeChinese);
+				}
+			} else if (datatype == emailType) {
+				if (!"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*".test(field.value)) {
+					return alertAndFocus(mustBeEmail);
 				}
 			} else {
 				if (!new RegExp(datatype, "g").test(field.value)) {

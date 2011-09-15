@@ -11,6 +11,7 @@
 <link href="../css/admin.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <script type="text/javascript" src="../js/common.js"></script>
+<script type='text/javascript' src='../js/validation.js'></script>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 <body>
