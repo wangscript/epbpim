@@ -21,16 +21,28 @@ public class PeriodicalFile extends VoBase
     
     private Timestamp uploadDate;
     
-    private String Keyword;
+    private String keyword;
     
+    private String uploadDatePage;
+    
+    public String getUploadDatePage()
+    {
+        return uploadDatePage;
+    }
+
+    public void setUploadDatePage(String uploadDatePage)
+    {
+        this.uploadDatePage = uploadDatePage;
+    }
+
     public String getKeyword()
     {
-        return Keyword;
+        return keyword;
     }
     
     public void setKeyword(String keyword)
     {
-        Keyword = keyword;
+        this.keyword = keyword;
     }
     
     public Long getId()
