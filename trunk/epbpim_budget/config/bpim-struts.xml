@@ -20,7 +20,6 @@
 	    	<result name="input">/jsp/admin/adminLogin.jsp</result>
 			<result type="redirect-action">listEnterpriseInfo.do</result>
 		</action>
-		
 		<action name="listNews" method="listNewsAnnounces" class="newAnnounceAction">
 			<result>/jsp/admin/listNews.jsp</result>
 			<interceptor-ref name="manager"/>
@@ -46,7 +45,15 @@
 			<interceptor-ref name="manager"/>
 		</action>		
 		<action name="importGovernmentFile" method="importGovernmentFile" class="governmentFileAction">
-			<result>jsp/admin/importGovernmentFile.jsp</result>
+			<result>/jsp/admin/importGovernmentFile.jsp</result>
+			<interceptor-ref name="manager"/>
+		</action>
+		<action name="importPeriodicalFile" method="importPeriodicalFile" class="periodicalAction">
+			<result>/jsp/admin/periodicalFile.jsp</result>
+			<interceptor-ref name="manager"/>
+		</action>
+		<action name="uploadPricePackageFile" method="addPricePackageFile" class="pricePackageFileAction">
+			<result>/jsp/admin/uploadPricePackageFile.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preAddNews">
@@ -58,10 +65,15 @@
 		<action name="deleteGuideData">
 			<result>/jsp/admin/deleteGuideData.jsp</result>
 		</action>
-		<action name="importGovernmentFile">
+		<action name="preImportGovernmentFile">
 			<result>/jsp/admin/importGovernmentFile.jsp</result>
 		</action>
-		
+		<action name="preImportPeriodicalFile">
+			<result>/jsp/admin/periodicalFile.jsp</result>
+		</action>
+		<action name="preUploadPricePackageFile">
+			<result>/jsp/admin/uploadPricePackageFile.jsp</result>
+		</action>	
 	</package>
 	<package name="bpim-enterpriseinfo" namespace="/admin" extends="bpim-default">
 		<action name="listEnterpriseInfo" method="list" class="enterpriseInfoAction">
@@ -104,6 +116,27 @@
 	<package name="bpim-viewGovernmentFile" namespace="/main" extends="bpim-default">
 		<action name="viewGovernmentFile" method="viewGovernmentFile" class="searchGovernmentFileAction">
 			<result>jsp/main/simple/showGovernmentFileDetail.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-searchPeriodicalFile" namespace="/main" extends="bpim-default">
+		<action name="searchPeriodicalFile" method="searchPeriodicalFile" class="periodicalFileAction">
+			<result>jsp/main/simple/listPeriodicalFile.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-viewPeriodicalFile" namespace="/main" extends="bpim-default">
+		<action name="viewPeriodicalFile" method="viewPeriodicalFile" class="periodicalFileAction">
+			<result>jsp/main/simple/showPeriodicalFileDetail.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-searchPricePackageFile" namespace="/main" extends="bpim-default">
+		<action name="searchPricePackageFile" method="schPricePackageFileList" class="pricePackageAction">
+			<result>/jsp/main/simple/listPricePackageFile.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
