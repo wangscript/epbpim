@@ -17,7 +17,7 @@
 					<div class="entry">
 						<ul class="fullScreenUl">
 							<li class="width100Li"><s:form action="preAddNews.do">
-									<input type="submit" class="mediumLeftButton" value="新增">
+									<input type="submit" class="button" value="新增">
 								</s:form></li>
 						</ul>
 						<ul class="fullScreenResultUl">

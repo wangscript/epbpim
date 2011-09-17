@@ -202,20 +202,16 @@ select {
 	width: 236px;
 }
 
-button{
-	font: normal 12px/1.8em kaiti,Arial, Helvetica, sans-serif;
-}
 .button {
 	cursor: pointer;
 	width: auto;
-	height: 25px;
 	margin-right: 4px;
 	display: block;
 	text-align: center;
 	background: url(../images/a_bg.gif) repeat-x center center;
 	text-decoration: none;
 	color: #5F5F5F;
-	font: normal 12px/1.8em kaiti,Arial, Helvetica, sans-serif;
+	font: normal 14px/1.8em kaiti,Arial, Helvetica, sans-serif;
 }
 
 ul.sb_menu,ul.ex_menu {
@@ -570,27 +566,9 @@ ol li .send {
 }
 
 .mediumRightButton {
-	cursor: pointer;
-	height: 25px;
-	margin-right: 4px;
-	display: block;
 	float: right;
-	text-align: center;
-	background: url(../images/a_bg.gif) repeat-x center center;
-	text-decoration: none;
-	color: #5F5F5F;
-	font: normal 12px/1.8em kaiti,Arial, Helvetica, sans-serif;
 }
 
 .mediumLeftButton {
-	cursor: pointer;
-	height: 25px;
-	margin-right: 4px;
-	display: block;
 	float: left;
-	text-align: center;
-	background: url(../images/a_bg.gif) repeat-x center center;
-	text-decoration: none;
-	color: #5F5F5F;
-	font: normal 12px/1.8em kaiti,Arial, Helvetica, sans-serif;
 }
