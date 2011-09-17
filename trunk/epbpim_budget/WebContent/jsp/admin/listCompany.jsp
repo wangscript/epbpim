@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>企业账号查询</title>
+<title>企业账号列表</title>
 <script type="text/javascript">
 function clearPage(updateId){
 	var ps = document.getElementById("ps");
@@ -30,28 +30,20 @@ function clearPage(updateId){
 						<ul class="fullScreenResultUl">
 							<li class="width200Li">公司</li>
 							<li class="width100Li">联系人姓名</li>
-							<li class="width150Li">联系人手机</li>
+							<li class="width100Li">联系人手机</li>
 							<li class="width200Li">邮箱</li>
 							<li class="width100Li">业务主要地区</li>
 							<li class="width50Li">用户信息</li>
-							<li class="width50Li">修改</li>
-							<li class="width50Li">删除</li>
 						</ul>
 						<s:iterator value="enterpriseInfos" status="st">
 							<ul class="fullScreenResultUl">
 								<li class="width200Li"><s:hidden name="id"/><s:property value="name" /></li>
 								<li class="width100Li"><s:property value="principal" /></li>
-								<li class="width150Li"><s:property value="phone" /></li>
+								<li class="width100Li"><s:property value="phone" /></li>
 								<li class="width200Li"><s:property value="email" /></li>
 								<li class="width100Li"><s:property value="favorite" /></li>
 								<li class="width50Li">
 									<a href="listUser.do?eId=<s:property value="id"/>">进入</a>
-								</li>
-								<li class="width50Li">
-									<a href="showEnterpriseInfo.do?id=<s:property value="id"/>">修改</a>
-								</li>
-								<li class="width50Li">
-									<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>">删除</a>
 								</li>
 							</ul>
 						</s:iterator>
