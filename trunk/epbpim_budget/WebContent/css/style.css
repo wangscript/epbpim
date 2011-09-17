@@ -78,7 +78,9 @@ li {
 }
 
 input {
+	color: #5f5f5f;
 	float: left;
+	font-family: kaiti,Arial, Helvetica, sans-serif;
 }
 
 label {
@@ -205,13 +207,12 @@ select {
 .button {
 	cursor: pointer;
 	width: auto;
-	margin-right: 4px;
 	display: block;
+	height: 26px;
 	text-align: center;
 	background: url(../images/a_bg.gif) repeat-x center center;
 	text-decoration: none;
 	color: #5F5F5F;
-	font: normal 14px/1.8em kaiti,Arial, Helvetica, sans-serif;
 }
 
 ul.sb_menu,ul.ex_menu {
@@ -530,39 +531,39 @@ ol li .send {
 }
 
 .width1Lb {
-	width: 20px;
+	width: 22px;
 }
 
 .width2Lb {
-	width: 30px;
+	width: 36px;
 }
 
 .width3Lb {
-	width: 42px;
+	width: 50px;
 }
 
 .width4Lb {
-	width: 54px;
+	width: 64px;
 }
 
 .width5Lb {
-	width: 66px;
-}
-
-.width6Lb {
 	width: 78px;
 }
 
+.width6Lb {
+	width: 92px;
+}
+
 .width7Lb {
-	width: 90px;
+	width: 106px;
 }
 
 .width8Lb {
-	width: 102px;
+	width: 114px;
 }
 
 .width9Lb {
-	width: 114px;
+	width: 126px;
 }
 
 .mediumRightButton {

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>管理员管理界面</title>
+<title>删除信息价</title>
 <script type="text/javascript">
 	function getObject(id) {
 		return document.getElementById(id);
