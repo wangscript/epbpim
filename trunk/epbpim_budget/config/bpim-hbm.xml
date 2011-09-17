@@ -82,7 +82,7 @@
 		<property name="index" column="MENU_INDEX" type="java.lang.Integer"></property>
 	</class>
 	<class name="GovernmentFile" table="GOVERNMENT_FILE">
-		<id name="id" column="ID" type="java.lang.Integer">
+		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
 		<property name="fileTitle" column="FILE_TITLE" type="java.lang.String"></property>
@@ -95,7 +95,7 @@
 		<property name="effective" column="EFFECTIVE" type="java.lang.Integer"></property>
 	</class>
 	<class name="GovernmentInventory" table="GOVERNMENT_INVENTORY">
-		<id name="id" column="ID" type="java.lang.Integer">
+		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
 		<property name="governmentInventoryType" column="GOVERNMENT_INVENTORY_TYPE" type="java.lang.String"></property>
@@ -110,7 +110,7 @@
 		<property name="comments" column="COMMENTS" type="java.lang.String"></property>
 	</class>
 	<class name="NewsAnnouncement" table="NEWS_ANNOUNCEMENT">
-		<id name="id" column="ID" type="java.lang.Integer">
+		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
 		<property name="newsTitle" column="NEWS_TITLE" type="java.lang.String"></property>
@@ -118,7 +118,7 @@
 		<property name="addTime" column="ADD_TIME" type="java.sql.Timestamp"></property>
 	</class>
 	<class name="UserAdvice" table="USER_ADVINCE">
-		<id name="id" column="ID" type="java.lang.Integer">
+		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
 		<property name="userID" column="USER_ID" type="java.lang.String"></property>
