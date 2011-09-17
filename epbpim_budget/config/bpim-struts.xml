@@ -48,7 +48,7 @@
 			<result>/jsp/admin/importGovernmentFile.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
-		<action name="importPeriodicalFile" method="importPeriodicalFile" class="periodicalAction">
+		<action name="importPeriodicalFile" method="importPeriodicalFile" class="periodicalFileAction">
 			<result>/jsp/admin/periodicalFile.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
@@ -135,7 +135,7 @@
 		</action>
 	</package>
 	<package name="bpim-searchPricePackageFile" namespace="/main" extends="bpim-default">
-		<action name="searchPricePackageFile" method="schPricePackageFileList" class="pricePackageAction">
+		<action name="searchPricePackageFile" method="searchPricePackageFile" class="pricePackageFileAction">
 			<result>/jsp/main/simple/listPricePackageFile.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
