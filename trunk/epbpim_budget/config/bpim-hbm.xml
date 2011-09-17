@@ -68,6 +68,7 @@
 		<property name="registerDate" column="REGISTER_DATE" type="java.sql.Timestamp"></property>
 		<property name="remark" column="USER_REMARK" type="java.lang.String"></property>
 		<property name="email" column="ADMIN_EMAIL" type="java.lang.String"></property>
+		<property name="enable" column="ENABLE" type="java.lang.Integer"></property>
 		<many-to-one name="enterpriseInfo" class="EnterpriseInfo" column="ENTERPRISE_ID"></many-to-one>
 	</class>
 	
