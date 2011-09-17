@@ -73,6 +73,7 @@ function clearPage(updateId){
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
+					<h4 class="title">用户列表</h4>
 					<ul class="fullScreenResultUl">
 						<li>
 							<ul class="fullScreenResultUl">
@@ -101,7 +102,8 @@ function clearPage(updateId){
 									<li class="width150Li">邮箱</li>
 									<li class="width100Li">是否可用</li>
 									<li class="width100Li">选择应用</li>
-									<li class="width100Li">操作</li>
+									<li class="width50Li">操作</li>
+									<li class="width50Li">操作</li>
 								</ul>
 								<s:if test="userInfos==null || userInfos.size()==0">
 									<ul>
