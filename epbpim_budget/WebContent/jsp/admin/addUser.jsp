@@ -19,7 +19,7 @@
 <script type='text/javascript' src='../js/validation.js'></script>
 </head>
 <body>
-	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
+	<div id="main"><jsp:include page="adminHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">

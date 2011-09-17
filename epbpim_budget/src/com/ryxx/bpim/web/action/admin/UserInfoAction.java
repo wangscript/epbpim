@@ -33,6 +33,11 @@ public class UserInfoAction extends ActionSupportBase {
 		return INPUT;
 	}
 	
+	public String batch() {
+		
+		return SUCCESS;
+	}
+	
 	public String list() {
 		userInfos = userInfoService.list(eId);
 		return SUCCESS;

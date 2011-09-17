@@ -18,13 +18,13 @@ function getFocus()
 <div id="main"><jsp:include page="indexHeader.jsp" />
 <div class="content">
 <div class="content_resize">
-<div class="mainbar"><s:form action="login.do" name="login"
+<div class="mainbar"><s:form action="admin/login.do" name="login"
 	method="post" id="loginForm">
 	<h2 class="title"><s:text name="Index.UserLogin" /></h2> 
 	<div id= "loginbar">
 	<ul class="fullScreenNoMarginUl">
 		<li class="width50Li"><label><s:text name="Index.UserName" /></label></li>
-		<li class="width150Li"><input class="width150Input" name="username" maxlength="10" id="idInput" tabindex="1"></li>
+		<li class="width150Li"><input class="width150Input" name="userName" maxlength="10" id="idInput" tabindex="1"></li>
 	</ul>
 	<ul class="fullScreenNoMarginUl">
 		<li class="width50Li"><label><s:text name="Index.Password" /></label></li>
