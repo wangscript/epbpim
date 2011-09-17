@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>管理员管理界面</title>
+<title>用户反馈列表</title>
 </head>
 <body>
 	<div id="main"><jsp:include page="adminHeader.jsp" />
