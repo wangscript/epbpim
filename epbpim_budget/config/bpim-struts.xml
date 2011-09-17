@@ -52,8 +52,8 @@
 		<action name="preAddNews">
 			<result>/jsp/admin/addNews.jsp</result>
 		</action>
-		<action name="importGovernmentGuidePrice">
-			<result>/jsp/admin/importGovernmentGuidePrice.jsp</result>
+		<action name="importGuidePrice">
+			<result>/jsp/admin/importGuidePrice.jsp</result>
 		</action>
 		<action name="deleteGuideData">
 			<result>/jsp/admin/deleteGuideData.jsp</result>
