@@ -31,7 +31,7 @@ public class PricePackageFileAction extends ActionSupportBase
     
     private List<PricePackageFile> pricePackageFileList;
     
-    private PricePackageFileService pricePackageFileService;
+    private PricePackageFileService service;
     
     private PageTools page;
     
@@ -44,7 +44,7 @@ public class PricePackageFileAction extends ActionSupportBase
             PageTools page = new PageTools(pageNo, pageSize);
             pricePackageFile.setRowCount(pageNo);
             pricePackageFile.setPageSize(pageSize);
-            pricePackageFileList = pricePackageFileService.listPricePackageFile(pricePackageFile, page);
+            pricePackageFileList = service.listPricePackageFile(pricePackageFile, page);
             if (pricePackageFileList != null && pricePackageFileList.size() > 0)
             {
                 this.page = page;
@@ -69,7 +69,7 @@ public class PricePackageFileAction extends ActionSupportBase
         {
             newUploadFile = dealWithUploadFile();
             
-            pricePackageFileService.savePricePackageFile(pricePackageFile);
+            service.savePricePackageFile(pricePackageFile);
         }
         catch (Exception e)
         {
@@ -89,8 +89,7 @@ public class PricePackageFileAction extends ActionSupportBase
     {
         try
         {
-            String fileDir =
-                request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + "pricepackage";
+            String fileDir = request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + "pricepackage";
             
             String filePath = pricePackageFile.getPricePackagePath();
             if (null != filePath)
@@ -103,7 +102,7 @@ public class PricePackageFileAction extends ActionSupportBase
                 }
             }
             
-            pricePackageFileService.deletePricePackageFile(pricePackageFile);
+            service.deletePricePackageFile(pricePackageFile);
         }
         catch (Exception e)
         {
@@ -125,8 +124,7 @@ public class PricePackageFileAction extends ActionSupportBase
             newFileName += oldFileName.substring(oldFileName.lastIndexOf("."), oldFileName.length());
         }
         
-        String fileDir =
-            request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + "pricepackage";
+        String fileDir = request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + "pricepackage";
         
         File fileDirFile = new File(fileDir);
         if (!fileDirFile.exists())
@@ -179,16 +177,6 @@ public class PricePackageFileAction extends ActionSupportBase
         this.pricePackageFileList = pricePackageFileList;
     }
     
-    public PricePackageFileService getPricePackageFileService()
-    {
-        return pricePackageFileService;
-    }
-    
-    public void setPricePackageFileService(PricePackageFileService pricePackageFileService)
-    {
-        this.pricePackageFileService = pricePackageFileService;
-    }
-    
     public PageTools getPage()
     {
         return page;
@@ -197,5 +185,15 @@ public class PricePackageFileAction extends ActionSupportBase
     public void setPage(PageTools page)
     {
         this.page = page;
+    }
+    
+    public PricePackageFileService getService()
+    {
+        return service;
+    }
+    
+    public void setService(PricePackageFileService service)
+    {
+        this.service = service;
     }
 }
