@@ -107,7 +107,7 @@
 	<bean id="com.ryxx.bpim.service.PeriodicalFileService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.service.PeriodicalFileService.target" />
 	</bean>
-	<bean id="com.ryxx.bpim.service.GovernmentInventoryService.target" class="com.ryxx.bpim.service.GovernmentInventoryServiceImpl"></bean>
+	<bean id="com.ryxx.bpim.service.PeriodicalFileService.target" class="com.ryxx.bpim.service.PeriodicalFileServiceImpl"></bean>
 	<!-- 价格包 -->
 	<bean id="com.ryxx.bpim.dao.PricePackageFileDAO" class="com.ryxx.bpim.dao.PricePackageFileDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -120,7 +120,7 @@
 	<bean id="com.ryxx.bpim.service.PricePackageFileService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.service.PricePackageFileService.target" />
 	</bean>
-	<bean id="com.ryxx.bpim.service.GovernmentInventoryService.target" class="com.ryxx.bpim.service.GovernmentInventoryServiceImpl"></bean>
+	<bean id="com.ryxx.bpim.service.PricePackageFileService.target" class="com.ryxx.bpim.service.PricePackageFileServiceImpl"></bean>
 	<!-- 清单 -->
 	<bean id="com.ryxx.bpim.dao.GovernmentInventoryDAO" class="com.ryxx.bpim.dao.GovernmentInventoryDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
