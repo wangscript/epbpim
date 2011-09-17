@@ -1,6 +1,6 @@
 
 .header{
-	height:130px;
+	
 }
 .header .logo {
 	background: none;
@@ -14,7 +14,7 @@
 	margin: 0 auto;
 	padding: 0;
 	width: 970px;
-	height: 140px;
+	height: 100px;
 	background: url(../images/header_bg.gif) repeat-x top;
 }
 

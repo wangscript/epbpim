@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%out.clear();%><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
+<%out.clear();%><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		  <tr>
 			<td width="1%"><div class="list_12">&nbsp;<% if("true".equals(request.getParameter("show_button"))){%><a href="javascript:deleteData(null)" class="change1">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:addData()" class="change1">添加</a><%} %></div></td>
 			<td width="99%" align="center">共有记录:<s:property value="page.recordCount"/> 条&nbsp;&nbsp;当前:<s:property value="page.pageNo"/>/<s:property value="page.pageCount"/>页
