@@ -8,6 +8,9 @@
 		<action name="listUser" method="list" class="userInfoAction">
 			<result>/jsp/admin/listUser.jsp</result>
 		</action>
+		<action name="newUser" method="newUser" class="userInfoAction">
+			<result>/jsp/admin/addUser.jsp</result>
+		</action>
 		<action name="batchUser" method="batch" class="userInfoAction">
 			<result type="redirect-action">listUser.do</result>
 		</action>
