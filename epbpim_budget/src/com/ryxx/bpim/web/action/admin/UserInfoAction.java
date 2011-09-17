@@ -33,6 +33,11 @@ public class UserInfoAction extends ActionSupportBase {
 		return INPUT;
 	}
 	
+	public String newUser() {
+		
+		return SUCCESS;
+	}
+	
 	public String batch() {
 		
 		return SUCCESS;
