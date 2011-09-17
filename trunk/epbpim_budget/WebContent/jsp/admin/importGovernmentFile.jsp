@@ -24,7 +24,7 @@
 }
 </style>
 </head>
-<body onload="checkError();changeTitleBackground();">
+<body onload="checkError();">
 	<div id="main"><jsp:include page="adminHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
