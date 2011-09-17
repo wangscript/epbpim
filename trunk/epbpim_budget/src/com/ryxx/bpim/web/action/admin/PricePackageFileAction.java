@@ -35,7 +35,7 @@ public class PricePackageFileAction extends ActionSupportBase
     
     private PageTools page;
     
-    public String schPricePackageFileList()
+    public String searchPricePackageFile()
     {
         try
         {
