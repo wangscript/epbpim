@@ -18,7 +18,7 @@
 <script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 </head>
 <body onload="createCode();">
-<div id="main"><jsp:include page="../login/loginHeader.jsp" />
+<div id="main"><jsp:include page="../../login/loginHeader.jsp" />
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
@@ -36,6 +36,6 @@
 <div class="clr"></div>
 </div>
 </div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
+<!-- end #page --> <jsp:include page="../../common/footer.jsp" /></div>
 </body>
 </html>

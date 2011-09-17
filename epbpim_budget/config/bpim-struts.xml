@@ -67,6 +67,9 @@
 		<action name="listEnterpriseInfo" method="list" class="enterpriseInfoAction">
 			<result>/jsp/admin/listCompany.jsp</result>
 		</action>
+		<action name="newEnterpriseInfo" method="newEnterpriseInfo" class="enterpriseInfoAction">
+			<result>/jsp/admin/addCompany.jsp</result>
+		</action>
 		<action name="addEnterpriseInfo" method="add" class="enterpriseInfoAction">
 			<result type="redirect-action">listEnterpriseInfo.do</result>
 		</action>

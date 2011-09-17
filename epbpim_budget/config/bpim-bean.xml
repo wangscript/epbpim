@@ -43,7 +43,7 @@
 		<property name="target" ref="com.ryxx.bpim.service.UserInfoService.target" />
 	</bean>
 	<bean id="userInfoAction" class="com.ryxx.bpim.web.action.admin.UserInfoAction" scope="prototype">
-		<property name="adminUserService">
+		<property name="userInfoService">
 			<ref local="com.ryxx.bpim.service.UserInfoService"/>
 		</property>
 	</bean>
