@@ -21,6 +21,7 @@ public class UserInfo extends VoBase {
 	private String mobilePhone;
 	private Timestamp registerDate;
 	private RoleEnum roleType;
+	private Integer enable;
 	private String remark;
 	private EnterpriseInfo enterpriseInfo;
 	public Long getId() {
@@ -112,6 +113,12 @@ public class UserInfo extends VoBase {
 	}
 	public void setEnterpriseInfo(EnterpriseInfo enterpriseInfo) {
 		this.enterpriseInfo = enterpriseInfo;
+	}
+	public Integer getEnable() {
+		return enable;
+	}
+	public void setEnable(Integer enable) {
+		this.enable = enable;
 	}
 }
 

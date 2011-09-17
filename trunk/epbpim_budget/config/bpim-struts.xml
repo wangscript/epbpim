@@ -4,14 +4,20 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+	<package name="bpim-userinfo" namespace="/admin" extends="bpim-default">
+		<action name="listUser" method="list" class="userInfoAction">
+			<result>/jsp/admin/listUser.jsp</result>
+		</action>
+		<action name="batchUser" method="batch" class="userInfoAction">
+			<result type="redirect-action">listUser.do</result>
+		</action>
+	</package>
 	<package name="bpim-adminuser" namespace="/admin" extends="bpim-default">
 	    <action name="login" method="login" class="adminUserAction">
 	    	<result name="input">/jsp/admin/adminLogin.jsp</result>
 			<result type="redirect-action">listEnterpriseInfo.do</result>
 		</action>
-		<action name="listUser" method="list" class="adminUserAction">
-	    	<result>/jsp/admin/listUser.jsp</result>
-		</action>
+		
 		<action name="listNews" method="listNewsAnnounces" class="newAnnounceAction">
 			<result>/jsp/admin/listNews.jsp</result>
 			<interceptor-ref name="manager"/>
@@ -59,6 +65,15 @@
 			<result>/jsp/admin/listCompany.jsp</result>
 		</action>
 		<action name="addEnterpriseInfo" method="add" class="enterpriseInfoAction">
+			<result type="redirect-action">listEnterpriseInfo.do</result>
+		</action>
+		<action name="showEnterpriseInfo" method="get" class="enterpriseInfoAction">
+			<result>/jsp/admin/updateCompany.jsp</result>
+		</action>
+		<action name="updateEnterpriseInfo" method="update" class="enterpriseInfoAction">
+			<result type="redirect-action">listEnterpriseInfo.do</result>
+		</action>
+		<action name="deleteEnterpriseInfo" method="delete" class="enterpriseInfoAction">
 			<result type="redirect-action">listEnterpriseInfo.do</result>
 		</action>
 		<action name="newEnterpriseInfo" method="newEnterpriseInfo" class="enterpriseInfoAction">

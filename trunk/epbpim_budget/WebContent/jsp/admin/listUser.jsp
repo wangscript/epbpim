@@ -92,7 +92,21 @@ function clearPage(updateId){
 	<ul>
 		<li>
 		<ul>
-			<li><select id="category">
+			<li>
+					<form action="batchUser.do" method="post">
+						<input type="button" class="button"
+								onclick='updatePassword(<s:property value="#st.index+1"/>);'
+								value="批量创建用户">
+					</form>
+				</li>
+				<li>
+					<form action="" method="post">
+						<input type="button" class="button"
+								onclick='updatePassword(<s:property value="#st.index+1"/>);'
+								value="企业充值">
+					</form>
+				</li>
+			<!-- <li><select id="category">
 				<option value="2">全部用户</option>
 				<option value="1">只有组长</option>
 			</select></li>
@@ -104,7 +118,7 @@ function clearPage(updateId){
 				name="checkExpire" /></li>
 			<li><input name="searchUserButton" type="submit" maxlength="10"
 				id="searchUserButton" class="button" value="查询"
-				onclick="clearPage();"></li>
+				onclick="clearPage();"></li>-->
 		</ul>
 		</li>
 	</ul>
@@ -112,18 +126,18 @@ function clearPage(updateId){
 	<!-- end #searchCondition -->
 	<div id="adminContent">
 	<div class="searchResult">
-	<h2 class="title">查询结果:</h2>
+	<h2 class="title">&nbsp;</h2>
 	<div class="entry">
 	<table>
 		<tr>
-			<td style="width: 80px;">用户名</td>
-			<td style="width: 120px">注册日期</td>
-			<td style="width: 120px">过期日期</td>
-			<td style="width: 150px">邮箱地址</td>
-			<td style="width: 180px">所在公司</td>
-			<td style="width: 90px">手机号</td>
-			<td style="width: 70px">选择套餐</td>
-			<td style="width: 80px">初始化密码</td>
+			<td style="width: 80px;">姓名</td>
+			<td style="width: 120px">编号</td>
+			<td style="width: 120px">出生日期</td>
+			<td style="width: 150px">住址</td>
+			<td style="width: 180px">手机</td>
+			<td style="width: 90px">注册时间</td>
+			<td style="width: 70px">是否可用</td>
+			<td style="width: 80px">选择应用</td>
 			<td style="width: 80px">用户充值</td>
 			<td style="width: 70px">操作</td>
 		</tr>

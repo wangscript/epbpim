@@ -17,7 +17,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="/adminuser/login.do" name="login" method="post"
+					<s:form action="/admin/login.do" name="login" method="post"
 						id="loginForm">
 						<h2 class="title">用户登录</h2>
 						<div id="loginbar">
@@ -49,7 +49,6 @@
 						</div>
 					</s:form>
 				</div>
-				<!--<jsp:include page="../login/advertisement.jsp" />-->
 
 				<div class="clr"></div>
 			</div>
