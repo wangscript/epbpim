@@ -578,6 +578,7 @@ ol li .send {
 	background: url(../images/a_bg.gif) repeat-x center center;
 	text-decoration: none;
 	color: #5F5F5F;
+	font: normal 12px/1.8em kaiti,Arial, Helvetica, sans-serif;
 }
 
 .mediumLeftButton {
@@ -590,4 +591,5 @@ ol li .send {
 	background: url(../images/a_bg.gif) repeat-x center center;
 	text-decoration: none;
 	color: #5F5F5F;
+	font: normal 12px/1.8em kaiti,Arial, Helvetica, sans-serif;
 }
