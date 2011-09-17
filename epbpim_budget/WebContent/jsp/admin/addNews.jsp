@@ -30,10 +30,10 @@
 								<li></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width50Li"><s:submit cssClass="mediumLeftButton"
+								<li class="width50Li"><s:submit cssClass="button"
 										value="新增" /></li>
 								<li class="width50Li"><input type="button"
-									class="mediumLeftButton" value="返回"
+									class="button" value="返回"
 									onclick="window.location.href = 'listNews.do'"></li>
 							</ul>
 						</div>

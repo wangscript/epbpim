@@ -7,37 +7,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title><s:text name="AdminRole.AddRole" /></title>
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
-<link rel="stylesheet" href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
-<script type='text/javascript' src='../js/common.js'></script>
-<script type='text/javascript' src='../js/validation.js'></script>
+<title><s:text name="AdminRole.AddRole" />
+</title>
 </head>
 <body>
 	<div id="main"><jsp:include page="adminHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="saveRole.do" method="post" onsubmit="return validate(this);">
-						<h3 class="title"><s:text name="AdminRole.AddRole" /></h3>
+					<s:form action="saveRole.do" method="post"
+						onsubmit="return validate(this);">
+						<h3 class="title">
+							<s:text name="AdminRole.AddRole" />
+						</h3>
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
-								<li class="width200Li"><label class="width4Lb"><s:text name="AdminRole.RoleName" />:</label>
-								<input class="width100Input" name="name" id="name" maxlength="100"/>
-								<textValidate field="name" lableText="<s:text name='AdminRole.RoleName' />" isValidate="true" min="0" max="100">  </li>
-								<li class="width300Li"><label class="width9Lb"><s:text name="AdminRole.RoleCount" />:</label>
-								<input class="width150Input" name="roleCount" id="roleCount" />
-								<textValidate field="roleCount" lableText="<s:text name='AdminRole.RoleCount' />" isValidate="true" min="0" max="3" maxValue="100" dataType="int"></li>
-								<li class="width400Li"><label class="width4Lb"><s:text name="AdminRole.Remark" />:</label>
-									<input class="width300Input" name="remark" id="remark" maxlength="255"/>
-									<textValidate field="remark" lableText="<s:text name='AdminRole.Remark' />" isValidate="true" max="255"></li>
+								<li class="width200Li"><label class="width4Lb"><s:text
+											name="AdminRole.RoleName" />:</label> <input class="width100Input"
+									name="name" id="name" maxlength="100" /> <textValidate
+										field="name" lableText="<s:text name='AdminRole.RoleName' />"
+										isValidate="true" min="0" max="100">
+								</li>
+								<li class="width300Li"><label class="width9Lb"><s:text
+											name="AdminRole.RoleCount" />:</label> <input class="width150Input"
+									name="roleCount" id="roleCount" /> <textValidate
+										field="roleCount"
+										lableText="<s:text name='AdminRole.RoleCount' />"
+										isValidate="true" min="0" max="3" maxValue="100"
+										dataType="int">
+								</li>
+								<li class="width400Li"><label class="width4Lb"><s:text
+											name="AdminRole.Remark" />:</label> <input class="width300Input"
+									name="remark" id="remark" maxlength="255" /> <textValidate
+										field="remark" lableText="<s:text name='AdminRole.Remark' />"
+										isValidate="true" max="255">
+								</li>
 							</ul>
-							<h4><s:text name="AdminRole.RoleList" />:</h4>
+							<h4>
+								<s:text name="AdminRole.RoleList" />
+								:
+							</h4>
 							<s:if test="#request.menus!=null && #request.menus.size()>0">
 								<s:iterator value="#request.menus" status="st">
 									<s:if test="subMenus !=null && subMenus.size()>0">
@@ -48,7 +58,8 @@
 														name="listCheck" value="<s:property value="id"/>"
 														id="<s:property value="id"/>,<s:property value="parentId"/>" />
 													<s:property value="name" />
-												</h4></li>
+												</h4>
+											</li>
 										</ul>
 										<ul class="fullScreenUlNoHeight">
 											<s:iterator value="subMenus" status="st1">
@@ -56,7 +67,8 @@
 													onclick="checkSelfAndParent('<s:property value='id'/>,<s:property value='parentId'/>');"
 													name="listCheck" value="<s:property value="id"/>"
 													id="<s:property value="id"/>,<s:property value="parentId"/>" />
-													<s:property value="name" /></li>
+													<s:property value="name" />
+												</li>
 											</s:iterator>
 										</ul>
 									</s:if>
