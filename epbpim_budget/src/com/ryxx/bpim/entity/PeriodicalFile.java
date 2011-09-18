@@ -27,8 +27,18 @@ public class PeriodicalFile extends VoBase
     
     private String keyword;
     
-    private String uploadDatePage;
+    private String periodicalDatePage;
     
+    public String getPeriodicalDatePage()
+    {
+        return periodicalDatePage;
+    }
+
+    public void setPeriodicalDatePage(String periodicalDatePage)
+    {
+        this.periodicalDatePage = periodicalDatePage;
+    }
+
     public String getPeriodicalName()
     {
         return periodicalName;
@@ -67,16 +77,6 @@ public class PeriodicalFile extends VoBase
     public void setPeriodicalDate(Timestamp periodicalDate)
     {
         this.periodicalDate = periodicalDate;
-    }
-    
-    public String getUploadDatePage()
-    {
-        return uploadDatePage;
-    }
-    
-    public void setUploadDatePage(String uploadDatePage)
-    {
-        this.uploadDatePage = uploadDatePage;
     }
     
     public String getKeyword()
