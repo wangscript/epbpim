@@ -13,9 +13,9 @@ public class PeriodicalFile extends VoBase
     
     private Long id;
     
-    private String name = "";
+    private String periodicalName = "";
     
-    private String type = "";
+    private String periodicalType = "";
     
     private String sourceCode = "";
     
@@ -25,16 +25,36 @@ public class PeriodicalFile extends VoBase
     
     private String uploadDatePage;
     
+    public String getPeriodicalName()
+    {
+        return periodicalName;
+    }
+    
+    public void setPeriodicalName(String periodicalName)
+    {
+        this.periodicalName = periodicalName;
+    }
+    
+    public String getPeriodicalType()
+    {
+        return periodicalType;
+    }
+    
+    public void setPeriodicalType(String periodicalType)
+    {
+        this.periodicalType = periodicalType;
+    }
+    
     public String getUploadDatePage()
     {
         return uploadDatePage;
     }
-
+    
     public void setUploadDatePage(String uploadDatePage)
     {
         this.uploadDatePage = uploadDatePage;
     }
-
+    
     public String getKeyword()
     {
         return keyword;
@@ -53,26 +73,6 @@ public class PeriodicalFile extends VoBase
     public void setId(Long id)
     {
         this.id = id;
-    }
-    
-    public String getName()
-    {
-        return name;
-    }
-    
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    
-    public String getType()
-    {
-        return type;
-    }
-    
-    public void setType(String type)
-    {
-        this.type = type;
     }
     
     public String getSourceCode()
