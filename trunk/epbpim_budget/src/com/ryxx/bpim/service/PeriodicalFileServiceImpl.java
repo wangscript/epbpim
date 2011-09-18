@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -27,6 +28,10 @@ public class PeriodicalFileServiceImpl extends AbstractService<PeriodicalFile, P
     public String savePeriodicalFile(PeriodicalFile periodicalFile, File uploadfile)
         throws ParseException, SQLException
     {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date periodicalDate = sdf.parse(periodicalFile.getPeriodicalDatePage());
+        periodicalFile.setPeriodicalDate(new Timestamp(periodicalDate.getTime()));
+        
         periodicalFile.setUploadDate(new Timestamp(new Date().getTime()));
         
         periodicalFile.setSourceCode(compileCode(readHtml(uploadfile.getAbsolutePath())));
