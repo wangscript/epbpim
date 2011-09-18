@@ -78,6 +78,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		} else {
 			userInfo.setIdentifier(StringTools.generateIdentify(users.size()+1));
 		}
+		userInfo.setPassword(StringTools.md5(Constants.DEFAULT_PASSWORD));
 		userInfo.setMobilePhone(enterpriseInfo.getPhone());
 		userInfo.setRoleType(RoleEnum.ENTERPRISE_USER);
 		userInfo.setRegisterDate(enterpriseInfo.getLogTime());
