@@ -6,8 +6,6 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -83,28 +81,6 @@ public class PeriodicalFileAction extends ActionSupportBase
         return SUCCESS;
     }
     
-    private String compileCode(String paramStr)
-    {
-        Pattern p = Pattern.compile("&#.*?;");
-        Matcher m = p.matcher(paramStr);
-        boolean rs = m.find();
-        while (rs)
-        {
-            String aa = m.group();
-            String str = aa.replaceAll("&#", ",").replaceAll(";", "");
-            String[] s2 = str.split(",");
-            String s1 = "";
-            for (int i = 1; i < s2.length; i++)
-            {
-                int v = Integer.parseInt(s2[i], 10);
-                s1 = s1 + (char)v;
-                paramStr = paramStr.replace(aa, s1);
-            }
-            rs = m.find();
-        }
-        return paramStr;
-    }
-    
     public String searchPeriodicalFile()
     {
         try
@@ -120,7 +96,6 @@ public class PeriodicalFileAction extends ActionSupportBase
             periodicalFile.setRowCount(pageNo);
             periodicalFile.setPageSize(pageSize);
             datas = service.listPeriodicalFile(periodicalFile, page);
-            periodicalFile.setKeyword(compileCode(periodicalFile.getKeyword()));
             if (datas != null && datas.size() > 0)
             {
                 this.page = page;
