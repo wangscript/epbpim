@@ -141,9 +141,9 @@
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
-		<property name="name" column="PRICEPACKAGE_NAME" type="java.lang.String"></property>
-		<property name="type" column="PRICEPACKAGE_PATH" type="java.lang.String"></property>
-		<property name="sourceCode" column="PRICEPACKAGE_PROVICE" type="java.lang.String"></property>
+		<property name="periodicalName" column="PERIODICAL_NAME" type="java.lang.String"></property>
+		<property name="periodicalType" column="PERIODICAL_TYPE" type="java.lang.String"></property>
+		<property name="sourceCode" column="SOURCE_CODE" type="java.lang.String"></property>
 		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
 	</class>
 </hibernate-mapping>
