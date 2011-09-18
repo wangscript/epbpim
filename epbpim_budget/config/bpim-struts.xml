@@ -4,6 +4,19 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+	<package name="bpim-login" namespace="/login" extends="bpim-default">
+		<action name="index">
+			<result>/jsp/login/index.jsp</result>
+		</action>
+		<action name="login" method="login" class="userInfoMainAction" >
+			<result name="input">/jsp/login/index.jsp</result>
+			<result name="enterpriseMain">/jsp/main/enterpriseMain.jsp</result>
+			<result name="userMain">/jsp/main/main.jsp</result>
+			<result name="userInfoManage">/jsp/main/user/updateUserInfo.jsp</result>
+		</action>
+		
+	</package>
+	
 	<package name="bpim-userinfo" namespace="/admin" extends="bpim-default">
 		<action name="listUser" method="list" class="userInfoAction">
 			<result>/jsp/admin/listUser.jsp</result>

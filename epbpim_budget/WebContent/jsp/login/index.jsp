@@ -18,13 +18,13 @@ function getFocus()
 <div id="main"><jsp:include page="indexHeader.jsp" />
 <div class="content">
 <div class="content_resize">
-<div class="mainbar"><s:form action="admin/login.do" name="login"
+<div class="mainbar"><s:form action="login.do" name="login"
 	method="post" id="loginForm">
 	<h2 class="title"><s:text name="Index.UserLogin" /></h2> 
 	<div id= "loginbar">
 	<ul class="fullScreenNoMarginUl">
 		<li class="width50Li"><label><s:text name="Index.UserName" /></label></li>
-		<li class="width150Li"><input class="width150Input" name="userName" maxlength="10" id="idInput" tabindex="1"></li>
+		<li class="width150Li"><input class="width150Input" name="identifier" maxlength="10" id="idInput" tabindex="1"></li>
 	</ul>
 	<ul class="fullScreenNoMarginUl">
 		<li class="width50Li"><label><s:text name="Index.Password" /></label></li>
@@ -33,7 +33,7 @@ function getFocus()
 	
 	<s:fielderror theme="Struts">
 		<ul class="fullScreenNoMarginUl">
-			<li><input type="button" onclick="window.location.href ='../main/main.jsp';" class="button"  value="<s:text name="Index.Login" />"></li>
+			<li><input type="submit" class="button"  value="<s:text name="Index.Login" />"></li>
 		</ul>
 		<s:param>name</s:param>
 	</s:fielderror>
@@ -46,14 +46,5 @@ function getFocus()
 <!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
-
-function toRegister(){
-	window.location.href = "../login/register.jsp";
-}
-function reloadIMG()
-{	
-	var randNumImg = document.getElementById("randNumIMG");
-	randNumImg.src = "${pageContext.request.contextPath}/image.jsp?" + Math.random();
-}
 </script>
 </html>

@@ -23,4 +23,12 @@ public class UserInfoServiceImpl  extends AbstractService<UserInfo,UserInfoDAO, 
 	public List<UserInfo> list(Long enterpriseId) {
 		return getDao().list(enterpriseId);
 	}
+
+	/* (non-Javadoc)
+	 * @see com.ryxx.bpim.service.UserInfoService#getByLogin(com.ryxx.bpim.entity.UserInfo)
+	 */
+	@Override
+	public UserInfo getByLogin(UserInfo userInfo) {
+		return getDao().getByLogin(userInfo);
+	}
 }
