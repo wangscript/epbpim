@@ -31,7 +31,7 @@
 				<div class="mainbar">
 
 
-					<h4 class="title">政府指导价导入:</h4>
+					<h4 class="title">信息价导入:</h4>
 					<div class="entry">
 
 						<s:form action="uploadGuideData.do" method="post"

@@ -34,8 +34,9 @@ public class PeriodicalFileServiceImpl extends AbstractService<PeriodicalFile, P
         
         periodicalFile.setUploadDate(new Timestamp(new Date().getTime()));
         
-        periodicalFile.setSourceCode(compileCode(readHtml(uploadfile.getAbsolutePath())));
+        periodicalFile.setSourceCode(readHtml(uploadfile.getAbsolutePath()));
         
+        System.out.println(readHtml(uploadfile.getAbsolutePath()));
         getDao().savePeriodicalFile(periodicalFile);
         
         return "导入成功";
@@ -109,7 +110,7 @@ public class PeriodicalFileServiceImpl extends AbstractService<PeriodicalFile, P
         }
         paramStr = paramStr.replace("7.0000pt", "12.0000pt");
         paramStr = paramStr.replace("8.0000pt", "12.0000pt");
-        // System.out.println(paramStr);
+        System.out.println(paramStr);
         return paramStr;
     }
     

@@ -29,7 +29,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h4 class="title">政府指导价删除:</h4>
+					<h4 class="title">信息价删除:</h4>
 					<div class="entry">
 
 						<s:form action="deleteGuideData.do" method="post"
