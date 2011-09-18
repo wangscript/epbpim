@@ -25,6 +25,18 @@ public class PricePackageFile extends VoBase
     
     private Timestamp uploadDate;
     
+    private String pricePackageDatePage;
+    
+    public String getPricePackageDatePage()
+    {
+        return pricePackageDatePage;
+    }
+
+    public void setPricePackageDatePage(String pricePackageDatePage)
+    {
+        this.pricePackageDatePage = pricePackageDatePage;
+    }
+
     public Long getId()
     {
         return id;
