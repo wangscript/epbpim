@@ -52,15 +52,16 @@ public class PeriodicalFileDAOImpl extends AbstractBaseDAO<PeriodicalFile, Long>
         if (periodicalFile != null)
         {
             
-            if (!StringUtils.isEmpty(periodicalFile.getName()))
+            if (!StringUtils.isEmpty(periodicalFile.getPeriodicalName()))
             {
-                Criterion criterion1 = Restrictions.like("name", "%" + periodicalFile.getName() + "%");
+                Criterion criterion1 =
+                    Restrictions.like("periodicalName", "%" + periodicalFile.getPeriodicalName() + "%");
                 list.add(criterion1);
             }
             
-            if (!StringUtils.isEmpty(periodicalFile.getType()))
+            if (!StringUtils.isEmpty(periodicalFile.getPeriodicalType()))
             {
-                Criterion criterion2 = Restrictions.eq("type", periodicalFile.getType());
+                Criterion criterion2 = Restrictions.eq("periodicalType", periodicalFile.getPeriodicalType());
                 list.add(criterion2);
             }
             
