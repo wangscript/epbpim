@@ -29,7 +29,7 @@ public class PricePackageFileAction extends ActionSupportBase
     
     private File uploadFile;
     
-    private List<PricePackageFile> pricePackageFileList;
+    private List<PricePackageFile> dates;
     
     private PricePackageFileService service;
     
@@ -39,13 +39,18 @@ public class PricePackageFileAction extends ActionSupportBase
     {
         try
         {
+            if (null == pricePackageFile)
+            {
+                pricePackageFile = new PricePackageFile();
+            }
+            
             int pageNo = ParamTools.getIntParameter(request, Constants.PARA_PAGE_NO, 1);
             int pageSize = ParamTools.getIntParameter(request, Constants.PARA_PAGE_SIZE, 0);
             PageTools page = new PageTools(pageNo, pageSize);
             pricePackageFile.setRowCount(pageNo);
             pricePackageFile.setPageSize(pageSize);
-            pricePackageFileList = service.listPricePackageFile(pricePackageFile, page);
-            if (pricePackageFileList != null && pricePackageFileList.size() > 0)
+            dates = service.listPricePackageFile(pricePackageFile, page);
+            if (dates != null && dates.size() > 0)
             {
                 this.page = page;
             }
@@ -171,14 +176,14 @@ public class PricePackageFileAction extends ActionSupportBase
         this.uploadFile = uploadFile;
     }
     
-    public List<PricePackageFile> getPricePackageFileList()
+    public List<PricePackageFile> getDates()
     {
-        return pricePackageFileList;
+        return dates;
     }
     
-    public void setPricePackageFileList(List<PricePackageFile> pricePackageFileList)
+    public void setDates(List<PricePackageFile> dates)
     {
-        this.pricePackageFileList = pricePackageFileList;
+        this.dates = dates;
     }
     
     public PageTools getPage()
