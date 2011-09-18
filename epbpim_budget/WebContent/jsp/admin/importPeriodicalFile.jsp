@@ -17,14 +17,13 @@
 			alert(msg);
 		}
 	}
-	function chooseFile()
-	{
+	function chooseFile() {
 		var uploadFile = $('uploadFile');
-		var filePath=uploadFile.value;
-	    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length);
-	    document.getElementById('periodicalFile.periodicalName').value=fileName;
+		var filePath = uploadFile.value;
+		var fileName = filePath.substring(filePath.lastIndexOf('\\') + 1,
+				filePath.length);
+		document.getElementById('periodicalFile.periodicalName').value = fileName;
 	}
-	
 </script>
 <style>
 .WithBreaks {
@@ -40,8 +39,7 @@
 					<h4 class="title">电子杂志导入:</h4>
 					<div class="entry">
 						<s:form action="importPeriodicalFile.do" method="post"
-							id="importPeriodicalFileForm" 
-							enctype="multipart/form-data">
+							id="importPeriodicalFileForm" enctype="multipart/form-data">
 							<ul class="fullScreenUl">
 								<li class="width100Li">省份：</li>
 								<li class="width200Li"><select
@@ -107,6 +105,12 @@
 									type="hidden" name="periodicalFile.periodicalName"
 									id="periodicalFile.periodicalName"></li>
 							</ul>
+							<ul class="fullScreenUl">
+								<li class="width200Li"><input type="submit" class="button"
+									style="width: 70px;" value="上传" onclick="return checkParam();">
+								</li>
+							</ul>
+
 						</s:form>
 					</div>
 					<div class="clr"></div>
