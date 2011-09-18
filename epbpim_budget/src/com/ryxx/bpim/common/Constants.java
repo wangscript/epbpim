@@ -435,4 +435,8 @@ public interface Constants {
 	public static final String MAIL_CHAR_SET = "UTF-8";
 	public static final String MAIL_CONTENT = "fucking, fucking";
 	public static final String LOGIN_FAILURE = "username or password not correct, please check";
+	
+	
+	//默认密码
+	static final String DEFAULT_PASSWORD = "123456";
 }
