@@ -7,7 +7,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>价格包下载</title>
+<title>价格包查询</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
 <link rel="stylesheet" href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
@@ -17,18 +17,18 @@
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 </head>
-<body onload="setValue()">
-<div id="main"><jsp:include page="../mainHeader.jsp" />
+<body>
+<div id="main">
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
-<h3 class="title">价格包下载</h3>
+<h3 class="title">价格包查询</h3>
+<!--
 <div id="searchCondition">
-	<s:form id="searchFileForm" action="schBusinessFileList.do" method="post">
-		<input type="hidden" name="pricePackageFile.fileModule" id="pricePackageFile.fileModule" value="1">
+	<s:form action="searchPricePackageFile.do" method="post">
 		<ul class="fullScreenUl">
-			<li class="width300Li"><label class="lb">省：</label>
-				<select id="pricePackageFile.pricePackageProvice" name="pricePackageFile.provice" style="width: 150px;">
+			<li class="width300Li"><label class="lb">省份：</label>
+				<select id="pricePackageFile.pricePackageProvice" name="pricePackageFile.pricePackageProvice" style="width: 150px;">
 					<option value="0">---------请选择---------</option>
 					<option value="北京市">北京市</option>
 					<option value="上海市" selected="selected">上海市</option>
@@ -78,13 +78,14 @@
 				<input class="Wdate width100Input" id="pricePackageFile.pricePackageDate" name="pricePackageFile.pricePackageDate" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
 			</li>
 			<li>
-				<input type="submit" class="mediumButton" style="float: right" class="button" onclick="searchFileList()" value="查询">
+				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
 			</li>
 		</ul>
 	</s:form>
 </div>
-
-<s:if test="pricePackageFileList==null || pricePackageFileList.size()==0">
+-->
+ 
+<s:if test="dates==null || dates.size()==0">
 	<tr>
 		<td>
 		<h3><s:text name="Common.Nodata" /></h3>
@@ -95,12 +96,12 @@
 	<div class="searchResult" id="searchResult">
 		<ul class="fullScreenUl">
 			<li class="width200Li"><label><s:text name="文件名" /></label></li>
-			<li class="width200Li"><label><s:text name="省" /></label></li>
+			<li class="width200Li"><label><s:text name="省份" /></label></li>
 			<li class="width200Li"><label><s:text name="专业" /></label></li>
 			<li class="width200Li"><label><s:text name="时间" /></label></li>
 			<li class="width50Li"><label><s:text name="下载" /></label></li>
 		</ul>
-		<s:iterator value="pricePackageFileList" status="st">
+		<s:iterator value="dates" status="st">
 			<ul class="fullScreenUl">
 				<li class="width200Li"><s:property value="pricePackageName" /></li>
 				<li class="width200Li"><s:property value="pricePackageProvice" /></li>
