@@ -62,7 +62,7 @@
 					<div class="entry">
 						<s:form action="importPeriodicalFile.do" method="post" id="importPeriodicalFileForm" onsubmit="return checkParam();" enctype="multipart/form-data">
 							<ul class="fullScreenUl">
-								<li class="width300Li"><label class="lb">省：</label>
+								<li class="width300Li"><label class="lb">省份：</label>
 									<select id="periodicalFile.periodicalProvice" name="periodicalFile.periodicalProvice" style="width: 150px;">
 										<option value="0">---------请选择---------</option>
 										<option value="北京市">北京市</option>
