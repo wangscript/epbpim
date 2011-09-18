@@ -141,6 +141,10 @@ public class PricePackageFileAction extends ActionSupportBase
         
         pricePackageFile.setPricePackagePath(filePath);
         
+        SimpleDateFormat sdff = new SimpleDateFormat("yyyy-MM");
+        Date periodicalDate = sdff.parse(pricePackageFile.getPricePackageDatePage());
+        pricePackageFile.setPricePackageDate(new Timestamp(periodicalDate.getTime()));
+        
         pricePackageFile.setUploadDate(new Timestamp(new Date().getTime()));
         
         return newUploadFile;
