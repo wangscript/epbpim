@@ -5,19 +5,20 @@ import java.util.List;
 
 public class AdminMenu extends VoBase {
 	private static final long serialVersionUID = 8717951662408408201L;
-	
 	private Integer id;
 	private String name;
 	private String url;
 	private Integer parentId;
 	private Integer enable;
-	private Integer region;
+	private ProvinceCity region;
+	private Integer mDefault;
 	private Integer index;
-	private Float price;
-	private String desc;
+	private Integer price;
+	private String description;
 	private String title;
 	private Timestamp registerDate;
 	private Timestamp adviceDate;
+	private List<UserInfo> users;
 	private List<AdminMenu> subMenus;
 	public Integer getId() {
 		return id;
@@ -49,11 +50,17 @@ public class AdminMenu extends VoBase {
 	public void setEnable(Integer enable) {
 		this.enable = enable;
 	}
-	public Integer getRegion() {
+	public ProvinceCity getRegion() {
 		return region;
 	}
-	public void setRegion(Integer region) {
+	public void setRegion(ProvinceCity region) {
 		this.region = region;
+	}
+	public Integer getmDefault() {
+		return mDefault;
+	}
+	public void setmDefault(Integer mDefault) {
+		this.mDefault = mDefault;
 	}
 	public Integer getIndex() {
 		return index;
@@ -61,17 +68,17 @@ public class AdminMenu extends VoBase {
 	public void setIndex(Integer index) {
 		this.index = index;
 	}
-	public Float getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(Float price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getTitle() {
 		return title;
@@ -97,6 +104,11 @@ public class AdminMenu extends VoBase {
 	public void setSubMenus(List<AdminMenu> subMenus) {
 		this.subMenus = subMenus;
 	}
-	
+	public List<UserInfo> getUsers() {
+		return users;
+	}
+	public void setUsers(List<UserInfo> users) {
+		this.users = users;
+	}
 }
 

@@ -16,64 +16,44 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="saveRole.do" method="post"
+					<s:form action="batchUser.do" method="post"
 						onsubmit="return validate(this);">
 						<h3 class="title">
-							<s:text name="AdminRole.AddRole" />
+							<!--<s:text name="AdminRole.AddRole" />-->
+							新增用户
 						</h3>
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
-								<li class="width200Li"><label class="width4Lb"><s:text
-											name="AdminRole.RoleName" />:</label> <input class="width100Input"
-									name="name" id="name" maxlength="100" /> <textValidate
-										field="name" lableText="<s:text name='AdminRole.RoleName' />"
-										isValidate="true" min="0" max="100">
+								<li class="width200Li">
+									<label class="width6Lb">地区:</label>
+									<s:select cssClass="width100Select"
+										name="enterpriseInfo.provinceCity.id" list="provinceCities"
+										listKey="id" listValue="city" multiple="false"
+										required="true" onchange="" headerKey="0" /><s:hidden name="eId"/>
 								</li>
-								<li class="width300Li"><label class="width9Lb"><s:text
-											name="AdminRole.RoleCount" />:</label> <input class="width150Input"
-									name="roleCount" id="roleCount" /> <textValidate
-										field="roleCount"
-										lableText="<s:text name='AdminRole.RoleCount' />"
+								<li class="width300Li"><label class="width9Lb">创建人数:</label>
+								<s:textfield cssClass="width150Input" name="userCount" />
+								<textValidate
+										field="userCount"
+										lableText="<s:text name='userCount' />"
 										isValidate="true" min="0" max="3" maxValue="100"
 										dataType="int">
 								</li>
-								<li class="width400Li"><label class="width4Lb"><s:text
-											name="AdminRole.Remark" />:</label> <input class="width300Input"
-									name="remark" id="remark" maxlength="255" /> <textValidate
-										field="remark" lableText="<s:text name='AdminRole.Remark' />"
-										isValidate="true" max="255">
-								</li>
 							</ul>
-							<h4>
-								<s:text name="AdminRole.RoleList" />
-								:
-							</h4>
-							<s:if test="#request.menus!=null && #request.menus.size()>0">
-								<s:iterator value="#request.menus" status="st">
-									<s:if test="subMenus !=null && subMenus.size()>0">
-										<ul class="fullScreenUlNoHeight">
-											<li class="width200Li"><h4>
-													<input type="checkbox"
-														onclick="checkAllSub('<s:property value='id'/>,<s:property value='parentId'/>');"
-														name="listCheck" value="<s:property value="id"/>"
-														id="<s:property value="id"/>,<s:property value="parentId"/>" />
-													<s:property value="name" />
-												</h4>
-											</li>
-										</ul>
-										<ul class="fullScreenUlNoHeight">
-											<s:iterator value="subMenus" status="st1">
-												<li class="width200Li"><input type="checkbox"
-													onclick="checkSelfAndParent('<s:property value='id'/>,<s:property value='parentId'/>');"
+							<h4>应用列表	:</h4>
+								<s:iterator value="modules" status="st">
+									<ul class="fullScreenUlNoHeight">
+										<li class="width200Li"><h4>
+												<input type="checkbox"
+													onclick="checkAllSub('<s:property value='id'/>,<s:property value='parentId'/>');"
 													name="listCheck" value="<s:property value="id"/>"
 													id="<s:property value="id"/>,<s:property value="parentId"/>" />
-													<s:property value="name" />
-												</li>
-											</s:iterator>
-										</ul>
-									</s:if>
+												<s:property value="title" /><br/>
+												<s:property value="description" />
+											</h4>
+										</li>
+									</ul>
 								</s:iterator>
-							</s:if>
 							<ul class="fullScreenUl">
 							</ul>
 							<ul class="fullScreenUl">

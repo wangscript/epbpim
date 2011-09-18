@@ -74,8 +74,8 @@
 								<li class="width150Li"><label class="width6Lb">业务主要地区:</label>
 								</li>
 								<li class="width200Li"><s:select cssClass="width150Select"
-										name="enterpriseInfo.favorite" list="provinceCities"
-										listKey="city" listValue="city" multiple="false"
+										name="enterpriseInfo.provinceCity.id" list="provinceCities"
+										listKey="id" listValue="city" multiple="false"
 										required="true" onchange="" headerKey="0" /></li>
 								<li class="width100Li"><label class="required width6Lb">*必选</label>
 								</li>

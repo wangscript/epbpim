@@ -28,11 +28,6 @@ public class StringTools {
 		}
 	}
 	
-	public static String generateIdentify(long size) {
-		long identify = 10000001L + size;
-		return "ry"+identify;
-	}
-	
 	public static Date string2date(String sDate) {
 		return string2date(sDate, "yyyy-MM-dd HH:mm:ss");
 	}

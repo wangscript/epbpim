@@ -46,6 +46,15 @@
 		<property name="userInfoService">
 			<ref local="com.ryxx.bpim.service.UserInfoService"/>
 		</property>
+		<property name="provinceCityService">
+			<ref local="com.ryxx.bpim.service.ProvinceCityService"/>
+		</property>
+		<property name="enterpriseInfoService">
+			<ref local="com.ryxx.bpim.service.EnterpriseInfoService"/>
+		</property>
+		<property name="adminMenuService">
+			<ref local="com.ryxx.bpim.service.AdminMenuService"/>
+		</property>
 	</bean>
 	
 	<bean id="userInfoMainAction" class="com.ryxx.bpim.web.action.mainPanel.UserInfoAction" scope="prototype">
