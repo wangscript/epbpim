@@ -115,7 +115,7 @@
 							</ul>
 							<ul class="fullScreenUl">	
 								<li style="width: 60px">
-									<label>价格包：</label>
+									<label>文件：</label>
 								</li>
 								<li style="width: 400px">
 									<s:file name="uploadFile" id="uploadFile" size="40" onchange="chooseFile()" />
