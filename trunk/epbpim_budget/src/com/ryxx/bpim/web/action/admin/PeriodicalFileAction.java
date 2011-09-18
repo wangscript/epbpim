@@ -109,6 +109,11 @@ public class PeriodicalFileAction extends ActionSupportBase
     {
         try
         {
+            if (null == periodicalFile)
+            {
+                periodicalFile = new PeriodicalFile();
+            }
+            
             int pageNo = ParamTools.getIntParameter(request, Constants.PARA_PAGE_NO, 1);
             int pageSize = ParamTools.getIntParameter(request, Constants.PARA_PAGE_SIZE, 0);
             PageTools page = new PageTools(pageNo, pageSize);
