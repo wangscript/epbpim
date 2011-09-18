@@ -28,7 +28,7 @@ public class PeriodicalFileServiceImpl extends AbstractService<PeriodicalFile, P
     public String savePeriodicalFile(PeriodicalFile periodicalFile, File uploadfile)
         throws ParseException, SQLException
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
         Date periodicalDate = sdf.parse(periodicalFile.getPeriodicalDatePage());
         periodicalFile.setPeriodicalDate(new Timestamp(periodicalDate.getTime()));
         
