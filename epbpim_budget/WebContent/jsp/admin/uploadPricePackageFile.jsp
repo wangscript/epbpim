@@ -18,10 +18,10 @@
 <div class="mainbar">
 <h3 class="title">价格包上传</h3>
 <div id="">
-	<s:form action="addPricePackageFile.do" enctype="multipart/form-data" method="post">
+	<s:form action="uploadPricePackageFile.do" enctype="multipart/form-data" method="post">
 		<ul class="fullScreenUl">
 			<li class="width300Li"><label class="lb">省份：</label>
-				<select id="pricePackageFile.pricePackageProvice" name="pricePackageFile.provice" style="width: 150px;">
+				<select id="pricePackageFile.pricePackageProvice" name="pricePackageFile.pricePackageProvice" style="width: 150px;">
 					<option value="0">---------请选择---------</option>
 					<option value="北京市">北京市</option>
 					<option value="上海市" selected="selected">上海市</option>
@@ -62,13 +62,12 @@
 			</li>
 			<li class="width300Li"><label class="lb">专业：</label>
 				<select id="pricePackageFile.pricePackageType" name="pricePackageFile.pricePackageType" style="width: 150px;">
-					<option value="">--请选择--</option>
-					<option value="董事会文件">土建</option>
-					<option value="财税文件">市政</option>
+					<option value="土建">土建</option>
+					<option value="市政">市政</option>
 				</select>							  
 			</li>
 			<li class="width300Li"><label class="lb">时间：</label>
-				<input class="Wdate width100Input" id="pricePackageFile.pricePackageDate" name="pricePackageFile.pricePackageDate" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
+				<input class="Wdate width100Input" id="pricePackageFile.pricePackageDatePage" name="pricePackageFile.pricePackageDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
 			</li>
 		</ul>	
 		<ul class="fullScreenUl">	
@@ -82,7 +81,7 @@
 		</ul>	
 		<ul class="fullScreenUl">	
 			<li class="width200Li">
-				<input type="submit" class="button" style="width: 70px;" value="上传" onclick="return checkParam();">
+				<input type="submit" class="button" style="width: 70px;" value="上传">
 			</li>
 		</ul>
 	</s:form>
@@ -106,21 +105,7 @@ function chooseFile()
 	var uploadFile = $('uploadFile');
 	var filePath=uploadFile.value;
     var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length);
-    document.getElementById('adminFile.fileName').value=fileName;
-}
-function checkParam()
-{
-	var obj=document.getElementById("adminFile.fileType");
-	if(obj.value==''||obj.value=="<s:text name='请输入文件类别'/>")
-    {
-		alert("请输入文件类别！");
-		return false;
-    }
-	if(!document.getElementById('adminFile.fileName').value)
-    {
-		alert("请选择文件！");
-		return false;
-    }	
+    document.getElementById('pricePackageFile.pricePackageName').value=fileName;
 }
 </script>
 </html>
