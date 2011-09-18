@@ -40,11 +40,6 @@ public class PeriodicalFileAction extends ActionSupportBase
     
     public String importPeriodicalFile()
     {
-        if (!"".equals(periodicalFile.getName()) && !periodicalFile.getName().endsWith("html"))
-        {
-            msg = "文件格斯不对";
-            return SUCCESS;
-        }
         try
         {
             msg = service.savePeriodicalFile(periodicalFile, uploadFile);
@@ -52,7 +47,7 @@ public class PeriodicalFileAction extends ActionSupportBase
         catch (Exception e)
         {
             LOG.error(e);
-            msg = "出错了，请将excel重新保存一次再试";
+            msg = "出错了，请重试!";
         }
         return SUCCESS;
     }
