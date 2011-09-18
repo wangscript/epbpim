@@ -20,7 +20,7 @@
 <div id="">
 	<s:form action="addPricePackageFile.do" enctype="multipart/form-data" method="post">
 		<ul class="fullScreenUl">
-			<li class="width300Li"><label class="lb">省：</label>
+			<li class="width300Li"><label class="lb">省份：</label>
 				<select id="pricePackageFile.pricePackageProvice" name="pricePackageFile.provice" style="width: 150px;">
 					<option value="0">---------请选择---------</option>
 					<option value="北京市">北京市</option>
