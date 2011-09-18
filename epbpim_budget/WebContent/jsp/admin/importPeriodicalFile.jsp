@@ -105,7 +105,7 @@
 									id="periodicalFile.periodicalName"></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width200Li"><input type="submit" class="button" style="width: 70px;" value="上传">
+								<li class="width200Li"><input type="submit" class="button" value="上传">
 								</li>
 							</ul>
 
