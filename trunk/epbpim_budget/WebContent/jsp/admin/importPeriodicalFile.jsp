@@ -98,7 +98,7 @@
 									onclick="WdatePicker({dateFmt:'yyyy-MM'})" /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width100Li">价格包：</li>
+								<li class="width100Li">文件：</li>
 								<li class="width200Li"><s:file name="uploadFile"
 										id="uploadFile" size="40" onchange="chooseFile()" /> <input
 									type="hidden" name="periodicalFile.periodicalName"
