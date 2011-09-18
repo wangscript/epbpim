@@ -38,8 +38,7 @@
 				<div class="mainbar">
 					<h4 class="title">电子杂志导入:</h4>
 					<div class="entry">
-						<s:form action="importPeriodicalFile.do" method="post"
-							id="importPeriodicalFileForm" enctype="multipart/form-data">
+						<s:form action="importPeriodicalFilee.do" method="post" id="importPeriodicalFileForm" enctype="multipart/form-data">
 							<ul class="fullScreenUl">
 								<li class="width100Li">省份：</li>
 								<li class="width200Li"><select
@@ -94,8 +93,8 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li">时间：</li>
 								<li class="width100Li"><input class="Wdate width100Input"
-									id="periodicalFile.periodicalDate"
-									name="periodicalFile.periodicalDate"
+									id="periodicalFile.periodicalDatePage"
+									name="periodicalFile.periodicalDatePage"
 									onclick="WdatePicker({dateFmt:'yyyy-MM'})" /></li>
 							</ul>
 							<ul class="fullScreenUl">
@@ -107,7 +106,7 @@
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width200Li"><input type="submit" class="button"
-									style="width: 70px;" value="上传" onclick="return checkParam();">
+									style="width: 70px;" value="上传">
 								</li>
 							</ul>
 
