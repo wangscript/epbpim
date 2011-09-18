@@ -49,7 +49,7 @@
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="importPeriodicalFile" method="importPeriodicalFile" class="periodicalFileAction">
-			<result>/jsp/admin/periodicalFile.jsp</result>
+			<result>/jsp/admin/importPeriodicalFile.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="uploadPricePackageFile" method="addPricePackageFile" class="pricePackageFileAction">
@@ -69,7 +69,7 @@
 			<result>/jsp/admin/importGovernmentFile.jsp</result>
 		</action>
 		<action name="preImportPeriodicalFile">
-			<result>/jsp/admin/periodicalFile.jsp</result>
+			<result>/jsp/admin/importPeriodicalFile.jsp</result>
 		</action>
 		<action name="preUploadPricePackageFile">
 			<result>/jsp/admin/uploadPricePackageFile.jsp</result>
