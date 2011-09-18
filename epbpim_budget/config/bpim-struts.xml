@@ -99,23 +99,23 @@
 		</action>
 	</package>
 	<package name="bpim-searchGovernmentInventory" namespace="/main" extends="bpim-default">
-		<action name="searchGovernmentInventory" method="searchGovernmentInventory" class="searchGovernmentInventoryAction">
-			<result name="inventory2003">jsp/main/simple/searchGovernmentInventory_2003.jsp</result>
-			<result name="inventory2008">jsp/main/simple/searchGovernmentInventory_2008.jsp</result>
+		<action name="/searchGovernmentInventory" method="searchGovernmentInventory" class="searchGovernmentInventoryAction">
+			<result name="inventory2003">/jsp/main/simple/searchGovernmentInventory_2003.jsp</result>
+			<result name="inventory2008">/jsp/main/simple/searchGovernmentInventory_2008.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-searchGovernmentFile" namespace="/main" extends="bpim-default">
 		<action name="searchGovernmentFile" method="searchGovernmentFile" class="searchGovernmentFileAction">
-			<result>jsp/main/simple/listGovernmentFile.jsp</result>
+			<result>/jsp/main/simple/listGovernmentFile.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-viewGovernmentFile" namespace="/main" extends="bpim-default">
 		<action name="viewGovernmentFile" method="viewGovernmentFile" class="searchGovernmentFileAction">
-			<result>jsp/main/simple/showGovernmentFileDetail.jsp</result>
+			<result>/jsp/main/simple/showGovernmentFileDetail.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
@@ -143,19 +143,19 @@
 	</package>
 	<package name="bpim-main" namespace="/main" extends="bpim-default">
 		<action name="main" method="listNewsAnnounces" class="newAnnounceAction">
-			<result>jsp/main/main.jsp</result>
+			<result>/jsp/main/main.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 		<action name="showNews" method="getDetailNewsAnnounces" class="newAnnounceAction">
-			<result>jsp/main/user/showNews.jsp</result>
+			<result>/jsp/main/user/showNews.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 	</package>	
 	<package name="bpim-addUserAdvice" namespace="/main" extends="bpim-default">
 		<action name="addUserAdvice" method="addUserAdvice" class="userAdviceAction">
-			<result>jsp/main/user/userAdvice.jsp</result>
+			<result>/jsp/main/user/userAdvice.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
