@@ -24,7 +24,7 @@
 </script>
 </head>
 <body>
-<div id="main">
+<div id="main"><jsp:include page="../mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
