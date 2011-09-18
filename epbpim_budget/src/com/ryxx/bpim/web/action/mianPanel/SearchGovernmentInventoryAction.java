@@ -1,4 +1,4 @@
-package com.ryxx.bpim.web.action.mianPanel;
+package com.ryxx.bpim.web.action.mainPanel;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

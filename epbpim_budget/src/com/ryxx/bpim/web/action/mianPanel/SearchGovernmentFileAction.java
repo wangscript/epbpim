@@ -1,4 +1,4 @@
-package com.ryxx.bpim.web.action.mianPanel;
+package com.ryxx.bpim.web.action.mainPanel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
