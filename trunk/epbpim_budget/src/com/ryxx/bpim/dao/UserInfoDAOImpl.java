@@ -14,7 +14,21 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 		Criteria criteria = getSession().createCriteria(UserInfo.class);
 		criteria.add(Restrictions.eq("enterpriseInfo.id", enterpriseId));
 		criteria.add(Restrictions.eq("roleType", RoleEnum.getType("ENTERPRISE_USER")));
-		criteria.add(Restrictions.eq("enable", new Integer(1)));
 		return criteria.list();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ryxx.bpim.dao.UserInfoDAO#getByLogin(com.ryxx.bpim.entity.UserInfo)
+	 */
+	@Override
+	public UserInfo getByLogin(UserInfo userInfo) {
+		Criteria criteria = getSession().createCriteria(UserInfo.class);
+		criteria.add(Restrictions.eq("identifier", userInfo.getIdentifier()));
+		criteria.add(Restrictions.eq("password", userInfo.getPassword()));
+		criteria.add(Restrictions.eq("enable", new Integer(1)));
+		if(criteria.list()!=null&&criteria.list().size()>0){
+			return (UserInfo) criteria.list().get(0);
+		}
+		return null;
 	}
 }

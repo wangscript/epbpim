@@ -82,6 +82,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		userInfo.setMobilePhone(enterpriseInfo.getPhone());
 		userInfo.setRoleType(RoleEnum.ENTERPRISE_USER);
 		userInfo.setRegisterDate(enterpriseInfo.getLogTime());
+		userInfo.setEnable(new Integer(1));
 		userInfoService.save(userInfo);
 		return SUCCESS;
 	}

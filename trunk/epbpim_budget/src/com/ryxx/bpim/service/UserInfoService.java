@@ -8,4 +8,10 @@ import com.ryxx.bpim.entity.UserInfo;
 public interface UserInfoService extends BaseService<UserInfo,UserInfoDAO, Long> {
 //	List<UserInfo> listPage(UserInfo userInfo, PageTools page);
 	public List<UserInfo> list(Long enterpriseId);
+
+	/**
+	 * @param userInfo
+	 * @return
+	 */
+	public UserInfo getByLogin(UserInfo userInfo);
 }

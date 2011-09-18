@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<body onload="window.location.href ='jsp/login/index.jsp';">
+<body onload="window.location.href ='login/index.do';">
 
 </body>
 </html>

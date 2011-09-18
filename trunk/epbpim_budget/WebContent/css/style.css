@@ -108,7 +108,12 @@ select {
 	padding: 0;
 }
 
-.content_resize,.header_resize,.fbg_resize,.footer_resize {
+.header_resize{
+	margin: 0 auto;
+	padding: 0 40px;
+	width: 970px;
+}
+.content_resize,.fbg_resize,.footer_resize {
 	margin: 0 auto;
 	padding: 0 40px;
 	width: 890px;
