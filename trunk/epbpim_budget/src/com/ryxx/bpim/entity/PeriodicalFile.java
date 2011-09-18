@@ -13,11 +13,15 @@ public class PeriodicalFile extends VoBase
     
     private Long id;
     
-    private String periodicalName = "";
+    private String periodicalName;
     
-    private String periodicalType = "";
+    private String periodicalProvice;
     
-    private String sourceCode = "";
+    private String periodicalType;
+    
+    private String sourceCode;
+    
+    private Timestamp periodicalDate;
     
     private Timestamp uploadDate;
     
@@ -43,6 +47,26 @@ public class PeriodicalFile extends VoBase
     public void setPeriodicalType(String periodicalType)
     {
         this.periodicalType = periodicalType;
+    }
+    
+    public String getPeriodicalProvice()
+    {
+        return periodicalProvice;
+    }
+    
+    public void setPeriodicalProvice(String periodicalProvice)
+    {
+        this.periodicalProvice = periodicalProvice;
+    }
+    
+    public Timestamp getPeriodicalDate()
+    {
+        return periodicalDate;
+    }
+    
+    public void setPeriodicalDate(Timestamp periodicalDate)
+    {
+        this.periodicalDate = periodicalDate;
     }
     
     public String getUploadDatePage()
