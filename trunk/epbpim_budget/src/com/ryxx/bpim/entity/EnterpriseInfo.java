@@ -10,8 +10,9 @@ public class EnterpriseInfo extends VoBase {
 	private String email;
 	private String phone;
 	private String principal;
-	private String favorite;
 	private Timestamp logTime;
+	private ProvinceCity provinceCity;
+	
 	public Long getId() {
 		return id;
 	}
@@ -48,12 +49,11 @@ public class EnterpriseInfo extends VoBase {
 	public void setLogTime(Timestamp logTime) {
 		this.logTime = logTime;
 	}
-	public String getFavorite() {
-		return favorite;
+	public ProvinceCity getProvinceCity() {
+		return provinceCity;
 	}
-	public void setFavorite(String favorite) {
-		this.favorite = favorite;
+	public void setProvinceCity(ProvinceCity provinceCity) {
+		this.provinceCity = provinceCity;
 	}
-	
 }
 

@@ -4,15 +4,15 @@ public class ProvinceCity extends VoBase {
 	
 	private static final long serialVersionUID = -3699089574630795142L;
 	
-	private Long id;
+	private Integer id;
 	private String city;
 	private Integer parentId;
 	private Integer sort;
 	private Integer enable;
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getCity() {

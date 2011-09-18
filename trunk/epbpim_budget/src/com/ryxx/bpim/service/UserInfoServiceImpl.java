@@ -24,6 +24,11 @@ public class UserInfoServiceImpl  extends AbstractService<UserInfo,UserInfoDAO, 
 		return getDao().list(enterpriseId);
 	}
 
+	@Override
+	public String getMaxIdentify() {
+		return getDao().getMaxIdentify();
+	}
+
 	/* (non-Javadoc)
 	 * @see com.ryxx.bpim.service.UserInfoService#getByLogin(com.ryxx.bpim.entity.UserInfo)
 	 */

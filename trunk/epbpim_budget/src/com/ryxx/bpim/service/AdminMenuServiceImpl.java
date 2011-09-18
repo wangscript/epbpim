@@ -11,6 +11,10 @@ public class AdminMenuServiceImpl  extends AbstractService<AdminMenu,AdminMenuDA
 		return getMenuTree(this.getDao().findAll());
 	}
 	
+	public List<AdminMenu> findAllUseModuleByRegion(Integer regionId) {
+		return getDao().findAllUseModuleByRegion(regionId);
+	}
+	
 	public List<AdminMenu> getMenuTree(List<AdminMenu> nodes) {
 		List<AdminMenu> parentNodes = new ArrayList<AdminMenu>();
 		for(AdminMenu node: nodes) {

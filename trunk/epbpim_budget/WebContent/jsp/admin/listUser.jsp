@@ -78,10 +78,10 @@ function clearPage(updateId){
 						<li>
 							<ul class="fullScreenResultUl">
 								<li class="width200Li">
-									<form action="batchUser.do" method="post">
-										<input type="button" class="button"
+									<form action="newUser.do" method="post">
+										<input type="submit" class="button"
 											onclick='updatePassword(<s:property value="#st.index+1"/>);'
-											value="批量创建用户">
+											value="批量创建用户"><s:hidden name="eId"/>
 									</form></li>
 								<li class="width200Li">
 									<form action="" method="post">
@@ -89,7 +89,7 @@ function clearPage(updateId){
 											name="enterpriseInfo.principal" />
 										<input type="button" class="button"
 											onclick='updatePassword(<s:property value="#st.index+1"/>);'
-											value="企业充值">
+											value="企业充值"><s:hidden name="eId"/>
 									</form></li>
 							</ul></li>
 					</ul>

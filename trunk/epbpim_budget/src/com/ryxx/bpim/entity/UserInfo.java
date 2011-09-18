@@ -1,6 +1,10 @@
 package com.ryxx.bpim.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import com.ryxx.bpim.enums.RoleEnum;
 
@@ -23,6 +27,7 @@ public class UserInfo extends VoBase {
 	private RoleEnum roleType;
 	private Integer enable;
 	private String remark;
+	private List<AdminMenu> menus;
 	private EnterpriseInfo enterpriseInfo;
 	public Long getId() {
 		return id;
@@ -119,6 +124,26 @@ public class UserInfo extends VoBase {
 	}
 	public void setEnable(Integer enable) {
 		this.enable = enable;
+	}
+	public List<AdminMenu> getMenus() {
+		return menus;
+	}
+	public void setMenus(List<AdminMenu> menus) {
+		this.menus = menus;
+	}
+	
+	public boolean equals(Object obj) {
+		if((this==obj)) {
+			return true;
+		}
+		if(!(obj instanceof UserInfo)) {
+			return false;
+		}
+		UserInfo userInfo = (UserInfo)obj;
+		return new EqualsBuilder().append(this.getId(), userInfo.getId()).isEquals();
+	}
+	public int hashCode() {
+		return new HashCodeBuilder().append(getId()).toHashCode();
 	}
 }
 

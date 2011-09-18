@@ -3,6 +3,7 @@ package com.ryxx.bpim.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.ryxx.bpim.entity.UserInfo;
@@ -13,8 +14,20 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 	public List<UserInfo> list(Long enterpriseId) {
 		Criteria criteria = getSession().createCriteria(UserInfo.class);
 		criteria.add(Restrictions.eq("enterpriseInfo.id", enterpriseId));
-		criteria.add(Restrictions.eq("roleType", RoleEnum.getType("ENTERPRISE_USER")));
+		criteria.add(Restrictions.eq("roleType", RoleEnum.ENTERPRISE_USER));
 		return criteria.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public String getMaxIdentify() {
+		Criteria criteria = getSession().createCriteria(UserInfo.class);
+		criteria.addOrder(Order.desc("identifier"));
+		List<UserInfo> userInfos = criteria.list();
+		if(userInfos != null && userInfos.size() > 0) {
+			return userInfos.get(0).getIdentifier();
+		}
+		return "";
 	}
 
 	/* (non-Javadoc)

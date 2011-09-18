@@ -42,7 +42,7 @@ function clearPage(updateId){
 								<li class="width100Li"><s:property value="principal" /></li>
 								<li class="width100Li"><s:property value="phone" /></li>
 								<li class="width200Li"><s:property value="email" /></li>
-								<li class="width100Li"><s:property value="favorite" /></li>
+								<li class="width100Li"><s:property value="provinceCity.city" /></li>
 								<li class="width100Li">
 									<a href="listUser.do?eId=<s:property value="id"/>">进入</a>
 								</li>

@@ -72,11 +72,11 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		UserInfo userInfo = new UserInfo();
 		userInfo.setEmail(enterpriseInfo.getEmail());
 		userInfo.setEnterpriseInfo(enterpriseInfo);
-		List<UserInfo> users = userInfoService.findAll();
-		if(users == null || users.size() == 0) {
-			userInfo.setIdentifier(StringTools.generateIdentify(1L));
+		String maxIdentify = userInfoService.getMaxIdentify();
+		if(maxIdentify == null || maxIdentify.length() == 0) {
+			userInfo.setIdentifier("yr10000001");
 		} else {
-			userInfo.setIdentifier(StringTools.generateIdentify(users.size()+1));
+			userInfo.setIdentifier("ry"+(Long.parseLong(maxIdentify.substring(2))+1));
 		}
 		userInfo.setPassword(StringTools.md5(Constants.DEFAULT_PASSWORD));
 		userInfo.setMobilePhone(enterpriseInfo.getPhone());

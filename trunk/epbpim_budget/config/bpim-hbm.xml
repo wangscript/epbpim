@@ -14,7 +14,7 @@
 	</class>
 	
 	<class name="ProvinceCity" table="PROVINCE_CITY">
-		<id name="id" column="PROVINCE_ID" type="java.lang.Long">
+		<id name="id" column="PROVINCE_ID" type="java.lang.Integer">
 			<generator class="identity"></generator>
 		</id>
 		<property name="city" column="CITY" type="java.lang.String"></property>
@@ -31,8 +31,8 @@
 		<property name="email" column="ENTERPRISE_EMAIL" type="java.lang.String"></property>
 		<property name="phone" column="ENTERPRISE_PHONE" type="java.lang.String"></property>
 		<property name="principal" column="ENTERPRISE_PRINCIPAL" type="java.lang.String"></property>
-		<property name="favorite" column="ENTERPRISE_FAVORITE" type="java.lang.String"></property>
 		<property name="logTime" column="LOG_TIME" type="java.sql.Timestamp"></property>
+		<many-to-one name="provinceCity" class="ProvinceCity" column="favorite"></many-to-one>
 	</class>
 	<class name="AdminUser" table="ADMIN_USER">
 		<id name="id" column="ADMIN_USER_ID" type="java.lang.Long">
@@ -70,8 +70,13 @@
 		<property name="email" column="ADMIN_EMAIL" type="java.lang.String"></property>
 		<property name="enable" column="ENABLE" type="java.lang.Integer"></property>
 		<many-to-one name="enterpriseInfo" class="EnterpriseInfo" column="ENTERPRISE_ID"></many-to-one>
+		<bag name="menus" table="USER_MENU_RESTRACTION" fetch="select" lazy="true" inverse="false">
+			<key>
+				<column name="USER_ID" />
+			</key>
+			<many-to-many class="AdminMenu" column="MENU_ID"/>
+		</bag>
 	</class>
-	
 	<class name="AdminMenu" table="ADMIN_MENU">
 		<id name="id" column="MENU_ID" type="java.lang.Integer">
 			<generator class="identity"></generator>
@@ -80,7 +85,20 @@
 		<property name="url" column="MENU_URL" type="java.lang.String"></property>
 		<property name="parentId" column="PARENT_MENU_ID" type="java.lang.Integer"></property>
 		<property name="enable" column="MENU_ENABLE" type="java.lang.Integer"></property>
+		<property name="mDefault" column="MENU_DEFAULT" type="java.lang.Integer"></property>
 		<property name="index" column="MENU_INDEX" type="java.lang.Integer"></property>
+		<property name="price" column="MENU_PRICE" type="java.lang.Integer"></property>
+		<property name="title" column="TITLE" type="java.lang.String"></property>
+		<property name="description" column="DESCRIPTION" type="java.lang.String"></property>
+		<property name="registerDate" column="REGISTER_DATE" type="java.sql.Timestamp"></property>
+		<property name="adviceDate" column="ADVICE_DATE" type="java.sql.Timestamp"></property>
+		<many-to-one name="region" class="ProvinceCity" column="MENU_REGION"></many-to-one>
+		<bag name="users" table="USER_MENU_RESTRACTION" fetch="select" cascade="save-update" lazy="true" inverse="true">
+			<key>
+				<column name="MENU_ID" />
+			</key>
+			<many-to-many class="UserInfo" column="USER_ID"/>
+		</bag>
 	</class>
 	<class name="GovernmentFile" table="GOVERNMENT_FILE">
 		<id name="id" column="ID" type="java.lang.Long">
