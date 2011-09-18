@@ -122,14 +122,14 @@
 	</package>
 	<package name="bpim-searchPeriodicalFile" namespace="/main" extends="bpim-default">
 		<action name="searchPeriodicalFile" method="searchPeriodicalFile" class="periodicalFileAction">
-			<result>jsp/main/simple/listPeriodicalFile.jsp</result>
+			<result>/jsp/main/simple/listPeriodicalFile.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-viewPeriodicalFile" namespace="/main" extends="bpim-default">
 		<action name="viewPeriodicalFile" method="viewPeriodicalFile" class="periodicalFileAction">
-			<result>jsp/main/simple/showPeriodicalFileDetail.jsp</result>
+			<result>/jsp/main/simple/showPeriodicalFileDetail.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
