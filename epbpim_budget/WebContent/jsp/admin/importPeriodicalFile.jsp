@@ -24,16 +24,26 @@
 	
 	function checkParam()
 	{
+		if(!document.getElementById('periodicalFile.periodicalProvice').value)
+	    {
+			alert("请选择省份！");
+			return false;
+	    }
 		if(!document.getElementById('periodicalFile.periodicalType').value)
 	    {
 			alert("请选择类别！");
+			return false;
+	    }
+		if(!document.getElementById('periodicalFile.periodicalDate').value)
+	    {
+			alert("请选择日期！");
 			return false;
 	    }
 		if(!document.getElementById('periodicalFile.periodicalName').value)
 	    {
 			alert("请选择文件！");
 			return false;
-	    }		
+	    }
 	}
 	
 </script>
@@ -52,32 +62,68 @@
 					<div class="entry">
 						<s:form action="importPeriodicalFile.do" method="post" id="importPeriodicalFileForm" onsubmit="return checkParam();" enctype="multipart/form-data">
 							<ul class="fullScreenUl">
-								<li class="width300Li"><label class="lb">类别：</label>
-								<select id="periodicalFile.periodicalType" name="periodicalFile.periodicalType" class="width150Select">
+								<li class="width300Li"><label class="lb">省：</label>
+									<select id="periodicalFile.periodicalProvice" name="periodicalFile.periodicalProvice" style="width: 150px;">
+										<option value="0">---------请选择---------</option>
+										<option value="北京市">北京市</option>
+										<option value="上海市" selected="selected">上海市</option>
+										<option value="天津市">天津市</option>
+										<option value="重庆市">重庆市</option>
+										<option value="河北省">河北省</option>
+										<option value="山西省">山西省</option>
+										<option value="内蒙古自治区">内蒙古自治区</option>
+										<option value="辽宁省">辽宁省</option>
+										<option value="吉林省">吉林省</option>
+										<option value="黑龙江省">黑龙江省</option>
+										<option value="江苏省">江苏省</option>
+										<option value="浙江省">浙江省</option>
+										<option value="安徽省">安徽省</option>
+										<option value="福建省">福建省</option>
+										<option value="江西省">江西省</option>
+										<option value="山东省">山东省</option>
+										<option value="河南省">河南省</option>
+										<option value="湖北省">湖北省</option>
+										<option value="湖南省">湖南省</option>
+										<option value="广东省">广东省</option>
+										<option value="广西壮族自治区">广西壮族自治区</option>
+										<option value="海南省">海南省</option>
+										<option value="四川省">四川省</option>
+										<option value="贵州省">贵州省</option>
+										<option value="云南省">云南省</option>
+										<option value="西藏自治区">西藏自治区</option>
+										<option value="陕西省">陕西省</option>
+										<option value="甘肃省">甘肃省</option>
+										<option value="宁夏回族自治区">宁夏回族自治区</option>
+										<option value="青海省">青海省</option>
+										<option value="新疆维吾尔族自治区">新疆维吾尔族自治区</option>
+										<option value="香港特别行政区">香港特别行政区</option>
+										<option value="澳门特别行政区">澳门特别行政区</option>
+										<option value="台湾省">台湾省</option>
+										<option value="其它">其它</option>
+									</select>
+								</li>
+								<li class="width300Li"><label class="lb">专业：</label>
+									<select id="periodicalFile.periodicalType" name="periodicalFile.periodicalType" style="width: 150px;">
 										<option value="">--请选择--</option>
-										<option value="土建">土建</option>
-										<option value="市政">市政</option>
-								</select>
+										<option value="董事会文件">土建</option>
+										<option value="财税文件">市政</option>
+									</select>							  
+								</li>
+								<li class="width300Li"><label class="lb">时间：</label>
+									<input class="Wdate width100Input" id="periodicalFile.periodicalDate" name="periodicalFile.periodicalDate" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
 								</li>
 							</ul>
 							<ul class="fullScreenUl">	
-								<li style="width: 42px">
-									<label>文件：</label>
+								<li style="width: 60px">
+									<label>价格包：</label>
 								</li>
 								<li style="width: 400px">
 									<s:file name="uploadFile" id="uploadFile" size="40" onchange="chooseFile()" />
 									<input type="hidden" name="periodicalFile.periodicalName" id="periodicalFile.periodicalName">
 								</li>
 							</ul>	
-							<ul class="fullScreenUl">
-								<li class="width200Li"><input type="submit" class="button" value="上传">
-								</li>
-							</ul>
 						</s:form>
-
-
 					</div>
-
 					<div class="clr"></div>
 				</div>
 			</div>
