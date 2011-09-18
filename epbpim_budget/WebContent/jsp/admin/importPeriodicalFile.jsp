@@ -38,7 +38,7 @@
 				<div class="mainbar">
 					<h4 class="title">电子杂志导入:</h4>
 					<div class="entry">
-						<s:form action="importPeriodicalFilee.do" method="post" id="importPeriodicalFileForm" enctype="multipart/form-data">
+						<s:form action="importPeriodicalFile.do" method="post" id="importPeriodicalFileForm" enctype="multipart/form-data">
 							<ul class="fullScreenUl">
 								<li class="width100Li">省份：</li>
 								<li class="width200Li"><select
@@ -86,8 +86,8 @@
 								<li class="width200Li"><select
 									id="periodicalFile.periodicalType"
 									name="periodicalFile.periodicalType" class="width150Select">
-										<option value="董事会文件">土建</option>
-										<option value="财税文件">市政</option>
+										<option value="土建">土建</option>
+										<option value="市政">市政</option>
 								</select></li>
 							</ul>
 							<ul class="fullScreenUl">
@@ -105,8 +105,7 @@
 									id="periodicalFile.periodicalName"></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width200Li"><input type="submit" class="button"
-									style="width: 70px;" value="上传">
+								<li class="width200Li"><input type="submit" class="button" style="width: 70px;" value="上传">
 								</li>
 							</ul>
 
