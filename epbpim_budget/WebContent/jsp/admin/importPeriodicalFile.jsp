@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>电子杂志导入</title>
+<link rel="stylesheet"
+	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
+<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
 <script type="text/javascript">
 	function checkError() {
 		var msg = "<s:property value='msg'/>";
@@ -20,30 +23,6 @@
 		var filePath=uploadFile.value;
 	    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length);
 	    document.getElementById('periodicalFile.periodicalName').value=fileName;
-	}
-	
-	function checkParam()
-	{
-		if(!document.getElementById('periodicalFile.periodicalProvice').value)
-	    {
-			alert("请选择省份！");
-			return false;
-	    }
-		if(!document.getElementById('periodicalFile.periodicalType').value)
-	    {
-			alert("请选择类别！");
-			return false;
-	    }
-		if(!document.getElementById('periodicalFile.periodicalDate').value)
-	    {
-			alert("请选择日期！");
-			return false;
-	    }
-		if(!document.getElementById('periodicalFile.periodicalName').value)
-	    {
-			alert("请选择文件！");
-			return false;
-	    }
 	}
 	
 </script>
@@ -60,11 +39,14 @@
 				<div class="mainbar">
 					<h4 class="title">电子杂志导入:</h4>
 					<div class="entry">
-						<s:form action="importPeriodicalFile.do" method="post" id="importPeriodicalFileForm" onsubmit="return checkParam();" enctype="multipart/form-data">
+						<s:form action="importPeriodicalFile.do" method="post"
+							id="importPeriodicalFileForm" 
+							enctype="multipart/form-data">
 							<ul class="fullScreenUl">
-								<li class="width300Li"><label class="lb">省份：</label>
-									<select id="periodicalFile.periodicalProvice" name="periodicalFile.periodicalProvice" style="width: 150px;">
-										<option value="0">---------请选择---------</option>
+								<li class="width100Li">省份：</li>
+								<li class="width200Li"><select
+									id="periodicalFile.periodicalProvice"
+									name="periodicalFile.periodicalProvice" class="width150Select">
 										<option value="北京市">北京市</option>
 										<option value="上海市" selected="selected">上海市</option>
 										<option value="天津市">天津市</option>
@@ -100,28 +82,31 @@
 										<option value="澳门特别行政区">澳门特别行政区</option>
 										<option value="台湾省">台湾省</option>
 										<option value="其它">其它</option>
-									</select>
-								</li>
-								<li class="width300Li"><label class="lb">专业：</label>
-									<select id="periodicalFile.periodicalType" name="periodicalFile.periodicalType" style="width: 150px;">
-										<option value="">--请选择--</option>
+								</select></li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width100Li">专业：</li>
+								<li class="width200Li"><select
+									id="periodicalFile.periodicalType"
+									name="periodicalFile.periodicalType" class="width150Select">
 										<option value="董事会文件">土建</option>
 										<option value="财税文件">市政</option>
-									</select>							  
-								</li>
-								<li class="width300Li"><label class="lb">时间：</label>
-									<input class="Wdate width100Input" id="periodicalFile.periodicalDate" name="periodicalFile.periodicalDate" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
-								</li>
+								</select></li>
 							</ul>
-							<ul class="fullScreenUl">	
-								<li style="width: 60px">
-									<label>文件：</label>
-								</li>
-								<li style="width: 400px">
-									<s:file name="uploadFile" id="uploadFile" size="40" onchange="chooseFile()" />
-									<input type="hidden" name="periodicalFile.periodicalName" id="periodicalFile.periodicalName">
-								</li>
-							</ul>	
+							<ul class="fullScreenUl">
+								<li class="width100Li">时间：</li>
+								<li class="width100Li"><input class="Wdate width100Input"
+									id="periodicalFile.periodicalDate"
+									name="periodicalFile.periodicalDate"
+									onclick="WdatePicker({dateFmt:'yyyy-MM'})" /></li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width100Li">价格包：</li>
+								<li class="width200Li"><s:file name="uploadFile"
+										id="uploadFile" size="40" onchange="chooseFile()" /> <input
+									type="hidden" name="periodicalFile.periodicalName"
+									id="periodicalFile.periodicalName"></li>
+							</ul>
 						</s:form>
 					</div>
 					<div class="clr"></div>
