@@ -113,8 +113,8 @@
 	</package>
 	<package name="bpim-searchGovernmentInventory" namespace="/main" extends="bpim-default">
 		<action name="/searchGovernmentInventory" method="searchGovernmentInventory" class="searchGovernmentInventoryAction">
-			<result name="inventory2003">/jsp/main/simple/searchGovernmentInventory_2003.jsp</result>
-			<result name="inventory2008">/jsp/main/simple/searchGovernmentInventory_2008.jsp</result>
+			<result name="inventory2003">/jsp/main/simple/listGovernmentInventory_2003.jsp</result>
+			<result name="inventory2008">/jsp/main/simple/listGovernmentInventory_2008.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
