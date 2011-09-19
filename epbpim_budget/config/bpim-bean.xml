@@ -101,7 +101,7 @@
 			<ref local="com.ryxx.bpim.service.GovernmentFileService"/>
 		</property>
 	</bean>
-	<bean id="searchGovernmentFileAction" class="com.ryxx.bpim.web.action.mianPanel.SearchGovernmentFileAction" scope="prototype">
+	<bean id="searchGovernmentFileAction" class="com.ryxx.bpim.web.action.mainPanel.SearchGovernmentFileAction" scope="prototype">
 		<property name="governmentFileService">
 			<ref local="com.ryxx.bpim.service.GovernmentFileService"/>
 		</property>
@@ -140,7 +140,7 @@
 	<bean id="com.ryxx.bpim.dao.GovernmentInventoryDAO" class="com.ryxx.bpim.dao.GovernmentInventoryDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="searchGovernmentInventoryAction" class="com.ryxx.bpim.web.action.mianPanel.SearchGovernmentInventoryAction" scope="prototype">
+	<bean id="searchGovernmentInventoryAction" class="com.ryxx.bpim.web.action.mainPanel.SearchGovernmentInventoryAction" scope="prototype">
 		<property name="service">
 			<ref local="com.ryxx.bpim.service.GovernmentInventoryService"/>
 		</property>
