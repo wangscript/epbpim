@@ -116,14 +116,14 @@ function clearPage(updateId){
 										<ul id="<s:property value='#st.index+1'/>">
 											<li class="width100Li"><s:hidden name="id" /> <s:property value="realName" />
 											</li>
-											<li class="width100Li"><s:date name="registerDateTmp" format="yyyy-MM-dd" />
+											<li class="width100Li"><s:date name="registerDate" format="yyyy-MM-dd" />
 												<s:hidden name="registerDate" />
 											</li>
 											<li class="width100Li"><s:property value="identifier" />
 											</li>
 											<li class="width100Li"><s:property value="mobilePhone" />
 											</li>
-											<li class="width100Li"><s:property value="enable" />
+											<li class="width100Li"><s:if test="enable==1}">是</s:if><s:else>否</s:else>
 											</li>
 										</ul>
 									</s:iterator>

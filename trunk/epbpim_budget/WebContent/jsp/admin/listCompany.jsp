@@ -31,9 +31,10 @@ function clearPage(updateId){
 							<li class="width200Li">公司</li>
 							<li class="width100Li">联系人姓名</li>
 							<li class="width100Li">联系人手机</li>
-							<li class="width200Li">邮箱</li>
+							<li class="width150Li">邮箱</li>
 							<li class="width100Li">业务主要地区</li>
 							<li class="width100Li">用户信息</li>
+							<li class="width100Li">订阅查询</li>
 							<li class="width50Li">操作</li>
 						</ul>
 						<s:iterator value="enterpriseInfos" status="st">
@@ -41,11 +42,12 @@ function clearPage(updateId){
 								<li class="width200Li"><s:hidden name="id"/><s:property value="name" /></li>
 								<li class="width100Li"><s:property value="principal" /></li>
 								<li class="width100Li"><s:property value="phone" /></li>
-								<li class="width200Li"><s:property value="email" /></li>
+								<li class="width150Li"><s:property value="email" /></li>
 								<li class="width100Li"><s:property value="provinceCity.city" /></li>
 								<li class="width100Li">
 									<a href="listUser.do?eId=<s:property value="id"/>">进入</a>
 								</li>
+								<li class="width100Li"><a href="listUser.do?eId=<s:property value="id"/>">进入</a></li>
 								<li class="width50Li">
 									<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>">删除</a>
 								</li>

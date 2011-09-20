@@ -24,6 +24,7 @@ public class UserInfo extends VoBase {
 	private String familyAdd;
 	private String mobilePhone;
 	private Timestamp registerDate;
+	private Timestamp registerDateTmp;
 	private RoleEnum roleType;
 	private Integer enable;
 	private String remark;
@@ -127,6 +128,12 @@ public class UserInfo extends VoBase {
 	}
 	public List<AdminMenu> getMenus() {
 		return menus;
+	}
+	public Timestamp getRegisterDateTmp() {
+		return registerDateTmp;
+	}
+	public void setRegisterDateTmp(Timestamp registerDateTmp) {
+		this.registerDateTmp = registerDateTmp;
 	}
 	public void setMenus(List<AdminMenu> menus) {
 		this.menus = menus;
