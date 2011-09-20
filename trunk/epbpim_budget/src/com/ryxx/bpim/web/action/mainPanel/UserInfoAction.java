@@ -23,14 +23,15 @@ public class UserInfoAction extends ActionSupportBase {
 	private String password;
 	private String userType;
 	private Long eId;
+	private UserInfo userInfo;
 
 	public String login() {
-		UserInfo userInfo = new UserInfo(); 
+		userInfo = new UserInfo();
 		userInfo.setIdentifier(identifier);
 		userInfo.setPassword(StringTools.md5(password));
 		userInfo = userInfoService.getByLogin(userInfo);
 		if (userInfo == null) {
-			super.addFieldError("name", "用户�??或密�?错误,请�?新输入");
+			super.addFieldError("name", "用户名或密码错误,请重新输入");
 			return INPUT;
 		} else {
 			session.put(Constants.LOGIN_USER_NAME, identifier);
@@ -42,6 +43,7 @@ public class UserInfoAction extends ActionSupportBase {
 				if (userInfo.getRealName() != null) {
 					return "userMain";
 				} else {
+					userInfo.setPassword(null);
 					return "userInfoManage";
 				}
 			}
@@ -104,6 +106,22 @@ public class UserInfoAction extends ActionSupportBase {
 
 	public void setUserInfoService(UserInfoService userInfoService) {
 		this.userInfoService = userInfoService;
+	}
+
+
+	/**
+	 * @return the userInfo
+	 */
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+
+	/**
+	 * @param userInfo the userInfo to set
+	 */
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
 	}
 
 }
