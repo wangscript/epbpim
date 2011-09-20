@@ -74,7 +74,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		userInfo.setEnterpriseInfo(enterpriseInfo);
 		String maxIdentify = userInfoService.getMaxIdentify();
 		if(maxIdentify == null || maxIdentify.length() == 0) {
-			userInfo.setIdentifier("yr10000001");
+			userInfo.setIdentifier("ry10000001");
 		} else {
 			userInfo.setIdentifier("ry"+(Long.parseLong(maxIdentify.substring(2))+1));
 		}
