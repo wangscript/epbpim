@@ -50,6 +50,22 @@ public class UserInfoAction extends ActionSupportBase {
 		}
 		return null;
 	}
+	
+	public String updateUserInfo(){
+		UserInfo userInfoForUpdate = new UserInfo();
+		Long id = userInfo.getId();
+		if(id!=null&&id!=0){
+			userInfoForUpdate = userInfoService.findById(id);
+			String newPassword = userInfo.getPassword();
+			userInfoForUpdate.setPassword(StringTools.md5(newPassword));
+			userInfoForUpdate.setRealName(userInfo.getRealName());
+			userInfoForUpdate.setEmail(userInfo.getEmail());
+			userInfoForUpdate.setMobilePhone(userInfo.getMobilePhone());
+			userInfoForUpdate = userInfoService.merge(userInfoForUpdate);
+			return SUCCESS;
+		}
+		return INPUT;
+	}
 
 
 	/**

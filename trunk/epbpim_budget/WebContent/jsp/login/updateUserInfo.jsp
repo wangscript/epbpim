@@ -16,7 +16,7 @@
 			<div class="content_resize">
 				<div class="mainbar">
 					<h4 class="title">请补全用户信息</h4>
-					<form action="modifyUserInfo.do" name="modifyUserInfoForm"
+					<form action="fillUserInfo.do" name="modifyUserInfoForm"
 						method="post" id="modifyUserInfoForm"
 						onsubmit="return checkForm(this);">
 						<ul class="fullScreenUl">
@@ -25,6 +25,7 @@
 									name="userInfo.realName" /> <textValidate
 									field="userInfo.realName" labelText="真实姓名" isValidate="true"
 									min="0" max="5" datatype="chinese">
+							<input type="hidden" name="userInfo.id" value="<s:property value="userInfo.id" />"/>
 							</li>
 							<li class="width100Li">*必填</li>
 							<li class="width400Li">请如实填写姓名,必须是汉字</li>
@@ -32,7 +33,7 @@
 
 						<ul class="fullScreenUl">
 							<li class="width150Li">密码:</li>
-							<li class="width200Li"><s:textfield cssClass="width150Input"
+							<li class="width200Li"><s:password  cssClass="width150Input"
 									id="password" name="userInfo.password" /> <textValidate
 									field="userInfo.password" labelText="密码" isValidate="true"
 									min="6" max="10">
@@ -43,7 +44,7 @@
 
 						<ul class="fullScreenUl">
 							<li class="width150Li">密码确认:</li>
-							<li class="width200Li"><s:textfield cssClass="width150Input"
+							<li class="width200Li"><s:password cssClass="width150Input"
 									id="passwordConfirm" name="userInfo.passwordConfirm" />
 								<textValidate field="userInfo.passwordConfirm" labelText="密码确认"
 									isValidate="true" min="6" max="10">
@@ -66,7 +67,7 @@
 						<ul class="fullScreenUl">
 							<li class="width150Li">手机:</li>
 							<li class="width200Li"><s:textfield cssClass="width150Input"
-									name="userInfo.phone" />
+									name="userInfo.mobilePhone" />
 								<textValidate field="userInfo.phone" labelText="联系人手机"
 									isValidate="true" min="0" max="15" datatype="phone">
 							</li>
