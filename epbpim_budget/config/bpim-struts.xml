@@ -14,7 +14,9 @@
 			<result name="userMain">/jsp/main/main.jsp</result>
 			<result name="userInfoManage">/jsp/login/updateUserInfo.jsp</result>
 		</action>
-		
+		<action name="fillUserInfo" method="updateUserInfo" class="userInfoMainAction" >
+			<result>/jsp/main/main.jsp</result>
+		</action>
 	</package>
 	
 	<package name="bpim-userinfo" namespace="/admin" extends="bpim-default">

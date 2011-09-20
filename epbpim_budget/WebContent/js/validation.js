@@ -71,11 +71,11 @@ function validate(frm) {
 		if (min && min == 0 && field.value.length == min) {
 			return alertAndFocus(label+cannotBeBlank);
 		}
-		if (min && min.length > 0 && field.value.length <= min) {
+		if (min && min.length > 0 && field.value.length < min) {
 			return alertAndFocus(label+ cannotLessThan + min + char);
 		}
 		if (max && max.length > 0
-				&& field.value.replace(/[^x00-xff]/g, "aa").length > max) {
+				&& field.value.length > max) {
 			return alertAndFocus(label + cannotMoreThan + max + char);
 		}
 		if (datatype && datatype.length > 0) {
