@@ -30,7 +30,7 @@ public class UserInfoAction extends ActionSupportBase {
 		userInfo.setPassword(StringTools.md5(password));
 		userInfo = userInfoService.getByLogin(userInfo);
 		if (userInfo == null) {
-			super.addFieldError("name", "用户名或密码错误,请重新输入");
+			super.addFieldError("name", "用户�??或密�?错误,请�?新输入");
 			return INPUT;
 		} else {
 			session.put(Constants.LOGIN_USER_NAME, identifier);

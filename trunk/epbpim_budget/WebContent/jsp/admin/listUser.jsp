@@ -95,7 +95,7 @@ function clearPage(updateId){
 					</ul>
 					<div class="searchResult">
 								<ul class="fullScreenResultUl">
-									<li class="width100Li">姓名</li>
+									<li class="width100Li">姓名<s:hidden name="eId"/></li>
 									<li class="width100Li">注册时间</li>
 									<li class="width100Li">编号</li>
 									<li class="width100Li">手机</li>
@@ -114,22 +114,19 @@ function clearPage(updateId){
 								<s:else>
 									<s:iterator value="userInfos" status="st">
 										<ul id="<s:property value='#st.index+1'/>">
-											<li class="width100Li"><s:hidden name="id" /> <s:property value="userName" />
+											<li class="width100Li"><s:hidden name="id" /> <s:property value="realName" />
 											</li>
 											<li class="width100Li"><s:date name="registerDateTmp" format="yyyy-MM-dd" />
 												<s:hidden name="registerDate" />
 											</li>
-											<li class="width100Li"><s:property value="email" />
+											<li class="width100Li"><s:property value="identifier" />
 											</li>
-											<li class="width100Li"><s:property value="phone" />
+											<li class="width100Li"><s:property value="mobilePhone" />
 											</li>
-											<li class="width100Li"><s:property value="email" />
+											<li class="width100Li"><s:property value="enable" />
 											</li>
 										</ul>
 									</s:iterator>
-									<jsp:include page="../common/pagination.jsp" flush="ulue">
-										<jsp:param name="action_page" value="admin/listui.do" />
-									</jsp:include>
 								</s:else>
 					</div>
 					<!-- end #adminContent -->

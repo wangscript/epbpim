@@ -4,8 +4,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import com.ryxx.bpim.dao.UserInfoDAO;
 import com.ryxx.bpim.entity.AdminMenu;
 import com.ryxx.bpim.entity.EnterpriseInfo;
