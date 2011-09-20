@@ -25,7 +25,7 @@ public class UserInfoAction extends ActionSupportBase {
 	private Long eId;
 
 	public String login() {
-		UserInfo userInfo = new UserInfo();
+		UserInfo userInfo = new UserInfo(); 
 		userInfo.setIdentifier(identifier);
 		userInfo.setPassword(StringTools.md5(password));
 		userInfo = userInfoService.getByLogin(userInfo);

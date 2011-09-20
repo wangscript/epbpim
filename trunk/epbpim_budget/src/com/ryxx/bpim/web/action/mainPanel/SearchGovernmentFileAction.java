@@ -32,7 +32,7 @@ public class SearchGovernmentFileAction extends ActionSupportBase
     
     GovernmentFile condition = new GovernmentFile();
     
-    GovernmentFileService service;
+    GovernmentFileService service; 
     
     List<GovernmentFile> datas = new ArrayList<GovernmentFile>();
     

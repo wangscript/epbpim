@@ -25,7 +25,7 @@ public class SearchGovernmentInventoryAction extends ActionSupportBase
     
     List<GovernmentInventory> datas = new ArrayList<GovernmentInventory>();
     
-    private PageTools page;
+    private PageTools page; 
     
     private GovernmentInventoryService service;
     
