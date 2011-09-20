@@ -20,24 +20,16 @@
 						onsubmit="return validate(this);">
 						<h3 class="title">
 							<!--<s:text name="AdminRole.AddRole" />-->
-							新增用户
+							修改订阅
 						</h3>
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
 								<li class="width200Li">
 									<label class="width6Lb">地区:</label>
 									<s:select cssClass="width100Select"
-										name="enterpriseInfo.provinceCity.id" list="provinceCities"
+										name="userInfo.enterpriseInfo.provinceCity.id" list="provinceCities"
 										listKey="id" listValue="city" multiple="false"
 										required="true" onchange="" headerKey="0" /><s:hidden name="eId"/>
-								</li>
-								<li class="width300Li"><label class="width9Lb">创建人数:</label>
-								<s:textfield cssClass="width150Input" name="userCount" />
-								<textValidate
-										field="userCount"
-										lableText="<s:text name='userCount' />"
-										isValidate="true" min="0" max="3" maxValue="100"
-										dataType="int">
 								</li>
 							</ul>
 							<h4>应用列表	:</h4>
@@ -45,9 +37,13 @@
 									<ul class="fullScreenUlNoHeight">
 										<li class="width200Li"><h4>
 												<input type="checkbox"
-													onclick="checkAllSub('<s:property value='id'/>,<s:property value='parentId'/>');"
-													name="listCheck" value="<s:property value="id"/>"
-													id="<s:property value="id"/>,<s:property value="parentId"/>" />
+													name="listCheck" value="<s:property value="id"/>" 
+													<s:iterator value="listCheck" status="st2">
+														<s:if test="id eq listCheck[#st2.index]">
+															checked
+														</s:if>
+													</s:iterator>
+													id="<s:property value="id"/>" />
 												<s:property value="title" /><br/>
 												<s:property value="description" />
 											</h4>

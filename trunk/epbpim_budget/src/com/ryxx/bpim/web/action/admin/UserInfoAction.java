@@ -34,11 +34,13 @@ public class UserInfoAction extends ActionSupportBase {
 	private List<UserInfo> userInfos;
 	private List<AdminMenu> modules;
 	private EnterpriseInfo enterpriseInfo;
+	private UserInfo userInfo;
 	private String userName;
 	private String password;
 	private Integer userCount;
 	private List listCheck;
 	private Long eId;
+	private Long id;
 	
 	public String login() {
 //		List<AdminUser> users = adminUserService.findAll();
@@ -61,11 +63,23 @@ public class UserInfoAction extends ActionSupportBase {
 	
 	public String batch() {
 		userInfoService.batchAddUsers(userCount,enterpriseInfo,eId,listCheck);
+		request.setAttribute("eId", eId);
 		return SUCCESS;
 	}
 	
 	public String list() {
 		userInfos = userInfoService.list(eId);
+		return SUCCESS;
+	}
+	
+	public String get() {
+		provinceCities = provinceCityService.list();
+		userInfo = userInfoService.findById(id);
+		modules = adminMenuService.findAllUseModuleByRegion(userInfo.getEnterpriseInfo().getProvinceCity().getId());
+		listCheck = new ArrayList();
+		for(AdminMenu menu: userInfo.getMenus()) {
+			listCheck.add(menu.getId());
+		}
 		return SUCCESS;
 	}
 
@@ -171,5 +185,21 @@ public class UserInfoAction extends ActionSupportBase {
 
 	public void setListCheck(List listCheck) {
 		this.listCheck = listCheck;
+	}
+
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }
