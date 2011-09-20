@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ryxx.bpim.entity.AdminMenu;
 import com.ryxx.bpim.entity.EnterpriseInfo;
@@ -59,31 +60,7 @@ public class UserInfoAction extends ActionSupportBase {
 	}
 	
 	public String batch() {
-		if(userCount != null && userCount > 0) {
-			enterpriseInfo.setId(eId);
-			for(int i=0; i<userCount; i++) {
-				UserInfo userInfo = new UserInfo();
-				userInfo.setRoleType(RoleEnum.NORMAL_USER);
-				userInfo.setEnterpriseInfo(enterpriseInfo);
-				userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
-				String maxIdentify = userInfoService.getMaxIdentify();
-				if(maxIdentify == null || maxIdentify.length() == 0) {
-					userInfo.setIdentifier("yr10000001");
-				} else {
-					userInfo.setIdentifier("ry"+(Long.parseLong(maxIdentify.substring(2))+1));
-				}
-				List<AdminMenu> menus = new ArrayList<AdminMenu>();
-				if(listCheck != null && listCheck.size()>0) {
-					for(int j=0; j<listCheck.size(); j++) {
-						AdminMenu menu = new AdminMenu();
-						menu.setId(Integer.parseInt(listCheck.get(j).toString()));
-						menus.add(menu);
-					}
-				}
-				userInfo.setMenus(menus);
-				UserInfo user = userInfoService.save(userInfo);
-			}
-		}
+		userInfoService.batchAddUsers(userCount,enterpriseInfo,eId,listCheck);
 		return SUCCESS;
 	}
 	
