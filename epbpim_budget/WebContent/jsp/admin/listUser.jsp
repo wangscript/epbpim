@@ -113,7 +113,7 @@ function clearPage(updateId){
 								</s:if>
 								<s:else>
 									<s:iterator value="userInfos" status="st">
-										<ul id="<s:property value='#st.index+1'/>">
+										<ul class="fullScreenResultUl" id="<s:property value='#st.index+1'/>">
 											<li class="width100Li"><s:hidden name="id" /> <s:property value="realName" />
 											</li>
 											<li class="width100Li"><s:date name="registerDate" format="yyyy-MM-dd" />
@@ -129,9 +129,8 @@ function clearPage(updateId){
 									</s:iterator>
 								</s:else>
 					</div>
-					<!-- end #adminContent -->
-					<div style="clear: both;">&nbsp;</div>
 				</div>
+				<div class="clr"></div>
 			</div>
 		</div>
 		<!-- end #content -->

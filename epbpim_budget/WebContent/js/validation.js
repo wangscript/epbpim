@@ -104,7 +104,7 @@ function validate(frm) {
 				}
 			} else if (datatype == chineseType) {
 				if (!/^[\u4e00-\u9fa5]+$/g.test(field.value)) {
-					return alertAndFocuslabel +(mustBeChinese);
+					return alertAndFocus(label + mustBeChinese);
 				}
 			} else if (datatype == emailType) {
 				if (!/^([a-zA-Z0-9]|[._])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test(field.value)) {
