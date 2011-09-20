@@ -11,6 +11,7 @@ public class EnterpriseInfo extends VoBase {
 	private String phone;
 	private String principal;
 	private Timestamp logTime;
+	private Float balance;
 	private ProvinceCity provinceCity;
 	
 	public Long getId() {
@@ -54,6 +55,12 @@ public class EnterpriseInfo extends VoBase {
 	}
 	public void setProvinceCity(ProvinceCity provinceCity) {
 		this.provinceCity = provinceCity;
+	}
+	public Float getBalance() {
+		return balance;
+	}
+	public void setBalance(Float balance) {
+		this.balance = balance;
 	}
 }
 

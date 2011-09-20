@@ -100,9 +100,8 @@ function clearPage(updateId){
 									<li class="width100Li">编号</li>
 									<li class="width100Li">手机</li>
 									<li class="width150Li">邮箱</li>
-									<li class="width100Li">是否可用</li>
-									<li class="width100Li">选择应用</li>
-									<li class="width50Li">操作</li>
+									<li class="width100Li">加锁/解锁</li>
+									<li class="width100Li">修改订阅</li>
 									<li class="width50Li">操作</li>
 								</ul>
 								<s:if test="userInfos==null || userInfos.size()==0">
@@ -123,7 +122,16 @@ function clearPage(updateId){
 											</li>
 											<li class="width100Li"><s:property value="mobilePhone" />
 											</li>
-											<li class="width100Li"><s:if test="enable==1}">是</s:if><s:else>否</s:else>
+											<li class="width100Li">
+												<s:if test="enable==1}">
+													<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>">加锁</a>
+												</s:if>
+												<s:else>
+													<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>">解锁</a>
+												</s:else>
+											</li>
+											<li class="width100Li">
+												<a href="showUser.do?id=<s:property value="id"/>">修改</a>
 											</li>
 										</ul>
 									</s:iterator>
