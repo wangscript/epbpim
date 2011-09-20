@@ -20,7 +20,7 @@
 			<li><a href="contactus.jsp">联系我们</a></li>
         </ul>
       </div>
-      <div class="logo"><h1>建设工程综合信息管理系统<small>上海任远信息技术有限公司</small></h1></div>
+      <div class="logo"><h1>建筑行业造价平台<small></small></h1></div>
     </div>
   </div>
 </body>

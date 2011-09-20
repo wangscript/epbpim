@@ -10,40 +10,13 @@
 	padding-left: 40px;
 }
 
+.header_resize,.hbg_resize {
+	height: 130px;
+}
+
+
 .content{
 	min-height:460px;
-}
-.content .mainbar {
-	width: 630px;	
-}
-
-.mainbar ul{
-	margin-top:8px;
-	float:left;
-	width: 630px;
-}
-
-.mainbar ul li {
-	margin-left: 10px;
-	float:left;
-	list-style:none;
-}
-
-.mainbar ul .labelLi {
-	width: 100px;
-}
-
-.mainbar ul .inputLi{
-	width: 100px;
-}
-
-
-.mainbar label{
-	width: 100px;
-}
-
-.mainbar input{
-	width: 100px;
 }
 
 

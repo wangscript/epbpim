@@ -17,43 +17,35 @@
 						onsubmit="return validate(this);">
 						<div>
 							<ul class="fullScreenUl">
-								<li class="width150Li"><label class="width6Lb">公司名称:</label>
-								</li>
+								<li class="width150Li">公司名称:</li>
 								<li class="width200Li"><s:textfield
 										cssClass="width150Input" name="enterpriseInfo.name" /> <textValidate
 										field="enterpriseInfo.name" labelText="公司名称" isValidate="true"
 										min="0" max="30">
 								</li>
-								<li class="width100Li"><label class="required width6Lb">*必填</label>
-								</li>
-								<li class="width200Li"><label class="comments">请如实填写企业或部门名称</label>
-								</li>
+								<li class="width100Li">*必填</li>
+								<li class="width200Li">请如实填写企业或部门名称</li>
 							</ul>
 
 							<ul class="fullScreenUl">
-								<li class="width150Li"><label class="width6Lb">联系人姓名:</label>
-								</li>
+								<li class="width150Li">联系人姓名:</li>
 								<li class="width200Li"><s:textfield
 										cssClass="width150Input" name="enterpriseInfo.principal" /> <textValidate
 										field="enterpriseInfo.principal" labelText="联系人姓名"
 										isValidate="true" min="0" max="10" datatype="chinese">
 								</li>
-								<li class="width100Li"><label class="required width6Lb">*必填</label>
-								</li>
-								<li class="width200Li"><label class="comments">您的真实姓名</label>
-								</li>
+								<li class="width100Li">*必填</li>
+								<li class="width200Li">您的真实姓名</li>
 							</ul>
 
 							<ul class="fullScreenUl">
-								<li class="width150Li"><label class="width6Lb">邮箱:</label>
-								</li>
+								<li class="width150Li">邮箱:</li>
 								<li class="width200Li"><s:textfield
 										cssClass="width150Input" name="enterpriseInfo.email" /> <textValidate
 										field="enterpriseInfo.email" labelText="邮箱" isValidate="true"
 										min="0" max="40" datatype="email">
 								</li>
-								<li class="width100Li"><label class="required width6Lb">*必填</label>
-								</li>
+								<li class="width100Li">*必填</li>
 							</ul>
 
 							<ul class="fullScreenUl">
@@ -64,27 +56,23 @@
 										field="enterpriseInfo.phone" labelText="联系人手机"
 										isValidate="true" min="0" max="15" datatype="phone">
 								</li>
-								<li class="width100Li"><label class="required width6Lb">*必填</label>
-								</li>
-								<li class="width100Li"><label class="comments width6Lb">11位手机号</label>
-								</li>
+								<li class="width100Li">*必填</li>
+								<li class="width100Li">11位手机号</li>
 							</ul>
 
 							<ul class="fullScreenUl">
-								<li class="width150Li"><label class="width6Lb">业务主要地区:</label>
-								</li>
+								<li class="width150Li">业务主要地区:</li>
 								<li class="width200Li"><s:select cssClass="width150Select"
 										name="enterpriseInfo.provinceCity.id" list="provinceCities"
-										listKey="id" listValue="city" multiple="false"
-										required="true" onchange="" headerKey="0" /></li>
-								<li class="width100Li"><label class="required width6Lb">*必选</label>
+										listKey="id" listValue="city" multiple="false" required="true"
+										onchange="" headerKey="0" />
 								</li>
+								<li class="width100Li">*必选</li>
 							</ul>
 
 							<ul class="fullScreenUl">
-								<li class="width100Li"><input type="submit"
-									class="button" onclick="validateCommit();" value="保存">
-								</li>
+								<li class="width100Li"><input type="submit" class="button"
+									onclick="validateCommit();" value="保存"></li>
 							</ul>
 						</div>
 
