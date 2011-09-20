@@ -31,7 +31,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.max_fetch_depth">2</prop>
 				<prop key="hibernate.connection.pool_size">50</prop>
-				<prop key="hibernate.dbcp.initialSize">5</prop>
+				<prop key="hibernate.dbcp.initialSize">50</prop>
 				<prop key="hibernate.dbcp.maxWait">10000</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.jdbc.batch_size">1000</prop>
