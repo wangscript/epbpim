@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title><s:text name="AdminRole.AddRole" />
+<title>修改订阅
 </title>
 </head>
 <body>
@@ -16,11 +16,11 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="batchUser.do" method="post"
+					<s:form action="saveUser.do" method="post"
 						onsubmit="return validate(this);">
 						<h3 class="title">
 							<!--<s:text name="AdminRole.AddRole" />-->
-							修改订阅
+							修改订阅&nbsp;&nbsp;用户编号:<s:property value="userInfo.identifier" /><s:hidden name="id"/>
 						</h3>
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
