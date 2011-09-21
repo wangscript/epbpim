@@ -12,13 +12,14 @@
 	<div id="main"><jsp:include page="adminHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
-				<div class="mainbar"></div>
 				<div class="adminContent">
 					<div class="entry">
 						<ul class="fullScreenUl">
-							<li class="width100Li"><s:form action="preAddNews.do">
+							<li class="width100Li">
+								<s:form action="preAddNews.do">
 									<input type="submit" class="button" value="新增">
-								</s:form></li>
+								</s:form>
+							</li>
 						</ul>
 						<ul class="fullScreenResultUl">
 							<li class="width500Li">标题</li>
@@ -38,10 +39,10 @@
 											format="yyyy-MM-dd" /></li>
 									<li class="width100Li"><s:date name="addTimeTemp"
 											format="yyyy-MM-dd" /></li>
-									<li class="width100Li"><form action="deletenews.do"
-											id='<s:property value='id'/>'>
+									<li class="width100Li">
+										<form action="deleteNews.do" id='<s:property value='id'/>'>
 											<s:hidden name="id" />
-											<a href="deleteNews(<s:property value='id'/>);">删除</a>
+											<a href="javascript: deleteNews(<s:property value='id'/>);">删除</a>
 										</form></li>
 								</ul>
 							</s:iterator>
