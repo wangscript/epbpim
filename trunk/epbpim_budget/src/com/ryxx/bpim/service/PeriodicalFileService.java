@@ -22,6 +22,6 @@ public interface PeriodicalFileService extends BaseService<PeriodicalFile, Perio
     throws SQLException;
     
     String getPeriodicalFile(PeriodicalFile periodicalFile)
-        throws SQLException;
+        throws Exception;
     
 }
