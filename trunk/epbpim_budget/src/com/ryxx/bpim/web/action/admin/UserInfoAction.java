@@ -61,6 +61,26 @@ public class UserInfoAction extends ActionSupportBase {
 		return SUCCESS;
 	}
 	
+	public String save() {
+		userInfo = userInfoService.findById(id);
+		List<AdminMenu> menus = new ArrayList<AdminMenu>();
+		if(listCheck != null && listCheck.size()>0) {
+			for(int j=0; j<listCheck.size(); j++) {
+				AdminMenu menu = new AdminMenu();
+				menu.setId(Integer.parseInt(listCheck.get(j).toString()));
+				menus.add(menu);
+			}
+		}
+		try{
+			userInfo.setMenus(menus);
+		UserInfo user = userInfoService.save(userInfo);
+		}catch (Exception e){
+			System.out.println(e);
+		}
+		request.setAttribute("eId", eId);
+		return SUCCESS;
+	}
+	
 	public String batch() {
 		userInfoService.batchAddUsers(userCount,enterpriseInfo,eId,listCheck);
 		request.setAttribute("eId", eId);
@@ -80,6 +100,7 @@ public class UserInfoAction extends ActionSupportBase {
 		for(AdminMenu menu: userInfo.getMenus()) {
 			listCheck.add(menu.getId());
 		}
+		seteId(userInfo.getEnterpriseInfo().getId());
 		return SUCCESS;
 	}
 
