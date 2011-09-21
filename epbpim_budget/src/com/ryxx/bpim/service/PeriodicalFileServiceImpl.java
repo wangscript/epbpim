@@ -41,10 +41,11 @@ public class PeriodicalFileServiceImpl extends AbstractService<PeriodicalFile, P
     }
     
     public String getPeriodicalFile(PeriodicalFile periodicalFile)
-        throws SQLException
+        throws Exception
     {
         PeriodicalFile periodicalFileDetail = getDao().viewPeriodicalFile(periodicalFile);
-        return null != periodicalFileDetail ? periodicalFileDetail.getSourceCode() : "";
+        String sourceCode = null != periodicalFileDetail ? periodicalFileDetail.getSourceCode() : "";
+        return new String(sourceCode.getBytes("utf-8"),"gbk");
     }
     
     public List<PeriodicalFile> listPeriodicalFile(PeriodicalFile condition, PageTools page)
