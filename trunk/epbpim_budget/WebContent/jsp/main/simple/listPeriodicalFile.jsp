@@ -19,7 +19,7 @@
 <script type="text/javascript">
 	function searchFile(id)
 	{
-		// document.getElementById(id).submit();
+		document.getElementById(id).submit();
 	}
 </script>
 </head>
@@ -113,7 +113,7 @@
 				<li class="width200Li"><s:date name="periodicalDate" format="yyyy-MM" /></li>
 				<li class="width50Li">
 					<form action="viewPeriodicalFile.do" method="post" id='searchfile<s:property value="id" />'>
-						<input type="hidden" name="adminFile.id" value='<s:property value="id" />' />
+						<input type="hidden" name="periodicalFile.id" value='<s:property value="id" />' />
 						<input type="button" onclick='searchFile("searchfile"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name='预览' />">
 					</form>
 				</li>
