@@ -2,10 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script type="text/javascript">
 	function setSearchValue() {
 		var projectClassLevel1Num = "<s:property value="condition.projectClassLevel1Num"/>";
@@ -153,7 +155,7 @@
 </head>
 <title>清单查询</title>
 </head>
-<body onload="setSearchValue();changeTitleBackground();">
+<body onload="setSearchValue();">
 <div id="main"><jsp:include page="../mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
@@ -188,7 +190,7 @@
 			<label class="lb">项目名称：</label><input style="width: 120px" class="inputText" name="condition.projectName" id="projectName">
 		</li>
 		<li>
-			<input type="button" name="searchButton" id="searchButton" class="button" onclick="clearPage()" value="查询">
+			<input type="submit" name="searchButton" id="searchButton" class="button" value="查询">
 		</li>
 	</ul>
 </div>
