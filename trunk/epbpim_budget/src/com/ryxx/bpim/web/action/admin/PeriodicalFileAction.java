@@ -58,7 +58,7 @@ public class PeriodicalFileAction extends ActionSupportBase
         {
             sourceCode = service.getPeriodicalFile(periodicalFile);
         }
-        catch (SQLException e)
+        catch (Exception e)
         {
             LOG.error(e);
         }
@@ -78,6 +78,8 @@ public class PeriodicalFileAction extends ActionSupportBase
         }
         pw.println(sourceCode);
         pw.println("</body></html>");
+        pw.flush();
+        
         return SUCCESS;
     }
     
