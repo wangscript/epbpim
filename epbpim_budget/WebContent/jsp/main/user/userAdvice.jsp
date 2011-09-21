@@ -33,9 +33,10 @@
 					<div class="mainbar">
 						<h3>意见反馈</h3>
 						<div class="adviceDiv">
-							<textarea name="userAdvice.adviceContent"></textarea>
+							<textarea name="userAdvice.adviceContent"></textarea><br><br>
 							<input type="submit" class="button" value="提交">
 						</div>
+						
 					</div>
 					<!-- end #content -->
 					<div class="clr"></div>
