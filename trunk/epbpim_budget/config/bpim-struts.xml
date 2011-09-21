@@ -178,4 +178,11 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
+	<package name="bpim-preAddUserAdvice" namespace="/main" extends="bpim-default">
+		<action name="preAddUserAdvic">
+			<result>/jsp/main/user/userAdvice.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
 </struts>
