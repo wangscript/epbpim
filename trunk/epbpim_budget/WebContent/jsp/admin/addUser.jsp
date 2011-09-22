@@ -26,10 +26,10 @@
 							<ul class="fullScreenUl">
 								<li class="width200Li">
 									<label class="width6Lb">地区:</label>
-									<s:select cssClass="width100Select"
+									<s:select cssClass="width100Select" onchange="changeRegion();"
 										name="enterpriseInfo.provinceCity.id" list="provinceCities"
 										listKey="id" listValue="city" multiple="false"
-										required="true" onchange="" headerKey="0" /><s:hidden name="eId"/>
+										required="true" headerKey="0" headerValue="全选"/><s:hidden name="eId"/>
 								</li>
 								<li class="width300Li"><label class="width9Lb">创建人数:</label>
 								<s:textfield cssClass="width150Input" name="userCount" />
@@ -42,20 +42,17 @@
 							</ul>
 							<h4>应用列表	:</h4>
 								<s:iterator value="modules" status="st">
-									<ul class="fullScreenUlNoHeight">
+									<ul class="fullScreenUlNoHeight" id="<s:property value="region.id"/>">
 										<li class="width200Li"><h4>
 												<input type="checkbox"
-													onclick="checkAllSub('<s:property value='id'/>,<s:property value='parentId'/>');"
 													name="listCheck" value="<s:property value="id"/>"
-													id="<s:property value="id"/>,<s:property value="parentId"/>" />
+													id="<s:property value="region.id"/>" />
 												<s:property value="title" /><br/>
 												<s:property value="description" />
 											</h4>
 										</li>
 									</ul>
 								</s:iterator>
-							<ul class="fullScreenUl">
-							</ul>
 							<ul class="fullScreenUl">
 								<li><input type="submit" id="addProject"
 									class="mediumLeftButton" value="<s:text name="Common.Save" />">
@@ -83,8 +80,25 @@ var commaIndex = "-1";//逗号的位置
 var subMenuId = "-1";//迭代中checkbox的本身menu ID
 var parentMenuId = "-1";//迭代中checkbox 父节点menu ID
 var checkBox;//迭代中checkbox对象
-var checkBoxValue;//迭代中checkbox value
 
+
+	function changeRegion() {
+		var reginList = document.getElementById("batchUser_enterpriseInfo_provinceCity_id");
+		var moduleList = document.getElementsByTagName("ul");
+		for(var i = 0; i < reginList.length;i++){
+			if(reginList[i].selected) {
+				for(var j=3; j<moduleList.length-1;j++) {
+					if(reginList[i].value == 0) {
+						moduleList[j].style.display = "block";
+					} else if(moduleList[j].id != reginList[i].value) {
+						moduleList[j].style.display = "none";
+					} else {
+						moduleList[j].style.display = "block";
+					}
+				}
+			}
+		}
+	}
 
 	function checkAllSub(parentId){//选中父节点，子节点全被选。也就是子节点随父节点状态而变
 		currentStatus = $(parentId).checked;//取得当前父节点状态
