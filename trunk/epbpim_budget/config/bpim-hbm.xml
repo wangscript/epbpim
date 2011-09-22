@@ -70,6 +70,7 @@
 		<property name="email" column="ADMIN_EMAIL" type="java.lang.String"></property>
 		<property name="enable" column="ENABLE" type="java.lang.Integer"></property>
 		<many-to-one name="enterpriseInfo" class="EnterpriseInfo" column="ENTERPRISE_ID"></many-to-one>
+		<many-to-one name="provinceCity" class="ProvinceCity" column="WORK_CITY"></many-to-one>
 		<bag name="menus" table="USER_MENU_RESTRACTION" fetch="select" lazy="true" inverse="false">
 			<key>
 				<column name="USER_ID" />
