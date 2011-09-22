@@ -18,6 +18,7 @@ import com.ryxx.bpim.service.EnterpriseInfoService;
 import com.ryxx.bpim.service.ProvinceCityService;
 import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.email.EmailTools;
 import com.ryxx.util.string.StringTools;
 
 public class UserInfoAction extends ActionSupportBase {

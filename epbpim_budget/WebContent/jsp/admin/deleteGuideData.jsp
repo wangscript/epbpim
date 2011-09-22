@@ -125,6 +125,8 @@
 										<option value="2019">2019</option>
 										<option value="2020">2020</option>
 								</select></li>
+							</ul>
+							<ul class="fullScreenUl">
 								<li class="width50Li"><label class="width1Lb">月：</label></li>
 								<li class="width200Li"><select id="month" name="month"
 									class="width150Select">
