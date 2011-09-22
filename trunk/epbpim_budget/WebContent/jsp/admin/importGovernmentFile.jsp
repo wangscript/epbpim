@@ -101,7 +101,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li">文件上传：</li>
 								<li class="width200Li"><s:file name="importGovernmentFile"
-										id="importGovernmentFile"
+										id="importGovernmentFile" cssClass="width300Input"
 										onchange="getObject('importGovernmentFileInput').value=this.value" />
 									<input type="text" class="file"
 									name="importGovernmentFileInput" style="display: none"

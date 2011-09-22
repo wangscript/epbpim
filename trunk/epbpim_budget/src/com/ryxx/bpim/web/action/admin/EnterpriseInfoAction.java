@@ -1,6 +1,7 @@
 package com.ryxx.bpim.web.action.admin;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -15,6 +16,7 @@ import com.ryxx.bpim.service.EnterpriseInfoService;
 import com.ryxx.bpim.service.ProvinceCityService;
 import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.email.EmailTools;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 import com.ryxx.util.string.StringTools;
@@ -84,6 +86,11 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		userInfo.setRegisterDate(enterpriseInfo.getLogTime());
 		userInfo.setEnable(new Integer(1));
 		userInfoService.save(userInfo);
+		String emailContent = EmailTools.generateEnterPriseUserContent(userInfo);
+		List<String> addresses = new ArrayList<String>();
+		addresses.add(enterpriseInfo.getEmail());
+		addresses.add(Constants.MAIL_USER_NAME);
+		EmailTools.send(addresses, Constants.EMAIL_SUBJECT, emailContent);
 		return SUCCESS;
 	}
 	

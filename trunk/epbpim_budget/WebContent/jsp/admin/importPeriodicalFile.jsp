@@ -100,7 +100,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li">文件：</li>
 								<li class="width300Li"><s:file name="uploadFile" cssClass="width300Input"
-										id="uploadFile" size="40" onchange="chooseFile()" /> <input
+										id="uploadFile"  onchange="chooseFile()" /> <input
 									type="hidden" name="periodicalFile.periodicalName"
 									id="periodicalFile.periodicalName"></li>
 							</ul>

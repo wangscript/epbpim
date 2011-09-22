@@ -82,7 +82,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li">文件上传：</li>
 								<li class="width200Li"><s:file name="uploadUserCustomData"
-										id="uploadUserCustomDataFile"
+										id="uploadUserCustomDataFile" cssClass="width300Input"
 										onchange="getObject('uploadUserCustomDataInput').value=this.value" />
 									<input type="text" class="file"
 									name="uploadUserCustomDataInput" style="display: none"
