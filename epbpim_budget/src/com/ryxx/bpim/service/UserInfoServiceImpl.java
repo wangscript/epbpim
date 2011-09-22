@@ -7,6 +7,7 @@ import java.util.List;
 import com.ryxx.bpim.dao.UserInfoDAO;
 import com.ryxx.bpim.entity.AdminMenu;
 import com.ryxx.bpim.entity.EnterpriseInfo;
+import com.ryxx.bpim.entity.ProvinceCity;
 import com.ryxx.bpim.entity.UserInfo;
 import com.ryxx.bpim.enums.RoleEnum;
 import com.ryxx.util.page.PageTools;
@@ -55,6 +56,9 @@ public class UserInfoServiceImpl  extends AbstractService<UserInfo,UserInfoDAO, 
 				userInfo.setRoleType(RoleEnum.NORMAL_USER);
 				userInfo.setEnterpriseInfo(enterpriseInfo);
 				userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+				ProvinceCity province = new ProvinceCity();
+				province.setId(enterpriseInfo.getProvinceCity().getId());
+				userInfo.setProvinceCity(province);
 				String maxIdentify = getDao().getMaxIdentify();
 				if(maxIdentify == null || maxIdentify.length() == 0) {
 					userInfo.setIdentifier("ry10000001");

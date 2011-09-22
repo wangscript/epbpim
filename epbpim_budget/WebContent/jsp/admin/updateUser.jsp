@@ -27,7 +27,7 @@
 								<li class="width200Li">
 									<label class="width6Lb">地区:</label>
 									<s:select cssClass="width100Select"
-										name="userInfo.enterpriseInfo.provinceCity.id" list="provinceCities"
+										name="userInfo.provinceCity.id" list="provinceCities"
 										listKey="id" listValue="city" multiple="false"
 										required="true" onchange="" headerKey="0" /><s:hidden name="eId"/>
 								</li>

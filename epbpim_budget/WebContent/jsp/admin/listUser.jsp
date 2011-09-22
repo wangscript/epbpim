@@ -100,9 +100,9 @@ function clearPage(updateId){
 									<li class="width100Li">编号</li>
 									<li class="width100Li">手机</li>
 									<li class="width150Li">邮箱</li>
+									<li class="width100Li">业务地区</li>
 									<li class="width100Li">加锁/解锁</li>
 									<li class="width100Li">修改订阅</li>
-									<li class="width50Li">操作</li>
 								</ul>
 								<s:if test="userInfos==null || userInfos.size()==0">
 									<ul>
@@ -121,6 +121,10 @@ function clearPage(updateId){
 											<li class="width100Li"><s:property value="identifier" />
 											</li>
 											<li class="width100Li"><s:property value="mobilePhone" />
+											</li>
+											<li class="width150Li"><s:property value="email" />
+											</li>
+											<li class="width100Li"><s:property value="provinceCity.city" />
 											</li>
 											<li class="width100Li">
 												<s:if test="enable eq 1">

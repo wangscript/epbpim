@@ -30,6 +30,7 @@ public class UserInfo extends VoBase {
 	private String remark;
 	private List<AdminMenu> menus;
 	private EnterpriseInfo enterpriseInfo;
+	private ProvinceCity provinceCity;
 	public Long getId() {
 		return id;
 	}
@@ -138,7 +139,12 @@ public class UserInfo extends VoBase {
 	public void setMenus(List<AdminMenu> menus) {
 		this.menus = menus;
 	}
-	
+	public ProvinceCity getProvinceCity() {
+		return provinceCity;
+	}
+	public void setProvinceCity(ProvinceCity provinceCity) {
+		this.provinceCity = provinceCity;
+	}
 	public boolean equals(Object obj) {
 		if((this==obj)) {
 			return true;
