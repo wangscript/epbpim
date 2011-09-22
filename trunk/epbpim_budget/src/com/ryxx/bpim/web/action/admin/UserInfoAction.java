@@ -61,6 +61,19 @@ public class UserInfoAction extends ActionSupportBase {
 		return SUCCESS;
 	}
 	
+	public String updateLock() {
+		userInfo = userInfoService.findById(id);
+		if(userInfo.getEnable() == null || userInfo.getEnable() != 1) {
+			userInfo.setEnable(new Integer(1));
+		} else {
+			userInfo.setEnable(new Integer(0));
+		}
+		userInfoService.merge(userInfo);
+		seteId(userInfo.getEnterpriseInfo().getId());
+		request.setAttribute("eId", eId);
+		return SUCCESS;
+	}
+	
 	public String save() {
 		userInfo = userInfoService.findById(id);
 		List<AdminMenu> menus = new ArrayList<AdminMenu>();
