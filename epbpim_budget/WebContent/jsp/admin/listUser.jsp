@@ -123,11 +123,11 @@ function clearPage(updateId){
 											<li class="width100Li"><s:property value="mobilePhone" />
 											</li>
 											<li class="width100Li">
-												<s:if test="enable==1}">
-													<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>">加锁</a>
+												<s:if test="enable eq 1">
+													<a href="updateLock.do?id=<s:property value="id"/>">加锁</a>
 												</s:if>
 												<s:else>
-													<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>">解锁</a>
+													<a href="updateLock.do?id=<s:property value="id"/>">解锁</a>
 												</s:else>
 											</li>
 											<li class="width100Li">

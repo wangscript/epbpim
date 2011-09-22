@@ -27,12 +27,15 @@
 			<result>/jsp/admin/addUser.jsp</result>
 		</action>
 		<action name="batchUser" method="batch" class="userInfoAction">
-			<result type="redirect-action">listUser.do?eId=${eId}</result>
+			<result type="redirect">listUser.do?eId=${eId}</result>
 		</action>
 		<action name="showUser" method="get" class="userInfoAction">
 			<result>/jsp/admin/updateUser.jsp</result>
 		</action>
 		<action name="saveUser" method="save" class="userInfoAction">
+			<result type="redirect">listUser.do?eId=${eId}</result>
+		</action>
+		<action name="updateLock" method="updateLock" class="userInfoAction">
 			<result type="redirect">listUser.do?eId=${eId}</result>
 		</action>
 	</package>
