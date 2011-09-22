@@ -17,7 +17,8 @@ public class AdminMenuDAOImpl extends AbstractBaseDAO<AdminMenu, Long> implement
 	
 	@Override
 	public List<AdminMenu> findAllUseModuleByRegion(Integer regionId) {
-		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.eq("region.id", regionId)};
+		//Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.eq("region.id", regionId)};
+		Criterion[] crits = {Restrictions.eq("enable", 1)};
 		return findByCriteria(crits);
 	}
 	
