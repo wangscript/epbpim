@@ -106,11 +106,7 @@ function changeTitleBackground(){
 			</div>
 			<div class="categoryDiv">
 				<ul class="category">
-					<%
-						List<AdminMenu> menus = (List) CacheMap.getInstance().getCache(
-								Constants.MENU_CACHE);
-						request.setAttribute("menus", menus);
-					%>
+
 					<s:if test="#request.menus!=null && #request.menus.size()>0">
 						<s:iterator value="#request.menus" status="st">
 							<s:if test="subMenus !=null && subMenus.size()>0">

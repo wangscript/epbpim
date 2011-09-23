@@ -23,33 +23,38 @@
 							修改订阅&nbsp;&nbsp;用户编号:<s:property value="userInfo.identifier" /><s:hidden name="id"/>
 						</h3>
 						<div id="addRoleTable">
-							<ul class="fullScreenUl">
-								<li class="width200Li">
-									<label class="width6Lb">地区:</label>
-									<s:select cssClass="width100Select"
-										name="userInfo.provinceCity.id" list="provinceCities"
-										listKey="id" listValue="city" multiple="false"
-										required="true" onchange="" headerKey="0" /><s:hidden name="eId"/>
-								</li>
-							</ul>
-							<h4>应用列表	:</h4>
+							<h4>应用列表	:<s:hidden name="eId"/></h4>
+							<s:iterator value="provinceCities" status="st1">
+								<ul><li>
+									<input type="checkbox" name="regionCheck" value="<s:property value="id"/>"
+										<s:iterator value="regionCheck" status="st3">
+															<s:if test="id eq regionCheck[#st3.index]">
+																checked
+															</s:if>
+														</s:iterator>
+										id="<s:property value="region.id"/>" /><s:property value="city" />
+								</li></ul>
+								<ul class="fullScreenUlNoHeight" id="<s:property value="region.id"/>">
 								<s:iterator value="modules" status="st">
-									<ul class="fullScreenUlNoHeight">
-										<li class="width200Li"><h4>
-												<input type="checkbox"
-													name="listCheck" value="<s:property value="id"/>" 
-													<s:iterator value="listCheck" status="st2">
-														<s:if test="id eq listCheck[#st2.index]">
-															checked
-														</s:if>
-													</s:iterator>
-													id="<s:property value="id"/>" />
-												<s:property value="title" /><br/>
-												<s:property value="description" />
-											</h4>
-										</li>
-									</ul>
+									<s:if test="provinceCities[#st1.index].id eq modules[#st.index].region.id">
+											<li class="width200Li"><h4>
+													<input type="checkbox"
+														name="listCheck" value="<s:property value="id"/>"
+														<s:iterator value="listCheck" status="st2">
+															<s:if test="id eq listCheck[#st2.index]">
+																checked
+															</s:if>
+														</s:iterator>
+														id="<s:property value="region.id"/>" />
+													<s:property value="title" /><br/>
+													<s:property value="description" />
+												</h4>
+											</li>
+										
+									</s:if>
 								</s:iterator>
+								</ul>
+							</s:iterator>
 							<ul class="fullScreenUl">
 							</ul>
 							<ul class="fullScreenUl">
