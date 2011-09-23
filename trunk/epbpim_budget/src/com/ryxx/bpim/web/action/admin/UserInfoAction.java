@@ -107,7 +107,7 @@ public class UserInfoAction extends ActionSupportBase {
 	}
 	
 	public String batch() {
-		enterpriseInfo = new EnterpriseInfo();
+		enterpriseInfo = enterpriseInfoService.findById(eId);
 		userInfoService.batchAddUsers(userCount,enterpriseInfo,eId,listCheck,regionCheck);
 		request.setAttribute("eId", eId);
 		return SUCCESS;
