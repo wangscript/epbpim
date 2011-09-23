@@ -435,10 +435,10 @@ public interface Constants {
 	static final String EMAIL_SUBJECT = "感谢使用任远建筑行业造价平台";
 	static final String EMAIL_ENTERPRISE_TITLE1 = "尊敬的企业用户，";
 	static final String EMAIL_ENTERPRISE_TITLE2 = "您已经开通的账号有：";
-	static final String EMAIL_USERNAME_BLOCK = "用户名：";
-	static final String EMAIL_PASSWORD_BLOCK = "初始化密码：";
-	static final String EMAIL_PRIVILEGE_BLOCK = "权限：";
-	static final String EMAIL_APP_BLOCK = "开通的应用：";
+	static final String EMAIL_USERNAME_BLOCK = "用户名";
+	static final String EMAIL_PASSWORD_BLOCK = "初始化密码";
+	static final String EMAIL_PRIVILEGE_BLOCK = "权限";
+	static final String EMAIL_APP_BLOCK = "开通的应用";
 	static final String EMAIL_FOOTER = "<br><br><br><br><br><br><br><br><br><br><br><br>任远信息技术有限公司<br>电话：<br>地址：";
 	
 	//默认密码

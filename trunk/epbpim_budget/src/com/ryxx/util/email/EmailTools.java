@@ -6,6 +6,7 @@ import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
 import com.ryxx.bpim.common.Constants;
+import com.ryxx.bpim.entity.AdminMenu;
 import com.ryxx.bpim.entity.UserInfo;
 
 public class EmailTools {
@@ -39,12 +40,58 @@ public class EmailTools {
 		StringBuilder sb = new StringBuilder(Constants.EMAIL_ENTERPRISE_TITLE1
 				+ userInfo.getEnterpriseInfo().getName() + "," + "<br>"
 				+ Constants.EMAIL_ENTERPRISE_TITLE2 + "<br>");
-		sb.append("&nbsp;&nbsp;" + Constants.EMAIL_USERNAME_BLOCK
-				+ userInfo.getIdentifier() + "<br>");
-		sb.append("&nbsp;&nbsp;" + Constants.EMAIL_PASSWORD_BLOCK
-				+ Constants.DEFAULT_PASSWORD + "<br>");
-		sb.append("&nbsp;&nbsp;" + Constants.EMAIL_PRIVILEGE_BLOCK
-				+ userInfo.getRoleType().getValue() + "<br>");
+		sb.append("<table style='background:grey; text-align:center;border: 1px solid #c0c0c0;'><tr> <td style='width:100px; style='border: 1px solid #c0c0c0;''>"
+				+ Constants.EMAIL_USERNAME_BLOCK
+				+ " </td><td style='width:100px; style='border: 1px solid #c0c0c0;''> "
+				+ Constants.EMAIL_PASSWORD_BLOCK
+				+ " </td><td style='width:100px; style='border: 1px solid #c0c0c0;''> "
+				+ Constants.EMAIL_PRIVILEGE_BLOCK + "</td>");
+		sb.append("<tr>");
+		sb.append("<td style='border: 1px solid #c0c0c0;'>"
+				+ userInfo.getIdentifier() + "</td>");
+		sb.append("<td style='border: 1px solid #c0c0c0;'>"
+				+ Constants.DEFAULT_PASSWORD + "</td>");
+		sb.append("<td style='border: 1px solid #c0c0c0;'>"
+				+ userInfo.getRoleType().getValue() + "</td>");
+		sb.append("</tr>");
+		sb.append("</table>");
+		sb.append(Constants.EMAIL_FOOTER);
+		return sb.toString();
+	}
+
+	/**
+	 * @param users
+	 * @return
+	 */
+	public static String generateBatchUserContent(List<UserInfo> users) {
+		StringBuilder sb = new StringBuilder(Constants.EMAIL_ENTERPRISE_TITLE1
+				+ users.get(0).getEnterpriseInfo().getName() + "," + "<br>"
+				+ Constants.EMAIL_ENTERPRISE_TITLE2 + "<br>");
+		sb.append("<table style='background:grey; text-align:center;border: 1px solid #c0c0c0;'><tr> <td style='width:100px; style='border: 1px solid #c0c0c0;''>"
+				+ Constants.EMAIL_USERNAME_BLOCK
+				+ " </td><td style='width:100px; style='border: 1px solid #c0c0c0;''> "
+				+ Constants.EMAIL_PASSWORD_BLOCK
+				+ " </td><td style='width:100px; style='border: 1px solid #c0c0c0;''> "
+				+ Constants.EMAIL_PRIVILEGE_BLOCK
+				+ "</td>"
+				+ " </td><td style='width:400px; style='border: 1px solid #c0c0c0;''> "
+				+ Constants.EMAIL_APP_BLOCK + "</td>");
+		for (UserInfo userInfo : users) {
+			sb.append("<tr>");
+			sb.append("<td style='border: 1px solid #c0c0c0;'>"
+					+ userInfo.getIdentifier() + "</td>");
+			sb.append("<td style='border: 1px solid #c0c0c0;'>"
+					+ Constants.DEFAULT_PASSWORD + "</td>");
+			sb.append("<td style='border: 1px solid #c0c0c0;'>"
+					+ userInfo.getRoleType().getValue() + "</td>");
+			sb.append("<td style='border: 1px solid #c0c0c0;'>");
+			for (AdminMenu menu : userInfo.getMenus()) {
+				sb.append(menu.getName());
+			}
+			sb.append("</td>");
+			sb.append("</tr>");
+		}
+		sb.append("</table>");
 		sb.append(Constants.EMAIL_FOOTER);
 		return sb.toString();
 	}
