@@ -24,14 +24,7 @@
 						</h3>
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
-								<li class="width200Li">
-									<label class="width6Lb">地区:</label>
-									<s:select cssClass="width100Select" onchange="changeRegion();"
-										name="enterpriseInfo.provinceCity.id" list="provinceCities"
-										listKey="id" listValue="city" multiple="false"
-										required="true" headerKey="0" headerValue="全选"/><s:hidden name="eId"/>
-								</li>
-								<li class="width300Li"><label class="width9Lb">创建人数:</label>
+								<li class="width300Li"><label class="width9Lb">创建人数:<s:hidden name="eId"/></label>
 								<s:textfield cssClass="width150Input" name="userCount" />
 								<textValidate
 										field="userCount"
@@ -41,18 +34,26 @@
 								</li>
 							</ul>
 							<h4>应用列表	:</h4>
+							<s:iterator value="provinceCities" status="st1">
+								<ul><li>
+									<input type="checkbox" name="regionCheck" value="<s:property value="id"/>"
+										id="<s:property value="region.id"/>" /><s:property value="city" />
+								</li></ul>
+								<ul class="fullScreenUlNoHeight">
 								<s:iterator value="modules" status="st">
-									<ul class="fullScreenUlNoHeight" id="<s:property value="region.id"/>">
-										<li class="width200Li"><h4>
-												<input type="checkbox"
-													name="listCheck" value="<s:property value="id"/>"
-													id="<s:property value="region.id"/>" />
-												<s:property value="title" /><br/>
-												<s:property value="description" />
-											</h4>
-										</li>
-									</ul>
+									<s:if test="provinceCities[#st1.index].id eq modules[#st.index].region.id">
+											<li class="width200Li"><h4>
+													<input type="checkbox"
+														name="listCheck" value="<s:property value="id"/>"
+														id="<s:property value="region.id"/>" />
+													<s:property value="title" /><br/>
+													<s:property value="description" />
+												</h4>
+											</li>
+									</s:if>
 								</s:iterator>
+								</ul>
+							</s:iterator>
 							<ul class="fullScreenUl">
 								<li><input type="submit" id="addProject"
 									class="mediumLeftButton" value="<s:text name="Common.Save" />">

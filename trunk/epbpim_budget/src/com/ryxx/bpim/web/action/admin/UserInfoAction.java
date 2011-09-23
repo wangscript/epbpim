@@ -40,6 +40,7 @@ public class UserInfoAction extends ActionSupportBase {
 	private String password;
 	private Integer userCount;
 	private List listCheck;
+	private List regionCheck;
 	private Long eId;
 	private Long id;
 	
@@ -77,6 +78,16 @@ public class UserInfoAction extends ActionSupportBase {
 	
 	public String save() {
 		userInfo = userInfoService.findById(id);
+		
+		if(regionCheck != null && regionCheck.size() > 0) {
+			List<ProvinceCity> provinces = new ArrayList<ProvinceCity>();
+			for(int k=0;k<regionCheck.size();k++) {
+				ProvinceCity province = new ProvinceCity();
+				province.setId(Integer.parseInt(regionCheck.get(k).toString()));
+				provinces.add(province);	
+			}
+			userInfo.setProvinceCities(provinces);
+		}
 		List<AdminMenu> menus = new ArrayList<AdminMenu>();
 		if(listCheck != null && listCheck.size()>0) {
 			for(int j=0; j<listCheck.size(); j++) {
@@ -87,7 +98,7 @@ public class UserInfoAction extends ActionSupportBase {
 		}
 		try{
 			userInfo.setMenus(menus);
-		UserInfo user = userInfoService.save(userInfo);
+		UserInfo user = userInfoService.merge(userInfo);
 		}catch (Exception e){
 			System.out.println(e);
 		}
@@ -96,7 +107,8 @@ public class UserInfoAction extends ActionSupportBase {
 	}
 	
 	public String batch() {
-		userInfoService.batchAddUsers(userCount,enterpriseInfo,eId,listCheck);
+		enterpriseInfo = new EnterpriseInfo();
+		userInfoService.batchAddUsers(userCount,enterpriseInfo,eId,listCheck,regionCheck);
 		request.setAttribute("eId", eId);
 		return SUCCESS;
 	}
@@ -110,6 +122,10 @@ public class UserInfoAction extends ActionSupportBase {
 		provinceCities = provinceCityService.list();
 		userInfo = userInfoService.findById(id);
 		modules = adminMenuService.findAllUseModuleByRegion(userInfo.getEnterpriseInfo().getProvinceCity().getId());
+		regionCheck = new ArrayList();
+		for(ProvinceCity provinces: userInfo.getProvinceCities()) {
+			regionCheck.add(provinces.getId());
+		}
 		listCheck = new ArrayList();
 		for(AdminMenu menu: userInfo.getMenus()) {
 			listCheck.add(menu.getId());
@@ -236,5 +252,13 @@ public class UserInfoAction extends ActionSupportBase {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public List getRegionCheck() {
+		return regionCheck;
+	}
+
+	public void setRegionCheck(List regionCheck) {
+		this.regionCheck = regionCheck;
 	}
 }

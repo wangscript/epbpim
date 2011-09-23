@@ -48,7 +48,7 @@ public class UserInfoServiceImpl  extends AbstractService<UserInfo,UserInfoDAO, 
 	 */
 	@Override
 	public void batchAddUsers(Integer userCount, EnterpriseInfo enterpriseInfo, Long eId,
-			List listCheck) {
+			List listCheck, List regionCheck) {
 		if(userCount != null && userCount > 0) {
 			enterpriseInfo.setId(eId);
 			for(int i=0; i<userCount; i++) {
@@ -56,9 +56,15 @@ public class UserInfoServiceImpl  extends AbstractService<UserInfo,UserInfoDAO, 
 				userInfo.setRoleType(RoleEnum.NORMAL_USER);
 				userInfo.setEnterpriseInfo(enterpriseInfo);
 				userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
-				ProvinceCity province = new ProvinceCity();
-				province.setId(enterpriseInfo.getProvinceCity().getId());
-				userInfo.setProvinceCity(province);
+				if(regionCheck != null && regionCheck.size() > 0) {
+					List<ProvinceCity> provinces = new ArrayList<ProvinceCity>();
+					for(int k=0;k<regionCheck.size();k++) {
+						ProvinceCity province = new ProvinceCity();
+						province.setId(Integer.parseInt(regionCheck.get(k).toString()));
+						provinces.add(province);
+					}
+					userInfo.setProvinceCities(provinces);
+				}
 				String maxIdentify = getDao().getMaxIdentify();
 				if(maxIdentify == null || maxIdentify.length() == 0) {
 					userInfo.setIdentifier("ry10000001");

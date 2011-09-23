@@ -24,5 +24,5 @@ public interface UserInfoService extends BaseService<UserInfo,UserInfoDAO, Long>
 	 * @param eId 
 	 * @param listCheck
 	 */
-	public void batchAddUsers(Integer userCount, EnterpriseInfo enterpriseInfo, Long eId, List listCheck);
+	public void batchAddUsers(Integer userCount, EnterpriseInfo enterpriseInfo, Long eId, List listCheck, List regionCheck);
 }
