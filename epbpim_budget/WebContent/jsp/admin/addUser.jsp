@@ -18,10 +18,10 @@
 				<div class="mainbar">
 					<s:form action="batchUser.do" method="post"
 						onsubmit="return validate(this);">
-						<h3 class="title">
+						<h4 class="title">
 							<!--<s:text name="AdminRole.AddRole" />-->
 							新增用户
-						</h3>
+						</h4>
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
 								<li class="width300Li"><label class="width9Lb">创建人数:<s:hidden name="eId"/></label>
@@ -33,30 +33,56 @@
 										dataType="int">
 								</li>
 							</ul>
-							<h4>应用列表	:</h4>
+							<h5>应用列表	:</h5>
+							<ul class="fullScreenUl">
+								<li class="width200Li">应用名称</li>
+								<li class="width100Li">价格</li>
+								<li class="width500Li">应用说明</li>
+							</ul>
 							<s:iterator value="provinceCities" status="st1">
-								<ul><li>
-									<input type="checkbox" name="regionCheck" value="<s:property value="id"/>"
-										id="<s:property value="region.id"/>" /><s:property value="city" />
+								<ul><li class="width100Li">
+									<input type="checkbox" name="regionCheck" value="<s:property value="id"/>" onclick='selectAllApps(<s:property value='id'/>)'
+										id="<s:property value="id"/>" /><h5><s:property value="city" /></h5>
 								</li></ul>
-								<ul class="fullScreenUlNoHeight">
+								
 								<s:iterator value="modules" status="st">
 									<s:if test="provinceCities[#st1.index].id eq modules[#st.index].region.id">
-											<li class="width200Li"><h4>
-													<input type="checkbox"
-														name="listCheck" value="<s:property value="id"/>"
+									<s:if test="parentId != 0">
+									<ul class="fullScreenUl">
+											<li class="width200Li"><h5>
+											<s:if test="price != 0">
+													<input type="checkbox" 
+														name="<s:property value="region.id"/>app" value="<s:property value="id"/>"
 														id="<s:property value="region.id"/>" />
-													<s:property value="title" /><br/>
-													<s:property value="description" />
-												</h4>
+											</s:if>
+											<s:if test="price == 0">
+													<input type="checkbox"  checked="checked" 
+														name="<s:property value="region.id"/>app" value="<s:property value="id"/>"
+														id="<s:property value="region.id"/>" />
+											</s:if>
+													<s:property value="name" /></h5></li>
+											<li class="width100Li">
+											<s:if test="price == 0">
+													免费
+											</s:if>
+											<s:if test="price != 0">
+													<s:property value="price" />/年
+											</s:if>
+												
 											</li>
+											<li class="width500Li">
+													<s:property value="description" />
+												
+											</li>
+									</ul>
+									</s:if>
 									</s:if>
 								</s:iterator>
-								</ul>
+								
 							</s:iterator>
 							<ul class="fullScreenUl">
 								<li><input type="submit" id="addProject"
-									class="mediumLeftButton" value="<s:text name="Common.Save" />">
+									class="button" value="<s:text name="Common.Save" />">
 								</li>
 							</ul>
 						</div>
@@ -70,18 +96,6 @@
 		<jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script language="JavaScript">
-var checkBoxList = document.getElementsByName("listCheck");//取得页面checkBox集合，全局通用
-
-var currentStatus;//当前状态。例如：原来为false,被选中后此状态值为true
-var currentId = "-1";//当前选中checkbox本身menu ID
-var currentParentMenuId;//当前选中checkbox 父节点menu ID
-var parentCheckBoxChecked;//当前选中checkbox 父节点状态
-
-var commaIndex = "-1";//逗号的位置
-var subMenuId = "-1";//迭代中checkbox的本身menu ID
-var parentMenuId = "-1";//迭代中checkbox 父节点menu ID
-var checkBox;//迭代中checkbox对象
-
 
 	function changeRegion() {
 		var reginList = document.getElementById("batchUser_enterpriseInfo_provinceCity_id");
@@ -101,43 +115,12 @@ var checkBox;//迭代中checkbox对象
 		}
 	}
 
-	function checkAllSub(parentId){//选中父节点，子节点全被选。也就是子节点随父节点状态而变
-		currentStatus = $(parentId).checked;//取得当前父节点状态
-		commaIndex = parentId.indexOf(",");//
-		currentId = parentId.substring(0, commaIndex);//取得父节点menu ID
-		for(var i = 0; i < checkBoxList.length;i++){
-			checkBox = checkBoxList[i];
-			fillLogicValue(checkBox);
-			if(parentMenuId == currentId){//迭代找到父节点相关子节点
-				checkBox.checked = currentStatus;//选中
-			}
+	function selectAllApps(parentId){//选中父节点，子节点全被选。也就是子节点随父节点状态而变
+		var checked = $(parentId).checked;
+		var apps = document.getElementsByName(parentId+'app');
+		for(var i = 0; i < apps.length;i++){
+			apps[i].checked = checked;
 		}
-	}
-	
-	function checkSelfAndParent(id){//操作子节点。父节点下面子节点有一个是选中，父节点为选中，一个都没选中，父节点不选中
-		currentStatus = $(id).checked;//取得当前子节点状态
-		commaIndex = id.indexOf(",");
-		currentParentMenuId = id.substring(commaIndex + 1,//取得父节点menu ID
-				id.length);
-		parentCheckBoxChecked = false;//初始化父节点应为false
-		for(var i = 0; i < checkBoxList.length;i++){
-			checkBox = checkBoxList[i];
-			fillLogicValue(checkBox);
-			if(parentMenuId == currentParentMenuId){
-				if(checkBox.checked){//迭代节点，找到子节点，如果有一个子节点是选中,则父节点应是选中。如果一个都没选中，parentCheckBoxChecked是false
-					parentCheckBoxChecked = true;
-				}
-			}
-		}
-		$(currentParentMenuId+",0").checked = parentCheckBoxChecked;//把父节点应有状态赋值给父节点
-	}
-	
-	function fillLogicValue(checkBox){
-		checkBoxValue = checkBox.id;
-		commaIndex = checkBoxValue.indexOf(",");
-		subMenuId = checkBoxValue.substring(0, commaIndex);
-		parentMenuId = checkBoxValue.substring(commaIndex + 1,
-				checkBoxValue.length);
 	}
 	
 	

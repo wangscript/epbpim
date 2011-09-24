@@ -58,11 +58,9 @@ public class UserInfoServiceImpl extends
 	 */
 	@Override
 
-	public void batchAddUsers(Integer userCount, EnterpriseInfo enterpriseInfo, Long eId,
+	public void batchAddUsers(Integer userCount, EnterpriseInfo enterpriseInfo,
 			List listCheck, List regionCheck) {
 		if(userCount != null && userCount > 0) {
-
-			enterpriseInfo.setId(eId);
 			List<UserInfo> users = new ArrayList<UserInfo>();
 			for (int i = 0; i < userCount; i++) {
 				UserInfo userInfo = new UserInfo();
