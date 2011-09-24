@@ -51,6 +51,11 @@ public class UserInfoAction extends ActionSupportBase {
 		return null;
 	}
 	
+	public String listMenus() {
+		
+		return SUCCESS;
+	}
+	
 	public String updateUserInfo(){
 		UserInfo userInfoForUpdate = new UserInfo();
 		Long id = userInfo.getId();

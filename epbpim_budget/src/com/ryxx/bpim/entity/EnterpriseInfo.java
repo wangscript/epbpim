@@ -2,6 +2,9 @@ package com.ryxx.bpim.entity;
 
 import java.sql.Timestamp;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 public class EnterpriseInfo extends VoBase {
 	private static final long serialVersionUID = 9099318722246620482L;
 
@@ -10,7 +13,8 @@ public class EnterpriseInfo extends VoBase {
 	private String email;
 	private String phone;
 	private String principal;
-	private Timestamp logTime;
+	private Timestamp insertTime;
+	private Timestamp updateTime;
 	private Float balance;
 	private ProvinceCity provinceCity;
 	
@@ -44,12 +48,6 @@ public class EnterpriseInfo extends VoBase {
 	public void setPrincipal(String principal) {
 		this.principal = principal;
 	}
-	public Timestamp getLogTime() {
-		return logTime;
-	}
-	public void setLogTime(Timestamp logTime) {
-		this.logTime = logTime;
-	}
 	public ProvinceCity getProvinceCity() {
 		return provinceCity;
 	}
@@ -61,6 +59,31 @@ public class EnterpriseInfo extends VoBase {
 	}
 	public void setBalance(Float balance) {
 		this.balance = balance;
+	}
+	public Timestamp getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(Timestamp updateTime) {
+		this.updateTime = updateTime;
+	}
+	public Timestamp getInsertTime() {
+		return insertTime;
+	}
+	public void setInsertTime(Timestamp insertTime) {
+		this.insertTime = insertTime;
+	}
+	public boolean equals(Object obj) {
+		if((this==obj)) {
+			return true;
+		}
+		if(!(obj instanceof UserInfo)) {
+			return false;
+		}
+		EnterpriseInfo enterpriseInfo = (EnterpriseInfo)obj;
+		return new EqualsBuilder().append(this.getId(), enterpriseInfo.getId()).isEquals();
+	}
+	public int hashCode() {
+		return new HashCodeBuilder().append(getId()).toHashCode();
 	}
 }
 
