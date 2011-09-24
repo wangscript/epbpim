@@ -84,12 +84,10 @@ function clearPage(updateId){
 											value="批量创建用户"><s:hidden name="eId"/>
 									</form></li>
 								<li class="width200Li">
-									<form action="" method="post">
-										<s:textfield cssClass="width100Input"
-											name="enterpriseInfo.principal" />
-										<input type="button" class="button"
-											onclick='updatePassword(<s:property value="#st.index+1"/>);'
-											value="企业充值"><s:hidden name="eId"/>
+									<form action="balanceEnterpriseInfo.do" method="post">
+										<s:textfield cssClass="width50Input"
+											name="balance" />(元)
+										<input type="submit" class="button"	value="企业充值"><s:hidden name="eId"/>
 									</form></li>
 							</ul></li>
 					</ul>

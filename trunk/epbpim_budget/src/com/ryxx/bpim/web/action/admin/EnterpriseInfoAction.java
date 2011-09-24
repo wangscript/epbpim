@@ -8,10 +8,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.ryxx.bpim.common.Constants;
+import com.ryxx.bpim.entity.BalanceRecord;
 import com.ryxx.bpim.entity.EnterpriseInfo;
 import com.ryxx.bpim.entity.ProvinceCity;
 import com.ryxx.bpim.entity.UserInfo;
 import com.ryxx.bpim.enums.RoleEnum;
+import com.ryxx.bpim.service.BalanceRecordService;
 import com.ryxx.bpim.service.EnterpriseInfoService;
 import com.ryxx.bpim.service.ProvinceCityService;
 import com.ryxx.bpim.service.UserInfoService;
@@ -29,11 +31,14 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 	private EnterpriseInfoService enterpriseInfoService;
 	private ProvinceCityService provinceCityService;
 	private UserInfoService userInfoService;
+	private BalanceRecordService balanceRecordService;
 	
 	private List<EnterpriseInfo> enterpriseInfos;
 	private EnterpriseInfo enterpriseInfo;
 	private List<ProvinceCity> provinceCities;
 	private Long id;
+	private Long eId;
+	private Float balance;
 	
 	private PageTools page;
 	
@@ -69,7 +74,9 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 	}
 	
 	public String add() {
-		enterpriseInfo.setLogTime(new Timestamp(System.currentTimeMillis()));
+		enterpriseInfo.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+		enterpriseInfo.setInsertTime(new Timestamp(System.currentTimeMillis()));
+		enterpriseInfo.setBalance((float) 0);
 		enterpriseInfoService.save(enterpriseInfo);
 		UserInfo userInfo = new UserInfo();
 		userInfo.setEmail(enterpriseInfo.getEmail());
@@ -83,7 +90,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		userInfo.setPassword(StringTools.md5(Constants.DEFAULT_PASSWORD));
 		userInfo.setMobilePhone(enterpriseInfo.getPhone());
 		userInfo.setRoleType(RoleEnum.ENTERPRISE_USER);
-		userInfo.setRegisterDate(enterpriseInfo.getLogTime());
+		userInfo.setRegisterDate(enterpriseInfo.getUpdateTime());
 		userInfo.setEnable(new Integer(1));
 		userInfoService.save(userInfo);
 		String emailContent = EmailTools.generateEnterPriseUserContent(userInfo);
@@ -111,6 +118,21 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 			enterpriseInfo1.setId(id);
 			enterpriseInfoService.delete(enterpriseInfo1);
 		}
+		return SUCCESS;
+	}
+	
+	public String balance() {
+		enterpriseInfo = enterpriseInfoService.findById(eId);
+		enterpriseInfo.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+		enterpriseInfo.setBalance(balance);
+		enterpriseInfoService.save(enterpriseInfo);
+		BalanceRecord balanceRecord = new BalanceRecord();
+		balanceRecord.setBalance(balance);
+		balanceRecord.setBalanceDate(new Timestamp(System.currentTimeMillis()));
+		balanceRecord.setEnterpriseInfo(enterpriseInfo);
+		// TODO
+		balanceRecord.setIdentifier("ry10000001");
+		balanceRecordService.save(balanceRecord);
 		return SUCCESS;
 	}
 
@@ -176,5 +198,29 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 
 	public void setUserInfoService(UserInfoService userInfoService) {
 		this.userInfoService = userInfoService;
+	}
+
+	public Float getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Float balance) {
+		this.balance = balance;
+	}
+
+	public Long geteId() {
+		return eId;
+	}
+
+	public void seteId(Long eId) {
+		this.eId = eId;
+	}
+
+	public BalanceRecordService getBalanceRecordService() {
+		return balanceRecordService;
+	}
+
+	public void setBalanceRecordService(BalanceRecordService balanceRecordService) {
+		this.balanceRecordService = balanceRecordService;
 	}
 }

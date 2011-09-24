@@ -33,6 +33,7 @@ function clearPage(updateId){
 							<li class="width100Li">联系人手机</li>
 							<li class="width150Li">邮箱</li>
 							<li class="width100Li">业务主要地区</li>
+							<li class="width50Li">余额</li>
 							<li class="width100Li">用户信息</li>
 							<li class="width50Li">操作</li>
 						</ul>
@@ -43,6 +44,7 @@ function clearPage(updateId){
 								<li class="width100Li"><s:property value="phone" /></li>
 								<li class="width150Li"><s:property value="email" /></li>
 								<li class="width100Li"><s:property value="provinceCity.city" /></li>
+								<li class="width50Li"><s:text name="{0,number,0.00}"><s:param value="balance"/></s:text></li>
 								<li class="width100Li">
 									<a href="listUser.do?eId=<s:property value="id"/>">进入</a>
 								</li>

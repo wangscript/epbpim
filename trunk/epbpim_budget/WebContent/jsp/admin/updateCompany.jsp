@@ -4,14 +4,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>新增企业账号</title>
+<title>更新企业账号</title>
 </head>
 <body>
 	<div id="main"><jsp:include page="adminHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h4 class="title">新增企业账号</h4>
+					<h4 class="title">更新企业账号</h4>
 					<form action="updateEnterpriseInfo.do" name="addCompanyForm"
 						method="post" id="addCompanyForm">
 						<div>
@@ -45,6 +45,14 @@
 								</li>
 								<li class="width100Li"><label class="required width5Lb">*必填</label>
 								</li>
+							</ul>
+							
+							<ul class="fullScreenUl">
+								<li class="width100Li"><label class="width5Lb">余额:</label>
+								</li>
+								<li class="width200Li"><s:textfield	name="enterpriseInfo.email" />
+								</li>
+								<li class="width100Li"><s:text name="{0,number,###.00}"><s:param value="enterpriseInfo.balance"/></s:text></li>
 							</ul>
 
 							<ul class="fullScreenUl">

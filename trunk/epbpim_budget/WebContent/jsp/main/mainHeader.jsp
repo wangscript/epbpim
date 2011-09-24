@@ -106,7 +106,6 @@ function changeTitleBackground(){
 			</div>
 			<div class="categoryDiv">
 				<ul class="category">
-
 					<s:if test="#request.menus!=null && #request.menus.size()>0">
 						<s:iterator value="#request.menus" status="st">
 							<s:if test="subMenus !=null && subMenus.size()>0">

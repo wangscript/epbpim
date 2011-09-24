@@ -37,9 +37,21 @@
 		<property name="email" column="ENTERPRISE_EMAIL" type="java.lang.String"></property>
 		<property name="phone" column="ENTERPRISE_PHONE" type="java.lang.String"></property>
 		<property name="principal" column="ENTERPRISE_PRINCIPAL" type="java.lang.String"></property>
-		<property name="logTime" column="LOG_TIME" type="java.sql.Timestamp"></property>
+		<property name="balance" column="ENTERPRISE_BALANCE" type="java.lang.Float"></property>
+		<property name="logTime" column="UPDATE_TIME" type="java.sql.Timestamp"></property>
 		<many-to-one name="provinceCity" class="ProvinceCity" column="favorite"></many-to-one>
 	</class>
+	
+	<class name="BalanceRecord" table="PAY_RECORD">
+		<id name="id" column="ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="balance" column="BALANCE" type="java.lang.Float"></property>
+		<property name="identifier" column="USER_IDENTIFIER" type="java.lang.String"></property>
+		<property name="balanceDate" column="BALANCE_DATE" type="java.sql.Timestamp"></property>
+		<many-to-one name="enterpriseInfo" class="EnterpriseInfo" column="ENTERPRISE_ID"></many-to-one>
+	</class>
+	
 	<class name="AdminUser" table="ADMIN_USER">
 		<id name="id" column="ADMIN_USER_ID" type="java.lang.Long">
 			<generator class="identity"></generator>
