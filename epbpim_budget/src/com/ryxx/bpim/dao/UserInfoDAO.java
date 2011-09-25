@@ -14,4 +14,10 @@ public interface UserInfoDAO extends BaseDAO<UserInfo, Long> {
 	 * @return
 	 */
 	public UserInfo getByLogin(UserInfo userInfo);
+
+	/**
+	 * @param identifier
+	 * @return
+	 */
+	public UserInfo findeByIdentifier(String identifier);
 }

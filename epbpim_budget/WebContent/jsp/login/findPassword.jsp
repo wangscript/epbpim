@@ -5,107 +5,41 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>密码找回</title>
-<script type='text/javascript' src='../dwr/engine.js'></script>  
-<script type='text/javascript' src='../dwr/util.js'></script> 
-<script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script> 
+<title>找回密码</title>
+
+<script language="JavaScript">
+function getFocus()
+{
+    document.getElementById("idInput").focus();
+}
+</script>
 </head>
-<body>
-<div id="main"><jsp:include page="shortHeader.jsp" />
+<body onload="getFocus();">
+<div id="main"><jsp:include page="indexHeader.jsp" />
 <div class="content">
 <div class="content_resize">
-<div class="mainbar">
-<h2 class="title">密码找回</h2>
-<div id="registerTable">
-<ul>
-	<li class="labelLi"><label>用户名</label></li>
-	<li class="inputLi"><input name="username" maxlength="10" id="userName" /></li>
-	<li><input type="button" class="button" style="width:50px"
-		onclick="displayQuestion()" value="确定" /></li>
-</ul>
-
-<ul id="displayQuestion" style="display:none">
-	<li class="labelLi"><label>问题</label></li>
-	<li class="labelLi" id="showQuestion"></li>
-</ul>
-
-<ul id="displayAnswer" style="display:none">
-	<li class="labelLi"><label class="lb">答案</label></li>
-	<li class="inputLi"><input name="answer" maxlength="10" id="answer" /></li>
-	<li><input type="button" class="button" style="width:100px"
-		onclick="displayPassword()" value="初始化密码" /></li>
-</ul>
-
-<ul id="displayPassword" style="display:none">
-	<li class="labelLi"><label>密码</label></li> 
-	<li class="labelLi"><label id="newpass"></label></li>
-	<li>请注意保存您的密码。下次登录将不再显示该密码</li>
-</ul>
-<ul style="display:none">
-	<li><input type="button" class="button" style="width:80px"
-		onclick="window.location.href ='../index.jsp';" value="返回首页" /></li>
-</ul>
-</div>
-
-</div>
-
-<!--<jsp:include page="advertisement.jsp" />-->
-
-<!-- end #content -->
-
+<div class="mainbar"><s:form action="sendPassword.do" 
+	method="post" >
+	<h2 class="title">找回密码</h2> 
+	<div id= "loginbar">
+	<ul class="fullScreenNoMarginUl">
+		<li class="width50Li"><label><s:text name="Index.UserName" /></label></li>
+		<li class="width150Li"><input class="width150Input" name="identifier" maxlength="10" id="idInput" tabindex="1"></li>
+	</ul>
+	<s:fielderror theme="Struts">
+		<ul class="fullScreenNoMarginUl">
+			<li><input type="submit" class="button"  value="找回密码"></li>
+		</ul>
+		<s:param>name</s:param>
+	</s:fielderror>
+	</div>
+</s:form></div>
 
 <div class="clr"></div>
 </div>
 </div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" />
-</div>
+<!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
-var user = "";
-function displayQuestion(){
-	
-	var userName = document.getElementById("userName").value;
-	user = userName;
-	if(userName == null || userName == "") {
-		alert("请输入用户名");
-		return;
-	}
-	var data = {userName:userName};
-	UserInfoService.getByName(data, callback);
-	
-}
-function callback(msg){
-	if(msg.question) {
-		var question = document.getElementById("showQuestion");
-		var displayQuestion = document.getElementById("displayQuestion");
-		var displayAnswer = document.getElementById("displayAnswer");
-		question.innerHTML = msg.question;
-		displayQuestion.style.display = "block";
-		displayAnswer.style.display = "block";
-	} else {
-		alert("未找到该用户，请重新输入");
-	}
-}
-function displayPassword(){
-	var answer = document.getElementById("answer").value;
-	if(answer == null || answer == "") {
-		alert("请回答您设置的答案");
-		return;
-	}
-	var data = {userName:user,answer:answer};
-	UserInfoService.initialPassword(data,callbackpass);
-}
-function callbackpass(msg){
-	if(msg) {
-		var newpass = document.getElementById("newpass");
-		newpass.innerHTML = msg;
-		var displayPassword = document.getElementById("displayPassword");
-		displayPassword.style.display = "block";
-	} else {
-		alert("初始化失败");
-	}
-}
-
-
 </script>
 </html>

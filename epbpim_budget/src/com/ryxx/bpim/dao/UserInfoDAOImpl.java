@@ -44,4 +44,17 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 		}
 		return null;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.ryxx.bpim.dao.UserInfoDAO#findeByIdentifier(java.lang.String)
+	 */
+	@Override
+	public UserInfo findeByIdentifier(String identifier) {
+		Criteria criteria = getSession().createCriteria(UserInfo.class);
+		criteria.add(Restrictions.eq("identifier", identifier));
+		if(criteria.list()!=null&&criteria.list().size()>0){
+			return (UserInfo) criteria.list().get(0);
+		}
+		return null;
+	}
 }
