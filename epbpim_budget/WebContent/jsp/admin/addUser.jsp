@@ -56,7 +56,7 @@
 														id="<s:property value="region.id"/>" />
 											</s:if>
 											<s:if test="price == 0">
-													<input type="checkbox" disabled="disabled" checked="checked" 
+													<input type="checkbox" disabled="true" checked="checked" 
 														name="<s:property value="region.id"/>app" value="<s:property value="id"/>"
 														id="<s:property value="region.id"/>" />
 											</s:if>
@@ -119,7 +119,9 @@
 		var checked = $(parentId).checked;
 		var apps = document.getElementsByName(parentId+'app');
 		for(var i = 0; i < apps.length;i++){
-			apps[i].checked = checked;
+			if(!apps[i].disabled){
+				apps[i].checked = checked;
+			}
 		}
 	}
 	
