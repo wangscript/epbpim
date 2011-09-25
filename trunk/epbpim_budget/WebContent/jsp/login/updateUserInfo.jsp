@@ -39,7 +39,7 @@
 									min="6" max="10">
 							</li>
 							<li class="width100Li">*必填</li>
-							<li class="width400Li">6-10位密码，可以由任意字符组成</li>
+							<li class="width400Li">将初始化密码改掉成6-10位密码，可以由任意字符组成</li>
 						</ul>
 
 						<ul class="fullScreenUl">

@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
+
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.dao.UserInfoDAO;
 import com.ryxx.bpim.entity.AdminMenu;
@@ -13,6 +15,7 @@ import com.ryxx.bpim.entity.UserInfo;
 import com.ryxx.bpim.enums.RoleEnum;
 import com.ryxx.util.email.EmailTools;
 import com.ryxx.util.page.PageTools;
+import com.ryxx.util.string.StringTools;
 
 public class UserInfoServiceImpl extends
 		AbstractService<UserInfo, UserInfoDAO, Long> implements UserInfoService {
@@ -59,7 +62,7 @@ public class UserInfoServiceImpl extends
 	@Override
 
 	public void batchAddUsers(Integer userCount, EnterpriseInfo enterpriseInfo,
-			List listCheck, List regionCheck) {
+			List listCheck, List regionCheck) throws EmailException {
 		if(userCount != null && userCount > 0) {
 			List<UserInfo> users = new ArrayList<UserInfo>();
 			for (int i = 0; i < userCount; i++) {
@@ -68,6 +71,8 @@ public class UserInfoServiceImpl extends
 				userInfo.setEnterpriseInfo(enterpriseInfo);
 				userInfo.setRegisterDate(new Timestamp(System
 						.currentTimeMillis()));
+				userInfo.setPassword(StringTools.md5(Constants.DEFAULT_PASSWORD));
+				userInfo.setEnable(new Integer(1));
 				if(regionCheck != null && regionCheck.size() > 0) {
 					List<ProvinceCity> provinces = new ArrayList<ProvinceCity>();
 					for(int k=0;k<regionCheck.size();k++) {
@@ -107,5 +112,13 @@ public class UserInfoServiceImpl extends
 			addresses.add(Constants.MAIL_USER_NAME);
 			EmailTools.send(addresses, Constants.EMAIL_SUBJECT, content);
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ryxx.bpim.service.UserInfoService#getUserByIdentifier(java.lang.String)
+	 */
+	@Override
+	public UserInfo getUserByIdentifier(String identifier) {
+		return getDao().findeByIdentifier(identifier);
 	}
 }

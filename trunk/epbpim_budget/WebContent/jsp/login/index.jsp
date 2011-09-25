@@ -34,6 +34,7 @@ function getFocus()
 	<s:fielderror theme="Struts">
 		<ul class="fullScreenNoMarginUl">
 			<li><input type="submit" class="button"  value="<s:text name="Index.Login" />"></li>
+			<li><a href="findPassword.do">找回密码</a></li>
 		</ul>
 		<s:param>name</s:param>
 	</s:fielderror>

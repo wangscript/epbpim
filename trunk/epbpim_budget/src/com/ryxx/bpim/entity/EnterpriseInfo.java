@@ -17,6 +17,7 @@ public class EnterpriseInfo extends VoBase {
 	private Timestamp updateTime;
 	private Float balance;
 	private ProvinceCity provinceCity;
+	private Timestamp logTime;
 	
 	public Long getId() {
 		return id;
@@ -71,6 +72,16 @@ public class EnterpriseInfo extends VoBase {
 	}
 	public void setInsertTime(Timestamp insertTime) {
 		this.insertTime = insertTime;
+	}
+	
+	public Timestamp getLogTime() {
+		return logTime;
+	}
+	/**
+	 * @param logTime the logTime to set
+	 */
+	public void setLogTime(Timestamp logTime) {
+		this.logTime = logTime;
 	}
 	public boolean equals(Object obj) {
 		if((this==obj)) {

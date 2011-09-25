@@ -3,6 +3,7 @@ package com.ryxx.util.string;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 public class StringTools {
 	public static int string2int(String value, int defaultVal) {
@@ -84,4 +85,17 @@ public class StringTools {
 		}
 		return "";
 	}
+	
+	public static final String allChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static final String letterChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static final String numberChar = "0123456789";
+	
+	public static String generateString(int length) {
+		StringBuffer sb = new StringBuffer();
+		Random random = new Random();
+		for (int i = 0; i < length; i++) {
+		    sb.append(allChar.charAt(random.nextInt(allChar.length())));
+		}
+		return sb.toString();
+		}
 }

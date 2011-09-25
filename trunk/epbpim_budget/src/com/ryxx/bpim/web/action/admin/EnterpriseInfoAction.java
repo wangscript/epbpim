@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.mail.EmailException;
 
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.BalanceRecord;
@@ -73,7 +74,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		return SUCCESS;
 	}
 	
-	public String add() {
+	public String add() throws EmailException {
 		enterpriseInfo.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		enterpriseInfo.setInsertTime(new Timestamp(System.currentTimeMillis()));
 		enterpriseInfo.setBalance((float) 0);
@@ -97,7 +98,12 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		List<String> addresses = new ArrayList<String>();
 		addresses.add(enterpriseInfo.getEmail());
 		addresses.add(Constants.MAIL_USER_NAME);
-		EmailTools.send(addresses, Constants.EMAIL_SUBJECT, emailContent);
+		try {
+			EmailTools.send(addresses, Constants.EMAIL_SUBJECT, emailContent);
+		} catch (EmailException e) {
+			LOG.error(e.getMessage());
+			throw e;
+		}
 		return SUCCESS;
 	}
 	

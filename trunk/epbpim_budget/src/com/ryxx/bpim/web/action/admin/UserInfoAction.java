@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.mail.EmailException;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ryxx.bpim.entity.AdminMenu;
@@ -106,9 +107,14 @@ public class UserInfoAction extends ActionSupportBase {
 		return SUCCESS;
 	}
 	
-	public String batch() {
+	public String batch() throws EmailException {
 		enterpriseInfo = enterpriseInfoService.findById(eId);
-		userInfoService.batchAddUsers(userCount,enterpriseInfo,listCheck,regionCheck);
+		try {
+			userInfoService.batchAddUsers(userCount,enterpriseInfo,listCheck,regionCheck);
+		} catch (EmailException e) {
+			LOG.error(e.getMessage());
+			throw e;
+		}
 		request.setAttribute("eId", eId);
 		return SUCCESS;
 	}

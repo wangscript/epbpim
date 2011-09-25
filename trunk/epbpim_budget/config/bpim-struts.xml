@@ -20,6 +20,12 @@
 		<action name="fillUserInfo" method="updateUserInfo" class="userInfoMainAction" >
 			<result>/jsp/main/main.jsp</result>
 		</action>
+		<action name="findPassword" >
+			<result>/jsp/login/findPassword.jsp</result>
+		</action>
+		<action name="sendPassword" method="sendPasswordByEmail" class="userInfoMainAction" >
+			<result name="input">/jsp/login/findPassword.jsp</result>
+		</action>
 	</package>
 	
 	<package name="bpim-userinfo" namespace="/admin" extends="bpim-default">

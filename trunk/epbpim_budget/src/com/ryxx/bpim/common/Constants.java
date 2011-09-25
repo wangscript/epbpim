@@ -439,10 +439,13 @@ public interface Constants {
 	static final String EMAIL_PASSWORD_BLOCK = "初始化密码";
 	static final String EMAIL_PRIVILEGE_BLOCK = "权限";
 	static final String EMAIL_APP_BLOCK = "已开通的应用";
+	static final String EMAIL_NORMAI_USER_TITLE1 = "尊敬的用户，";
+	static final String EMAIL_FIND_PASSWORD = "您的新密码是：";
 	static final String EMAIL_FOOTER = "<br><br><br><br><br><br><br><br><br><br><br><br>任远信息技术有限公司<br>电话：<br>地址：";
 	
 	//默认密码
 	static final String DEFAULT_PASSWORD = "123456";
+	
 	
 	
 }
