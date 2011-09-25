@@ -14,7 +14,7 @@
 		<action name="login" method="login" class="userInfoMainAction" >
 			<result name="input">/jsp/login/index.jsp</result>
 			<result name="enterpriseMain">/jsp/main/enterpriseMain.jsp</result>
-			<result name="userMain">/jsp/main/main.jsp</result>
+			<result name="userMain" type="redirect">/jsp/main/main.jsp</result>
 			<result name="userInfoManage">/jsp/login/updateUserInfo.jsp</result>
 		</action>
 		<action name="fillUserInfo" method="updateUserInfo" class="userInfoMainAction" >
@@ -188,6 +188,16 @@
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
+		<action name="userInfoManage" >
+			<result>/jsp/main/user/updateUserInfo.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="updateUserInfo" method="updateUserInfo" class="userInfoMainAction" >
+			<result>/jsp/main/user/updateUserInfo.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
 	</package>	
 	<package name="bpim-addUserAdvice" namespace="/main" extends="bpim-default">
 		<action name="addUserAdvice" method="addUserAdvice" class="userAdviceAction">
@@ -203,4 +213,5 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
+	
 </struts>
