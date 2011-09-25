@@ -63,6 +63,8 @@
 		</property>
 	</bean>
 	
+	<bean id="logoutAction" class="com.ryxx.bpim.web.action.mainPanel.LogoutAction" scope="prototype"></bean>
+	
 	<bean id="com.ryxx.bpim.dao.ProvinceCityDAO" class="com.ryxx.bpim.dao.ProvinceCityDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
