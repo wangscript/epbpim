@@ -54,8 +54,7 @@ function changeTitleBackground(){
 	 }
 	 
 	 var messageCount = "1";
-	 //var messageCount = "<%//=newMessageCount%>
-	";
+	 //var messageCount = "<%//=newMessageCount%>";
 		if (messageCount > 0) {
 			var message = document.getElementById("message");
 			message.innerHTML = messageCount + "条新消息";
@@ -83,19 +82,10 @@ function changeTitleBackground(){
 		<div class="header_resize">
 			<div class="nav_menu">
 				<ul>
-					<li id="userInfoManage"><a href="#"><s:text
-								name="Header.UserManage" />
-					</a>
-					</li>
-					<li id="messageMain"><a id="message"
-						href="../main/messageMain.jsp"><font color="red">有1个待办事项</font>
-					</a>
-					</li>
-					<li id="help"><a href="#">用户手册</a>
-					</li>
-					<li id="index"><a href="#"><s:text name="Header.Logout" />
-					</a>
-					</li>
+					<li id="userInfoManage"><a href="#"><s:text name="Header.UserManage" /></a></li>
+					<li id="messageMain"><a id="message"href="../main/messageMain.jsp"><font color="red">有1个待办事项</font></a></li>
+					<li id="help"><a href="#">用户手册</a></li>
+					<li id="index"><a href="../login/logout.do"><s:text name="Header.Logout" /></a></li>
 				</ul>
 			</div>
 			<div class="logo">
