@@ -11,6 +11,9 @@ public class LogoutAction extends ActionSupportBase
     public String execute()
         throws Exception
     {
+        String userid = String.valueOf((Long)session.get(Constants.LOGIN_USER_ID));
+        UserInfoAction.userSessionMap.remove(userid);
+        
         session.remove(Constants.LOGIN_USER_NAME);
         session.remove(Constants.LOGIN_USER_ID);
         session.remove(Constants.LOGIN_EXPIRE_DATE);
