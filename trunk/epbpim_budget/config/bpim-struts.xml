@@ -8,6 +8,9 @@
 		<action name="index">
 			<result>/jsp/login/index.jsp</result>
 		</action>
+		<action name="logout" class="logoutAction">
+			<result>/jsp/login/index.jsp</result>
+		</action>
 		<action name="login" method="login" class="userInfoMainAction" >
 			<result name="input">/jsp/login/index.jsp</result>
 			<result name="enterpriseMain">/jsp/main/enterpriseMain.jsp</result>
