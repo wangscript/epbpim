@@ -38,7 +38,7 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 		Criteria criteria = getSession().createCriteria(UserInfo.class);
 		criteria.add(Restrictions.eq("identifier", userInfo.getIdentifier()));
 		criteria.add(Restrictions.eq("password", userInfo.getPassword()));
-		criteria.add(Restrictions.eq("enable", new Integer(1)));
+		// criteria.add(Restrictions.eq("enable", new Integer(1)));
 		if(criteria.list()!=null&&criteria.list().size()>0){
 			return (UserInfo) criteria.list().get(0);
 		}
