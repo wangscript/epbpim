@@ -106,6 +106,9 @@
 		<property name="userInfoService">
 			<ref local="com.ryxx.bpim.service.UserInfoService"/>
 		</property>
+		<property name="balanceRecordService">
+			<ref local="com.ryxx.bpim.service.BalanceRecordService"/>
+		</property>
 	</bean>
 	
 	<!-- 法律文件 -->
