@@ -61,6 +61,9 @@
 		<property name="userInfoService">
 			<ref local="com.ryxx.bpim.service.UserInfoService"/>
 		</property>
+		<property name="adminMenuService">
+			<ref local="com.ryxx.bpim.service.AdminMenuService"/>
+		</property>
 	</bean>
 	
 	<bean id="logoutAction" class="com.ryxx.bpim.web.action.mainPanel.LogoutAction" scope="prototype"></bean>

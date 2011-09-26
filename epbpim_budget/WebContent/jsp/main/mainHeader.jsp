@@ -4,6 +4,7 @@
 <%@ page import="com.ryxx.util.cache.CacheMap"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.ryxx.bpim.common.Constants"%>
+<%@ page import="com.ryxx.bpim.entity.AdminMenu" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -96,6 +97,11 @@ function changeTitleBackground(){
 			</div>
 			<div class="categoryDiv">
 				<ul class="category">
+					<%
+						Long userId = (Long)session.getAttribute(Constants.LOGIN_USER_ID);
+						List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.USER+userId);
+						request.setAttribute("menus", menus);
+					%>
 					<s:if test="#request.menus!=null && #request.menus.size()>0">
 						<s:iterator value="#request.menus" status="st">
 							<s:if test="subMenus !=null && subMenus.size()>0">

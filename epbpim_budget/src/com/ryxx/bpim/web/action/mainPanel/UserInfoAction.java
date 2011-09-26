@@ -13,8 +13,10 @@ import org.apache.commons.mail.EmailException;
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.UserInfo;
 import com.ryxx.bpim.enums.RoleEnum;
+import com.ryxx.bpim.service.AdminMenuService;
 import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.cache.CacheMap;
 import com.ryxx.util.email.EmailTools;
 import com.ryxx.util.string.StringTools;
 
@@ -27,6 +29,7 @@ public class UserInfoAction extends ActionSupportBase
     public static Map<String, List> userSessionMap = new HashMap<String, List>();
     
     private UserInfoService userInfoService;
+    private AdminMenuService adminMenuService;
     
     private String identifier;
     
@@ -71,17 +74,20 @@ public class UserInfoAction extends ActionSupportBase
                     return INPUT;
                 }
             }
-            
             session.put(Constants.LOGIN_USER_NAME, identifier);
             session.put(Constants.LOGIN_USER_ID, userInfo.getId());
             session.put(Constants.USER_LOGIN_TIME, new Date().getTime());
+            
             saveUserSession(session);
+            CacheMap.getInstance().clearCache();
             if (RoleEnum.ENTERPRISE_USER.equals(userInfo.getRoleType()))
             {
+            	CacheMap.getInstance().addCache(Constants.USER+userInfo.getId(), adminMenuService.list(userInfo.getEnterpriseInfo().getProvinceCity()));
                 return "enterpriseMain";
             }
             else if (RoleEnum.NORMAL_USER.equals(userInfo.getRoleType()))
             {
+            	CacheMap.getInstance().addCache(Constants.USER+userInfo.getId(), adminMenuService.list(userInfo.getProvinceCities(), userInfo.getId()));
                 if (userInfo.getRealName() != null)
                 {
                     return "userMain";
@@ -250,5 +256,13 @@ public class UserInfoAction extends ActionSupportBase
     {
         this.userInfo = userInfo;
     }
+
+	public AdminMenuService getAdminMenuService() {
+		return adminMenuService;
+	}
+
+	public void setAdminMenuService(AdminMenuService adminMenuService) {
+		this.adminMenuService = adminMenuService;
+	}
     
 }
