@@ -52,13 +52,13 @@
 											<li class="width200Li"><h5>
 											<s:if test="price != 0">
 													<input type="checkbox" 
-														name="<s:property value="region.id"/>app" value="<s:property value="id"/>"
-														id="<s:property value="region.id"/>" />
+														name="listCheck" value="<s:property value="id"/>"
+														id="<s:property value="region.id"/>area_${st.index}app" />
 											</s:if>
 											<s:if test="price == 0">
-													<input type="checkbox" disabled="true" checked="checked" 
-														name="<s:property value="region.id"/>app" value="<s:property value="id"/>"
-														id="<s:property value="region.id"/>" />
+													<input type="checkbox" readonly="readonly" checked="checked" 
+														name="listCheck" value="<s:property value="id"/>"
+														 />
 											</s:if>
 													<s:property value="name" /></h5></li>
 											<li class="width100Li">
@@ -117,9 +117,9 @@
 
 	function selectAllApps(parentId){//选中父节点，子节点全被选。也就是子节点随父节点状态而变
 		var checked = $(parentId).checked;
-		var apps = document.getElementsByName(parentId+'app');
+		var apps = document.getElementsByTagName('input');
 		for(var i = 0; i < apps.length;i++){
-			if(!apps[i].disabled){
+			if(!apps[i].disabled && apps[i].id.startWith(parentId+"area")){
 				apps[i].checked = checked;
 			}
 		}

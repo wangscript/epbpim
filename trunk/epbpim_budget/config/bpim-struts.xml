@@ -14,7 +14,7 @@
 		<action name="login" method="login" class="userInfoMainAction" >
 			<result name="input">/jsp/login/index.jsp</result>
 			<result name="enterpriseMain">/jsp/main/enterpriseMain.jsp</result>
-			<result name="userMain" type="redirect">/jsp/main/main.jsp</result>
+			<result name="userMain" type="redirect"> ../main/main.do</result>
 			<result name="userInfoManage">/jsp/login/updateUserInfo.jsp</result>
 		</action>
 		<action name="fillUserInfo" method="updateUserInfo" class="userInfoMainAction" >
