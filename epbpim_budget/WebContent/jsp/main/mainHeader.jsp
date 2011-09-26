@@ -78,7 +78,7 @@ function changeTitleBackground(){
 		}
 	}
 </script>
-<body>
+<body onunload="javacript: document.getElementById('logoutLink').click();" >
 	<div class="header">
 		<div class="header_resize">
 			<div class="nav_menu">
@@ -86,7 +86,7 @@ function changeTitleBackground(){
 					<li id="userInfoManage"><a href="userInfoManage.do"><s:text name="Header.UserManage" /></a></li>
 					<li id="messageMain"><a id="message"href="../main/messageMain.jsp"><font color="red">有1个待办事项</font></a></li>
 					<li id="help"><a href="#">用户手册</a></li>
-					<li id="index"><a href="../login/logout.do"><s:text name="Header.Logout" /></a></li>
+					<li id="index"><a id="logoutLink" href="../login/logout.do"><s:text name="Header.Logout" /></a></li>
 				</ul>
 			</div>
 			<div class="logo">
