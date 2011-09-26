@@ -425,6 +425,8 @@ public interface Constants {
 	
 	static final String ROLE = "role";
 	
+	static final String USER = "user";
+	
 	
 	// 邮件系统
 	public static final String SMTP = "smtp.gmail.com";

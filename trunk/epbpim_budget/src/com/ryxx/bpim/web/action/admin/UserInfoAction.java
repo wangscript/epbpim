@@ -19,6 +19,7 @@ import com.ryxx.bpim.service.EnterpriseInfoService;
 import com.ryxx.bpim.service.ProvinceCityService;
 import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.cache.CacheMap;
 import com.ryxx.util.email.EmailTools;
 import com.ryxx.util.string.StringTools;
 
@@ -99,7 +100,8 @@ public class UserInfoAction extends ActionSupportBase {
 		}
 		try{
 			userInfo.setMenus(menus);
-		UserInfo user = userInfoService.merge(userInfo);
+			UserInfo user = userInfoService.merge(userInfo);
+			CacheMap.getInstance().addCache(RoleEnum.NORMAL_USER+userInfo.getIdentifier(), adminMenuService.list(userInfo.getProvinceCities(),userInfo.getId()));
 		}catch (Exception e){
 			System.out.println(e);
 		}
