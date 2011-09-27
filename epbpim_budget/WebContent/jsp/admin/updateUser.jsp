@@ -24,14 +24,19 @@
 						</h3>
 						<div id="addRoleTable">
 							<h4>应用列表	:<s:hidden name="eId"/></h4>
+							<ul class="fullScreenUl">
+								<li class="width200Li">应用名称</li>
+								<li class="width100Li">价格</li>
+								<li class="width500Li">应用说明</li>
+							</ul>
 							<s:iterator value="provinceCities" status="st1">
 								<ul><li>
 									<input type="checkbox" name="regionCheck" value="<s:property value="id"/>"
 										<s:iterator value="regionCheck" status="st3">
-															<s:if test="id eq regionCheck[#st3.index]">
-																checked
-															</s:if>
-														</s:iterator>
+											<s:if test="id eq regionCheck[#st3.index]">
+												checked
+											</s:if>
+										</s:iterator>
 										id="<s:property value="region.id"/>" /><s:property value="city" />
 								</li></ul>
 								<ul class="fullScreenUlNoHeight" id="<s:property value="region.id"/>">
