@@ -190,13 +190,13 @@
 		<property name="periodicalDate" column="PERIODICAL_DATE" type="java.sql.Timestamp"></property>
 		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
 	</class>
-	<class name="InfomationPrice" table="INFOMATION_PRICE">
+	<class name="GuidePrice" table="GUIDE_PRICE">
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
-		<property name="provice" column="INFOMATION_PRICE_PROVICE" type="java.lang.String"></property>
-		<property name="type" column="INFOMATION_PRICE_TYPE" type="java.lang.String"></property>
-		<property name="dataDate" column="DATA_DATE" type="java.sql.Timestamp"></property>
+		<property name="guidePriceProvice" column="GUIDEPRICE_PROVICE" type="java.lang.String"></property>
+		<property name="guidePriceType" column="GUIDEPRICE_TYPE" type="java.lang.String"></property>
+		<property name="guidePriceDate" column="GUIDEPRICE_DATE" type="java.sql.Timestamp"></property>
 		<property name="code" column="CODE" type="java.lang.String"></property>
 		<property name="name" column="NAME" type="java.lang.String"></property>
 		<property name="unit" column="UNIT" type="java.lang.String"></property>
