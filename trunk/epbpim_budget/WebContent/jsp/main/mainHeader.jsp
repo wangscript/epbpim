@@ -78,7 +78,9 @@ function changeTitleBackground(){
 		}
 	}
 </script>
-<body onunload="javacript: document.getElementById('logoutLink').click();" >
+	 
+<!-- <body onunload="javacript: document.getElementById('logoutLink').click();" > -->	
+<body>
 	<div class="header">
 		<div class="header_resize">
 			<div class="nav_menu">
