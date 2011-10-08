@@ -16,6 +16,8 @@ public interface GuidePriceDAO extends BaseDAO<GuidePrice, Long>
     
     List<GuidePrice> listGuidePrice(GuidePrice guidePrice);
     
+    List<GuidePrice> getGuidePrice(GuidePrice guidePrice);
+    
     int getRowCount(GuidePrice guidePrice);
     
 }
