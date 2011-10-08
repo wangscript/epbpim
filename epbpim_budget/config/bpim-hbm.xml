@@ -190,4 +190,19 @@
 		<property name="periodicalDate" column="PERIODICAL_DATE" type="java.sql.Timestamp"></property>
 		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
 	</class>
+	<class name="InfomationPrice" table="INFOMATION_PRICE">
+		<id name="id" column="ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="provice" column="INFOMATION_PRICE_PROVICE" type="java.lang.String"></property>
+		<property name="type" column="INFOMATION_PRICE_TYPE" type="java.lang.String"></property>
+		<property name="dataDate" column="DATA_DATE" type="java.sql.Timestamp"></property>
+		<property name="code" column="CODE" type="java.lang.String"></property>
+		<property name="name" column="NAME" type="java.lang.String"></property>
+		<property name="unit" column="UNIT" type="java.lang.String"></property>
+		<property name="price" column="PRICE" type="java.lang.Double"></property>
+		<property name="unName" column="UN_NAME" type="java.lang.String"></property>
+		<property name="tag" column="TAG" type="java.lang.String"></property>
+		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
+	</class>
 </hibernate-mapping>

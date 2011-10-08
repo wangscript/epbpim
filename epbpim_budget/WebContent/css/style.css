@@ -137,14 +137,14 @@ select {
 .header_resize,.hbg_resize {
 	margin: 0 auto;
 	padding: 0;
-	height: 310px;
+	height: 150px;
 	background: url(../images/header_bg.gif) repeat-x top;
 }
 
 .content_resize,.fbg_resize {
 	padding: 24px 40px;
 	background: url(../images/content_bg.gif) repeat-x top;
-	min-height:460px;
+	min-height:410px;
 }
 
 /* header */
@@ -199,7 +199,7 @@ select {
 .content .mainbar {
 	float: left;
 	width: 930px;
-	min-height:460px;
+	min-height:410px;
 }
 
 .content .mainbar .article img {

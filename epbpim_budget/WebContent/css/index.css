@@ -7,6 +7,13 @@
 	padding-top: 120px;
 }
 
+.header_resize,.hbg_resize {
+	margin: 0 auto;
+	padding: 0;
+	height: 310px;
+	background: url(../images/header_bg.gif) repeat-x top;
+}
+
 .introduceMainBar ul{
 	float:left;
 }
@@ -18,9 +25,17 @@
 	margin-top:10px;
 }
 
+.content_resize,.fbg_resize {
+	padding: 24px 40px;
+	background: url(../images/content_bg.gif) repeat-x top;
+	min-height:240px;
+}
+
 .content .mainbar {
 	width: 330px;	
+	min-height:200px;
 }
+
 
 .mainbar ul{
 	list-style:none;

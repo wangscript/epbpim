@@ -52,9 +52,9 @@ public class EmailTools {
 				+ Constants.EMAIL_ENTERPRISE_TITLE2 + "<br>");
 		sb.append("<table style='background:grey; text-align:center;border: 1px solid #c0c0c0;'><tr> <td style='width:100px; border: 1px solid #c0c0c0;'>"
 				+ Constants.EMAIL_USERNAME_BLOCK
-				+ " </td><td style='width:100px; style='border: 1px solid #c0c0c0;''> "
+				+ " </td><td style='width:100px; border: 1px solid #c0c0c0;'> "
 				+ Constants.EMAIL_PASSWORD_BLOCK
-				+ " </td><td style='width:100px; style='border: 1px solid #c0c0c0;''> "
+				+ " </td><td style='width:100px; border: 1px solid #c0c0c0;'> "
 				+ Constants.EMAIL_PRIVILEGE_BLOCK + "</td>");
 		sb.append("<tr>");
 		sb.append("<td style='border: 1px solid #c0c0c0;'>"
