@@ -44,6 +44,7 @@ public class GuidePriceAction extends ActionSupportBase
             LOG.error(e);
             msg = "出错了，请重试!";
         }
+        request.setAttribute("msg", msg);
         return SUCCESS;
     }
     
@@ -83,7 +84,7 @@ public class GuidePriceAction extends ActionSupportBase
     {
         try
         {
-            service.deleteGuidePrice(guidePrice);
+            msg = service.deleteGuidePrice(guidePrice);
         }
         catch (Exception e)
         {

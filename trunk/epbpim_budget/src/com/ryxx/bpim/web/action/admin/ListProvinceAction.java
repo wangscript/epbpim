@@ -15,6 +15,8 @@ public class ListProvinceAction extends ActionSupportBase
     
     private List<ProvinceCity> provinceCities;
     
+    private String msg;
+    
     public String listProvince()
     {
         provinceCities = provinceCityService.list();
@@ -39,5 +41,15 @@ public class ListProvinceAction extends ActionSupportBase
     public void setProvinceCities(List<ProvinceCity> provinceCities)
     {
         this.provinceCities = provinceCities;
+    }
+    
+    public String getMsg()
+    {
+        return msg;
+    }
+    
+    public void setMsg(String msg)
+    {
+        this.msg = msg;
     }
 }
