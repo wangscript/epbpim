@@ -32,7 +32,7 @@ public class SearchGovernmentFileAction extends ActionSupportBase
     
     GovernmentFile condition = new GovernmentFile();
     
-    GovernmentFileService service; 
+    GovernmentFileService service;
     
     List<GovernmentFile> datas = new ArrayList<GovernmentFile>();
     
@@ -112,10 +112,11 @@ public class SearchGovernmentFileAction extends ActionSupportBase
             PageTools page = new PageTools(pageNo, pageSize);
             condition.setRowCount(pageNo);
             condition.setPageSize(pageSize);
-            condition.setKeyword(toUnicode(condition.getKeyword()));
+            String keyWord = null == condition.getKeyword() ? "" : condition.getKeyword();
+            condition.setKeyword(toUnicode(keyWord));
             setQueryDate(condition);
             datas = service.listGovernmentFile(condition, page);
-            condition.setKeyword(compileCode(condition.getKeyword()));
+            condition.setKeyword(compileCode(keyWord));
             if (datas != null && datas.size() > 0)
             {
                 this.page = page;
