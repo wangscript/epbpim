@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,21 +22,26 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
     public String saveGuidePrice(GuidePrice guidePrice, File uploadfile)
         throws ParseException, SQLException
     {
-        // 解析 uploadfile 文件
+        List<GuidePrice> guidePriceList = parseGuidePriceFile(uploadfile);
         
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-        Date periodicalDate = sdf.parse(guidePrice.getGuidePriceDatePage());
-        guidePrice.setGuidePriceDate(new Timestamp(periodicalDate.getTime()));
-        
-        guidePrice.setUploadDate(new Timestamp(new Date().getTime()));
+        for (GuidePrice guidePricee : guidePriceList)
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+            Date periodicalDate = sdf.parse(guidePrice.getGuidePriceDatePage());
+            guidePricee.setGuidePriceDate(new Timestamp(periodicalDate.getTime()));
+            
+            guidePricee.setUploadDate(new Timestamp(new Date().getTime()));
+            
+            getDao().saveGuidePrice(guidePricee);
+        }
         
         return "导入成功";
     }
     
-    public String deleteGuidePrice(GuidePrice guidePrice)
+    public void deleteGuidePrice(GuidePrice guidePrice)
         throws ParseException, SQLException
     {
-        return "导入成功";
+        getDao().deleteGuidePrice(guidePrice);
     }
     
     public List<GuidePrice> listGuidePrice(GuidePrice condition, PageTools page)
@@ -54,4 +60,13 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
         return getDao().listGuidePrice(condition);
     }
     
+    /*
+     * 解析信息价文件 
+     */
+    private List<GuidePrice> parseGuidePriceFile(File uploadfile)
+    {
+        List<GuidePrice> resultList = new ArrayList<GuidePrice>();
+        
+        return resultList;
+    }
 }

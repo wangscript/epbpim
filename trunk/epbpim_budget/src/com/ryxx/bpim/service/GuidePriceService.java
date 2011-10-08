@@ -18,7 +18,7 @@ public interface GuidePriceService extends BaseService<GuidePrice, GuidePriceDAO
     String saveGuidePrice(GuidePrice guidePrice, File uploadfile)
         throws ParseException, SQLException;
     
-    String deleteGuidePrice(GuidePrice guidePrice)
+    void deleteGuidePrice(GuidePrice guidePrice)
         throws ParseException, SQLException;
     
     List<GuidePrice> listGuidePrice(GuidePrice guidePrice, PageTools page)
