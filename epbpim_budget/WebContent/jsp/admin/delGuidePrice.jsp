@@ -17,13 +17,6 @@
 			alert(msg);
 		}
 	}
-	function chooseFile() {
-		var uploadFile = $('uploadFile');
-		var filePath = uploadFile.value;
-		var fileName = filePath.substring(filePath.lastIndexOf('\\') + 1,
-				filePath.length);
-		document.getElementById('guidePrice.guidePriceFileName').value = fileName;
-	}
 </script>
 <style>
 .WithBreaks {
@@ -38,7 +31,7 @@
 				<div class="mainbar">
 					<h4 class="title">信息价导入:</h4>
 					<div class="entry">
-						<s:form action="importGuidePrice.do" method="post" id="importGuidePriceForm" enctype="multipart/form-data">
+						<s:form action="deleteGuidePrice.do" method="post" id="deleteGuidePriceForm">
 							<ul class="fullScreenUl">
 								<li class="width100Li">省份：</li>
 								<li class="width200Li">
@@ -51,8 +44,8 @@
 								<li class="width200Li"><select
 									id="guidePrice.guidePriceType"
 									name="guidePrice.guidePriceType" class="width150Select">
-										<option value="市政">市政</option>
-										<option value="园林">园林</option>
+										<option value="1">市政</option>
+										<option value="2">园林</option>
 								</select></li>
 							</ul>
 							<ul class="fullScreenUl">
@@ -63,14 +56,7 @@
 									onclick="WdatePicker({dateFmt:'yyyy-MM'})" /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width100Li">文件：</li>
-								<li class="width300Li"><s:file name="uploadFile" cssClass="width300Input"
-										id="uploadFile"  onchange="chooseFile()" /> <input
-									type="hidden" name="guidePrice.guidePriceFileName"
-									id="guidePrice.guidePriceFileName"></li>
-							</ul>
-							<ul class="fullScreenUl">
-								<li class="width200Li"><input type="submit" class="button" value="上传">
+								<li class="width200Li"><input type="submit" class="button" value="删除">
 								</li>
 							</ul>
 
