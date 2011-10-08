@@ -21,7 +21,7 @@
         </ul>
       </div>
       <div class="clr"></div>
-      <div class="logo"><h1>建筑行业造价平台<small></small></h1></div>
+      <div class="logo"><h1>建筑行业造价平台<small>合作单位：上海市土木工程学会、上海燃气行业协会</small></h1></div>
     </div>
   </div>
 </body>
