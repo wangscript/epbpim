@@ -23,6 +23,18 @@ public class GuidePrice extends VoBase
     
     private Long id;
     
+    private String code;
+    
+    private String name;
+    
+    private String unit;
+    
+    private long price;
+    
+    private String un_name;
+    
+    private String tag;
+    
     private Timestamp uploadDate;
     
     public String getGuidePriceFileName()
@@ -95,4 +107,63 @@ public class GuidePrice extends VoBase
         this.uploadDate = uploadDate;
     }
     
+    public String getCode()
+    {
+        return code;
+    }
+    
+    public void setCode(String code)
+    {
+        this.code = code;
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
+    
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    
+    public String getUnit()
+    {
+        return unit;
+    }
+    
+    public void setUnit(String unit)
+    {
+        this.unit = unit;
+    }
+    
+    public long getPrice()
+    {
+        return price;
+    }
+    
+    public void setPrice(long price)
+    {
+        this.price = price;
+    }
+    
+    public String getUn_name()
+    {
+        return un_name;
+    }
+    
+    public void setUn_name(String un_name)
+    {
+        this.un_name = un_name;
+    }
+    
+    public String getTag()
+    {
+        return tag;
+    }
+    
+    public void setTag(String tag)
+    {
+        this.tag = tag;
+    }
 }
