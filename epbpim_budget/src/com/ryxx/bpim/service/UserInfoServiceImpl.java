@@ -62,7 +62,7 @@ public class UserInfoServiceImpl extends
 	@Override
 
 	public void batchAddUsers(Integer userCount, EnterpriseInfo enterpriseInfo,
-			List listCheck, List regionCheck) throws EmailException {
+			List<AdminMenu> menus, List regionCheck) throws EmailException {
 		if(userCount != null && userCount > 0) {
 			List<UserInfo> users = new ArrayList<UserInfo>();
 			for (int i = 0; i < userCount; i++) {
@@ -88,15 +88,6 @@ public class UserInfoServiceImpl extends
 				} else {
 					userInfo.setIdentifier("ry"
 							+ (Long.parseLong(maxIdentify.substring(2)) + 1));
-				}
-				List<AdminMenu> menus = new ArrayList<AdminMenu>();
-				if (listCheck != null && listCheck.size() > 0) {
-					for (int j = 0; j < listCheck.size(); j++) {
-						AdminMenu menu = new AdminMenu();
-						menu.setId(Integer
-								.parseInt(listCheck.get(j).toString()));
-						menus.add(menu);
-					}
 				}
 				try {
 					userInfo.setMenus(menus);

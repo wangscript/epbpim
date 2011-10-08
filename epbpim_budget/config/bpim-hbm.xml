@@ -102,7 +102,7 @@
 		</bag>
 	</class>
 	<class name="AdminMenu" table="ADMIN_MENU">
-		<id name="id" column="MENU_ID" type="java.lang.Integer">
+		<id name="id" column="MENU_ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
 		<property name="name" column="MENU_NAME" type="java.lang.String"></property>

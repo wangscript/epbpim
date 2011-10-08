@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.mail.EmailException;
 
 import com.ryxx.bpim.dao.UserInfoDAO;
+import com.ryxx.bpim.entity.AdminMenu;
 import com.ryxx.bpim.entity.EnterpriseInfo;
 import com.ryxx.bpim.entity.UserInfo;
 
@@ -27,7 +28,7 @@ public interface UserInfoService extends BaseService<UserInfo,UserInfoDAO, Long>
 	 * @param listCheck
 	 * @throws EmailException 
 	 */
-	public void batchAddUsers(Integer userCount, EnterpriseInfo enterpriseInfo, List listCheck, List regionCheck) throws EmailException;
+	public void batchAddUsers(Integer userCount, EnterpriseInfo enterpriseInfo, List<AdminMenu> menus, List regionCheck) throws EmailException;
 
 	/**
 	 * @param identifier
