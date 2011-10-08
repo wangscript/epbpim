@@ -21,7 +21,7 @@
         </ul>
       </div>
       <div class="clr"></div>
-      <div class="logo"><h1>建筑行业造价平台<small>合作单位：上海市土木工程学会、上海燃气行业协会</small></h1></div>
+      <div class="logo"><h1>建筑行业造价平台<small>本软件系统由上海任远信息技术有限公司和上海建惠建设咨询有限公司共同研发</small><small>合作单位：上海市土木工程学会、上海燃气行业协会</small></h1></div>
     </div>
   </div>
 </body>

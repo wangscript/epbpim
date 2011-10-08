@@ -30,7 +30,7 @@
 			<div class="content_resize">
 				<div class="mainbar">
 
-					<h4 class="title">政府指导价导入:</h4>
+					<h4 class="title">法律文件导入:</h4>
 					<div class="entry">
 
 						<s:form action="importGovernmentFile.do" method="post"

@@ -1,6 +1,7 @@
 package com.ryxx.bpim.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
@@ -16,7 +17,7 @@ public interface GuidePriceService extends BaseService<GuidePrice, GuidePriceDAO
 {
     
     String saveGuidePrice(GuidePrice guidePrice, File uploadfile)
-        throws ParseException, SQLException;
+        throws ParseException, SQLException, IOException;
     
     void deleteGuidePrice(GuidePrice guidePrice)
         throws ParseException, SQLException;
