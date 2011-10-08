@@ -107,13 +107,13 @@
 		<action name="preImportGovernmentFile">
 			<result>/jsp/admin/importGovernmentFile.jsp</result>
 		</action>
-		<action name="preImportGuidePrice">
+		<action name="preImportGuidePrice" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/importGuidePrice.jsp</result>
 		</action>
-		<action name="preImportPeriodicalFile">
+		<action name="preImportPeriodicalFile" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/importPeriodicalFile.jsp</result>
 		</action>
-		<action name="preUploadPricePackageFile">
+		<action name="preUploadPricePackageFile" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/uploadPricePackageFile.jsp</result>
 		</action>	
 	</package>
