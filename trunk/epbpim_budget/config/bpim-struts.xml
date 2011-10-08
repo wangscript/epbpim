@@ -88,10 +88,6 @@
 			<result type="redirect-action">preImportGuidePrice.do</result>
 			<interceptor-ref name="manager"/>
 		</action>
-		<action name="preDeleteGuidePrice" method="listGuidePrice" class="guidePriceAction">
-			<result>/jsp/admin/deleteGuideData.jsp</result>
-			<interceptor-ref name="manager"/>
-		</action>
 		<action name="deleteGuidePrice" method="deleteGuidePrice" class="guidePriceAction">
 			<result type="redirect-action">preDeleteGuidePrice.do</result>
 			<interceptor-ref name="manager"/>
@@ -112,6 +108,9 @@
 		</action>
 		<action name="preImportGuidePrice" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/importGuidePrice.jsp</result>
+		</action>
+		<action name="preDeleteGuidePrice" method="listProvince" class="listProvinceAction">
+			<result>/jsp/admin/deleteGuideData.jsp</result>
 		</action>
 		<action name="preImportPeriodicalFile" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/importPeriodicalFile.jsp</result>
