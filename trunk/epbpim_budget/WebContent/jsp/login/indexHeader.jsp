@@ -17,7 +17,7 @@
         	<li><a href="../login/index.jsp">首页</a></li>
 			<li><a href="javascript: setHomepage()">设为首页</a></li>
 			<li><a href="javascript: addFavorite()">添加收藏</a></li>
-			<li><a href="contactus.jsp">联系我们</a></li>
+			<li><a href="../login/contactUs.do">联系我们</a></li>
         </ul>
       </div>
       <div class="clr"></div>
