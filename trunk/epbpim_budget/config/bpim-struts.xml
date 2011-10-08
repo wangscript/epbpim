@@ -13,13 +13,12 @@
 		</action>
 		<action name="login" method="login" class="userInfoMainAction" >
 			<result name="input">/jsp/login/index.jsp</result>
-			<result name="enterpriseMain">/jsp/main/enterpriseMain.jsp</result>
+			<result name="enterpriseMain" type="redirect-action">../main/enterpriseMain.do</result>
 			<result name="userMain" type="redirect-action"> ../main/main.do</result>
-			<result name="userInfoManage">/jsp/login/updateUserInfo.jsp</result>
+			<result name="userInfoManage" type="redirect-action">../main/get.do</result>
 		</action>
 		<action name="fillUserInfo" method="updateUserInfo" class="userInfoMainAction" >
 			<result type="redirect-action"> ../main/main.do</result>
-			<!-- <result>/jsp/main/main.jsp</result>-->
 		</action>
 		<action name="findPassword" >
 			<result>/jsp/login/findPassword.jsp</result>
@@ -188,6 +187,12 @@
 		</action>
 	</package>
 	<package name="bpim-main" namespace="/main" extends="bpim-default">
+		<action name="enterpriseMain" >
+			<result>/jsp/main/enterpriseMain.jsp</result>
+		</action>
+		<action name="get" method="get" class="userInfoMainAction">
+			<result>/jsp/main/user/updateUserInfo.jsp</result>
+		</action>
 		<action name="main" method="listNewsAnnounces" class="newAnnounceAction">
 			<result>/jsp/main/main.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
@@ -204,7 +209,7 @@
 			<interceptor-ref name="user"/>
 		</action>
 		<action name="updateUserInfo" method="updateUserInfo" class="userInfoMainAction" >
-			<result>/jsp/main/user/updateUserInfo.jsp</result>
+			<result type="redirect-action">main.do</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>

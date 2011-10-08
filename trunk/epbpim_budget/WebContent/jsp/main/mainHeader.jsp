@@ -83,7 +83,7 @@ function changeTitleBackground(){
 		<div class="header_resize">
 			<div class="nav_menu">
 				<ul>
-					<li id="userInfoManage"><a href="userInfoManage.do"><s:text name="Header.UserManage" /></a></li>
+					<li id="userInfoManage"><a href="get.do"><s:text name="Header.UserManage" /></a></li>
 					<li id="help"><a href="#">用户手册</a></li>
 					<li id="index"><a id="logoutLink" href="../login/logout.do"><s:text name="Header.Logout" /></a></li>
 				</ul>

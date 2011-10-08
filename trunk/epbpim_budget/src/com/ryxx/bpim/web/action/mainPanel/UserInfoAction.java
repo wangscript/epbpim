@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.mail.EmailException;
@@ -108,20 +109,31 @@ public class UserInfoAction extends ActionSupportBase
         return SUCCESS;
     }
     
+    public String get() {
+    	Long id = (Long) session.get(Constants.LOGIN_USER_ID);
+        if (id != null && id != 0)
+        {
+        	userInfo = userInfoService.findById(id);
+        }
+    	return SUCCESS;
+    }
+    
     public String updateUserInfo()
     {
         UserInfo userInfoForUpdate = new UserInfo();
-        Long id = userInfo.getId();
+        Long id = (Long) session.get(Constants.LOGIN_USER_ID);
         if (id != null && id != 0)
         {
             userInfoForUpdate = userInfoService.findById(id);
-            String newPassword = userInfo.getPassword();
-            userInfoForUpdate.setPassword(StringTools.md5(newPassword));
-            userInfoForUpdate.setRealName(userInfo.getRealName());
-            userInfoForUpdate.setEmail(userInfo.getEmail());
-            userInfoForUpdate.setMobilePhone(userInfo.getMobilePhone());
-            userInfoForUpdate = userInfoService.merge(userInfoForUpdate);
-            return SUCCESS;
+            if(StringUtils.isNotEmpty(userInfo.getPassword())) {
+            	String newPassword = userInfo.getPassword();
+    	        userInfoForUpdate.setPassword(StringTools.md5(newPassword));
+            }
+	        userInfoForUpdate.setRealName(userInfo.getRealName());
+	        userInfoForUpdate.setEmail(userInfo.getEmail());
+	        userInfoForUpdate.setMobilePhone(userInfo.getMobilePhone());
+	        userInfoForUpdate = userInfoService.merge(userInfoForUpdate);
+	        return SUCCESS;
         }
         return INPUT;
     }
