@@ -131,7 +131,7 @@
 		</property>
 	</bean>
 	<bean id="searchGovernmentFileAction" class="com.ryxx.bpim.web.action.mainPanel.SearchGovernmentFileAction" scope="prototype">
-		<property name="governmentFileService">
+		<property name="service">
 			<ref local="com.ryxx.bpim.service.GovernmentFileService"/>
 		</property>
 	</bean>
