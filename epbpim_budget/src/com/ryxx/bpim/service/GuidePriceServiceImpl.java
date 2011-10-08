@@ -18,11 +18,12 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import antlr.StringUtils;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 import com.ryxx.bpim.dao.GuidePriceDAO;
 import com.ryxx.bpim.entity.GuidePrice;
+import com.ryxx.bpim.entity.UserInfo;
 import com.ryxx.util.page.PageTools;
 
 /**
@@ -43,9 +44,16 @@ public class GuidePriceServiceImpl extends
 		return "导入成功";
 	}
 
-	public void deleteGuidePrice(GuidePrice guidePrice) throws ParseException,
+    public String deleteGuidePrice(GuidePrice guidePrice) throws ParseException,
 			SQLException {
-		getDao().deleteGuidePrice(guidePrice);
+        
+	    List<GuidePrice> preDelGuidePrice=getDao().getGuidePrice(guidePrice);
+	    
+	    for (GuidePrice guidePricee : preDelGuidePrice)
+        {
+	        getDao().deleteGuidePrice(guidePricee);
+        }
+	    return "删除成功";
 	}
 
 	public List<GuidePrice> listGuidePrice(GuidePrice condition, PageTools page)
