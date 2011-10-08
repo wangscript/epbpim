@@ -90,14 +90,8 @@ public class UserInfoAction extends ActionSupportBase {
 			}
 			userInfo.setProvinceCities(provinces);
 		}
-		List<AdminMenu> menus = new ArrayList<AdminMenu>();
-		if(listCheck != null && listCheck.size()>0) {
-			for(int j=0; j<listCheck.size(); j++) {
-				AdminMenu menu = new AdminMenu();
-				menu.setId(Integer.parseInt(listCheck.get(j).toString()));
-				menus.add(menu);
-			}
-		}
+		List<AdminMenu> menus = adminMenuService.getMenuListById(listCheck);
+		
 		try{
 			userInfo.setMenus(menus);
 			UserInfo user = userInfoService.merge(userInfo);
@@ -112,7 +106,8 @@ public class UserInfoAction extends ActionSupportBase {
 	public String batch() throws EmailException {
 		enterpriseInfo = enterpriseInfoService.findById(eId);
 		try {
-			userInfoService.batchAddUsers(userCount,enterpriseInfo,listCheck,regionCheck);
+			List<AdminMenu> menus = adminMenuService.getMenuListById(listCheck);
+			userInfoService.batchAddUsers(userCount,enterpriseInfo,menus,regionCheck);
 		} catch (EmailException e) {
 			LOG.error(e.getMessage());
 			throw e;

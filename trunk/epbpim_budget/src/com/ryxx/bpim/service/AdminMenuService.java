@@ -12,4 +12,9 @@ public interface AdminMenuService extends BaseService<AdminMenu,AdminMenuDAO, Lo
 	public List<AdminMenu> findAllUseModuleByRegion(Integer regionId);
 	public List<AdminMenu> list(ProvinceCity city);
 	public List<AdminMenu> getMenuTree(List<AdminMenu> nodes);
+	/**
+	 * @param listCheck
+	 * @return
+	 */
+	public List<AdminMenu> getMenuListById(List listCheck);
 }

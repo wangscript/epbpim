@@ -34,14 +34,14 @@ public class AdminMenuDAOImpl extends AbstractBaseDAO<AdminMenu, Long> implement
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<AdminMenu> findAllSubNode (Integer parentId, List<ProvinceCity> cities, Long userId) {
+	public List<AdminMenu> findAllSubNode (Long parentId, List<ProvinceCity> cities, Long userId) {
 		Criteria criteria = createSelection(parentId, cities, userId);
 		return criteria.list();
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<AdminMenu> findAllDefaultSubNode (Integer parentId, ProvinceCity city) {
+	public List<AdminMenu> findAllDefaultSubNode (Long parentId, ProvinceCity city) {
 		Criteria criteria = getSession().createCriteria(AdminMenu.class);
 		criteria.add(Restrictions.eq("enable", 1));
 		criteria.add(Restrictions.eq("parentId", parentId));
@@ -57,7 +57,7 @@ public class AdminMenuDAOImpl extends AbstractBaseDAO<AdminMenu, Long> implement
 		return findByCriteria(crits);
 	}
 	
-	private Criteria createSelection(Integer parentId, List<ProvinceCity> cities, Long userId) {
+	private Criteria createSelection(Long parentId, List<ProvinceCity> cities, Long userId) {
 		Criteria criteria = getSession().createCriteria(AdminMenu.class);
 		criteria.add(Restrictions.eq("enable", 1));
 		criteria.add(Restrictions.eq("parentId", parentId));

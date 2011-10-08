@@ -5,7 +5,7 @@ import java.util.List;
 
 public class AdminMenu extends VoBase {
 	private static final long serialVersionUID = 8717951662408408201L;
-	private Integer id;
+	private Long id;
 	private String name;
 	private String url;
 	private Integer parentId;
@@ -20,10 +20,17 @@ public class AdminMenu extends VoBase {
 	private Timestamp adviceDate;
 	private List<UserInfo> users;
 	private List<AdminMenu> subMenus;
-	public Integer getId() {
+	
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

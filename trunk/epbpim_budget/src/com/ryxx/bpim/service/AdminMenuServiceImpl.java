@@ -52,4 +52,19 @@ public class AdminMenuServiceImpl  extends AbstractService<AdminMenu,AdminMenuDA
 		}
 		return parentNodes;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.ryxx.bpim.service.AdminMenuService#getMenuListById(java.util.List)
+	 */
+	@Override
+	public List<AdminMenu> getMenuListById(List listCheck) {
+		List<AdminMenu> menus = new ArrayList<AdminMenu>();
+		if(listCheck != null && listCheck.size()>0) {
+			for (int j = 0; j < listCheck.size(); j++) {
+				AdminMenu menu = this.getDao().fetchById(Long.valueOf(listCheck.get(j).toString()));
+				menus.add(menu);
+			}
+		}
+		return menus;
+	}
 }
