@@ -23,7 +23,7 @@
 		<action name="findPassword" >
 			<result>/jsp/login/findPassword.jsp</result>
 		</action>
-		<action name="contactUs" >
+		<action name="contactUs">
 			<result>/jsp/login/contactUs.jsp</result>
 		</action>
 		<action name="sendPassword" method="sendPasswordByEmail" class="userInfoMainAction" >
