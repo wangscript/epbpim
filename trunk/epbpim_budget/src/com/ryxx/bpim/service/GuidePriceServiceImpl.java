@@ -13,10 +13,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import antlr.StringUtils;
 
 import com.ryxx.bpim.dao.GuidePriceDAO;
 import com.ryxx.bpim.entity.GuidePrice;
@@ -30,16 +33,10 @@ public class GuidePriceServiceImpl extends
 		GuidePriceService {
 	public String saveGuidePrice(GuidePrice guidePrice, File uploadfile)
 			throws ParseException, SQLException, IOException {
-		List<GuidePrice> guidePriceList = parseGuidePriceFile(uploadfile);
+		List<GuidePrice> guidePriceList = parseGuidePriceFile(uploadfile,
+				guidePrice);
 
 		for (GuidePrice guidePricee : guidePriceList) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-			Date periodicalDate = sdf.parse(guidePrice.getGuidePriceDatePage());
-			guidePricee.setGuidePriceDate(new Timestamp(periodicalDate
-					.getTime()));
-
-			guidePricee.setUploadDate(new Timestamp(new Date().getTime()));
-
 			getDao().saveGuidePrice(guidePricee);
 		}
 
@@ -67,30 +64,57 @@ public class GuidePriceServiceImpl extends
 	/*
 	 * 解析信息价文件
 	 */
-	private List<GuidePrice> parseGuidePriceFile(File uploadfile)
-			throws IOException {
+	private List<GuidePrice> parseGuidePriceFile(File uploadfile,
+			GuidePrice guidePrice) throws IOException, ParseException {
 		List<GuidePrice> resultList = new ArrayList<GuidePrice>();
-		Sheet sheet = getWb(uploadfile, uploadfile.getName());
+		Sheet sheet = getWb(uploadfile, guidePrice.getGuidePriceFileName());
 		Row row = null;
 		String value;
 		int countRow = sheet.getLastRowNum();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+		Timestamp uploadDate = new Timestamp(new Date().getTime());
 		for (int i = 1; i <= countRow; i++) {
-			value = row.getCell(0).getStringCellValue();
+			row = sheet.getRow(i);
+			value = getValue(row.getCell(0));
 			if (null == value && "".equals(value)) {
 				break;
 			}
-			row = sheet.getRow(i);
 			GuidePrice data = new GuidePrice();
-			data.setCode(row.getCell(0).getStringCellValue());
-			data.setName(row.getCell(1).getStringCellValue());
-			data.setUnit(row.getCell(2).getStringCellValue());
+			if (value.endsWith(".0")) {
+				value = value.substring(0, value.length() - 2);
+			}
+			data.setCode(value);
+			data.setName(getValue(row.getCell(1)));
+			data.setUnit(getValue(row.getCell(2)));
 			data.setPrice(row.getCell(3).getNumericCellValue());
-			data.setUnName(row.getCell(4).getStringCellValue());
-			data.setTag(row.getCell(5).getStringCellValue());
+			data.setUnName(getValue(row.getCell(4)));
+			data.setTag(getValue(row.getCell(5)));
+			Date periodicalDate = sdf.parse(guidePrice.getGuidePriceDatePage());
+			data.setGuidePriceDate(new Timestamp(periodicalDate.getTime()));
+			data.setUploadDate(uploadDate);
 			resultList.add(data);
+			data.setGuidePriceProvice(guidePrice.getGuidePriceProvice());
+			data.setGuidePriceType(guidePrice.getGuidePriceType());
 		}
 
 		return resultList;
+	}
+
+	/**
+	 * @param cell
+	 * @return
+	 */
+	private String getValue(Cell cell) {
+		if (isBlank(cell)) {
+			return "";
+		}
+		if (isString(cell)) {
+			return cell.getStringCellValue();
+		}
+		if (isNumber(cell)) {
+			return String.valueOf(cell.getNumericCellValue());
+		}
+		return null;
 	}
 
 	private static final int version2003 = 2003;
@@ -111,5 +135,17 @@ public class GuidePriceServiceImpl extends
 			wb = (Workbook) new XSSFWorkbook(file.getAbsolutePath());
 		}
 		return wb.getSheetAt(0);
+	}
+
+	private Boolean isBlank(Cell cell) {
+		return cell.getCellType() == cell.CELL_TYPE_BLANK;
+	}
+
+	private Boolean isString(Cell cell) {
+		return cell.getCellType() == cell.CELL_TYPE_STRING;
+	}
+
+	private Boolean isNumber(Cell cell) {
+		return cell.getCellType() == cell.CELL_TYPE_NUMERIC;
 	}
 }
