@@ -81,18 +81,6 @@
 			<result>/jsp/admin/importGovernmentFile.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
-		<action name="importGuidePrice" method="importGuidePrice" class="guidePriceAction">
-			<result>/jsp/admin/importGuideData.jsp</result>
-			<interceptor-ref name="manager"/>
-		<action name="preDeleteGuidePrice" method="listGuidePrice" class="guidePriceAction">
-			<result>/jsp/admin/deleteGuideData.jsp</result>
-			<interceptor-ref name="manager"/>
-		</action>
-		<action name="deleteGuidePrice" method="deleteGuidePrice" class="guidePriceAction">
-			<result type="redirect-action">preDeleteGuidePrice.do</result>
-			<interceptor-ref name="manager"/>
-		</action>
-		</action>
 		<action name="importPeriodicalFile" method="importPeriodicalFile" class="periodicalFileAction">
 			<result>/jsp/admin/importPeriodicalFile.jsp</result>
 			<interceptor-ref name="manager"/>
@@ -104,16 +92,19 @@
 		<action name="preAddNews">
 			<result>/jsp/admin/addNews.jsp</result>
 		</action>
-		<action name="preImportGuidePrice">
+		<action name="importGuidePrice"  method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/importGuidePrice.jsp</result>
+		</action>
+		<action name="deleteGuideData">
+			<result>/jsp/admin/deleteGuideData.jsp</result>
 		</action>
 		<action name="preImportGovernmentFile">
 			<result>/jsp/admin/importGovernmentFile.jsp</result>
 		</action>
-		<action name="preImportPeriodicalFile">
+		<action name="preImportPeriodicalFile" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/importPeriodicalFile.jsp</result>
 		</action>
-		<action name="preUploadPricePackageFile">
+		<action name="preUploadPricePackageFile"  method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/uploadPricePackageFile.jsp</result>
 		</action>	
 	</package>
