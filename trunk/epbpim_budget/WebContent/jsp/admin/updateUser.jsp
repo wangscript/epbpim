@@ -39,26 +39,69 @@
 										</s:iterator>
 										id="<s:property value="region.id"/>" /><s:property value="city" />
 								</li></ul>
-								<ul class="fullScreenUlNoHeight" id="<s:property value="region.id"/>">
 								<s:iterator value="modules" status="st">
 									<s:if test="provinceCities[#st1.index].id eq modules[#st.index].region.id">
-											<li class="width200Li"><h4>
-													<input type="checkbox"
+									<s:if test="parentId != 0">
+									<ul class="fullScreenUl">
+											<li class="width200Li"><h5>
+											<s:if test="price != 0">
+												<input type="checkbox"
+															name="listCheck" value="<s:property value="id"/>"
+															<s:iterator value="listCheck" status="st2">
+																<s:if test="id eq listCheck[#st2.index]">
+																	checked
+																</s:if>
+															</s:iterator>
+															id="<s:property value="region.id"/>area_${st.index}app" />
+											</s:if>
+											<s:if test="price == 0">
+													<input type="checkbox" readonly="readonly" checked="checked" 
 														name="listCheck" value="<s:property value="id"/>"
-														<s:iterator value="listCheck" status="st2">
-															<s:if test="id eq listCheck[#st2.index]">
-																checked
-															</s:if>
-														</s:iterator>
-														id="<s:property value="region.id"/>" />
-													<s:property value="title" /><br/>
-													<s:property value="description" />
-												</h4>
+														 />
+											</s:if>
+													<s:property value="name" /></h5></li>
+											<li class="width100Li">
+											<s:if test="price == 0">
+													免费
+											</s:if>
+											<s:if test="price != 0">
+													<s:property value="price" />/年
+											</s:if>
+												
 											</li>
-										
+											<li class="width500Li">
+													<s:property value="description" />
+												
+											</li>
+									</ul>
 									</s:if>
+									</s:if>
+								
+								
+									<!--<s:if test="provinceCities[#st1.index].id eq modules[#st.index].region.id">
+											<s:if test="price == 0">
+													<input type="checkbox" readonly="readonly" checked="checked" 
+														name="listCheck" value="<s:property value="id"/>"
+														 />
+											</s:if>
+											<s:if test="price != 0">
+												<li class="width200Li"><h4>
+														<input type="checkbox"
+															name="listCheck" value="<s:property value="id"/>"
+															<s:iterator value="listCheck" status="st2">
+																<s:if test="id eq listCheck[#st2.index]">
+																	checked
+																</s:if>
+															</s:iterator>
+															id="<s:property value="region.id"/>" />
+														<s:property value="title" /><br/>
+														<s:property value="description" />
+													</h4>
+												</li>
+											</s:if>
+										
+									</s:if>-->
 								</s:iterator>
-								</ul>
 							</s:iterator>
 							<ul class="fullScreenUl">
 							</ul>
