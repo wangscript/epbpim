@@ -83,7 +83,7 @@ public class GuidePriceAction extends ActionSupportBase
     {
         try
         {
-            msg = service.deleteGuidePrice(guidePrice);
+            service.deleteGuidePrice(guidePrice);
         }
         catch (Exception e)
         {
