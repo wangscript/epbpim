@@ -82,7 +82,7 @@
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="importGuidePrice" method="importGuidePrice" class="guidePriceAction">
-			<result>/jsp/admin/importGuideData.jsp</result>
+			<result>/jsp/admin/importGuidePrice.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preDeleteGuidePrice" method="listGuidePrice" class="guidePriceAction">
