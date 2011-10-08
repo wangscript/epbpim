@@ -52,7 +52,17 @@ public class PricePackageFileDAOImpl extends AbstractBaseDAO<PricePackageFile, L
         }
         if (null != pricePackageFile.getPricePackageType() && "" != pricePackageFile.getPricePackageType())
         {
-            Criterion criterion1 = Restrictions.eq("pricePackageType", pricePackageFile.getPricePackageType());
+            String pricePackageType = "";
+            if ("1".equals(pricePackageFile.getPricePackageType()))
+            {
+                pricePackageType = "市政";
+            }
+            else if ("3".equals(pricePackageFile.getPricePackageType()))
+            {
+                pricePackageType = "土建";
+            }
+            
+            Criterion criterion1 = Restrictions.eq("pricePackageType", pricePackageType);
             list.add(criterion1);
         }
         
