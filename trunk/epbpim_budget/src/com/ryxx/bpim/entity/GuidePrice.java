@@ -29,9 +29,9 @@ public class GuidePrice extends VoBase
     
     private String unit;
     
-    private long price;
+    private double price;
     
-    private String un_name;
+    private String unName;
     
     private String tag;
     
@@ -137,26 +137,6 @@ public class GuidePrice extends VoBase
         this.unit = unit;
     }
     
-    public long getPrice()
-    {
-        return price;
-    }
-    
-    public void setPrice(long price)
-    {
-        this.price = price;
-    }
-    
-    public String getUn_name()
-    {
-        return un_name;
-    }
-    
-    public void setUn_name(String un_name)
-    {
-        this.un_name = un_name;
-    }
-    
     public String getTag()
     {
         return tag;
@@ -165,5 +145,25 @@ public class GuidePrice extends VoBase
     public void setTag(String tag)
     {
         this.tag = tag;
+    }
+    
+    public double getPrice()
+    {
+        return price;
+    }
+    
+    public void setPrice(double price)
+    {
+        this.price = price;
+    }
+    
+    public String getUnName()
+    {
+        return unName;
+    }
+    
+    public void setUnName(String unName)
+    {
+        this.unName = unName;
     }
 }
