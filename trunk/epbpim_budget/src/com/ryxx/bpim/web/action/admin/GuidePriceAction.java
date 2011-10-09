@@ -42,9 +42,8 @@ public class GuidePriceAction extends ActionSupportBase
         catch (Exception e)
         {
             LOG.error(e);
-            msg = "出错了，请重试!";
+            msg = "false";
         }
-        request.setAttribute("msg", msg);
         return SUCCESS;
     }
     
@@ -89,7 +88,7 @@ public class GuidePriceAction extends ActionSupportBase
         catch (Exception e)
         {
             LOG.error(e);
-            msg = "出错了，请重试!";
+            msg = "false";
         }
         return SUCCESS;
     }

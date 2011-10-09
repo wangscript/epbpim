@@ -32,7 +32,7 @@ public class GovernmentFileAction extends ActionSupportBase
     {
         if (!"".equals(importGovernmentFileInput) && !importGovernmentFileInput.endsWith("html"))
         {
-            msg = "文件格斯不对";
+            msg = "file type is wrong! ";
             return SUCCESS;
         }
         try
@@ -42,7 +42,7 @@ public class GovernmentFileAction extends ActionSupportBase
         catch (Exception e)
         {
             LOG.error(e);
-            msg = "出错了，请将excel重新保存一次再试";
+            msg = "false";
         }
         return SUCCESS;
     }
