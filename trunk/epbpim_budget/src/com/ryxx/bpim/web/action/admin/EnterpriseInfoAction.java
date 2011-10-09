@@ -40,6 +40,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 	private Long id;
 	private Long eId;
 	private Float balance;
+	private List<BalanceRecord> balanceRecords;
 	
 	private PageTools page;
 	
@@ -60,6 +61,35 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 			enterpriseInfo1.setPageSize(pageSize);
 			enterpriseInfos = enterpriseInfoService.listPage(enterpriseInfo1, page);
 			if (enterpriseInfos != null && enterpriseInfos.size() > 0) {
+				this.page = page;
+			} else {
+				super.addNotFoundErrorMsg();
+				return SUCCESS;
+			}
+		} catch (Exception ex) {
+			LOG.error("UserInfoAction error: ", ex);
+			super.addErrorMsg(ex.getMessage());
+			ex.printStackTrace();
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+	
+	public String listPrice() {
+		try {
+			int pageNo = ParamTools.getIntParameter(request,
+					Constants.PARA_PAGE_NO, 1);
+			int pageSize = ParamTools.getIntParameter(request,
+					Constants.PARA_PAGE_SIZE, 0);
+			PageTools page = new PageTools(pageNo, pageSize);
+			BalanceRecord balance = new BalanceRecord();
+			EnterpriseInfo enterpriseInfo1 = new EnterpriseInfo();
+			enterpriseInfo1.setId(eId);
+			balance.setEnterpriseInfo(enterpriseInfo1);
+			balance.setRowCount(pageNo);
+			balance.setPageSize(pageSize);
+			balanceRecords = balanceRecordService.listPage(balance, page);
+			if (balanceRecords != null && balanceRecords.size() > 0) {
 				this.page = page;
 			} else {
 				super.addNotFoundErrorMsg();
@@ -228,5 +258,13 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 
 	public void setBalanceRecordService(BalanceRecordService balanceRecordService) {
 		this.balanceRecordService = balanceRecordService;
+	}
+
+	public List<BalanceRecord> getBalanceRecords() {
+		return balanceRecords;
+	}
+
+	public void setBalanceRecords(List<BalanceRecord> balanceRecords) {
+		this.balanceRecords = balanceRecords;
 	}
 }

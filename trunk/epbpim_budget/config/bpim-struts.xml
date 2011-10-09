@@ -144,6 +144,9 @@
 		<action name="balanceEnterpriseInfo" method="balance" class="enterpriseInfoAction">
 			<result type="redirect-action">listEnterpriseInfo.do</result>
 		</action>
+		<action name="listPrice" method="listPrice" class="enterpriseInfoAction">
+			<result>/jsp/admin/listPrice.jsp</result>
+		</action>
 	</package>
 	<package name="bpim-searchGovernmentInventory" namespace="/main" extends="bpim-default">
 		<action name="searchGovernmentInventory" method="searchGovernmentInventory" class="searchGovernmentInventoryAction">
