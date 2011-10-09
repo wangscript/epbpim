@@ -35,6 +35,8 @@ public class PricePackageFileAction extends ActionSupportBase
     
     private PageTools page;
     
+    private String msg = "";
+    
     public String searchPricePackageFile()
     {
         try
@@ -75,6 +77,8 @@ public class PricePackageFileAction extends ActionSupportBase
             newUploadFile = dealWithUploadFile();
             
             service.savePricePackageFile(pricePackageFile);
+            
+            msg="true";
         }
         catch (Exception e)
         {
@@ -85,7 +89,7 @@ public class PricePackageFileAction extends ActionSupportBase
                 newUploadFile.delete();
             }
             
-            return ERROR;
+            msg="false";
         }
         return SUCCESS;
     }
@@ -108,11 +112,12 @@ public class PricePackageFileAction extends ActionSupportBase
             }
             
             service.deletePricePackageFile(pricePackageFile);
+            msg="true";
         }
         catch (Exception e)
         {
             LOG.warn(e);
-            return ERROR;
+            msg="false";
         }
         return SUCCESS;
     }
@@ -205,4 +210,14 @@ public class PricePackageFileAction extends ActionSupportBase
     {
         this.service = service;
     }
+    public String getMsg()
+    {
+        return msg;
+    }
+
+    public void setMsg(String msg)
+    {
+        this.msg = msg;
+    }
+
 }
