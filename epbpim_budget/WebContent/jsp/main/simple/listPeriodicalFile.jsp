@@ -119,6 +119,11 @@
 				</li>
 			</ul>
 		</s:iterator>
+		<ul>
+			<jsp:include page="../../common/pagination.jsp" flush="true">
+				<jsp:param name="action_page" value="main/searchPeriodicalFile.do"/>
+			</jsp:include>
+		</ul>
 	</div>
 </s:else>
 <div>
