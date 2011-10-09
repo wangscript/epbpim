@@ -29,8 +29,6 @@
 			<li id="adminPricePackageFileUpload"><a href="preUploadPricePackageFile.do">价格包上传</a></li>
 		 </ul>
 		 <ul class="fullScreenUl">
-		 <li id="adminOperation"><a href="lister.do">充值查询</a></li>
-			<li id="adminOperation"><a href="lister.do">订阅查询</a></li>
 			<li id="adminUserAdvice"><a href="listUserAdvice.do">用户反馈</a></li>
 		 </ul>
       </div>

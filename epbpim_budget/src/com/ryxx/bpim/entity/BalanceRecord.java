@@ -10,6 +10,7 @@ public class BalanceRecord extends VoBase {
 	private Long id;
 	private Float balance;
 	private Timestamp balanceDate;
+	private Timestamp balanceDateTmp;
 	private String identifier;
 	private EnterpriseInfo enterpriseInfo;
 	public Long getId() {
@@ -41,6 +42,12 @@ public class BalanceRecord extends VoBase {
 	}
 	public void setBalanceDate(Timestamp balanceDate) {
 		this.balanceDate = balanceDate;
+	}
+	public Timestamp getBalanceDateTmp() {
+		return balanceDate;
+	}
+	public void setBalanceDateTmp(Timestamp balanceDateTmp) {
+		this.balanceDateTmp = balanceDateTmp;
 	}
 }
 
