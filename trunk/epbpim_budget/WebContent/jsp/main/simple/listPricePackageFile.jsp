@@ -113,9 +113,11 @@
 			</ul>
 		</s:iterator>
 		<ul>
-			<jsp:include page="../../common/pagination.jsp" flush="true">
-				<jsp:param name="action_page" value="main/searchPricePackageFile.do"/>
-			</jsp:include>
+			<s:form>
+				<jsp:include page="../../common/pagination.jsp" flush="true">
+					<jsp:param name="action_page" value="main/searchPricePackageFile.do"/>
+				</jsp:include>
+			</s:form>
 		</ul>
 	</div>
 </s:else>
