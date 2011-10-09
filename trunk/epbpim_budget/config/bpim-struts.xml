@@ -170,6 +170,13 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
+	<package name="bpim-searchGuidePrice" namespace="/main" extends="bpim-default">
+		<action name="searchGuidePrice" method="searchGuidePrice" class="guidePriceAction">
+			<result>/jsp/main/simple/listGuidePrice.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
 	<package name="bpim-searchPeriodicalFile" namespace="/main" extends="bpim-default">
 		<action name="searchPeriodicalFile" method="searchPeriodicalFile" class="periodicalFileAction">
 			<result>/jsp/main/simple/listPeriodicalFile.jsp</result>
