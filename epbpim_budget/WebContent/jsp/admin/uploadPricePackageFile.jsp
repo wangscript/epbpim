@@ -14,8 +14,35 @@
 <script language="javascript" type="text/javascript"
 	src="../js/common.js"></script>
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
+<script type='text/javascript' src='../dwr/engine.js'></script>
+<script type='text/javascript' src='../dwr/util.js'></script>
+<script type='text/javascript' src='../dwr/interface/MessageService.js'></script>
+<script type="text/javascript">
+	function checkError() 
+	{
+		var msg = "<s:property value='msg'/>";
+		if (msg) {
+			if("true"==msg)
+			{
+				alert("导入成功！");
+			}
+			else if("false"==msg)
+			{
+				alert("出错了，请重试！");
+			}
+		}
+	}
+	function chooseFile() 
+	{
+		var uploadFile = $('uploadFile');
+		var filePath = uploadFile.value;
+		var fileName = filePath.substring(filePath.lastIndexOf('\\') + 1,
+				filePath.length);
+		document.getElementById('pricePackageFile.pricePackageName').value = fileName;
+	}
+</script>
 </head>
-<body>
+<body onload="checkError();">
 	<div id="main"><jsp:include page="adminHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
@@ -71,16 +98,4 @@
 	</div>
 
 </body>
-<script type='text/javascript' src='../dwr/engine.js'></script>
-<script type='text/javascript' src='../dwr/util.js'></script>
-<script type='text/javascript' src='../dwr/interface/MessageService.js'></script>
-<script type="text/javascript">
-	function chooseFile() {
-		var uploadFile = $('uploadFile');
-		var filePath = uploadFile.value;
-		var fileName = filePath.substring(filePath.lastIndexOf('\\') + 1,
-				filePath.length);
-		document.getElementById('pricePackageFile.pricePackageName').value = fileName;
-	}
-</script>
 </html>

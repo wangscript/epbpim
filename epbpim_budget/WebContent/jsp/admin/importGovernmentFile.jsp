@@ -8,13 +8,26 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>管理员管理界面</title>
 <script type="text/javascript">
-	function getObject(id) {
+	function getObject(id)
+	{
 		return document.getElementById(id);
 	}
-	function checkError() {
+	function checkError() 
+	{
 		var msg = "<s:property value='msg'/>";
-		if (msg != null && msg != "") {
-			alert(msg);
+		if (msg) {
+			if("true"==msg)
+			{
+				alert("导入成功！");
+			}
+			else if("false"==msg)
+			{
+				alert("出错了，请将excel重新保存一次再试！");
+			}
+			else
+			{
+				alert("文件格斯不对！");
+			}
 		}
 	}
 </script>
@@ -57,45 +70,9 @@
 										<option value="市建交委及相关部门">市建交委及相关部门</option>
 								</select>
 								</li>
-
-								<li class="width300Li" style="display: none" id="proviceLi">省：<select
-									id="provice" name="provice" style="width: 150px;">
-										<option value="北京市">北京市</option>
-										<option value="上海市" selected="selected">上海市</option>
-										<option value="天津市">天津市</option>
-										<option value="重庆市">重庆市</option>
-										<option value="河北省">河北省</option>
-										<option value="山西省">山西省</option>
-										<option value="内蒙古自治区">内蒙古自治区</option>
-										<option value="辽宁省">辽宁省</option>
-										<option value="吉林省">吉林省</option>
-										<option value="黑龙江省">黑龙江省</option>
-										<option value="江苏省">江苏省</option>
-										<option value="浙江省">浙江省</option>
-										<option value="安徽省">安徽省</option>
-										<option value="福建省">福建省</option>
-										<option value="江西省">江西省</option>
-										<option value="山东省">山东省</option>
-										<option value="河南省">河南省</option>
-										<option value="湖北省">湖北省</option>
-										<option value="湖南省">湖南省</option>
-										<option value="广东省">广东省</option>
-										<option value="广西壮族自治区">广西壮族自治区</option>
-										<option value="海南省">海南省</option>
-										<option value="四川省">四川省</option>
-										<option value="贵州省">贵州省</option>
-										<option value="云南省">云南省</option>
-										<option value="西藏自治区">西藏自治区</option>
-										<option value="陕西省">陕西省</option>
-										<option value="甘肃省">甘肃省</option>
-										<option value="宁夏回族自治区">宁夏回族自治区</option>
-										<option value="青海省">青海省</option>
-										<option value="新疆维吾尔族自治区">新疆维吾尔族自治区</option>
-										<option value="香港特别行政区">香港特别行政区</option>
-										<option value="澳门特别行政区">澳门特别行政区</option>
-										<option value="台湾省">台湾省</option>
-										<option value="其它">其它</option>
-								</select>
+								<li class="width300Li" style="display: none" id="proviceLi">
+									<s:select cssClass="width150Select" id="provice" name="provice"
+										list="provinceCities" listKey="id" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
