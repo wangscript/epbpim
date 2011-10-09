@@ -169,13 +169,13 @@ function changeTitleBackground(){
 									<a>充值查询</a>
 							<ul id="997" style="display: none">
 								<li id="<s:property value="id"/>">
-									<a href="listPrice.do?eId=<s:property value="#request.sessionUser.id"/>">充值记录查看</a>
+									<a href="listPrice.do?eId=<s:property value="#request.sessionUser.id"/>">应用价格查询</a>
+								</li>
+								<li id="<s:property value="id"/>">
+									<a href="listRecharge.do?eId=<s:property value="#request.sessionUser.id"/>">充值记录查看</a>
 								</li>
 								<li id="<s:property value="id"/>">
 									<a href="<s:property value="url"/>">消费记录查看</a>
-								</li>
-								<li id="<s:property value="id"/>">
-									<a href="<s:property value="url"/>">余额查看</a>
 								</li>
 							</ul>
 						</li>

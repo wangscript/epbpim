@@ -75,7 +75,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		return SUCCESS;
 	}
 	
-	public String listPrice() {
+	public String listRecharge() {
 		try {
 			int pageNo = ParamTools.getIntParameter(request,
 					Constants.PARA_PAGE_NO, 1);

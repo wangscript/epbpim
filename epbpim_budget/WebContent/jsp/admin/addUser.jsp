@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title><s:text name="AdminRole.AddRole" />
+<title>新增用户及订阅应用
 </title>
 </head>
 <body>
