@@ -160,7 +160,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 	public String balance() {
 		enterpriseInfo = enterpriseInfoService.findById(eId);
 		enterpriseInfo.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-		enterpriseInfo.setBalance(balance);
+		enterpriseInfo.setBalance(balance+enterpriseInfo.getBalance());
 		enterpriseInfoService.save(enterpriseInfo);
 		BalanceRecord balanceRecord = new BalanceRecord();
 		balanceRecord.setBalance(balance);
