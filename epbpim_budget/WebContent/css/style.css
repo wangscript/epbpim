@@ -152,6 +152,12 @@ select {
 	
 }
 
+.header .nav_menu{
+	float: right;
+	width: auto;
+	height: 0px;
+}
+
 .header .nav_menu ul {
 	padding: 0 16px;
 	float: right;

@@ -15,20 +15,20 @@ public class AdminMenuDAOImpl extends AbstractBaseDAO<AdminMenu, Long> implement
 	
 	@Override
 	public List<AdminMenu> findAllParentNode(List<ProvinceCity> cities) {
-		Integer[] cityList = new Integer[cities.size()];
+		Long[] cityList = new Long[cities.size()];
 		if(cities != null && cities.size()>0) {
 			for(int i=0;i<cities.size();i++) {
 				cityList[i] = cities.get(i).getId();
 			}
 		}
-		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.eq("parentId", 0), Restrictions.in("region.id", cityList)};
+		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.eq("parentId", Long.valueOf(0)), Restrictions.in("region.id", cityList)};
 		return findByCriteria(crits);
 	}
 	
 	@Override
 	public List<AdminMenu> findAllDefaultParentNode(ProvinceCity city) {
-		Integer[] cityList = {};
-		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.eq("parentId", 0), Restrictions.in("region.id", new Object[]{city.getId()}), Restrictions.eq("mDefault", 1)};
+		Long[] cityList = {};
+		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.eq("parentId", Long.valueOf(0)), Restrictions.in("region.id", new Object[]{city.getId()}), Restrictions.eq("mDefault", 1)};
 		return findByCriteria(crits);
 	}
 	
@@ -52,8 +52,8 @@ public class AdminMenuDAOImpl extends AbstractBaseDAO<AdminMenu, Long> implement
 	}
 	
 	@Override
-	public List<AdminMenu> findAllUseModuleByRegion(Integer regionId) {
-		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.gt("region.id", 0)};
+	public List<AdminMenu> findAllUseModuleByRegion(Long regionId) {
+		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.gt("region.id", Long.valueOf(0))};
 		return findByCriteria(crits);
 	}
 	
@@ -61,7 +61,7 @@ public class AdminMenuDAOImpl extends AbstractBaseDAO<AdminMenu, Long> implement
 		Criteria criteria = getSession().createCriteria(AdminMenu.class);
 		criteria.add(Restrictions.eq("enable", 1));
 		criteria.add(Restrictions.eq("parentId", parentId));
-		Integer[] cityList = new Integer[cities.size()];
+		Long[] cityList = new Long[cities.size()];
 		if(cities != null && cities.size()>0) {
 			for(int i=0;i<cities.size();i++) {
 				cityList[i] = cities.get(i).getId();

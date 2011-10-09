@@ -14,11 +14,11 @@
 	</class>
 	
 	<class name="ProvinceCity" table="PROVINCE_CITY">
-		<id name="id" column="PROVINCE_ID" type="java.lang.Integer">
+		<id name="id" column="PROVINCE_ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
 		<property name="city" column="CITY" type="java.lang.String"></property>
-		<property name="parentId" column="PARENT_ID" type="java.lang.Integer"></property>
+		<property name="parentId" column="PARENT_ID" type="java.lang.Long"></property>
 		<property name="sort" column="SORT" type="java.lang.Integer"></property>
 		<property name="enable" column="ENABLE" type="java.lang.Integer"></property>
 		<bag name="users" table="USER_PROVINCE_RESTRACTION" fetch="select" cascade="save-update" lazy="true" inverse="true">
@@ -107,7 +107,7 @@
 		</id>
 		<property name="name" column="MENU_NAME" type="java.lang.String"></property>
 		<property name="url" column="MENU_URL" type="java.lang.String"></property>
-		<property name="parentId" column="PARENT_MENU_ID" type="java.lang.Integer"></property>
+		<property name="parentId" column="PARENT_MENU_ID" type="java.lang.Long"></property>
 		<property name="enable" column="MENU_ENABLE" type="java.lang.Integer"></property>
 		<property name="mDefault" column="MENU_DEFAULT" type="java.lang.Integer"></property>
 		<property name="index" column="MENU_INDEX" type="java.lang.Integer"></property>

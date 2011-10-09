@@ -8,7 +8,7 @@ public class AdminMenu extends VoBase {
 	private Long id;
 	private String name;
 	private String url;
-	private Integer parentId;
+	private Long parentId;
 	private Integer enable;
 	private ProvinceCity region;
 	private Integer mDefault;
@@ -45,10 +45,17 @@ public class AdminMenu extends VoBase {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public Integer getParentId() {
+	
+	/**
+	 * @return the parentId
+	 */
+	public Long getParentId() {
 		return parentId;
 	}
-	public void setParentId(Integer parentId) {
+	/**
+	 * @param parentId the parentId to set
+	 */
+	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
 	public Integer getEnable() {
