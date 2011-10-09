@@ -45,7 +45,7 @@ public class PeriodicalFileAction extends ActionSupportBase
         catch (Exception e)
         {
             LOG.error(e);
-            msg = "出错了，请重试!";
+            msg = "false";
         }
         return SUCCESS;
     }
