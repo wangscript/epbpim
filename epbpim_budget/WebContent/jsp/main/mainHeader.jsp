@@ -77,10 +77,41 @@ function changeTitleBackground(){
 			obj.appendChild(newObj);
 		}
 	}
+	
+	function checkClose(evt)
+	{
+		var isIE = document.all ? true : false;
+		evt = evt ? evt : (window.event ? window.event : null);
+		if(isIE)
+		{
+			var n = evt.screenX-window.screenLeft;
+			var b = n > document.documentElement.scrollWidth - 20;
+			if(b && evt.clientY || evt.altKey)
+			{
+				// 关闭操作
+				document.getElementById('logoutLink').click();
+			}
+			else
+			{
+				// 刷新操作
+			}
+		}
+		else
+		{
+			if(document.documentElement.scrollWidth == 0)
+			{
+				// 关闭操作
+				document.getElementById('logoutLink').click();
+			}
+			else
+			{
+				// 刷新操作
+			}
+		}
+	}
+	
 </script>
-	 
-<!-- <body onunload="javacript: document.getElementById('logoutLink').click();" > -->	
-<body>
+<body onunload="checkClose(event);">
 	<div class="header">
 		<div class="header_resize">
 			<div class="nav_menu">
