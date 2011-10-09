@@ -13,9 +13,7 @@
 <link rel="stylesheet" href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
-<script type='text/javascript' src='../dwr/engine.js'></script>
-<script type='text/javascript' src='../dwr/util.js'></script>
-<script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
+<script type='text/javascript' src='../js/common.js'></script>
 <script type="text/javascript">
 	function setSearchValue() {
 		var code = "<s:property value="guidePrice.code"/>".substring(0,2);
@@ -41,13 +39,15 @@
 </script>
 </head>
 <body onload="setSearchValue()">
+
 <div id="main"><jsp:include page="../mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
 <h3 class="title">电子杂志查询：</h3>
+<s:form id="searchGuidePriceForm" action="searchGuidePrice.do" method="post">
 <div id="searchCondition">
-	<s:form id="searchGuidePriceForm" action="searchGuidePrice.do" method="post">
+	
 		<input type="hidden" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType" value="1"/>
 		<ul class="fullScreenUl">
 			<li class="width300Li"><label class="lb">分类：</label>
@@ -67,7 +67,7 @@
 				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
 			</li>
 		</ul>
-	</s:form>
+	
 </div>
 
 <s:if test="datas==null || datas.size()==0">
@@ -110,6 +110,7 @@
 		</ul>
 	</div>
 </s:else>
+</s:form>
 <div>
 </div>
 </div>
