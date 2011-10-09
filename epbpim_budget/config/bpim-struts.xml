@@ -81,36 +81,36 @@
 			<interceptor-ref name="manager"/>
 		</action>		
 		<action name="importGovernmentFile" method="importGovernmentFile" class="governmentFileAction">
-			<result>/jsp/admin/importGovernmentFile.jsp</result>
+			<result type="redirect">preImportGovernmentFile.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="importGuidePrice" method="importGuidePrice" class="guidePriceAction">
-			<result type="redirect-action">preImportGuidePrice.do</result>
+			<result type="redirect">preImportGuidePrice.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="deleteGuidePrice" method="deleteGuidePrice" class="guidePriceAction">
-			<result type="redirect-action">preDeleteGuidePrice.do</result>
+			<result type="redirect">preDeleteGuidePrice.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="importPeriodicalFile" method="importPeriodicalFile" class="periodicalFileAction">
-			<result>/jsp/admin/importPeriodicalFile.jsp</result>
+			<result type="redirect">preImportPeriodicalFile.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="uploadPricePackageFile" method="addPricePackageFile" class="pricePackageFileAction">
-			<result>/jsp/admin/uploadPricePackageFile.jsp</result>
+			<result type="redirect">preUploadPricePackageFile.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preAddNews">
 			<result>/jsp/admin/addNews.jsp</result>
 		</action>
-		<action name="preImportGovernmentFile">
+		<action name="preImportGovernmentFile" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/importGovernmentFile.jsp</result>
 		</action>
 		<action name="preImportGuidePrice" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/importGuidePrice.jsp</result>
 		</action>
 		<action name="preDeleteGuidePrice" method="listProvince" class="listProvinceAction">
-			<result>/jsp/admin/deleteGuideData.jsp</result>
+			<result>/jsp/admin/delGuidePrice.jsp</result>
 		</action>
 		<action name="preImportPeriodicalFile" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/importPeriodicalFile.jsp</result>
