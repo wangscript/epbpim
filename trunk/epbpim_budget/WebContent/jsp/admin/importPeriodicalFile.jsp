@@ -11,13 +11,22 @@
 	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
 <script type="text/javascript">
-	function checkError() {
+	function checkError() 
+	{
 		var msg = "<s:property value='msg'/>";
 		if (msg) {
-			alert(msg);
+			if("true"==msg)
+			{
+				alert("导入成功！");
+			}
+			else if("false"==msg)
+			{
+				alert("出错了，请重试！");
+			}
 		}
 	}
-	function chooseFile() {
+	function chooseFile()
+	{
 		var uploadFile = $('uploadFile');
 		var filePath = uploadFile.value;
 		var fileName = filePath.substring(filePath.lastIndexOf('\\') + 1,
