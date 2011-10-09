@@ -12,7 +12,7 @@
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
-<h2 class="title">联系我们</h2>
+<h4>联系我们</h4>
 <div id="registerTable">
 <dl class="contact">
 	<dt>联系方式</dt>
@@ -34,8 +34,6 @@
 </dl>
 </div>
 </div>
-
-<jsp:include page="../login/advertisement.jsp" /> <!-- end #content -->
 
 
 <div class="clr"></div>

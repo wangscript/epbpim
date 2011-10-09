@@ -77,7 +77,7 @@ public class UserInfoServiceImpl extends
 					List<ProvinceCity> provinces = new ArrayList<ProvinceCity>();
 					for(int k=0;k<regionCheck.size();k++) {
 						ProvinceCity province = new ProvinceCity();
-						province.setId(Integer.parseInt(regionCheck.get(k).toString()));
+						province.setId(Long.valueOf(regionCheck.get(k).toString()));
 						provinces.add(province);
 					}
 					userInfo.setProvinceCities(provinces);

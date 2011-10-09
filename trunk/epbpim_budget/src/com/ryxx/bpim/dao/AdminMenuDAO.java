@@ -7,7 +7,7 @@ import com.ryxx.bpim.entity.ProvinceCity;
 
 public interface AdminMenuDAO extends BaseDAO<AdminMenu, Long> {
 	public List<AdminMenu> findAllParentNode(List<ProvinceCity> cities);
-	public List<AdminMenu> findAllUseModuleByRegion(Integer regionId);
+	public List<AdminMenu> findAllUseModuleByRegion(Long regionId);
 	public List<AdminMenu> findAllDefaultParentNode(ProvinceCity city);
 	public List<AdminMenu> findAllDefaultSubNode (Long parentId, ProvinceCity city);
 	public List<AdminMenu> findAllSubNode(Long parentId, List<ProvinceCity> cities, Long userId);

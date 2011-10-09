@@ -6,16 +6,23 @@ public class ProvinceCity extends VoBase {
 	
 	private static final long serialVersionUID = -3699089574630795142L;
 	
-	private Integer id;
+	private Long id;
 	private String city;
-	private Integer parentId;
+	private Long parentId;
 	private Integer sort;
 	private Integer enable;
 	private List<UserInfo> users;
-	public Integer getId() {
+	
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getCity() {
@@ -24,10 +31,17 @@ public class ProvinceCity extends VoBase {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public Integer getParentId() {
+	
+	/**
+	 * @return the parentId
+	 */
+	public Long getParentId() {
 		return parentId;
 	}
-	public void setParentId(Integer parentId) {
+	/**
+	 * @param parentId the parentId to set
+	 */
+	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
 	public Integer getSort() {

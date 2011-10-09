@@ -16,7 +16,7 @@
 			<div class="content_resize">
 				<div class="mainbar">
 					<h4 class="title">请补全用户信息</h4>
-					<form action="updateUserInfo.do" name="modifyUserInfoForm"
+					<form action="fillUserInfo.do" name="modifyUserInfoForm"
 						method="post" id="modifyUserInfoForm"
 						onsubmit="return checkForm(this);">
 						<ul class="fullScreenUl">
