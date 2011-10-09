@@ -38,7 +38,8 @@ public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, G
         setAttr(data, fileName);
         data.setSourceCode(compileCode(readHtml(file.getAbsolutePath())));
         getDao().saveGovernmentFile(data);
-        return "导入成功";
+        
+        return "true";
     }
     
     public String getGovernmentFile(Long id)

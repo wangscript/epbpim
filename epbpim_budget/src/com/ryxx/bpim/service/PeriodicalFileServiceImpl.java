@@ -37,7 +37,7 @@ public class PeriodicalFileServiceImpl extends AbstractService<PeriodicalFile, P
         System.out.println(readHtml(uploadfile.getAbsolutePath()));
         getDao().savePeriodicalFile(periodicalFile);
         
-        return "导入成功";
+        return "true";
     }
     
     public String getPeriodicalFile(PeriodicalFile periodicalFile)

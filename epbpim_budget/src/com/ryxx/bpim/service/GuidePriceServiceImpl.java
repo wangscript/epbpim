@@ -41,7 +41,7 @@ public class GuidePriceServiceImpl extends
 			getDao().saveGuidePrice(guidePricee);
 		}
 
-		return "导入成功";
+		return "true";
 	}
 
     public String deleteGuidePrice(GuidePrice guidePrice) throws ParseException,
@@ -53,7 +53,7 @@ public class GuidePriceServiceImpl extends
         {
 	        getDao().deleteGuidePrice(guidePricee);
         }
-	    return "删除成功";
+	    return "true";
 	}
 
 	public List<GuidePrice> listGuidePrice(GuidePrice condition, PageTools page)
