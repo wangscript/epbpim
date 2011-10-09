@@ -126,7 +126,7 @@ select {
 }
 .content_resize,.fbg_resize,.footer_resize {
 	margin: 0 auto;
-	padding: 0 40px;
+	padding: 0;
 	width: 890px;
 }
 
