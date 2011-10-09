@@ -91,10 +91,17 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
         List<Criterion> list = new ArrayList<Criterion>();
         if (guidePrice != null)
         {
-            if (!StringUtils.isEmpty(guidePrice.getGuidePriceProvice()))
+            
+            if (!StringUtils.isEmpty(guidePrice.getName()))
             {
-                Criterion criterion1 = Restrictions.eq("guidePriceProvice", guidePrice.getGuidePriceProvice());
+                Criterion criterion1 = Restrictions.like("name", "%" + guidePrice.getName() + "%");
                 list.add(criterion1);
+            }
+            
+            if (!StringUtils.isEmpty(guidePrice.getCode()))
+            {
+                Criterion criterion2 = Restrictions.like("code", guidePrice.getCode() + "%");
+                list.add(criterion2);
             }
             
             if (!StringUtils.isEmpty(guidePrice.getGuidePriceType()))
@@ -109,8 +116,14 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
                     guidePriceType = "园林";
                 }
                 
-                Criterion criterion2 = Restrictions.eq("guidePriceType", guidePriceType);
-                list.add(criterion2);
+                Criterion criterion3 = Restrictions.eq("guidePriceType", guidePriceType);
+                list.add(criterion3);
+            }
+            
+            if (!StringUtils.isEmpty(guidePrice.getGuidePriceProvice()))
+            {
+                Criterion criterion4 = Restrictions.eq("guidePriceProvice", guidePrice.getGuidePriceProvice());
+                list.add(criterion4);
             }
             
             if (!StringUtils.isEmpty(guidePrice.getGuidePriceDatePage()))
@@ -119,8 +132,8 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
                 {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
                     Date periodicalDate = sdf.parse(guidePrice.getGuidePriceDatePage());
-                    Criterion criterion1 = Restrictions.eq("guidePriceDate", new Timestamp(periodicalDate.getTime()));
-                    list.add(criterion1);
+                    Criterion criterion5 = Restrictions.eq("guidePriceDate", new Timestamp(periodicalDate.getTime()));
+                    list.add(criterion5);
                 }
                 catch (ParseException e)
                 {
