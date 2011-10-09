@@ -198,6 +198,9 @@
 		<action name="get" method="get" class="userInfoMainAction">
 			<result>/jsp/main/user/updateUserInfo.jsp</result>
 		</action>
+		<action name="listPrice" method="listPrice" class="enterpriseInfoAction">
+			<result>/jsp/main/user/listPrice.jsp</result>
+		</action>
 		<action name="main" method="listNewsAnnounces" class="newAnnounceAction">
 			<result>/jsp/main/main.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
