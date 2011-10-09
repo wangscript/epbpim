@@ -25,42 +25,23 @@ function clearPage(updateId){
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h4 class="title">企业信息显示</h4>
+					<h4 class="title">企业充值信息</h4>
 					<div class="searchResult" id="searchResult">
 						<ul class="fullScreenResultUl">
-							<li class="width200Li">公司</li>
-							<li class="width100Li">联系姓名</li>
-							<li class="width100Li">联系手机</li>
-							<li class="width150Li">邮箱地址</li>
-							<li class="width100Li">业务主要地区</li>
-							<li class="width50Li">余额</li>
-							<li style="width:70px;">充值查询</li>
-							<li style="width:70px;">用户信息</li>
-							<li class="width50Li">操作</li>
+							<li class="width200Li">充值金额</li>
+							<li class="width200Li">充值日期</li>
 						</ul>
-						<s:iterator value="enterpriseInfos" status="st">
+						<s:iterator value="balanceRecords" status="st">
 							<ul class="fullScreenResultUl">
-								<li class="width200Li"><s:hidden name="id"/><s:property value="name" /></li>
-								<li class="width100Li"><s:property value="principal" /></li>
-								<li class="width100Li"><s:property value="phone" /></li>
-								<li class="width150Li"><s:property value="email" /></li>
-								<li class="width100Li"><s:property value="provinceCity.city" /></li>
-								<li class="width50Li"><s:text name="{0,number,0.00}"><s:param value="balance"/></s:text></li>
-								<li style="width:70px;">
-									<a href="listRecharge.do?eId=<s:property value="id"/>">进入</a>
-								</li>
-								<li style="width:70px;">
-									<a href="listUser.do?eId=<s:property value="id"/>">进入</a>
-								</li>
-								<li class="width50Li">
-									<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>">删除</a>
-								</li>
+								<li class="width200Li"><s:property value="balance" /></li>
+								<li class="width200Li"><s:date name="balanceDateTmp" format="yyyy-MM-dd" /><s:hidden name="balanceDate" /></li>
 							</ul>
 						</s:iterator>
 						<ul class="fullScreenResultUl">
 							<s:form>
+							<s:hidden name="eId" />
 							<jsp:include page="../common/pagination.jsp" flush="true">
-								<jsp:param name="action_page" value="admin/listEnterpriseInfo.do" />
+								<jsp:param name="action_page" value="admin/listRecharge.do" />
 							</jsp:include>
 							</s:form>
 						</ul>

@@ -21,14 +21,18 @@ function clearPage(updateId){
 </script>
 </head>
 <body>
-	<div id="main"><jsp:include page="adminHeader.jsp" />
+	<div id="main"><jsp:include page="../mainHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
 					<h4 class="title">企业充值信息</h4>
 					<div class="searchResult" id="searchResult">
+						<ul>
+							<li class="width100Li">您的余额为<s:property value="balanceRecords.get(0).enterpriseInfo.balance" /></li>
+							<li class="width200Li"></li>
+						</ul>
 						<ul class="fullScreenResultUl">
-							<li class="width200Li">充值金额</li>
+							<li class="width200Li">充值金额<s:property value="balanceRecords.get(0).enterpriseInfo.balance" /></li>
 							<li class="width200Li">充值日期</li>
 						</ul>
 						<s:iterator value="balanceRecords" status="st">
@@ -40,8 +44,8 @@ function clearPage(updateId){
 						<ul class="fullScreenResultUl">
 							<s:form>
 							<s:hidden name="eId" />
-							<jsp:include page="../common/pagination.jsp" flush="true">
-								<jsp:param name="action_page" value="admin/listPrice.do" />
+							<jsp:include page="../../common/pagination.jsp" flush="true">
+								<jsp:param name="action_page" value="main/listRecharge.do" />
 							</jsp:include>
 							</s:form>
 						</ul>
@@ -53,7 +57,7 @@ function clearPage(updateId){
 			</div>
 		</div>
 		<!-- end #page -->
-		<jsp:include page="../common/footer.jsp" /></div>
+		<jsp:include page="../../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
 	function displayResult(){

@@ -144,8 +144,8 @@
 		<action name="balanceEnterpriseInfo" method="balance" class="enterpriseInfoAction">
 			<result type="redirect-action">listEnterpriseInfo.do</result>
 		</action>
-		<action name="listPrice" method="listPrice" class="enterpriseInfoAction">
-			<result>/jsp/admin/listPrice.jsp</result>
+		<action name="listRecharge" method="listRecharge" class="enterpriseInfoAction">
+			<result>/jsp/admin/listRecharge.jsp</result>
 		</action>
 	</package>
 	<package name="bpim-searchGovernmentInventory" namespace="/main" extends="bpim-default">
@@ -198,8 +198,11 @@
 		<action name="get" method="get" class="userInfoMainAction">
 			<result>/jsp/main/user/updateUserInfo.jsp</result>
 		</action>
-		<action name="listPrice" method="listPrice" class="enterpriseInfoAction">
+		<action name="listPrice" method="newUser" class="userInfoAction">
 			<result>/jsp/main/user/listPrice.jsp</result>
+		</action>
+		<action name="listRecharge" method="listRecharge" class="enterpriseInfoAction">
+			<result>/jsp/main/user/listRecharge.jsp</result>
 		</action>
 		<action name="main" method="listNewsAnnounces" class="newAnnounceAction">
 			<result>/jsp/main/main.jsp</result>
