@@ -49,7 +49,7 @@ h3 {
 		transparent;
 	height: 40px;
 	float: left;
-	width: 120px;
+	width: 130px;
 	margin-left: 1px;
 }
 
@@ -60,7 +60,7 @@ h3 {
 }
 
 .header .category li ul li {
-	width: 110px;
+	width: 130px;
 	float: left;
 	background: url("../images/menu.gif") repeat-x scroll center top
 		transparent;
