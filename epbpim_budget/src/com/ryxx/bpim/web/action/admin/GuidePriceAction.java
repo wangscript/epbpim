@@ -47,7 +47,7 @@ public class GuidePriceAction extends ActionSupportBase
         return SUCCESS;
     }
     
-    public String searchPeriodicalFile()
+    public String searchGuidePrice()
     {
         try
         {
