@@ -5,6 +5,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.ryxx.bpim.common.Constants"%>
 <%@ page import="com.ryxx.bpim.entity.AdminMenu" %>
+<%@ page import="com.ryxx.bpim.enums.RoleEnum" %>
+<%@ page import="com.ryxx.bpim.entity.UserInfo" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +16,7 @@
 <link href="../css/main.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
-
+<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <script type="text/javascript">
 function changeTitleBackground(){
@@ -154,6 +156,30 @@ function changeTitleBackground(){
 									</ul></li>
 							</s:if>
 						</s:iterator>
+						<%
+						UserInfo sessionUser = (UserInfo)session.getAttribute(Constants.USER);
+						request.setAttribute("sessionUser", sessionUser);
+					%><s:property value="#request.sessionUser.roleType.id"/>
+						<s:if test="#request.sessionUser !=null && #request.sessionUser.roleType.key==2">
+							
+							<li onmouseenter="displayCategory('997')"
+									onmouseleave="unDisplayCategory('997')"
+									onmouseover="displayCategory('997')"
+									onmouseout="unDisplayCategory('997')">
+									<a>充值查询</a>
+							<ul id="997" style="display: none">
+								<li id="<s:property value="id"/>">
+									<a href="listPrice.do?eId=<s:property value="#request.sessionUser.id"/>">充值记录查看</a>
+								</li>
+								<li id="<s:property value="id"/>">
+									<a href="<s:property value="url"/>">消费记录查看</a>
+								</li>
+								<li id="<s:property value="id"/>">
+									<a href="<s:property value="url"/>">余额查看</a>
+								</li>
+							</ul>
+						</li>
+						</s:if>
 					</s:if>
 					<li class="otherCategory"></li>
 				</ul>

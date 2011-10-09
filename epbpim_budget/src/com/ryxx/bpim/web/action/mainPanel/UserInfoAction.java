@@ -78,6 +78,7 @@ public class UserInfoAction extends ActionSupportBase
             session.put(Constants.LOGIN_USER_NAME, identifier);
             session.put(Constants.LOGIN_USER_ID, userInfo.getId());
             session.put(Constants.USER_LOGIN_TIME, new Date().getTime());
+            session.put(Constants.USER, userInfo);
             
             saveUserSession(session);
             CacheMap.getInstance().clearCache();
