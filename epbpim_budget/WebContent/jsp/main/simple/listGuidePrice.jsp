@@ -34,7 +34,13 @@
 		if(name != "")
 		{
 			document.getElementById("guidePrice.name").value=name;
-		}		
+		}
+		
+		var  guidePriceDate='<s:property value="guidePrice.guidePriceDatePage"/>';
+		if(guidePriceDate != "")
+		{
+			document.getElementById("guidePrice.guidePriceDatePage").value=guidePriceDate;
+		}	
 	}
 </script>
 </head>
@@ -62,6 +68,9 @@
 			</li>
 			<li class="width300Li">名称：
 				<input type="text" id="guidePrice.name" name="guidePrice.name" />
+			</li>
+			<li class="width200Li"><label class="lb">时间：</label>
+				<input class="Wdate width100Input" id="guidePrice.guidePriceDatePage" name="guidePrice.guidePriceDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
 			</li>
 			<li>
 				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
