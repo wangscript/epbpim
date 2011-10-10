@@ -80,40 +80,16 @@ function changeTitleBackground(){
 		}
 	}
 	
-	function checkClose(evt)
+	window.onbeforeunload = function()
 	{
-		var isIE = document.all ? true : false;
-		evt = evt ? evt : (window.event ? window.event : null);
-		if(isIE)
-		{
-			var n = evt.screenX-window.screenLeft;
-			var b = n > document.documentElement.scrollWidth - 20;
-			if(b && evt.clientY || evt.altKey)
-			{
-				// 关闭操作
-				document.getElementById('logoutLink').click();
-			}
-			else
-			{
-				// 刷新操作
-			}
-		}
-		else
-		{
-			if(document.documentElement.scrollWidth == 0)
-			{
-				// 关闭操作
-				document.getElementById('logoutLink').click();
-			}
-			else
-			{
-				// 刷新操作
-			}
-		}
+		if( event.clientX>document.body.clientWidth && event.clientY<0 || event.altKey )   
+	    {   
+	    	// 关闭操作
+	    	document.getElementById('logoutLink').click(); 
+	    }	    
 	}
-	
 </script>
-<body onunload="checkClose(event);">
+<body>
 	<div class="header">
 		<div class="header_resize">
 			<div class="nav_menu">
