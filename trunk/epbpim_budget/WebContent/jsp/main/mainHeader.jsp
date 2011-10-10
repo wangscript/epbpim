@@ -86,7 +86,7 @@ function changeTitleBackground(){
 	    {   
 	    	// 关闭操作
 	    	document.getElementById('logoutLink').click(); 
-	    }	    
+	    }    
 	}
 </script>
 <body>
