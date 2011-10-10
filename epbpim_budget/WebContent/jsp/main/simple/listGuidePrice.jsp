@@ -66,7 +66,7 @@
 					<option value="ZTF">运输费</option>
 				</select>							  
 			</li>
-			<li class="width300Li">名称：
+			<li class="width300Li"><label class="lb">名称：</label>
 				<input type="text" id="guidePrice.name" name="guidePrice.name" />
 			</li>
 			<li class="width200Li"><label class="lb">时间：</label>
