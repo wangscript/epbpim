@@ -17,8 +17,6 @@ public class PricePackageFile extends VoBase
     
     private String pricePackagePath;
     
-    private String pricePackageProvice;
-    
     private String pricePackageType;
     
     private Timestamp pricePackageDate;
@@ -27,7 +25,25 @@ public class PricePackageFile extends VoBase
     
     private String pricePackageDatePage;
     
-    public String getPricePackageDatePage()
+    private ProvinceCity provinceCity;
+    
+    
+    
+    /**
+	 * @return the provinceCity
+	 */
+	public ProvinceCity getProvinceCity() {
+		return provinceCity;
+	}
+
+	/**
+	 * @param provinceCity the provinceCity to set
+	 */
+	public void setProvinceCity(ProvinceCity provinceCity) {
+		this.provinceCity = provinceCity;
+	}
+
+	public String getPricePackageDatePage()
     {
         return pricePackageDatePage;
     }
@@ -65,16 +81,6 @@ public class PricePackageFile extends VoBase
     public void setPricePackagePath(String pricePackagePath)
     {
         this.pricePackagePath = pricePackagePath;
-    }
-    
-    public String getPricePackageProvice()
-    {
-        return pricePackageProvice;
-    }
-    
-    public void setPricePackageProvice(String pricePackageProvice)
-    {
-        this.pricePackageProvice = pricePackageProvice;
     }
     
     public String getPricePackageType()

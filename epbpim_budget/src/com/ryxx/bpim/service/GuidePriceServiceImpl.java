@@ -18,12 +18,10 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 import com.ryxx.bpim.dao.GuidePriceDAO;
 import com.ryxx.bpim.entity.GuidePrice;
-import com.ryxx.bpim.entity.UserInfo;
+import com.ryxx.bpim.entity.ProvinceCity;
 import com.ryxx.util.page.PageTools;
 
 /**
@@ -101,7 +99,7 @@ public class GuidePriceServiceImpl extends
 			data.setGuidePriceDate(new Timestamp(periodicalDate.getTime()));
 			data.setUploadDate(uploadDate);
 			resultList.add(data);
-			data.setGuidePriceProvice(guidePrice.getGuidePriceProvice());
+			data.setProvinceCity(guidePrice.getProvinceCity());
 			data.setGuidePriceType(guidePrice.getGuidePriceType());
 		}
 

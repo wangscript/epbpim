@@ -174,27 +174,26 @@
 		</id>
 		<property name="pricePackageName" column="PRICEPACKAGE_NAME" type="java.lang.String"></property>
 		<property name="pricePackagePath" column="PRICEPACKAGE_PATH" type="java.lang.String"></property>
-		<property name="pricePackageProvice" column="PRICEPACKAGE_PROVICE" type="java.lang.String"></property>
 		<property name="pricePackageType" column="PRICEPACKAGE_TYPE" type="java.lang.String"></property>
 		<property name="pricePackageDate" column="PRICEPACKAGE_DATE" type="java.sql.Timestamp"></property>
 		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
+		<many-to-one name="provinceCity" class="ProvinceCity" column="PRICEPACKAGE_PROVICE"></many-to-one>
 	</class>
 	<class name="PeriodicalFile" table="PERIODICAL_FILE">
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
 		<property name="periodicalName" column="PERIODICAL_NAME" type="java.lang.String"></property>
-		<property name="periodicalProvice" column="PERIODICAL_PROVICE" type="java.lang.String"></property>
 		<property name="periodicalType" column="PERIODICAL_TYPE" type="java.lang.String"></property>
 		<property name="periodicalUrl" column="PERIODICAL_URL" type="java.lang.String"></property>
 		<property name="periodicalDate" column="PERIODICAL_DATE" type="java.sql.Timestamp"></property>
 		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
+		<many-to-one name="provinceCity" class="ProvinceCity" column="PERIODICAL_PROVICE"></many-to-one>
 	</class>
 	<class name="GuidePrice" table="GUIDE_PRICE">
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
-		<property name="guidePriceProvice" column="GUIDEPRICE_PROVICE" type="java.lang.String"></property>
 		<property name="guidePriceType" column="GUIDEPRICE_TYPE" type="java.lang.String"></property>
 		<property name="guidePriceDate" column="GUIDEPRICE_DATE" type="java.sql.Timestamp"></property>
 		<property name="code" column="CODE" type="java.lang.String"></property>
@@ -204,5 +203,6 @@
 		<property name="unName" column="UN_NAME" type="java.lang.String"></property>
 		<property name="tag" column="TAG" type="java.lang.String"></property>
 		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
+		<many-to-one name="provinceCity" class="ProvinceCity" column="GUIDEPRICE_PROVICE"></many-to-one>
 	</class>
 </hibernate-mapping>

@@ -51,7 +51,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li">省份：</li>
 								<li class="width200Li">
-									<s:select cssClass="width150Select" id="periodicalFile.periodicalProvice" name="periodicalFile.periodicalProvice"
+									<s:select cssClass="width150Select" id="periodicalFile.provinceCity.id" name="periodicalFile.provinceCity.id"
 										list="provinceCities" listKey="id" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
 							</ul>

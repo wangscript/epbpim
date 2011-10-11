@@ -51,7 +51,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li">省份：</li>
 								<li class="width200Li">
-									<s:select cssClass="width150Select" id="guidePrice.guidePriceProvice" name="guidePrice.guidePriceProvice"
+									<s:select cssClass="width150Select" id="guidePrice.provinceCity.id" name="guidePrice.provinceCity.id"
 										list="provinceCities" listKey="id" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
 							</ul>

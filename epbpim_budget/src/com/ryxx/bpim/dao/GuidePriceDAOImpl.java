@@ -42,9 +42,9 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
     {
         Criteria criteria = getSession().createCriteria(GuidePrice.class);
         
-        if (!StringUtils.isEmpty(guidePrice.getGuidePriceProvice()))
+        if (guidePrice.getProvinceCity()!=null&&0!=guidePrice.getProvinceCity().getId())
         {
-            criteria.add(Restrictions.eq("guidePriceProvice", guidePrice.getGuidePriceProvice()));
+            criteria.add(Restrictions.eq("provinceCity.id", guidePrice.getProvinceCity().getId()));
         }
         
         if (!StringUtils.isEmpty(guidePrice.getGuidePriceType()))
@@ -120,10 +120,9 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
                 list.add(criterion3);
             }
             
-            if (!StringUtils.isEmpty(guidePrice.getGuidePriceProvice()))
+            if (guidePrice.getProvinceCity()!=null&&0!=guidePrice.getProvinceCity().getId())
             {
-                Criterion criterion4 = Restrictions.eq("guidePriceProvice", guidePrice.getGuidePriceProvice());
-                list.add(criterion4);
+            	Criterion criterion4 = Restrictions.eq("provinceCity.id", guidePrice.getProvinceCity().getId());
             }
             
             if (!StringUtils.isEmpty(guidePrice.getGuidePriceDatePage()))
