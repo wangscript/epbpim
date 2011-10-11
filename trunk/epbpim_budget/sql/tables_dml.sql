@@ -60,16 +60,16 @@ INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,ME
 VALUES(103,'法律文件','searchGovernmentFile.do',1,1,1,3,3,0,'法律文件','法律文件查询',NOW(),NOW());
 
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_DEFAULT,MENU_REGION,MENU_INDEX,MENU_PRICE,TITLE,DESCRIPTION,REGISTER_DATE,ADVICE_DATE)
-VALUES(201,'信息价查询','searchGuidePrice.do?guidePrice.guidePriceType=1',2,1,0,3,1,400,'信息价查询','市政信息价查询说明',NOW(),NOW());
+VALUES(201,'信息价查询','searchGuidePrice.do?guidePrice.guidePriceType=1&guidePrice.provinceCity.id=3',2,1,0,3,1,400,'信息价查询','市政信息价查询说明',NOW(),NOW());
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_DEFAULT,MENU_REGION,MENU_INDEX,MENU_PRICE,TITLE,DESCRIPTION,REGISTER_DATE,ADVICE_DATE)
-VALUES(202,'行业期刊','searchPeriodicalFile.do?periodicalFile.periodicalType=1',2,1,0,3,2,300,'行业期刊','市政行业期刊说明',NOW(),NOW());
+VALUES(202,'行业期刊','searchPeriodicalFile.do?periodicalFile.periodicalType=1&periodicalFile.provinceCity.id=3',2,1,0,3,2,300,'行业期刊','市政行业期刊说明',NOW(),NOW());
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_DEFAULT,MENU_REGION,MENU_INDEX,MENU_PRICE,TITLE,DESCRIPTION,REGISTER_DATE,ADVICE_DATE)
-VALUES(203,'价格包下载','searchPricePackageFile.do?pricePackageFile.pricePackageType=1',2,1,0,3,3,300,'价格包下载','市政价格包下载说明',NOW(),NOW());
+VALUES(203,'价格包下载','searchPricePackageFile.do?pricePackageFile.pricePackageType=1&pricePackageFile.provinceCity.id=3',2,1,0,3,3,300,'价格包下载','市政价格包下载说明',NOW(),NOW());
 
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_DEFAULT,MENU_REGION,MENU_INDEX,MENU_PRICE,TITLE,DESCRIPTION,REGISTER_DATE,ADVICE_DATE)
-VALUES(302,'行业期刊','searchPeriodicalFile.do?periodicalFile.periodicalType=3',3,1,0,3,2,300,'行业期刊','土建行业期刊说明',NOW(),NOW());
+VALUES(302,'行业期刊','searchPeriodicalFile.do?periodicalFile.periodicalType=3&periodicalFile.provinceCity.id=3',3,1,0,3,2,300,'行业期刊','土建行业期刊说明',NOW(),NOW());
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_DEFAULT,MENU_REGION,MENU_INDEX,MENU_PRICE,TITLE,DESCRIPTION,REGISTER_DATE,ADVICE_DATE)
-VALUES(303,'价格包下载','searchPricePackageFile.do?pricePackageFile.pricePackageType=3',3,1,0,3,3,300,'价格包下载','土建价格包下载说明',NOW(),NOW());
+VALUES(303,'价格包下载','searchPricePackageFile.do?pricePackageFile.pricePackageType=3&pricePackageFile.provinceCity.id=3',3,1,0,3,3,300,'价格包下载','土建价格包下载说明',NOW(),NOW());
 
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_DEFAULT,MENU_REGION,MENU_INDEX,MENU_PRICE,TITLE,DESCRIPTION,REGISTER_DATE,ADVICE_DATE)
-VALUES(401,'信息价查询','searchGuidePrice.do?guidePrice.guidePriceType=2',4,1,0,3,1,400,'信息价查询','园林信息价查询说明',NOW(),NOW());
+VALUES(401,'信息价查询','searchGuidePrice.do?guidePrice.guidePriceType=2&guidePrice.provinceCity.id=3',4,1,0,3,1,400,'信息价查询','园林信息价查询说明',NOW(),NOW());

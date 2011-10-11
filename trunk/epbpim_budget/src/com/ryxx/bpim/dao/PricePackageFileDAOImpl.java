@@ -45,9 +45,9 @@ public class PricePackageFileDAOImpl extends AbstractBaseDAO<PricePackageFile, L
     {
         List<Criterion> list = new ArrayList<Criterion>();
         
-        if (null != pricePackageFile.getPricePackageProvice() && "" != pricePackageFile.getPricePackageProvice())
+        if (null != pricePackageFile.getProvinceCity() && 0 != pricePackageFile.getProvinceCity().getId())
         {
-            Criterion criterion1 = Restrictions.eq("pricePackageProvice", pricePackageFile.getPricePackageProvice());
+            Criterion criterion1 = Restrictions.eq("provinceCity.id", pricePackageFile.getProvinceCity().getId());
             list.add(criterion1);
         }
         if (null != pricePackageFile.getPricePackageType() && "" != pricePackageFile.getPricePackageType())

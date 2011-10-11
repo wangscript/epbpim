@@ -96,7 +96,6 @@
 	<div class="searchResult" id="searchResult">
 		<ul class="fullScreenResultUl">
 			<li class="width200Li"><s:text name="文件名" /></li>
-			<li class="width200Li"><s:text name="省份" /></li>
 			<li class="width200Li"><s:text name="专业" /></li>
 			<li class="width200Li"><s:text name="时间" /></li>
 			<li class="width50Li"><s:text name="下载" /></li>
@@ -104,7 +103,6 @@
 		<s:iterator value="dates" status="st">
 			<ul class="fullScreenResultUl">
 				<li class="width200Li"><s:property value="pricePackageName" /></li>
-				<li class="width200Li"><s:property value="pricePackageProvice" /></li>
 				<li class="width200Li"><s:property value="pricePackageType" /></li>
 				<li class="width200Li"><s:date name="pricePackageDate" format="yyyy-MM" /></li>
 				<li class="width50Li">

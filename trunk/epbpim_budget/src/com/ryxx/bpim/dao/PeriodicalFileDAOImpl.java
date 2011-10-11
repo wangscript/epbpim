@@ -51,6 +51,11 @@ public class PeriodicalFileDAOImpl extends AbstractBaseDAO<PeriodicalFile, Long>
         List<Criterion> list = new ArrayList<Criterion>();
         if (periodicalFile != null)
         {
+        	if (periodicalFile.getProvinceCity()!=null&&0!=periodicalFile.getProvinceCity().getId())
+            {
+        		Criterion criterion1 = Restrictions.eq("provinceCity.id", periodicalFile.getProvinceCity().getId());
+                list.add(criterion1);
+            }
             
             if (!StringUtils.isEmpty(periodicalFile.getPeriodicalName()))
             {

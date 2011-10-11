@@ -29,7 +29,25 @@ public class PeriodicalFile extends VoBase
     
     private String periodicalDatePage;
     
-    public String getPeriodicalDatePage()
+    private ProvinceCity provinceCity;
+    
+    
+    
+    /**
+	 * @return the provinceCity
+	 */
+	public ProvinceCity getProvinceCity() {
+		return provinceCity;
+	}
+
+	/**
+	 * @param provinceCity the provinceCity to set
+	 */
+	public void setProvinceCity(ProvinceCity provinceCity) {
+		this.provinceCity = provinceCity;
+	}
+
+	public String getPeriodicalDatePage()
     {
         return periodicalDatePage;
     }
