@@ -80,14 +80,40 @@ function changeTitleBackground(){
 		}
 	}
 	
+	// 解决关闭浏览器，使用户session失效
+	//IE浏览器 
 	window.onbeforeunload = function()
-	{
-		if( event.clientX>document.body.clientWidth && event.clientY<0 || event.altKey )   
-	    {   
-	    	// 关闭操作
-	    	document.getElementById('logoutLink').click(); 
-	    }    
+	{ 
+		if(document.all)
+		{ 
+			var n = window.event.screenX - window.screenLeft;    
+			var b = n > document.documentElement.scrollWidth-20; 
+			if(b || window.event.clientY < 0 || window.event.altKey)
+			{    
+				// 关闭操作
+		    	document.getElementById('logoutLink').click(); 
+			} 
+		} 
+	} 
+	//火狐浏览器 
+	window.onunload = function()
+	{ 
+		if(!document.all)
+		{ 
+			if(document.documentElement.scrollWidth==0)
+			{ 
+				// 关闭操作
+				document.getElementById('logoutLink').click(); 
+			}  
+		} 
 	}
+	
+	//上面两段代码 
+	//IE6 ：右上角点X 可以、任务栏不能捕捉 
+	//IE7：右上角点X可以（多TAB页时点X选择关闭当前页不行），点击TAB页关闭可以。任务栏关闭不能 
+	//IE8: 同IE7 
+	//FF: 点TAB页关闭可以，其它都不行
+	
 </script>
 <body>
 	<div class="header">
