@@ -99,11 +99,11 @@
 <s:else>
 	<div class="searchResult" id="searchResult">
 		<ul class="fullScreenResultUl">
-			<li class="width200Li"><label><s:text name="名称" /></label></li>
-			<li class="width200Li"><label><s:text name="省份" /></label></li>
-			<li class="width200Li"><label><s:text name="专业" /></label></li>
-			<li class="width200Li"><label><s:text name="时间" /></label></li>
-			<li class="width50Li"><label><s:text name="浏览" /></label></li>
+			<li class="width200Li"><s:text name="名称" /></li>
+			<li class="width200Li"><s:text name="省份" /></li>
+			<li class="width200Li"><s:text name="专业" /></li>
+			<li class="width200Li"><s:text name="时间" /></li>
+			<li class="width50Li"><s:text name="浏览" /></li>
 		</ul>
 		<s:iterator value="datas" status="st">
 			<ul class="fullScreenResultUl">
@@ -120,7 +120,7 @@
 				</li>
 			</ul>
 		</s:iterator>
-		<ul>
+		<ul class="fullScreenResultUl">
 		    <s:form>
 				<jsp:include page="../../common/pagination.jsp" flush="true">
 					<jsp:param name="action_page" value="main/searchPeriodicalFile.do"/>
