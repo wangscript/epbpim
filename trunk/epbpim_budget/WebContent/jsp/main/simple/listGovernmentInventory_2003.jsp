@@ -215,7 +215,7 @@
 	<li class="width100Li">项目名称</li>
 	<li class="width50Li">单位</li>
 	<li class="width300Li">项目特征</li>	
-	<li class="width300Li">工程内容</li>	
+	<li class="width350Li">工程内容</li>	
 </ul>
 <s:if test="datas==null || datas.size()==0">
 </s:if> 
@@ -233,7 +233,7 @@
 			</li>
 			<li class="width50Li"><s:property value="unit" /></li>
 			<li class="width300Li"><s:property value="projectNameFeature" /></li>
-			<li class="width300Li"><s:property value="detail"/></li>
+			<li class="width350Li"><s:property value="detail"/></li>
 		</ul>
 	</s:iterator>
 	<ul class="fullScreenResultUl">
