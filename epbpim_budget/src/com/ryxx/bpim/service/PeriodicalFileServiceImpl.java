@@ -23,18 +23,17 @@ import com.ryxx.util.page.PageTools;
 public class PeriodicalFileServiceImpl extends AbstractService<PeriodicalFile, PeriodicalFileDAO, Long> implements
     PeriodicalFileService
 {
-    public String savePeriodicalFile(PeriodicalFile periodicalFile, File uploadfile)
+    public String savePeriodicalFile(PeriodicalFile periodicalFile)
         throws ParseException, SQLException
     {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
         Date periodicalDate = sdf.parse(periodicalFile.getPeriodicalDatePage());
         periodicalFile.setPeriodicalDate(new Timestamp(periodicalDate.getTime()));
-        
         periodicalFile.setUploadDate(new Timestamp(new Date().getTime()));
-        
-        periodicalFile.setSourceCode(readHtml(uploadfile.getAbsolutePath()));
-        
-        System.out.println(readHtml(uploadfile.getAbsolutePath()));
+        String periodicalRealName = periodicalFile.getPeriodicalName();
+    	String year = periodicalRealName.substring(0, 4);
+    	String month = periodicalRealName.substring(4, 6);
+    	periodicalFile.setPeriodicalName(year+"年"+month+"月");		
         getDao().savePeriodicalFile(periodicalFile);
         
         return "true";
@@ -44,8 +43,8 @@ public class PeriodicalFileServiceImpl extends AbstractService<PeriodicalFile, P
         throws Exception
     {
         PeriodicalFile periodicalFileDetail = getDao().viewPeriodicalFile(periodicalFile);
-        String sourceCode = null != periodicalFileDetail ? periodicalFileDetail.getSourceCode() : "";
-        return new String(sourceCode.getBytes("utf-8"),"gbk");
+        String url = null != periodicalFileDetail ? periodicalFileDetail.getPeriodicalUrl() : "";
+        return new String(url.getBytes("utf-8"),"gbk");
     }
     
     public List<PeriodicalFile> listPeriodicalFile(PeriodicalFile condition, PageTools page)

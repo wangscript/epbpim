@@ -98,7 +98,7 @@
 </s:if>
 <s:else>
 	<div class="searchResult" id="searchResult">
-		<ul class="fullScreenUl">
+		<ul class="fullScreenResultUl">
 			<li class="width200Li"><label><s:text name="名称" /></label></li>
 			<li class="width200Li"><label><s:text name="省份" /></label></li>
 			<li class="width200Li"><label><s:text name="专业" /></label></li>
@@ -106,16 +106,17 @@
 			<li class="width50Li"><label><s:text name="浏览" /></label></li>
 		</ul>
 		<s:iterator value="datas" status="st">
-			<ul class="fullScreenUl">
+			<ul class="fullScreenResultUl">
 				<li class="width200Li"><s:property value="periodicalName" /></li>
 				<li class="width200Li"><s:property value="periodicalProvice" /></li>
 				<li class="width200Li"><s:property value="periodicalType" /></li>
 				<li class="width200Li"><s:date name="periodicalDate" format="yyyy-MM" /></li>
 				<li class="width50Li">
-					<form action="viewPeriodicalFile.do" method="post" id='searchfile<s:property value="id" />'>
+					<!-- <form action="viewPeriodicalFile.do" method="post" id='searchfile<s:property value="id" />'>
 						<input type="hidden" name="periodicalFile.id" value='<s:property value="id" />' />
 						<input type="button" onclick='searchFile("searchfile"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name='预览' />">
-					</form>
+					</form> -->
+				<a target="blank" href="../<s:property value="periodicalUrl" />" >预览</a>
 				</li>
 			</ul>
 		</s:iterator>

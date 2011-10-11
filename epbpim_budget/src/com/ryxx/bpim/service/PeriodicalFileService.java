@@ -15,7 +15,7 @@ import com.ryxx.util.page.PageTools;
 public interface PeriodicalFileService extends BaseService<PeriodicalFile, PeriodicalFileDAO, Long>
 {
     
-    String savePeriodicalFile(PeriodicalFile periodicalFile, File uploadfile)
+    String savePeriodicalFile(PeriodicalFile periodicalFile)
         throws ParseException, SQLException;
     
     List<PeriodicalFile> listPeriodicalFile(PeriodicalFile periodicalFile, PageTools page)
