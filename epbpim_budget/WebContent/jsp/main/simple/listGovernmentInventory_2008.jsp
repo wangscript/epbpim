@@ -192,19 +192,19 @@
 
 <div class="searchResult" id="searchResult" style="margin-top:15px;">
 <ul class="fullScreenResultUl">
-	<li style="width: 100px">项目编码</li>
-	<li style="width: 100px">项目名称</li>
-	<li style="width: 50px">单位</li>
-	<li style="width: 300px">项目特征</li>	
-	<li style="width: 340px;margin-left:10px;">工程内容</li>	
+	<li class="width100Li">项目编码</li>
+	<li class="width100Li">项目名称</li>
+	<li class="width50Li">单位</li>
+	<li class="width300Li">项目特征</li>	
+	<li class="width350Li">工程内容</li>	
 </ul>
 <s:if test="datas==null || datas.size()==0">
 </s:if> 
 <s:else>
 	<s:iterator value="datas" status="st">
 		<ul class="fullScreenResultUl" id="<s:property value='id'/>">
-			<li style="width: 100px"><s:property value="projectNum" /></li>
-			<li style="width: 100px">
+			<li class="width100Li"><s:property value="projectNum" /></li>
+			<li class="width100Li">
 				<s:if test="%{null!=projectName&&projectName.length()>12}">
 					<s:property value="projectName.substring(0, 11)+'...'" />
 				</s:if>
@@ -212,9 +212,9 @@
 					<s:property value="projectName" />
 				</s:else>
 			</li>
-			<li style="width: 50px"><s:property value="unit" /></li>
-			<li style="width: 300px"><s:property value="projectNameFeature" /></li>
-			<li style="width: 340px; margin-left:10px;"><s:property value="detail"/></li>
+			<li class="width50Li"><s:property value="unit" /></li>
+			<li class="width300Li"><s:property value="projectNameFeature" /></li>
+			<li class="width350Li"><s:property value="detail"/></li>
 		</ul>
 	</s:iterator>
 	<ul>
