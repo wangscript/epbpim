@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,6 +23,7 @@ public class Main {
 	static String outputFolderPath = "output/";
 	static String lefthbmPath = "";
 	static String encoding = "<meta http-equiv='Content-Type' content='text/html; charset=gb2312' />";
+	static String icon = "<link href='../images/logo.ico' rel='SHORTCUT ICON' />";
 	static String comments = "- Made by UNREGISTERED version of Easy CHM";
 	static PinyinToolkit pinyin = new PinyinToolkit();
 
@@ -31,6 +31,7 @@ public class Main {
 	static String lefthtmBody = "";
 
 	public static void main(String[] args) throws Exception {
+		addIcon();
 		String lefthtm = getLefthtmSource();
 		addEncoding(lefthtm);
 		removeComments();
@@ -38,6 +39,36 @@ public class Main {
 		rewriteToFile();
 		renameFolderName(inputFolderPath);
 		zipFile(inputFolderPath);
+	}
+
+	/**
+	 * @throws IOException
+	 * 
+	 */
+	private static void addIcon() throws IOException {
+		File inputFolder = new File(inputFolderPath);
+		File[] files = inputFolder.listFiles();
+		String mainPageSource = "";
+		String mainPagePath = "";
+		for (File subFile : files) {
+			if (subFile.isDirectory()) {
+				File[] subfiles = subFile.listFiles();
+				for (File subFile1 : subfiles) {
+					if (subFile1.isFile()
+							&& subFile1.getName().endsWith("html")) {
+						mainPagePath = subFile1.getAbsolutePath();
+						mainPageSource = getStringFromFile(mainPagePath);
+					}
+				}
+			}
+		}
+		mainPageSource.replace("</head>", icon + "</head>");
+		FileOutputStream fis = new FileOutputStream(mainPagePath);
+		OutputStreamWriter isr = new OutputStreamWriter(fis, "gb2312");
+		// OutputStreamWriter 封装到缓冲流中
+		BufferedWriter br = new BufferedWriter(isr);
+		br.write(mainPageSource);
+		br.close();
 	}
 
 	private static void zipFile(String path) throws Exception {
@@ -104,6 +135,7 @@ public class Main {
 	 * @param fileRename
 	 */
 	private static String normalFileName(String fileRename) {
+		fileRename = fileRename.replace(".mht", ".htm");
 		String[] strs = fileRename.split(":");
 		if (strs != null && strs.length == 2) {
 			return fileRename;
@@ -180,7 +212,7 @@ public class Main {
 	 */
 	private static void addEncoding(String lefthtm) {
 		int headerIndex = lefthtm.indexOf("</head>");
-		lefthtmHeader = lefthtm.substring(0, headerIndex) + encoding;
+		lefthtmHeader = lefthtm.substring(0, headerIndex) + encoding + icon;
 		lefthtmBody = lefthtm.substring(headerIndex, lefthtm.length());
 	}
 
