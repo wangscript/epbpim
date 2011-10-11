@@ -178,17 +178,12 @@
 <div class="content_resize">
 <s:form	action="searchGovernmentInventory.do" method="post" name="searchGovernmentInventoryForm" id="searchGovernmentInventoryForm">
 <div class="mainbar">
-<h3 class="title">清单查询<img onmouseenter="displayHelp('helpDiv',searchGovernmentInventory2003Help)"
-								onmouseleave="unDisplayHelp('helpDiv')"
-								onmouseover="displayHelp('helpDiv',searchGovernmentInventory2003Help)"
-								onmouseout="unDisplayHelp('helpDiv')" class="helpImg"
-								src="../images/help.png">
-							<div id="helpDiv" class="helpDiv"></div></h3>
+<h3 class="title">清单查询</h3>
 <div id="searchCondition">
     <input type="hidden" name="condition.governmentInventoryType" value="2003">
-	<ul>
-		<li style="width:170px;">项目大类：
-			<select id="projectClassLevel1Num" name="condition.projectClassLevel1Num" style="width: 100px;" onchange="changeSuperClass(this.options[this.selectedIndex].value)"> 
+	<ul class="fullScreenUl">
+		<li class="width200Li">项目大类：
+			<select id="projectClassLevel1Num" name="condition.projectClassLevel1Num" class="width100Select" onchange="changeSuperClass(this.options[this.selectedIndex].value)"> 
 				<option value="">不限</option>
 				<option value="01">建筑工程(01)</option>
 				<option value="02">装饰装修工程(02)</option>
@@ -199,16 +194,16 @@
 				<option value="冶金">冶金</option>
 			</select>
 		</li>
-		<li style="width:210px;">项目小类：
-			<select id="projectClassLevel2Num" name="condition.projectClassLevel2Num" style="width: 140px;"></select>
+		<li class="width200Li">项目小类：
+			<select id="projectClassLevel2Num" name="condition.projectClassLevel2Num" class="width100Select"></select>
 		</li>
-		<li>
-			<label class="lb">项目编号：</label><input style="width: 60px" class="inputText" name="condition.projectNum" id="projectNum">
+		<li class="width200Li">
+			<label class="lb">项目编号：</label><input class="width100Input" name="condition.projectNum" id="projectNum">
 		</li>
-		<li>
-			<label class="lb">项目名称：</label><input style="width: 120px" class="inputText" name="condition.projectName" id="projectName">
+		<li class="width200Li">
+			<label class="lb">项目名称：</label><input class="width100Input" name="condition.projectName" id="projectName">
 		</li>
-		<li>
+		<li class="width50Li">
 			<input type="submit" name="searchButton" id="searchButton" class="button" value="查询">
 		</li>
 	</ul>
@@ -216,19 +211,19 @@
 
 <div class="searchResult" id="searchResult" style="margin-top:15px;">
 <ul class="fullScreenResultUl">
-	<li style="width: 100px">项目编码</li>
-	<li style="width: 100px">项目名称</li>
-	<li style="width: 50px">单位</li>
-	<li style="width: 300px">项目特征</li>	
-	<li style="width: 340px;margin-left:10px;">工程内容</li>	
+	<li class="width100Li">项目编码</li>
+	<li class="width100Li">项目名称</li>
+	<li class="width50Li">单位</li>
+	<li class="width300Li">项目特征</li>	
+	<li class="width300Li">工程内容</li>	
 </ul>
 <s:if test="datas==null || datas.size()==0">
 </s:if> 
 <s:else>
 	<s:iterator value="datas" status="st">
 		<ul class="fullScreenResultUl" id="<s:property value='id'/>">
-			<li style="width: 100px"><s:property value="projectNum" /></li>
-			<li style="width: 100px">
+			<li class="width100Li"><s:property value="projectNum" /></li>
+			<li class="width100Li">
 				<s:if test="%{null!=projectName&&projectName.length()>12}">
 					<s:property value="projectName.substring(0, 11)+'...'" />
 				</s:if>
@@ -236,9 +231,9 @@
 					<s:property value="projectName" />
 				</s:else>
 			</li>
-			<li style="width: 50px"><s:property value="unit" /></li>
-			<li style="width: 300px"><s:property value="projectNameFeature" /></li>
-			<li style="width: 340px; margin-left:10px;"><s:property value="detail"/></li>
+			<li class="width50Li"><s:property value="unit" /></li>
+			<li class="width300Li"><s:property value="projectNameFeature" /></li>
+			<li class="width300Li"><s:property value="detail"/></li>
 		</ul>
 	</s:iterator>
 	<ul class="fullScreenResultUl">

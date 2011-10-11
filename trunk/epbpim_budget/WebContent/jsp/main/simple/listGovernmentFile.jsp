@@ -73,119 +73,11 @@
 	action="searchGovernmentFile.do" method="post"
 	name="searchGovernmentFileForm" id="searchGovernmentFileForm">
 	<div class="mainbar">
-	<h3 class="title">文件查询<img onmouseenter="displayHelp('helpDiv',searchGovernmentFileHelp)"
-								onmouseleave="unDisplayHelp('helpDiv')"
-								onmouseover="displayHelp('helpDiv',searchGovernmentFileHelp)"
-								onmouseout="unDisplayHelp('helpDiv')" class="helpImg"
-								src="../images/help.png">
-							<div id="helpDiv" class="helpDiv"></div></h3>
+	<h3 class="title">文件查询</h3>
 	<div id="searchCondition">
-	<ul>
-		<li style="width: 160px;">发布时间：<select id="filePublishYear"
-			name="condition.filePublishYear" style="width: 80px;">
-			<option value="0">--请选择--</option>
-			<option value="1990">1990</option>
-			<option value="1991">1991</option>
-			<option value="1992">1992</option>
-			<option value="1993">1993</option>
-			<option value="1994">1994</option>
-			<option value="1995">1995</option>
-			<option value="1996">1996</option>
-			<option value="1997">1997</option>
-			<option value="1998">1998</option>
-			<option value="1999">1999</option>
-			<option value="2000">2000</option>
-			<option value="2001">2001</option>
-			<option value="2002">2002</option>
-			<option value="2003">2003</option>
-			<option value="2004">2004</option>
-			<option value="2005">2005</option>
-			<option value="2006">2006</option>
-			<option value="2007">2007</option>
-			<option value="2008">2008</option>
-			<option value="2009">2009</option>
-			<option value="2010">2010</option>
-			<option value="2011">2011</option>
-			<option value="2012">2012</option>
-			<option value="2013">2013</option>
-			<option value="2014">2014</option>
-			<option value="2015">2015</option>
-			<option value="2016">2016</option>
-			<option value="2017">2017</option>
-			<option value="2018">2018</option>
-			<option value="2019">2019</option>
-			<option value="2020">2020</option>
-		</select>年</li>
-		<li style="width: 130px;"><label class="lb"></label><select
-			id="filePublishMonth" name="condition.filePublishMonth"
-			style="width: 90px;">
-			<option value="0" selected="selected">--请选择--</option>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-			<option value="11">11</option>
-			<option value="12">12</option>
-		</select>月</li>
-		<li style="width: 160px;">生效时间：<select id="fileEffectiveYear"
-			name="condition.fileEffectiveYear" style="width: 80px;">
-			<option value="0">--请选择--</option>
-			<option value="1990">1990</option>
-			<option value="1991">1991</option>
-			<option value="1992">1992</option>
-			<option value="1993">1993</option>
-			<option value="1994">1994</option>
-			<option value="1995">1995</option>
-			<option value="1996">1996</option>
-			<option value="1997">1997</option>
-			<option value="1998">1998</option>
-			<option value="1999">1999</option>
-			<option value="2000">2000</option>
-			<option value="2001">2001</option>
-			<option value="2002">2002</option>
-			<option value="2003">2003</option>
-			<option value="2004">2004</option>
-			<option value="2005">2005</option>
-			<option value="2006">2006</option>
-			<option value="2007">2007</option>
-			<option value="2008">2008</option>
-			<option value="2009">2009</option>
-			<option value="2010">2010</option>
-			<option value="2011">2011</option>
-			<option value="2012">2012</option>
-			<option value="2013">2013</option>
-			<option value="2014">2014</option>
-			<option value="2015">2015</option>
-			<option value="2016">2016</option>
-			<option value="2017">2017</option>
-			<option value="2018">2018</option>
-			<option value="2019">2019</option>
-			<option value="2020">2020</option>
-		</select>年</li> 
-		<li style="width: 140px;"><label class="lb"></label><select id="fileEffectiveMonth"
-			name="condition.fileEffectiveMonth" style="width: 80px;">
-			<option value="0" selected="selected">--请选择--</option>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-			<option value="11">11</option>
-			<option value="12">12</option>
-		</select>月</li>
-		<li style="width: 230px;">文件类别：<select id="fileType"
-			name="condition.fileType" style="width: 150px;"
+	<ul class="fullScreenUl">
+		<li class="width200Li">文件类别：<select id="fileType"
+			name="condition.fileType" class="width100Select"
 			onchange="changeType();">
 			<option value="0">--全部--</option>
 			<option value="法律">法律</option>
@@ -194,11 +86,114 @@
 			<option value="部门规章">部门规章</option>
 			<option value="各类文件">各类文件</option>
 		</select></li>
+		<li class="width200Li">发布时间：<select id="filePublishYear"
+			name="condition.filePublishYear" class="width100Select">
+			<option value="0">--请选择--</option>
+			<option value="1990">1990</option>
+			<option value="1991">1991</option>
+			<option value="1992">1992</option>
+			<option value="1993">1993</option>
+			<option value="1994">1994</option>
+			<option value="1995">1995</option>
+			<option value="1996">1996</option>
+			<option value="1997">1997</option>
+			<option value="1998">1998</option>
+			<option value="1999">1999</option>
+			<option value="2000">2000</option>
+			<option value="2001">2001</option>
+			<option value="2002">2002</option>
+			<option value="2003">2003</option>
+			<option value="2004">2004</option>
+			<option value="2005">2005</option>
+			<option value="2006">2006</option>
+			<option value="2007">2007</option>
+			<option value="2008">2008</option>
+			<option value="2009">2009</option>
+			<option value="2010">2010</option>
+			<option value="2011">2011</option>
+			<option value="2012">2012</option>
+			<option value="2013">2013</option>
+			<option value="2014">2014</option>
+			<option value="2015">2015</option>
+			<option value="2016">2016</option>
+			<option value="2017">2017</option>
+			<option value="2018">2018</option>
+			<option value="2019">2019</option>
+			<option value="2020">2020</option>
+		</select></li>
+		<li class="width150Li"><label class="lb"></label><select
+			id="filePublishMonth" name="condition.filePublishMonth"
+			class="width100Select">
+			<option value="0" selected="selected">--请选择--</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+		</select></li>
+		<li class="width200Li">生效时间：<select id="fileEffectiveYear"
+			name="condition.fileEffectiveYear" class="width100Select">
+			<option value="0">--请选择--</option>
+			<option value="1990">1990</option>
+			<option value="1991">1991</option>
+			<option value="1992">1992</option>
+			<option value="1993">1993</option>
+			<option value="1994">1994</option>
+			<option value="1995">1995</option>
+			<option value="1996">1996</option>
+			<option value="1997">1997</option>
+			<option value="1998">1998</option>
+			<option value="1999">1999</option>
+			<option value="2000">2000</option>
+			<option value="2001">2001</option>
+			<option value="2002">2002</option>
+			<option value="2003">2003</option>
+			<option value="2004">2004</option>
+			<option value="2005">2005</option>
+			<option value="2006">2006</option>
+			<option value="2007">2007</option>
+			<option value="2008">2008</option>
+			<option value="2009">2009</option>
+			<option value="2010">2010</option>
+			<option value="2011">2011</option>
+			<option value="2012">2012</option>
+			<option value="2013">2013</option>
+			<option value="2014">2014</option>
+			<option value="2015">2015</option>
+			<option value="2016">2016</option>
+			<option value="2017">2017</option>
+			<option value="2018">2018</option>
+			<option value="2019">2019</option>
+			<option value="2020">2020</option>
+		</select></li> 
+		<li class="width150Li"><label class="lb"></label><select id="fileEffectiveMonth"
+			name="condition.fileEffectiveMonth" class="width100Select">
+			<option value="0" selected="selected">--请选择--</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+		</select></li>
 	</ul>
 
-<ul>
-<li style="width: 230px; display: none" id="fileSubTypeLi">文件小类：<select
-			id="fileSubType" name="condition.fileSubType" style="width: 150px;"
+<ul class="fullScreenUl">
+<li class="width200Li" style="display: none" id="fileSubTypeLi">文件小类：<select
+			id="fileSubType" name="condition.fileSubType" class="width100Select"
 			onchange="changeSubType()">
 			<option value="0">--全部--</option>
 			<option value="国务院">国务院</option>
@@ -208,9 +203,9 @@
 			<option value="市建筑建材业管理部门">市建筑建材业管理部门</option>
 		</select></li>
 
-		<li style="width: 200px; display: none" id="proviceLi"><label
+		<li class="width200Li" style="display: none" id="proviceLi"><label
 			class="lb">省：</label><select id="provice" name="condition.provice"
-			style="width: 150px;">
+			class="width100Select">
 			<option value="0">---------请选择---------</option>
 			<option value="北京市">北京市</option>
 			<option value="上海市" selected="selected">上海市</option>
@@ -248,39 +243,32 @@
 			<option value="台湾省">台湾省</option>
 			<option value="其它">其它</option>
 		</select></li>
-</ul>
-	<ul>
-	
-
-		
-		<li><label class="lb">文件名：</label><input style="width: 160px"
-			class="inputText" name="condition.fileName" id="fileName"></li>
-		<li><label class="lb">关键字：</label><input style="width: 120px"
-			class="inputText" name="condition.keyword" id="keyword"></li>
-		<li><input name="searchButton" type="button" id="searchButton"
+		<li class="width200Li"><label class="lb">文件名：</label><input class="width100Input" name="condition.fileName" id="fileName"></li>
+		<li class="width200Li"><label class="lb">关键字：</label><input class="width100Input" name="condition.keyword" id="keyword"></li>
+		<li class="width50Li"><input name="searchButton" type="button" id="searchButton"
 			onclick="searchGovernmentFile()" class="button" value="查询"></li>
-	</ul>
+</ul>
 	</div>
 
 	<div class="searchResult" id="searchResult" style="margin-top: 15px;">
 	<ul class="fullScreenResultUl">
-		<li style="width: 100px">文件类别</li>
-		<li style="width: 120px">小类</li>
-		<li style="width: 100px">地区</li>
-		<li style="width: 360px">文件名</li>
+		<li class="width100Li">文件类别</li>
+		<li class="width100Li">小类</li>
+		<li class="width100Li">地区</li>
+		<li class="width300Li">文件名</li>
 
-		<li style="width: 90px">发布时间</li>
-		<li style="width: 90px">生效时间</li>
-		<li style="width: 50px">查看详情</li>
+		<li class="width100Li">发布时间</li>
+		<li class="width100Li">生效时间</li>
+		<li class="width100Li">查看详情</li>
 	</ul>
 	<s:if test="datas==null || datas.size()==0">
 	</s:if> <s:else>
 		<s:iterator value="datas" status="st">
 			<ul class="fullScreenResultUl" id="<s:property value='id'/>">
-				<li style="width: 100px"><s:property value="fileType" /></li>
-				<li style="width: 120px"><s:property value="fileSubType" /></li>
-				<li style="width: 100px"><s:property value="area" /></li>
-				<li style="width: 360px">
+				<li class="width100Li"><s:property value="fileType" /></li>
+				<li class="width100Li"><s:property value="fileSubType" /></li>
+				<li class="width100Li"><s:property value="area" /></li>
+				<li class="width300Li">
 				<s:if
 				test="%{null!=fileTitle&&fileTitle.length()>28}">
 				<s:property value="fileTitle.substring(0, 27)+'...'" />
@@ -289,11 +277,11 @@
 			</s:else>
 			</li>
 
-				<li style="width: 90px"><s:date name="filePublishDate"
+				<li class="width100Li"><s:date name="filePublishDate"
 					format="yyyy-MM-dd" /></li>
-				<li style="width: 90px"><s:date name="fileEffectiveDate"
+				<li class="width100Li"><s:date name="fileEffectiveDate"
 					format="yyyy-MM-dd" /></li>
-				<li style="width: 50px"><a target="blank" onclick="viewDetail(<s:property value="id" />)">查看</a></li>
+				<li class="width100Li"><a target="blank" onclick="viewDetail(<s:property value="id" />)">查看</a></li>
 			</ul>
 		</s:iterator>
 		<ul class="fullScreenResultUl">

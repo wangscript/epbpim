@@ -161,17 +161,12 @@
 <div class="content_resize">
 <s:form	action="searchGovernmentInventory.do" method="post" name="searchGovernmentInventoryForm" id="searchGovernmentInventoryForm">
 <div class="mainbar">
-<h3 class="title">清单查询<img onmouseenter="displayHelp('helpDiv',searchGovernmentInventory2008Help)"
-								onmouseleave="unDisplayHelp('helpDiv')"
-								onmouseover="displayHelp('helpDiv',searchGovernmentInventory2008Help)"
-								onmouseout="unDisplayHelp('helpDiv')" class="helpImg"
-								src="../images/help.png">
-							<div id="helpDiv" class="helpDiv"></div></h3>
+<h3 class="title">清单查询</h3>
 <div id="searchCondition">
     <input type="hidden" name="condition.governmentInventoryType" value="2008">
-	<ul>
-		<li style="width:170px;">项目大类：
-			<select id="projectClassLevel1Num" name="condition.projectClassLevel1Num" style="width: 100px;" onchange="changeSuperClass(this.options[this.selectedIndex].value)"> 
+	<ul class="fullScreenUl">
+		<li class="width200Li">项目大类：
+			<select id="projectClassLevel1Num" name="condition.projectClassLevel1Num" class="width100Select" onchange="changeSuperClass(this.options[this.selectedIndex].value)"> 
 				<option value="">不限</option>
 				<option value="01">建筑工程(01)</option>
 				<option value="02">装饰装修工程(02)</option>
@@ -180,16 +175,16 @@
 				<option value="05">园林绿化工程(05)</option>
 			</select>
 		</li>
-		<li style="width:210px;">项目小类：
-			<select id="projectClassLevel2Num" name="condition.projectClassLevel2Num" style="width: 140px;"></select>
+		<li class="width200Li">项目小类：
+			<select id="projectClassLevel2Num" name="condition.projectClassLevel2Num" class="width100Select"></select>
 		</li>
-		<li>
-			<label class="lb">项目编号：</label><input style="width: 60px" class="inputText" name="condition.projectNum" id="projectNum">
+		<li class="width200Li">
+			<label class="lb">项目编号：</label><input class="width100Input" name="condition.projectNum" id="projectNum">
 		</li>
-		<li>
-			<label class="lb">项目名称：</label><input style="width: 120px" class="inputText" name="condition.projectName" id="projectName">
+		<li class="width200Li">
+			<label class="lb">项目名称：</label><input class="width100Input" name="condition.projectName" id="projectName">
 		</li>
-		<li>
+		<li class="width50Li">
 			<input type="submit" name="searchButton" id="searchButton" class="button" value="查询">
 		</li>
 	</ul>
