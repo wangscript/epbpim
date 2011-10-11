@@ -39,7 +39,7 @@
 		<property name="principal" column="ENTERPRISE_PRINCIPAL" type="java.lang.String"></property>
 		<property name="balance" column="ENTERPRISE_BALANCE" type="java.lang.Float"></property>
 		<property name="logTime" column="UPDATE_TIME" type="java.sql.Timestamp"></property>
-		<many-to-one name="provinceCity" class="ProvinceCity" column="favorite"></many-to-one>
+		<many-to-one name="provinceCity" class="ProvinceCity" column="ENTERPRISE_FAVORITE"></many-to-one>
 	</class>
 	
 	<class name="BalanceRecord" table="PAY_RECORD">
