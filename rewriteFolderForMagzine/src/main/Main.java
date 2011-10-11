@@ -62,7 +62,7 @@ public class Main {
 				}
 			}
 		}
-		mainPageSource.replace("</head>", icon + "</head>");
+		mainPageSource.replace("</HEAD>", icon + "</HEAD>");
 		FileOutputStream fis = new FileOutputStream(mainPagePath);
 		OutputStreamWriter isr = new OutputStreamWriter(fis, "gb2312");
 		// OutputStreamWriter 封装到缓冲流中
