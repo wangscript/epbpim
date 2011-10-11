@@ -60,20 +60,20 @@ public class UserInfoAction extends ActionSupportBase
             //  当前登录用户为普通用户，如果用户已被锁定或当前用户已经登录，则登录失败
             if (1 == userInfo.getRoleType().getKey())
             {
-                if (0 == userInfo.getEnable())
-                {
-                    super.addFieldError("name", "用户账号已被锁定，请联系您的企业账号管理员或平台客服人员");
-                    return INPUT;
-                }
-                else if (1 == userInfo.getEnable() && null != sameLoginUserList && 0 < sameLoginUserList.size())
-                {
-                    userInfo = userInfoService.findById(userInfo.getId());
-                    userInfo.setEnable(new Integer(0));
-                    userInfoService.merge(userInfo);
-                    
-                    super.addFieldError("name", "用户账号已被锁定，请联系您的企业账号管理员或平台客服人员");
-                    return INPUT;
-                }
+//                if (0 == userInfo.getEnable())
+//                {
+//                    super.addFieldError("name", "用户账号已被锁定，请联系您的企业账号管理员或平台客服人员");
+//                    return INPUT;
+//                }
+//                else if (1 == userInfo.getEnable() && null != sameLoginUserList && 0 < sameLoginUserList.size())
+//                {
+//                    userInfo = userInfoService.findById(userInfo.getId());
+//                    userInfo.setEnable(new Integer(0));
+//                    userInfoService.merge(userInfo);
+//                    
+//                    super.addFieldError("name", "用户账号已被锁定，请联系您的企业账号管理员或平台客服人员");
+//                    return INPUT;
+//                }
             }
             session.put(Constants.LOGIN_USER_NAME, identifier);
             session.put(Constants.LOGIN_USER_ID, userInfo.getId());

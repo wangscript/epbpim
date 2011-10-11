@@ -196,7 +196,7 @@
 </div>
 
 <div class="searchResult" id="searchResult" style="margin-top:15px;">
-<ul>
+<ul class="fullScreenResultUl">
 	<li style="width: 100px">项目编码</li>
 	<li style="width: 100px">项目名称</li>
 	<li style="width: 50px">单位</li>
@@ -207,7 +207,7 @@
 </s:if> 
 <s:else>
 	<s:iterator value="datas" status="st">
-		<ul id="<s:property value='id'/>">
+		<ul class="fullScreenResultUl" id="<s:property value='id'/>">
 			<li style="width: 100px"><s:property value="projectNum" /></li>
 			<li style="width: 100px">
 				<s:if test="%{null!=projectName&&projectName.length()>12}">

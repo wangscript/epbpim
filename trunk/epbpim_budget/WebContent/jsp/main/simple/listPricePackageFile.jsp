@@ -94,7 +94,7 @@
 </s:if>
 <s:else>
 	<div class="searchResult" id="searchResult">
-		<ul class="fullScreenUl">
+		<ul class="fullScreenResultUl">
 			<li class="width200Li"><label><s:text name="文件名" /></label></li>
 			<li class="width200Li"><label><s:text name="省份" /></label></li>
 			<li class="width200Li"><label><s:text name="专业" /></label></li>
@@ -102,7 +102,7 @@
 			<li class="width50Li"><label><s:text name="下载" /></label></li>
 		</ul>
 		<s:iterator value="dates" status="st">
-			<ul class="fullScreenUl">
+			<ul class="fullScreenResultUl">
 				<li class="width200Li"><s:property value="pricePackageName" /></li>
 				<li class="width200Li"><s:property value="pricePackageProvice" /></li>
 				<li class="width200Li"><s:property value="pricePackageType" /></li>

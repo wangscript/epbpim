@@ -1,11 +1,19 @@
 package com.ryxx.bpim.web.action.admin;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -15,6 +23,7 @@ import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.PeriodicalFile;
 import com.ryxx.bpim.service.PeriodicalFileService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.io.FileUtil;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 
@@ -40,7 +49,17 @@ public class PeriodicalFileAction extends ActionSupportBase
     {
         try
         {
-            msg = service.savePeriodicalFile(periodicalFile, uploadFile);
+			String uploadTempPath = request.getRealPath("/") + "temp" + "/";
+			String uploadRealPath = request.getRealPath("/") + "periodicalHtml"
+					+ "/";
+			File newUploadFile = new File(uploadTempPath
+					+ periodicalFile.getPeriodicalName());
+			FileUtil.copy(uploadFile, newUploadFile, false);
+			releaseZipToFile(newUploadFile.getAbsolutePath(), uploadRealPath);
+			String url = "periodicalHtml" + "/"
+					+ periodicalFile.getPeriodicalName().replace("zip", "html");
+			periodicalFile.setPeriodicalUrl(url);
+			msg = service.savePeriodicalFile(periodicalFile);
         }
         catch (Exception e)
         {
@@ -130,6 +149,52 @@ public class PeriodicalFileAction extends ActionSupportBase
         
         return result;
     }
+    
+	public void releaseZipToFile(String sourceZip, String outFileName)
+			throws IOException {
+		ZipFile zfile = new ZipFile(sourceZip);
+		System.out.println(zfile.getName());
+		Enumeration zList = zfile.entries();
+		ZipEntry ze = null;
+		byte[] buf = new byte[1024];
+		while (zList.hasMoreElements()) {
+			// 从ZipFile中得到一个ZipEntry
+			ze = (ZipEntry) zList.nextElement();
+			if (ze.isDirectory()) {
+				continue;
+			}
+			// 以ZipEntry为参数得到一个InputStream，并写到OutputStream中
+			OutputStream os = new BufferedOutputStream(new FileOutputStream(
+					getRealFileName(outFileName, ze.getName())));
+			InputStream is = new BufferedInputStream(zfile.getInputStream(ze));
+			int readLen = 0;
+			while ((readLen = is.read(buf, 0, 1024)) != -1) {
+				os.write(buf, 0, readLen);
+			}
+			is.close();
+			os.close();
+			System.out.println("Extracted: " + ze.getName());
+		}
+		zfile.close();
+
+	}
+
+	private File getRealFileName(String baseDir, String absFileName) {
+		String[] dirs = absFileName.split("/");
+		// System.out.println(dirs.length);
+		File ret = new File(baseDir);
+		// System.out.println(ret);
+		if (dirs.length > 1) {
+			for (int i = 0; i < dirs.length - 1; i++) {
+				ret = new File(ret, dirs[i]);
+			}
+		}
+		if (!ret.exists()) {
+			ret.mkdirs();
+		}
+		ret = new File(ret, dirs[dirs.length - 1]);
+		return ret;
+	}
     
     public PeriodicalFile getPeriodicalFile()
     {

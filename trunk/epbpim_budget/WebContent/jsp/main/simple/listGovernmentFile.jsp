@@ -263,7 +263,7 @@
 	</div>
 
 	<div class="searchResult" id="searchResult" style="margin-top: 15px;">
-	<ul>
+	<ul class="fullScreenResultUl">
 		<li style="width: 100px">文件类别</li>
 		<li style="width: 120px">小类</li>
 		<li style="width: 100px">地区</li>
@@ -276,7 +276,7 @@
 	<s:if test="datas==null || datas.size()==0">
 	</s:if> <s:else>
 		<s:iterator value="datas" status="st">
-			<ul id="<s:property value='id'/>">
+			<ul class="fullScreenResultUl" id="<s:property value='id'/>">
 				<li style="width: 100px"><s:property value="fileType" /></li>
 				<li style="width: 120px"><s:property value="fileSubType" /></li>
 				<li style="width: 100px"><s:property value="area" /></li>
@@ -296,7 +296,7 @@
 				<li style="width: 50px"><a target="blank" onclick="viewDetail(<s:property value="id" />)">查看</a></li>
 			</ul>
 		</s:iterator>
-		<ul>
+		<ul class="fullScreenResultUl">
 		<jsp:include page="../../common/pagination.jsp" flush="true">
 			<jsp:param name="action_page" value="main/searchGovernmentFile.do" />
 		</jsp:include>

@@ -19,7 +19,7 @@ public class PeriodicalFile extends VoBase
     
     private String periodicalType;
     
-    private String sourceCode;
+    private String periodicalUrl;
     
     private Timestamp periodicalDate;
     
@@ -99,17 +99,21 @@ public class PeriodicalFile extends VoBase
         this.id = id;
     }
     
-    public String getSourceCode()
-    {
-        return sourceCode;
-    }
-    
-    public void setSourceCode(String sourceCode)
-    {
-        this.sourceCode = sourceCode;
-    }
-    
-    public Timestamp getUploadDate()
+    /**
+	 * @return the periodicalUrl
+	 */
+	public String getPeriodicalUrl() {
+		return periodicalUrl;
+	}
+
+	/**
+	 * @param periodicalUrl the periodicalUrl to set
+	 */
+	public void setPeriodicalUrl(String periodicalUrl) {
+		this.periodicalUrl = periodicalUrl;
+	}
+
+	public Timestamp getUploadDate()
     {
         return uploadDate;
     }
