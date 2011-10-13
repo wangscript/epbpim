@@ -9,8 +9,10 @@
 		<interceptors>
 			<interceptor name="login_intercept" class="com.ryxx.bpim.web.interceptor.LoginInterceptor"/>
 			<interceptor name="adminlogin_intercept" class="com.ryxx.bpim.web.interceptor.AdminLoginInterceptor"/>
+			<interceptor name="same_user_login_intercept" class="com.ryxx.bpim.web.interceptor.SameUserLoginInterceptor"/>
 			<interceptor-stack name="user">
 				<interceptor-ref name="login_intercept"/>
+				<interceptor-ref name="same_user_login_intercept"/>
 				<interceptor-ref name="defaultStack"/>
 			</interceptor-stack>
 			<interceptor-stack name="manager">
@@ -32,8 +34,12 @@
 			<result name="nooption">/common/nooption.jsp</result>
 			<result name="noresult">/common/noresult.jsp</result>
 			<result name="notmodify">/common/notmodify.jsp</result>
+			<result name="sameuserlogin" type="redirect-action">../login/sameuserlogin.do</result>
 		</global-results>
 		
+		<action name="sameuserlogin">
+			<result>/jsp/login/indexforsameuser.jsp</result>
+		</action>
 		<!-- 发布时放开
 		<global-exception-mappings>
 			<exception-mapping result="glberror" exception="java.lang.Exception"/>
