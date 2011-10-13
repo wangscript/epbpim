@@ -90,25 +90,25 @@
 	<div class="searchResult" id="searchResult">
 		<ul class="fullScreenResultUl">
 			<li class="width150Li"><s:text name="编号" /></li>
-			<li class="width400Li"><s:text name="名称" /></li>			
+			<li class="width300Li"><s:text name="名称" /></li>			
 			<li class="width150Li"><s:text name="价格" /></li>
 			<li class="width150Li"><s:text name="单位" /></li>
+			<li class="width150Li"><s:text name="时间" /></li>
 			<!-- 
 			<li class="width200Li"><s:text name="省份" /></li>
 			<li class="width200Li"><s:text name="专业" /></li>			
-			<li class="width200Li"><s:text name="时间" /></li>
 			-->
 		</ul>
 		<s:iterator value="datas" status="st">
 			<ul class="fullScreenResultUl"> 
 				<li class="width150Li"><s:property value="code" /></li>
-				<li class="width400Li"><s:property value="name" /></li>				
+				<li class="width300Li"><s:property value="name" /></li>				
 				<li class="width150Li"><s:property value="price" /></li>
 				<li class="width150Li"><s:property value="unit" /></li>
+				<li class="width150Li"><s:date name="guidePriceDate" format="yyyy-MM" /></li>
 				<!-- 
 				<li class="width200Li"><s:property value="guidePriceProvice" /></li>
 				<li class="width200Li"><s:property value="guidePriceType" /></li>
-				<li class="width200Li"><s:date name="guidePriceDate" format="yyyy-MM" /></li>
 				 -->
 			</ul>
 		</s:iterator>
