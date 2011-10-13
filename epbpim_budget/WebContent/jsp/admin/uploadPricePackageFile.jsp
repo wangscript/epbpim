@@ -24,7 +24,7 @@
 		if (msg) {
 			if("true"==msg)
 			{
-				alert("导入成功！");
+				alert("上传成功！");
 			}
 			else if("false"==msg)
 			{
