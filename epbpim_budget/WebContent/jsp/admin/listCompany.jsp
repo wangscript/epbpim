@@ -53,7 +53,7 @@ function clearPage(updateId){
 									<a href="listUser.do?eId=<s:property value="id"/>">进入</a>
 								</li>
 								<li class="width50Li">
-									<a href="deleteEnterpriseInfo.do?id=<s:property value="id"/>">删除</a>
+									<a href="javascript:deleteEnterprise(<s:property value='id'/>)">删除</a>
 								</li>
 							</ul>
 						</s:iterator>
@@ -77,6 +77,12 @@ function clearPage(updateId){
 <script type="text/javascript">
 	function displayResult(){
 		document.getElementById("searchResult").style.display="block";
+	}
+	
+	function deleteEnterprise(id){
+		if(confirm("是否删除")){
+			window.location.href="deleteEnterpriseInfo.do?id="+id;
+		}
 	}
 
 </script>
