@@ -78,7 +78,7 @@ public class PricePackageFileAction extends ActionSupportBase
             
             service.savePricePackageFile(pricePackageFile);
             
-            msg="true";
+            msg = "true";
         }
         catch (Exception e)
         {
@@ -89,7 +89,7 @@ public class PricePackageFileAction extends ActionSupportBase
                 newUploadFile.delete();
             }
             
-            msg="false";
+            msg = "false";
         }
         return SUCCESS;
     }
@@ -112,12 +112,12 @@ public class PricePackageFileAction extends ActionSupportBase
             }
             
             service.deletePricePackageFile(pricePackageFile);
-            msg="true";
+            msg = "true";
         }
         catch (Exception e)
         {
             LOG.warn(e);
-            msg="false";
+            msg = "false";
         }
         return SUCCESS;
     }
@@ -132,6 +132,7 @@ public class PricePackageFileAction extends ActionSupportBase
         if (oldFileName.contains("."))
         {
             newFileName += oldFileName.substring(oldFileName.lastIndexOf("."), oldFileName.length());
+            pricePackageFile.setPricePackageName(oldFileName.substring(0, oldFileName.lastIndexOf(".")));
         }
         
         String fileDir = request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + "pricepackage";
@@ -210,14 +211,15 @@ public class PricePackageFileAction extends ActionSupportBase
     {
         this.service = service;
     }
+    
     public String getMsg()
     {
         return msg;
     }
-
+    
     public void setMsg(String msg)
     {
         this.msg = msg;
     }
-
+    
 }
