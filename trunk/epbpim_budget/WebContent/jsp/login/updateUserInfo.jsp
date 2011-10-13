@@ -61,7 +61,7 @@
 									isValidate="true" min="0" max="40" datatype="email">
 							</li>
 							<li class="width100Li">*必填</li>
-							<li class="width400Li">您的常用邮箱。请如实填写</li>
+							<li class="width400Li">您的常用邮箱。请如实填写，系统需要向您发送相关文件</li>
 						</ul>
 
 						<ul class="fullScreenUl">

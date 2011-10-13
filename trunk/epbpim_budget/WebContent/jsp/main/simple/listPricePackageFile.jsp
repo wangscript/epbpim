@@ -7,7 +7,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>价格包查询</title>
+<title>价格包下载</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
 <link rel="stylesheet" href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
@@ -22,7 +22,7 @@
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
-<h3 class="title">价格包查询</h3>
+<h3 class="title">价格包下载</h3>
 <!--
 <div id="searchCondition">
 	<s:form action="searchPricePackageFile.do" method="post">

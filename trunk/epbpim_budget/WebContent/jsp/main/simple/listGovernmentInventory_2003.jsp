@@ -170,7 +170,7 @@
 	}	
 </script>
 </head>
-<title>清单查询</title>
+<title>03清单查询</title>
 </head>
 <body onload="setSearchValue()">
 <div id="main"><jsp:include page="../mainHeader.jsp" />
@@ -178,7 +178,7 @@
 <div class="content_resize">
 <s:form	action="searchGovernmentInventory.do" method="post" name="searchGovernmentInventoryForm" id="searchGovernmentInventoryForm">
 <div class="mainbar">
-<h3 class="title">清单查询</h3>
+<h3 class="title">03清单查询</h3>
 <div id="searchCondition">
     <input type="hidden" name="condition.governmentInventoryType" value="2003">
 	<ul class="fullScreenUl">

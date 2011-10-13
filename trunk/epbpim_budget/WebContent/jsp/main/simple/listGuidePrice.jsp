@@ -90,8 +90,8 @@
 	<div class="searchResult" id="searchResult">
 		<ul class="fullScreenResultUl">
 			<li class="width150Li"><s:text name="编号" /></li>
-			<li class="width300Li"><s:text name="名称" /></li>			
-			<li class="width150Li"><s:text name="价格" /></li>
+			<li class="width400Li"><s:text name="名称规格" /></li>			
+			<li class="width150Li"><s:text name="价格（元）" /></li>
 			<li class="width150Li"><s:text name="单位" /></li>
 			<li class="width150Li"><s:text name="时间" /></li>
 			<!-- 
