@@ -1,6 +1,10 @@
 package com.ryxx.bpim.web.action.admin;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -69,6 +73,70 @@ public class PricePackageFileAction extends ActionSupportBase
         return SUCCESS;
     }
     
+    public String downloadPricePackageFile()
+    {
+        
+        // 打开指定文件的流信息 
+        FileInputStream fileInputStream = null;
+        PrintWriter out = null;
+        try
+        {
+            String filePath = pricePackageFile.getPricePackagePath();
+            String fileName = new String(pricePackageFile.getPricePackageName().getBytes("gb2312"), "iso-8859-1");
+            String extFileName = filePath.substring(filePath.lastIndexOf("."), filePath.length());
+            
+            // 写出流信息 
+            out = response.getWriter();
+            fileInputStream = new java.io.FileInputStream(filePath);
+            
+            // 设置响应头和下载保存的文件名     
+            response.setContentType("APPLICATION/OCTET-STREAM");
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + extFileName + "\"");
+            
+            int i;
+            while ((i = fileInputStream.read()) != -1)
+            {
+                out.write(i);
+            }
+            
+        }
+        catch (Exception e)
+        {
+            try
+            {
+                out.write(new String("<h3>文件不存在! </h3>".getBytes("gb2312"), "iso-8859-1"));
+            }
+            catch (UnsupportedEncodingException e1)
+            {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }
+        finally
+        {
+            if (null != fileInputStream)
+            {
+                try
+                {
+                    fileInputStream.close();
+                }
+                catch (IOException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if (null != out)
+            {
+                out.flush();
+                out.close();
+            }
+            
+        }
+        
+        return SUCCESS;
+    }
+    
     public String addPricePackageFile()
     {
         File newUploadFile = null;
@@ -98,7 +166,9 @@ public class PricePackageFileAction extends ActionSupportBase
     {
         try
         {
-            String fileDir = request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + "pricepackage";
+            String fileDir =
+                request.getSession().getServletContext().getRealPath("/") + FILE_SEAPRATOR + "uploadfile"
+                    + FILE_SEAPRATOR + "pricepackage";
             
             String filePath = pricePackageFile.getPricePackagePath();
             if (null != filePath)
@@ -135,7 +205,9 @@ public class PricePackageFileAction extends ActionSupportBase
             pricePackageFile.setPricePackageName(oldFileName.substring(0, oldFileName.lastIndexOf(".")));
         }
         
-        String fileDir = request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + "pricepackage";
+        String fileDir =
+            request.getSession().getServletContext().getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR
+                + "pricepackage";
         
         File fileDirFile = new File(fileDir);
         if (!fileDirFile.exists())
@@ -146,9 +218,7 @@ public class PricePackageFileAction extends ActionSupportBase
         
         FileUtil.copy(uploadFile, newUploadFile, false);
         
-        String filePath =
-            "http://" + request.getLocalAddr() + ":" + request.getLocalPort() + request.getContextPath()
-                + "/uploadfile/pricepackage/" + newFileName;
+        String filePath = fileDir + FILE_SEAPRATOR + newFileName;
         
         pricePackageFile.setPricePackagePath(filePath);
         
