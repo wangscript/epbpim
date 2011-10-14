@@ -198,6 +198,13 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
+	<package name="bpim-downloadPricePackageFile" namespace="/main" extends="bpim-default">
+		<action name="downloadPricePackageFile" method="downloadPricePackageFile" class="pricePackageFileAction">
+			<result>/jsp/main/simple/downloadPricePackageFile.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
 	<package name="bpim-main" namespace="/main" extends="bpim-default">
 		<action name="enterpriseMain" >
 			<result>/jsp/main/enterpriseMain.jsp</result>
