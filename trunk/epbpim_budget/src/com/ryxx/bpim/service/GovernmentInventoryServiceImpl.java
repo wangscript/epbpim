@@ -29,5 +29,4 @@ public class GovernmentInventoryServiceImpl extends AbstractService<GovernmentIn
         }
         return getDao().listGovernmentInventory(condition);
     }
-    
 }

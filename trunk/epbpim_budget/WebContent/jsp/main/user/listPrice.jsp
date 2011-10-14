@@ -16,13 +16,13 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="batchUser.do" method="post"
-						onsubmit="return validate(this);">
 						<div id="addRoleTable">
 							<h5>应用价格列表	:</h5>
 							<ul class="fullScreenUl">
-								<li class="width200Li">应用名称</li>
-								<li class="width100Li">价格</li>
+								<li class="width100Li">姓名</li>
+								<li class="width100Li">编号</li>
+								<li class="width100Li">订阅应用</li>
+								<li class="width100Li">消费金额</li>
 								<li class="width500Li">应用说明</li>
 							</ul>
 							<s:iterator value="provinceCities" status="st1">
@@ -48,9 +48,16 @@
 									</s:if>
 								</s:iterator>
 							</s:iterator>
+							<ul class="fullScreenResultUl">
+							<s:form>
+							<s:hidden name="eId" />
+							<jsp:include page="../../common/pagination.jsp" flush="true">
+								<jsp:param name="action_page" value="main/listPrice.do" />
+							</jsp:include>
+							</s:form>
+						</ul>
 						</div>
 						<div></div>
-					</s:form>
 				</div>
 				<div class="clr"></div>
 			</div>

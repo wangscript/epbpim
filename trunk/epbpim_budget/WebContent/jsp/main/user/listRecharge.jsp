@@ -50,7 +50,6 @@ function clearPage(updateId){
 							</s:form>
 						</ul>
 					</div>
-					
 					<div></div>
 				</div>
 				<div class="clr"></div>
