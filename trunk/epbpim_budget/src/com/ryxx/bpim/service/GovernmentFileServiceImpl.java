@@ -100,7 +100,7 @@ public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, G
         fileName = fileName.substring(0, blankIndex).trim();
         String publishDateString = "";
         String fileTitle = "";
-        if (fileName.endsWith("æ— "))
+        if (fileName.endsWith("无"))
         {
             publishDateString = effectiveDateString;
             fileTitle = fileName.substring(0, fileName.length() - 1);
@@ -112,7 +112,7 @@ public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, G
             publishDateString = fileName.substring(fileName.length() - 10, fileName.length());
             fileTitle = fileName.substring(0, fileName.length() - 10);
         }
-        else if (!fileName.endsWith("æ— ") && !fileName.endsWith(" "))
+        else if (!fileName.endsWith("无") && !fileName.endsWith(" "))
         {
             publishDateString = effectiveDateString;
             fileTitle = fileName.substring(0, fileName.length());
