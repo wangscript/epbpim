@@ -13,8 +13,6 @@ public class GuidePrice extends VoBase
     
     private String guidePriceFileName;
     
-    private String guidePriceType;
-    
     private Timestamp guidePriceDate;
     
     private String guidePriceDatePage;
@@ -36,6 +34,24 @@ public class GuidePrice extends VoBase
     private Timestamp uploadDate;
     
     private ProvinceCity provinceCity;
+    
+    private Major major;
+    
+    
+    
+    /**
+	 * @return the major
+	 */
+	public Major getMajor() {
+		return major;
+	}
+
+	/**
+	 * @param major the major to set
+	 */
+	public void setMajor(Major major) {
+		this.major = major;
+	}
     
     
     
@@ -61,16 +77,6 @@ public class GuidePrice extends VoBase
     public void setGuidePriceFileName(String guidePriceFileName)
     {
         this.guidePriceFileName = guidePriceFileName;
-    }
-    
-    public String getGuidePriceType()
-    {
-        return guidePriceType;
-    }
-    
-    public void setGuidePriceType(String guidePriceType)
-    {
-        this.guidePriceType = guidePriceType;
     }
     
     public Timestamp getGuidePriceDate()

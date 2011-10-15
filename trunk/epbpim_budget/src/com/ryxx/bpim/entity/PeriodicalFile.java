@@ -17,8 +17,6 @@ public class PeriodicalFile extends VoBase
     
     private String periodicalProvice;
     
-    private String periodicalType;
-    
     private String periodicalUrl;
     
     private Timestamp periodicalDate;
@@ -31,7 +29,23 @@ public class PeriodicalFile extends VoBase
     
     private ProvinceCity provinceCity;
     
+    private Major major;
     
+    
+    
+    /**
+	 * @return the major
+	 */
+	public Major getMajor() {
+		return major;
+	}
+
+	/**
+	 * @param major the major to set
+	 */
+	public void setMajor(Major major) {
+		this.major = major;
+	}
     
     /**
 	 * @return the provinceCity
@@ -65,16 +79,6 @@ public class PeriodicalFile extends VoBase
     public void setPeriodicalName(String periodicalName)
     {
         this.periodicalName = periodicalName;
-    }
-    
-    public String getPeriodicalType()
-    {
-        return periodicalType;
-    }
-    
-    public void setPeriodicalType(String periodicalType)
-    {
-        this.periodicalType = periodicalType;
     }
     
     public String getPeriodicalProvice()

@@ -64,20 +64,10 @@ public class PeriodicalFileDAOImpl extends AbstractBaseDAO<PeriodicalFile, Long>
                 list.add(criterion1);
             }
             
-            if (!StringUtils.isEmpty(periodicalFile.getPeriodicalType()))
+            if (periodicalFile.getMajor()!=null&&periodicalFile.getMajor().getId()!=0)
             {
-                String periodicalType = "";
-                if ("1".equals(periodicalFile.getPeriodicalType()))
-                {
-                    periodicalType = "市政";
-                }
-                else if ("3".equals(periodicalFile.getPeriodicalType()))
-                {
-                    periodicalType = "土建";
-                }
-                
-                Criterion criterion2 = Restrictions.eq("periodicalType", periodicalType);
-                list.add(criterion2);
+            	 Criterion criterion2 = Restrictions.eq("major.id", periodicalFile.getMajor().getId());
+            	 list.add(criterion2);
             }
             
             if (!StringUtils.isEmpty(periodicalFile.getKeyword()))

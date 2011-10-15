@@ -60,7 +60,7 @@
 														name="listCheck" value="<s:property value="id"/>"
 														 />
 											</s:if>
-													<s:property value="name" /></h5></li>
+													<s:property value="title" /></h5></li>
 											<li class="width100Li">
 											<s:if test="price == 0">
 													免费

@@ -60,12 +60,9 @@
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width100Li">专业：</li>
-								<li class="width200Li"><select
-									id="pricePackageFile.pricePackageType"
-									name="pricePackageFile.pricePackageType" style="width: 150px;">
-										<option value="土建">土建</option>
-										<option value="市政">市政</option>
-								</select></li>
+								<li class="width200Li"><s:select cssClass="width150Select" id="pricePackageFile.major.id" name="pricePackageFile.major.id"
+										list="majors" listKey="id" listValue="name" multiple="false" required="true" onchange="" headerKey="0" />
+								</li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width100Li">时间：</li>

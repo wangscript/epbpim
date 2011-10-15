@@ -57,12 +57,10 @@
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width100Li">专业：</li>
-								<li class="width200Li"><select
-									id="guidePrice.guidePriceType"
-									name="guidePrice.guidePriceType" class="width150Select">
-										<option value="市政">市政</option>
-										<option value="园林">园林</option>
-								</select></li>
+								<li class="width200Li">
+								<s:select cssClass="width150Select" id="guidePrice.major.id" name="guidePrice.major.id"
+										list="majors" listKey="id" listValue="name" multiple="false" required="true" onchange="" headerKey="0" />
+								</li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width100Li">时间：</li>

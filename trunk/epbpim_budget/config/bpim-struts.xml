@@ -103,19 +103,19 @@
 		<action name="preAddNews">
 			<result>/jsp/admin/addNews.jsp</result>
 		</action>
-		<action name="preImportGovernmentFile" method="listProvince" class="listProvinceAction">
+		<action name="preImportGovernmentFile" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importGovernmentFile.jsp</result>
 		</action>
-		<action name="preImportGuidePrice" method="listProvince" class="listProvinceAction">
+		<action name="preImportGuidePrice" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importGuidePrice.jsp</result>
 		</action>
-		<action name="preDeleteGuidePrice" method="listProvince" class="listProvinceAction">
+		<action name="preDeleteGuidePrice" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/delGuidePrice.jsp</result>
 		</action>
-		<action name="preImportPeriodicalFile" method="listProvince" class="listProvinceAction">
+		<action name="preImportPeriodicalFile" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importPeriodicalFile.jsp</result>
 		</action>
-		<action name="preUploadPricePackageFile" method="listProvince" class="listProvinceAction">
+		<action name="preUploadPricePackageFile" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/uploadPricePackageFile.jsp</result>
 		</action>	
 	</package>

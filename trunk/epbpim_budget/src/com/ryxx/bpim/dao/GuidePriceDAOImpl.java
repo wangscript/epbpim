@@ -47,18 +47,9 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
             criteria.add(Restrictions.eq("provinceCity.id", guidePrice.getProvinceCity().getId()));
         }
         
-        if (!StringUtils.isEmpty(guidePrice.getGuidePriceType()))
+        if (guidePrice.getMajor()!=null&&guidePrice.getMajor().getId()!=0)
         {
-            String guidePriceType = "";
-            if ("1".equals(guidePrice.getGuidePriceType()))
-            {
-                guidePriceType = "市政";
-            }
-            else if ("2".equals(guidePrice.getGuidePriceType()))
-            {
-                guidePriceType = "园林";
-            }
-            criteria.add(Restrictions.eq("guidePriceType", guidePriceType));
+            criteria.add(Restrictions.eq("major.id", guidePrice.getMajor().getId()));
         }
         
         if (!StringUtils.isEmpty(guidePrice.getGuidePriceDatePage()))
@@ -104,25 +95,16 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
                 list.add(criterion2);
             }
             
-            if (!StringUtils.isEmpty(guidePrice.getGuidePriceType()))
+            if (guidePrice.getMajor()!=null&&guidePrice.getMajor().getId()!=0)
             {
-                String guidePriceType = "";
-                if ("1".equals(guidePrice.getGuidePriceType()))
-                {
-                    guidePriceType = "市政";
-                }
-                else if ("2".equals(guidePrice.getGuidePriceType()))
-                {
-                    guidePriceType = "园林";
-                }
-                
-                Criterion criterion3 = Restrictions.eq("guidePriceType", guidePriceType);
-                list.add(criterion3);
+            	 Criterion criterion3 = Restrictions.eq("major.id", guidePrice.getMajor().getId());
+            	 list.add(criterion3);
             }
             
             if (guidePrice.getProvinceCity()!=null&&0!=guidePrice.getProvinceCity().getId())
             {
             	Criterion criterion4 = Restrictions.eq("provinceCity.id", guidePrice.getProvinceCity().getId());
+            	list.add(criterion4);
             }
             
             if (!StringUtils.isEmpty(guidePrice.getGuidePriceDatePage()))
