@@ -39,15 +39,15 @@
 <s:else>
 	<div class="searchResult" id="searchResult">
 		<ul class="fullScreenResultUl">
-			<li class="width200Li"><s:text name="文件名" /></li>
+			<li class="width400Li"><s:text name="文件名" /></li>
 			<li class="width200Li"><s:text name="专业" /></li>
 			<li class="width200Li"><s:text name="时间" /></li>
 			<li class="width50Li"><s:text name="下载" /></li>
 		</ul>
 		<s:iterator value="dates" status="st">
 			<ul class="fullScreenResultUl">
-				<li class="width200Li"><s:property value="pricePackageName" /></li>
-				<li class="width200Li"><s:property value="pricePackageType" /></li>
+				<li class="width400Li"><s:property value="pricePackageName" /></li>
+				<li class="width200Li"><s:property value="major.name" /></li>
 				<li class="width200Li"><s:date name="pricePackageDate" format="yyyy-MM" /></li>
 				<li class="width50Li">
 					<form action="downloadPricePackageFile.do" method="post" id='downloadFile<s:property value="id" />'>

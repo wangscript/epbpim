@@ -100,7 +100,7 @@ public class GuidePriceServiceImpl extends
 			data.setUploadDate(uploadDate);
 			resultList.add(data);
 			data.setProvinceCity(guidePrice.getProvinceCity());
-			data.setGuidePriceType(guidePrice.getGuidePriceType());
+			data.setMajor(guidePrice.getMajor());
 		}
 
 		return resultList;

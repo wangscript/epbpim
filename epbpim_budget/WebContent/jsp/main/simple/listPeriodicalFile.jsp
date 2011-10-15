@@ -99,15 +99,15 @@
 <s:else>
 	<div class="searchResult" id="searchResult">
 		<ul class="fullScreenResultUl">
-			<li class="width200Li"><s:text name="名称" /></li>
+			<li class="width400Li"><s:text name="名称" /></li>
 			<li class="width200Li"><s:text name="专业" /></li>
 			<li class="width200Li"><s:text name="时间" /></li>
 			<li class="width50Li"><s:text name="浏览" /></li>
 		</ul>
 		<s:iterator value="datas" status="st">
 			<ul class="fullScreenResultUl">
-				<li class="width200Li"><s:property value="periodicalName" /></li>
-				<li class="width200Li"><s:property value="periodicalType" /></li>
+				<li class="width400Li"><s:property value="periodicalName" /></li>
+				<li class="width200Li"><s:property value="major.name" /></li>
 				<li class="width200Li"><s:date name="periodicalDate" format="yyyy-MM" /></li>
 				<li class="width50Li">
 					<!-- <form action="viewPeriodicalFile.do" method="post" id='searchfile<s:property value="id" />'>

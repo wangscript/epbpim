@@ -50,20 +50,10 @@ public class PricePackageFileDAOImpl extends AbstractBaseDAO<PricePackageFile, L
             Criterion criterion1 = Restrictions.eq("provinceCity.id", pricePackageFile.getProvinceCity().getId());
             list.add(criterion1);
         }
-        if (null != pricePackageFile.getPricePackageType() && "" != pricePackageFile.getPricePackageType())
+        if (pricePackageFile.getMajor()!=null&&pricePackageFile.getMajor().getId()!=0)
         {
-            String pricePackageType = "";
-            if ("1".equals(pricePackageFile.getPricePackageType()))
-            {
-                pricePackageType = "市政";
-            }
-            else if ("3".equals(pricePackageFile.getPricePackageType()))
-            {
-                pricePackageType = "土建";
-            }
-            
-            Criterion criterion1 = Restrictions.eq("pricePackageType", pricePackageType);
-            list.add(criterion1);
+        	 Criterion criterion2 = Restrictions.eq("major.id", pricePackageFile.getMajor().getId());
+        	 list.add(criterion2);
         }
         
         //            if (null != pricePackageFile.getPricePackageDate())

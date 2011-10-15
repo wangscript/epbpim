@@ -96,7 +96,7 @@ public class EmailTools {
 					+ userInfo.getRoleType().getValue() + "</td>");
 			sb.append("<td style='border: 1px solid #c0c0c0;'>");
 			for (AdminMenu menu : userInfo.getMenus()) {
-				sb.append(menu.getName()+"&nbsp;&nbsp;&nbsp;");
+				sb.append(menu.getTitle()+"&nbsp;&nbsp;&nbsp;");
 			}
 			sb.append("</td>");
 			sb.append("</tr>");

@@ -18,10 +18,13 @@
 			<li><a href="javascript: setHomepage()">设为首页</a></li>
 			<li><a href="javascript: addFavorite()">添加收藏</a></li>
 			<li><a href="contactUs.do">联系我们</a></li>
-        </ul>
+        </ul> 
       </div>
       <div class="clr"></div>
-      <div class="logo"><h1>建筑行业造价平台<small>本软件系统由上海任远信息技术有限公司和上海建惠建设咨询有限公司共同研发</small><small>合作单位：上海市土木工程学会、上海燃气行业协会</small></h1></div>
+      <div class="logo"><h1>建筑行业造价平台<small>本软件系统由上海任远信息技术有限公司和上海建惠建设咨询有限公司共同研发</small>
+      <small>在本软件系统研发过程中，得到上海市市政公路工程行业协会造价专业委员会、上海公路学会造价专业委员会等相关单位的指导帮助.</small><small>在此谨向以上单位表示衷心感谢！</small>
+      <small>合作单位：上海市土木工程学会、上海燃气行业协会</small>
+			</h1></div>
     </div>
   </div>
 </body>

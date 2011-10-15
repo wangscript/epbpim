@@ -217,7 +217,7 @@
 			<li class="width350Li"><s:property value="detail"/></li>
 		</ul>
 	</s:iterator>
-	<ul>
+	<ul class="fullScreenResultUl">
 		<jsp:include page="../../common/pagination.jsp" flush="true">
 			<jsp:param name="action_page" value="main/searchGovernmentInventory.do"/>
 		</jsp:include>
