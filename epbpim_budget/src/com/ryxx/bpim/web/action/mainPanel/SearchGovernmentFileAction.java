@@ -158,7 +158,7 @@ public class SearchGovernmentFileAction extends ActionSupportBase
         throws ParseException
     {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-        if (!"0".equals(condition.getFilePublishYear()))
+        if (!"0".equals(condition.getFilePublishYear())&&!"".equals(condition.getFilePublishYear()))
         {
             Date filePublishDateFrom;
             Date filePublishDateTo;
@@ -178,7 +178,7 @@ public class SearchGovernmentFileAction extends ActionSupportBase
             condition.setFilePublishDateTo(new Timestamp(filePublishDateTo.getTime()));
         }
         
-        if (!"0".equals(condition.getFileEffectiveYear()))
+        if (!"0".equals(condition.getFileEffectiveYear())&&!"".equals(condition.getFileEffectiveYear()))
         {
             Date fileEffectiveDateFrom;
             Date fileEffectiveDateTo;

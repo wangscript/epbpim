@@ -252,36 +252,36 @@
 
 	<div class="searchResult" id="searchResult" style="margin-top: 15px;">
 	<ul class="fullScreenResultUl">
-		<li class="width100Li">文件类别</li>
-		<li class="width100Li">小类</li>
-		<li class="width100Li">地区</li>
+		<li class="width150Li">文件类别</li>
+		<li class="width150Li">小类</li>
+		<li class="width50Li">地区</li>
 		<li class="width300Li">文件名</li>
 
 		<li class="width100Li">发布时间</li>
 		<li class="width100Li">生效时间</li>
-		<li class="width100Li">查看详情</li>
+		<li class="width50Li">查看</li>
 	</ul>
 	<s:if test="datas==null || datas.size()==0">
 	</s:if> <s:else>
 		<s:iterator value="datas" status="st">
 			<ul class="fullScreenResultUl" id="<s:property value='id'/>">
-				<li class="width100Li"><s:property value="fileType" /></li>
-				<li class="width100Li"><s:property value="fileSubType" /></li>
-				<li class="width100Li"><s:property value="area" /></li>
+				<li class="width150Li"><s:property value="fileType" /></li>
+				<li class="width150Li"><s:property value="fileSubType" /></li>
+				<li class="width50Li"><s:property value="area" /></li>
 				<li class="width300Li">
 				<s:if
-				test="%{null!=fileTitle&&fileTitle.length()>28}">
-				<s:property value="fileTitle.substring(0, 27)+'...'" />
+				test="%{null!=fileTitle&&fileTitle.length()>20}">
+				<s:property value="fileTitle.substring(0, 19)+'...'" />
 			</s:if> <s:else>
 				<s:property value="fileTitle" />
 			</s:else>
 			</li>
-
+ 
 				<li class="width100Li"><s:date name="filePublishDate"
 					format="yyyy-MM-dd" /></li>
 				<li class="width100Li"><s:date name="fileEffectiveDate"
 					format="yyyy-MM-dd" /></li>
-				<li class="width100Li"><a target="blank" onclick="viewDetail(<s:property value="id" />)">查看</a></li>
+				<li class="width50Li"><a target="blank" onclick="viewDetail(<s:property value="id" />)">查看</a></li>
 			</ul>
 		</s:iterator>
 		<ul class="fullScreenResultUl">
