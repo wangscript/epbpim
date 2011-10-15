@@ -14,6 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Order;
 import org.springframework.dao.DataAccessResourceFailureException;
 
 import com.ryxx.bpim.entity.VoBase;
@@ -91,13 +92,17 @@ public abstract class AbstractBaseDAO<T extends VoBase, ID extends Serializable>
 		}
 		return crit.list();
 	}
-
+	
 	public List<T> findPageByPage(int firstResult, int maxResults) {
 		return findByCriteriaPageByPage(firstResult, maxResults);
 	}
 	
 	public List<T> findPageByPage(int firstResult, int maxResults, Criterion... criterion) {
 		return findByCriteriaPageByPage(firstResult, maxResults, criterion);
+	}
+	
+	public List<T> findPageByPage(final String propertyName,final boolean isAsc,int firstResult, int maxResults, Criterion... criterion) {
+		return findByCriteriaPageByPage(propertyName,isAsc,firstResult, maxResults, criterion);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -153,6 +158,25 @@ public abstract class AbstractBaseDAO<T extends VoBase, ID extends Serializable>
 		for (Criterion c : criterion) {
 			criteria.add(c);
 		}
+		criteria.setFirstResult(firstResult);
+		criteria.setMaxResults(maxResults);
+		return criteria.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected List<T> findByCriteriaPageByPage(final String propertyName,final boolean isAsc,int firstResult, int maxResults,
+			Criterion... criterion) {
+		Criteria criteria = getSession().createCriteria(getPersistentClass());
+		for (Criterion c : criterion) {
+			criteria.add(c);
+		}
+		 if(null != propertyName){
+             if(isAsc){
+            	 criteria.addOrder(Order.asc(propertyName));
+             }else{
+            	 criteria.addOrder(Order.desc(propertyName));
+             }
+         }
 		criteria.setFirstResult(firstResult);
 		criteria.setMaxResults(maxResults);
 		return criteria.list();

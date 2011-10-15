@@ -27,7 +27,7 @@ public class GovernmentFile extends VoBase
     
     private Timestamp fileEffectiveDate;
     
-    private Boolean effective;
+    private int effective = 1;
     
     private String keyword;
     
@@ -233,23 +233,22 @@ public class GovernmentFile extends VoBase
         this.fileEffectiveDate = fileEffectiveDate;
     }
     
-    /**
-     * @return the effective
-     */
-    public Boolean getEffective()
-    {
-        return effective;
-    }
-    
-    /**
-     * @param effective the effective to set
-     */
-    public void setEffective(Boolean effective)
-    {
-        this.effective = effective;
-    }
-    
-    /**
+  
+	/**
+	 * @return the effective
+	 */
+	public int getEffective() {
+		return effective;
+	}
+
+	/**
+	 * @param effective the effective to set
+	 */
+	public void setEffective(int effective) {
+		this.effective = effective;
+	}
+
+	/**
      * @return the sourceCode
      */
     public String getSourceCode()

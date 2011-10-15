@@ -36,7 +36,7 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
     @Override
     public List<GovernmentFile> listGovernmentFile(GovernmentFile governmentFile)
     {
-        return findPageByPage(governmentFile.getStartRow(), governmentFile.getPageSize(), wrapCriterion(governmentFile));
+        return findPageByPage("filePublishDate",false,governmentFile.getStartRow(), governmentFile.getPageSize(), wrapCriterion(governmentFile));
     }
     
     @Override
@@ -73,13 +73,13 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
                 list.add(criterion4);
             }
             
-            if (governmentFile.getFileSubType() != null && !"0".equals(governmentFile.getFileSubType()))
+            if (governmentFile.getFileSubType() != null && !"".equals(governmentFile.getFileSubType())&&!"0".equals(governmentFile.getFileSubType()))
             {
                 Criterion criterion5 = Restrictions.eq("fileSubType", governmentFile.getFileSubType());
                 list.add(criterion5);
             }
             
-            if (governmentFile.getFileType() != null && !"0".equals(governmentFile.getFileType()))
+            if (governmentFile.getFileType() != null && !"".equals(governmentFile.getFileType())&&!"0".equals(governmentFile.getFileType()))
             {
                 Criterion criterion6 = Restrictions.eq("fileType", governmentFile.getFileType());
                 list.add(criterion6);
@@ -90,6 +90,7 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
                 Criterion criterion7 = Restrictions.like("sourceCode", "%" + governmentFile.getKeyword() + "%");
                 list.add(criterion7);
             }
+            
         }
         
         Criterion[] criterions = {};

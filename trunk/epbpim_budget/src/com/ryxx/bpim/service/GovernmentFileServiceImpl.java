@@ -34,7 +34,7 @@ public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, G
         data.setFileType(fileType);
         data.setFileSubType(fileSubType);
         data.setArea(provice);
-        data.setEffective(true);
+        data.setEffective(1);
         setAttr(data, fileName);
         data.setSourceCode(compileCode(readHtml(file.getAbsolutePath())));
         getDao().saveGovernmentFile(data);
