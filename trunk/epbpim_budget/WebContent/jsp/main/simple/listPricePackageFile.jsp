@@ -61,6 +61,8 @@
 		</s:iterator>
 		<ul class="fullScreenResultUl">
 			<s:form>
+				<input type="hidden" name="searchPricePackageFile.major.id" value="<s:property value='searchPricePackageFile.major.id'/>">
+				<input type="hidden" name="searchPricePackageFile.provinceCity.id" value="<s:property value='searchPricePackageFile.provinceCity.id'/>">
 				<jsp:include page="../../common/pagination.jsp" flush="true">
 					<jsp:param name="action_page" value="main/searchPricePackageFile.do"/>
 				</jsp:include>
