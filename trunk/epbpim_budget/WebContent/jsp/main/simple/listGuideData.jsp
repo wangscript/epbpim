@@ -16,24 +16,36 @@
 <script type='text/javascript' src='../js/common.js'></script>
 <script type="text/javascript">
 	function setSearchValue() {
-		var code = "<s:property value="guideData.code"/>".substring(0,2);
-		if(code != "")
+		var guideDataClass = "<s:property value="guideData.guideDataClass"/>".substring(0,2);
+		if(guideDataClass != "")
 		{
-			var codeObj=document.getElementById("guideData.code");
-			for(var i=0;i<codeObj.options.length;i++)
+			var guideDataClassObj=document.getElementById("guideData.guideDataClass");
+			for(var i=0;i<guideDataClassObj.options.length;i++)
 			{
-				if(code == codeObj.options[i].value)
+				if(guideDataClass == guideDataClassObj.options[i].value)
 				{
-					codeObj.options[i].selected=true;
+					guideDataClassObj[i].selected=true;
 					break;
 				}				
 			}
+		}
+		
+		var num = "<s:property value="guideData.num"/>";
+		if(num != "")
+		{
+			document.getElementById("guideData.num").value=num;
 		}
 		
 		var name = "<s:property value="guideData.name"/>";
 		if(name != "")
 		{
 			document.getElementById("guideData.name").value=name;
+		}
+		
+		var unit = "<s:property value="guideData.unit"/>";
+		if(unit != "")
+		{
+			document.getElementById("guideData.unit").value=unit;
 		}
 		
 		var  guideDataDate='<s:property value="guideData.guideDataDatePage"/>';
@@ -52,21 +64,10 @@
 <div class="mainbar">
 <h3 class="title">信息价查询：</h3>
 <s:form id="searchguideDataForm" action="searchguideData.do" method="post">
-<div id="searchCondition">
+	<div id="searchCondition">
+		<input type="hidden" name="guideData.major.id" value="<s:property value='guideData.major.id'/>">
+		<input type="hidden" name="guideData.provinceCity.id" value="<s:property value='guideData.provinceCity.id'/>">
 		<ul class="fullScreenUl">
-			<!-- 
-			<li class="width300Li">分类：
-				<select id="guideData.guideDataType" name="guideData.guideDataType style="width: 150px;">
-					<option value="">--请选择--</option>
-					<option value="土建">土建</option>
-					<option value="市政">市政</option>
-					<option value="公用">公用</option>
-					<option value="水利">水利</option>
-					<option value="人防">人防</option>
-					<option value="房修">房修</option>
-				</select>							  
-			</li>
-			 -->
 			<li><label class="lb">工料机类别：</label>
 				<select id="guideData.guideDataClass" name="guideData.guideDataClass">
 					<option value="">--请选择--</option>
@@ -82,7 +83,7 @@
 				<input style="width: 120px" class="inputText" name="guideData.name" id="guideData.name">
 			</li>
 			<li style="margin-left: 40px;"><label class="lb">单位：</label>
-				<input style="width: 40px" class="inputText" name="guideData.recordUnit" id="guideData.recordUnit">
+				<input style="width: 40px" class="inputText" name="guideData.unit" id="guideData.unit">
 			</li>
 			<li class="width200Li"><label class="lb">时间：</label>
 				<input class="Wdate width100Input" id="guideData.guideDataDatePage" name="guideData.guideDataDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
@@ -90,44 +91,43 @@
 			<li>
 				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
 			</li>
-		</ul>
-	
-</div>
-
-<s:if test="datas==null || datas.size()==0">
-	<tr>
-		<td>
-		<h3><s:text name="Common.Nodata" /></h3>
-		</td>
-	</tr>
-</s:if>
-<s:else>
-	<div class="searchResult" id="searchResult">
-		<ul class="fullScreenResultUl">
-			<li class="width150Li"><s:text name="专业" /></li>
-			<li class="width400Li"><s:text name="类型" /></li>			
-			<li class="width150Li"><s:text name="名称" /></li>
-			<li class="width150Li"><s:text name="单价" /></li>
-			<li class="width150Li"><s:text name="单位" /></li>
-			<li class="width150Li"><s:text name="时间" /></li>
-		</ul>
-		<s:iterator value="datas" status="st">
-			<ul class="fullScreenResultUl"> 
-				<li class="width150Li"><s:property value="guideDataType" /></li>
-				<li class="width300Li"><s:property value="guideDataClass" /></li>				
-				<li class="width150Li"><s:property value="name" /></li>
-				<li class="width150Li"><s:property value="price" /></li>
-				<li class="width150Li"><s:property value="unit" /></li>
-				<li class="width150Li"><s:date name="guideDataDate" format="yyyy-MM" /></li>
-			</ul>
-		</s:iterator>
-		<ul class="fullScreenResultUl">
-			<jsp:include page="../../common/pagination.jsp" flush="true">
-				<jsp:param name="action_page" value="main/searchguideData.do"/>
-			</jsp:include>
-		</ul>
+		</ul>	
 	</div>
-</s:else>
+
+	<s:if test="datas==null || datas.size()==0">
+		<tr>
+			<td>
+			<h3><s:text name="Common.Nodata" /></h3>
+			</td>
+		</tr>
+	</s:if>
+	<s:else>
+		<div class="searchResult" id="searchResult">
+			<ul class="fullScreenResultUl">
+				<li class="width150Li"><s:text name="专业" /></li>
+				<li class="width400Li"><s:text name="类型" /></li>			
+				<li class="width150Li"><s:text name="名称" /></li>
+				<li class="width150Li"><s:text name="单价" /></li>
+				<li class="width150Li"><s:text name="单位" /></li>
+				<li class="width150Li"><s:text name="时间" /></li>
+			</ul>
+			<s:iterator value="datas" status="st">
+				<ul class="fullScreenResultUl"> 
+					<li class="width150Li"><s:property value="guideDataType" /></li>
+					<li class="width300Li"><s:property value="guideDataClass" /></li>				
+					<li class="width150Li"><s:property value="name" /></li>
+					<li class="width150Li"><s:property value="price" /></li>
+					<li class="width150Li"><s:property value="unit" /></li>
+					<li class="width150Li"><s:date name="guideDataDate" format="yyyy-MM" /></li>
+				</ul>
+			</s:iterator>
+			<ul class="fullScreenResultUl">
+				<jsp:include page="../../common/pagination.jsp" flush="true">
+					<jsp:param name="action_page" value="main/searchguideData.do"/>
+				</jsp:include>
+			</ul>
+		</div>
+	</s:else>
 </s:form>
 <div>
 </div>
