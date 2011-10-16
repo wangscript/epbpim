@@ -209,7 +209,6 @@
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
-		<property name="guideDataType" column="GUIDEPRICE_TYPE" type="java.lang.String"></property>
 		<property name="guideDataClass" column="GUIDEDATA_CLASS" type="java.lang.String"></property>
 		<property name="guideDataDate" column="GUIDEDATA_DATE" type="java.sql.Timestamp"></property>
 		<property name="name" column="NAME" type="java.lang.String"></property>
@@ -222,6 +221,7 @@
 		<property name="percent" column="PERCENT" type="java.lang.Double"></property>
 		<property name="importDate" column="IMPORT_DATE" type="java.sql.Timestamp"></property>
 		<many-to-one name="provinceCity" class="ProvinceCity" column="GUIDEDATA_PROVICE"></many-to-one>
+		<many-to-one name="major" class="Major" column="GUIDEDATA_TYPE"></many-to-one>
 	</class>
 	<class name="GovernmentQuota" table="GOVERNMENT_QUOTA">
 		<id name="id" column="ID" type="java.lang.Long">
