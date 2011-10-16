@@ -23,110 +23,38 @@ public class GovernmentFile extends VoBase
     
     private String sourceCode = "";
     
-    private Timestamp filePublishDate;
-    
-    private Timestamp fileEffectiveDate;
-    
     private int effective = 1;
     
     private String keyword;
     
-    private String fileEffectiveYear = "";
+    private Timestamp filePublishDate;
     
-    private String fileEffectiveMonth = "";
+    private Timestamp fileEffectiveDate;
     
-    private Timestamp fileEffectiveDateFrom;
+    private String filePublishDatePage;
     
-    private Timestamp fileEffectiveDateTo;
+    private String fileEffectiveDatePage;
     
-    private String filePublishYear = "";
-    
-    private String filePublishMonth = "";
-    
-    public String getFilePublishYear()
+    public String getFilePublishDatePage()
     {
-        return filePublishYear;
+        return filePublishDatePage;
     }
-    
-    public void setFilePublishYear(String filePublishYear)
+
+    public void setFilePublishDatePage(String filePublishDatePage)
     {
-        this.filePublishYear = filePublishYear;
+        this.filePublishDatePage = filePublishDatePage;
     }
-    
-    public String getFilePublishMonth()
+
+    public String getFileEffectiveDatePage()
     {
-        return filePublishMonth;
+        return fileEffectiveDatePage;
     }
-    
-    public void setFilePublishMonth(String filePublishMonth)
+
+    public void setFileEffectiveDatePage(String fileEffectiveDatePage)
     {
-        this.filePublishMonth = filePublishMonth;
+        this.fileEffectiveDatePage = fileEffectiveDatePage;
     }
-    
-    public Timestamp getFilePublishDateFrom()
-    {
-        return filePublishDateFrom;
-    }
-    
-    public void setFilePublishDateFrom(Timestamp filePublishDateFrom)
-    {
-        this.filePublishDateFrom = filePublishDateFrom;
-    }
-    
-    public Timestamp getFilePublishDateTo()
-    {
-        return filePublishDateTo;
-    }
-    
-    public void setFilePublishDateTo(Timestamp filePublishDateTo)
-    {
-        this.filePublishDateTo = filePublishDateTo;
-    }
-    
-    private Timestamp filePublishDateFrom;
-    
-    private Timestamp filePublishDateTo;
-    
-    public String getFileEffectiveYear()
-    {
-        return fileEffectiveYear;
-    }
-    
-    public void setFileEffectiveYear(String fileEffectiveYear)
-    {
-        this.fileEffectiveYear = fileEffectiveYear;
-    }
-    
-    public String getFileEffectiveMonth()
-    {
-        return fileEffectiveMonth;
-    }
-    
-    public void setFileEffectiveMonth(String fileEffectiveMonth)
-    {
-        this.fileEffectiveMonth = fileEffectiveMonth;
-    }
-    
-    public Timestamp getFileEffectiveDateFrom()
-    {
-        return fileEffectiveDateFrom;
-    }
-    
-    public void setFileEffectiveDateFrom(Timestamp fileEffectiveDateFrom)
-    {
-        this.fileEffectiveDateFrom = fileEffectiveDateFrom;
-    }
-    
-    public Timestamp getFileEffectiveDateTo()
-    {
-        return fileEffectiveDateTo;
-    }
-    
-    public void setFileEffectiveDateTo(Timestamp fileEffectiveDateTo)
-    {
-        this.fileEffectiveDateTo = fileEffectiveDateTo;
-    }
-    
+
     public String getKeyword()
     {
         return keyword;
@@ -233,22 +161,23 @@ public class GovernmentFile extends VoBase
         this.fileEffectiveDate = fileEffectiveDate;
     }
     
-  
-	/**
-	 * @return the effective
-	 */
-	public int getEffective() {
-		return effective;
-	}
-
-	/**
-	 * @param effective the effective to set
-	 */
-	public void setEffective(int effective) {
-		this.effective = effective;
-	}
-
-	/**
+    /**
+     * @return the effective
+     */
+    public int getEffective()
+    {
+        return effective;
+    }
+    
+    /**
+     * @param effective the effective to set
+     */
+    public void setEffective(int effective)
+    {
+        this.effective = effective;
+    }
+    
+    /**
      * @return the sourceCode
      */
     public String getSourceCode()
