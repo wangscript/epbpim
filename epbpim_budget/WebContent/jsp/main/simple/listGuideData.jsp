@@ -63,7 +63,7 @@
 <div class="content_resize">
 <div class="mainbar">
 <h3 class="title">信息价查询：</h3>
-<s:form id="searchguideDataForm" action="searchguideData.do" method="post">
+<s:form id="searchGuideDataForm" action="searchGuideData.do" method="post">
 	<div id="searchCondition">
 		<input type="hidden" name="guideData.major.id" value="<s:property value='guideData.major.id'/>">
 		<input type="hidden" name="guideData.provinceCity.id" value="<s:property value='guideData.provinceCity.id'/>">
