@@ -1,6 +1,10 @@
 package com.ryxx.bpim.dao;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -36,7 +40,11 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
     @Override
     public List<GovernmentFile> listGovernmentFile(GovernmentFile governmentFile)
     {
-        return findPageByPage("filePublishDate",false,governmentFile.getStartRow(), governmentFile.getPageSize(), wrapCriterion(governmentFile));
+        return findPageByPage("filePublishDate",
+            false,
+            governmentFile.getStartRow(),
+            governmentFile.getPageSize(),
+            wrapCriterion(governmentFile));
     }
     
     @Override
@@ -51,44 +59,58 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
         List<Criterion> list = new ArrayList<Criterion>();
         if (governmentFile != null)
         {
-            if (null != governmentFile.getFilePublishDateFrom())
+            if (!StringUtils.isEmpty(governmentFile.getFilePublishDatePage()))
             {
-                Criterion criterion1 = Restrictions.ge("filePublishDate", governmentFile.getFilePublishDateFrom());
-                list.add(criterion1);
+                try
+                {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+                    Date filePublishDate = sdf.parse(governmentFile.getFilePublishDatePage());
+                    
+                    Criterion criterion1 = Restrictions.eq("filePublishDate", new Timestamp(filePublishDate.getTime()));
+                    list.add(criterion1);
+                }
+                catch (ParseException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
-            if (null != governmentFile.getFilePublishDateTo())
+            if (!StringUtils.isEmpty(governmentFile.getFileEffectiveDatePage()))
             {
-                Criterion criterion2 = Restrictions.le("filePublishDate", governmentFile.getFilePublishDateTo());
-                list.add(criterion2);
+                try
+                {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+                    Date fileEffectiveDate = sdf.parse(governmentFile.getFileEffectiveDatePage());
+                    
+                    Criterion criterion2 =
+                        Restrictions.eq("fileEffectiveDate", new Timestamp(fileEffectiveDate.getTime()));
+                    list.add(criterion2);
+                }
+                catch (ParseException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
             
-            if (null != governmentFile.getFileEffectiveDateFrom())
+            if (governmentFile.getFileSubType() != null && !"".equals(governmentFile.getFileSubType())
+                && !"0".equals(governmentFile.getFileSubType()))
             {
-                Criterion criterion3 = Restrictions.ge("fileEffectiveDate", governmentFile.getFileEffectiveDateFrom());
+                Criterion criterion3 = Restrictions.eq("fileSubType", governmentFile.getFileSubType());
                 list.add(criterion3);
             }
-            if (null != governmentFile.getFileEffectiveDateTo())
+            
+            if (governmentFile.getFileType() != null && !"".equals(governmentFile.getFileType())
+                && !"0".equals(governmentFile.getFileType()))
             {
-                Criterion criterion4 = Restrictions.le("fileEffectiveDate", governmentFile.getFileEffectiveDateTo());
+                Criterion criterion4 = Restrictions.eq("fileType", governmentFile.getFileType());
                 list.add(criterion4);
-            }
-            
-            if (governmentFile.getFileSubType() != null && !"".equals(governmentFile.getFileSubType())&&!"0".equals(governmentFile.getFileSubType()))
-            {
-                Criterion criterion5 = Restrictions.eq("fileSubType", governmentFile.getFileSubType());
-                list.add(criterion5);
-            }
-            
-            if (governmentFile.getFileType() != null && !"".equals(governmentFile.getFileType())&&!"0".equals(governmentFile.getFileType()))
-            {
-                Criterion criterion6 = Restrictions.eq("fileType", governmentFile.getFileType());
-                list.add(criterion6);
             }
             
             if (!StringUtils.isEmpty(governmentFile.getKeyword()))
             {
-                Criterion criterion7 = Restrictions.like("sourceCode", "%" + governmentFile.getKeyword() + "%");
-                list.add(criterion7);
+                Criterion criterion5 = Restrictions.like("sourceCode", "%" + governmentFile.getKeyword() + "%");
+                list.add(criterion5);
             }
             
         }
