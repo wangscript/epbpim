@@ -47,7 +47,7 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
     private String msg = "";
     
     public String saveGuideData(GuideData guideData, File uploadfile)
-        throws ParseException, SQLException, IOException
+        throws Exception
     {
         List<GuideData> guideDataList = parseGuideDataFile(uploadfile, guideData);
         
@@ -92,7 +92,7 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
      * 解析信息价文件
      */
     private List<GuideData> parseGuideDataFile(File uploadfile, GuideData guideData)
-        throws IOException, ParseException
+        throws Exception
     {
         List<GuideData> resultList = new ArrayList<GuideData>();
         Sheet sheet = getWb(uploadfile, guideData.getGuideDataFileName());
@@ -108,7 +108,7 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
         msg = checkTableTitle(tableTitleTable, ExcelTitleUtil.userProjectDataTitleSet);
         if (!"".equals(msg))
         {
-            return null;
+            throw new Exception(msg);
         }
         
         String guideDataType = getProjectName(guideData.getGuideDataFileName());

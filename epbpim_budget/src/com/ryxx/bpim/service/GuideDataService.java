@@ -17,7 +17,7 @@ public interface GuideDataService extends BaseService<GuideData, GuideDataDAO, L
 {
     
     String saveGuideData(GuideData guideData, File uploadfile)
-        throws ParseException, SQLException, IOException;
+        throws ParseException, SQLException, IOException, Exception;
     
     String deleteGuideData(GuideData guideData)
         throws ParseException, SQLException;
