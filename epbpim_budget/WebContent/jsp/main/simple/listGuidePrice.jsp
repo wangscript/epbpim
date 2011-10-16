@@ -52,8 +52,9 @@
 <div class="mainbar">
 <h3 class="title">信息价查询：</h3>
 <s:form id="searchGuidePriceForm" action="searchGuidePrice.do" method="post">
-<div id="searchCondition">	
-		<input type="hidden" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType" value="1"/>
+	<div id="searchCondition">	
+		<input type="hidden" name="guidePrice.major.id" value="<s:property value='guidePrice.major.id'/>">
+		<input type="hidden" name="guidePrice.provinceCity.id" value="<s:property value='guidePrice.provinceCity.id'/>">
 		<ul class="fullScreenUl">
 			<li class="width300Li">分类：
 				<select id="guidePrice.code" name="guidePrice.code" style="width: 150px;">
@@ -74,50 +75,49 @@
 			<li>
 				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
 			</li>
-		</ul>
-	
-</div>
-
-<s:if test="datas==null || datas.size()==0">
-	<tr>
-		<td>
-		<h3><s:text name="Common.Nodata" /></h3>
-		</td>
-	</tr>
-</s:if>
-<s:else>
-	<div class="searchResult" id="searchResult">
-		<ul class="fullScreenResultUl">
-			<li class="width150Li"><s:text name="编号" /></li>
-			<li class="width400Li"><s:text name="名称规格" /></li>			
-			<li class="width150Li"><s:text name="价格（元）" /></li>
-			<li class="width150Li"><s:text name="单位" /></li>
-			<li class="width150Li"><s:text name="时间" /></li>
-			<!-- 
-			<li class="width200Li"><s:text name="省份" /></li>
-			<li class="width200Li"><s:text name="专业" /></li>			
-			-->
-		</ul>
-		<s:iterator value="datas" status="st">
-			<ul class="fullScreenResultUl"> 
-				<li class="width150Li"><s:property value="code" /></li>
-				<li class="width300Li"><s:property value="name" /></li>				
-				<li class="width150Li"><s:property value="price" /></li>
-				<li class="width150Li"><s:property value="unit" /></li>
-				<li class="width150Li"><s:date name="guidePriceDate" format="yyyy-MM" /></li>
-				<!-- 
-				<li class="width200Li"><s:property value="guidePriceProvice" /></li>
-				<li class="width200Li"><s:property value="guidePriceType" /></li>
-				 -->
-			</ul>
-		</s:iterator>
-		<ul class="fullScreenResultUl">
-			<jsp:include page="../../common/pagination.jsp" flush="true">
-				<jsp:param name="action_page" value="main/searchGuidePrice.do"/>
-			</jsp:include>
-		</ul>
+		</ul>	
 	</div>
-</s:else>
+
+	<s:if test="datas==null || datas.size()==0">
+		<tr>
+			<td>
+			<h3><s:text name="Common.Nodata" /></h3>
+			</td>
+		</tr>
+	</s:if>
+	<s:else>
+		<div class="searchResult" id="searchResult">
+			<ul class="fullScreenResultUl">
+				<li class="width150Li"><s:text name="编号" /></li>
+				<li class="width400Li"><s:text name="名称规格" /></li>			
+				<li class="width150Li"><s:text name="价格（元）" /></li>
+				<li class="width150Li"><s:text name="单位" /></li>
+				<li class="width150Li"><s:text name="时间" /></li>
+				<!-- 
+				<li class="width200Li"><s:text name="省份" /></li>
+				<li class="width200Li"><s:text name="专业" /></li>			
+				-->
+			</ul>
+			<s:iterator value="datas" status="st">
+				<ul class="fullScreenResultUl"> 
+					<li class="width150Li"><s:property value="code" /></li>
+					<li class="width300Li"><s:property value="name" /></li>				
+					<li class="width150Li"><s:property value="price" /></li>
+					<li class="width150Li"><s:property value="unit" /></li>
+					<li class="width150Li"><s:date name="guidePriceDate" format="yyyy-MM" /></li>
+					<!-- 
+					<li class="width200Li"><s:property value="guidePriceProvice" /></li>
+					<li class="width200Li"><s:property value="guidePriceType" /></li>
+					 -->
+				</ul>
+			</s:iterator>
+			<ul class="fullScreenResultUl">
+				<jsp:include page="../../common/pagination.jsp" flush="true">
+					<jsp:param name="action_page" value="main/searchGuidePrice.do"/>
+				</jsp:include>
+			</ul>
+		</div>
+	</s:else>
 </s:form>
 <div>
 </div>
