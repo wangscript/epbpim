@@ -147,6 +147,9 @@
 		<property name="service">
 			<ref local="com.ryxx.bpim.service.GovernmentFileService"/>
 		</property>
+		<property name="provinceCityService">
+			<ref local="com.ryxx.bpim.service.ProvinceCityService"/>
+		</property>
 	</bean>
 	<bean id="com.ryxx.bpim.service.GovernmentFileService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.service.GovernmentFileService.target" />
