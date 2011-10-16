@@ -48,16 +48,10 @@
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width300Li">分类：
-									<select id="guideData.guideDataType" name="guideData.guideDataType style="width: 150px;">
-										<option value="">--请选择--</option>
-										<option value="土建">土建</option>
-										<option value="市政">市政</option>
-										<option value="公用">公用</option>
-										<option value="水利">水利</option>
-										<option value="人防">人防</option>
-										<option value="房修">房修</option>
-									</select>							  
+								<li class="width100Li">专业：</li>
+								<li class="width200Li">
+								<s:select cssClass="width150Select" id="guidePrice.major.id" name="guidePrice.major.id"
+										list="majors" listKey="id" listValue="name" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
