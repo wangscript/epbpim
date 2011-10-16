@@ -12,7 +12,9 @@ import org.apache.commons.lang.StringUtils;
 
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.GovernmentFile;
+import com.ryxx.bpim.entity.ProvinceCity;
 import com.ryxx.bpim.service.GovernmentFileService;
+import com.ryxx.bpim.service.ProvinceCityService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
@@ -30,7 +32,11 @@ public class SearchGovernmentFileAction extends ActionSupportBase
     
     GovernmentFileService service;
     
+    private ProvinceCityService provinceCityService;
+    
     List<GovernmentFile> datas = new ArrayList<GovernmentFile>();
+    
+    private List<ProvinceCity> provinceCities;
     
     String sourceCode = "";
     
@@ -119,8 +125,8 @@ public class SearchGovernmentFileAction extends ActionSupportBase
             else
             {
                 super.addNotFoundErrorMsg();
-                return SUCCESS;
             }
+            provinceCities = provinceCityService.list();
         }
         catch (SQLException e)
         {
@@ -204,5 +210,25 @@ public class SearchGovernmentFileAction extends ActionSupportBase
     public void setService(GovernmentFileService service)
     {
         this.service = service;
+    }
+    
+    public List<ProvinceCity> getProvinceCities()
+    {
+        return provinceCities;
+    }
+    
+    public void setProvinceCities(List<ProvinceCity> provinceCities)
+    {
+        this.provinceCities = provinceCities;
+    }
+    
+    public ProvinceCityService getProvinceCityService()
+    {
+        return provinceCityService;
+    }
+    
+    public void setProvinceCityService(ProvinceCityService provinceCityService)
+    {
+        this.provinceCityService = provinceCityService;
     }
 }
