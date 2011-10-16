@@ -206,6 +206,36 @@
 		<many-to-one name="major" class="Major" column="GUIDEPRICE_TYPE"></many-to-one>
 	</class>
 	
+	<class name="GovernmentQuota" table="GOVERNMENT_QUOTA">
+		<id name="id" column="ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="area" column="AREA" type="java.lang.String"></property>
+		<property name="governmentQuotaClass" column="GOVERNMENT_QUOTA_CLASS" type="java.lang.String"></property>
+		<property name="governmentQuotaNum" column="GOVERNMENT_QUOTA_NUM" type="java.lang.String"></property>
+		<property name="governmentQuotaName" column="GOVERNMENT_QUOTA_NAME" type="java.lang.String"></property>
+		<property name="governmentQuotaType" column="GOVERNMENT_QUOTA_TYPE" type="java.lang.String"></property>
+		<property name="governmentQuotaModel" column="GOVERNMENT_QUOTA_MODEL" type="java.lang.String"></property>
+		<property name="governmentQuotaUnit" column="GOVERNMENT_QUOTA_UNIT" type="java.lang.String"></property>
+		<property name="governmentQuotaAmount" column="GOVERNMENT_QUOTA_AMOUNT" type="java.lang.Double"></property>
+		<property name="governmentQuotaTotalPrice" column="GOVERNMENT_QUOTA_TOTAL_PRICE" type="java.lang.Double"></property>
+		<property name="governmentQuotaDesc" column="GOVERNMENT_QUOTA_DESC" type="java.lang.String"></property>
+	</class>
+	<class name="GovernmentQuotaRecord" table="GOVERNMENT_QUOTA_RECORD">
+		<id name="id" column="ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="recordName" column="RECORD_NAME" type="java.lang.String"></property>
+		<property name="recordNum" column="RECORD_NUM" type="java.lang.String"></property>
+		<property name="recordModel" column="RECORD_MODEL" type="java.lang.String"></property>
+		<property name="recordType" column="RECORD_TYPE" type="java.lang.String"></property>
+		<property name="recordUnit" column="RECORD_UNIT" type="java.lang.String"></property>
+		<property name="recordPrice" column="RECORD_PRICE" type="java.lang.Double"></property>
+		<property name="recordAmount" column="RECORD_AMOUNT" type="java.lang.Double"></property>
+		<property name="recordTotalPrice" column="RECORD_TOTAL_PRICE" type="java.lang.Double"></property>
+		<many-to-one name="governmentQuota" class="ProvinceCity" column="GOVERNMENT_QUOTA_ID"></many-to-one>
+	</class>
+	
 	<class name="Major" table="MAJOR">
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>

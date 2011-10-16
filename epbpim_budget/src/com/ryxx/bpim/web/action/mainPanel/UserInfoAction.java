@@ -68,21 +68,31 @@ public class UserInfoAction extends ActionSupportBase
             CacheMap.getInstance().clearCache();
             if (RoleEnum.ENTERPRISE_USER.equals(userInfo.getRoleType()))
             {
-            	CacheMap.getInstance().addCache(Constants.USER+userInfo.getId(), adminMenuService.list(userInfo.getEnterpriseInfo().getProvinceCity()));
-                return "enterpriseMain";
+            	if(userInfo.getEnterpriseInfo() == null || userInfo.getEnterpriseInfo().getProvinceCity() == null) {
+            		super.addFieldError("name", "该用户未订阅任何应用。请订阅应用后再登录。");
+            		return INPUT;
+            	} else {
+	            	CacheMap.getInstance().addCache(Constants.USER+userInfo.getId(), adminMenuService.list(userInfo.getEnterpriseInfo().getProvinceCity()));
+	                return "enterpriseMain";
+            	}
             }
             else if (RoleEnum.NORMAL_USER.equals(userInfo.getRoleType()))
             {
-            	CacheMap.getInstance().addCache(Constants.USER+userInfo.getId(), adminMenuService.list(userInfo.getProvinceCities(), userInfo.getId()));
-                if (userInfo.getRealName() != null)
-                {
-                    return "userMain";
-                }
-                else
-                {
-                    userInfo.setPassword(null);
-                    return "userInfoManage";
-                }
+            	if(userInfo.getProvinceCities() == null) {
+            		super.addFieldError("name", "该用户未订阅任何应用。请订阅应用后再登录。");
+            		return INPUT;
+            	} else {
+	            	CacheMap.getInstance().addCache(Constants.USER+userInfo.getId(), adminMenuService.list(userInfo.getProvinceCities(), userInfo.getId()));
+	                if (userInfo.getRealName() != null)
+	                {
+	                    return "userMain";
+	                }
+	                else
+	                {
+	                    userInfo.setPassword(null);
+	                    return "userInfoManage";
+	                }
+            	}
             }
         }
         return null;

@@ -6,8 +6,6 @@ import java.util.List;
 
 import com.ryxx.bpim.dao.GovernmentQuotaDAO;
 import com.ryxx.bpim.entity.GovernmentQuota;
-import com.ryxx.bpim.entity.GovernmentQuotaRecord;
-import com.ryxx.bpim.form.SearchDataCondition;
 import com.ryxx.util.page.PageTools;
 
 /**
