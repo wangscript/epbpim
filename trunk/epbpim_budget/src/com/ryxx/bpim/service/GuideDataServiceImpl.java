@@ -165,7 +165,7 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
                 Date guideDataDate = sdf.parse(guideData.getGuideDataDatePage());
                 data.setGuideDataDate(new Timestamp(guideDataDate.getTime()));
                 data.setImportDate(importDate);
-                data.setGuideDataType(guideDataType);
+                data.setMajor(guideData.getMajor());
                 
                 data.setName(trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordName)).getStringCellValue()));
                 data.setNum(trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordNum)).getStringCellValue()));
