@@ -52,8 +52,7 @@
 <div class="mainbar">
 <h3 class="title">信息价查询：</h3>
 <s:form id="searchGuidePriceForm" action="searchGuidePrice.do" method="post">
-<div id="searchCondition">
-	
+<div id="searchCondition">	
 		<input type="hidden" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType" value="1"/>
 		<ul class="fullScreenUl">
 			<li class="width300Li">分类：
