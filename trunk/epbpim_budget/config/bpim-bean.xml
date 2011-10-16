@@ -165,6 +165,19 @@
 		<property name="target" ref="com.ryxx.bpim.service.GuidePriceService.target" />
 	</bean>
 	<bean id="com.ryxx.bpim.service.GuidePriceService.target" class="com.ryxx.bpim.service.GuidePriceServiceImpl"></bean>
+	<!-- 信息价(个人版)  -->
+	<bean id="com.ryxx.bpim.dao.GuideDataDAO" class="com.ryxx.bpim.dao.GuideDataDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="guideDataAction" class="com.ryxx.bpim.web.action.admin.GuideDataAction" scope="prototype">
+		<property name="service">
+			<ref local="com.ryxx.bpim.service.GuideDataService"/>
+		</property>
+	</bean>
+	<bean id="com.ryxx.bpim.service.GuideDataService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.GuideDataService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.service.GuideDataService.target" class="com.ryxx.bpim.service.GuideDataServiceImpl"></bean>
 	<!-- 期刊  -->
 	<bean id="com.ryxx.bpim.dao.PeriodicalFileDAO" class="com.ryxx.bpim.dao.PeriodicalFileDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
