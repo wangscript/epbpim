@@ -22,7 +22,6 @@ public class GovernmentQuota extends VoBase {
 	private Double governmentQuotaTotalPrice;
 	private String governmentQuotaDesc;
 	
-	private List<GovernmentQuotaRecord> governmentQuotaRecords;
 	/**
 	 * @return the id
 	 */
@@ -155,14 +154,5 @@ public class GovernmentQuota extends VoBase {
 	public void setGovernmentQuotaDesc(String governmentQuotaDesc) {
 		this.governmentQuotaDesc = governmentQuotaDesc;
 	}
-	public List<GovernmentQuotaRecord> getGovernmentQuotaRecords() {
-		return governmentQuotaRecords;
-	}
-	public void setGovernmentQuotaRecords(
-			List<GovernmentQuotaRecord> governmentQuotaRecords) {
-		this.governmentQuotaRecords = governmentQuotaRecords;
-	}
-	
-	
 }
 

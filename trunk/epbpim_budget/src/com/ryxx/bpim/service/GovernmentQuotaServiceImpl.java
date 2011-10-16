@@ -144,7 +144,9 @@ public class GovernmentQuotaServiceImpl extends AbstractService<GovernmentQuota,
 					// 处理正式数据
 					else if (isNumber(amountCell)) {
 						GovernmentQuotaRecord record = new GovernmentQuotaRecord();
-						record.setGovernmentQuotaId(id);
+						GovernmentQuota quota = new GovernmentQuota();
+						quota.setId(id);
+						record.setGovernmentQuota(quota);
 						record.setRecordModel(modelCell.getStringCellValue());
 						record.setRecordName(nameCell.getStringCellValue());
 						record.setRecordNum(numCell.getStringCellValue());

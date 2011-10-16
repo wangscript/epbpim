@@ -8,7 +8,6 @@ public class GovernmentQuotaRecord extends VoBase {
 	 */
 	private static final long serialVersionUID = 1169975341763219373L;
 	private Long   id;
-	private Long   governmentQuotaId;
 	private String recordName;
 	private String recordNum ;
 	private String recordModel;
@@ -29,18 +28,6 @@ public class GovernmentQuotaRecord extends VoBase {
 	 */
 	public void setId(Long id) {
 		this.id = id;
-	}
-	/**
-	 * @return the governmentQuotaId
-	 */
-	public Long getGovernmentQuotaId() {
-		return governmentQuotaId;
-	}
-	/**
-	 * @param governmentQuotaId the governmentQuotaId to set
-	 */
-	public void setGovernmentQuotaId(Long governmentQuotaId) {
-		this.governmentQuotaId = governmentQuotaId;
 	}
 	/**
 	 * @return the recordName

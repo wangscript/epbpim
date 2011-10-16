@@ -230,4 +230,41 @@
 		<property name="target" ref="com.ryxx.bpim.service.UserAdviceService.target" />
 	</bean>
 	<bean id="com.ryxx.bpim.service.UserAdviceService.target" class="com.ryxx.bpim.service.UserAdviceServiceImpl"></bean>
+	<!-- 定额 -->
+	<bean id="com.ryxx.bpim.dao.GovernmentQuotaDAO" class="com.ryxx.bpim.dao.GovernmentQuotaDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.service.GovernmentQuotaService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.GovernmentQuotaService.target" />
+    </bean>
+ 	<bean id="com.ryxx.bpim.service.GovernmentQuotaService.target" class="com.ryxx.bpim.service.GovernmentQuotaServiceImpl"></bean>
+	<bean id="governmentQuotaAction" class="com.ryxx.bpim.web.action.admin.GovernmentQuotaAction" scope="prototype">
+		<property name="governmentQuotaService">
+			<ref local="com.ryxx.bpim.service.GovernmentQuotaService"/>
+		</property>
+		<property name="governmentQuotaRecordService">
+			<ref local="com.ryxx.bpim.service.GovernmentQuotaRecordService"/>
+		</property>
+	</bean>
+	<bean id="com.ryxx.bpim.dao.GovernmentQuotaRecordDAO" class="com.ryxx.bpim.dao.GovernmentQuotaRecordDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.service.GovernmentQuotaRecordService" parent="baseTransactionProxyCdm">
+	<property name="target" ref="com.ryxx.bpim.service.GovernmentQuotaRecordService.target" />
+    </bean>
+ 	<bean id="com.ryxx.bpim.service.GovernmentQuotaRecordService.target" class="com.ryxx.bpim.service.GovernmentQuotaRecordServiceImpl"></bean>
+	<bean id="governmentQuotaDetailAction" class="com.ryxx.bpim.web.action.mainPanel.GovernmentQuotaDetailAction" scope="prototype">
+		<property name="governmentQuotaService">
+			<ref local="com.ryxx.bpim.service.GovernmentQuotaService"/>
+		</property>
+		<property name="governmentQuotaRecordService">
+			<ref local="com.ryxx.bpim.service.GovernmentQuotaRecordService"/>
+		</property>
+	</bean>
+	
+	<bean id="searchGovernmentQuotaAction" class="com.ryxx.bpim.web.action.mainPanel.SearchGovernmentQuotaAction" scope="prototype">
+		<property name="governmentQuotaService">
+			<ref local="com.ryxx.bpim.service.GovernmentQuotaService"/>
+		</property>
+	</bean>
 </beans>

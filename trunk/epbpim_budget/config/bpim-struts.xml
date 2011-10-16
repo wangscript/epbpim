@@ -163,6 +163,20 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
+	<package name="bpim-governmentQuota" namespace="/main"	extends="bpim-default">
+		<action name="searchGovernmentQuota" method="searchGovernmentQuota"
+			class="searchGovernmentQuotaAction">
+			<result>/jsp/main/searchGovernmentQuota.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="viewGovernmentQuotaDetail" method="viewGovernmentQuotaDetail"
+			class="com.ryxx.bpim.web.action.mainPanel.GovernmentQuotaDetailAction">
+			<result>/main/viewGovernmentQuotaDetail.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
 	<package name="bpim-viewGovernmentFile" namespace="/main" extends="bpim-default">
 		<action name="viewGovernmentFile" method="viewGovernmentFile" class="searchGovernmentFileAction">
 			<result>/jsp/main/simple/showGovernmentFileDetail.jsp</result>
