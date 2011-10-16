@@ -37,7 +37,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h4 class="title">信息价导入:</h4>
+					<h4 class="title">信息价删除:</h4>
 					<div class="entry">
 						<s:form action="deleteGuidePrice.do" method="post" id="deleteGuidePriceForm">
 							<ul class="fullScreenUl">
