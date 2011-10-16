@@ -123,7 +123,7 @@
 		<action name="preImportGuideData" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importGuideData.jsp</result>
 		</action>
-		<action name="preDeleteGuideData" method="listProvince" class="listProvinceAction">
+		<action name="preDeleteGuideData" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/delGuideData.jsp</result>
 		</action>
 		<action name="preImportPeriodicalFile" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
