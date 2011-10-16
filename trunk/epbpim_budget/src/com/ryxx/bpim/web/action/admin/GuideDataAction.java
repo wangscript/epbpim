@@ -42,7 +42,7 @@ public class GuideDataAction extends ActionSupportBase
         catch (Exception e)
         {
             LOG.error(e);
-            msg = "false";
+            msg = e.getMessage();
         }
         return SUCCESS;
     }
