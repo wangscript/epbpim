@@ -211,7 +211,8 @@
 		</id>
 		<property name="guideDataDate" column="GUIDEDATA_DATE" type="java.sql.Timestamp"></property>
 		<property name="name" column="NAME" type="java.lang.String"></property>
-		<property name="num" column="NUM" type="java.lang.String"></property>		
+		<property name="num" column="NUM" type="java.lang.String"></property>
+		<property name="guideDataType" column="GUIDEDATA_TYPE" type="java.lang.String"></property>			
 		<property name="model" column="MODEL" type="java.lang.String"></property>
 		<property name="unit" column="UNIT" type="java.lang.String"></property>
 		<property name="price" column="PRICE" type="java.lang.Double"></property>

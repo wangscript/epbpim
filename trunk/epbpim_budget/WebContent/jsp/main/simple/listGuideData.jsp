@@ -68,58 +68,58 @@
 		<input type="hidden" name="guideData.major.id" value="<s:property value='guideData.major.id'/>">
 		<input type="hidden" name="guideData.provinceCity.id" value="<s:property value='guideData.provinceCity.id'/>">
 		<ul class="fullScreenUl">
-			<li><label class="lb">工料机类别：</label>
-				<select id="guideData.guideDataClass" name="guideData.guideDataClass">
+			<li class="width200Li"><label class="lb">工料机类别：</label>
+				<select id="guideData.guideDataClass" name="guideData.guideDataClass" class="width100Select"> 
 					<option value="">--请选择--</option>
 					<option value="材料">材料</option>
 					<option value="人工">人工</option>
 					<option value="机械">机械</option>
 				</select>
 			</li>
-			<li style="margin-left: 40px;"><label class="lb">编号：</label>
-				<input style="width: 60px" class="inputText" name="guideData.num" id="guideData.num">
+			<li class="width150Li"><label class="lb">编号：</label>
+				<input class="width100Input" name="guideData.num" id="guideData.num">
 			</li>
-			<li style="margin-left: 40px;"><label class="lb">名称：</label>
-				<input style="width: 120px" class="inputText" name="guideData.name" id="guideData.name">
+			<li class="width150Li"><label class="lb">名称：</label>
+				<input class="width100Input" name="guideData.name" id="guideData.name">
 			</li>
-			<li style="margin-left: 40px;"><label class="lb">单位：</label>
-				<input style="width: 40px" class="inputText" name="guideData.unit" id="guideData.unit">
+			<li class="width100Li"><label class="lb">单位：</label>
+				<input class="width50Input" name="guideData.recordUnit" id="guideData.recordUnit">
 			</li>
-			<li class="width200Li"><label class="lb">时间：</label>
+			<li class="width150Li"><label class="lb">时间：</label>
 				<input class="Wdate width100Input" id="guideData.guideDataDatePage" name="guideData.guideDataDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
 			</li>
-			<li>
-				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
+			<li class="width50Li">
+				<input type="submit" class="mediumButton" class="button" value="查询">
 			</li>
 		</ul>	
 	</div>
 
-	<s:if test="datas==null || datas.size()==0">
-		<tr>
-			<td>
-			<h3><s:text name="Common.Nodata" /></h3>
-			</td>
-		</tr>
-	</s:if>
-	<s:else>
-		<div class="searchResult" id="searchResult">
-			<ul class="fullScreenResultUl">
-				<li class="width150Li"><s:text name="专业" /></li>
-				<li class="width400Li"><s:text name="类型" /></li>			
-				<li class="width150Li"><s:text name="名称" /></li>
-				<li class="width150Li"><s:text name="单价" /></li>
-				<li class="width150Li"><s:text name="单位" /></li>
-				<li class="width150Li"><s:text name="时间" /></li>
+<s:if test="datas==null || datas.size()==0">
+	<tr>
+		<td>
+		<h3><s:text name="Common.Nodata" /></h3>
+		</td>
+	</tr>
+</s:if> 
+<s:else>
+	<div class="searchResult" id="searchResult">
+		<ul class="fullScreenResultUl">
+			<li class="width150Li"><s:text name="专业" /></li>
+			<li class="width50Li"><s:text name="类型" /></li>			
+			<li class="width350Li"><s:text name="名称" /></li>
+			<li class="width100Li"><s:text name="单价" /></li>
+			<li class="width50Li"><s:text name="单位" /></li>
+			<li class="width100Li"><s:text name="时间" /></li>
+		</ul>
+		<s:iterator value="datas" status="st">
+			<ul class="fullScreenResultUl"> 
+				<li class="width150Li"><s:property value="major.name" /></li>
+				<li class="width50Li"><s:property value="guideDataType" /></li>				
+				<li class="width350Li"><s:property value="name" /></li>
+				<li class="width100Li"><s:property value="price" /></li>
+				<li class="width50Li"><s:property value="unit" /></li>
+				<li class="width100Li"><s:date name="guideDataDate" format="yyyy-MM" /></li>
 			</ul>
-			<s:iterator value="datas" status="st">
-				<ul class="fullScreenResultUl"> 
-					<li class="width150Li"><s:property value="guideDataType" /></li>
-					<li class="width300Li"><s:property value="guideDataClass" /></li>				
-					<li class="width150Li"><s:property value="name" /></li>
-					<li class="width150Li"><s:property value="price" /></li>
-					<li class="width150Li"><s:property value="unit" /></li>
-					<li class="width150Li"><s:date name="guideDataDate" format="yyyy-MM" /></li>
-				</ul>
 			</s:iterator>
 			<ul class="fullScreenResultUl">
 				<jsp:include page="../../common/pagination.jsp" flush="true">

@@ -133,6 +133,9 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
 				data.setNum(trim(row.getCell(
 						tableTitleTable.get(ExcelTitleUtil.recordCode))
 						.getStringCellValue()));
+				data.setGuideDataType(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordType))
+						.getStringCellValue());
 				data.setModel(trim(row.getCell(
 						tableTitleTable.get(ExcelTitleUtil.recordModel))
 						.getStringCellValue()));
@@ -152,11 +155,7 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
 				data.setPercent(row.getCell(
 						tableTitleTable.get(ExcelTitleUtil.recordPercent))
 						.getNumericCellValue());
-				String dataDate = row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordGuideDate))
-						.getStringCellValue();
-				Date temp = sdf.parse(dataDate);
-				data.setGuideDataDate(new Timestamp(temp.getTime()));
+				data.setGuideDataDate(guideData.getGuideDataDate());
 				submitRowNumber++;
 				dataList.add(data);
 
