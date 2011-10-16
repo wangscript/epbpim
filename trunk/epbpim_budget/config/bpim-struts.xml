@@ -92,6 +92,14 @@
 			<result type="redirect">preDeleteGuidePrice.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>
 		</action>
+		<action name="importGuideData" method="importGuideData" class="guideDataAction">
+			<result type="redirect">preImportGuideData.do?msg=${msg}</result>
+			<interceptor-ref name="manager"/>
+		</action>
+		<action name="deleteGuideData" method="deleteGuideData" class="guideDataAction">
+			<result type="redirect">preDeleteGuideData.do?msg=${msg}</result>
+			<interceptor-ref name="manager"/>
+		</action>
 		<action name="importPeriodicalFile" method="importPeriodicalFile" class="periodicalFileAction">
 			<result type="redirect">preImportPeriodicalFile.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>
@@ -111,6 +119,12 @@
 		</action>
 		<action name="preDeleteGuidePrice" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/delGuidePrice.jsp</result>
+		</action>
+		<action name="preImportGuideData" method="listProvince" class="listProvinceAction">
+			<result>/jsp/admin/importGuideData.jsp</result>
+		</action>
+		<action name="preDeleteGuideData" method="listProvince" class="listProvinceAction">
+			<result>/jsp/admin/delGuideData.jsp</result>
 		</action>
 		<action name="preImportPeriodicalFile" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importPeriodicalFile.jsp</result>
@@ -187,6 +201,13 @@
 	<package name="bpim-searchGuidePrice" namespace="/main" extends="bpim-default">
 		<action name="searchGuidePrice" method="searchGuidePrice" class="guidePriceAction">
 			<result>/jsp/main/simple/listGuidePrice.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-searchGuideData" namespace="/main" extends="bpim-default">
+		<action name="searchGuideData" method="searchGuideData" class="guideDataAction">
+			<result>/jsp/main/simple/listGuideData.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
