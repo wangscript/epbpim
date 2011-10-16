@@ -56,6 +56,13 @@
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
+								<li class="width100Li">专业：</li>
+								<li class="width200Li">
+								<s:select cssClass="width150Select" id="guidePrice.major.id" name="guidePrice.major.id"
+										list="majors" listKey="id" listValue="name" multiple="false" required="true" onchange="" headerKey="0" />
+								</li>
+							</ul>
+							<ul class="fullScreenUl">
 								<li class="width100Li">时间：</li>
 								<li class="width100Li"><input class="Wdate width100Input"
 									id="guideData.guideDataDatePage"
