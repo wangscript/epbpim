@@ -51,11 +51,6 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
     {
         List<GuideData> guideDataList = parseGuideDataFile(uploadfile, guideData);
         
-        if (null == guideDataList)
-        {
-            return "false";
-        }
-        
         for (GuideData guideDatae : guideDataList)
         {
             getDao().saveGuideData(guideDatae);
@@ -99,160 +94,84 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
     private List<GuideData> parseGuideDataFile(File uploadfile, GuideData guideData)
         throws Exception
     {
-        List<GuideData> resultList = new ArrayList<GuideData>();
-        Sheet sheet = getWb(uploadfile, guideData.getGuideDataFileName());
-        Row row = null;
-        Cell cell = null;
-        Cell numCell = null;
-        Cell priceCell = null;
-        Cell firstCell = null;
-        int count_row = sheet.getLastRowNum();
-        int submitRowNumber = 0;
-        List<GuideData> dataList = new ArrayList<GuideData>();
-        Hashtable<String, Integer> tableTitleTable = getTableTitle(sheet, ExcelTitleUtil.userProjectDataTitleSet);
-        msg = checkTableTitle(tableTitleTable, ExcelTitleUtil.userProjectDataTitleSet);
-        if (!"".equals(msg))
-        {
-            throw new Exception(msg);
-        }
-        
-        String guideDataType = getProjectName(guideData.getGuideDataFileName());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-        Timestamp importDate = new Timestamp(new Date().getTime());
-        
-        for (int i = 0; i <= count_row; i++)
-        {
-            try
-            {
-                row = sheet.getRow(i);
-                
-                // 过滤不合法数据,如果不是工料机，则是小项目名称
-                int recordNumIndex = tableTitleTable.get(ExcelTitleUtil.recordNum);
-                numCell = row.getCell(recordNumIndex);
-                int recordPriceIndex = tableTitleTable.get(ExcelTitleUtil.recordPrice);
-                priceCell = row.getCell(recordPriceIndex);
-                if (isBlank(numCell) && isBlank(priceCell))
-                {
-                    String temp = row.getCell(tableTitleTable.get(ExcelTitleUtil.recordName)).getStringCellValue();
-                    if (ExcelTitleUtil.subType.contains(temp))
-                    {
-                        continue;
-                    }
-                    else if (!"".equals(temp))
-                    {
-                        continue;
-                    }
-                }
-                
-                // 过滤表头行
-                if (ExcelTitleUtil.recordNum.equals(numCell.getStringCellValue()))
-                {
-                    continue;
-                }
-                
-                // 找到定额数据
-                firstCell = row.getCell(0);
-                if (!isBlank(firstCell))
-                {
-                    continue;
-                }
-                
-                // 处理正式数据
-                msg = checkProjectDataRecord(row, i, tableTitleTable);
-                if (!"".equals(msg))
-                {
-                    return null;
-                }
-                
-                GuideData data = new GuideData();
-                data.setProvinceCity(data.getProvinceCity());
-                
-                Date guideDataDate = sdf.parse(guideData.getGuideDataDatePage());
-                data.setGuideDataDate(new Timestamp(guideDataDate.getTime()));
-                data.setImportDate(importDate);
-                data.setMajor(guideData.getMajor());
-                
-                data.setName(trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordName)).getStringCellValue()));
-                data.setNum(trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordNum)).getStringCellValue()));
-                data.setGuideDataClass(trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordClasses))
-                    .getStringCellValue()));
-                data.setUnit(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordUnit)).getStringCellValue());
-                data.setPrice(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPrice)).getNumericCellValue());
-                data.setGross(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordGross)).getNumericCellValue());
-                data.setTotalPrice(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordTotalPrice))
-                    .getNumericCellValue());
-                submitRowNumber++;
-                dataList.add(data);
-                
-            }
-            catch (Exception e)
-            {
-                LOG.error(e);
-                return null;
-            }
-            
-        }
-        return resultList;
+    	Sheet sheet = getWb(uploadfile, uploadfile.getName());
+		Row row = null;
+		int count_row = sheet.getLastRowNum();
+		int submitRowNumber = 0;
+		List<GuideData> dataList = new ArrayList<GuideData>();
+		Hashtable<String, Integer> tableTitleTable = getTableTitle(sheet,
+				ExcelTitleUtil.userCustomDataTitleSet);
+		msg = checkTableTitle(tableTitleTable,
+				ExcelTitleUtil.userCustomDataTitleSet);
+		if (!"".equals(msg)) {
+			throw new Exception(msg);
+		}
+
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+	    Timestamp importDate = new Timestamp(new Date().getTime());
+	        
+		for (int i = 0; i <= count_row; i++) {
+			try {
+				row = sheet.getRow(i);
+
+				if (!validateCustomData(row, tableTitleTable)) {
+					continue;
+				}
+
+				GuideData data = new GuideData();
+				data.setImportDate(importDate);
+
+				if(trim(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordName))
+						.getStringCellValue()).length()>30){
+					System.out.print(i);
+				}
+				data.setProvinceCity(guideData.getProvinceCity());
+				data.setName(trim(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordName))
+						.getStringCellValue()));
+				data.setNum(trim(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordCode))
+						.getStringCellValue()));
+				data.setModel(trim(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordModel))
+						.getStringCellValue()));
+				data.setMajor(guideData.getMajor());
+				data.setPrice(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordPrice))
+						.getNumericCellValue());
+				data.setUnit(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordUnit))
+						.getStringCellValue());
+				data.setTotalPrice(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordTotalPrice))
+						.getNumericCellValue());
+				data.setGross(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordAmount))
+						.getNumericCellValue());
+				data.setPercent(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordPercent))
+						.getNumericCellValue());
+				String dataDate = row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordGuideDate))
+						.getStringCellValue();
+				Date temp = sdf.parse(dataDate);
+				data.setGuideDataDate(new Timestamp(temp.getTime()));
+				submitRowNumber++;
+				dataList.add(data);
+
+			} catch (Exception e) {
+				LOG.error(e);
+				msg = PropertyConstants.THE + (i + 1) + PropertyConstants.WRONGNUMBER;
+				throw new Exception(msg);
+			}
+		}
+
+		msg = submitRowNumber + PropertyConstants.TOTLEIMPORT;
+        return dataList;
     }
     
-    private String checkProjectDataRecord(Row row, int i, Hashtable<String, Integer> tableTitleTable)
-    {
-        if (isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordUnit)))
-            && isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPrice)))
-            && isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordGross))))
-        {
-            // 这种情况是其他费用
-        }
-        else if (isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordName))))
-        {
-            return PropertyConstants.THE + (i + 1) + PropertyConstants.LINE + ExcelTitleUtil.recordName
-                + PropertyConstants.NOTNULL;
-        }
-        else if (isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordUnit))))
-        {
-            return PropertyConstants.THE + (i + 1) + PropertyConstants.LINE + ExcelTitleUtil.recordUnit
-                + PropertyConstants.NOTNULL;
-        }
-        else if (trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordName)).getStringCellValue()).length() > 50)
-        {
-            return PropertyConstants.THE + (i + 1) + PropertyConstants.LINE + ExcelTitleUtil.recordName
-                + PropertyConstants.LESSTHANFIFTY;
-        }
-        else if (trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordUnit)).getStringCellValue()).length() > 10)
-        {
-            return PropertyConstants.THE + (i + 1) + PropertyConstants.LINE + ExcelTitleUtil.recordUnit
-                + PropertyConstants.LESSTHANTEN;
-        }
-        else if (row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPrice)).getNumericCellValue() > 9999999999999.00)
-        {
-            return PropertyConstants.THE + (i + 1) + PropertyConstants.LINE + ExcelTitleUtil.recordPrice
-                + PropertyConstants.LESSTHANTHIRTING;
-        }
-        else if (row.getCell(tableTitleTable.get(ExcelTitleUtil.recordGross)).getNumericCellValue() > 9999999999999.00)
-        {
-            return PropertyConstants.THE + (i + 1) + PropertyConstants.LINE + ExcelTitleUtil.recordGross
-                + PropertyConstants.LESSTHANTHIRTING;
-        }
-        else if (row.getCell(tableTitleTable.get(ExcelTitleUtil.recordTotalPrice)).getNumericCellValue() > 9999999999999.00)
-        {
-            return PropertyConstants.THE + (i + 1) + PropertyConstants.LINE + ExcelTitleUtil.recordTotalPrice
-                + PropertyConstants.LESSTHANTHIRTING;
-        }
-        return "";
-    }
-    
-    private String getProjectName(String uploadUserProjectDataInput)
-    {
-        while (uploadUserProjectDataInput.indexOf("\\") > -1)
-        {
-            uploadUserProjectDataInput =
-                uploadUserProjectDataInput.substring(uploadUserProjectDataInput.indexOf("\\") + 1,
-                    uploadUserProjectDataInput.length());
-        }
-        int dotIndex = uploadUserProjectDataInput.indexOf(".");
-        return uploadUserProjectDataInput.substring(0, dotIndex);
-    }
-    
+   
     private Boolean isBlank(Cell cell)
     {
         return cell.getCellType() == cell.CELL_TYPE_BLANK;

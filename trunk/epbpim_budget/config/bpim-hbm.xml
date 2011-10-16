@@ -209,7 +209,6 @@
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
-		<property name="guideDataClass" column="GUIDEDATA_CLASS" type="java.lang.String"></property>
 		<property name="guideDataDate" column="GUIDEDATA_DATE" type="java.sql.Timestamp"></property>
 		<property name="name" column="NAME" type="java.lang.String"></property>
 		<property name="num" column="NUM" type="java.lang.String"></property>		
@@ -221,7 +220,7 @@
 		<property name="percent" column="PERCENT" type="java.lang.Double"></property>
 		<property name="importDate" column="IMPORT_DATE" type="java.sql.Timestamp"></property>
 		<many-to-one name="provinceCity" class="ProvinceCity" column="GUIDEDATA_PROVICE"></many-to-one>
-		<many-to-one name="major" class="Major" column="GUIDEDATA_TYPE"></many-to-one>
+		<many-to-one name="major" class="Major" column="GUIDEDATA_CLASS"></many-to-one>
 	</class>
 	<class name="GovernmentQuota" table="GOVERNMENT_QUOTA">
 		<id name="id" column="ID" type="java.lang.Long">
@@ -250,7 +249,7 @@
 		<property name="recordPrice" column="RECORD_PRICE" type="java.lang.Double"></property>
 		<property name="recordAmount" column="RECORD_AMOUNT" type="java.lang.Double"></property>
 		<property name="recordTotalPrice" column="RECORD_TOTAL_PRICE" type="java.lang.Double"></property>
-		<many-to-one name="governmentQuota" class="GovernmentQuota" column="GOVERNMENT_QUOTA_ID"></many-to-one>
+		<many-to-one name="governmentQuota" class="ProvinceCity" column="GOVERNMENT_QUOTA_ID"></many-to-one>
 	</class>
 	
 	<class name="Major" table="MAJOR">

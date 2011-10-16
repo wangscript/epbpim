@@ -19,9 +19,9 @@
 			{
 				alert("导入成功！");
 			}
-			else if("false"==msg)
+			else  
 			{
-				alert("出错了，请重试！");
+				alert(msg);
 			}
 		}
 	}
