@@ -35,26 +35,38 @@ public class GovernmentFile extends VoBase
     
     private String fileEffectiveDatePage;
     
+    private ProvinceCity provinceCity;
+    
+    public ProvinceCity getProvinceCity()
+    {
+        return provinceCity;
+    }
+    
+    public void setProvinceCity(ProvinceCity provinceCity)
+    {
+        this.provinceCity = provinceCity;
+    }
+    
     public String getFilePublishDatePage()
     {
         return filePublishDatePage;
     }
-
+    
     public void setFilePublishDatePage(String filePublishDatePage)
     {
         this.filePublishDatePage = filePublishDatePage;
     }
-
+    
     public String getFileEffectiveDatePage()
     {
         return fileEffectiveDatePage;
     }
-
+    
     public void setFileEffectiveDatePage(String fileEffectiveDatePage)
     {
         this.fileEffectiveDatePage = fileEffectiveDatePage;
     }
-
+    
     public String getKeyword()
     {
         return keyword;
