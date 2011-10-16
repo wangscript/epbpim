@@ -15,13 +15,13 @@ public interface PropertyConstants {
 	static final String MANAGER = "管理员";
 	static final String DELETESUCCESS = "删除成功";
 	static final String DELETEFAILED = "删除失败，请联系管理员";
-	static final String THE = "第";
-	static final String WRONGNUMBER = "行数据错误，请检查";
+	static final String THE = "";
+	static final String WRONGNUMBER = " row error, please check";
 	static final String IMPORTERROR = "导入数据库失败，请检查数据";
 	static final String TOTLEIMPORT = "条数据已导入";
 	static final String NOTNULL = "不能为空";
 	static final String LINE = "行";
-	static final String CHANNELNOTEXIST = "栏不存在,请检查";
+	static final String CHANNELNOTEXIST = " not exist, please check!";
 	static final String ANALYSISFAILED = "解析表头失败，请检查第四行是否是表头";
 	static final String LESSTHANTHIRTING = "不能超过13位数";
 	static final String LESSTHANTEN = "不能超过10位数";

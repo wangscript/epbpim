@@ -47,9 +47,9 @@ public class GuideDataDAOImpl extends AbstractBaseDAO<GuideData, Long> implement
             criteria.add(Restrictions.eq("provinceCity.id", guideData.getProvinceCity().getId()));
         }
         
-        if (guideData.getMajor() != null && 0 != guideData.getMajor().getId())
+        if (guideData.getMajor()!=null&&guideData.getMajor().getId()!=0)
         {
-            criteria.add(Restrictions.eq("guideDataType", guideData.getMajor().getId()));
+            criteria.add(Restrictions.eq("major.id", guideData.getMajor().getId()));
         }
         
         if (!StringUtils.isEmpty(guideData.getGuideDataDatePage()))
@@ -82,11 +82,12 @@ public class GuideDataDAOImpl extends AbstractBaseDAO<GuideData, Long> implement
         List<Criterion> list = new ArrayList<Criterion>();
         if (guideData != null)
         {
-            if (null != guideData.getMajor() && 0 != guideData.getMajor().getId())
-            {
-                Criterion criterion1 = Restrictions.eq("guideDataType", guideData.getMajor().getId());
-                list.add(criterion1);
-            }
+        	 if (guideData.getMajor()!=null&&guideData.getMajor().getId()!=0)
+             {
+        		 Criterion criterion1 = Restrictions.eq("major.id", guideData.getMajor().getId());
+        		 list.add(criterion1);
+             }
+             
             
             if (!StringUtils.isEmpty(guideData.getGuideDataClass()))
             {
@@ -147,4 +148,5 @@ public class GuideDataDAOImpl extends AbstractBaseDAO<GuideData, Long> implement
         
         return criterions;
     }
+    
 }

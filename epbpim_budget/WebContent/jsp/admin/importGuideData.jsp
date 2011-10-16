@@ -19,9 +19,9 @@
 			{
 				alert("导入成功！");
 			}
-			else if("false"==msg)
+			else
 			{
-				alert("出错了，请重试！");
+				alert(msg);
 			}
 		}
 	}
@@ -58,7 +58,7 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li">专业：</li>
 								<li class="width200Li">
-								<s:select cssClass="width150Select" id="guidePrice.major.id" name="guidePrice.major.id"
+								<s:select cssClass="width150Select" id="guideData.major.id" name="guideData.major.id"
 										list="majors" listKey="id" listValue="name" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
 							</ul>
