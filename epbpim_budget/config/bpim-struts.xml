@@ -123,7 +123,7 @@
 		<action name="preImportGuideData" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importGuideData.jsp</result>
 		</action>
-		<action name="preDeleteGuideData" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
+		<action name="preDeleteGuideData" method="listProvince" class="listProvinceAction">
 			<result>/jsp/admin/delGuideData.jsp</result>
 		</action>
 		<action name="preImportPeriodicalFile" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
@@ -180,13 +180,13 @@
 	<package name="bpim-governmentQuota" namespace="/main"	extends="bpim-default">
 		<action name="searchGovernmentQuota" method="searchGovernmentQuota"
 			class="searchGovernmentQuotaAction">
-			<result>/jsp/main/searchGovernmentQuota.jsp</result>
+			<result>/jsp/main/simple/searchGovernmentQuota.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
-		<action name="viewGovernmentQuotaDetail" method="viewGovernmentQuotaDetail"
-			class="com.ryxx.bpim.web.action.mainPanel.GovernmentQuotaDetailAction">
-			<result>/main/viewGovernmentQuotaDetail.jsp</result>
+		<action name="viewGovernmentQuotaDetail" method="listGovernmentQuotaDetail"
+			class="governmentQuotaDetailAction">
+			<result>/jsp/main/simple/viewGovernmentQuotaDetail.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>

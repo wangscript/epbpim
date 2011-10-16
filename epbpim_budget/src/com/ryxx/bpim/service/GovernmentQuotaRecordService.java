@@ -12,7 +12,7 @@ import com.ryxx.bpim.entity.GovernmentQuotaRecord;
 public interface GovernmentQuotaRecordService extends BaseService<GovernmentQuotaRecord, GovernmentQuotaRecordDAO, Long>
 {
 	void delete() throws SQLException;
-	void importGovernmentQuotaRecord(List<GovernmentQuotaRecord> records) throws SQLException;
-	List<GovernmentQuotaRecord> viewGovernmentQuotaDetail(Long id) throws SQLException;
+	void saveGovernmentQuotaRecord(List<GovernmentQuotaRecord> records) throws SQLException;
+	List<GovernmentQuotaRecord> listGovernmentQuotaDetail(Long id) throws SQLException;
 }
 

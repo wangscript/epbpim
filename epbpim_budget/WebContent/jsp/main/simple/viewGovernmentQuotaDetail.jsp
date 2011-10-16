@@ -21,7 +21,7 @@
 <title>定额详情</title>
 </head>
 <body onload=";changeTitleBackground();">
-<div id="main"><jsp:include page="mainHeader.jsp" />
+<div id="main"><jsp:include page="../mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
@@ -59,7 +59,7 @@
 <div class="clr"></div>
 </div>
 </div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
+<!-- end #page --> <jsp:include page="../../common/footer.jsp" /></div>
 
 </body>
 </html>

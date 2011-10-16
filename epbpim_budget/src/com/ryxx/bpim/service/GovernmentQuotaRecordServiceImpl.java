@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ryxx.bpim.dao.GovernmentQuotaRecordDAO;
+import com.ryxx.bpim.entity.GovernmentQuota;
 import com.ryxx.bpim.entity.GovernmentQuotaRecord;
 
 /**
@@ -15,16 +16,18 @@ public class GovernmentQuotaRecordServiceImpl extends AbstractService<Government
 	public void delete() throws SQLException {
 		getDao().delete();
 	}
-	public void importGovernmentQuotaRecord(List<GovernmentQuotaRecord> records)
+	public void saveGovernmentQuotaRecord(List<GovernmentQuotaRecord> records)
 		throws SQLException {
 		for (GovernmentQuotaRecord record : records) {
 			getDao().save(record);
 		}
 	}
 
-	public List<GovernmentQuotaRecord> viewGovernmentQuotaDetail(Long id) throws SQLException {
+	public List<GovernmentQuotaRecord> listGovernmentQuotaDetail(Long id) throws SQLException {
 		GovernmentQuotaRecord record = new GovernmentQuotaRecord();
-		record.getGovernmentQuota().setId(id);
+		GovernmentQuota quota = new GovernmentQuota();
+		quota.setId(id);
+		record.setGovernmentQuota(quota);
 		return getDao().listByQuota(record);
 	}
 }

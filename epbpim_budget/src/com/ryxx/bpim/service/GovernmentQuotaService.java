@@ -19,6 +19,6 @@ public interface GovernmentQuotaService extends BaseService<GovernmentQuota, Gov
 	
 	public List<GovernmentQuota> listPage(GovernmentQuota governmentQuota, PageTools page);
 	
-	public String importGovernmentQuota(String folderPath) throws IOException, SQLException;
+	public String saveGovernmentQuota(String folderPath) throws IOException, SQLException;
 }
 
