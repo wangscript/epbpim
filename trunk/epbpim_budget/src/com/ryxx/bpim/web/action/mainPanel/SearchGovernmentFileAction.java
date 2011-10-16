@@ -3,11 +3,7 @@ package com.ryxx.bpim.web.action.mainPanel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -114,7 +110,6 @@ public class SearchGovernmentFileAction extends ActionSupportBase
             condition.setPageSize(pageSize);
             String keyWord = null == condition.getKeyword() ? "" : condition.getKeyword();
             condition.setKeyword(toUnicode(keyWord));
-            setQueryDate(condition);
             datas = service.listGovernmentFile(condition, page);
             condition.setKeyword(compileCode(keyWord));
             if (datas != null && datas.size() > 0)
@@ -126,10 +121,6 @@ public class SearchGovernmentFileAction extends ActionSupportBase
                 super.addNotFoundErrorMsg();
                 return SUCCESS;
             }
-        }
-        catch (ParseException e)
-        {
-            LOG.error(e);
         }
         catch (SQLException e)
         {
@@ -152,53 +143,6 @@ public class SearchGovernmentFileAction extends ActionSupportBase
         }
         
         return result;
-    }
-    
-    private void setQueryDate(GovernmentFile condition)
-        throws ParseException
-    {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-        if (!"0".equals(condition.getFilePublishYear())&&!"".equals(condition.getFilePublishYear()))
-        {
-            Date filePublishDateFrom;
-            Date filePublishDateTo;
-            if (!"0".equals(condition.getFilePublishMonth()))
-            {
-                filePublishDateFrom = sdf.parse(condition.getFilePublishYear() + "-" + condition.getFilePublishMonth());
-                filePublishDateTo =
-                    sdf.parse(condition.getFilePublishYear() + "-"
-                        + (Integer.valueOf(condition.getFilePublishMonth()) + 1));
-            }
-            else
-            {
-                filePublishDateFrom = sdf.parse(condition.getFilePublishYear() + "-" + "1");
-                filePublishDateTo = sdf.parse((Integer.valueOf(condition.getFilePublishYear()) + 1) + "-" + "1");
-            }
-            condition.setFilePublishDateFrom(new Timestamp(filePublishDateFrom.getTime()));
-            condition.setFilePublishDateTo(new Timestamp(filePublishDateTo.getTime()));
-        }
-        
-        if (!"0".equals(condition.getFileEffectiveYear())&&!"".equals(condition.getFileEffectiveYear()))
-        {
-            Date fileEffectiveDateFrom;
-            Date fileEffectiveDateTo;
-            if (!"0".equals(condition.getFileEffectiveMonth()))
-            {
-                fileEffectiveDateFrom =
-                    sdf.parse(condition.getFileEffectiveYear() + "-" + condition.getFileEffectiveMonth());
-                fileEffectiveDateTo =
-                    sdf.parse(condition.getFileEffectiveYear() + "-"
-                        + (Integer.valueOf(condition.getFileEffectiveMonth()) + 1));
-            }
-            else
-            {
-                fileEffectiveDateFrom = sdf.parse(condition.getFileEffectiveYear() + "-" + "1");
-                fileEffectiveDateTo = sdf.parse((Integer.valueOf(condition.getFileEffectiveYear()) + 1) + "-" + "1");
-            }
-            condition.setFileEffectiveDateFrom(new Timestamp(fileEffectiveDateFrom.getTime()));
-            condition.setFileEffectiveDateTo(new Timestamp(fileEffectiveDateTo.getTime()));
-        }
-        
     }
     
     /**
