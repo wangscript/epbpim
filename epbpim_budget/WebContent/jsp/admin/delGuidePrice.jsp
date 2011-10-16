@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>信息价导入</title>
+<title>信息价删除</title>
 <link rel="stylesheet"
 	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
