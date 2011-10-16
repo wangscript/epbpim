@@ -60,6 +60,8 @@
 		</s:iterator>
 		<ul class="fullScreenResultUl">
 		    <s:form>
+		    	<input type="hidden" name="periodicalFile.major.id" value="<s:property value='periodicalFile.major.id'/>">
+				<input type="hidden" name="periodicalFile.provinceCity.id" value="<s:property value='periodicalFile.provinceCity.id'/>">
 				<jsp:include page="../../common/pagination.jsp" flush="true">
 					<jsp:param name="action_page" value="main/searchPeriodicalFile.do"/>
 				</jsp:include>
