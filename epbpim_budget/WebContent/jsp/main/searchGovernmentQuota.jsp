@@ -52,24 +52,19 @@
 					name="searchGovernmentQuota" id="searchGovernmentQuotaForm">
 					<div class="mainbar">
 						<h3 class="title">
-							定额查询<img onmouseenter="displayHelp('helpDiv',searchQuotaHelp)"
-								onmouseleave="unDisplayHelp('helpDiv')"
-								onmouseover="displayHelp('helpDiv',searchQuotaHelp)"
-								onmouseout="unDisplayHelp('helpDiv')" class="helpImg"
-								src="../images/help.png">
-							<div id="helpDiv" class="helpDiv"></div>
+							定额查询
 						</h3>
 
 						<div id="searchCondition">
-							<ul>
-								<li style="width: 200px;"><label class="lb">省：</label><select
-									id="provice" name="condition.provice" style="width: 150px;">
+							<ul class="fullScreenUl">
+								<li class="width200Li"><label class="lb">省：</label><select
+									id="provice" name="condition.provice" class="width100Select">
 										<option value="上海市" selected="selected">上海市</option>
 								</select>
 								</li>
 
-								<li style="width: 150px;">定额类别：<select id="quotaClass"
-									name="condition.quotaClass" style="width: 80px;">
+								<li class="width200Li">定额类别：<select id="quotaClass"
+									name="condition.quotaClass" class="width100Select">
 										<option value="0">--请选择--</option>
 										<option value="2000土建装饰">土建</option>
 										<option value="2000园林">园林</option>
@@ -82,46 +77,45 @@
 								</select>
 								</li>
 
-								<li><label class="lb">编号：</label><input style="width: 60px"
-									class="inputText" name="condition.quotaNum" id="quotaNum">
+								<li class="width200Li"><label class="lb">编号：</label><input class="width100Input" name="condition.quotaNum" id="quotaNum">
 								</li>
-								<li><label class="lb">名称：</label><input
-									style="width: 120px" class="inputText"
+								<li class="width200Li"><label class="lb">名称：</label><input
+									class="width100Input"
 									name="condition.quotaName" id="quotaName">
 								</li>
-								<li><input name="searchButton" onclick="clearPage()"
+								<li class="width50Li"><input name="searchButton" onclick="clearPage()"
 									type="button" id="searchButton" class="button" value="查询">
 								</li>
 							</ul>
 						</div>
 
-						<div class="searchResult" id="searchResult"
-							style="margin-top: 15px;">
-							<ul>
-								<li style="width: 100px">定额大类</li>
-								<li style="width: 140px">分部工程名称</li>
-								<li style="width: 100px">编号</li>
-								<li style="width: 330px">名称</li>
-								<li style="width: 60px">规格</li>
-								<li style="width: 60px">单位</li>
-								<li style="width: 60px">数量</li>
-								<li style="width: 50px">查看详情</li>
+							<div class="searchResult" id="searchResult"
+							>
+							<ul class="fullScreenResultUl">
+								<li class="width100Li">定额大类</li>
+								<li class="width100Li">分部工程名称</li>
+								<li class="width100Li">编号</li>
+								<li class="width350Li">名称</li>
+								<li class="width50Li">规格</li>
+								<li class="width50Li">单位</li>
+								<li class="width50Li">数量</li>
+								<li class="width100Li">查看详情</li>
 							</ul>
 							<s:if test="datas==null || datas.size()==0">
 							</s:if>
 							<s:else>
 								<s:iterator value="datas" status="st">
-									<ul id="<s:property value='id'/>">
-										<li style="width: 100px"><s:property
+									<ul class="fullScreenResultUl" id="<s:property value='id'/>">
+										<li class="width100Li"><s:property
 												value="governmentQuotaClass" />
 										</li>
-										<li style="width: 140px"><s:property
+										<li class="width100Li"><s:property
 												value="governmentQuotaType" />
 										</li>
-										<li style="width: 100px"><s:property
+										<li class="width100Li"><s:property
 												value="governmentQuotaNum" />
 										</li>
-										<li style="width: 330px"><s:if
+										<li class="width350Li"><s:if
 												test="%{null!=governmentQuotaName&&governmentQuotaName.length()>24}">
 												<s:property
 													value="governmentQuotaName.substring(0, 23)+'...'" />
@@ -129,21 +123,21 @@
 												<s:property value="governmentQuotaName" />
 											</s:else>
 										</li>
-										<li style="width: 60px"><s:property
+										<li class="width50Li"><s:property
 												value="governmentQuotaModel" />
 										</li>
-										<li style="width: 60px"><s:property
+										<li class="width50Li"><s:property
 												value="governmentQuotaUnit" />
 										</li>
-										<li style="width: 60px"><s:property
+										<li class="width50Li"><s:property
 												value='governmentQuotaAmount' />
 										</li>
-										<li style="width: 50px"><a target="blank"
+										<li class="width100Li"><a target="blank"
 											href="viewGovernmentQuotaDetail.do?id=<s:property value='id'/>">查看</a>
 										</li>
 									</ul>
 								</s:iterator>
-								<ul>
+								<ul class="fullScreenResultUl">
 									<jsp:include page="../common/pagination.jsp" flush="true">
 										<jsp:param name="action_page"
 											value="main/searchGovernmentQuota.do" />
@@ -151,8 +145,8 @@
 								</ul>
 							</s:else>
 						</div>
-					</div>
-				</s:form>
+					</div> 
+				</s:form> 
 
 				<!-- end #content -->
 
