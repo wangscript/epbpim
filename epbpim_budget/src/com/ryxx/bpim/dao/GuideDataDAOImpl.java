@@ -47,38 +47,9 @@ public class GuideDataDAOImpl extends AbstractBaseDAO<GuideData, Long> implement
             criteria.add(Restrictions.eq("provinceCity.id", guideData.getProvinceCity().getId()));
         }
         
-        if (!StringUtils.isEmpty(guideData.getGuideDataType()))
+        if (guideData.getMajor() != null && 0 != guideData.getMajor().getId())
         {
-            String guideDataType = "";
-            if ("1".equals(guideData.getGuideDataType()))
-            {
-                guideDataType = "市政";
-            }
-            //            else if ("2".equals(guideData.getGuideDataType()))
-            //            {
-            //                guideDataType = "园林";
-            //            }
-            else if ("3".equals(guideData.getGuideDataType()))
-            {
-                guideDataType = "土建";
-            }
-            else if ("4".equals(guideData.getGuideDataType()))
-            {
-                guideDataType = "公用";
-            }
-            else if ("5".equals(guideData.getGuideDataType()))
-            {
-                guideDataType = "水利";
-            }
-            else if ("6".equals(guideData.getGuideDataType()))
-            {
-                guideDataType = "人防";
-            }
-            else if ("7".equals(guideData.getGuideDataType()))
-            {
-                guideDataType = "房修";
-            }
-            criteria.add(Restrictions.eq("guideDataType", guideDataType));
+            criteria.add(Restrictions.eq("guideDataType", guideData.getMajor().getId()));
         }
         
         if (!StringUtils.isEmpty(guideData.getGuideDataDatePage()))
@@ -111,39 +82,9 @@ public class GuideDataDAOImpl extends AbstractBaseDAO<GuideData, Long> implement
         List<Criterion> list = new ArrayList<Criterion>();
         if (guideData != null)
         {
-            if (!StringUtils.isEmpty(guideData.getGuideDataType()))
+            if (null != guideData.getMajor() && 0 != guideData.getMajor().getId())
             {
-                String guideDataType = "";
-                if ("1".equals(guideData.getGuideDataType()))
-                {
-                    guideDataType = "市政";
-                }
-                //            else if ("2".equals(guideData.getGuideDataType()))
-                //            {
-                //                guideDataType = "园林";
-                //            }
-                else if ("3".equals(guideData.getGuideDataType()))
-                {
-                    guideDataType = "土建";
-                }
-                else if ("4".equals(guideData.getGuideDataType()))
-                {
-                    guideDataType = "公用";
-                }
-                else if ("5".equals(guideData.getGuideDataType()))
-                {
-                    guideDataType = "水利";
-                }
-                else if ("6".equals(guideData.getGuideDataType()))
-                {
-                    guideDataType = "人防";
-                }
-                else if ("7".equals(guideData.getGuideDataType()))
-                {
-                    guideDataType = "房修";
-                }
-                
-                Criterion criterion1 = Restrictions.eq("guideDataType", guideDataType);
+                Criterion criterion1 = Restrictions.eq("guideDataType", guideData.getMajor().getId());
                 list.add(criterion1);
             }
             
@@ -206,5 +147,4 @@ public class GuideDataDAOImpl extends AbstractBaseDAO<GuideData, Long> implement
         
         return criterions;
     }
-    
 }
