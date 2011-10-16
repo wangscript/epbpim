@@ -250,7 +250,7 @@
 		<property name="recordPrice" column="RECORD_PRICE" type="java.lang.Double"></property>
 		<property name="recordAmount" column="RECORD_AMOUNT" type="java.lang.Double"></property>
 		<property name="recordTotalPrice" column="RECORD_TOTAL_PRICE" type="java.lang.Double"></property>
-		<many-to-one name="governmentQuota" class="ProvinceCity" column="GOVERNMENT_QUOTA_ID"></many-to-one>
+		<many-to-one name="governmentQuota" class="GovernmentQuota" column="GOVERNMENT_QUOTA_ID"></many-to-one>
 	</class>
 	
 	<class name="Major" table="MAJOR">

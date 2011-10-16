@@ -36,10 +36,10 @@ public class GovernmentQuotaAction extends ActionSupportBase {
 		return SUCCESS;
 	}
 
-	public String importGovernmentQuota() {
+	public String saveGovernmentQuota() {
 		try {
 			String folderPath = request.getSession().getServletContext().getRealPath(path);
-			msg = service.importGovernmentQuota(folderPath);
+			msg = service.saveGovernmentQuota(folderPath);
 		} catch (IOException e) {
 			LOG.error(e);
 			msg = "文件夹未找到";

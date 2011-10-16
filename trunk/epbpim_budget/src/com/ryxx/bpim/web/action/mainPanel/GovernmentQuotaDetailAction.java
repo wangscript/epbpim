@@ -18,16 +18,16 @@ import com.ryxx.bpim.web.action.ActionSupportBase;
 public class GovernmentQuotaDetailAction extends ActionSupportBase {
 
 	private static final long serialVersionUID = 6638298297294518090L;
-	GovernmentQuotaService service = new GovernmentQuotaServiceImpl();
-	GovernmentQuotaRecordService recordService = new GovernmentQuotaRecordServiceImpl();
+	private GovernmentQuotaService governmentQuotaService;
+	private GovernmentQuotaRecordService governmentQuotaRecordService;
 	List<GovernmentQuotaRecord> datas = new ArrayList<GovernmentQuotaRecord>();
 	GovernmentQuota quota = new GovernmentQuota();
 
-	public String viewGovernmentQuotaDetail() {
+	public String listGovernmentQuotaDetail() {
 		try {
 			String id = request.getParameter("id");
-			datas = recordService.viewGovernmentQuotaDetail(Long.valueOf(id));
-			quota = service.getQuotaById(Long.valueOf(id));
+			datas = governmentQuotaRecordService.listGovernmentQuotaDetail(Long.valueOf(id));
+			quota = governmentQuotaService.getQuotaById(Long.valueOf(id));
 		} catch (SQLException e) {
 			LOG.error(e);
 		}
@@ -62,5 +62,21 @@ public class GovernmentQuotaDetailAction extends ActionSupportBase {
 		this.quota = quota;
 	}
 
-	
+	public GovernmentQuotaService getGovernmentQuotaService() {
+		return governmentQuotaService;
+	}
+
+	public void setGovernmentQuotaService(
+			GovernmentQuotaService governmentQuotaService) {
+		this.governmentQuotaService = governmentQuotaService;
+	}
+
+	public GovernmentQuotaRecordService getGovernmentQuotaRecordService() {
+		return governmentQuotaRecordService;
+	}
+
+	public void setGovernmentQuotaRecordService(
+			GovernmentQuotaRecordService governmentQuotaRecordService) {
+		this.governmentQuotaRecordService = governmentQuotaRecordService;
+	}
 }

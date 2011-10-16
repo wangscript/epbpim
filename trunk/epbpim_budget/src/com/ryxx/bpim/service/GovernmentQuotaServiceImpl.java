@@ -45,7 +45,7 @@ public class GovernmentQuotaServiceImpl extends AbstractService<GovernmentQuota,
 		getDao().delete();
 	}
 
-	public String importGovernmentQuota(String folderPath)
+	public String saveGovernmentQuota(String folderPath)
 			throws IOException, SQLException {
 		//String folderPath = request.getSession().getServletContext().getRealPath(path);
 		LOG.error(folderPath);
