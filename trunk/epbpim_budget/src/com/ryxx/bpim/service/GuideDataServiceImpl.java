@@ -51,6 +51,11 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
     {
         List<GuideData> guideDataList = parseGuideDataFile(uploadfile, guideData);
         
+        if (null == guideDataList)
+        {
+            return "false";
+        }
+        
         for (GuideData guideDatae : guideDataList)
         {
             getDao().saveGuideData(guideDatae);
