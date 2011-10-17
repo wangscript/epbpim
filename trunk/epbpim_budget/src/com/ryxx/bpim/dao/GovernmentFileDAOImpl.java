@@ -64,10 +64,20 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
                 try
                 {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-                    Date filePublishDate = sdf.parse(governmentFile.getFilePublishDatePage());
+                    Date filePublishDateFrom = sdf.parse(governmentFile.getFilePublishDatePage());
                     
-                    Criterion criterion1 = Restrictions.eq("filePublishDate", new Timestamp(filePublishDate.getTime()));
-                    list.add(criterion1);
+                    String year = governmentFile.getFilePublishDatePage().split("-")[0];
+                    String month = governmentFile.getFilePublishDatePage().split("-")[1];
+                    Date filePublishDateTo = sdf.parse(year + "_" + String.valueOf(Integer.valueOf(month) + 1));
+                    
+                    Criterion criterion11 =
+                        Restrictions.ge("filePublishDate", new Timestamp(filePublishDateFrom.getTime()));
+                    
+                    Criterion criterion12 =
+                        Restrictions.le("filePublishDate", new Timestamp(filePublishDateTo.getTime()));
+                    
+                    list.add(criterion11);
+                    list.add(criterion12);
                 }
                 catch (ParseException e)
                 {
@@ -80,11 +90,19 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
                 try
                 {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-                    Date fileEffectiveDate = sdf.parse(governmentFile.getFileEffectiveDatePage());
+                    Date fileEffectiveDateFrom = sdf.parse(governmentFile.getFileEffectiveDatePage());
                     
-                    Criterion criterion2 =
-                        Restrictions.eq("fileEffectiveDate", new Timestamp(fileEffectiveDate.getTime()));
-                    list.add(criterion2);
+                    String year = governmentFile.getFileEffectiveDatePage().split("-")[0];
+                    String month = governmentFile.getFileEffectiveDatePage().split("-")[1];
+                    Date fileEffectiveDateTo = sdf.parse(year + "_" + String.valueOf(Integer.valueOf(month) + 1));
+                    
+                    Criterion criterion21 =
+                        Restrictions.ge("fileEffectiveDate", new Timestamp(fileEffectiveDateFrom.getTime()));
+                    Criterion criterion22 =
+                        Restrictions.le("fileEffectiveDate", new Timestamp(fileEffectiveDateTo.getTime()));
+                    
+                    list.add(criterion21);
+                    list.add(criterion22);
                 }
                 catch (ParseException e)
                 {
