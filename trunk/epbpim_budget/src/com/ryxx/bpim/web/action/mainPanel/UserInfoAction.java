@@ -64,8 +64,9 @@ public class UserInfoAction extends ActionSupportBase
             
             // 保存当前用户登录session，用户处理不可能有多个用户同时登录
             saveUserSession(session);
-            
-            CacheMap.getInstance().clearCache();
+            if(CacheMap.getInstance().getCache(Constants.USER+userInfo.getId()) != null) {
+            	CacheMap.getInstance().removeCache(Constants.USER+userInfo.getId());
+            }
             if (RoleEnum.ENTERPRISE_USER.equals(userInfo.getRoleType()))
             {
             	if(userInfo.getEnterpriseInfo() == null || userInfo.getEnterpriseInfo().getProvinceCity() == null) {
