@@ -68,7 +68,7 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
                     
                     String year = governmentFile.getFilePublishDatePage().split("-")[0];
                     String month = governmentFile.getFilePublishDatePage().split("-")[1];
-                    Date filePublishDateTo = sdf.parse(year + "_" + String.valueOf(Integer.valueOf(month) + 1));
+                    Date filePublishDateTo = sdf.parse(year + "-" + String.valueOf(Integer.valueOf(month) + 1));
                     
                     Criterion criterion11 =
                         Restrictions.ge("filePublishDate", new Timestamp(filePublishDateFrom.getTime()));
@@ -94,7 +94,7 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
                     
                     String year = governmentFile.getFileEffectiveDatePage().split("-")[0];
                     String month = governmentFile.getFileEffectiveDatePage().split("-")[1];
-                    Date fileEffectiveDateTo = sdf.parse(year + "_" + String.valueOf(Integer.valueOf(month) + 1));
+                    Date fileEffectiveDateTo = sdf.parse(year + "-" + String.valueOf(Integer.valueOf(month) + 1));
                     
                     Criterion criterion21 =
                         Restrictions.ge("fileEffectiveDate", new Timestamp(fileEffectiveDateFrom.getTime()));
