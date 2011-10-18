@@ -133,8 +133,8 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
 				data.setNum(trim(row.getCell(
 						tableTitleTable.get(ExcelTitleUtil.recordCode))
 						.getStringCellValue()));
-				data.setGuideDataType(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordType))
+				data.setGuideDataClass(row.getCell(
+						tableTitleTable.get(ExcelTitleUtil.recordClass))
 						.getStringCellValue());
 				data.setModel(trim(row.getCell(
 						tableTitleTable.get(ExcelTitleUtil.recordModel))
@@ -274,7 +274,7 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
             || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordUnit)))
             || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPrice)))
             || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordAmount)))
-            || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordType)))
+            || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordClass)))
             || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordGuideDate)))
             || isString(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPrice))))
         {
