@@ -31,7 +31,7 @@ public class ExcelTitleUtil {
 	public static String recordModel = "规格";
 	public static String recordAmount = "数量";
 	public static String recordPercent = "百分比";
-	public static String recordType = "类型";
+	public static String recordClass = "类型";
 	public static String recordGuideDate = "指导价日期";
 	
 	static {
@@ -55,7 +55,7 @@ public class ExcelTitleUtil {
 		userCustomDataTitleSet.add(recordAmount);
 		userCustomDataTitleSet.add(recordTotalPrice);
 		userCustomDataTitleSet.add(recordPercent);
-		userCustomDataTitleSet.add(recordType);
+		userCustomDataTitleSet.add(recordClass);
 		userCustomDataTitleSet.add(recordGuideDate);
 		
 		governmentQuotaTitleSet.add(recordNum);
