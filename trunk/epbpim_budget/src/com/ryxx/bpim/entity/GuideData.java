@@ -14,8 +14,6 @@ public class GuideData extends VoBase
     
     private String guideDataClass;
     
-    private String guideDataType;
-    
     private Major major;
     
     private Timestamp guideDataDate;
@@ -44,24 +42,7 @@ public class GuideData extends VoBase
     
     private String guideDataDatePage;
     
-    
-    
-    
-    /**
-	 * @return the guideDataType
-	 */
-	public String getGuideDataType() {
-		return guideDataType;
-	}
-
-	/**
-	 * @param guideDataType the guideDataType to set
-	 */
-	public void setGuideDataType(String guideDataType) {
-		this.guideDataType = guideDataType;
-	}
-
-	public String getGuideDataFileName()
+    public String getGuideDataFileName()
     {
         return guideDataFileName;
     }
@@ -80,22 +61,24 @@ public class GuideData extends VoBase
     {
         this.guideDataClass = guideDataClass;
     }
-  
+    
     /**
-	 * @return the major
-	 */
-	public Major getMajor() {
-		return major;
-	}
-
-	/**
-	 * @param major the major to set
-	 */
-	public void setMajor(Major major) {
-		this.major = major;
-	}
-
-	public Timestamp getGuideDataDate()
+     * @return the major
+     */
+    public Major getMajor()
+    {
+        return major;
+    }
+    
+    /**
+     * @param major the major to set
+     */
+    public void setMajor(Major major)
+    {
+        this.major = major;
+    }
+    
+    public Timestamp getGuideDataDate()
     {
         return guideDataDate;
     }
