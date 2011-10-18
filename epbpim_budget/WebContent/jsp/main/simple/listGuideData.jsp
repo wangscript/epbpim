@@ -83,7 +83,7 @@
 				<input class="width100Input" name="guideData.name" id="guideData.name">
 			</li>
 			<li class="width100Li"><label class="lb">单位：</label>
-				<input class="width50Input" name="guideData.recordUnit" id="guideData.recordUnit">
+				<input class="width50Input" name="guideData.unit" id="guideData.unit">
 			</li>
 			<li class="width150Li"><label class="lb">时间：</label>
 				<input class="Wdate width100Input" id="guideData.guideDataDatePage" name="guideData.guideDataDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
