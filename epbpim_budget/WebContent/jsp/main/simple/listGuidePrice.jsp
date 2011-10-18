@@ -51,7 +51,7 @@
 <div class="content_resize">
 <div class="mainbar">
 <h3 class="title">信息价查询：</h3>
-<s:form id="searchGuidePriceForm" action="searchGuidePrice.do" method="post">
+<form id="searchGuidePriceForm" action="searchGuidePrice.do" method="post">
 	<div id="searchCondition">	
 		<input type="hidden" name="guidePrice.major.id" value="<s:property value='guidePrice.major.id'/>">
 		<input type="hidden" name="guidePrice.provinceCity.id" value="<s:property value='guidePrice.provinceCity.id'/>">
@@ -118,7 +118,7 @@
 			</ul>
 		</div>
 	</s:else>
-</s:form>
+</form>
 <div>
 </div>
 </div>
