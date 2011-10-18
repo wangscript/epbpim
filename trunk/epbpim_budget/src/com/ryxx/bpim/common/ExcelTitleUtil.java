@@ -56,7 +56,7 @@ public class ExcelTitleUtil {
 		userCustomDataTitleSet.add(recordTotalPrice);
 		userCustomDataTitleSet.add(recordPercent);
 		userCustomDataTitleSet.add(recordClass);
-		userCustomDataTitleSet.add(recordGuideDate);
+		//userCustomDataTitleSet.add(recordGuideDate);
 		
 		governmentQuotaTitleSet.add(recordNum);
 		governmentQuotaTitleSet.add(recordName);
