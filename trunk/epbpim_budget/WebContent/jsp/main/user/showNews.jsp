@@ -18,7 +18,7 @@
 <script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 </head>
 <body onload="createCode();">
-<div id="main"><!--<jsp:include page="../login/loginHeader.jsp" />-->
+<div id="main"><jsp:include page="../mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
