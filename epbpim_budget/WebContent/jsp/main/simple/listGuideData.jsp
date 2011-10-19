@@ -123,7 +123,7 @@
 			</s:iterator>
 			<ul class="fullScreenResultUl">
 				<jsp:include page="../../common/pagination.jsp" flush="true">
-					<jsp:param name="action_page" value="main/searchguideData.do"/>
+					<jsp:param name="action_page" value="main/searchGuideData.do"/>
 				</jsp:include>
 			</ul>
 		</div>

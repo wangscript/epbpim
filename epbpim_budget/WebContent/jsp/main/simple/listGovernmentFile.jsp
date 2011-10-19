@@ -72,6 +72,12 @@
 	<h3 class="title">文件查询</h3>
 	<div id="searchCondition">
 	<ul class="fullScreenUl">
+		<li class="width200Li"><label class="lb">发布时间：</label>
+			<input class="Wdate width100Input" id="filePublishDatePage" name="condition.filePublishDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
+		</li>
+		<li class="width200Li"><label class="lb">生效时间：</label>
+			<input class="Wdate width100Input" id="fileEffectiveDatePage" name="condition.fileEffectiveDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
+		</li>
 		<li class="width200Li">文件类别：<select id="fileType" name="condition.fileType" class="width100Select" onchange="changeType();">
 			<option value="0">--全部--</option>
 			<option value="法律">法律</option>
@@ -79,13 +85,10 @@
 			<option value="地方性法规和规章">地方性法规和规章</option>
 			<option value="部门规章">部门规章</option>
 			<option value="各类文件">各类文件</option>
-		</select></li>
-		<li class="width200Li"><label class="lb">发布时间：</label>
-			<input class="Wdate width100Input" id="filePublishDatePage" name="condition.filePublishDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
-		</li>
-		<li class="width200Li"><label class="lb">生效时间：</label>
-			<input class="Wdate width100Input" id="fileEffectiveDatePage" name="condition.fileEffectiveDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
-		</li>
+		</select></li> 
+		<li class="width200Li"><label class="lb">关键字：</label><input class="width100Input" name="condition.keyword" id="keyword"></li>
+		<li class="width50Li"><input name="searchButton" type="button" id="searchButton"
+			onclick="searchGovernmentFile()" class="button" value="查询"></li>
 	</ul>
 	<ul class="fullScreenUl">
 		<li class="width200Li" style="display: none" id="fileSubTypeLi">文件小类：
@@ -103,10 +106,6 @@
 			<s:select cssClass="width150Select" id="condition.provinceCity.id" name="condition.provinceCity.id"
 				list="provinceCities" listKey="id" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
 		</li>
-		<li class="width200Li"><label class="lb">文件名：</label><input class="width100Input" name="condition.fileName" id="fileName"></li>
-		<li class="width200Li"><label class="lb">关键字：</label><input class="width100Input" name="condition.keyword" id="keyword"></li>
-		<li class="width50Li"><input name="searchButton" type="button" id="searchButton"
-			onclick="searchGovernmentFile()" class="button" value="查询"></li>
 </ul>
 	</div>
 
