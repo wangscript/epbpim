@@ -24,9 +24,10 @@
 			<li id="adminScheme"><a href="listNews.do">消息发布</a></li>
 			<!-- 
 			<li id="adminGovernmentGuidePriceImport"><a href="preImportGuidePrice.do">信息价导入</a></li>
+			<li id="adminDeleteGuideData"><a href="preDeleteGuidePrice.do">信息价删除</a></li>
 			 -->
 			<li id="adminGovernmentGuidePriceImport"><a href="preImportGuideData.do">信息价导入</a></li>
-			<li id="adminDeleteGuideData"><a href="preDeleteGuidePrice.do">信息价删除</a></li>
+			<li id="adminDeleteGuideData"><a href="preDeleteGuideData.do">信息价删除</a></li>
 			<li id="adminGovernmentFileImport"><a href="preImportGovernmentFile.do">文件导入</a></li>
 			<li id="adminPeriodicalFileImport"><a href="preImportPeriodicalFile.do">电子杂志导入</a></li>
 			<li id="adminPricePackageFileUpload"><a href="preUploadPricePackageFile.do">价格包上传</a></li>
