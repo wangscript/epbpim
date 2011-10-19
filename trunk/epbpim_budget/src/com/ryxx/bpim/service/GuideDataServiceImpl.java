@@ -46,6 +46,9 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
     
     private String msg = "";
     
+    // 有效数据开始的行数
+    private int dataRowNum;
+    
     public String saveGuideData(GuideData guideData, File uploadfile)
         throws Exception
     {
@@ -94,96 +97,89 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
     private List<GuideData> parseGuideDataFile(File uploadfile, GuideData guideData)
         throws Exception
     {
-    	Sheet sheet = getWb(uploadfile, uploadfile.getName());
-		Row row = null;
-		int count_row = sheet.getLastRowNum();
-		int submitRowNumber = 0;
-		List<GuideData> dataList = new ArrayList<GuideData>();
-		Hashtable<String, Integer> tableTitleTable = getTableTitle(sheet,
-				ExcelTitleUtil.userCustomDataTitleSet);
-		msg = checkTableTitle(tableTitleTable,
-				ExcelTitleUtil.userCustomDataTitleSet);
-		if (!"".equals(msg)) {
-			throw new Exception(msg);
-		}
-
-	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-	    Timestamp importDate = new Timestamp(new Date().getTime());
-	        
-		for (int i = 0; i <= count_row; i++) {
-			try {
-				row = sheet.getRow(i);
-
-				if (!validateCustomData(row, tableTitleTable)) {
-					continue;
-				}
-
-				GuideData data = new GuideData();
-				data.setImportDate(importDate);
-
-				if(trim(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordName))
-						.getStringCellValue()).length()>30){
-					System.out.print(i);
-				}
-				data.setProvinceCity(guideData.getProvinceCity());
-				data.setName(trim(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordName))
-						.getStringCellValue()));
-				data.setNum(trim(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordCode))
-						.getStringCellValue()));
-				data.setGuideDataClass(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordClass))
-						.getStringCellValue());
-				data.setModel(trim(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordModel))
-						.getStringCellValue()));
-				data.setMajor(guideData.getMajor());
-				data.setPrice(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordPrice))
-						.getNumericCellValue());
-				data.setUnit(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordUnit))
-						.getStringCellValue());
-				data.setTotalPrice(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordTotalPrice))
-						.getNumericCellValue());
-				data.setGross(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordAmount))
-						.getNumericCellValue());
-				data.setPercent(row.getCell(
-						tableTitleTable.get(ExcelTitleUtil.recordPercent))
-						.getNumericCellValue());
-				data.setGuideDataDate(guideData.getGuideDataDate());
-				submitRowNumber++;
-				dataList.add(data);
-
-			} catch (Exception e) {
-				LOG.error(e);
-				msg = PropertyConstants.THE + (i + 1) + PropertyConstants.WRONGNUMBER;
-				throw new Exception(msg);
-			}
-		}
-
-		msg = submitRowNumber + PropertyConstants.TOTLEIMPORT;
+        Sheet sheet = getWb(uploadfile, uploadfile.getName());
+        Row row = null;
+        int count_row = sheet.getLastRowNum();
+        int submitRowNumber = 0;
+        List<GuideData> dataList = new ArrayList<GuideData>();
+        Hashtable<String, Integer> tableTitleTable = getTableTitle(sheet, ExcelTitleUtil.userCustomDataTitleSet);
+        msg = checkTableTitle(tableTitleTable, ExcelTitleUtil.userCustomDataTitleSet);
+        if (!"".equals(msg))
+        {
+            throw new Exception(msg);
+        }
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+        Timestamp importDate = new Timestamp(new Date().getTime());
+        
+        for (int i = dataRowNum; i <= count_row; i++)
+        {
+            try
+            {
+                
+                row = sheet.getRow(i);
+                
+                if (!validateCustomData(row, tableTitleTable))
+                {
+                    continue;
+                }
+                
+                GuideData data = new GuideData();
+                data.setImportDate(importDate);
+                data.setGuideDataDate(new Timestamp(sdf.parse(guideData.getGuideDataDatePage()).getTime()));
+                data.setMajor(guideData.getMajor());
+                data.setProvinceCity(guideData.getProvinceCity());
+                
+                data.setNum(trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordCode)).getStringCellValue()));
+                data.setName(trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordName)).getStringCellValue()));
+                data.setGuideDataClass(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordClass))
+                    .getStringCellValue());
+                data.setPrice(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPrice)).getNumericCellValue());
+                data.setUnit(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordUnit)).getStringCellValue());
+                data.setGross(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordAmount)).getNumericCellValue());
+                
+                if (null != row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPercent)))
+                {
+                    data.setPercent(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPercent))
+                        .getNumericCellValue());
+                }
+                
+                if (null != row.getCell(tableTitleTable.get(ExcelTitleUtil.recordModel)))
+                {
+                    data.setModel(trim(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordModel))
+                        .getStringCellValue()));
+                }
+                
+                if (null != row.getCell(tableTitleTable.get(ExcelTitleUtil.recordTotalPrice)))
+                {
+                    data.setTotalPrice(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordTotalPrice))
+                        .getNumericCellValue());
+                }
+                
+                submitRowNumber++;
+                dataList.add(data);
+                
+            }
+            catch (Exception e)
+            {
+                LOG.error(e);
+                msg = PropertyConstants.THE + (i + 1) + PropertyConstants.WRONGNUMBER;
+                throw new Exception(msg);
+            }
+        }
+        
+        msg = submitRowNumber + PropertyConstants.TOTLEIMPORT;
         return dataList;
     }
     
-   
     private Boolean isBlank(Cell cell)
     {
-        return cell.getCellType() == cell.CELL_TYPE_BLANK;
+        return (null == cell || cell.getCellType() == Cell.CELL_TYPE_BLANK);
     }
     
-    private Boolean isString(Cell cell)
+    private Boolean isNumeric(Cell cell)
     {
-        return cell.getCellType() == cell.CELL_TYPE_STRING;
-    }
-    
-    private Boolean isNumber(Cell cell)
-    {
-        return cell.getCellType() == cell.CELL_TYPE_NUMERIC;
+        return (null != cell && cell.getCellType() == Cell.CELL_TYPE_NUMERIC);
     }
     
     private String checkTableTitle(Hashtable<String, Integer> tableTitleTable, Set<String> set)
@@ -208,18 +204,34 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
     
     private Hashtable<String, Integer> getTableTitle(Sheet sheet, Set<String> set)
     {
-        Row row;
+        Row row = null;
         Cell cell;
         String title = "";
         Hashtable<String, Integer> titleMappings = new Hashtable<String, Integer>();
         try
         {
-            row = sheet.getRow(3);
-            int cellCount = row.getLastCellNum();
-            for (int i = 0; i <= cellCount; i++)
+            
+            for (int i = 0; i < sheet.getLastRowNum(); i++)
+            {
+                row = sheet.getRow(i);
+                
+                if (null != row.getCell(0)
+                    && !ExcelTitleUtil.recordCode.equals(row.getCell(0).getStringCellValue().trim()))
+                {
+                    continue;
+                }
+                else
+                {
+                    dataRowNum = i + 1;
+                    break;
+                    
+                }
+            }
+            
+            for (int i = 0; i <= row.getLastCellNum(); i++)
             {
                 cell = row.getCell(i);
-                if (null != cell && cell.getCellType() == cell.CELL_TYPE_STRING)
+                if (null != cell && cell.getCellType() == Cell.CELL_TYPE_STRING)
                 {
                     title = trim(cell.getStringCellValue());
                     if (set.contains(title))
@@ -269,17 +281,22 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
     private boolean validateCustomData(Row row, Hashtable<String, Integer> tableTitleTable)
     {
         // 过滤不合法数据
-        if (isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordName)))
-            || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordCode)))
+        if (isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordCode)))
+            || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordName)))
             || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordUnit)))
             || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPrice)))
             || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordAmount)))
-            || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordClass)))
-            || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordGuideDate)))
-            || isString(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPrice))))
+            || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordClass))))
+        {
+            
+            return false;
+        }
+        // 过滤表头
+        if (!isNumeric(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordPrice))))
         {
             return false;
         }
+        
         return true;
     }
 }
