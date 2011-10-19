@@ -41,15 +41,13 @@
 					<div class="entry">
 						<s:form action="deleteGuideData.do" method="post" id="deleteGuideDataForm">
 							<ul class="fullScreenUl">
-								<li class="width100Li">省份：</li>
-								<li class="width200Li">
+								<li class="width200Li"><label class="lb">省份：</label>
 									<s:select cssClass="width150Select" id="guideData.provinceCity.id" name="guideData.provinceCity.id"
 										list="provinceCities" listKey="id" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width100Li">专业：</li>
-								<li class="width200Li">
+								<li class="width200Li"><label class="lb">专业：</label>
 								<s:select cssClass="width150Select" id="guidePrice.major.id" name="guidePrice.major.id"
 										list="majors" listKey="id" listValue="name" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
