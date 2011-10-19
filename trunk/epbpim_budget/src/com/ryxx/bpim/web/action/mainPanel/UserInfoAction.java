@@ -30,6 +30,7 @@ public class UserInfoAction extends ActionSupportBase
     public static Map<String, List> userSessionMap = new HashMap<String, List>();
     
     private UserInfoService userInfoService;
+    
     private AdminMenuService adminMenuService;
     
     private String identifier;
@@ -55,8 +56,17 @@ public class UserInfoAction extends ActionSupportBase
         }
         else
         {
-            List sameLoginUserList = userSessionMap.get(String.valueOf(userInfo.getId()));
-          
+            
+            //  当前登录用户为普通用户，如果用户已被锁定或当前用户已经登录，则登录失败
+            if (1 == userInfo.getRoleType().getKey())
+            {
+                if (0 == userInfo.getEnable())
+                {
+                    super.addFieldError("name", "用户账号已被锁定，请联系您的企业账号管理员或平台客服人员");
+                    return INPUT;
+                }
+            }
+            
             session.put(Constants.LOGIN_USER_NAME, identifier);
             session.put(Constants.LOGIN_USER_ID, userInfo.getId());
             session.put(Constants.USER_LOGIN_TIME, new Date().getTime());
@@ -64,36 +74,45 @@ public class UserInfoAction extends ActionSupportBase
             
             // 保存当前用户登录session，用户处理不可能有多个用户同时登录
             saveUserSession(session);
-            if(CacheMap.getInstance().getCache(Constants.USER+userInfo.getId()) != null) {
-            	CacheMap.getInstance().removeCache(Constants.USER+userInfo.getId());
+            if (CacheMap.getInstance().getCache(Constants.USER + userInfo.getId()) != null)
+            {
+                CacheMap.getInstance().removeCache(Constants.USER + userInfo.getId());
             }
             if (RoleEnum.ENTERPRISE_USER.equals(userInfo.getRoleType()))
             {
-            	if(userInfo.getEnterpriseInfo() == null || userInfo.getEnterpriseInfo().getProvinceCity() == null) {
-            		super.addFieldError("name", "该用户未订阅任何应用。请订阅应用后再登录。");
-            		return INPUT;
-            	} else {
-	            	CacheMap.getInstance().addCache(Constants.USER+userInfo.getId(), adminMenuService.list(userInfo.getEnterpriseInfo().getProvinceCity()));
-	                return "enterpriseMain";
-            	}
+                if (userInfo.getEnterpriseInfo() == null || userInfo.getEnterpriseInfo().getProvinceCity() == null)
+                {
+                    super.addFieldError("name", "该用户未订阅任何应用。请订阅应用后再登录。");
+                    return INPUT;
+                }
+                else
+                {
+                    CacheMap.getInstance().addCache(Constants.USER + userInfo.getId(),
+                        adminMenuService.list(userInfo.getEnterpriseInfo().getProvinceCity()));
+                    return "enterpriseMain";
+                }
             }
             else if (RoleEnum.NORMAL_USER.equals(userInfo.getRoleType()))
             {
-            	if(userInfo.getProvinceCities() == null) {
-            		super.addFieldError("name", "该用户未订阅任何应用。请订阅应用后再登录。");
-            		return INPUT;
-            	} else {
-	            	CacheMap.getInstance().addCache(Constants.USER+userInfo.getId(), adminMenuService.list(userInfo.getProvinceCities(), userInfo.getId()));
-	                if (userInfo.getRealName() != null)
-	                {
-	                    return "userMain";
-	                }
-	                else
-	                {
-	                    userInfo.setPassword(null);
-	                    return "userInfoManage";
-	                }
-            	}
+                if (userInfo.getProvinceCities() == null)
+                {
+                    super.addFieldError("name", "该用户未订阅任何应用。请订阅应用后再登录。");
+                    return INPUT;
+                }
+                else
+                {
+                    CacheMap.getInstance().addCache(Constants.USER + userInfo.getId(),
+                        adminMenuService.list(userInfo.getProvinceCities(), userInfo.getId()));
+                    if (userInfo.getRealName() != null)
+                    {
+                        return "userMain";
+                    }
+                    else
+                    {
+                        userInfo.setPassword(null);
+                        return "userInfoManage";
+                    }
+                }
             }
         }
         return null;
@@ -105,31 +124,33 @@ public class UserInfoAction extends ActionSupportBase
         return SUCCESS;
     }
     
-    public String get() {
-    	Long id = (Long) session.get(Constants.LOGIN_USER_ID);
+    public String get()
+    {
+        Long id = (Long)session.get(Constants.LOGIN_USER_ID);
         if (id != null && id != 0)
         {
-        	userInfo = userInfoService.findById(id);
+            userInfo = userInfoService.findById(id);
         }
-    	return SUCCESS;
+        return SUCCESS;
     }
     
     public String updateUserInfo()
     {
         UserInfo userInfoForUpdate = new UserInfo();
-        Long id = (Long) session.get(Constants.LOGIN_USER_ID);
+        Long id = (Long)session.get(Constants.LOGIN_USER_ID);
         if (id != null && id != 0)
         {
             userInfoForUpdate = userInfoService.findById(id);
-            if(StringUtils.isNotEmpty(userInfo.getPassword())) {
-            	String newPassword = userInfo.getPassword();
-    	        userInfoForUpdate.setPassword(StringTools.md5(newPassword));
+            if (StringUtils.isNotEmpty(userInfo.getPassword()))
+            {
+                String newPassword = userInfo.getPassword();
+                userInfoForUpdate.setPassword(StringTools.md5(newPassword));
             }
-	        userInfoForUpdate.setRealName(userInfo.getRealName());
-	        userInfoForUpdate.setEmail(userInfo.getEmail());
-	        userInfoForUpdate.setMobilePhone(userInfo.getMobilePhone());
-	        userInfoForUpdate = userInfoService.merge(userInfoForUpdate);
-	        return SUCCESS;
+            userInfoForUpdate.setRealName(userInfo.getRealName());
+            userInfoForUpdate.setEmail(userInfo.getEmail());
+            userInfoForUpdate.setMobilePhone(userInfo.getMobilePhone());
+            userInfoForUpdate = userInfoService.merge(userInfoForUpdate);
+            return SUCCESS;
         }
         return INPUT;
     }
@@ -264,13 +285,15 @@ public class UserInfoAction extends ActionSupportBase
     {
         this.userInfo = userInfo;
     }
-
-	public AdminMenuService getAdminMenuService() {
-		return adminMenuService;
-	}
-
-	public void setAdminMenuService(AdminMenuService adminMenuService) {
-		this.adminMenuService = adminMenuService;
-	}
+    
+    public AdminMenuService getAdminMenuService()
+    {
+        return adminMenuService;
+    }
+    
+    public void setAdminMenuService(AdminMenuService adminMenuService)
+    {
+        this.adminMenuService = adminMenuService;
+    }
     
 }
