@@ -288,7 +288,6 @@ public class GuideDataServiceImpl extends AbstractService<GuideData, GuideDataDA
             || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordAmount)))
             || isBlank(row.getCell(tableTitleTable.get(ExcelTitleUtil.recordClass))))
         {
-            
             return false;
         }
         // 过滤表头
