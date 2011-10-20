@@ -18,23 +18,26 @@
 <div class="content">
 <div class="content_resize">
 	<div class="mainbar">
-		<div class="entry">			
-			<s:if test="newsAnnounces==null || newsAnnounces.size()==0">
-			</s:if>
+		<div class="entry">
+			<s:if test="newsAnnounces==null || newsAnnounces.size()==0"></s:if>
 			<s:else>
+			<h3 class="title">最新公告</h3>
+			<s:iterator value="newsAnnounces" status="st">
 				<ul class="fullScreenUl">
-				<li class="width100Li">公告信息</li>
+					<li>
+						<h4>
+							<s:property value="newsTitle" /> (<s:date name="addTime" format="yyyy-MM-dd" />)
+						</h4>
+					</li>
 				</ul>
-				<ul class="fullScreenResultUl">
-					<li class="width500Li">标题</li>
-					<li class="width100Li">创建时间</li>
-				</ul>				
-				<s:iterator value="newsAnnounces" status="st">
-					<ul class="fullScreenResultUl">
-						<li class="width500Li"><s:hidden name="id" /><a href="showNews.do?id=<s:property value="id" />"><s:property value="newsTitle" /> </a></li>
-						<li class="width100Li"><s:date name="addTime" format="yyyy-MM-dd" /></li>
-					</ul>
-				</s:iterator>
+				<ul class="fullScreenUl">
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="content" /></li>
+				</ul>
+				<ul class="fullScreenUl">
+					<li>&nbsp;</li>
+				</ul>
+				
+			</s:iterator>
 			</s:else>
 		</div>
 	</div>
