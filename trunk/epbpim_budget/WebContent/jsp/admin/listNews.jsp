@@ -21,29 +21,26 @@
 								</s:form>
 							</li>
 						</ul>
-						<ul class="fullScreenResultUl">
-							<li class="width500Li">标题</li>
-							<li class="width100Li">创建时间</li>
-							<li class="width100Li">修改时间</li>
-							<li class="width100Li">操作</li>
+						<ul class="fullScreenUl">
+							<li class="width300Li">标题</li>
+							<li class="width200Li">创建时间</li>
+							<li class="width200Li">操作</li>
 						</ul>
 						<s:if test="newsAnnounces==null || newsAnnounces.size()==0">
 						</s:if>
 						<s:else>
 							<s:iterator value="newsAnnounces" status="st">
-								<ul class="fullScreenResultUl">
-									<li class="width500Li"><s:hidden name="id" /><a
+								<ul class="fullScreenUl">
+									<li class="width300Li"><s:hidden name="id" /><a
 										href="showNews.do?id=<s:property value="id" />"><s:property
 												value="newsTitle" /> </a></li>
-									<li class="width100Li"><s:date name="addTime"
+									<li class="width200Li"><s:date name="addTime"
 											format="yyyy-MM-dd" /></li>
-									<li class="width100Li"><s:date name="addTimeTemp"
-											format="yyyy-MM-dd" /></li>
-									<li class="width100Li">
-										<form action="deleteNews.do" id='<s:property value='id'/>'>
-											<s:hidden name="id" />
-											<a href="javascript: deleteNews(<s:property value='id'/>);">删除</a>
-										</form></li>
+									<li class="width200Li">
+									<form action="deleteNews.do" id='<s:property value='id'/>'>
+										<s:hidden name="id" />
+										<a href="javascript: deleteNews(<s:property value='id'/>);">删除</a>
+									</form></li>
 								</ul>
 							</s:iterator>
 						</s:else>
