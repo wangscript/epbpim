@@ -90,6 +90,7 @@ public class PricePackageFileAction extends ActionSupportBase
             fileInputStream = new java.io.FileInputStream(filePath);
             
             // 设置响应头和下载保存的文件名     
+            response.setContentLength(Integer.parseInt(new File(filePath).length() + ""));
             response.setContentType("APPLICATION/OCTET-STREAM");
             response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + extFileName + "\"");
             
@@ -167,7 +168,7 @@ public class PricePackageFileAction extends ActionSupportBase
         try
         {
             String fileDir =
-                request.getSession().getServletContext().getRealPath("/uploadfile") + FILE_SEAPRATOR + "pricepackage";            
+                request.getSession().getServletContext().getRealPath("/uploadfile") + FILE_SEAPRATOR + "pricepackage";
             String filePath = pricePackageFile.getPricePackagePath();
             if (null != filePath)
             {
