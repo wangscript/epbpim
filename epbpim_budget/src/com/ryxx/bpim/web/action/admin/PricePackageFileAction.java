@@ -167,9 +167,7 @@ public class PricePackageFileAction extends ActionSupportBase
         try
         {
             String fileDir =
-                request.getSession().getServletContext().getRealPath("/") + FILE_SEAPRATOR + "uploadfile"
-                    + FILE_SEAPRATOR + "pricepackage";
-            
+                request.getSession().getServletContext().getRealPath("/uploadfile") + FILE_SEAPRATOR + "pricepackage";            
             String filePath = pricePackageFile.getPricePackagePath();
             if (null != filePath)
             {
@@ -206,27 +204,23 @@ public class PricePackageFileAction extends ActionSupportBase
         }
         
         String fileDir =
-            request.getSession().getServletContext().getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR
-                + "pricepackage";
+            request.getSession().getServletContext().getRealPath("/uploadfile") + FILE_SEAPRATOR + "pricepackage";
+        
+        String filePath = fileDir + FILE_SEAPRATOR + newFileName;
         
         File fileDirFile = new File(fileDir);
         if (!fileDirFile.exists())
         {
             fileDirFile.mkdirs();
         }
-        File newUploadFile = new File(fileDir + FILE_SEAPRATOR + newFileName);
-        
+        File newUploadFile = new File(filePath);
         FileUtil.copy(uploadFile, newUploadFile, false);
-        
-        String filePath = fileDir + FILE_SEAPRATOR + newFileName;
-        
-        pricePackageFile.setPricePackagePath(filePath);
         
         SimpleDateFormat sdff = new SimpleDateFormat("yyyy-MM");
         Date periodicalDate = sdff.parse(pricePackageFile.getPricePackageDatePage());
         pricePackageFile.setPricePackageDate(new Timestamp(periodicalDate.getTime()));
-        
         pricePackageFile.setUploadDate(new Timestamp(new Date().getTime()));
+        pricePackageFile.setPricePackagePath(filePath);
         
         return newUploadFile;
         
