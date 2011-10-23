@@ -76,9 +76,6 @@
 					<option value="机械">机械</option>
 				</select>
 			</li>
-			<li class="width150Li"><label class="lb">编号：</label>
-				<input class="width100Input" name="guideData.num" id="guideData.num">
-			</li>
 			<li class="width150Li"><label class="lb">名称：</label>
 				<input class="width100Input" name="guideData.name" id="guideData.name">
 			</li>
@@ -114,7 +111,7 @@
 		<s:iterator value="datas" status="st">
 			<ul class="fullScreenResultUl"> 
 				<li class="width150Li"><s:property value="major.name" /></li>
-				<li class="width50Li"><s:property value="guideDataType" /></li>				
+				<li class="width50Li"><s:property value="guideDataClass" /></li>				
 				<li class="width350Li"><s:property value="name" /></li>
 				<li class="width100Li"><s:property value="price" /></li>
 				<li class="width50Li"><s:property value="unit" /></li>

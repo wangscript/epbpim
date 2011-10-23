@@ -8,7 +8,7 @@ h1 {
 	margin: 0;
 	padding: 0;
 	color: #fff;
-	font: bold 40px/1.2em kaiti,Arial, Helvetica, sans-serif;
+	font: bold 40px/1.2em kaiti, Arial, Helvetica, sans-serif;
 	text-align: left;
 	letter-spacing: -2px;
 }
@@ -69,14 +69,14 @@ h3 {
 }
 
 .header .category li ul li {
-	font: normal 12px/1.8em kaiti,Arial, Helvetica, sans-serif;
+	font: normal 12px/1.8em kaiti, Arial, Helvetica, sans-serif;
 	width: 100px;
 	float: left;
 	background: url("../images/menu.gif") repeat-x scroll center top
 		transparent;
 }
 
-.header .category li ul li a{
+.header .category li ul li a {
 	padding: 9px 8px;
 }
 
@@ -287,14 +287,14 @@ h3 {
 	list-style: none outside none;
 	width: 900px;
 	margin-left: 30px;
-	margin-top:5px;
-	margin-bottom:10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
 }
-.width800UlNoHeight{
+
+.width800UlNoHeight {
 	float: left;
 	list-style: none outside none;
 	width: 800px;
-
 }
 
 .barUl {
@@ -375,4 +375,12 @@ h3 {
 	width: 80px;
 	list-style: none outside none;
 	margin-top: 100px;
+} 
+
+.adviceTextArea {
+	width: 500px;
+	height: 100px;
+	margin-top: 4px;
+	float: left;
+	clear: both;
 }

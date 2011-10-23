@@ -110,56 +110,73 @@
 		</action>
 		<action name="preAddNews">
 			<result>/jsp/admin/addNews.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preImportGovernmentFile" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importGovernmentFile.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preImportGuidePrice" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importGuidePrice.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preDeleteGuidePrice" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/delGuidePrice.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preImportGuideData" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importGuideData.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preDeleteGuideData" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/delGuideData.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preImportPeriodicalFile" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/importPeriodicalFile.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="preUploadPricePackageFile" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/uploadPricePackageFile.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>	
 	</package>
 	<package name="bpim-enterpriseinfo" namespace="/admin" extends="bpim-default">
 		<action name="listEnterpriseInfo" method="list" class="enterpriseInfoAction">
 			<result>/jsp/admin/listCompany.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="newEnterpriseInfo" method="newEnterpriseInfo" class="enterpriseInfoAction">
 			<result>/jsp/admin/addCompany.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="addEnterpriseInfo" method="add" class="enterpriseInfoAction">
 			<result type="redirect-action">listEnterpriseInfo.do</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="showEnterpriseInfo" method="get" class="enterpriseInfoAction">
 			<result>/jsp/admin/updateCompany.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="updateEnterpriseInfo" method="update" class="enterpriseInfoAction">
 			<result type="redirect-action">listEnterpriseInfo.do</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="deleteEnterpriseInfo" method="delete" class="enterpriseInfoAction">
 			<result type="redirect-action">listEnterpriseInfo.do</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="newEnterpriseInfo" method="newEnterpriseInfo" class="enterpriseInfoAction">
 			<result>/jsp/admin/addCompany.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="balanceEnterpriseInfo" method="balance" class="enterpriseInfoAction">
 			<result type="redirect-action">listEnterpriseInfo.do</result>
+			<interceptor-ref name="manager"/>
 		</action>
 		<action name="listRecharge" method="listRecharge" class="enterpriseInfoAction">
 			<result>/jsp/admin/listRecharge.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>
 	</package>
 	<package name="bpim-searchGovernmentInventory" namespace="/main" extends="bpim-default">
@@ -276,7 +293,7 @@
 	</package>	
 	<package name="bpim-addUserAdvice" namespace="/main" extends="bpim-default">
 		<action name="addUserAdvice" method="addUserAdvice" class="userAdviceAction">
-			<result>/jsp/main/user/userAdvice.jsp</result>
+			<result type="redirect-action">main.do</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
