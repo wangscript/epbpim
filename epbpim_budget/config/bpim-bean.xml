@@ -238,8 +238,11 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="userAdviceAction" class="com.ryxx.bpim.web.action.admin.UserAdviceAction" scope="prototype">
-		<property name="service">
+		<property name="userAdviceService">
 			<ref local="com.ryxx.bpim.service.UserAdviceService"/>
+		</property>
+		<property name="userInfoService">
+			<ref local="com.ryxx.bpim.service.UserInfoService"/>
 		</property>
 	</bean>
 	<bean id="com.ryxx.bpim.service.UserAdviceService" parent="baseTransactionProxyCdm">

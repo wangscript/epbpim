@@ -13,7 +13,7 @@ public class UserAdvice extends VoBase
     
     private Long id;
     
-    private Long userID;
+    private String userID;
     
     private String userName;
     
@@ -31,17 +31,23 @@ public class UserAdvice extends VoBase
         this.id = id;
     }
     
-    public Long getUserID()
-    {
-        return userID;
-    }
     
-    public void setUserID(Long userID)
-    {
-        this.userID = userID;
-    }
     
-    public String getUserName()
+    /**
+	 * @return the userID
+	 */
+	public String getUserID() {
+		return userID;
+	}
+
+	/**
+	 * @param userID the userID to set
+	 */
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+
+	public String getUserName()
     {
         return userName;
     }

@@ -7,6 +7,7 @@ import java.util.List;
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.UserAdvice;
 import com.ryxx.bpim.service.UserAdviceService;
+import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
@@ -31,7 +32,9 @@ public class UserAdviceAction extends ActionSupportBase
     
     private String msg = "提交成功，感谢您的参与！";
     
-    private UserAdviceService service;
+    private UserAdviceService userAdviceService;
+    
+    private UserInfoService userInfoService;
     
     public String searchUserAdvice()
     {
@@ -42,7 +45,7 @@ public class UserAdviceAction extends ActionSupportBase
             PageTools page = new PageTools(pageNo, pageSize);
             condition.setRowCount(pageNo);
             condition.setPageSize(pageSize);
-            datas = service.listUserAdvice(condition, page);
+            datas = userAdviceService.listUserAdvice(condition, page);
             if (datas != null && datas.size() > 0)
             {
                 this.page = page;
@@ -62,11 +65,12 @@ public class UserAdviceAction extends ActionSupportBase
     
     public String addUserAdvice()
     {
-        userAdvice.setUserID((Long)session.get(Constants.LOGIN_USER_ID));
+    	
+        userAdvice.setUserID(userInfoService.findById((Long)session.get(Constants.LOGIN_USER_ID)).getIdentifier());
         
         try
         {
-            service.saveUserAdvice(userAdvice);
+        	userAdviceService.saveUserAdvice(userAdvice);
         }
         catch (SQLException e)
         {
@@ -134,13 +138,35 @@ public class UserAdviceAction extends ActionSupportBase
         this.msg = msg;
     }
     
-    public UserAdviceService getService()
-    {
-        return service;
-    }
+   
+
+	/**
+	 * @return the userAdviceService
+	 */
+	public UserAdviceService getUserAdviceService() {
+		return userAdviceService;
+	}
+
+	/**
+	 * @param userAdviceService the userAdviceService to set
+	 */
+	public void setUserAdviceService(UserAdviceService userAdviceService) {
+		this.userAdviceService = userAdviceService;
+	}
+
+	/**
+	 * @return the userInfoService
+	 */
+	public UserInfoService getUserInfoService() {
+		return userInfoService;
+	}
+
+	/**
+	 * @param userInfoService the userInfoService to set
+	 */
+	public void setUserInfoService(UserInfoService userInfoService) {
+		this.userInfoService = userInfoService;
+	}
     
-    public void setService(UserAdviceService service)
-    {
-        this.service = service;
-    }
+    
 }

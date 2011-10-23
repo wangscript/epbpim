@@ -41,7 +41,7 @@
 									<s:else>
 										<s:iterator value="datas" status="st">
 											<ul class="fullScreenResultUl">
-												<li class="width150Li"><s:property value="userName" /></li>
+												<li class="width150Li"><s:property value="userID" /></li>
 												<li class="width500Li"><s:property value="adviceContent" /></li>
 												<li class="width100Li"><s:date name="adviceDate" format="yyyy-MM-dd" /> <s:hidden
 														name="adviceDate" /></li>
