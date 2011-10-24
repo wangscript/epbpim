@@ -84,9 +84,9 @@ public class UserInfoServiceImpl extends
 				}
 				String maxIdentify = getDao().getMaxIdentify();
 				if (maxIdentify == null || maxIdentify.length() == 0) {
-					userInfo.setIdentifier("ry10000001");
+					userInfo.setIdentifier("RY10000001");
 				} else {
-					userInfo.setIdentifier("ry"
+					userInfo.setIdentifier("RY"
 							+ (Long.parseLong(maxIdentify.substring(2)) + 1));
 				}
 				try {
