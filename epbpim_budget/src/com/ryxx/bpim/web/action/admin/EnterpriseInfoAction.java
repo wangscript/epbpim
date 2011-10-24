@@ -114,9 +114,9 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		userInfo.setEnterpriseInfo(enterpriseInfo);
 		String maxIdentify = userInfoService.getMaxIdentify();
 		if(maxIdentify == null || maxIdentify.length() == 0) {
-			userInfo.setIdentifier("ry10000001");
+			userInfo.setIdentifier("RY10000001");
 		} else {
-			userInfo.setIdentifier("ry"+(Long.parseLong(maxIdentify.substring(2))+1));
+			userInfo.setIdentifier("RY"+(Long.parseLong(maxIdentify.substring(2))+1));
 		}
 		userInfo.setPassword(StringTools.md5(Constants.DEFAULT_PASSWORD));
 		userInfo.setMobilePhone(enterpriseInfo.getPhone());
@@ -167,7 +167,7 @@ public class EnterpriseInfoAction extends ActionSupportBase {
 		balanceRecord.setBalanceDate(new Timestamp(System.currentTimeMillis()));
 		balanceRecord.setEnterpriseInfo(enterpriseInfo);
 		// TODO
-		balanceRecord.setIdentifier("ry10000001");
+		balanceRecord.setIdentifier("RY10000001");
 		balanceRecordService.save(balanceRecord);
 		return SUCCESS;
 	}
