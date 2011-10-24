@@ -8,14 +8,6 @@
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>电子杂志查询</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
-<link rel="stylesheet" href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
-<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
-<script type='text/javascript' src='../dwr/engine.js'></script>
-<script type='text/javascript' src='../dwr/util.js'></script>
-<script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 <script type="text/javascript">
 	function searchFile(id)
 	{

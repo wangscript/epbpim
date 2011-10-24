@@ -26,7 +26,7 @@
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width50Li"><label>内容:</label></li>
-								<li class="width300Li"><s:textarea name="content" /></li>
+								<li class="width300Li"><textarea name="content" ></textarea></li>
 								<li></li>
 							</ul>
 							<ul class="fullScreenUl">

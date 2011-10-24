@@ -34,7 +34,7 @@ public class GuideDataDAOImpl extends AbstractBaseDAO<GuideData, Long> implement
     @Override
     public List<GuideData> listGuideData(GuideData guideData)
     {
-        return findPageByPage(guideData.getStartRow(), guideData.getPageSize(), wrapCriterion(guideData));
+        return findPageByPage("guideDataDate",false,guideData.getStartRow(), guideData.getPageSize(), wrapCriterion(guideData));
     }
     
     @Override

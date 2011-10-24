@@ -23,10 +23,19 @@ h3 {
 
 .header .logo {
 	background: none;
-	height: 90px;
+	height: 40px;
 	float: left;
 	padding-top: 10px;
 	padding-left: 40px;
+}
+
+
+.header .description {
+	background: none;
+	height: 50px;
+	float: left;
+	padding-left: 40px;
+	color: #fff;
 }
 
 .header .categoryDiv {
