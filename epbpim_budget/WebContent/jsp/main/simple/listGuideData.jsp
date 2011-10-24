@@ -105,7 +105,7 @@
 			<li class="width50Li"><s:text name="类型" /></li>			
 			<li class="width350Li"><s:text name="名称" /></li>
 			<li class="width100Li"><s:text name="单价" /></li>
-			<li class="width50Li"><s:text name="单位" /></li>
+			<li class="width50Li"><s:text name="价格（元）" /></li>
 			<li class="width100Li"><s:text name="时间" /></li>
 		</ul>
 		<s:iterator value="datas" status="st">

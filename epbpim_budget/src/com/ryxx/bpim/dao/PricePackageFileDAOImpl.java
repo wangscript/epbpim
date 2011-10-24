@@ -29,7 +29,7 @@ public class PricePackageFileDAOImpl extends AbstractBaseDAO<PricePackageFile, L
     @Override
     public List<PricePackageFile> listPricePackageFile(PricePackageFile pricePackageFile)
     {
-        return findPageByPage(pricePackageFile.getStartRow(),
+        return findPageByPage("pricePackageDate",false,pricePackageFile.getStartRow(),
             pricePackageFile.getPageSize(),
             wrapCriterion(pricePackageFile));
     }

@@ -73,6 +73,15 @@ a {
 	text-decoration: underline;
 }
 
+textarea {
+	width: 500px;
+	height: 100px;
+	margin-top: 4px;
+	float: left;
+	clear: both;
+}
+
+
 ul {
 	text-align: center;
 	list-style: none outside none;
@@ -148,7 +157,7 @@ select {
 .header .nav_menu{
 	float: right;
 	width: auto;
-	height: 0px;
+	height: 1px;
 }
 
 .header .nav_menu ul {
@@ -189,6 +198,9 @@ select {
 	height: 80px;
 	padding-top: 0px;
 }
+
+
+
 
 /* content */
 .content {

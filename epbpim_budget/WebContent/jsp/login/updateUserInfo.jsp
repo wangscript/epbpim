@@ -8,19 +8,19 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="../js/common.js"></script>
 <script type='text/javascript' src='../js/validation.js'></script>
-<title>补全用户信息</title>
+<title>用户信息注册登记</title>
 </head>
 <body>
 	<div id="main"><jsp:include page="shortHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h4 class="title">请补全用户信息</h4>
+					<h4 class="title">用户信息注册登记</h4>
 					<form action="fillUserInfo.do" name="modifyUserInfoForm"
 						method="post" id="modifyUserInfoForm"
 						onsubmit="return checkForm(this);">
 						<ul class="fullScreenUl">
-							<li class="width150Li">真实姓名:</li>
+							<li class="width150Li">用户姓名:</li>
 							<li class="width200Li"><s:textfield cssClass="width150Input"
 									name="userInfo.realName" /> <textValidate
 									field="userInfo.realName" labelText="真实姓名" isValidate="true"
@@ -39,7 +39,7 @@
 									min="6" max="10">
 							</li>
 							<li class="width100Li">*必填</li>
-							<li class="width400Li">将初始化密码改掉成6-10位密码，可以由任意字符组成</li>
+							<li class="width400Li">将初始化密码改掉成6-10位密码，可以由任意数字或字母组成</li>
 						</ul>
 
 						<ul class="fullScreenUl">

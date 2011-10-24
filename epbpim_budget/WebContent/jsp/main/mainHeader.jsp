@@ -94,9 +94,11 @@ function changeTitleBackground(){
 			</div>
 			<div class="logo">
 				<h1>
-					建筑行业造价平台
-					<small>在本软件系统研发过程中，得到上海市市政公路工程行业协会造价专业委员会、上海公路学会造价专业委员会等相关单位的指导帮助，在此谨向以上单位表示衷心感谢！</small> <small></small>
+					建筑行业数据平台
 				</h1>
+			</div>
+			<div class="description">
+			<small>在本软件系统研发过程中，得到上海市市政公路工程行业协会造价专业委员会、上海公路学会造价专业委员会等相关单位的指导帮助，在此谨向以上单位表示衷心感谢！</small> <small></small>
 			</div>
 			<div class="categoryDiv">
 				<ul class="category">
