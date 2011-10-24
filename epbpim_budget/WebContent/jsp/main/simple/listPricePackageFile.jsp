@@ -52,9 +52,7 @@
 				<li class="width50Li">
 					<form action="downloadPricePackageFile.do" method="post" id='downloadFile<s:property value="id" />'>
 						<input type="hidden" name="pricePackageFile.pricePackagePath" value='<s:property value='pricePackagePath' />' />
-						<input type="hidden" name="pricePackageFile.pricePackageName" value='<s:property value="pricePackageName" />' />
-						<input type="hidden" name="pricePackageFile.major.id" value="<s:property value='pricePackageFile.major.id'/>">
-				<input type="hidden" name="pricePackageFile.provinceCity.id" value="<s:property value='pricePackageFile.provinceCity.id'/>">						
+						<input type="hidden" name="pricePackageFile.pricePackageName" value='<s:property value="pricePackageName" />' />						
 						<input type="button" onclick='downloadFile("downloadFile"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name='下载' />">
 					</form>
 					<a href=""></a>
@@ -62,7 +60,9 @@
 			</ul>
 		</s:iterator>
 		<ul class="fullScreenResultUl">
-			<s:form action="searchPricePackageFile.do" method="post">
+			<s:form id="paginationForm">
+				<input type="hidden" name="pricePackageFile.major.id" value="<s:property value='pricePackageFile.major.id'/>">
+				<input type="hidden" name="pricePackageFile.provinceCity.id" value="<s:property value='pricePackageFile.provinceCity.id'/>">
 				<jsp:include page="../../common/pagination.jsp" flush="true">
 					<jsp:param name="action_page" value="main/searchPricePackageFile.do"/>
 				</jsp:include>
