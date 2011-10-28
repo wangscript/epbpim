@@ -39,7 +39,7 @@
 				<div class="mainbar">
 					<h4 class="title">信息价删除:</h4>
 					<div class="entry">
-						<s:form action="deleteGuideData.do" method="post" id="deleteGuideDataForm">
+						<s:form action="deleteGuideData.do" method="post" id="deleteGuideDataForm" onsubmit="return confirm('是否删除');">
 							<ul class="fullScreenUl">
 								<li class="width200Li"><label class="lb">省份：</label>
 									<s:select cssClass="width150Select" id="guideData.provinceCity.id" name="guideData.provinceCity.id"
