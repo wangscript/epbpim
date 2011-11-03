@@ -35,6 +35,7 @@ function getFocus()
 		<ul class="fullScreenNoMarginUl">
 			<li><input type="submit" class="button"  value="<s:text name="Index.Login" />"></li>
 			<li><a href="findPassword.do">找回密码</a></li>
+			<li><a href="productIntroduce.do">产品介绍</a></li>
 		</ul>
 		<s:param>name</s:param>
 	</s:fielderror>
