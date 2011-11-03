@@ -68,7 +68,7 @@
 		<input type="hidden" name="guideData.major.id" value="<s:property value='guideData.major.id'/>">
 		<input type="hidden" name="guideData.provinceCity.id" value="<s:property value='guideData.provinceCity.id'/>">
 		<ul class="fullScreenUl">
-			<li class="width200Li"><label class="lb">工料机类别：</label>
+			<li class="width200Li">工料机类别：
 				<select id="guideData.guideDataClass" name="guideData.guideDataClass" class="width100Select"> 
 					<option value="">--请选择--</option>
 					<option value="材料">材料</option>
@@ -76,13 +76,13 @@
 					<option value="机械">机械</option>
 				</select>
 			</li>
-			<li class="width150Li"><label class="lb">名称：</label>
+			<li class="width150Li">名称：
 				<input class="width100Input" name="guideData.name" id="guideData.name">
 			</li>
-			<li class="width100Li"><label class="lb">单位：</label>
+			<li class="width100Li">单位：
 				<input class="width50Input" name="guideData.unit" id="guideData.unit">
 			</li>
-			<li class="width150Li"><label class="lb">时间：</label>
+			<li class="width150Li">时间：
 				<input class="Wdate width100Input" id="guideData.guideDataDatePage" name="guideData.guideDataDatePage" onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
 			</li>
 			<li class="width50Li">
