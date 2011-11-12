@@ -55,7 +55,7 @@
 									<li class="width50Li">
 										<form action="delAdminDept.do" method="post" id='deletedept<s:property value="id" />'>
 											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
-											<input type="button" onclick='deleteDept"deletedept"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+											<input type="button" onclick='deleteDept("deletedept"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
 										</form>
 									</li>
 								</ul>
