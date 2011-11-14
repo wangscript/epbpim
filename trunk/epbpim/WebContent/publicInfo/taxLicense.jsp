@@ -27,7 +27,9 @@
 <div class="mainbar">
 <h3 class="title">税务登记执照</h3>
 
-<div></div>
+<div>
+	<img alt="" src="../companyImages/taxLicence.jpg">
+</div>
 
 
 </div>
