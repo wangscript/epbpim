@@ -27,7 +27,9 @@
 <div class="mainbar">
 <h3 class="title">营业执照</h3>
 
-<div></div>
+<div>
+	<img alt="" src="../companyImages/businessLicence.JPG" height="582px" width="825px">
+</div>
 
 
 </div>
