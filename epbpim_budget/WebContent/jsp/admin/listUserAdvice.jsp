@@ -48,7 +48,7 @@
 											</ul>
 										</s:iterator>
 										<jsp:include page="../common/pagination.jsp" flush="true">
-											<jsp:param name="action_page" value="admin/listua.do" />
+											<jsp:param name="action_page" value="admin/listUserAdvice.do" />
 										</jsp:include>
 									</s:else>
 								</div>
