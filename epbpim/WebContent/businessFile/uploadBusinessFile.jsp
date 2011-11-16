@@ -24,7 +24,7 @@
 	<s:form action="addBusinessFile.do" enctype="multipart/form-data" method="post">
 		<input type="hidden" name="adminFile.fileModule" id="adminFile.fileModule" value="1">
 		<ul class="fullScreenUl">
-			<li class="width300Li">
+			<li class="width400Li">
 				<table>
 					<tr>
 						<td><label>文件类别：</label></td>
@@ -49,7 +49,7 @@
 				</table>								  
 			</li>
 			<li class="width300Li">
-				<s:file name="uploadFile" id="uploadFile" size="40" onchange="chooseFile()" />
+				<s:file name="uploadFile" id="uploadFile" size="30" onchange="chooseFile()" />
 				<input type="hidden" name="adminFile.fileName" id="adminFile.fileName">
 			</li>
 		</ul>	
