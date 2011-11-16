@@ -68,18 +68,20 @@ public class SearchGovernmentFileAction extends ActionSupportBase
         try
         {
             pw = response.getWriter();
+            
+            if (!StringUtils.isBlank(keyword))
+            {
+                keyword = keyword.replace("\5", "&#");
+                sourceCode = sourceCode.replace(keyword, "<span style='background:yellow'>" + keyword + "</span>");
+            }
+            pw.println(new String(sourceCode.getBytes("gbk"), "iso-8859-1"));
+            pw.println("</body></html>");
+            pw.flush();
         }
         catch (IOException e)
         {
             LOG.error(e);
         }
-        if (!StringUtils.isBlank(keyword))
-        {
-            keyword = keyword.replace("\5", "&#");
-            sourceCode = sourceCode.replace(keyword, "<span style='background:yellow'>" + keyword + "</span>");
-        }
-        pw.println(sourceCode);
-        pw.println("</body></html>");
         return SUCCESS;
     }
     
