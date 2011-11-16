@@ -40,7 +40,7 @@ VALUES(43,'查询职务','../employeeManage/listRole.do',4,1,4);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
 VALUES(44,'新增部门','../department/addDepartment.jsp',4,1,5);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(45,'查询部门','../department/queryDepartment.jsp',4,1,6);
+VALUES(45,'查询部门','../department/schAdminDeptList.do',4,1,6);
 
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
 VALUES(51,'ISO文件上传','../systemManage/uploadIsoFile.jsp',5,1,1);
