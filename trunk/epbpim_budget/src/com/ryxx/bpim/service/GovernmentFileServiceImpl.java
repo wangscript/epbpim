@@ -25,11 +25,9 @@ import com.ryxx.util.page.PageTools;
 public class GovernmentFileServiceImpl extends AbstractService<GovernmentFile, GovernmentFileDAO, Long> implements
     GovernmentFileService
 {
-    public String saveGovernmentFile(String fileType, String fileSubType, String provice, File file)
+    public String saveGovernmentFile(String provice, String fileType, String fileSubType, String fileName, File file)
         throws ParseException, SQLException
     {
-        
-        String fileName = file.getName();
         GovernmentFile data = new GovernmentFile();
         data.setFileType(fileType);
         data.setFileSubType(fileSubType);
