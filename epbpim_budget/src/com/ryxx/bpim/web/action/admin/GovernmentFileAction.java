@@ -12,6 +12,8 @@ public class GovernmentFileAction extends ActionSupportBase
 {
     private static final long serialVersionUID = -1781372665512868821L;
     
+    private String fileName = "";
+    
     private String fileType = "";
     
     private String fileSubType = "";
@@ -19,8 +21,6 @@ public class GovernmentFileAction extends ActionSupportBase
     private String provice = "";
     
     private File importGovernmentFile;
-    
-    private String importGovernmentFileInput = "";
     
     private String msg = "";
     
@@ -30,14 +30,14 @@ public class GovernmentFileAction extends ActionSupportBase
     
     public String importGovernmentFile()
     {
-        if (!"".equals(importGovernmentFileInput) && !importGovernmentFileInput.endsWith("html"))
+        if (!"".equals(fileName) && !fileName.endsWith("html"))
         {
             msg = "file type is wrong! ";
             return SUCCESS;
         }
         try
         {
-            msg = service.saveGovernmentFile(fileType, fileSubType, provice, importGovernmentFile);
+            msg = service.saveGovernmentFile(provice, fileType, fileSubType, fileName, importGovernmentFile);
         }
         catch (Exception e)
         {
@@ -45,6 +45,16 @@ public class GovernmentFileAction extends ActionSupportBase
             msg = "false";
         }
         return SUCCESS;
+    }
+    
+    public String getFileName()
+    {
+        return fileName;
+    }
+    
+    public void setFileName(String fileName)
+    {
+        this.fileName = fileName;
     }
     
     /**
@@ -109,22 +119,6 @@ public class GovernmentFileAction extends ActionSupportBase
     public void setImportGovernmentFile(File importGovernmentFile)
     {
         this.importGovernmentFile = importGovernmentFile;
-    }
-    
-    /**
-     * @return the importGovernmentFileInput
-     */
-    public String getImportGovernmentFileInput()
-    {
-        return importGovernmentFileInput;
-    }
-    
-    /**
-     * @param importGovernmentFileInput the importGovernmentFileInput to set
-     */
-    public void setImportGovernmentFileInput(String importGovernmentFileInput)
-    {
-        this.importGovernmentFileInput = importGovernmentFileInput;
     }
     
     /**
