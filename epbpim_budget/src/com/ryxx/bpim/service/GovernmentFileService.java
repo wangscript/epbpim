@@ -18,7 +18,8 @@ public interface GovernmentFileService extends BaseService<GovernmentFile, Gover
     List<GovernmentFile> listGovernmentFile(GovernmentFile condition, PageTools page)
         throws SQLException;
     
-    String saveGovernmentFile(String fileType, String fileSubType, String provice, File importGovernmentFile)
+    String saveGovernmentFile(String provice, String fileType, String fileSubType, String fileName,
+        File importGovernmentFile)
         throws ParseException, SQLException;
     
     String getGovernmentFile(Long id)
