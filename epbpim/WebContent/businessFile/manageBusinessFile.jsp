@@ -30,7 +30,7 @@
 	<s:form id="searchFileForm" action="schBusinessFileList.do" method="post">
 		<input type="hidden" name="adminFile.fileModule" id="adminFile.fileModule" value="1">
 		<ul class="fullScreenUl">
-			<li class="width300Li">
+			<li class="width400Li">
 				<table>
 					<tr>
 						<td><label>文件类别：</label></td>
