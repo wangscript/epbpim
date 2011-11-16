@@ -22,7 +22,7 @@
 			}
 			else if("false"==msg)
 			{
-				alert("出错了，请将excel重新保存一次再试！");
+				alert("出错了，请重试！");
 			}
 			else
 			{
