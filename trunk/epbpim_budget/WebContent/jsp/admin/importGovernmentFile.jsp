@@ -8,10 +8,6 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>管理员管理界面</title>
 <script type="text/javascript">
-	function getObject(id)
-	{
-		return document.getElementById(id);
-	}
 	function checkError() 
 	{
 		var msg = "<s:property value='msg'/>";
@@ -22,13 +18,21 @@
 			}
 			else if("false"==msg)
 			{
-				alert("出错了，请重试！");
+				alert("出错了，请检验查文件名后重试！");
 			}
 			else
 			{
 				alert("文件格式不对！");
 			}
 		}
+	}
+	function chooseFile()
+	{
+		var uploadFile = $('importGovernmentFile');
+		var filePath = uploadFile.value;
+		var fileName = filePath.substring(filePath.lastIndexOf('\\') + 1,
+				filePath.length);
+		document.getElementById('fileName').value = fileName;
 	}
 </script>
 <style>
@@ -77,13 +81,9 @@
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width100Li">文件上传：</li>
-								<li class="width200Li"><s:file name="importGovernmentFile"
-										id="importGovernmentFile" cssClass="width300Input"
-										onchange="getObject('importGovernmentFileInput').value=this.value" />
-									<input type="text" class="file"
-									name="importGovernmentFileInput" style="display: none"
-									id="importGovernmentFileInput"> <!-- <input type="button" value="选择" class="button"
-		onClick="getObject('uploadUserCustomDataFile').click()"> --></li>
+								<li class="width200Li"><s:file name="importGovernmentFile" id="importGovernmentFile" 
+									cssClass="width300Input" onchange="chooseFile()" />
+									<input type="hidden" name="fileName" id="fileName">
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width200Li"><input type="button"
