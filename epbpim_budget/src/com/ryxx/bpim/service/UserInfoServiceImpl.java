@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.mail.EmailException;
 
 import com.ryxx.bpim.common.Constants;
@@ -111,5 +112,19 @@ public class UserInfoServiceImpl extends
 	@Override
 	public UserInfo getUserByIdentifier(String identifier) {
 		return getDao().findeByIdentifier(identifier);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ryxx.bpim.service.UserInfoService#getAllUserEmails()
+	 */
+	@Override
+	public List<String> getAllUserEmails() {
+		List<UserInfo> users = getDao().getAllUserEmailsNotNull();
+		List<String> userEmails = new ArrayList();
+		for(UserInfo user:users){
+			if(!StringUtils.isEmpty(user.getEmail()))
+			userEmails.add(user.getEmail());
+		}
+		return userEmails;
 	}
 }

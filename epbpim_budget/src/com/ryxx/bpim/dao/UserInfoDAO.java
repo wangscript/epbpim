@@ -20,4 +20,9 @@ public interface UserInfoDAO extends BaseDAO<UserInfo, Long> {
 	 * @return
 	 */
 	public UserInfo findeByIdentifier(String identifier);
+
+	/**
+	 * @return
+	 */
+	public List<UserInfo> getAllUserEmailsNotNull();
 }

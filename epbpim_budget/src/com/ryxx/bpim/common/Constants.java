@@ -443,7 +443,7 @@ public interface Constants {
 	static final String EMAIL_APP_BLOCK = "已开通的应用";
 	static final String EMAIL_NORMAI_USER_TITLE1 = "尊敬的用户，";
 	static final String EMAIL_FIND_PASSWORD = "您的新密码是：";
-	static final String EMAIL_FOOTER = "<br><br><br><br><br><br><br><br><br><br><br><br>任远信息技术有限公司<br>电话：<br>地址：";
+	static final String EMAIL_FOOTER = "<br><br><br><br><br><br><br><br><br><br><br><br>任远信息技术有限公司<br>地址：上海市黄浦区汉口路193号309室<br>传真：021-63291301<br>售前，售后咨询电话：<br>高先生：18918129883<br>陈先生：15900810167<br>杨先生：18621908001<br>应先生：13361951583<br>任远官方QQ：1987971333";
 	
 	//默认密码
 	static final String DEFAULT_PASSWORD = "123456";
