@@ -137,9 +137,10 @@ function clearPage(updateId){
 										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="修改"><s:hidden name="id" />
 									</form>
 								</li>
-									<li class="width50Li"><input type="button" id="searchProject"
-									class="mediumRightButton" onclick="displayResult();"
-									class="button" value="删除"></li>
+									<li class="width50Li">
+									<form action="deleteUser.do">
+										<input type="submit" id="deleteProject"	class="mediumRightButton" class="button" value="删除"><s:hidden name="id" />
+									</form></li>
 							</ul>
 						</s:iterator>
 						<ul class="fullScreenUl">
@@ -149,8 +150,6 @@ function clearPage(updateId){
 						</ul>
 					</div>
 					<div></div>
-
-
 				</div>
 
 
