@@ -227,7 +227,7 @@
 									%>
 									<s:if test="certifies.size() == 0">
 										<li class="width250Li"><label class="width4Lb">执业资格:</label>
-										<s:select name="certifies"
+										<s:select name="certifies[0].selectId"
 									       list="#request.certifiTypes"
 									       listKey="key"
 									       listValue="value"
@@ -255,21 +255,21 @@
 										<s:iterator value="certifies" status="st">
 											<ul class="fullScreenUl" id="1">
 												<li class="width250Li"><label class="width4Lb">执业资格:</label>
-												<s:select id="#st.index"
+												<s:select name="certifies[%{#st.index}].selectId"
 											       list="#request.certifiTypes"
 											       listKey="key"
 											       listValue="value"
 											       multiple="false"
-							       				   onchange=""/><s:hidden id="%{st.index}" name="certifies[0].id"/>
+							       				   onchange=""/>
 												</li>
 												<li class="width250Li"><label class="width4Lb">证书编号:</label>
-													<s:textfield cssClass="width150Input" name="certifies[0].identity" />
+													<s:textfield cssClass="width150Input" name="certifies[%{#st.index}].identity" />
 												</li>
 												<li class="width200Li"><label class='width3Lb'>有效期:</label>
-													<s:textfield cssClass="Wdate width100Input" name="certifies[0].expireDateFromPage" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+													<s:textfield cssClass="Wdate width100Input" name="certifies[%{#st.index}].expireDateFromPage" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 												</li>
 												<li class="width150Li"><label class="width2Lb">备注:</label>
-													<s:textfield cssClass="width100Input" name="certifies[0].remark" />
+													<s:textfield cssClass="width100Input" name="certifies[%{#st.index}].remark" />
 												</li>
 												<li class="width50Li"><input type="button"
 													class="mediumLeftButton" onclick="deleteLicense(1);"

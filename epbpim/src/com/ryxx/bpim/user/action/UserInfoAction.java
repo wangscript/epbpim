@@ -26,6 +26,7 @@ import com.ryxx.bpim.user.service.AdminRoleService;
 import com.ryxx.bpim.user.service.UserCertificationService;
 import com.ryxx.bpim.user.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.date.DateTools;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 import com.ryxx.util.string.StringTools;
@@ -137,10 +138,10 @@ public class UserInfoAction extends ActionSupportBase {
 			certification.setExpireDateFromPage(DateUtil.formatDate(certification.getExpireDate(), "yyyy-MM-dd"));
 		}
 		setCertifies(userInfo.getCertifies());
-		userInfo.setBirthdayTmp(DateUtil.formatDate(userInfo.getBirthday(), "yyyy-MM-dd"));
-		userInfo.setGraduateDateTmp(DateUtil.formatDate(userInfo.getGraduateDate(), "yyyy-MM-dd"));
-		userInfo.setLeaveDateTmp(DateUtil.formatDate(userInfo.getLeaveDate(), "yyyy-MM-dd"));
-		userInfo.setOnboardDateTmp(DateUtil.formatDate(userInfo.getOnboardDate(), "yyyy-MM-dd"));
+		userInfo.setBirthdayTmp(DateTools.date2string(userInfo.getBirthday(), "yyyy-MM-dd"));
+		userInfo.setGraduateDateTmp(DateTools.date2string(userInfo.getGraduateDate(), "yyyy-MM-dd"));
+		userInfo.setLeaveDateTmp(DateTools.date2string(userInfo.getLeaveDate(), "yyyy-MM-dd"));
+		userInfo.setOnboardDateTmp(DateTools.date2string(userInfo.getOnboardDate(), "yyyy-MM-dd"));
 		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
 		setRoleGroup(roleGp);
 		return SUCCESS;
@@ -276,6 +277,11 @@ public class UserInfoAction extends ActionSupportBase {
 			ex.printStackTrace();
 			return ERROR;
 		}
+		return SUCCESS;
+	}
+	
+	public String delete() {
+		userInfoService.delete(id);
 		return SUCCESS;
 	}
 	

@@ -33,6 +33,9 @@
 		<action name="updateUser" method="updateUser" class="userInfoAction">
 			<result type="redirect-action">listUserInfo.do</result>
 		</action>
+		<action name="deleteUser" method="delete" class="userInfoAction">
+			<result type="redirect-action">listUserInfo.do</result>
+		</action>
 		<action name="listUserInfo" method="listUserInfo" class="userInfoAction">
 			<result>/employeeManage/queryEmployee.jsp</result>
 		</action>
