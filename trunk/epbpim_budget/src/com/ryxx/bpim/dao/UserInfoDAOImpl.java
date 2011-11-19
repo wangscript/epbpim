@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 
 import com.ryxx.bpim.entity.UserInfo;
@@ -56,5 +57,16 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 			return (UserInfo) criteria.list().get(0);
 		}
 		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ryxx.bpim.dao.UserInfoDAO#getAllUserEmails()
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<UserInfo> getAllUserEmailsNotNull() {
+		Criteria criteria = getSession().createCriteria(UserInfo.class);
+		criteria.add(Restrictions.or(Restrictions.ne("email", null), Property.forName("email").isNotNull()));
+		return criteria.list();
 	}
 }

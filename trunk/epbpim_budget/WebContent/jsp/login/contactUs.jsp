@@ -8,35 +8,50 @@
 <title>联系我们</title>
 </head>
 <body>
-<div id="main"><jsp:include page="shortHeader.jsp" />
-<div class="content">
-<div class="content_resize">
-<div class="mainbar">
-<h4>联系我们</h4>
-<div id="registerTable">
-<dl class="contact">
-	<dt>联系方式</dt>
-	<dd>地址：上海市黄浦区汉口路193号309室</dd>
-	<dd>公司总机：021-63291301</dd>
-	<dd>传真：021-63291301</dd>
-	<dd>在线客服： <a
-	target="blank"
-	href="http://wpa.qq.com/msgrd?V=1&Uin=1987971333&Exe=QQ&Site=im.qq.com&Menu=No">
-<img border="0" SRC="http://wpa.qq.com/pa?p=1:1987971333:2" alt="联系我们"></a></dd>
-	<dd>客服邮箱：<a href="mailto:jcjyonet@163.com">jcjyonet@163.com</a></dd>
-	<dt>补充说明</dt>
-	<dd>为了能更及时回复大家的问题，避免QQ软件因好友过多而无法工作，在线客服不接受加QQ好友请求，请大家谅解
-在线客服主要解决您在使用本系统过程中的紧急疑难问题，其他问题请大家给我们留言
-由于09版QQ软件、QQ隐身状态或隐藏ip状态均不支持在线客服功能，请使用其他反馈方式联系我们</dd>
-</dl>
-</div>
-</div>
+	<div id="main"><jsp:include page="shortHeader.jsp" />
+		<div class="content">
+			<div class="content_resize">
+				<div class="mainbar">
+					<h4>联系我们</h4>
+					<div id="registerTable">
+						<dl class="contact">
+							<dt>联系方式</dt>
+							<dd>地址：上海市黄浦区汉口路193号309室</dd>
+							<dd>传真：021-63291301</dd>
+							<dd>售前，售后咨询电话：</dd>
+							<dd>高先生：18918129883</dd>
+							<dd>陈先生：15900810167</dd>
+							<dd>杨先生：18621908001</dd>
+							<dd>应先生：13361951583</dd>
+							<dd>任远官方QQ：1987971333</dd>
+							<dd>任远官方QQ群：</dd>
+							<dd>新浪微博：http://weibo.com/wwwjcjyonet</dd>
+							<dd>新浪微博群：</dd>
+							<dd>QQ微博 ：http://t.qq.com/wwwjcjyonet</dd>
+							<dd>
+								在线客服： <a target="blank"
+									href="http://wpa.qq.com/msgrd?V=1&Uin=1987971333&Exe=QQ&Site=im.qq.com&Menu=No">
+									<img border="0" SRC="http://wpa.qq.com/pa?p=1:1987971333:2"
+									alt="联系我们">
+								</a>
+							</dd>
+							<dd>
+								客服邮箱：<a href="mailto:jcjyonet@163.com">jcjyonet@163.com</a>
+							</dd>
+							<dt>补充说明</dt>
+							<dd>为了能更及时回复大家的问题，避免QQ软件因好友过多而无法工作，在线客服不接受加QQ好友请求，请大家谅解
+								在线客服主要解决您在使用本系统过程中的紧急疑难问题，其他问题请大家给我们留言
+								由于09版QQ软件、QQ隐身状态或隐藏ip状态均不支持在线客服功能，请使用其他反馈方式联系我们</dd>
+						</dl>
+					</div>
+				</div>
 
 
-<div class="clr"></div>
-</div>
-</div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
+				<div class="clr"></div>
+			</div>
+		</div>
+		<!-- end #page -->
+		<jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
 	

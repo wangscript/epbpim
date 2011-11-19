@@ -82,7 +82,16 @@
 		<action name="listUserAdvice" method="searchUserAdvice" class="userAdviceAction">
 			<result>/jsp/admin/listUserAdvice.jsp</result>
 			<interceptor-ref name="manager"/>
+		</action>
+		<action name="preSendEmailToUser">
+			<result>/jsp/admin/sendEmailToUser.jsp</result>
+			<interceptor-ref name="manager"/>
+		</action>	
+		<action name="sendEmailToUser" method="sendEmailToUser" class="sendEmailToUserAction">
+			<result>/jsp/admin/sendEmailToUser.jsp</result>
+			<interceptor-ref name="manager"/>
 		</action>		
+		
 		<action name="importGovernmentFile" method="importGovernmentFile" class="governmentFileAction">
 			<result type="redirect">preImportGovernmentFile.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>

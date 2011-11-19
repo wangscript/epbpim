@@ -34,6 +34,7 @@
 		 </ul>
 		 <ul class="fullScreenUl">
 			<li id="adminUserAdvice"><a href="listUserAdvice.do">用户反馈</a></li>
+			<li id="preSendEmailToUser"><a href="preSendEmailToUser.do">发送邮件</a></li>
 		 </ul>
       </div>
       <div class="logo"><h1><small></small></h1></div>

@@ -35,4 +35,9 @@ public interface UserInfoService extends BaseService<UserInfo,UserInfoDAO, Long>
 	 * @return
 	 */
 	public UserInfo getUserByIdentifier(String identifier);
+
+	/**
+	 * @return
+	 */
+	public List<String> getAllUserEmails();
 }
