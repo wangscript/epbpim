@@ -1,0 +1,31 @@
+[11-11-19 14:04:59][com.ryxx.main.PollingTask$1-run] start connect to:www.jcjyo.com
+[11-11-19 14:13:04][com.ryxx.main.PollingTask$1-run] start connect to:http://www.jcjyo.com
+[11-11-19 14:14:17][com.ryxx.main.PollingTask$1-run] start connect to:http://www.jcjyo1.com
+[11-11-19 14:15:03][com.ryxx.main.PollingTask$1-run] start connect to:http://www.jcjyo1.com
+[11-11-19 14:17:13][com.ryxx.main.PollingTask$1-run] start connect to:http://www.jcjyo1.com
+[11-11-19 14:17:36][com.ryxx.main.PollingTask$1-run] java.net.ConnectException: Connection timed out: connect
+[11-11-19 14:18:46][com.ryxx.main.PollingTask$1-run] start connect to:http://www.jcjyo1.com
+[11-11-19 14:18:53][com.ryxx.tools.HttpTestConnection-getResult] 405
+[11-11-19 14:18:53][com.ryxx.tools.HttpTestConnection-getResult] Not Allowed
+[11-11-19 14:18:53][com.ryxx.main.PollingTask$1-run] java.lang.Exception: Not Allowed
+[11-11-19 14:20:14][com.ryxx.main.PollingTask$1-run] start connect to:http://www.jcjyo1.com
+[11-11-19 14:20:19][com.ryxx.tools.HttpTestConnection-getResult] 405
+[11-11-19 14:20:19][com.ryxx.tools.HttpTestConnection-getResult] Not Allowed
+[11-11-19 14:20:19][com.ryxx.main.PollingTask$1-run] java.lang.Exception: Not Allowed
+[11-11-19 14:22:05][com.ryxx.main.PollingTask$1-run] start connect to:http://www.jcjyo1.com
+[11-11-19 14:22:08][com.ryxx.tools.HttpTestConnection-getResult] 405
+[11-11-19 14:22:08][com.ryxx.tools.HttpTestConnection-getResult] Not Allowed
+[11-11-19 14:22:08][com.ryxx.main.PollingTask$1-run] java.lang.Exception: Not Allowed
+[11-11-19 14:23:59][com.ryxx.main.PollingTask$1-run] start connect to:http://www.jcjyo1.com
+[11-11-19 14:23:59][com.ryxx.tools.HttpTestConnection-getResult] 405
+[11-11-19 14:23:59][com.ryxx.tools.HttpTestConnection-getResult] Not Allowed
+[11-11-19 14:23:59][com.ryxx.main.PollingTask$1-run] java.lang.Exception: Not Allowed
+[11-11-19 14:29:39][com.ryxx.main.PollingTask$1-run] start connect to:http://www.jcjyo1.com
+[11-11-19 14:29:39][com.ryxx.tools.HttpTestConnection-getResult] 405
+[11-11-19 14:29:39][com.ryxx.tools.HttpTestConnection-getResult] Not Allowed
+[11-11-19 14:29:39][com.ryxx.main.PollingTask$1-run] java.lang.Exception: Not Allowed
+[11-11-19 17:07:27][com.ryxx.task.PollingTask$1-run] start connect to:http://www.jcjyo1.com
+[11-11-19 17:07:28][com.ryxx.tools.HttpTestConnection-getResult] 405
+[11-11-19 17:07:28][com.ryxx.tools.HttpTestConnection-getResult] Not Allowed
+[11-11-19 17:07:28][com.ryxx.task.PollingTask$1-run] java.lang.Exception: Not Allowed
+[11-11-19 17:08:11][com.ryxx.task.PollingTask$1-run] start connect to:http://www.jcjyo.com
