@@ -8,4 +8,5 @@ import com.ryxx.bpim.user.entity.UserInfo;
 public interface UserInfoDAO extends BaseDAO<UserInfo, Long> {
 	int getRowCount(UserInfo userInfo);
 	List<UserInfo> findByCount(UserInfo userInfo);
+	UserInfo getByLogin(UserInfo userInfo);
 }

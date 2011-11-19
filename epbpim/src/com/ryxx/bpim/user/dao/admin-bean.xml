@@ -104,4 +104,13 @@
 	</bean>
 	<bean id="com.ryxx.bpim.user.service.AdminFileService.target" class="com.ryxx.bpim.user.service.AdminFileServiceImpl">
 	</bean>
+	
+	<bean id="mainUserInfoAction" class="com.ryxx.bpim.user.action.main.UserInfoAction" scope="prototype">
+		<property name="userInfoService">
+			<ref local="com.ryxx.bpim.user.service.UserInfoService"/>
+		</property>
+		<property name="adminLogService">
+			<ref local="com.ryxx.bpim.user.service.AdminLogService"/>
+		</property>
+	</bean>
 </beans>

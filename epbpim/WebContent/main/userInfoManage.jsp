@@ -35,62 +35,65 @@ function checkError(){
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
-<h3 class="title">用户信息修改</h3>
-<form action="modifyUserInfo.do" name="modifyUserInfoForm" method="post" id="modifyUserInfoForm">
-<div id="userInfoTable">
-<ul>
-	<li><label class="lb">用户名:</label></li>
-	<li><label class="lb"><s:property value="userInfo.userName"/></label></li>
-	<li><input type="hidden" name="userName" id="userName" value="<s:property value='userInfo.userName'/>"
-		 /></li>
-</ul>
+					<s:form action="updateUser.do" method="post" onsubmit="return validate(this);">
+					<h3 class="title">员工基本信息</h3>
+					<div id="addProjectTable">
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width4Lb">姓名:</label>
+								<s:textfield cssClass="width100Input" name="userInfo.realName" /><s:hidden name="id" />*
+							</li>
+							<textValidate field="userInfo.realName" lableText="<s:text name='姓名' />" isValidate="true" min="0" max="100">
+							<li class="width200Li"><label class="width4Lb">用户名:</label>
+								<s:textfield cssClass="width100Input" name="userInfo.userName" />
+							</li>
+								<textValidate field="userInfo.userName" lableText="<s:text name='用户名' />" isValidate="true" min="0" max="100">
+							<li class="width200Li"><label class="width4Lb">性别:</label>
+									<s:select name="userInfo.sex"
+									       list="#{'0':'男','1':'女'}"
+									       listKey="key"
+									       listValue="value"
+									       multiple="false"
+					       				onchange=""/>
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width4Lb">出生年月:</label>
+								<s:textfield cssClass="Wdate width100Input" name="userInfo.birthdayTmp" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+							<li class="width250Li"><label class="width4Lb">身份证:</label>
+								<s:textfield cssClass="width150Input" name="userInfo.idCard" />
+							</li>
+							<textValidate field="roleCount" lableText="<s:text name='userInfo.idCard' />" isValidate="true" dataType="codeType">
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width450Li"><label class="width4Lb">家庭住址:</label>
+								<s:textfield cssClass="width350Input" name="userInfo.familyAddress" />
+							</li>
+							<li class="width200Li"><label class="width4Lb">电话:</label>
+								<s:textfield cssClass="width100Input" name="userInfo.phone" />
+							</li>
+							<li class="width200Li"><label class="width4Lb">手机:</label>
+								<s:textfield cssClass="width100Input" name="userInfo.mobilePhone" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width450Li"><label class="width4Lb">密码修改:</label>
+								<s:textfield cssClass="width150Input" name="newPassword" />
+							</li>
+							<li class="width200Li"><label class="width4Lb">密码确认:</label>
+								<s:textfield cssClass="width150Input" name="confirmPassword" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li><input type="submit" id="addProject" class="mediumLeftButton" value="保存">
+							</li>
+						</ul>
+					</div>
 
-<ul>
-	<li><label class="lb">密码:</label></li>
-	<li><input type="button" class="button" style="width:100px;" onclick="window.location.href ='changePassword.jsp';" value="修改密码"></li>
-</ul>
-<ul>
-	<li><label class="lb">邮箱:</label></li>
-	<li><input name="mailAddress"  id="mailAddress" value="<s:property value='userInfo.email'/>"
-		 /></li>
-</ul>
-<ul>
-	<li><label class="lb">公司:</label></li>
-	<li><input name="company"   id="company" value="<s:property value='userInfo.company'/>"
-		 /></li>
-</ul>
-<ul>
-	<li><label class="lb">手机:</label></li>
-	<li><input name="mobile"  id="mobile" value="<s:property value='userInfo.phone'/>"
-		 /></li>
-</ul>
+					<div></div>
 
-<ul>
-	<li><label class="lb">密码找回问题:</label></li>
-	<li><input name="question"   id="question" value="<s:property value='userInfo.question'/>"
-		 /></li>
-</ul>
-
-<ul>
-	<li><label class="lb">密码找回答案:</label></li>
-	<li><input name="answer"   id="answer" value="<s:property value='userInfo.answer'/>"
-		 /></li>
-</ul>
-
-
-<ul>
-<li><input type="button" 
-	onclick="modifyUserInfo()" class="button" value="确定" style="width:100px;"> </li>
-</ul>
-</div>
-
-</form>
-
-
-</div>
-
-
-
+				</s:form>
+				</div>
 <!-- end #content -->
 
 

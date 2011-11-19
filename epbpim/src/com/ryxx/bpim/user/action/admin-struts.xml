@@ -78,4 +78,27 @@
 			<result type="redirect-action">../publicInfo/schIsoList.do</result>
 		</action>
 	</package>
+	<package name="bpim-main" namespace="/main" extends="bpim-default">
+		<action name="showUser" method="showUser" class="mainUserInfoAction">
+			<result>/main/userInfoManage.jsp</result>
+		</action>
+		<action name="updateUser" method="updateUser" class="mainUserInfoAction">
+			<result type="redirect-action">main.do</result>
+		</action>
+		<action name="main">
+			<result>/main/main.jsp</result>
+		</action>
+	</package>
+	<package name="bpim-login" namespace="/login" extends="bpim-default">
+		<action name="main">
+			<result>/main/main.jsp</result>
+		</action>
+		<action name="login" method="login" class="mainUserInfoAction" >
+			<result name="input">/login/index.jsp</result>
+			<result type="redirect-action">../main/main.do</result>
+		</action>
+		<action name="logout" class="mainUserInfoAction">
+			<result>/login/index.jsp</result>
+		</action>
+	</package>
 </struts>

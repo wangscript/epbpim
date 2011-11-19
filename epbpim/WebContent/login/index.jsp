@@ -30,7 +30,7 @@ function getFocus()
 	<div id= "loginbar">
 	<ul>
 		<li><label><s:text name="Index.UserName" /></label></li>
-		<li><input name="username" maxlength="10" id="idInput" tabindex="1"></li>
+		<li><input name="userName" maxlength="10" id="idInput" tabindex="1"></li>
 	</ul>
 	<ul>
 		<li><label><s:text name="Index.Password" /></label></li>
@@ -39,7 +39,7 @@ function getFocus()
 	
 	<s:fielderror theme="Struts">
 		<ul>
-			<li><input type="button" onclick="window.location.href ='../main/main.jsp';" class="button" style="width:70px" value="<s:text name="Index.Login" />"></li>
+			<li><input type="submit" class="button" style="width:70px" value="<s:text name="Index.Login" />"></li>
 		</ul>
 		<s:param>name</s:param>
 	</s:fielderror>

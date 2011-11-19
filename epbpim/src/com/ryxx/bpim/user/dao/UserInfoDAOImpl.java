@@ -30,6 +30,12 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 		return criteria.list();
 	}
 	
+	public UserInfo getByLogin(UserInfo userInfo) {
+		Criterion[] crits = {Restrictions.eq("userName", userInfo.getUserName()), Restrictions.eq("password", userInfo.getPassword())};
+		List<UserInfo> userInfos = findByCriteria(crits);
+		return userInfos.size()>0?userInfos.get(0):null;
+	}
+	
 	private Criteria createSelection(UserInfo userInfo) {
 		Criteria criteria = getSession().createCriteria(UserInfo.class);
 		if(userInfo != null) {
