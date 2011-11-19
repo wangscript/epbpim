@@ -186,6 +186,7 @@ public class UserInfoAction extends ActionSupportBase {
 		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
 		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
 		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+		userInfo.setPassword(StringTools.md5("123456"));
 		userInfoService.save(userInfo);
 		return SUCCESS;
 	}
@@ -230,6 +231,8 @@ public class UserInfoAction extends ActionSupportBase {
 		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
 		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
 		userInfo.setId(id);
+		UserInfo newUserInfo = userInfoService.fetchById(id);
+		userInfo.setPassword(newUserInfo.getPassword());
 		userInfoService.save(userInfo);
 		return SUCCESS;
 	}

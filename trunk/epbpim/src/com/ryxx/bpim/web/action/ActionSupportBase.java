@@ -1,11 +1,3 @@
-/**
- * ActionSupportBase.java, Created on 2007-8-9 ����10:40:57
- * Title: CDM_CMS <br/>
- * Description: Action ���ࣨ���ڴ������һЩͨ�÷����������� Action ����ö��̳д���<br/>
- * Copyright: Copyright (c) 2007 <br/>
- * @author Zongming.Zhong
- * @version Revision: 1.0 
- */
 package com.ryxx.bpim.web.action;
 
 import java.util.Map;
