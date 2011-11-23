@@ -72,6 +72,7 @@
 										<option value="部委">部委</option>
 										<option value="市政府">市政府</option>
 										<option value="市建交委及相关部门">市建交委及相关部门</option>
+										<option value="市建筑建材业管理部门">市建筑建材业管理部门</option>
 								</select>
 								</li>
 								<li class="width300Li" style="display: none" id="proviceLi">
