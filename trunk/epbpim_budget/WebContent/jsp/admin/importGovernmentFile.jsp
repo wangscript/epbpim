@@ -77,7 +77,7 @@
 								</li>
 								<li class="width300Li" style="display: none" id="proviceLi">
 									<s:select cssClass="width150Select" id="provice" name="provice"
-										list="provinceCities" listKey="id" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
+										list="provinceCities" listKey="city" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
