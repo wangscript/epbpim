@@ -126,7 +126,7 @@
 			<ul class="fullScreenResultUl" id="<s:property value='id'/>">
 				<li class="width150Li"><s:property value="fileType" /></li>
 				<li class="width150Li"><s:property value="fileSubType" /></li>
-				<li class="width50Li"><s:property value="area" /></li>
+				<li class="width50Li"><s:property value="provinceCity.city" /></li>
 				<li class="width300Li">
 				<s:if
 				test="%{null!=fileTitle&&fileTitle.length()>20}">
