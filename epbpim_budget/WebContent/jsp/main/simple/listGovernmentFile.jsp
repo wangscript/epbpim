@@ -91,7 +91,7 @@
 			onclick="searchGovernmentFile()" class="button" value="查询"></li>
 	</ul>
 	<ul class="fullScreenUl">
-		<li class="width200Li" style="display: none" id="fileSubTypeLi">文件小类：
+		<li class="width200Li" style="display: NONE" id="fileSubTypeLi">文件小类：
 			<select id="fileSubType" name="condition.fileSubType" class="width100Select" onchange="changeSubType()">
 				<option value="0">--全部--</option>
 				<option value="国务院">国务院</option>
@@ -102,9 +102,10 @@
 			</select>
 		</li>
 
-		<li class="width200Li" style="display: none" id="proviceLi"><label class="lb">省份：</label>
+		<li class="width200Li" style="display: NONE" id="proviceLi"><label class="lb">省份：</label>
 			<s:select cssClass="width150Select" id="condition.area" name="condition.area"
-				list="provinceCities" listKey="city" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
+				list="provinceCities" listKey="city" listValue="city" multiple="false" required="true" onchange="" headerKey="0" >
+			</s:select>
 		</li>
 </ul>
 	</div>
@@ -126,7 +127,7 @@
 			<ul class="fullScreenResultUl" id="<s:property value='id'/>">
 				<li class="width150Li"><s:property value="fileType" /></li>
 				<li class="width150Li"><s:property value="fileSubType" /></li>
-				<li class="width50Li"><s:property value="provinceCity.city" /></li>
+				<li class="width50Li"><s:property value="area" /></li>
 				<li class="width300Li">
 				<s:if
 				test="%{null!=fileTitle&&fileTitle.length()>20}">
@@ -181,7 +182,14 @@
 		}
 	}
 	function searchGovernmentFile(){
-		
+		if(document.getElementById("fileSubTypeLi").style.display="NONE")
+		{
+			document.getElementById("condition.fileSubType").value="";
+		}
+		if(document.getElementById("proviceLi").style.display="NONE")
+		{
+			document.getElementById("condition.area").value="";
+		}
 		document.getElementById("searchGovernmentFileForm").submit();
 	}
 	function getUniCodes(strDes){ 
