@@ -74,7 +74,7 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
                         Restrictions.ge("filePublishDate", new Timestamp(filePublishDateFrom.getTime()));
                     
                     Criterion criterion12 =
-                        Restrictions.le("filePublishDate", new Timestamp(filePublishDateTo.getTime()-86400000));
+                        Restrictions.le("filePublishDate", new Timestamp(filePublishDateTo.getTime() - 86400000));
                     
                     list.add(criterion11);
                     list.add(criterion12);
@@ -99,7 +99,7 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
                     Criterion criterion21 =
                         Restrictions.ge("fileEffectiveDate", new Timestamp(fileEffectiveDateFrom.getTime()));
                     Criterion criterion22 =
-                        Restrictions.le("fileEffectiveDate", new Timestamp(fileEffectiveDateTo.getTime()-86400000));
+                        Restrictions.le("fileEffectiveDate", new Timestamp(fileEffectiveDateTo.getTime() - 86400000));
                     
                     list.add(criterion21);
                     list.add(criterion22);
@@ -129,6 +129,12 @@ public class GovernmentFileDAOImpl extends AbstractBaseDAO<GovernmentFile, Long>
             {
                 Criterion criterion5 = Restrictions.like("sourceCode", "%" + governmentFile.getKeyword() + "%");
                 list.add(criterion5);
+            }
+            
+            if (!StringUtils.isEmpty(governmentFile.getArea()))
+            {
+                Criterion criterion6 = Restrictions.eq("area", governmentFile.getArea());
+                list.add(criterion6);
             }
             
         }
