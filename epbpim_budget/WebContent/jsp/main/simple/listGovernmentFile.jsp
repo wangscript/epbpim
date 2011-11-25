@@ -32,18 +32,13 @@
 		if(keyword!="")
 		document.getElementById("keyword").value= keyword;
 		if(document.getElementById("fileType").value=="各类文件"){
-			document.getElementById("fileSubTypeLi").style.display="BLOCK"; 
+			document.getElementById("fileSubTypeLi").style.display="block"; 
 		}
-		else if(document.getElementById("fileType").value=="地方性法规和规章"){
-			document.getElementById("proviceLi").style.display="BLOCK";
-		}else{
-			document.getElementById("fileSubTypeLi").style.display="NONE";
-			document.getElementById("proviceLi").style.display="NONE";
+		else if(document.getElementById("fileType").value=="地方性法规和规章"){			
+			document.getElementById("proviceLi").style.display="block";
 		}
 		if(document.getElementById("fileSubType").value=="市建交委及相关部门"||document.getElementById("fileSubType").value=="市政府"||document.getElementById("fileSubType").value=="市建筑建材业管理部门"){
-			document.getElementById("proviceLi").style.display="BLOCK";
-		}else{
-			document.getElementById("proviceLi").style.display="NONE";
+			document.getElementById("proviceLi").style.display="block";
 		}
 	}
 	
@@ -91,7 +86,7 @@
 			onclick="searchGovernmentFile()" class="button" value="查询"></li>
 	</ul>
 	<ul class="fullScreenUl">
-		<li class="width200Li" style="display: NONE" id="fileSubTypeLi">文件小类：
+		<li class="width200Li" style="display: none" id="fileSubTypeLi">文件小类：
 			<select id="fileSubType" name="condition.fileSubType" class="width100Select" onchange="changeSubType()">
 				<option value="0">--全部--</option>
 				<option value="国务院">国务院</option>
@@ -102,7 +97,7 @@
 			</select>
 		</li>
 
-		<li class="width200Li" style="display: NONE" id="proviceLi"><label class="lb">省份：</label>
+		<li class="width200Li" style="display: none" id="proviceLi"><label class="lb">省份：</label>
 			<s:select cssClass="width150Select" id="condition.area" name="condition.area"
 				list="provinceCities" listKey="city" listValue="city" multiple="false" required="true" onchange="" headerKey="0" >
 			</s:select>
@@ -164,29 +159,29 @@
 <script type="text/javascript">
 	function changeType(){
 		if(document.getElementById("fileType").value=="各类文件"){
-			document.getElementById("fileSubTypeLi").style.display="BLOCK"; 
+			document.getElementById("fileSubTypeLi").style.display="block"; 
 		}
 		else if(document.getElementById("fileType").value=="地方性法规和规章"){
-			document.getElementById("proviceLi").style.display="BLOCK";
+			document.getElementById("proviceLi").style.display="block";
 		}else{
-			document.getElementById("fileSubTypeLi").style.display="NONE";
-			document.getElementById("proviceLi").style.display="NONE";
+			document.getElementById("fileSubTypeLi").style.display="none";
+			document.getElementById("proviceLi").style.display="none";
 		}
 	}
 	
 	function changeSubType(){
 		if(document.getElementById("fileSubType").value=="市建交委及相关部门"||document.getElementById("fileSubType").value=="市政府"){
-			document.getElementById("proviceLi").style.display="BLOCK";
+			document.getElementById("proviceLi").style.display="block";
 		}else{
-			document.getElementById("proviceLi").style.display="NONE";
+			document.getElementById("proviceLi").style.display="none";
 		}
 	}
 	function searchGovernmentFile(){
-		if(document.getElementById("fileSubTypeLi").style.display="NONE")
+		if(document.getElementById("fileSubTypeLi").style.display == "none")
 		{
-			document.getElementById("condition.fileSubType").value="";
+			document.getElementById("fileSubType").value="";
 		}
-		if(document.getElementById("proviceLi").style.display="NONE")
+		if(document.getElementById("proviceLi").style.display == "none")
 		{
 			document.getElementById("condition.area").value="";
 		}
