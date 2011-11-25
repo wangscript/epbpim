@@ -103,8 +103,8 @@
 		</li>
 
 		<li class="width200Li" style="display: none" id="proviceLi"><label class="lb">省份：</label>
-			<s:select cssClass="width150Select" id="condition.provinceCity.id" name="condition.provinceCity.id"
-				list="provinceCities" listKey="id" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
+			<s:select cssClass="width150Select" id="condition.area" name="condition.area"
+				list="provinceCities" listKey="city" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
 		</li>
 </ul>
 	</div>
