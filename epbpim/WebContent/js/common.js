@@ -36,7 +36,13 @@ function mOut(src, clrIn) {
 // 分页跳转
 function actionFun(pageNo, pageSize) {
     //alert(getLocation(pageNo));
-	var pageForm = document.forms[0];
+	var pageForm=document.getElementById("paginationForm");
+	
+	if(!pageForm)
+	{
+		pageForm = document.forms[0];
+	}
+	
 	if(pageForm != null) {
 		pageForm.action = getLocation(pageNo, pageSize);
 		pageForm.method = "POST";
