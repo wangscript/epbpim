@@ -15,5 +15,7 @@ public interface AdminDeptService extends BaseService<AdminDept, AdminDeptDAO, L
     
     void deleteAdminDept(AdminDept adminDept);
     
+    AdminDept findAdminDept(AdminDept adminDept);
+    
     List<AdminDept> listAdminDept(AdminDept adminDept, PageTools page);
 }
