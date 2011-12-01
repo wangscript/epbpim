@@ -33,6 +33,12 @@ public class AdminDeptDAOImpl extends AbstractBaseDAO<AdminDept, Long> implement
     }
     
     @Override
+    public AdminDept findAdminDept(AdminDept adminDept)
+    {
+        return fetchById(adminDept.getId());
+    }
+    
+    @Override
     public List<AdminDept> listAdminDept(AdminDept adminDept)
     {
         return findPageByPage(adminDept.getStartRow(), adminDept.getPageSize(), wrapCriterion(adminDept));
@@ -69,5 +75,4 @@ public class AdminDeptDAOImpl extends AbstractBaseDAO<AdminDept, Long> implement
         
         return criterions;
     }
-    
 }
