@@ -50,6 +50,9 @@
 		<action name="modAdminDept" method="modAdminDept" class="adminDeptAction">
 			<result type="redirect-action">schAdminDeptList.do</result>
 		</action>
+		<action name="preModAdminDept" method="findAdminDept" class="adminDeptAction">
+			<result>/department/modDepartment.jsp</result>
+		</action>
 		<action name="schAdminDeptList" method="schAdminDeptList" class="adminDeptAction">
 			<result>/department/queryDepartment.jsp</result>
 		</action>
