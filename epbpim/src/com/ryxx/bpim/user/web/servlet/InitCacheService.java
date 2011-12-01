@@ -33,7 +33,6 @@ public class InitCacheService extends HttpServlet {
         ApplicationContext app = (ApplicationContext) WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
         AdminRoleService roleService = (AdminRoleService) app.getBean("com.ryxx.bpim.user.service.AdminRoleService");
         AdminMenuService menuService = (AdminMenuService) app.getBean("com.ryxx.bpim.user.service.AdminMenuService");
-        List<AdminRole> roleList = roleService.findRolesWithMenus();
 		CacheMap.getInstance().addCache(Constants.MENU_CACHE, menuService.list());
 	}
 	
