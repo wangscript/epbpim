@@ -48,7 +48,6 @@
 							<s:if test="#request.menus!=null && #request.menus.size()>0">
 								<s:iterator value="#request.menus" status="st" id="cacheMenu">
 									<s:if test="subMenus !=null && subMenus.size()>0">
-										
 										<ul class="fullScreenUlNoHeight">
 											<li class="width200Li"><h4>
 													<input type="checkbox"
@@ -64,12 +63,12 @@
 												</h4></li>
 										</ul>
 										<ul class="fullScreenUlNoHeight">
-											<s:iterator value="subMenus" status="st1">
+											<s:iterator value="subMenus" status="st1" id="subMenu">
 												<li class="width200Li"><input type="checkbox"
 													onclick="checkSelfAndParent('<s:property value='id'/>,<s:property value='parentId'/>');"
 													name="listCheck" value="<s:property value="id"/>"
 													<s:iterator value="#request.menuList" status="st2" id="showMenu">
-														<s:if test="#cacheMenu.id eq id">
+														<s:if test="#subMenu.id eq id">
 															checked
 														</s:if>
 													</s:iterator>
