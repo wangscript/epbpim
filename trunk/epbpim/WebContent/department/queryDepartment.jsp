@@ -46,6 +46,8 @@
 								</li>
 								<li class="width600Li"><label><s:text name="AdminRole.Remark" /></label>
 								</li>
+								<li class="width50Li"><label><s:text name="Common.Update" /></label>
+								</li>
 								<li class="width50Li"><label><s:text name="Common.Delete" /></label>
 								</li>
 							</ul>
@@ -53,6 +55,12 @@
 								<ul class="fullScreenUl">
 									<li class="width100Li"><s:property value="name" /></li>
 									<li class="width600Li"><s:property value="remark" /></li>
+									<li class="width50Li">
+										<form action="preModAdminDept.do" method="post" id='deletedept<s:property value="id" />'>
+											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
+											<input type="button" onclick='preModDept("deletedept"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
+										</form>
+									</li>
 									<li class="width50Li">
 										<form action="delAdminDept.do" method="post" id='deletedept<s:property value="id" />'>
 											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
@@ -83,5 +91,8 @@
 			document.getElementById(id).submit();
 		}
 	}
+	function preModDept(id){
+		document.getElementById(id).submit();
+	}	
 </script>
 </html>
