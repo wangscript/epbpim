@@ -12,7 +12,8 @@ public enum UserTitleEnum {
 	ECON(7,"经济师"),
 	SENIOR_ACCOUNTANT(8,"高级会计师"),
 	MIDDLE_ACCOUNTANT(9,"中级会计师"),
-	ACCOUNTANT(10,"会计师");
+	ACCOUNTANT(10,"会计师"),
+	COST_PERSONNAL(11,"造价员");
 	
 	private String value;
 	private int key;
