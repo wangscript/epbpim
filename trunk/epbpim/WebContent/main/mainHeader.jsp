@@ -87,16 +87,20 @@ function changeTitleBackground(){
 <div class="categoryDiv">
 <ul class="category">
 	<%
-		List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE);
+		String userid = String.valueOf((Long)session.getAttribute(Constants.LOGIN_USER_ID));
+		List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE+Constants.LOGIN_USER_ID+userid);
+		System.out.println(menus==null?0:menus.size());
 		request.setAttribute("menus", menus);
 	%>
 	<s:if test="#request.menus!=null && #request.menus.size()>0">
-		<s:iterator value="#request.menus" status="st">
-			<s:if test="subMenus !=null && subMenus.size()>0">
+		<s:iterator value="#request.menus" status="st" id="allMenus">
+			<s:if test="parentId eq 0">
 				<li onmouseenter="displayCategory('<s:property value="id"/>')"	onmouseleave="unDisplayCategory('<s:property value="id"/>')" onmouseover="displayCategory('<s:property value="id"/>')"	onmouseout="unDisplayCategory('<s:property value="id"/>')" ><a><s:property value="name"/></a>
 				<ul id="<s:property value="id"/>" style="display: none">
-					<s:iterator value="subMenus" status="st1">
-						<li id="<s:property value="id"/>"><a href="<s:property value="url"/>"><s:property value="name"/></a></li>
+					<s:iterator value="#request.menus" status="st1">
+						<s:if test="parentId gt 0 && parentId eq #allMenus.id">
+							<li id="<s:property value="id"/>"><a href="<s:property value="url"/>"><s:property value="name"/></a></li>
+						</s:if>
 					</s:iterator>
 				</ul>
 			</li>
