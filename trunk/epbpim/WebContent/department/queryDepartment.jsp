@@ -12,6 +12,7 @@
 	<link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
 	<link rel="stylesheet" href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 	<link href="../images/logo.ico" rel="SHORTCUT ICON" />
+	<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
@@ -60,6 +61,13 @@
 									</li>
 								</ul>
 							</s:iterator>
+							<ul class="fullScreenUl">
+								<s:form id="paginationForm">
+									<jsp:include page="../common/pagination.jsp" flush="true">
+										<jsp:param name="action_page" value="department/schAdminDeptList.do" />
+									</jsp:include>
+								</s:form>
+							</ul>
 						</div>
 					</s:else>
 				<div class="clr"></div>
