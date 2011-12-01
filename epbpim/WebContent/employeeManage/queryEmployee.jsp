@@ -144,9 +144,11 @@ function clearPage(updateId){
 							</ul>
 						</s:iterator>
 						<ul class="fullScreenUl">
-							<jsp:include page="../common/pagination.jsp" flush="true">
-								<jsp:param name="action_page" value="employeeManage/listUserInfo.do" />
-							</jsp:include>
+							<s:form id="paginationForm">
+								<jsp:include page="../common/pagination.jsp" flush="true">
+									<jsp:param name="action_page" value="employeeManage/listUserInfo.do" />
+								</jsp:include>
+							</s:form>
 						</ul>
 					</div>
 					<div></div>
