@@ -29,6 +29,12 @@ public class AdminDeptServiceImpl extends AbstractService<AdminDept, AdminDeptDA
     }
     
     @Override
+    public AdminDept findAdminDept(AdminDept adminDept)
+    {
+        return getDao().findAdminDept(adminDept);
+    }
+    
+    @Override
     public List<AdminDept> listAdminDept(AdminDept adminDept, PageTools page)
     {
         if (page != null)
@@ -43,4 +49,5 @@ public class AdminDeptServiceImpl extends AbstractService<AdminDept, AdminDeptDA
         }
         return getDao().listAdminDept(adminDept);
     }
+    
 }
