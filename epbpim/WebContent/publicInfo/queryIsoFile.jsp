@@ -20,7 +20,7 @@
 <script type='text/javascript' src='../dwr/util.js'></script>
 <script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 </head>
-<body onload="setValue()">
+<body>
 <div id="main"><jsp:include page="../main/mainHeader.jsp" />
 <div class="content">
 <div class="content_resize">
@@ -35,7 +35,7 @@
 				<input type="text" class="" name="adminFile.fileName" id="adminFile.fileName" value="<s:property value='adminFile.fileName' />"/>
 			</li>
 			<li>
-				<input type="submit" class="mediumButton" style="float: right" class="button" onclick="searchFileList()" value="查询">
+				<input type="submit" class="mediumButton" style="float: right" class="button" value="查询">
 			</li>
 		</ul>
 	</s:form>
