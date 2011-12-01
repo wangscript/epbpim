@@ -13,6 +13,8 @@ public interface AdminDeptDAO extends BaseDAO<AdminDept, Long>
     
     void deleteAdminDept(AdminDept adminDept);
     
+    AdminDept findAdminDept(AdminDept adminDept);
+    
     List<AdminDept> listAdminDept(AdminDept adminDept);
     
     int getRowCount(AdminDept adminDept);
