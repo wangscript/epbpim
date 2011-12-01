@@ -54,6 +54,20 @@ public class AdminDeptAction extends ActionSupportBase
         return SUCCESS;
     }
     
+    public String findAdminDept()
+    {
+        try
+        {
+            adminDept = adminDeptService.findAdminDept(adminDept);
+        }
+        catch (Exception e)
+        {
+            LOG.warn(e);
+            return ERROR;
+        }
+        return SUCCESS;
+    }
+    
     public String addAdminDept()
     {
         try
