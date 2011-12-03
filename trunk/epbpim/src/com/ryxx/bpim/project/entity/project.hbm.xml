@@ -42,5 +42,8 @@
 		<property name="invoiceNumber" column="INVOICE_NUMBER" type="java.lang.String"></property>
 		<property name="invoicePrice" column="INVOICE_PRICE" type="java.lang.String"></property>
 		<property name="submitter" column="SUBMITTER" type="java.lang.Long"></property>
+		<many-to-one name="dept" class="AdminDept" column="DEPT"></many-to-one>
+		<many-to-one name="owner" class="UserInfo" column="OWNER"></many-to-one>
+		<many-to-one name="submitter" class="UserInfo" column="SUBMITTER"></many-to-one>
 	</class>	
 </hibernate-mapping>
