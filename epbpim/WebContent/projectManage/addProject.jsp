@@ -30,10 +30,10 @@
 						<h4 class="title">项目基本信息</h4>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
-								class="width350Input" name="projectBean.name" id="projectName" />
+								class="width350Input" name="projectBean.name"/>
 							</li>
 							<li class="width400Li"><label class="width4Lb">项目编号:</label> <input
-								class="width300Input" name="projectBean.number" id="projectNum" />
+								class="width300Input" name="projectBean.number"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
@@ -58,66 +58,54 @@
 							</li>
 							<li class="width250Li"><label class="width4Lb">开始时间:</label> <input
 								class="Wdate width150Input" name="projectBean.startDate"
-								id="startDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 							<li class="width200Li"><label class="width4Lb">质量要求:</label> <input
-								class="width100Input" name="projectBean.quality" id="quality" />
+								class="width100Input" name="projectBean.quality"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width7Lb">委托(建设)单位:</label> <input
-								class="width350Input" name="projectBean.customerCompany"
-								id="customerCompany" />
+								class="width350Input" name="projectBean.customerCompany"/>
 							</li>
 							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectBean.customerContactor"
-								id="customerContactor" />
+								class="width150Input" name="projectBean.customerContactor"/>
 							</li>
 							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectBean.customerContact"
-								id="customerContact" />
+								class="width150Input" name="projectBean.customerContact"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width7Lb">相关(关系)单位:</label> <input
-								class="width350Input" name="projectBean.mediatorCompany"
-								id="mediatorCompany" />
+								class="width350Input" name="projectBean.mediatorCompany"/>
 							</li>
 							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectBean.mediatorContactor"
-								id="mediatorContactor" />
+								class="width150Input" name="projectBean.mediatorContactor"/>
 							</li>
 							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectBean.mediatorContact"
-								id="mediatorContact" />
+								class="width150Input" name="projectBean.mediatorContact"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width7Lb">送审(施工)单位:</label> <input
-								class="width350Input" name="projectBean.vendorCompany"
-								id="vendorCompany" />
+								class="width350Input" name="projectBean.vendorCompany"/>
 							</li>
 							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectBean.vendorContactor"
-								id="vendorContactor" />
+								class="width150Input" name="projectBean.vendorContactor"/>
 							</li>
 							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectBean.vendorContact"
-								id="vendorContact" />
+								class="width150Input" name="projectBean.vendorContact"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width7Lb">中标单位:</label> <input
-								class="width350Input" name="projectBean.vendorCompany"
-								id="vendorCompany" />
+								class="width350Input" name="projectBean.vendorCompany"/>
 							</li>
 							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectBean.vendorContactor"
-								id="vendorContactor" />
+								class="width150Input" name="projectBean.vendorContactor"/>
 							</li>
 							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectBean.vendorContact"
-								id="vendorContact" />
+								class="width150Input" name="projectBean.vendorContact"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
@@ -155,97 +143,80 @@
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">送审价:</label> <input
 								class="width100Input"
-								name="projectBean.judgePrice1"
-								id="contractNumber" />
+								name="projectBean.judgePrice1"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">审定价:</label> <input
 								class="width100Input"
-								name="projectBean.judgePrice2"
-								id="contractMoney" />
+								name="projectBean.judgePrice2"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">审定天数:</label> <input
 								class="width100Input"
-								name="projectBean。judgeDays"
-								id="contractMoney" />
+								name="projectBean。judgeDays"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">报告日/文号:</label> <input
 								class="width100Input"
-								name="projectBean。reportDate"
-								id="contractMoney" />
+								name="projectBean。reportDate"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">核增额:</label> <input
 								class="width100Input"
-								name="projectBean.plusPrice"
-								id="contractNumber" />
+								name="projectBean.plusPrice"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">核减额:</label> <input
 								class="width100Input"
-								name="projectBean.minusPrice"
-								id="contractMoney" />
+								name="projectBean.minusPrice"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">征询日/评价:</label> <input
 								class="width100Input"
-								name="projectBean.comments"
-								id="contractMoney" />
+								name="projectBean.comments"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
 								class="width100Input"
-								name="projectBean.achiveDate"
-								id="contractMoney" />
+								name="projectBean.achiveDate"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">报告编号:</label> <input
 								class="width100Input"
-								name="projectBean.reportNumber"
-								id="contractNumber" />
+								name="projectBean.reportNumber"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">总师审核:</label> <input
 								class="width100Input"
-								name="projectBean.masterJudgeComments"
-								id="contractMoney" />
+								name="projectBean.masterJudgeComments"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
 								class="width100Input"
-								name="projectBean.achiveReceiver"
-								id="contractMoney" />
+								name="projectBean.achiveReceiver"/>
 							</li>
 						</ul>
 						<h4 class="title">合同信息</h4>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">合同编号:</label> <input
 								class="width100Input"
-								name="projectBean.contractNumber"
-								id="contractNumber" />
+								name="projectBean.contractNumber"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">合同金额:</label> <input
 								class="width100Input"
-								name="projectBean.contractMoney"
-								id="contractMoney" />
+								name="projectBean.contractMoney"/>
 							</li>
 							<li class="width500Li"><label class="width6Lb">合同摘要:</label> <input
 								class="width400Input"
-								name="projectBean.contractAbstract"
-								id="contractAbstract" />
+								name="projectBean.contractAbstract"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
 								class="width100Input"
-								name="projectBean.invoiceDate"
-								id="contractNumber" />
+								name="projectBean.invoiceDate"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">发票单号:</label> <input
 								class="width100Input"
-								name="projectBean.invoiceNumber"
-								id="contractMoney" />
+								name="projectBean.invoiceNumber"/>
 							</li>
 							<li class="width500Li"><label class="width6Lb">开票金额:</label> <input
 								class="width400Input"
-								name="projectBean.invoicePrice"
-								id="contractAbstract" />
+								name="projectBean.invoicePrice"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
