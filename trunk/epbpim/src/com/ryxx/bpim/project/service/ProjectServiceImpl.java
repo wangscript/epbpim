@@ -1,5 +1,9 @@
 package com.ryxx.bpim.project.service;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.ryxx.bpim.project.dao.ProjectDAO;
@@ -13,12 +17,14 @@ public class ProjectServiceImpl extends AbstractService<ProjectInfo, ProjectDAO,
     @Override
     public void saveProjectInfo(ProjectInfo projectInfo)
     {
+        transDatePage(projectInfo);
         getDao().saveProjectInfo(projectInfo);
     }
     
     @Override
     public void updateProjectInfo(ProjectInfo projectInfo)
     {
+        transDatePage(projectInfo);
         getDao().updateProjectInfo(projectInfo);
     }
     
@@ -48,6 +54,30 @@ public class ProjectServiceImpl extends AbstractService<ProjectInfo, ProjectDAO,
             projectInfo.setPageSize(page.getPageSize());
         }
         return getDao().listProjectInfo(projectInfo);
+    }
+    
+    private void transDatePage(ProjectInfo projectInfo)
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try
+        {
+            Date startDate = sdf.parse(projectInfo.getStartDatePage());
+            projectInfo.setStartDate(new Timestamp(startDate.getTime()));
+            
+            Date reportDate = sdf.parse(projectInfo.getReportDatePage());
+            projectInfo.setReportDate(new Timestamp(reportDate.getTime()));
+            
+            Date achiveDate = sdf.parse(projectInfo.getAchiveDatePage());
+            projectInfo.setAchiveDate(new Timestamp(achiveDate.getTime()));
+            
+            Date invoiceDate = sdf.parse(projectInfo.getInvoiceDatePage());
+            projectInfo.setInvoiceDate(new Timestamp(invoiceDate.getTime()));
+        }
+        catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+        
     }
     
 }
