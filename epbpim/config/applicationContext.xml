@@ -75,4 +75,5 @@
 		</property>
 	</bean>
 	<import resource="com/ryxx/bpim/user/dao/admin-bean.xml"/>
+	<import resource="com/ryxx/bpim/project/dao/project-bean.xml"/>
 </beans>
