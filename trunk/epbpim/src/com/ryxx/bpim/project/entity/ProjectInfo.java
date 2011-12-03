@@ -30,6 +30,8 @@ public class ProjectInfo extends VoBase
     
     private Timestamp startDate;
     
+    private String startDatePage;
+    
     private String quality;
     
     private String customerCompany;
@@ -66,6 +68,8 @@ public class ProjectInfo extends VoBase
     
     private Timestamp reportDate;
     
+    private String reportDatePage;
+    
     private String plusPrice;
     
     private String minusPrice;
@@ -73,6 +77,8 @@ public class ProjectInfo extends VoBase
     private String comments;
     
     private Timestamp achiveDate;
+    
+    private String achiveDatePage;
     
     private String reportNumber;
     
@@ -87,6 +93,8 @@ public class ProjectInfo extends VoBase
     private String contractAbstract;
     
     private Timestamp invoiceDate;
+    
+    private String invoiceDatePage;
     
     private String invoiceNumber;
     
@@ -152,6 +160,16 @@ public class ProjectInfo extends VoBase
     public void setStartDate(Timestamp startDate)
     {
         this.startDate = startDate;
+    }
+    
+    public String getStartDatePage()
+    {
+        return startDatePage;
+    }
+    
+    public void setStartDatePage(String startDatePage)
+    {
+        this.startDatePage = startDatePage;
     }
     
     public String getQuality()
@@ -334,6 +352,16 @@ public class ProjectInfo extends VoBase
         this.reportDate = reportDate;
     }
     
+    public String getReportDatePage()
+    {
+        return reportDatePage;
+    }
+    
+    public void setReportDatePage(String reportDatePage)
+    {
+        this.reportDatePage = reportDatePage;
+    }
+    
     public String getPlusPrice()
     {
         return plusPrice;
@@ -372,6 +400,16 @@ public class ProjectInfo extends VoBase
     public void setAchiveDate(Timestamp achiveDate)
     {
         this.achiveDate = achiveDate;
+    }
+    
+    public String getAchiveDatePage()
+    {
+        return achiveDatePage;
+    }
+    
+    public void setAchiveDatePage(String achiveDatePage)
+    {
+        this.achiveDatePage = achiveDatePage;
     }
     
     public String getReportNumber()
@@ -444,6 +482,16 @@ public class ProjectInfo extends VoBase
         this.invoiceDate = invoiceDate;
     }
     
+    public String getInvoiceDatePage()
+    {
+        return invoiceDatePage;
+    }
+    
+    public void setInvoiceDatePage(String invoiceDatePage)
+    {
+        this.invoiceDatePage = invoiceDatePage;
+    }
+    
     public String getInvoiceNumber()
     {
         return invoiceNumber;
@@ -473,5 +521,4 @@ public class ProjectInfo extends VoBase
     {
         this.submitter = submitter;
     }
-    
 }
