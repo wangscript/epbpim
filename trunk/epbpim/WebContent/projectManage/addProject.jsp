@@ -39,8 +39,7 @@
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width4Lb">工程专业:</label><select
 								id="projectType" name="projectBean.majorType">
-									<option value="0">--请选择--</option>
-									<option value="土建装饰">土建</option>
+									<option value="土建">土建</option>
 									<option value="园林">园林</option>
 									<option value="市政">市政</option>
 									<option value="安装">安装</option>
@@ -123,7 +122,7 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width7Lb">承接部门:</label> <select
-								id="projectType" name="projectBean.majorType">
+								id="projectType" name="projectBean.dept">
 									<option value="0">--请选择--</option>
 									<option value="咨询1部">咨询1部</option>
 									<option value="咨询1部">咨询2部</option>
@@ -132,36 +131,21 @@
 							</li>
 							<li class="width250Li"><label class="width6Lb">部门流转单号:</label> <input
 								class="width150Input"
-								name="contractList.projectContractBean.contractNumber"
+								name="projectBean.deptTransferNumber"
 								id="contractNumber" />
 							</li>
 							<li class="width200Li"><label class="width4Lb">负责人:</label> <select
-								id="projectType" name="projectBean.majorType">
+								id="projectType" name="projectBean.owner">
 									<option value="0">--请选择--</option>
 									<option value="咨询1部">杨老板</option>
 									<option value="咨询1部">高老板</option>
 							</select>
 							</li>
 						</ul>
-						<ul class="fullScreenUl">
-							<li><input type="button" id="addProject"
-								class="mediumLeftButton" onclick="addProjectMember()" class="button"
-								value="新增成员">
-							</li>
-						</ul>
-						<ul class="fullScreenUl" id="addNewMember" style="display: none">
-							<li class="width200Li" ><label class="width2Lb">员工:</label>
-								<select id="projectType" name="projectBean.majorType">
-									<option value="0">--请选择--</option>
-									<option value="咨询1部">杨老板</option>
-									<option value="咨询1部">高老板</option>
-							</select></li>
-							<li class="width200Li"><label class="width4Lb">职业资质:</label> 造价工程师
-							</li>
-						</ul>
+						
 						<ul class="fullScreenUl" id="addNewMember">
 							<li class="width200Li" ><label class="width6Lb">项目性质:</label>
-								<select id="projectType" name="projectBean.majorType">
+								<select id="projectType" name="projectBean.projectType">
 									<option value="咨询1部">工程审价</option>
 									<option value="咨询1部">招标代理</option>
 									<option value="咨询1部">投资监理</option>
@@ -171,61 +155,61 @@
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">送审价:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractNumber"
+								name="projectBean.judgePrice1"
 								id="contractNumber" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">审定价:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractMoney"
+								name="projectBean.judgePrice2"
 								id="contractMoney" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">审定天数:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractMoney"
+								name="projectBean。judgeDays"
 								id="contractMoney" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">报告日/文号:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractMoney"
+								name="projectBean。reportDate"
 								id="contractMoney" />
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">核增额:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractNumber"
+								name="projectBean.plusPrice"
 								id="contractNumber" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">核减额:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractMoney"
+								name="projectBean.minusPrice"
 								id="contractMoney" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">征询日/评价:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractMoney"
+								name="projectBean.comments"
 								id="contractMoney" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractMoney"
+								name="projectBean.achiveDate"
 								id="contractMoney" />
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">报告编号:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractNumber"
+								name="projectBean.reportNumber"
 								id="contractNumber" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">总师审核:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractMoney"
+								name="projectBean.masterJudgeComments"
 								id="contractMoney" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractMoney"
+								name="projectBean.achiveReceiver"
 								id="contractMoney" />
 							</li>
 						</ul>
@@ -233,17 +217,34 @@
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">合同编号:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractNumber"
+								name="projectBean.contractNumber"
 								id="contractNumber" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">合同金额:</label> <input
 								class="width100Input"
-								name="contractList.projectContractBean.contractMoney"
+								name="projectBean.contractMoney"
 								id="contractMoney" />
 							</li>
 							<li class="width500Li"><label class="width6Lb">合同摘要:</label> <input
 								class="width400Input"
-								name="contractList.projectContractBean.contractAbstract"
+								name="projectBean.contractAbstract"
+								id="contractAbstract" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
+								class="width100Input"
+								name="projectBean.invoiceDate"
+								id="contractNumber" />
+							</li>
+							<li class="width200Li"><label class="width6Lb">发票单号:</label> <input
+								class="width100Input"
+								name="projectBean.invoiceNumber"
+								id="contractMoney" />
+							</li>
+							<li class="width500Li"><label class="width6Lb">开票金额:</label> <input
+								class="width400Input"
+								name="projectBean.invoicePrice"
 								id="contractAbstract" />
 							</li>
 						</ul>
