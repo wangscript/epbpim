@@ -7,6 +7,16 @@
 <%@ page import="com.ryxx.bpim.user.entity.AdminMenu" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
+<link href="../css/style.css" rel="stylesheet" type="text/css"
+	media="screen" />
+<link href="../css/main.css" rel="stylesheet" type="text/css"
+	media="screen" />
+<link rel="stylesheet"
+	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
+<link href="../images/logo.ico" rel="SHORTCUT ICON" />
+<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
+<script type='text/javascript' src='../js/validation.js'></script>
 <script type="text/javascript">
 function changeTitleBackground(){
 	 var sURL = window.location.href.toString();
@@ -69,6 +79,7 @@ function changeTitleBackground(){
 		}
 	}
 </script>
+</head>
 <body>
 <div class="header">
 <div class="header_resize">

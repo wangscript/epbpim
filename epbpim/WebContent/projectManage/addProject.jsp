@@ -4,21 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>项目录入</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link rel="stylesheet"
-	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
-<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
-<script type='text/javascript' src='../dwr/engine.js'></script>
-<script type='text/javascript' src='../dwr/util.js'></script>
-<script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 </head>
 <body>
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
@@ -27,10 +14,12 @@
 				<div class="mainbar">
 					<h3 class="title">项目录入</h3>
 					<div id="addProjectTable">
+					<s:form action="addProject.do" method="post" onsubmit="return validate(this);">
 						<h4 class="title">项目基本信息</h4>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
 								class="width350Input" name="projectInfo.name"/>
+								<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
 							</li>
 							<li class="width400Li"><label class="width4Lb">项目编号:</label> <input
 								class="width300Input" name="projectInfo.number"/>
@@ -231,6 +220,7 @@
 								value="保存">
 							</li>
 						</ul>
+						</s:form>
 					</div>
 
 					<div></div>
