@@ -4,5 +4,14 @@
 	<bean id="com.ryxx.bpim.project.dao.ProjectDAO" class="com.ryxx.bpim.project.dao.ProjectDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
+	<bean id="com.ryxx.bpim.project.service.ProjectService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.project.service.ProjectService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.project.service.ProjectService.target" class="com.ryxx.bpim.project.service.ProjectServiceImpl">
+	</bean>
+	<bean id="projectAction" class="com.ryxx.bpim.project.action.ProjectAction" scope="prototype">
+		<property name="projectService">
+			<ref local="com.ryxx.bpim.project.service.ProjectService"/>
+		</property>
+	</bean>	
 </beans>
