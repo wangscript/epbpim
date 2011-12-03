@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ryxx.bpim.user.entity">
+	<class name="ProjectInfo" table="PROJECT_INFO">
+		<id name="id" column="PROJECT_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="name" column="PROJECT_NAME" type="java.lang.String"></property>
+		<property name="number" column="NUMBER" type="java.lang.String"></property>
+		<property name="majorType" column="MAJOR_TYPE" type="java.lang.String"></property>		
+		<property name="valuationType" column="VALUATION_TYPE" type="java.lang.String"></property>
+		<property name="startDate" column="START_DATE" type="java.sql.Timestamp"></property>
+		<property name="quality" column="QUALITY" type="java.lang.String"></property>
+		<property name="customerCompany" column="CUSTOMER_COMPANY" type="java.lang.String"></property>
+		<property name="customerContactor" column="CUSTOMER_CONTACTOR" type="java.lang.String"></property>
+		<property name="customerContact" column="CUSTOMER_CONTACT" type="java.lang.String"></property>
+		<property name="mediatorCompany" column="MEDIATOR_COMPANY" type="java.lang.String"></property>
+		<property name="mediatorContactor" column="MEDIATOR_CONTACTOR" type="java.lang.String"></property>
+		<property name="mediatorContact" column="MEDIATOR_CONTACT" type="java.lang.String"></property>
+		<property name="vendorCompany" column="VENDOR_COMPANY" type="java.lang.String"></property>
+		<property name="vendorContactor" column="VENDOR_CONTACTOR" type="java.lang.String"></property>
+		<property name="vendorContact" column="VENDOR_CONTACT" type="java.lang.String"></property>
+		<property name="dept" column="DEPT" type="java.lang.String"></property>
+		<property name="deptTransferNumber" column="DEPT_TRANSFER_NUMBER" type="java.lang.String"></property>
+		<property name="owner" column="OWNER" type="java.lang.String"></property>
+		<property name="projectType" column="PROJECT_TYPE" type="java.lang.String"></property>
+		<property name="judgePrice1" column="JUDGE_PRICE1" type="java.lang.String"></property>
+		<property name="judgePrice2" column="JUDGE_PRICE2" type="java.lang.String"></property>
+		<property name="judgeDays" column="JUDGE_DAYS" type="java.lang.String"></property>
+		<property name="reportDate" column="REPORT_DATE" type="java.sql.Timestamp"></property>
+		<property name="plusPrice" column="PLUS_PRICE" type="java.lang.String"></property>
+		<property name="minusPrice" column="MINUS_PRICE" type="java.lang.String"></property>
+		<property name="comments" column="COMMENTS" type="java.lang.String"></property>
+		<property name="achiveDate" column="ACHIVE_DATE" type="java.sql.Timestamp"></property>
+		<property name="reportNumber" column="REPORT_NUMBER" type="java.lang.String"></property>
+		<property name="masterJudgeComments" column="MASTER_JUDGE_COMMENTS" type="java.lang.String"></property>
+		<property name="achiveReceiver" column="ACHIVE_RECEIVER" type="java.lang.String"></property>
+		<property name="contractNumber" column="CONTRACT_NUMBER" type="java.lang.String"></property>
+		<property name="contractMoney" column="CONTRACT_MONEY" type="java.lang.String"></property>
+		<property name="contractAbstract" column="CONTRACT_ABSTRACT" type="java.lang.String"></property>
+		<property name="invoiceDate" column="INVOICE_DATE" type="java.sql.Timestamp"></property>
+		<property name="invoiceNumber" column="INVOICE_NUMBER" type="java.lang.String"></property>
+		<property name="invoicePrice" column="INVOICE_PRICE" type="java.lang.String"></property>
+		<property name="submitter" column="SUBMITTER" type="java.lang.Long"></property>
+	</class>	
+</hibernate-mapping>

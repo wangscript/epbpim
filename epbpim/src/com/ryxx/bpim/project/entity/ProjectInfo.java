@@ -12,10 +12,12 @@ import com.ryxx.bpim.entity.VoBase;
  *
  */
 public class ProjectInfo extends VoBase
-{    
+{
     /** 序列号 */
     private static final long serialVersionUID = 8135345694920297076L;
-
+    
+    private Long id;
+    
     private String name;
     
     private String number;
@@ -89,6 +91,16 @@ public class ProjectInfo extends VoBase
     private String invoicePrice;
     
     private Long submitter;
+    
+    public Long getId()
+    {
+        return id;
+    }
+    
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
     
     /**
      * @return the name
