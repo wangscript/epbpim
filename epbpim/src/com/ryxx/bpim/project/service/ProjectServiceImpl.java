@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.ryxx.bpim.project.dao.ProjectDAO;
 import com.ryxx.bpim.project.entity.ProjectInfo;
 import com.ryxx.bpim.service.AbstractService;
@@ -61,17 +63,26 @@ public class ProjectServiceImpl extends AbstractService<ProjectInfo, ProjectDAO,
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try
         {
-            Date startDate = sdf.parse(projectInfo.getStartDatePage());
-            projectInfo.setStartDate(new Timestamp(startDate.getTime()));
-            
-            Date reportDate = sdf.parse(projectInfo.getReportDatePage());
-            projectInfo.setReportDate(new Timestamp(reportDate.getTime()));
-            
-            Date achiveDate = sdf.parse(projectInfo.getAchiveDatePage());
-            projectInfo.setAchiveDate(new Timestamp(achiveDate.getTime()));
-            
-            Date invoiceDate = sdf.parse(projectInfo.getInvoiceDatePage());
-            projectInfo.setInvoiceDate(new Timestamp(invoiceDate.getTime()));
+            if (!StringUtils.isEmpty(projectInfo.getStartDatePage()))
+            {
+                Date startDate = sdf.parse(projectInfo.getStartDatePage());
+                projectInfo.setStartDate(new Timestamp(startDate.getTime()));
+            }
+            if (!StringUtils.isEmpty(projectInfo.getReportDatePage()))
+            {
+                Date reportDate = sdf.parse(projectInfo.getReportDatePage());
+                projectInfo.setReportDate(new Timestamp(reportDate.getTime()));
+            }
+            if (!StringUtils.isEmpty(projectInfo.getAchiveDatePage()))
+            {
+                Date achiveDate = sdf.parse(projectInfo.getAchiveDatePage());
+                projectInfo.setAchiveDate(new Timestamp(achiveDate.getTime()));
+            }
+            if (!StringUtils.isEmpty(projectInfo.getInvoiceDatePage()))
+            {
+                Date invoiceDate = sdf.parse(projectInfo.getInvoiceDatePage());
+                projectInfo.setInvoiceDate(new Timestamp(invoiceDate.getTime()));
+            }
         }
         catch (ParseException e)
         {
