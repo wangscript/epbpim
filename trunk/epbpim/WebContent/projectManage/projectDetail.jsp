@@ -24,116 +24,122 @@
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
+				<div class="content_resize">
 				<div class="mainbar">
-					<h3 class="title">项目详情</h3>
+					<h3 class="title">项目录入</h3>
 					<div id="addProjectTable">
 						<h4 class="title">项目基本信息</h4>
 						<ul class="fullScreenUl">
-							<li class="width400Li"><label class="width4Lb">项目名称:</label>
-								废水治理及清洁生产、铬回收项目</li>
-							<li class="width250Li"><label class="width4Lb">项目编号:</label>
-								FS203049506</li>
-							<li class="width200Li"><label class="width4Lb">承接部门:</label>
-								1部</li>
+							<li class="width450Li"><label class="width4Lb">项目名称:</label><s:property value='projectInfo.name'/>
+							</li>
+							<li class="width400Li"><label class="width4Lb">项目编号:</label><s:property value='projectInfo.number'/>
+							</li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width4Lb">工程专业:</label>市政</li>
-							<li class="width200Li"><label class="width4Lb">计价模式:</label>清单</li>
-							<li class="width250Li"><label class="width4Lb">开始时间:</label>2011-07-30</li>
-							<li class="width200Li"><label class="width4Lb">质量要求:</label>
-								高</li>
+							<li class="width200Li"><label class="width4Lb">工程专业:</label><s:property value='projectInfo.majorType'/>
+							</li>
+							<li class="width250Li"><label class="width4Lb">计价模式:</label><s:property value='projectInfo.valuationType'/>
+							</li>
+							<li class="width250Li"><label class="width4Lb">开始时间:</label><s:date name='projectInfo.startDate' format='yyyy-MM-dd' />
+							</li>
+							<li class="width200Li"><label class="width4Lb">质量要求:</label><s:property value='projectInfo.quality' />
+							</li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li class="width400Li"><label class="width4Lb">委托单位:</label>
-								河南省政府</li>
-							<li class="width250Li"><label class="width3Lb">联系人:</label>
-								杨祚</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label>13044940506</li>
+							<li class="width450Li"><label class="width7Lb">委托(建设)单位:</label><s:property value='projectInfo.customerCompany' />
+							</li>
+							<li class="width250Li"><label class="width4Lb">联系人:</label><s:property value='projectInfo.customerContactor' />
+							</li>
+							<li class="width200Li"><label class="width2Lb">电话:</label><s:property value='projectInfo.customerContact' />
+							</li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li class="width400Li"><label class="width4Lb">建设单位:</label>
-								河南省政府</li>
-							<li class="width250Li"><label class="width3Lb">联系人:</label>
-								杨祚</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label>13044940506</li>
+							<li class="width450Li"><label class="width7Lb">相关(关系)单位:</label><s:property value='projectInfo.mediatorCompany' />
+							</li>
+							<li class="width250Li"><label class="width4Lb">联系人:</label><s:property value='projectInfo.mediatorContactor' />
+							</li>
+							<li class="width200Li"><label class="width2Lb">电话:</label><s:property value='projectInfo.mediatorContact' />
+							</li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li class="width400Li"><label class="width7Lb">送审/施工单位:</label>
-								建工集团</li>
-							<li class="width250Li"><label class="width3Lb">联系人:</label>李先生</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label>1305949566</li>
+							<li class="width450Li"><label class="width7Lb">送审(施工)单位:</label><s:property value='projectInfo.vendorCompany' />
+							</li>
+							<li class="width250Li"><label class="width4Lb">联系人:</label><s:property value='projectInfo.vendorContactor' />
+							</li>
+							<li class="width200Li"><label class="width2Lb">电话:</label><s:property value='projectInfo.vendorContact' />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width450Li"><label class="width7Lb">中标单位:</label><s:property value='projectInfo.vendorCompany' />
+							</li>
+							<li class="width250Li"><label class="width4Lb">联系人:</label><s:property value='projectInfo.vendorContactor' />
+							</li>
+							<li class="width200Li"><label class="width2Lb">电话:</label><s:property value='projectInfo.vendorContact' />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width7Lb">承接部门:</label><s:property value='projectInfo.dept.name' />
+							</li>
+							<li class="width250Li"><label class="width6Lb">部门流转单号:</label><s:property value='projectInfo.deptTransferNumber' />
+							</li>
+							<li class="width200Li"><label class="width4Lb">负责人:</label><s:property value='projectInfo.owner.name' />
+							</li>
+						</ul>
+						
+						<ul class="fullScreenUl" id="addNewMember">
+							<li class="width200Li" ><label class="width6Lb">项目性质:</label><s:property value='projectInfo.projectType' />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">送审价:</label><s:property value='projectInfo.judgePrice1' />
+							</li>
+							<li class="width200Li"><label class="width6Lb">审定价:</label><s:property value='projectInfo.judgePrice2' />
+							</li>
+							<li class="width200Li"><label class="width6Lb">审定天数:</label><s:property value='projectInfo.judgeDays' />
+							</li>
+							<li class="width200Li"><label class="width6Lb">报告日/文号:</label><s:date name='projectInfo.reportDate' format='yyyy-MM-dd' />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">核增额:</label><s:property value='projectInfo.plusPrice' />
+							</li>
+							<li class="width200Li"><label class="width6Lb">核减额:</label><s:property value='projectInfo.minusPrice' />
+							</li>
+							<li class="width200Li"><label class="width6Lb">征询日/评价:</label><s:property value='projectInfo.comments' />
+							</li>
+							<li class="width200Li"><label class="width6Lb">归档日期:</label><s:date name='projectInfo.achiveDate' format='yyyy-MM-dd' />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">报告编号:</label><s:property value='projectInfo.reportNumber' />
+							</li>
+							<li class="width200Li"><label class="width6Lb">总师审核:</label><s:property value='projectInfo.masterJudgeComments' />
+							</li>
+							<li class="width200Li"><label class="width6Lb">档案接收人:</label><s:property value='projectInfo.achiveReceiver' />
+							</li>
 						</ul>
 						<h4 class="title">合同信息</h4>
-						<ul class="fullScreenUl" id="contract1">
-							<li class="width200Li"><label class="width4Lb">合同编号:</label> HT2034949</li>
-							<li class="width200Li"><label class="width4Lb">合同金额:</label> 100,400</li>
-							<li class="width400Li"><label class="width4Lb">合同摘要:</label> 建工集团</li>
-						</ul>
 						<ul class="fullScreenUl">
-							<li><input type="button" id="addProject"
-								onclick="window.location.href='main.jsp'" class="mediumRightButton"
-								value="结项">
+							<li class="width200Li"><label class="width6Lb">合同编号:</label><s:property value='projectInfo.contractNumber' />
 							</li>
-							<li><input type="button" id="addProject"
-								onclick="window.location.href='main.jsp'" class="mediumRightButton"
-								value="审批不通过">
+							<li class="width200Li"><label class="width6Lb">合同金额:</label><s:property value='projectInfo.contractMoney' />
 							</li>
-							<li><input type="button" id="addProject"
-								onclick="window.location.href='main.jsp'" class="mediumRightButton"
-								value="审批通过">
-							</li>
-						</ul>
-						<h4 class="title">财务信息</h4>
-						<ul class="fullScreenUl">
-							<li class="width300Li"><label class="width4Lb">项目金额:</label> <input
-								class="width200Input" name="projectBean.financeMoney"
-								id="financeMoney" value="" />
+							<li class="width500Li"><label class="width6Lb">合同摘要:</label><s:property value='projectInfo.contractAbstract' />
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li><input type="button" id="addProject"
-								onclick="window.location.href='main.jsp'" class="mediumRightButton"
-								value="结项">
+							<li class="width200Li"><label class="width6Lb">开票日期:</label><s:date name='projectInfo.invoiceDate' format='yyyy-MM-dd' />
 							</li>
-							<li><input type="button" id="addProject"
-								onclick="window.location.href='main.jsp'" class="mediumRightButton"
-								value="审批不通过">
+							<li class="width200Li"><label class="width6Lb">发票单号:</label><s:property value='projectInfo.invoiceNumber' />
 							</li>
-							<li><input type="button" id="addProject"
-								onclick="window.location.href='main.jsp'" class="mediumRightButton"
-								value="审批通过">
-							</li>
-							<li><input type="button" id="addProject"
-								onclick="window.location.href='main.jsp'" class="mediumRightButton"
-								value="财务提交项目">
-							</li>
-						</ul>
-						<h4 class="title">核算信息</h4>
-						<ul class="fullScreenUl">
-							<li class="width300Li"><label class="width4Lb">核算金额:</label> <input
-								class="width200Input" name="projectBean.financeMoney"
-								id="financeMoney" value="" />
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li><input type="button" id="addProject"
-								onclick="window.location.href='main.jsp'" class="mediumRightButton"
-								value="结项">
-							</li>
-							<li><input type="button" id="addProject"
-								onclick="window.location.href='main.jsp'" class="mediumRightButton"
-								value="提交核算金额">
+							<li class="width500Li"><label class="width6Lb">开票金额:</label><s:property value='projectInfo.invoicePrice' />
 							</li>
 						</ul>
 					</div>
-
 					<div></div>
-
-
 				</div>
-
-
 				<div class="clr"></div>
+			</div>
 			</div>
 		</div>
 		<!-- end #page -->
