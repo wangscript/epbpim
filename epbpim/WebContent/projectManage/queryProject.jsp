@@ -4,21 +4,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>项目管理</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
-<link rel="stylesheet"  
-            href="../js/My97DatePicker/skin/default/datepicker.css"  
-            type="text/css"></link> 
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
-<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
-<script type='text/javascript' src='../dwr/engine.js'></script>
-<script type='text/javascript' src='../dwr/util.js'></script>
-<script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>项目管理</title>
+	<link href="../css/style.css" rel="stylesheet" type="text/css"
+		media="screen" />
+	<link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
+	<link rel="stylesheet"  
+	            href="../js/My97DatePicker/skin/default/datepicker.css"  
+	            type="text/css"></link> 
+	<link href="../images/logo.ico" rel="SHORTCUT ICON" />
+	<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
+	<script type='text/javascript' src='../dwr/engine.js'></script>
+	<script type='text/javascript' src='../dwr/util.js'></script>
+	<script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
+	<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 <div id="main"><jsp:include page="../main/mainHeader.jsp" />
@@ -57,13 +58,12 @@
 			<input class="Wdate width150Input" name="projectInfo.startDateFrom" id="projectInfo.startDateFrom" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
 			<li class="width200Li"><label class="width2Lb">到:</label>
 			<input class="Wdate width150Input" name="projectInfo.startDateTo" id="projectInfo.startDateTo" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
-			<li><input type="button" id="search" class="mediumRightButton" style="float:right"
-				onclick="schProjectList()" class="button" value="查询"></li>
+			<li><input type="submit" class="mediumRightButton" style="float:right" class="button" value="查询"></li>
 		</ul>
 	</div>
 </form>
 <div class="searchResult">
-	<s:if test="adminDeptList==null || adminDeptList.size()==0">
+	<s:if test="projectInfoList==null || projectInfoList.size()==0">
 		<tr>
 			<td>
 			<h3><s:text name="Common.Nodata" /></h3>
@@ -84,7 +84,7 @@
 			</ul>
 			<s:iterator value="projectInfoList" status="st">
 				<ul class="fullScreenUl">
-					<li class="width200Li"><s:property value="name" /></li>
+					<li class="width300Li"><s:property value="name" /></li>
 					<li class="width100Li"><s:property value="number" /></li>
 					<li class="width100Li"><s:property value="dept.name" /></li>
 					<li class="width100Li"><s:property value="contractMoney" /></li>
@@ -126,9 +126,6 @@
 <!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
-	function schProjectList(){
-		document.getElementById("queryForm").submit;
-	}
 	function delProject(id){
 		if(confirm('<s:text name="AdminRole.IfDelete" />')){
 			document.getElementById(id).submit();
