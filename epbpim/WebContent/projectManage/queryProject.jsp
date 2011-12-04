@@ -84,7 +84,7 @@
 			</ul>
 			<s:iterator value="projectInfoList" status="st">
 				<ul class="fullScreenUl">
-					<li class="width300Li"><s:property value="name" /></li>
+					<li class="width300Li"><a href="schProject.do?projectInfo.id=<s:property value='id' />"><s:property value="name" /></a></li>
 					<li class="width100Li"><s:property value="number" /></li>
 					<li class="width100Li"><s:property value="dept.name" /></li>
 					<li class="width100Li"><s:property value="contractMoney" /></li>
