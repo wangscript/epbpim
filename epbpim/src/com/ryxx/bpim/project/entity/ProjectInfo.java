@@ -52,6 +52,12 @@ public class ProjectInfo extends VoBase
     
     private String vendorContact;
     
+    private String biddingCompany;
+    
+    private String biddingContactor;
+    
+    private String biddingContact;
+    
     private AdminDept dept;
     
     private String deptTransferNumber;
@@ -533,4 +539,48 @@ public class ProjectInfo extends VoBase
     {
         this.submitter = submitter;
     }
+
+	/**
+	 * @return the biddingCompany
+	 */
+	public String getBiddingCompany() {
+		return biddingCompany;
+	}
+
+	/**
+	 * @param biddingCompany the biddingCompany to set
+	 */
+	public void setBiddingCompany(String biddingCompany) {
+		this.biddingCompany = biddingCompany;
+	}
+
+	/**
+	 * @return the biddingContactor
+	 */
+	public String getBiddingContactor() {
+		return biddingContactor;
+	}
+
+	/**
+	 * @param biddingContactor the biddingContactor to set
+	 */
+	public void setBiddingContactor(String biddingContactor) {
+		this.biddingContactor = biddingContactor;
+	}
+
+	/**
+	 * @return the biddingContact
+	 */
+	public String getBiddingContact() {
+		return biddingContact;
+	}
+
+	/**
+	 * @param biddingContact the biddingContact to set
+	 */
+	public void setBiddingContact(String biddingContact) {
+		this.biddingContact = biddingContact;
+	}
+    
+    
 }
