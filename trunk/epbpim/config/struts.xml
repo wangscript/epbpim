@@ -11,7 +11,7 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     
     <!-- 是否为开发模式,发布版本应改为false -->
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false" />
     
 	<!-- 编码设置
 	<constant name="struts.locale" value="zh_CN" /> -->
@@ -29,7 +29,7 @@
 	<constant name="struts.serve.static.browserCache" value="false" />
 	
 	<!-- 设置当struts.xml文件改变后，系统是否自动重新加载该文件。发布时设为false -->
-	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.configuration.xml.reload" value="false" />
 	
 	<!-- 指定XSLT Result是否使用样式表缓存。发布时设为false -->
 	<constant name="struts.configuration.xml.reload" value="true" />

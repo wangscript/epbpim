@@ -9,7 +9,7 @@ import com.ryxx.bpim.user.entity.AdminMenu;
 
 public class AdminMenuServiceImpl  extends AbstractService<AdminMenu,AdminMenuDAO, Long> implements AdminMenuService{
 	public List<AdminMenu> list() {
-		return getMenuTree(this.getDao().findAll());
+		return getMenuTree(this.getDao().findAllEnableNode());
 	}
 	
 	public List<AdminMenu> getMenuTree(List<AdminMenu> nodes) {

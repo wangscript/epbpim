@@ -80,7 +80,6 @@ public class UserInfoAction extends ActionSupportBase {
             for(AdminRole role: roles) {
             	menus.addAll(role.getMenuList());
             }
-            System.out.println(menus.size());
             List<AdminMenu> newMenus = new ArrayList(menus);
     	    Collections.sort(newMenus, new MyComparator());
             CacheMap.getInstance().addCache(Constants.MENU_CACHE+Constants.LOGIN_USER_ID+newUserInfo.getId(), newMenus);

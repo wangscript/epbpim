@@ -42,9 +42,9 @@
 					<s:else>
 						<div class="searchResult" id="searchResult">
 							<ul class="fullScreenUl">
-								<li class="width100Li"><label><s:text name="AdminRole.RoleName" /></label>
+								<li class="width100Li"><label>部门名称</label>
 								</li>
-								<li class="width600Li"><label><s:text name="AdminRole.Remark" /></label>
+								<li class="width600Li"><label>部门说明</label>
 								</li>
 								<li class="width50Li"><label><s:text name="Common.Update" /></label>
 								</li>

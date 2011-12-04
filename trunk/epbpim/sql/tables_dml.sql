@@ -63,3 +63,39 @@ INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,ME
 VALUES(52,'发布通知','../systemManage/publishMessage.jsp',5,1,2);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
 VALUES(53,'日志查询','../systemManage/queryLog.jsp',5,1,3);
+
+insert into ADMIN_ROLE (ROLE_ID, ROLE_NAME, ROLE_COUNT, ROLE_REMARK) values('1','董事长','1','董事长专用');
+
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','1');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','10');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','11');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','12');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','13');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','2');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','20');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','21');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','3');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','30');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','31');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','32');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','33');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','34');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','35');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','36');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','37');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','38');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','4');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','40');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','41');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','42');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','43');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','44');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','45');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','5');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','51');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','52');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','53');
+
+insert into USER_INFO (`USER_ID`, `USER_REAL_NAME`, `USER_IDENTIFIER`, `USER_NAME`, `USER_SEX`, `USER_IDCARD`, `HUMEN_FILES`, `USER_BIRTHDAY`, `FAMILY_ADDRESS`, `PHONE`, `MOBILE_PHONE`, `PARTY`, `EDU_BACKGROUND`, `SCHOOL`, `MAJOR`, `EDU_COUNTINU`, `GRADUATE_DATE`, `ONBOARD_DATE`, `LEAVE_DATE`, `USER_RELATION`, `USER_STATUS`, `INSURANCE_TYPE`, `USER_REMARK`, `USER_PASSWORD`, `REGISTER_DATE`, `EMAIL`, `ROLE_ID`, `DEPT_ID`, `CERTIFICATION_ID`, `USER_TITLE`) values('1','','','chairman','0','','','0000-00-00 00:00:00','','','','','0','','','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00','','0','0','','e10adc3949ba59abbe56e057f20f883e','0000-00-00 00:00:00',NULL,NULL,NULL,NULL,'0');
+
+insert into ROLE_USER_RESTRACTION (ROLE_ID, USER_ID) values('1','1');
