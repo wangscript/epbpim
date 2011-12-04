@@ -39,6 +39,7 @@
 		<property name="invoiceDate" column="INVOICE_DATE" type="java.sql.Timestamp"></property>
 		<property name="invoiceNumber" column="INVOICE_NUMBER" type="java.lang.String"></property>
 		<property name="invoicePrice" column="INVOICE_PRICE" type="java.lang.String"></property>
+		<property name="status" column="STATUS" type="java.lang.String"></property>
 		<many-to-one name="dept" class="com.ryxx.bpim.user.entity.AdminDept" column="DEPT"></many-to-one>
 		<many-to-one name="owner" class="com.ryxx.bpim.user.entity.UserInfo" column="OWNER"></many-to-one>
 		<many-to-one name="submitter" class="com.ryxx.bpim.user.entity.UserInfo" column="SUBMITTER"></many-to-one>

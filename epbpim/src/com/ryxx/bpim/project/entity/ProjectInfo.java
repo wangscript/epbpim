@@ -102,6 +102,8 @@ public class ProjectInfo extends VoBase
     
     private UserInfo submitter;
     
+    private String status;
+    
     public Long getId()
     {
         return id;
@@ -520,5 +522,15 @@ public class ProjectInfo extends VoBase
     public void setSubmitter(UserInfo submitter)
     {
         this.submitter = submitter;
+    }
+    
+    public String getStatus()
+    {
+        return status;
+    }
+    
+    public void setStatus(String status)
+    {
+        this.status = status;
     }
 }
