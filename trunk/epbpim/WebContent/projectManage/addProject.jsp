@@ -14,7 +14,7 @@
 				<div class="mainbar">
 					<h3 class="title">项目录入</h3>
 					<div id="addProjectTable">
-					<s:form action="addProject.do" method="post" onsubmit="return validate(this);">
+					<s:form id="addProjectForm" action="addProject.do" method="post" onsubmit="return validate(this);">
 						<h4 class="title">项目基本信息</h4>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
@@ -99,11 +99,11 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width7Lb">承接部门:</label> <select
-								id="projectType" name="projectInfo.dept">
+								id="projectType" name="projectInfo.dept.id">
 									<option value="0">--请选择--</option>
-									<option value="咨询1部">咨询1部</option>
-									<option value="咨询1部">咨询2部</option>
-									<option value="咨询1部">咨询3部</option>
+									<option value="1">咨询1部</option>
+									<option value="2">咨询2部</option>
+									<option value="3">咨询3部</option>
 							</select>
 							</li>
 							<li class="width250Li"><label class="width6Lb">部门流转单号:</label> <input
@@ -112,10 +112,10 @@
 								id="contractNumber" />
 							</li>
 							<li class="width200Li"><label class="width4Lb">负责人:</label> <select
-								id="projectType" name="projectInfo.owner">
+								id="projectType" name="projectInfo.owner.id">
 									<option value="0">--请选择--</option>
-									<option value="咨询1部">杨老板</option>
-									<option value="咨询1部">高老板</option>
+									<option value="1">杨老板</option>
+									<option value="2">高老板</option>
 							</select>
 							</li>
 						</ul>
@@ -140,11 +140,11 @@
 							</li>
 							<li class="width200Li"><label class="width6Lb">审定天数:</label> <input
 								class="width100Input"
-								name="projectInfo。judgeDays"/>
+								name="projectInfo.judgeDays"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">报告日/文号:</label> <input
-								class="width100Input"
-								name="projectInfo。reportDate"/>
+								class="Wdate width150Input" name="projectInfo.reportDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
@@ -161,8 +161,8 @@
 								name="projectInfo.comments"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="width100Input"
-								name="projectInfo.achiveDate"/>
+								class="Wdate width150Input" name="projectInfo.achiveDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
@@ -196,8 +196,8 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
-								class="width100Input"
-								name="projectInfo.invoiceDate"/>
+								class="Wdate width150Input" name="projectInfo.invoiceDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 							<li class="width200Li"><label class="width6Lb">发票单号:</label> <input
 								class="width100Input"
@@ -211,14 +211,15 @@
 						<ul class="fullScreenUl">
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
-								onclick="window.location.href='../main/main.jsp'" 
+								onclick="addProject('1')" 
 								value="提交项目">
 							</li>
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
-								onclick="window.location.href='../main/main.jsp'"
+								onclick="addProject('0')"
 								value="保存">
 							</li>
+							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
 						</ul>
 						</s:form>
 					</div>
@@ -238,6 +239,11 @@
 <script type="text/javascript">
  	function addProjectMember(){
  		document.getElementById("addNewMember").style.display="block";
+ 	}
+ 	
+ 	function addProject(statusValue){
+ 		document.getElementById("projectInfo.status").value=statusValue;
+ 		document.getElementById("addProjectForm").submit;
  	}
 </script>
 </html>
