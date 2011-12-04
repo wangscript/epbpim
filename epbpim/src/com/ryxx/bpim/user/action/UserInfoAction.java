@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.httpclient.util.DateUtil;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -224,11 +225,18 @@ public class UserInfoAction extends ActionSupportBase {
 			}
 			userInfo.setRoles(roles);
 		}
-		userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
-		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
-		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
-		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
-		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+		if(StringUtils.isNotEmpty(userInfo.getBirthdayTmp())) {
+			userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
+		}
+		if(StringUtils.isNotEmpty(userInfo.getGraduateDateTmp())) {
+			userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
+		}
+		if(StringUtils.isNotEmpty(userInfo.getLeaveDateTmp())) {
+			userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
+		}
+		if(StringUtils.isNotEmpty(userInfo.getOnboardDateTmp())) {
+			userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
+		}
 		userInfo.setId(id);
 		UserInfo newUserInfo = userInfoService.fetchById(id);
 		userInfo.setPassword(newUserInfo.getPassword());
