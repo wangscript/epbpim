@@ -26,7 +26,7 @@
 								<li class="width200Li"><label class="width4Lb"><s:text name="Department.DepartmentName" />:</label>
 									<input class="width100Input" name="adminDept.name" id="adminDept.name" value='<s:property value="adminDept.name"/>'/>
 								</li>
-								<li class="width100Li"><input type="submit" id="searchProject" class="mediumRightButton" value="<s:text name="Common.Query" />">
+								<li class="width100Li"><input type="submit" id="searchDept" class="mediumRightButton" value="<s:text name="Common.Query" />">
 								</li>
 							</ul>
 						</div>
