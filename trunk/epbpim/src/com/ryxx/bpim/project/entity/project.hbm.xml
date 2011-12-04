@@ -20,6 +20,9 @@
 		<property name="vendorCompany" column="VENDOR_COMPANY" type="java.lang.String"></property>
 		<property name="vendorContactor" column="VENDOR_CONTACTOR" type="java.lang.String"></property>
 		<property name="vendorContact" column="VENDOR_CONTACT" type="java.lang.String"></property>
+		<property name="biddingCompany" column="BIDDING_COMPANY" type="java.lang.String"></property>
+		<property name="biddingContactor" column="BIDDING_CONTACTOR" type="java.lang.String"></property>
+		<property name="biddingContact" column="BIDDING_CONTACT" type="java.lang.String"></property>
 		<property name="deptTransferNumber" column="DEPT_TRANSFER_NUMBER" type="java.lang.String"></property>
 		<property name="projectType" column="PROJECT_TYPE" type="java.lang.String"></property>
 		<property name="judgePrice1" column="JUDGE_PRICE1" type="java.lang.String"></property>
