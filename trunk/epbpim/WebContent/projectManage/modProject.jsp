@@ -13,7 +13,7 @@
  	
  	function addProjectInfo(statusValue){
 		document.getElementById("projectInfo.status").value=statusValue;
- 		document.getElementById("addForm").submit();
+ 		document.getElementById("modForm").submit();
  	}
 </script>
 </head>
@@ -24,7 +24,7 @@
 				<div class="mainbar">
 					<h3 class="title">项目录入</h3>
 					<div id="addProjectTable">
-					<s:form id="addForm" action="addProject.do" method="post" onsubmit="return validate(this);">
+					<s:form id="modForm" action="modProject.do" method="post" onsubmit="return validate(this);">
 						<h4 class="title">项目基本信息</h4>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
@@ -221,22 +221,19 @@
 						<ul class="fullScreenUl">
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
-								onclick="addProjectInfo('1')" 
+								onclick="modProjectInfo('1')" 
 								value="提交项目">
 							</li>
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
-								onclick="addProjectInfo('0')"
+								onclick="modProjectInfo('0')"
 								value="保存">
 							</li>
 							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
 						</ul>
 						</s:form>
 					</div>
-
 					<div></div>
-
-
 				</div>
 
 
