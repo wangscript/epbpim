@@ -27,11 +27,11 @@ VALUES(21,'文件查询','../businessFile/schBusinessFileList.do',2,1,2);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
 VALUES(30,'录入项目','../projectManage/preAddProject.do',3,1,1);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(31,'查询自己项目','../projectManage/queryProject.do?projectInfo.queryType=1',3,1,2);
+VALUES(31,'查询自己项目','../projectManage/schProjectList.do?projectInfo.queryType=1',3,1,2);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(32,'查询部门项目','../projectManage/queryProject.do?projectInfo.queryType=2',3,1,3);
+VALUES(32,'查询部门项目','../projectManage/schProjectList.do?projectInfo.queryType=2',3,1,3);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(33,'查询全部项目','../projectManage/queryProject.do?projectInfo.queryType=3',3,1,4);
+VALUES(33,'查询全部项目','../projectManage/schProjectList.do?projectInfo.queryType=3',3,1,4);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
 VALUES(34,'填写部门支出','',3,1,5);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)

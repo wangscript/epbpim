@@ -107,7 +107,7 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width7Lb">承接部门:</label>
-								<s:select cssClass="width150Select" id="projectInfo.dept.id" name="projectInfo.dept.id"
+								<s:select cssClass="width100Select" id="projectInfo.dept.id" name="projectInfo.dept.id"
 										list="adminDeptList" listKey="id" listValue="name" multiple="false" required="true" headerKey="0" />	
 							</li>
 							<li class="width250Li"><label class="width6Lb">部门流转单号:</label> <input
@@ -116,8 +116,8 @@
 								id="contractNumber" />
 							</li>
 							<li class="width200Li"><label class="width4Lb">负责人:</label>
-								<s:select cssClass="width150Select" id="projectInfo.owner.id" name="projectInfo.owner.id"
-										list="userInfoList" listKey="id" listValue="userName" multiple="false" required="true" headerKey="0" />	
+								<s:select cssClass="width100Select" id="projectInfo.owner.id" name="projectInfo.owner.id"
+										list="userInfoList" listKey="id" listValue="realName" multiple="false" required="true" headerKey="0" />	
 							</li>
 						</ul>
 						
