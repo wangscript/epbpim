@@ -10,86 +10,110 @@
 		</action>
 		<action name="listRole" method="list" class="adminRoleAction">
 			<result>/employeeManage/queryRole.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="getRole" method="get" class="adminRoleAction">
 			<result>/employeeManage/updateRole.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="updateRole" method="update" class="adminRoleAction">
 			<result type="redirect-action">listRole.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="deleteRole" method="delete" class="adminRoleAction">
 			<result type="redirect-action">listRole.do</result>
+			<interceptor-ref name="user"/>
 		</action>		
 		
 		<action name="newUserInfo" method="newUserInfo" class="userInfoAction">
 			<result>/employeeManage/addEmployee.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 	    <action name="saveUsers" method="saveUsers" class="userInfoAction">
 			<result type="redirect-action">listUserInfo.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="showUser" method="showUser" class="userInfoAction">
 			<result>/employeeManage/getEmployee.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="updateUser" method="updateUser" class="userInfoAction">
 			<result type="redirect-action">listUserInfo.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="deleteUser" method="delete" class="userInfoAction">
 			<result type="redirect-action">listUserInfo.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="listUserInfo" method="listUserInfo" class="userInfoAction">
 			<result>/employeeManage/queryEmployee.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-admindept" namespace="/department" extends="bpim-default">
 	    <action name="addAdminDept" method="addAdminDept" class="adminDeptAction">
 			<result type="redirect-action">schAdminDeptList.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="delAdminDept" method="delAdminDept" class="adminDeptAction">
 			<result type="redirect-action">schAdminDeptList.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="modAdminDept" method="modAdminDept" class="adminDeptAction">
 			<result type="redirect-action">schAdminDeptList.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="preModAdminDept" method="findAdminDept" class="adminDeptAction">
 			<result>/department/modDepartment.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="schAdminDeptList" method="schAdminDeptList" class="adminDeptAction">
 			<result>/department/queryDepartment.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-adminfile" namespace="/businessFile" extends="bpim-default">
 	    <action name="addBusinessFile" method="addAdminFile" class="adminFileAction">
 			<result type="redirect-action">schBusinessFileList.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="delBusinessFile" method="delAdminFile" class="adminFileAction">
 			<result type="redirect-action">schBusinessFileList.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="schBusinessFileList" method="schAdminFileList" class="adminFileAction">
 			<result>/businessFile/manageBusinessFile.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-isofilesch" namespace="/publicInfo" extends="bpim-default">
 		<action name="delIsoList" method="delAdminFile" class="adminFileAction">
 			<result type="redirect-action">schIsoList.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="schIsoList" method="schAdminFileList" class="adminFileAction">
 			<result>/publicInfo/queryIsoFile.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-isofileupadd" namespace="/systemManage" extends="bpim-default">
 		<action name="addIsoFile" method="addAdminFile" class="adminFileAction">
 			<result type="redirect-action">../publicInfo/schIsoList.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-main" namespace="/main" extends="bpim-default">
 		<action name="showUser" method="showUser" class="mainUserInfoAction">
 			<result>/main/userInfoManage.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="updateUser" method="updateUser" class="mainUserInfoAction">
 			<result type="redirect-action">main.do</result>
+			<interceptor-ref name="user"/>
 		</action>
 		<action name="main">
 			<result>/main/main.jsp</result>
+			<interceptor-ref name="user"/>
 		</action>
 	</package>
 	<package name="bpim-login" namespace="/login" extends="bpim-default">
