@@ -7,14 +7,10 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>项目录入</title>
 <script type="text/javascript">
- 	function addProjectMember(){
- 		document.getElementById("addNewMember").style.display="block";
- 	}
- 	
- 	function addProjectInfo(statusValue){
+	function modProjectInfo(statusValue){
 		document.getElementById("projectInfo.status").value=statusValue;
- 		document.getElementById("modForm").submit();
- 	}
+		document.getElementById("modForm").submit();
+	}
 </script>
 </head>
 <body>
@@ -26,6 +22,7 @@
 					<div id="addProjectTable">
 					<s:form id="modForm" action="modProject.do" method="post" onsubmit="return validate(this);">
 						<h4 class="title">项目基本信息</h4>
+						<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>"/>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
 								class="width350Input" name="projectInfo.name" value="<s:property value='projectInfo.name'/>"/>
@@ -130,7 +127,7 @@
 							</li>
 						</ul>
 						
-						<ul class="fullScreenUl" id="addNewMember">
+						<ul class="fullScreenUl">
 							<li class="width200Li" ><label class="width6Lb">项目性质:</label>
 								<select id="projectType" name="projectInfo.projectType">
 									<option value="工程审价">工程审价</option>
