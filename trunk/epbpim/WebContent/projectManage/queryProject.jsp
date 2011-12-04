@@ -99,7 +99,7 @@
 					<li class="width50Li">
 						<form action="delProject.do" method="post" id='delProject<s:property value="id" />'>
 							<input type="hidden" name="projectInfo.id" value='<s:property value="id" />' />
-							<input type="button" onclick='delProject("deleteProject"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+							<input type="button" onclick='delProject("delProject"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
 						</form>
 					</li>
 				</ul>
