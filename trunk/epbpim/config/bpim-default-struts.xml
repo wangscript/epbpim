@@ -6,18 +6,13 @@
 <struts>
 	<package name="bpim-default" namespace="/" extends="struts-default">
 		<!-- 拦截器声明 -->
-		<!-- <interceptors>
+		<interceptors>
 			<interceptor name="login_intercept" class="com.ryxx.bpim.web.interceptor.LoginInterceptor"/>
-			<interceptor name="adminlogin_intercept" class="com.ryxx.bpim.web.interceptor.AdminLoginInterceptor"/>
 			<interceptor-stack name="user">
 				<interceptor-ref name="login_intercept"/>
 				<interceptor-ref name="defaultStack"/>
 			</interceptor-stack>
-			<interceptor-stack name="manager">
-				<interceptor-ref name="adminlogin_intercept"/>
-				<interceptor-ref name="defaultStack"/>
-			</interceptor-stack>
-		</interceptors> -->
+		</interceptors>
 		
 		<!-- 全局Result定义 -->
 	    <global-results>
@@ -26,7 +21,7 @@
 	    	<result name="success">/common/success.jsp</result>
 			<result name="error">/common/error.jsp</result>
 			<result name="glberror">/common/glberror.jsp</result>
-			<result name="nosession">/index.jsp</result>
+			<result name="nosession" type="redirect">/login/index.jsp</result>
 			<result name="nosessionadmin">/admin/adminLogin.jsp</result>
 			<result name="norigth">/common/norigth.jsp</result>
 			<result name="nooption">/common/nooption.jsp</result>
