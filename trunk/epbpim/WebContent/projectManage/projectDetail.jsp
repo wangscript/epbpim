@@ -73,7 +73,7 @@
 							</li>
 							<li class="width250Li"><label class="width6Lb">部门流转单号:</label><s:property value='projectInfo.deptTransferNumber' />
 							</li>
-							<li class="width200Li"><label class="width4Lb">负责人:</label><s:property value='projectInfo.owner.name' />
+							<li class="width200Li"><label class="width4Lb">负责人:</label><s:property value='projectInfo.owner.realName' />
 							</li>
 						</ul>
 						

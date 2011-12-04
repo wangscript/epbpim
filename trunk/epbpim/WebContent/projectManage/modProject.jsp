@@ -106,7 +106,7 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width7Lb">承接部门:</label>
-								<s:select cssClass="width150Select" id="projectInfo.dept.id" name="projectInfo.dept.id"
+								<s:select cssClass="width100Select" id="projectInfo.dept.id" name="projectInfo.dept.id"
 										list="adminDeptList" listKey="id" listValue="name" multiple="false" required="true" headerKey="0" />
 							</li>
 							<li class="width250Li"><label class="width6Lb">部门流转单号:</label> <input
@@ -115,8 +115,8 @@
 								name="projectInfo.deptTransferNumber" value="<s:property value='projectInfo.deptTransferNumber' />"/>
 							</li>
 							<li class="width200Li"><label class="width4Lb">负责人:</label>
-								<s:select cssClass="width150Select" id="projectInfo.owner.id" name="projectInfo.owner.id"
-										list="userInfoList" listKey="id" listValue="userName" multiple="false" required="true" headerKey="0" />	
+								<s:select cssClass="width100Select" id="projectInfo.owner.id" name="projectInfo.owner.id"
+										list="userInfoList" listKey="id" listValue="realName" multiple="false" required="true" headerKey="0" />	
 							</li>
 						</ul>
 						
@@ -143,7 +143,7 @@
 								name="projectInfo.judgeDays" value="<s:property value='projectInfo.judgeDays' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">报告日/文号:</label> <input
-								class="Wdate width150Input" name="projectInfo.reportDate"
+								class="Wdate width100Input" name="projectInfo.reportDate"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.reportDate' format='yyyy-MM-dd' />"/>
 							</li>
 						</ul>
@@ -161,7 +161,7 @@
 								name="projectInfo.comments" value="<s:property value='projectInfo.comments' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="Wdate width150Input" name="projectInfo.achiveDate"
+								class="Wdate width100Input" name="projectInfo.achiveDate"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.achiveDate' format='yyyy-MM-dd' />"/>
 							</li>
 						</ul>
@@ -196,7 +196,7 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
-								class="Wdate width150Input" name="projectInfo.invoiceDate"
+								class="Wdate width100Input" name="projectInfo.invoiceDate"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.invoiceDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">发票单号:</label> <input
