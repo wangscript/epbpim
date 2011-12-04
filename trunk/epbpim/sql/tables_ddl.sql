@@ -100,7 +100,7 @@ CREATE TABLE USER_INFO
 	USER_PASSWORD VARCHAR(200) DEFAULT '123456',		 -- 密码
 	REGISTER_DATE DATETIME, -- 注册时间
 	EMAIL  VARCHAR(100), 								   
-	ROLE_ID INTEGER(15),						 -- 职务
+	ROLE_ID INTEGER(15) NOT NULL,				 -- 职务
 	DEPT_ID INT(10),							 -- 所属部门
 	CERTIFICATION_ID INT(15),					 -- 关联执业资质信息表
 	USER_TITLE INT(10),					 		 -- 职称
