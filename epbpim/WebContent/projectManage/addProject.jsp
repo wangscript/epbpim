@@ -6,6 +6,16 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>项目录入</title>
+<script type="text/javascript">
+ 	function addProjectMember(){
+ 		document.getElementById("addNewMember").style.display="block";
+ 	}
+ 	
+ 	function addProjectInfo(statusValue){
+		document.getElementById("projectInfo.status").value=statusValue;
+ 		document.getElementById("addForm").submit();
+ 	}
+</script>
 </head>
 <body>
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
@@ -14,7 +24,7 @@
 				<div class="mainbar">
 					<h3 class="title">项目录入</h3>
 					<div id="addProjectTable">
-					<s:form id="addProjectForm" action="addProject.do" method="post" onsubmit="return validate(this);">
+					<s:form id="addForm" action="addProject.do" method="post" onsubmit="return validate(this);">
 						<h4 class="title">项目基本信息</h4>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
@@ -211,12 +221,12 @@
 						<ul class="fullScreenUl">
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
-								onclick="addProject('1')" 
+								onclick="addProjectInfo('1')" 
 								value="提交项目">
 							</li>
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
-								onclick="addProject('0')"
+								onclick="addProjectInfo('0')"
 								value="保存">
 							</li>
 							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
@@ -236,14 +246,4 @@
 		<!-- end #page -->
 		<jsp:include page="../common/footer.jsp" /></div>
 </body>
-<script type="text/javascript">
- 	function addProjectMember(){
- 		document.getElementById("addNewMember").style.display="block";
- 	}
- 	
- 	function addProject(statusValue){
- 		document.getElementById("projectInfo.status").value=statusValue;
- 		document.getElementById("addProjectForm").submit;
- 	}
-</script>
 </html>
