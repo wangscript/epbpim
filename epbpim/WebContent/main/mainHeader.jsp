@@ -17,6 +17,7 @@
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
 <script type='text/javascript' src='../js/validation.js'></script>
+<script type='text/javascript' src='../js/common.js'></script>
 <script type="text/javascript">
 function changeTitleBackground(){
 	 var sURL = window.location.href.toString();
@@ -86,8 +87,6 @@ function changeTitleBackground(){
 <div class="nav_menu">
 <ul>
 	<li id="userInfoManage"><a href="../main/showUser.do"><s:text name="Header.UserManage" /></a></li>
-	<li id="messageMain"><a id="message" href="../main/messageMain.jsp"><font
-		color="red">有1个待办事项</font></a></li>
 	<li id="help"><a href="#">用户手册</a></li>
 	<li id="index"><a href="../login/logout.do"><s:text name="Header.Logout" /></a></li>
 </ul>
