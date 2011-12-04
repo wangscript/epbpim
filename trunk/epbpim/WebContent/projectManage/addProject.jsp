@@ -7,13 +7,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>项目录入</title>
 <script type="text/javascript">
- 	function addProjectMember(){
- 		document.getElementById("addNewMember").style.display="block";
- 	}
- 	
  	function addProjectInfo(statusValue){
 		document.getElementById("projectInfo.status").value=statusValue;
- 		document.getElementById("addForm").submit();
+		if(validate($("addForm"))){
+			$("addForm").submit();
+		}
  	}
 </script>
 </head>
