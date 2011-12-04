@@ -22,7 +22,7 @@
 				<div class="mainbar">
 					<h3 class="title">项目录入</h3>
 					<div id="addProjectTable">
-					<s:form id="addForm" action="addProject.do" method="post" onsubmit="return validate(this);">
+						<form id="addForm" action="addProject.do" method="post" onsubmit="return validate(this);">
 						<h4 class="title">项目基本信息</h4>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
@@ -106,25 +106,18 @@
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width7Lb">承接部门:</label> <select
-								id="projectType" name="projectInfo.dept.id">
-									<option value="0">--请选择--</option>
-									<option value="1">咨询1部</option>
-									<option value="2">咨询2部</option>
-									<option value="3">咨询3部</option>
-							</select>
+							<li class="width200Li"><label class="width7Lb">承接部门:</label>
+								<s:select cssClass="width150Select" id="projectInfo.dept.id" name="projectInfo.dept.id"
+										list="adminDeptList" listKey="id" listValue="name" multiple="false" required="true" headerKey="0" />	
 							</li>
 							<li class="width250Li"><label class="width6Lb">部门流转单号:</label> <input
 								class="width150Input"
 								name="projectInfo.deptTransferNumber"
 								id="contractNumber" />
 							</li>
-							<li class="width200Li"><label class="width4Lb">负责人:</label> <select
-								id="projectType" name="projectInfo.owner.id">
-									<option value="0">--请选择--</option>
-									<option value="1">杨老板</option>
-									<option value="2">高老板</option>
-							</select>
+							<li class="width200Li"><label class="width4Lb">负责人:</label>
+								<s:select cssClass="width150Select" id="projectInfo.owner.id" name="projectInfo.owner.id"
+										list="userInfoList" listKey="id" listValue="userName" multiple="false" required="true" headerKey="0" />	
 							</li>
 						</ul>
 						
@@ -227,7 +220,7 @@
 							</li>
 							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
 						</ul>
-						</s:form>
+						</form>
 					</div>
 
 					<div></div>
