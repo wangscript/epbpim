@@ -1,24 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="com.ryxx.util.cache.CacheMap" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.ryxx.bpim.common.Constants" %>
+<%@ page import="com.ryxx.bpim.user.entity.AdminMenu" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>项目详情</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link rel="stylesheet"
-	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
-<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
-<script type='text/javascript' src='../dwr/engine.js'></script>
-<script type='text/javascript' src='../dwr/util.js'></script>
-<script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 </head>
 <body>
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
@@ -135,6 +126,83 @@
 							<li class="width500Li"><label class="width6Lb">开票金额:</label><s:property value='projectInfo.invoicePrice' />
 							</li>
 						</ul>
+						<%
+							String userid = String.valueOf((Long)session.getAttribute(Constants.LOGIN_USER_ID));
+							List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE+Constants.LOGIN_USER_ID+userid);
+							for(AdminMenu menu:menus){
+								if(menu.getId() == 34){
+									request.setAttribute("addCost", true);
+								}
+								if(menu.getId() == 35){
+									request.setAttribute("delCost", true);
+								}
+								if(menu.getId() == 36){
+									request.setAttribute("addBonus", true);
+								}
+								if(menu.getId() == 37){
+									request.setAttribute("addBonus", true);
+								}
+								if(menu.getId() == 38){
+									request.setAttribute("closeProject", true);
+								}
+							}
+							
+						%>
+						<s:if test="#request.addCost == true">
+						<h4 class="title">增加成本</h4>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">成本:</label> <input
+								class="width100Input"
+								name="cost" id="cost"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">时间:</label> <input
+								class="Wdate width100Input" name="projectInfo.reportDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="costDate"/>
+							</li>
+							<li class="width400Li"><label class="width6Lb">备注:</label> <input
+								class="width300Input"
+								name="cost" id="costComments"/>
+							</li>
+							<li class="width100Li"><input type="button" id="addCost"
+								class="mediumRightButton" 
+								onclick="addCost();" 
+								value="增加成本">
+							</li>
+						</ul>
+						</s:if>
+						
+						<s:if test="#request.addBonus == true">
+						<h4 class="title">增加奖金</h4>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">奖金:</label> <input
+								class="width100Input"
+								name="bonus" id="bonus"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">时间:</label> <input
+								class="Wdate width100Input" name="projectInfo.reportDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="bonusDate"/>
+							</li>
+							<li class="width400Li"><label class="width6Lb">备注:</label> <input
+								class="width300Input"
+								name="bonusComments" id="bonusComments"/>
+							</li>
+							<li class="width100Li"><input type="button" id="addBonus"
+								class="mediumRightButton" 
+								onclick="addBonus();" 
+								value="增加奖金">
+							</li>
+						</ul>
+						</s:if>
+						
+						<s:if test="#request.closeProject = true">
+						<ul class="fullScreenUl">
+							<li><input type="button" id="closeProject"
+								class="mediumRightButton" 
+								onclick="closeProject();" 
+								value="结项">
+							</li>
+						</ul>
+						</s:if>
 					</div>
 					<div></div>
 				</div>

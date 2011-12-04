@@ -4,6 +4,7 @@
 package com.ryxx.bpim.project.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import com.ryxx.bpim.entity.VoBase;
 import com.ryxx.bpim.user.entity.AdminDept;
@@ -109,6 +110,8 @@ public class ProjectInfo extends VoBase
     private String status;
     
     private UserInfo submitter;
+    
+    private List<ProjectStream> projectStreams;
     
     public Long getId()
     {
@@ -580,6 +583,20 @@ public class ProjectInfo extends VoBase
 	 */
 	public void setBiddingContact(String biddingContact) {
 		this.biddingContact = biddingContact;
+	}
+
+	/**
+	 * @return the projectStreams
+	 */
+	public List<ProjectStream> getProjectStreams() {
+		return projectStreams;
+	}
+
+	/**
+	 * @param projectStreams the projectStreams to set
+	 */
+	public void setProjectStreams(List<ProjectStream> projectStreams) {
+		this.projectStreams = projectStreams;
 	}
     
     
