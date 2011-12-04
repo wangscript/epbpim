@@ -220,8 +220,7 @@
 								class="mediumRightButton" 
 								onclick="modProjectInfo('1')" 
 								value="提交项目">
-							</li>
-							<li><input type="button" id="addProject"
+								<input type="button" id="addProject"
 								class="mediumRightButton" 
 								onclick="modProjectInfo('0')"
 								value="保存">
