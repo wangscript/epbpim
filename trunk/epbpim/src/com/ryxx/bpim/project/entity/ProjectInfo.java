@@ -100,9 +100,9 @@ public class ProjectInfo extends VoBase
     
     private String invoicePrice;
     
-    private UserInfo submitter;
-    
     private String status;
+    
+    private UserInfo submitter;
     
     public Long getId()
     {
@@ -514,16 +514,6 @@ public class ProjectInfo extends VoBase
         this.invoicePrice = invoicePrice;
     }
     
-    public UserInfo getSubmitter()
-    {
-        return submitter;
-    }
-    
-    public void setSubmitter(UserInfo submitter)
-    {
-        this.submitter = submitter;
-    }
-    
     public String getStatus()
     {
         return status;
@@ -532,5 +522,15 @@ public class ProjectInfo extends VoBase
     public void setStatus(String status)
     {
         this.status = status;
+    }
+    
+    public UserInfo getSubmitter()
+    {
+        return submitter;
+    }
+    
+    public void setSubmitter(UserInfo submitter)
+    {
+        this.submitter = submitter;
     }
 }
