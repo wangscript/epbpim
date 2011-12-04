@@ -70,9 +70,9 @@
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width7Lb">中标单位:</label><s:property value='projectInfo.vendorCompany' />
+							<li class="width450Li"><label class="width7Lb">中标单位:</label><s:property value='projectInfo.biddingCompany' />
 							</li>
-							<li class="width250Li"><label class="width4Lb">联系人:</label><s:property value='projectInfo.vendorContactor' />
+							<li class="width250Li"><label class="width4Lb">联系人:</label><s:property value='projectInfo.biddingContactor' />
 							</li>
 							<li class="width200Li"><label class="width2Lb">电话:</label><s:property value='projectInfo.vendorContact' />
 							</li>

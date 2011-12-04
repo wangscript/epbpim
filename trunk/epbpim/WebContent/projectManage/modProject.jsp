@@ -98,13 +98,13 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width7Lb">中标单位:</label> <input
-								class="width350Input" name="projectInfo.vendorCompany" value="<s:property value='projectInfo.vendorCompany' />"/>
+								class="width350Input" name="projectInfo.biddingCompany" value="<s:property value='projectInfo.biddingCompany' />"/>
 							</li>
 							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.vendorContactor" value="<s:property value='projectInfo.vendorContactor' />"/>
+								class="width150Input" name="projectInfo.biddingContactor" value="<s:property value='projectInfo.biddingContactor' />"/>
 							</li>
 							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.vendorContact" value="<s:property value='projectInfo.vendorContact' />"/>
+								class="width150Input" name="projectInfo.biddingContact" value="<s:property value='projectInfo.biddingContact' />"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">

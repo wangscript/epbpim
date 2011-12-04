@@ -96,13 +96,13 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width7Lb">中标单位:</label> <input
-								class="width350Input" name="projectInfo.vendorCompany"/>
+								class="width350Input" name="projectInfo.biddingCompany"/>
 							</li>
 							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.vendorContactor"/>
+								class="width150Input" name="projectInfo.biddingContactor"/>
 							</li>
 							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.vendorContact"/>
+								class="width150Input" name="projectInfo.biddingContact"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
