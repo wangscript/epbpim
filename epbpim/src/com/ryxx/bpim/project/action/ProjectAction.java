@@ -32,7 +32,7 @@ public class ProjectAction extends ActionSupportBase
                 projectInfo = new ProjectInfo();
             }
             int pageNo = ParamTools.getIntParameter(request, Constants.PARA_PAGE_NO, 1);
-            int pageSize = ParamTools.getIntParameter(request, Constants.PARA_PAGE_SIZE, 0);
+            int pageSize = ParamTools.getIntParameter(request, Constants.PARA_PAGE_SIZE, 10);
             PageTools page = new PageTools(pageNo, pageSize);
             projectInfo.setRowCount(pageNo);
             projectInfo.setPageSize(pageSize);
