@@ -5,6 +5,10 @@ import java.util.List;
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.project.entity.ProjectInfo;
 import com.ryxx.bpim.project.service.ProjectService;
+import com.ryxx.bpim.user.entity.AdminDept;
+import com.ryxx.bpim.user.entity.UserInfo;
+import com.ryxx.bpim.user.service.AdminDeptService;
+import com.ryxx.bpim.user.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
@@ -20,6 +24,14 @@ public class ProjectAction extends ActionSupportBase
     private List<ProjectInfo> projectInfoList;
     
     private ProjectService projectService;
+    
+    private List<AdminDept> adminDeptList;
+    
+    private AdminDeptService adminDeptService;
+    
+    private List<UserInfo> userInfoList;
+    
+    private UserInfoService userInfoService;
     
     private PageTools page;
     
@@ -58,7 +70,22 @@ public class ProjectAction extends ActionSupportBase
     {
         try
         {
+            
             projectInfo = projectService.findProjectInfo(projectInfo);
+        }
+        catch (Exception e)
+        {
+            LOG.warn(e);
+            return ERROR;
+        }
+        return SUCCESS;
+    }
+    
+    public String preAddProjectInfo()
+    {
+        try
+        {            
+            wrapDeptAndUserList();
         }
         catch (Exception e)
         {
@@ -73,6 +100,21 @@ public class ProjectAction extends ActionSupportBase
         try
         {
             projectService.saveProjectInfo(projectInfo);
+        }
+        catch (Exception e)
+        {
+            LOG.warn(e);
+            return ERROR;
+        }
+        return SUCCESS;
+    }
+    
+    public String preModProjectInfo()
+    {
+        try
+        {
+            wrapDeptAndUserList();
+            findProjectInfo();
         }
         catch (Exception e)
         {
@@ -111,6 +153,12 @@ public class ProjectAction extends ActionSupportBase
         return SUCCESS;
     }
     
+    private void wrapDeptAndUserList()
+    {
+        adminDeptList = adminDeptService.findAll();
+        userInfoList = userInfoService.findAll();
+    }
+    
     public ProjectInfo getProjectInfo()
     {
         return projectInfo;
@@ -139,6 +187,46 @@ public class ProjectAction extends ActionSupportBase
     public void setProjectService(ProjectService projectService)
     {
         this.projectService = projectService;
+    }
+    
+    public List<AdminDept> getAdminDeptList()
+    {
+        return adminDeptList;
+    }
+    
+    public void setAdminDeptList(List<AdminDept> adminDeptList)
+    {
+        this.adminDeptList = adminDeptList;
+    }
+    
+    public AdminDeptService getAdminDeptService()
+    {
+        return adminDeptService;
+    }
+    
+    public void setAdminDeptService(AdminDeptService adminDeptService)
+    {
+        this.adminDeptService = adminDeptService;
+    }
+    
+    public List<UserInfo> getUserInfoList()
+    {
+        return userInfoList;
+    }
+    
+    public void setUserInfoList(List<UserInfo> userInfoList)
+    {
+        this.userInfoList = userInfoList;
+    }
+    
+    public UserInfoService getUserInfoService()
+    {
+        return userInfoService;
+    }
+    
+    public void setUserInfoService(UserInfoService userInfoService)
+    {
+        this.userInfoService = userInfoService;
     }
     
     public PageTools getPage()

@@ -5,7 +5,7 @@
 
 <struts>
 	<package name="bpim-projectManage" namespace="/projectManage" extends="bpim-default">
-		<action name="preAddProject">
+		<action name="preAddProject" method="preAddProjectInfo" class="projectAction">
 			<result>/projectManage/addProject.jsp</result>
 		</action>
 	    <action name="addProject" method="addProjectInfo" class="projectAction">
@@ -14,7 +14,7 @@
 		<action name="delProject" method="delProjectInfo" class="projectAction">
 			<result type="redirect-action">schProjectList.do</result>
 		</action>
-		<action name="preModProject" method="findProjectInfo" class="projectAction">
+		<action name="preModProject" method="preModProjectInfo" class="projectAction">
 			<result>/projectManage/modProject.jsp</result>
 		</action>
 		<action name="modProject" method="modProjectInfo" class="projectAction">

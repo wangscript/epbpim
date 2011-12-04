@@ -13,5 +13,23 @@
 		<property name="projectService">
 			<ref local="com.ryxx.bpim.project.service.ProjectService"/>
 		</property>
+		<property name="adminDeptService">
+			<ref local="com.ryxx.bpim.user.service.AdminDeptService"/>
+		</property>
+		<property name="userInfoService">
+			<ref local="com.ryxx.bpim.user.service.UserInfoService"/>
+		</property>
 	</bean>	
+	
+	<bean id="com.ryxx.bpim.user.service.AdminDeptService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.AdminDeptService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.AdminDeptService.target" class="com.ryxx.bpim.user.service.AdminDeptServiceImpl">
+	</bean>
+	
+	<bean id="com.ryxx.bpim.user.service.UserInfoService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.user.service.UserInfoService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.user.service.UserInfoService.target" class="com.ryxx.bpim.user.service.UserInfoServiceImpl">
+	</bean>
 </beans>
