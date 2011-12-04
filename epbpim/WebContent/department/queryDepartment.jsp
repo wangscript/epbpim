@@ -56,15 +56,15 @@
 									<li class="width100Li"><s:property value="name" /></li>
 									<li class="width600Li"><s:property value="remark" /></li>
 									<li class="width50Li">
-										<form action="preModAdminDept.do" method="post" id='deletedept<s:property value="id" />'>
+										<form action="preModAdminDept.do" method="post" id='preModDept<s:property value="id" />'>
 											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
-											<input type="button" onclick='preModDept("deletedept"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
+											<input type="button" onclick='preModDept("preModDept"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
 										</form>
 									</li>
 									<li class="width50Li">
-										<form action="delAdminDept.do" method="post" id='deletedept<s:property value="id" />'>
+										<form action="delAdminDept.do" method="post" id='deleteDept<s:property value="id" />'>
 											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
-											<input type="button" onclick='deleteDept("deletedept"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+											<input type="button" onclick='deleteDept("deleteDept"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
 										</form>
 									</li>
 								</ul>
