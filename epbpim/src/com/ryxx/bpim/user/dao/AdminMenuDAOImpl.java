@@ -21,4 +21,10 @@ public class AdminMenuDAOImpl extends AbstractBaseDAO<AdminMenu, Long> implement
 		Criterion[] crits = {Restrictions.eq("enable", 1), Restrictions.eq("parentId", parentId)};
 		return findByCriteria(crits);
 	}
+	
+	@Override
+	public List<AdminMenu> findAllEnableNode() {
+		Criterion[] crits = {Restrictions.eq("enable", 1)};
+		return findByCriteria(crits);
+	}
 }

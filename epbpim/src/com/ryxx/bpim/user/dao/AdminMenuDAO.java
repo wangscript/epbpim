@@ -9,4 +9,6 @@ public interface AdminMenuDAO extends BaseDAO<AdminMenu, Long> {
 	public List<AdminMenu> findAllParentNode();
 	
 	public List<AdminMenu> findAllSubNode(Integer parentId);
+	
+	public List<AdminMenu> findAllEnableNode();
 }

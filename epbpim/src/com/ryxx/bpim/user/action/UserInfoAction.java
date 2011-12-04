@@ -138,11 +138,10 @@ public class UserInfoAction extends ActionSupportBase {
 			certification.setExpireDateFromPage(DateUtil.formatDate(certification.getExpireDate(), "yyyy-MM-dd"));
 		}
 		setCertifies(userInfo.getCertifies());
-		userInfo.setBirthdayTmp(DateTools.date2string(userInfo.getBirthday(), "yyyy-MM-dd"));
-		userInfo.setGraduateDateTmp(DateTools.date2string(userInfo.getGraduateDate(), "yyyy-MM-dd"));
-		userInfo.setLeaveDateTmp(DateTools.date2string(userInfo.getLeaveDate(), "yyyy-MM-dd"));
-		userInfo.setOnboardDateTmp(DateTools.date2string(userInfo.getOnboardDate(), "yyyy-MM-dd"));
-		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+		userInfo.setBirthdayTmp(userInfo.getBirthday()!=null?DateTools.date2string(userInfo.getBirthday(), "yyyy-MM-dd"):null);
+		userInfo.setGraduateDateTmp(userInfo.getGraduateDate()!=null?DateTools.date2string(userInfo.getGraduateDate(), "yyyy-MM-dd"):null);
+		userInfo.setLeaveDateTmp(userInfo.getLeaveDate()!=null?DateTools.date2string(userInfo.getLeaveDate(), "yyyy-MM-dd"):null);
+		userInfo.setOnboardDateTmp(userInfo.getOnboardDate()!=null?DateTools.date2string(userInfo.getOnboardDate(), "yyyy-MM-dd"):null);
 		setRoleGroup(roleGp);
 		return SUCCESS;
 	}
@@ -432,12 +431,5 @@ public class UserInfoAction extends ActionSupportBase {
 
 	public void setAllDepts(List<AdminDept> allDepts) {
 		this.allDepts = allDepts;
-	}
-
-	public static void main(String[] args) {
-		Date date = StringTools.string2date("2011-08-29 00:00:00");
-		System.out.println(date.toString());
-		Timestamp stamp = new Timestamp(date.getTime());
-		System.out.println(stamp.toString());
 	}
 }
