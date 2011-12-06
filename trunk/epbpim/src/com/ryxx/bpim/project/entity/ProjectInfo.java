@@ -113,6 +113,10 @@ public class ProjectInfo extends VoBase
     
     private List<ProjectStream> projectStreams;
     
+    private String startDateFrom;
+    
+    private String startDateTo;
+    
     public Long getId()
     {
         return id;
@@ -542,62 +546,88 @@ public class ProjectInfo extends VoBase
     {
         this.submitter = submitter;
     }
-
-	/**
-	 * @return the biddingCompany
-	 */
-	public String getBiddingCompany() {
-		return biddingCompany;
-	}
-
-	/**
-	 * @param biddingCompany the biddingCompany to set
-	 */
-	public void setBiddingCompany(String biddingCompany) {
-		this.biddingCompany = biddingCompany;
-	}
-
-	/**
-	 * @return the biddingContactor
-	 */
-	public String getBiddingContactor() {
-		return biddingContactor;
-	}
-
-	/**
-	 * @param biddingContactor the biddingContactor to set
-	 */
-	public void setBiddingContactor(String biddingContactor) {
-		this.biddingContactor = biddingContactor;
-	}
-
-	/**
-	 * @return the biddingContact
-	 */
-	public String getBiddingContact() {
-		return biddingContact;
-	}
-
-	/**
-	 * @param biddingContact the biddingContact to set
-	 */
-	public void setBiddingContact(String biddingContact) {
-		this.biddingContact = biddingContact;
-	}
-
-	/**
-	 * @return the projectStreams
-	 */
-	public List<ProjectStream> getProjectStreams() {
-		return projectStreams;
-	}
-
-	/**
-	 * @param projectStreams the projectStreams to set
-	 */
-	public void setProjectStreams(List<ProjectStream> projectStreams) {
-		this.projectStreams = projectStreams;
-	}
     
+    /**
+     * @return the biddingCompany
+     */
+    public String getBiddingCompany()
+    {
+        return biddingCompany;
+    }
     
+    /**
+     * @param biddingCompany the biddingCompany to set
+     */
+    public void setBiddingCompany(String biddingCompany)
+    {
+        this.biddingCompany = biddingCompany;
+    }
+    
+    /**
+     * @return the biddingContactor
+     */
+    public String getBiddingContactor()
+    {
+        return biddingContactor;
+    }
+    
+    /**
+     * @param biddingContactor the biddingContactor to set
+     */
+    public void setBiddingContactor(String biddingContactor)
+    {
+        this.biddingContactor = biddingContactor;
+    }
+    
+    /**
+     * @return the biddingContact
+     */
+    public String getBiddingContact()
+    {
+        return biddingContact;
+    }
+    
+    /**
+     * @param biddingContact the biddingContact to set
+     */
+    public void setBiddingContact(String biddingContact)
+    {
+        this.biddingContact = biddingContact;
+    }
+    
+    /**
+     * @return the projectStreams
+     */
+    public List<ProjectStream> getProjectStreams()
+    {
+        return projectStreams;
+    }
+    
+    /**
+     * @param projectStreams the projectStreams to set
+     */
+    public void setProjectStreams(List<ProjectStream> projectStreams)
+    {
+        this.projectStreams = projectStreams;
+    }
+    
+    public String getStartDateFrom()
+    {
+        return startDateFrom;
+    }
+    
+    public void setStartDateFrom(String startDateFrom)
+    {
+        this.startDateFrom = startDateFrom;
+    }
+    
+    public String getStartDateTo()
+    {
+        return startDateTo;
+    }
+    
+    public void setStartDateTo(String startDateTo)
+    {
+        this.startDateTo = startDateTo;
+    }
 }
