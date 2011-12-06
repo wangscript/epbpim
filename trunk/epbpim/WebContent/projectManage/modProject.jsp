@@ -7,13 +7,18 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>项目录入</title>
 <script type="text/javascript">
+	function setSelectValue()
+	{
+		document.getElementById("projectInfo.majorType").value="<s:property value='projectInfo.majorType'/>";
+		document.getElementById("projectInfo.valuationType").value="<s:property value='projectInfo.valuationType'/>";		
+	}
 	function modProjectInfo(statusValue){
 		document.getElementById("projectInfo.status").value=statusValue;
 		document.getElementById("modForm").submit();
 	}
 </script>
 </head>
-<body>
+<body onload="setSelectValue()">
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
