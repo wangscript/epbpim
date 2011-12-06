@@ -40,7 +40,7 @@
 		<ul class="fullScreenUl">
 			<li class="width200Li"><label class="width4Lb">工程专业:&nbsp;</label><select name="projectInfo.majorType" id="projectInfo.majorType">
 				<option value="">--请选择--</option>
-				<option value="土建装饰">土建</option>
+				<option value="土建">土建</option>
 				<option value="园林">园林</option>
 				<option value="市政">市政</option>
 				<option value="安装">安装</option>
