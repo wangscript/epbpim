@@ -3,16 +3,16 @@ package com.ryxx.bpim.project.dao;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.criterion.Criterion;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 import com.ryxx.bpim.dao.AbstractBaseDAO;
 import com.ryxx.bpim.project.entity.ProjectInfo;
+import com.ryxx.bpim.user.entity.UserInfo;
 
 public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implements ProjectDAO
 {
@@ -45,35 +45,52 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
     @Override
     public List<ProjectInfo> listProjectInfo(ProjectInfo projectInfo)
     {
-        return findPageByPage(projectInfo.getStartRow(), projectInfo.getPageSize(), wrapCriterion(projectInfo));
+        Criteria criteria = wrapCriterion(projectInfo);
+        criteria.setFirstResult(projectInfo.getStartRow());
+        criteria.setMaxResults(projectInfo.getPageSize());
+        return criteria.list();
     }
     
     @Override
     public int getRowCount(ProjectInfo projectInfo)
     {
-        return findByCriteria(wrapCriterion(projectInfo)).size();
+        Criteria criteria = wrapCriterion(projectInfo);
+        List<UserInfo> list = criteria.list();
+        if (list != null)
+        {
+            return list.size();
+        }
+        return 0;
         
     }
     
-    private Criterion[] wrapCriterion(ProjectInfo projectInfo)
+    private Criteria wrapCriterion(ProjectInfo projectInfo)
     {
-        List<Criterion> list = new ArrayList<Criterion>();
+        Criteria criteria = getSession().createCriteria(ProjectInfo.class);
         if (projectInfo != null)
         {
             if (!StringUtils.isEmpty(projectInfo.getName()))
             {
-                Criterion criterion1 = Restrictions.like("name", "%" + projectInfo.getName() + "%");
-                list.add(criterion1);
+                criteria.add(Restrictions.like("name", "%" + projectInfo.getName() + "%"));
             }
             if (!StringUtils.isEmpty(projectInfo.getNumber()))
             {
-                Criterion criterion2 = Restrictions.eq("number", projectInfo.getNumber());
-                list.add(criterion2);
+                criteria.add(Restrictions.eq("number", projectInfo.getNumber()));
             }
-            if (!StringUtils.isEmpty(projectInfo.getDept().getName()))
+            if (null != projectInfo.getDept() && !StringUtils.isEmpty(projectInfo.getDept().getName()))
             {
-                Criterion criterion3 = Restrictions.like("pdept.name", "%" + projectInfo.getDept().getName() + "%");
-                list.add(criterion3);
+                criteria.createCriteria("dept").add(Restrictions.like("name", "%" + projectInfo.getDept().getName()
+                    + "%"));
+                
+            }
+            if (!StringUtils.isEmpty(projectInfo.getMajorType()))
+            {
+                criteria.add(Restrictions.eq("majorType", projectInfo.getMajorType()));
+            }
+            
+            if (!StringUtils.isEmpty(projectInfo.getValuationType()))
+            {
+                criteria.add(Restrictions.eq("valuationType", projectInfo.getValuationType()));
             }
             
             try
@@ -82,15 +99,13 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
                 {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Date startDateFrom = sdf.parse(projectInfo.getStartDateFrom());
-                    Criterion criterion4 = Restrictions.ge("startDate", new Timestamp(startDateFrom.getTime()));
-                    list.add(criterion4);
+                    criteria.add(Restrictions.ge("startDate", new Timestamp(startDateFrom.getTime())));
                 }
                 if (!StringUtils.isEmpty(projectInfo.getStartDateTo()))
                 {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Date startDateTo = sdf.parse(projectInfo.getStartDateTo());
-                    Criterion criterion5 = Restrictions.le("startDate", new Timestamp(startDateTo.getTime()));
-                    list.add(criterion5);
+                    criteria.add(Restrictions.le("startDate", new Timestamp(startDateTo.getTime())));
                 }
             }
             catch (ParseException e)
@@ -99,17 +114,6 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
                 e.printStackTrace();
             }
         }
-        
-        Criterion[] criterions = {};
-        if (list != null && list.size() > 0)
-        {
-            criterions = new Criterion[list.size()];
-            for (int i = 0; i < list.size(); i++)
-            {
-                criterions[i] = list.get(i);
-            }
-        }
-        
-        return criterions;
+        return criteria;
     }
 }
