@@ -27,10 +27,10 @@
 			<result>/projectManage/projectDetail.jsp</result>
 		</action>
 		<action name="addProjectStream" method="addProjectStream" class="projectStreamAction">
-			<result type="redirect-action">schProject.do??projectInfo.id=${projectID}</result>
+			<result type="redirect">schProject.do?projectInfo.id=${projectID}</result>
 		</action>
 		<action name="delProjectStream" method="delProjectStream" class="projectStreamAction">
-			<result type="redirect-action">schProject.do??projectInfo.id=${projectID}</result>
+			<result type="redirect">schProject.do?projectInfo.id=${projectID}</result>
 		</action>	
 	</package>
 </struts>

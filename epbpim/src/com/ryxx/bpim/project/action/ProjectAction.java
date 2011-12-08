@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.project.entity.ProjectInfo;
+import com.ryxx.bpim.project.entity.ProjectStream;
 import com.ryxx.bpim.project.service.ProjectService;
+import com.ryxx.bpim.project.service.ProjectStreamService;
 import com.ryxx.bpim.user.entity.AdminDept;
 import com.ryxx.bpim.user.entity.UserInfo;
 import com.ryxx.bpim.user.service.AdminDeptService;
@@ -32,6 +34,8 @@ public class ProjectAction extends ActionSupportBase
     private List<UserInfo> userInfoList;
     
     private UserInfoService userInfoService;
+    
+    private ProjectStreamService projectStreamService;
     
     private PageTools page;
     
@@ -70,8 +74,10 @@ public class ProjectAction extends ActionSupportBase
     {
         try
         {
-            
             projectInfo = projectService.findProjectInfo(projectInfo);
+            ProjectStream projectStream = new ProjectStream();
+            projectStream.setProjectID(projectInfo.getId());
+            projectInfo.setProjectStreams(projectStreamService.listProjectStream(projectStream));
         }
         catch (Exception e)
         {
@@ -84,7 +90,7 @@ public class ProjectAction extends ActionSupportBase
     public String preAddProjectInfo()
     {
         try
-        {            
+        {
             wrapDeptAndUserList();
         }
         catch (Exception e)
@@ -229,6 +235,16 @@ public class ProjectAction extends ActionSupportBase
         this.userInfoService = userInfoService;
     }
     
+    public ProjectStreamService getProjectStreamService()
+    {
+        return projectStreamService;
+    }
+    
+    public void setProjectStreamService(ProjectStreamService projectStreamService)
+    {
+        this.projectStreamService = projectStreamService;
+    }
+    
     public PageTools getPage()
     {
         return page;
@@ -238,4 +254,5 @@ public class ProjectAction extends ActionSupportBase
     {
         this.page = page;
     }
+    
 }
