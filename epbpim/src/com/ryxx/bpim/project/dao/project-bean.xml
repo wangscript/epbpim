@@ -19,7 +19,25 @@
 		<property name="userInfoService">
 			<ref local="com.ryxx.bpim.user.service.UserInfoService"/>
 		</property>
+		<property name="projectStreamService">
+			<ref local="com.ryxx.bpim.project.service.ProjectStreamService"/>
+		</property>
 	</bean>	
+	
+	<bean id="com.ryxx.bpim.project.dao.ProjectStreamDAO" class="com.ryxx.bpim.project.dao.ProjectStreamDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="com.ryxx.bpim.project.service.ProjectStreamService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.project.service.ProjectStreamService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.project.service.ProjectStreamService.target" class="com.ryxx.bpim.project.service.ProjectStreamServiceImpl">
+	</bean>
+	<bean id="projectAction" class="com.ryxx.bpim.project.action.ProjectStreamAction" scope="prototype">
+		<property name="projectStreamService">
+			<ref local="com.ryxx.bpim.project.service.ProjectStreamService"/>
+		</property>
+	</bean>	
+	
 	
 	<bean id="com.ryxx.bpim.user.service.AdminDeptService" parent="baseTransactionProxyCdm">
 		<property name="target" ref="com.ryxx.bpim.user.service.AdminDeptService.target" />
