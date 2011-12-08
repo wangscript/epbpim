@@ -178,7 +178,7 @@
 												<form action="delProjectStream.do" method="post" id='delProjectStream<s:property value="id" />'>											
 													<input type="hidden" name="projectStream.id" value='<s:property value="id" />' />
 													<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
-													<input type="button" onclick='delProjectStream("delProjectStream"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+													<input type="button" <s:if test="projectInfo.status == 2">disabled</s:if> onclick='delProjectStream("delProjectStream"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
 												</form>
 											</li>
 										</s:if>
@@ -187,59 +187,59 @@
 							</div>
 						</s:if>
 						
-						<s:if test="#request.addCost == true">
-						<h4 class="title">增加成本</h4>
-							<form action="addProjectStream.do" method="post">
-								<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
-								<input type="hidden" name="projectStream.type" value="1" />
-								<ul class="fullScreenUl">
-									<li class="width200Li"><label class="width6Lb">成本:</label>
-										<input class="width100Input" name="projectStream.money" id="projectStream.money"/>
-									</li>
-									<li class="width200Li"><label class="width6Lb">时间:</label>
-										<input class="Wdate width100Input" name="projectStream.streamDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-									</li>
-									<li class="width400Li"><label class="width6Lb">备注:</label>
-										<input class="width300Input" name="projectStream.comments""/>
-									</li>
-									<li class="width100Li"><input type="submit" id="addBonus"
-										class="mediumRightButton"
-										value="增加成本">
-									</li>
-								</ul>
-							</form>
-						</s:if>
-						
-						<s:if test="#request.addBonus == true">
-							<h4 class="title">增加奖金</h4>
-							<form action="addProjectStream.do" method="post">
-								<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
-								<input type="hidden" name="projectStream.type" value="2" />
-								<ul class="fullScreenUl">
-									<li class="width200Li"><label class="width6Lb">奖金:</label>
-										<input class="width100Input" name="projectStream.money" id="projectStream.money"/>
-									</li>
-									<li class="width200Li"><label class="width6Lb">时间:</label>
-										<input class="Wdate width100Input" name="projectStream.streamDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-									</li>
-									<li class="width400Li"><label class="width6Lb">备注:</label>
-										<input class="width300Input" name="projectStream.comments""/>
-									</li>
-									<li class="width100Li"><input type="submit" id="addBonus"
-										class="mediumRightButton"
-										value="增加奖金">
-									</li>
-								</ul>
-							</form>
-						</s:if>
-						
-						<s:if test="#request.closeProject = true">
-						<form action="closeProject.do" method="post">
-							<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>" />
-							<ul class="fullScreenUl">								
-								<li><input type="submit" id="closeProject" class="mediumRightButton" value="结项"></li>
-							</ul>
-						</form>
+						<s:if test="projectInfo.status != 2">
+							<s:if test="#request.addCost == true">
+								<h4 class="title">增加成本</h4>
+								<form action="addProjectStream.do" method="post">
+									<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
+									<input type="hidden" name="projectStream.type" value="1" />
+									<ul class="fullScreenUl">
+										<li class="width200Li"><label class="width6Lb">成本:</label>
+											<input class="width100Input" name="projectStream.money" id="projectStream.money"/>
+										</li>
+										<li class="width200Li"><label class="width6Lb">时间:</label>
+											<input class="Wdate width100Input" name="projectStream.streamDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+										</li>
+										<li class="width400Li"><label class="width6Lb">备注:</label>
+											<input class="width300Input" name="projectStream.comments""/>
+										</li>
+										<li class="width100Li">
+											<input type="submit" class="mediumRightButton" value="增加成本">
+										</li>
+									</ul>
+								</form>
+							</s:if>
+							
+							<s:if test="#request.addBonus == true">
+								<h4 class="title">增加奖金</h4>
+								<form action="addProjectStream.do" method="post">
+									<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
+									<input type="hidden" name="projectStream.type" value="2" />
+									<ul class="fullScreenUl">
+										<li class="width200Li"><label class="width6Lb">奖金:</label>
+											<input class="width100Input" name="projectStream.money" id="projectStream.money"/>
+										</li>
+										<li class="width200Li"><label class="width6Lb">时间:</label>
+											<input class="Wdate width100Input" name="projectStream.streamDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+										</li>
+										<li class="width400Li"><label class="width6Lb">备注:</label>
+											<input class="width300Input" name="projectStream.comments""/>
+										</li>
+										<li class="width100Li">
+											<input type="submit" class="mediumRightButton" value="增加奖金">
+										</li>
+									</ul>
+								</form>
+							</s:if>
+							
+							<s:if test="#request.closeProject = true">
+								<form action="closeProject.do" method="post">
+									<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>" />
+									<ul class="fullScreenUl">								
+										<li><input type="submit" id="closeProject" class="mediumRightButton" value="结项"></li>
+									</ul>
+								</form>
+							</s:if>
 						</s:if>
 					</div>
 					<div></div>
