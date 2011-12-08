@@ -62,6 +62,7 @@
 		<many-to-one name="submitter" class="com.ryxx.bpim.user.entity.UserInfo" column="STREAM_SUBMITTER"></many-to-one>
 		<property name="type" column="STREAM_TYPE" type="java.lang.Integer"></property>
 		<property name="money" column="MONEY" type="java.lang.Double"></property>
+		<property name="streamDate" column="STREAM_DATE" type="java.sql.Timestamp"></property>
 		<property name="comments" column="COMMENTS" type="java.lang.String"></property>
 	</class>
 </hibernate-mapping>
