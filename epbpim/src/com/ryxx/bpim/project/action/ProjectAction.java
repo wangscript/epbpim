@@ -105,6 +105,10 @@ public class ProjectAction extends ActionSupportBase
     {
         try
         {
+            UserInfo userinfo = new UserInfo();
+            userinfo.setId((Long)session.get(Constants.LOGIN_USER_ID));
+            projectInfo.setSubmitter(userinfo);
+            
             projectService.saveProjectInfo(projectInfo);
         }
         catch (Exception e)
@@ -134,6 +138,23 @@ public class ProjectAction extends ActionSupportBase
     {
         try
         {
+            projectService.updateProjectInfo(projectInfo);
+        }
+        catch (Exception e)
+        {
+            LOG.warn(e);
+            return ERROR;
+        }
+        
+        return SUCCESS;
+    }
+    
+    public String closeProjectInfo()
+    {
+        try
+        {
+            projectInfo = projectService.findProjectInfo(projectInfo);
+            projectInfo.setStatus("2");
             projectService.updateProjectInfo(projectInfo);
         }
         catch (Exception e)
