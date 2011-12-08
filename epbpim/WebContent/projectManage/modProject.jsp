@@ -28,6 +28,7 @@
 					<form id="modForm" action="modProject.do" method="post" onsubmit="return validate(this);">
 						<h4 class="title">项目基本信息</h4>
 						<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>"/>
+						<input type="hidden" name="projectInfo.submitter.id" value="<s:property value='projectInfo.submitter.id'/>"/>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
 								class="width350Input" name="projectInfo.name" value="<s:property value='projectInfo.name'/>"/>
