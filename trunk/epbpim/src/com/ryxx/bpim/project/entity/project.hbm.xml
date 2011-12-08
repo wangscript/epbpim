@@ -55,13 +55,13 @@
 	</class>	
 	
 	<class name="ProjectStream" table="PROJECT_STREAM">
-		<id name="id" column="ID" type="java.lang.Long">
+		<id name="id" column="PROJECT_STREAM_ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>
-		<property name="projectId" column="PROJECT_ID" type="java.lang.Long"></property>
-		<many-to-one name="submitter" class="com.ryxx.bpim.user.entity.UserInfo" column="submitter"></many-to-one>
-		<property name="streamType" column="STREAM_TYPE" type="java.lang.Integer"></property>
-		<property name="mondy" column="MONEY" type="java.lang.Double"></property>
+		<property name="projectID" column="PROJECT_ID" type="java.lang.Long"></property>
+		<many-to-one name="submitter" class="com.ryxx.bpim.user.entity.UserInfo" column="STREAM_SUBMITTER"></many-to-one>
+		<property name="type" column="STREAM_TYPE" type="java.lang.Integer"></property>
+		<property name="money" column="MONEY" type="java.lang.Double"></property>
 		<property name="comments" column="COMMENTS" type="java.lang.String"></property>
 	</class>
 </hibernate-mapping>
