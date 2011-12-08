@@ -149,8 +149,9 @@
 							}
 							
 						%>
-						<h4 class="title">成本/奖金信息</h4>
+						
 						<s:if test="projectInfo.projectStreams != null && projectInfo.projectStreams.size() > 0">
+							<h4 class="title">成本/奖金信息</h4>
 							<div class="searchResult" id="searchResult">
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label>成本/奖金</label></li>
