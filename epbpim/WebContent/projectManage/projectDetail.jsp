@@ -131,16 +131,16 @@
 							String userid = String.valueOf((Long)session.getAttribute(Constants.LOGIN_USER_ID));
 							List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE+Constants.LOGIN_USER_ID+userid);
 							for(AdminMenu menu:menus){
-								if(true ||menu.getId() == 34){
+								if(menu.getId() == 34){
 									request.setAttribute("addCost", true);
 								}
-								if(true || menu.getId() == 35){
+								if(menu.getId() == 35){
 									request.setAttribute("delCost", true);
 								}
-								if(true ||menu.getId() == 36){
+								if(menu.getId() == 36){
 									request.setAttribute("addBonus", true);
 								}
-								if(true ||menu.getId() == 37){
+								if(menu.getId() == 37){
 									request.setAttribute("delBonus", true);
 								}
 								if(menu.getId() == 38){
