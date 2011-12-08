@@ -3,6 +3,8 @@
  */
 package com.ryxx.bpim.project.entity;
 
+import java.sql.Timestamp;
+
 import com.ryxx.bpim.entity.VoBase;
 import com.ryxx.bpim.user.entity.UserInfo;
 
@@ -25,6 +27,10 @@ public class ProjectStream extends VoBase
     private int type;
     
     private double money;
+    
+    private Timestamp streamDate;
+    
+    private String streamDatePage;
     
     private String comments;
     
@@ -76,6 +82,26 @@ public class ProjectStream extends VoBase
     public void setMoney(double money)
     {
         this.money = money;
+    }
+    
+    public Timestamp getStreamDate()
+    {
+        return streamDate;
+    }
+    
+    public void setStreamDate(Timestamp streamDate)
+    {
+        this.streamDate = streamDate;
+    }
+    
+    public String getStreamDatePage()
+    {
+        return streamDatePage;
+    }
+    
+    public void setStreamDatePage(String streamDatePage)
+    {
+        this.streamDatePage = streamDatePage;
     }
     
     public String getComments()
