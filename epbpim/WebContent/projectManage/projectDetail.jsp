@@ -233,13 +233,12 @@
 						</s:if>
 						
 						<s:if test="#request.closeProject = true">
-						<ul class="fullScreenUl">
-							<li><input type="button" id="closeProject"
-								class="mediumRightButton" 
-								onclick="closeProject();" 
-								value="结项">
-							</li>
-						</ul>
+						<form action="closeProject.do" method="post">
+							<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>" />
+							<ul class="fullScreenUl">								
+								<li><input type="submit" id="closeProject" class="mediumRightButton" value="结项"></li>
+							</ul>
+						</form>
 						</s:if>
 					</div>
 					<div></div>
