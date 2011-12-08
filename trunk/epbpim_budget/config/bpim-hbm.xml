@@ -190,6 +190,14 @@
 		<many-to-one name="provinceCity" class="ProvinceCity" column="PERIODICAL_PROVICE"></many-to-one>
 		<many-to-one name="major" class="Major" column="PERIODICAL_TYPE"></many-to-one>
 	</class>
+	<class name="Book" table="BOOK">
+		<id name="id" column="ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="fileName" column="FILE_NAME" type="java.lang.String"></property>
+		<property name="bookRealName" column="BOOK_REAL_NAME" type="java.lang.String"></property>
+		<many-to-one name="provinceCity" class="ProvinceCity" column="BOOK_PROVICE"></many-to-one>
+	</class>
 	<class name="GuidePrice" table="GUIDE_PRICE">
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>

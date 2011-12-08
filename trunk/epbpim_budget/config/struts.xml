@@ -23,7 +23,7 @@
 	<constant name="struts.objectFactory" value="spring" />
 	
 	<!-- 文件上传的大小 -->
-	<constant name="struts.multipart.maxSize" value="10000000" />
+	<constant name="struts.multipart.maxSize" value="10000000000" />
 	
 	<!-- 文件上传的临时目录 -->
 	<constant name="struts.multipart.saveDir" value="/tmp" />

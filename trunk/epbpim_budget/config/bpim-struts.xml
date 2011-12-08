@@ -120,6 +120,10 @@
 			<result type="redirect">preUploadPricePackageFile.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>
 		</action>
+		<action name="uploadBook" method="uploadBook" class="bookAction">
+			<result type="redirect">preUploadBook.do?msg=${msg}</result>
+			<interceptor-ref name="manager"/>
+		</action>
 		<action name="preAddNews">
 			<result>/jsp/admin/addNews.jsp</result>
 			<interceptor-ref name="manager"/>
@@ -152,6 +156,10 @@
 			<result>/jsp/admin/uploadPricePackageFile.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>	
+		<action name="preUploadBook" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
+			<result>/jsp/admin/uploadBook.jsp</result>
+			<interceptor-ref name="manager"/>
+		</action>
 	</package>
 	<package name="bpim-enterpriseinfo" namespace="/admin" extends="bpim-default">
 		<action name="listEnterpriseInfo" method="list" class="enterpriseInfoAction">
@@ -251,6 +259,20 @@
 	<package name="bpim-viewPeriodicalFile" namespace="/main" extends="bpim-default">
 		<action name="viewPeriodicalFile" method="viewPeriodicalFile" class="periodicalFileAction">
 			<result>/jsp/main/simple/showPeriodicalFileDetail.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-searchBook" namespace="/main" extends="bpim-default">
+		<action name="searchBook" method="searchBook" class="bookAction">
+			<result>/jsp/main/simple/listBook.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-viewBook" namespace="/main" extends="bpim-default">
+		<action name="viewBook" method="viewBook" class="bookAction">
+			<result>/jsp/main/simple/showBookDetail.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>

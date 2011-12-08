@@ -202,6 +202,22 @@
 		<property name="target" ref="com.ryxx.bpim.service.PeriodicalFileService.target" />
 	</bean>
 	<bean id="com.ryxx.bpim.service.PeriodicalFileService.target" class="com.ryxx.bpim.service.PeriodicalFileServiceImpl"></bean>
+	<!-- 专业书籍  -->
+	<bean id="com.ryxx.bpim.dao.BookDAO" class="com.ryxx.bpim.dao.BookDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="bookAction" class="com.ryxx.bpim.web.action.admin.BookAction" scope="prototype">
+		<property name="service">
+			<ref local="com.ryxx.bpim.service.BookService"/>
+		</property>
+		<property name="provinceCityService">
+			<ref local="com.ryxx.bpim.service.ProvinceCityService"/>
+		</property>
+	</bean>
+	<bean id="com.ryxx.bpim.service.BookService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.service.BookService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.service.BookService.target" class="com.ryxx.bpim.service.BookServiceImpl"></bean>
 	<!-- 价格包 -->
 	<bean id="com.ryxx.bpim.dao.PricePackageFileDAO" class="com.ryxx.bpim.dao.PricePackageFileDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
