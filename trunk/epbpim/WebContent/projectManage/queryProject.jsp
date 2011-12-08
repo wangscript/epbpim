@@ -94,7 +94,7 @@
 					<li class="width50Li">
 						<form action="preModProject.do" method="post" id='preModProject<s:property value="id" />'>
 							<input type="hidden" name="projectInfo.id" value='<s:property value="id" />' />
-							<input type="button" onclick='preModProject("preModProject"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
+							<input type="button" <s:if test="status == '2'">disabled</s:if> onclick='preModProject("preModProject"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
 						</form>
 					</li>
 					<li class="width50Li">
