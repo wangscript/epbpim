@@ -153,7 +153,7 @@ public class ProjectAction extends ActionSupportBase
     {
         try
         {
-            projectInfo = projectService.findProjectInfo(projectInfo);
+            projectInfo = projectService.fetchById(projectInfo.getId());            
             projectInfo.setStatus("2");
             projectService.updateProjectInfo(projectInfo);
         }
