@@ -192,7 +192,7 @@
 								<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
 								<input type="hidden" name="projectStream.type" value="1" />
 								<ul class="fullScreenUl">
-									<li class="width200Li"><label class="width6Lb">奖金:</label>
+									<li class="width200Li"><label class="width6Lb">成本:</label>
 										<input class="width100Input" name="projectStream.money" id="projectStream.money"/>
 									</li>
 									<li class="width200Li"><label class="width6Lb">时间:</label>
