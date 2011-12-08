@@ -125,22 +125,23 @@
 							</li>
 							<li class="width500Li"><label class="width6Lb">开票金额:</label><s:property value='projectInfo.invoicePrice' />
 							</li>
-						</ul>
+						</ul>						
+						
 						<%
 							String userid = String.valueOf((Long)session.getAttribute(Constants.LOGIN_USER_ID));
 							List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE+Constants.LOGIN_USER_ID+userid);
 							for(AdminMenu menu:menus){
-								if(menu.getId() == 34){
+								if(true ||menu.getId() == 34){
 									request.setAttribute("addCost", true);
 								}
-								if(menu.getId() == 35){
+								if(true || menu.getId() == 35){
 									request.setAttribute("delCost", true);
 								}
-								if(menu.getId() == 36){
+								if(true ||menu.getId() == 36){
 									request.setAttribute("addBonus", true);
 								}
-								if(menu.getId() == 37){
-									request.setAttribute("addBonus", true);
+								if(true ||menu.getId() == 37){
+									request.setAttribute("delBonus", true);
 								}
 								if(menu.getId() == 38){
 									request.setAttribute("closeProject", true);
@@ -148,50 +149,87 @@
 							}
 							
 						%>
+						<h4 class="title">成本/奖金信息</h4>
+						<s:if test="projectInfo.projectStreams != null && projectInfo.projectStreams.size() > 0">
+							<div class="searchResult" id="searchResult">
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label>成本/奖金</label></li>
+									<li class="width200Li"><label>金额</label></li>
+									<li class="width200Li"><label>时间</label></li>
+									<li class="width200Li"><label>备注</label></li>
+									<s:if test=" #request.delCost == true || #request.delBonus == true">
+										<li class="width50Li"><label><s:text name="Common.Delete" /></label></li>
+									</s:if>
+								</ul>
+								<s:iterator value="projectInfo.projectStreams" status="st">
+									<ul class="fullScreenUl">
+										<s:if test="type == 1">
+											<li class="width200Li"><label>成本</label></li>
+										</s:if>
+										<s:else>
+											<li class="width200Li"><label>奖金</label></li>
+										</s:else>
+										<li class="width200Li"><s:property value="money" /></li>
+										<li class="width200Li"><s:date name='streamDate' format='yyyy-MM-dd' /></li>
+										<li class="width200Li"><s:property value="comments" /></li>
+										<s:if test="(#request.delCost == true && type == 1) || (#request.delBonus == true && type == 2)">
+											<li class="width50Li">
+												<form action="delProjectStream.do" method="post" id='delProjectStream<s:property value="id" />'>											
+													<input type="hidden" name="projectStream.id" value='<s:property value="id" />' />
+													<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
+													<input type="button" onclick='delProjectStream("delProjectStream"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+												</form>
+											</li>
+										</s:if>
+									</ul>
+								</s:iterator>
+							</div>
+						</s:if>
+						
 						<s:if test="#request.addCost == true">
 						<h4 class="title">增加成本</h4>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">成本:</label> <input
-								class="width100Input"
-								name="cost" id="cost"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">时间:</label> <input
-								class="Wdate width100Input" name="projectInfo.reportDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="costDate"/>
-							</li>
-							<li class="width400Li"><label class="width6Lb">备注:</label> <input
-								class="width300Input"
-								name="cost" id="costComments"/>
-							</li>
-							<li class="width100Li"><input type="button" id="addCost"
-								class="mediumRightButton" 
-								onclick="addCost();" 
-								value="增加成本">
-							</li>
-						</ul>
+							<form action="addProjectStream.do" method="post">
+								<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
+								<input type="hidden" name="projectStream.type" value="1" />
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">奖金:</label>
+										<input class="width100Input" name="projectStream.money" id="projectStream.money"/>
+									</li>
+									<li class="width200Li"><label class="width6Lb">时间:</label>
+										<input class="Wdate width100Input" name="projectStream.streamDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+									</li>
+									<li class="width400Li"><label class="width6Lb">备注:</label>
+										<input class="width300Input" name="projectStream.comments""/>
+									</li>
+									<li class="width100Li"><input type="submit" id="addBonus"
+										class="mediumRightButton"
+										value="增加成本">
+									</li>
+								</ul>
+							</form>
 						</s:if>
 						
 						<s:if test="#request.addBonus == true">
-						<h4 class="title">增加奖金</h4>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">奖金:</label> <input
-								class="width100Input"
-								name="bonus" id="bonus"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">时间:</label> <input
-								class="Wdate width100Input" name="projectInfo.reportDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="bonusDate"/>
-							</li>
-							<li class="width400Li"><label class="width6Lb">备注:</label> <input
-								class="width300Input"
-								name="bonusComments" id="bonusComments"/>
-							</li>
-							<li class="width100Li"><input type="button" id="addBonus"
-								class="mediumRightButton" 
-								onclick="addBonus();" 
-								value="增加奖金">
-							</li>
-						</ul>
+							<h4 class="title">增加奖金</h4>
+							<form action="addProjectStream.do" method="post">
+								<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
+								<input type="hidden" name="projectStream.type" value="2" />
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">奖金:</label>
+										<input class="width100Input" name="projectStream.money" id="projectStream.money"/>
+									</li>
+									<li class="width200Li"><label class="width6Lb">时间:</label>
+										<input class="Wdate width100Input" name="projectStream.streamDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+									</li>
+									<li class="width400Li"><label class="width6Lb">备注:</label>
+										<input class="width300Input" name="projectStream.comments""/>
+									</li>
+									<li class="width100Li"><input type="submit" id="addBonus"
+										class="mediumRightButton"
+										value="增加奖金">
+									</li>
+								</ul>
+							</form>
 						</s:if>
 						
 						<s:if test="#request.closeProject = true">
@@ -214,12 +252,11 @@
 		<jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
- 	function addContract(){
- 		document.getElementById("contract2").style.display="block";
- 	}
- 	function removeContract(id){
- 		document.getElementById(id).style.display="none";
- 	}
+ 	function delProjectStream(id){
+		if(confirm('<s:text name="AdminRole.IfDelete" />')){
+			document.getElementById(id).submit();
+		}
+	}
 
 </script>
 </html>
