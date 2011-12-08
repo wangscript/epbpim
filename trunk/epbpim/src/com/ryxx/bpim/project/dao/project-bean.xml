@@ -32,7 +32,7 @@
 	</bean>
 	<bean id="com.ryxx.bpim.project.service.ProjectStreamService.target" class="com.ryxx.bpim.project.service.ProjectStreamServiceImpl">
 	</bean>
-	<bean id="projectAction" class="com.ryxx.bpim.project.action.ProjectStreamAction" scope="prototype">
+	<bean id="projectStreamAction" class="com.ryxx.bpim.project.action.ProjectStreamAction" scope="prototype">
 		<property name="projectStreamService">
 			<ref local="com.ryxx.bpim.project.service.ProjectStreamService"/>
 		</property>
