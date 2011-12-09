@@ -52,6 +52,7 @@ public class ProjectAction extends ActionSupportBase
             PageTools page = new PageTools(pageNo, pageSize);
             projectInfo.setRowCount(pageNo);
             projectInfo.setPageSize(pageSize);
+            dealwithQueryType(projectInfo);
             projectInfoList = projectService.listProjectInfo(projectInfo, page);
             if (projectInfoList != null && projectInfoList.size() > 0)
             {
@@ -153,7 +154,7 @@ public class ProjectAction extends ActionSupportBase
     {
         try
         {
-            projectInfo = projectService.fetchById(projectInfo.getId());            
+            projectInfo = projectService.fetchById(projectInfo.getId());
             projectInfo.setStatus("2");
             projectService.updateProjectInfo(projectInfo);
         }
@@ -182,8 +183,34 @@ public class ProjectAction extends ActionSupportBase
     
     private void wrapDeptAndUserList()
     {
-        adminDeptList = adminDeptService.findAll();
         userInfoList = userInfoService.findAll();
+        UserInfo userInfo = userInfoService.fetchById((Long)session.get(Constants.LOGIN_USER_ID));
+        adminDeptList = userInfo.getDepts();
+    }
+    
+    private void dealwithQueryType(ProjectInfo projectInfo)
+    {
+        if ("1".equals(projectInfo.getQueryType()))
+        {
+            long userID = (Long)session.get(Constants.LOGIN_USER_ID);
+            UserInfo userInfo = new UserInfo();
+            userInfo.setId(userID);
+            projectInfo.setSubmitter(userInfo);
+        }
+        else if ("2".equals(projectInfo.getQueryType()))
+        {
+            UserInfo userInfo = userInfoService.fetchById((Long)session.get(Constants.LOGIN_USER_ID));
+            StringBuffer strb = new StringBuffer();
+            for (AdminDept adminDept : userInfo.getDepts())
+            {
+                strb.append(adminDept.getId()).append(",");
+            }
+            if (strb.length() > 0)
+            {
+                strb.deleteCharAt(strb.length() - 1);
+            }
+            projectInfo.setDeptIDs(strb.toString());
+        }
     }
     
     public ProjectInfo getProjectInfo()
