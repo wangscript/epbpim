@@ -29,6 +29,7 @@
 <h3 class="title">项目管理</h3>
 <form id="queryForm" action="schProjectList.do" method="post">
 	<div id="searchCondition">
+		<input type="hidden" name="projectInfo.queryType" id="projectInfo.queryType" value="<s:property value='projectInfo.queryType'/>"/>
 		<ul class="fullScreenUl">
 			<li class="width400Li"><label class="width4Lb">项目名称:</label>
 			<input class="width300Input" name="projectInfo.name" id="projectInfo.name" value="<s:property value='projectInfo.name'/>"/></li>
