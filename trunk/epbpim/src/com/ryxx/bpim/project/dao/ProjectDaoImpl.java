@@ -69,6 +69,24 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
         Criteria criteria = getSession().createCriteria(ProjectInfo.class);
         if (projectInfo != null)
         {
+            
+            if (!StringUtils.isEmpty(projectInfo.getDeptIDs()))
+            {
+                Long[] deptIDs = new Long[projectInfo.getDeptIDs().split(",").length];
+                for (int i = 0; i < projectInfo.getDeptIDs().split(",").length; i++)
+                {
+                    deptIDs[i] = Long.valueOf(projectInfo.getDeptIDs().split(",")[i]);
+                }
+                
+                criteria.createCriteria("dept").add(Restrictions.in("id", deptIDs));
+            }
+            
+            if (null != projectInfo.getSubmitter() && 0 != projectInfo.getSubmitter().getId())
+            {
+                criteria.createCriteria("submitter").add(Restrictions.eq("id", projectInfo.getSubmitter().getId()));
+                
+            }
+            
             if (!StringUtils.isEmpty(projectInfo.getName()))
             {
                 criteria.add(Restrictions.like("name", "%" + projectInfo.getName() + "%"));
