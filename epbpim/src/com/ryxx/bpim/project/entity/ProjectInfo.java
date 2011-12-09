@@ -117,6 +117,8 @@ public class ProjectInfo extends VoBase
     
     private String startDateTo;
     
+    private String queryType;
+    
     public Long getId()
     {
         return id;
@@ -629,5 +631,15 @@ public class ProjectInfo extends VoBase
     public void setStartDateTo(String startDateTo)
     {
         this.startDateTo = startDateTo;
+    }
+    
+    public String getQueryType()
+    {
+        return queryType;
+    }
+    
+    public void setQueryType(String queryType)
+    {
+        this.queryType = queryType;
     }
 }
