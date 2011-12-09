@@ -119,6 +119,8 @@ public class ProjectInfo extends VoBase
     
     private String queryType;
     
+    private String deptIDs;
+    
     public Long getId()
     {
         return id;
@@ -641,5 +643,15 @@ public class ProjectInfo extends VoBase
     public void setQueryType(String queryType)
     {
         this.queryType = queryType;
+    }
+    
+    public String getDeptIDs()
+    {
+        return deptIDs;
+    }
+    
+    public void setDeptIDs(String deptIDs)
+    {
+        this.deptIDs = deptIDs;
     }
 }
