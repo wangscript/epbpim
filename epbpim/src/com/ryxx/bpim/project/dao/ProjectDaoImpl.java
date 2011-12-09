@@ -69,8 +69,19 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
         Criteria criteria = getSession().createCriteria(ProjectInfo.class);
         if (projectInfo != null)
         {
-            
-            if (!StringUtils.isEmpty(projectInfo.getDeptIDs()))
+            if (!StringUtils.isEmpty(projectInfo.getDeptIDs()) && null != projectInfo.getDept()
+                && !StringUtils.isEmpty(projectInfo.getDept().getName()))
+            {
+                Long[] deptIDs = new Long[projectInfo.getDeptIDs().split(",").length];
+                for (int i = 0; i < projectInfo.getDeptIDs().split(",").length; i++)
+                {
+                    deptIDs[i] = Long.valueOf(projectInfo.getDeptIDs().split(",")[i]);
+                }
+                criteria.createCriteria("dept")
+                    .add(Restrictions.in("id", deptIDs))
+                    .add(Restrictions.like("name", "%" + projectInfo.getDept().getName() + "%"));
+            }
+            else if (!StringUtils.isEmpty(projectInfo.getDeptIDs()))
             {
                 Long[] deptIDs = new Long[projectInfo.getDeptIDs().split(",").length];
                 for (int i = 0; i < projectInfo.getDeptIDs().split(",").length; i++)
@@ -79,6 +90,12 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
                 }
                 
                 criteria.createCriteria("dept").add(Restrictions.in("id", deptIDs));
+            }
+            else if (null != projectInfo.getDept() && !StringUtils.isEmpty(projectInfo.getDept().getName()))
+            {
+                criteria.createCriteria("dept").add(Restrictions.like("name", "%" + projectInfo.getDept().getName()
+                    + "%"));
+                
             }
             
             if (null != projectInfo.getSubmitter() && 0 != projectInfo.getSubmitter().getId())
@@ -95,12 +112,7 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
             {
                 criteria.add(Restrictions.eq("number", projectInfo.getNumber()));
             }
-            if (null != projectInfo.getDept() && !StringUtils.isEmpty(projectInfo.getDept().getName()))
-            {
-                criteria.createCriteria("dept").add(Restrictions.like("name", "%" + projectInfo.getDept().getName()
-                    + "%"));
-                
-            }
+            
             if (!StringUtils.isEmpty(projectInfo.getMajorType()))
             {
                 criteria.add(Restrictions.eq("majorType", projectInfo.getMajorType()));
