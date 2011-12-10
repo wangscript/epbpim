@@ -121,6 +121,42 @@ public class ProjectInfo extends VoBase
     
     private String deptIDs;
     
+    //招标代理
+    private String proxyInvest;			  //总投资
+    private String proxyQuantity;		  //建安量
+    private String proxyBiddingAmount;	  //中标金额
+    private Timestamp proxyConsult;       //征询单日期
+    private Timestamp proxyStartDate;            //代理开始日
+    private Timestamp proxyOpenEvalDate;         //开、评标日
+    private String proxyEvaluate;		  //评价
+    private Timestamp proxyArchiveDate;	      //归档日期
+    private String proxyBiddingIdentity;	  //中标书编号
+    private String proxyBiddingSend;		  //中标书发出
+    private String proxyArchiveRecipient;	  //档案接收人
+    
+    //投资监理
+    private String supervisorInvest;         //总投资
+    private String supervisorQuantity;		 //建安量
+    private String supervisorOutline;		 //投资监理大纲及成果
+    private Timestamp supervisorStartDate;		 //开始日
+    private Timestamp supervisorFinishDate;	 //实际完成日
+    private Timestamp supervisorArchiveDate;	 //归档日期
+    private String supervisorConsultOne;	 //征询平均价1
+    private String supervisorConsultTwo;	 //征询评价2
+    private String supervisorArchiveRecipient; //档案接收人
+    
+    //工程咨询
+    private String consultInvest;			//总投资
+    private String consultQuantity;  		//建安量
+    private String consultResultContent;	//咨询成果及内容
+    private Timestamp consultAnnounceDate;		//发布日
+    private Timestamp consultStartDate;		//咨询开始日
+    private Timestamp consultFinishDate;		//咨询完成日
+    private Timestamp consultArchiveDate;		//归档日期
+    private Timestamp consultReviewDate;		//评审日期
+    private String consultExpertList;		//专家名单
+    private String consultArchiveRecipient; //档案接收人
+    
     public Long getId()
     {
         return id;
@@ -654,4 +690,244 @@ public class ProjectInfo extends VoBase
     {
         this.deptIDs = deptIDs;
     }
+
+	public String getProxyInvest() {
+		return proxyInvest;
+	}
+
+	public void setProxyInvest(String proxyInvest) {
+		this.proxyInvest = proxyInvest;
+	}
+
+	public String getProxyQuantity() {
+		return proxyQuantity;
+	}
+
+	public void setProxyQuantity(String proxyQuantity) {
+		this.proxyQuantity = proxyQuantity;
+	}
+
+	public String getProxyBiddingAmount() {
+		return proxyBiddingAmount;
+	}
+
+	public void setProxyBiddingAmount(String proxyBiddingAmount) {
+		this.proxyBiddingAmount = proxyBiddingAmount;
+	}
+
+	public Timestamp getProxyConsult() {
+		return proxyConsult;
+	}
+
+	public void setProxyConsult(Timestamp proxyConsult) {
+		this.proxyConsult = proxyConsult;
+	}
+
+	public Timestamp getProxyStartDate() {
+		return proxyStartDate;
+	}
+
+	public void setProxyStartDate(Timestamp proxyStartDate) {
+		this.proxyStartDate = proxyStartDate;
+	}
+
+	public Timestamp getProxyOpenEvalDate() {
+		return proxyOpenEvalDate;
+	}
+
+	public void setProxyOpenEvalDate(Timestamp proxyOpenEvalDate) {
+		this.proxyOpenEvalDate = proxyOpenEvalDate;
+	}
+
+	public String getProxyEvaluate() {
+		return proxyEvaluate;
+	}
+
+	public void setProxyEvaluate(String proxyEvaluate) {
+		this.proxyEvaluate = proxyEvaluate;
+	}
+
+	public Timestamp getProxyArchiveDate() {
+		return proxyArchiveDate;
+	}
+
+	public void setProxyArchiveDate(Timestamp proxyArchiveDate) {
+		this.proxyArchiveDate = proxyArchiveDate;
+	}
+
+	public String getProxyBiddingIdentity() {
+		return proxyBiddingIdentity;
+	}
+
+	public void setProxyBiddingIdentity(String proxyBiddingIdentity) {
+		this.proxyBiddingIdentity = proxyBiddingIdentity;
+	}
+
+	public String getProxyBiddingSend() {
+		return proxyBiddingSend;
+	}
+
+	public void setProxyBiddingSend(String proxyBiddingSend) {
+		this.proxyBiddingSend = proxyBiddingSend;
+	}
+
+	public String getProxyArchiveRecipient() {
+		return proxyArchiveRecipient;
+	}
+
+	public void setProxyArchiveRecipient(String proxyArchiveRecipient) {
+		this.proxyArchiveRecipient = proxyArchiveRecipient;
+	}
+
+	public String getSupervisorInvest() {
+		return supervisorInvest;
+	}
+
+	public void setSupervisorInvest(String supervisorInvest) {
+		this.supervisorInvest = supervisorInvest;
+	}
+
+	public String getSupervisorQuantity() {
+		return supervisorQuantity;
+	}
+
+	public void setSupervisorQuantity(String supervisorQuantity) {
+		this.supervisorQuantity = supervisorQuantity;
+	}
+
+	public String getSupervisorOutline() {
+		return supervisorOutline;
+	}
+
+	public void setSupervisorOutline(String supervisorOutline) {
+		this.supervisorOutline = supervisorOutline;
+	}
+
+	public Timestamp getSupervisorStartDate() {
+		return supervisorStartDate;
+	}
+
+	public void setSupervisorStartDate(Timestamp supervisorStartDate) {
+		this.supervisorStartDate = supervisorStartDate;
+	}
+
+	public Timestamp getSupervisorFinishDate() {
+		return supervisorFinishDate;
+	}
+
+	public void setSupervisorFinishDate(Timestamp supervisorFinishDate) {
+		this.supervisorFinishDate = supervisorFinishDate;
+	}
+
+	public Timestamp getSupervisorArchiveDate() {
+		return supervisorArchiveDate;
+	}
+
+	public void setSupervisorArchiveDate(Timestamp supervisorArchiveDate) {
+		this.supervisorArchiveDate = supervisorArchiveDate;
+	}
+
+	public String getSupervisorConsultOne() {
+		return supervisorConsultOne;
+	}
+
+	public void setSupervisorConsultOne(String supervisorConsultOne) {
+		this.supervisorConsultOne = supervisorConsultOne;
+	}
+
+	public String getSupervisorConsultTwo() {
+		return supervisorConsultTwo;
+	}
+
+	public void setSupervisorConsultTwo(String supervisorConsultTwo) {
+		this.supervisorConsultTwo = supervisorConsultTwo;
+	}
+
+	public String getSupervisorArchiveRecipient() {
+		return supervisorArchiveRecipient;
+	}
+
+	public void setSupervisorArchiveRecipient(String supervisorArchiveRecipient) {
+		this.supervisorArchiveRecipient = supervisorArchiveRecipient;
+	}
+
+	public String getConsultInvest() {
+		return consultInvest;
+	}
+
+	public void setConsultInvest(String consultInvest) {
+		this.consultInvest = consultInvest;
+	}
+
+	public String getConsultQuantity() {
+		return consultQuantity;
+	}
+
+	public void setConsultQuantity(String consultQuantity) {
+		this.consultQuantity = consultQuantity;
+	}
+
+	public String getConsultResultContent() {
+		return consultResultContent;
+	}
+
+	public void setConsultResultContent(String consultResultContent) {
+		this.consultResultContent = consultResultContent;
+	}
+
+	public Timestamp getConsultAnnounceDate() {
+		return consultAnnounceDate;
+	}
+
+	public void setConsultAnnounceDate(Timestamp consultAnnounceDate) {
+		this.consultAnnounceDate = consultAnnounceDate;
+	}
+
+	public Timestamp getConsultStartDate() {
+		return consultStartDate;
+	}
+
+	public void setConsultStartDate(Timestamp consultStartDate) {
+		this.consultStartDate = consultStartDate;
+	}
+
+	public Timestamp getConsultFinishDate() {
+		return consultFinishDate;
+	}
+
+	public void setConsultFinishDate(Timestamp consultFinishDate) {
+		this.consultFinishDate = consultFinishDate;
+	}
+
+	public Timestamp getConsultArchiveDate() {
+		return consultArchiveDate;
+	}
+
+	public void setConsultArchiveDate(Timestamp consultArchiveDate) {
+		this.consultArchiveDate = consultArchiveDate;
+	}
+
+	public Timestamp getConsultReviewDate() {
+		return consultReviewDate;
+	}
+
+	public void setConsultReviewDate(Timestamp consultReviewDate) {
+		this.consultReviewDate = consultReviewDate;
+	}
+
+	public String getConsultExpertList() {
+		return consultExpertList;
+	}
+
+	public void setConsultExpertList(String consultExpertList) {
+		this.consultExpertList = consultExpertList;
+	}
+
+	public String getConsultArchiveRecipient() {
+		return consultArchiveRecipient;
+	}
+
+	public void setConsultArchiveRecipient(String consultArchiveRecipient) {
+		this.consultArchiveRecipient = consultArchiveRecipient;
+	}
 }
