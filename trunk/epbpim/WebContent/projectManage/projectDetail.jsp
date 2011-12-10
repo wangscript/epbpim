@@ -10,8 +10,42 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>项目详情</title>
+<script type="text/javascript">
+	function setSelectValue()
+	{
+		changeProjectType();
+	}
+	function changeProjectType() {
+ 		var type = document.getElementById("projectType").innerHTML;
+ 		var dispDiv1 = document.getElementById("projectType1");
+ 		var dispDiv2 = document.getElementById("projectType2");
+ 		var dispDiv3 = document.getElementById("projectType3");
+ 		var dispDiv4 = document.getElementById("projectType4");
+ 		if(type == "投资监理") {
+ 			dispDiv1.style.display="none";
+ 			dispDiv2.style.display="none";
+ 			dispDiv3.style.display="block";
+ 			dispDiv4.style.display="none";
+ 		} else if(type == "招标代理") {
+ 			dispDiv1.style.display="none";
+ 			dispDiv2.style.display="block";
+ 			dispDiv3.style.display="none";
+ 			dispDiv4.style.display="none";
+ 		} else if(type == "工程咨询") {
+ 			dispDiv1.style.display="none";
+ 			dispDiv2.style.display="none";
+ 			dispDiv3.style.display="none";
+ 			dispDiv4.style.display="block";
+ 		} else {
+ 			dispDiv1.style.display="block";
+ 			dispDiv2.style.display="none";
+ 			dispDiv3.style.display="none";
+ 			dispDiv4.style.display="none";
+ 		}
+ 	}
+</script>
 </head>
-<body>
+<body onload="changeProjectType()">
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
 		<div class="content">
 			<div class="content_resize">
@@ -78,7 +112,7 @@
 						</ul>
 						
 						<ul class="fullScreenUl" id="addNewMember">
-							<li class="width200Li" onLoad="alert('sdf');"><label class="width6Lb">项目性质:</label><s:property value='projectInfo.projectType' />
+							<li class="width200Li"><label class="width6Lb">项目性质:</label><label id="projectType"><s:property value='projectInfo.projectType'/></label>
 							</li>
 						</ul>
 						<div id="projectType1">

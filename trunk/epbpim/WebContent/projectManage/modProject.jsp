@@ -9,8 +9,19 @@
 <script type="text/javascript">
 	function setSelectValue()
 	{
-		document.getElementById("projectInfo.majorType").value="<s:property value='projectInfo.majorType'/>";
-		document.getElementById("projectInfo.valuationType").value="<s:property value='projectInfo.valuationType'/>";		
+		document.getElementById("majorType").value="<s:property value='projectInfo.majorType'/>";
+		document.getElementById("valuationType").value="<s:property value='projectInfo.valuationType'/>";	
+		var proType = document.getElementById("projectType");
+		if(proType.value == "投资监理") {
+			proType.options[3].selected = true;
+		} else if(proType.value == "招标代理") {
+			proType.options[2].selected = true;
+		} else if(proType.value == "工程咨询") {
+			proType.options[4].selected = true;
+		} else {alert(1);
+			proType.options[1].selected = true;
+		}
+		changeProjectType();
 	}
 	function modProjectInfo(statusValue){
 		document.getElementById("projectInfo.status").value=statusValue;
@@ -167,192 +178,192 @@
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">送审价:</label> <input
 								class="width100Input"
-								name="projectInfo.judgePrice1"/>
+								name="projectInfo.judgePrice1" value="<s:property value='projectInfo.judgePrice1'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">审定价:</label> <input
 								class="width100Input"
-								name="projectInfo.judgePrice2"/>
+								name="projectInfo.judgePrice2" value="<s:date name='projectInfo.judgePrice2' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">审定天数:</label> <input
 								class="width100Input"
-								name="projectInfo.judgeDays"/>
+								name="projectInfo.judgeDays" value="<s:date name='projectInfo.judgeDays' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">报告日/文号:</label> <input
 								class="Wdate width100Input" name="projectInfo.reportDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.reportDate' format='yyyy-MM-dd' />"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">核增额:</label> <input
 								class="width100Input"
-								name="projectInfo.plusPrice"/>
+								name="projectInfo.plusPrice" value="<s:property value='projectInfo.plusPrice'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">核减额:</label> <input
 								class="width100Input"
-								name="projectInfo.minusPrice"/>
+								name="projectInfo.minusPrice" value="<s:property value='projectInfo.minusPrice'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">征询日/评价:</label> <input
 								class="width100Input"
-								name="projectInfo.comments"/>
+								name="projectInfo.comments" value="<s:property value='projectInfo.comments'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
 								class="Wdate width100Input" name="projectInfo.achiveDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.achiveDatePage' format='yyyy-MM-dd' />"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">报告编号:</label> <input
 								class="width100Input"
-								name="projectInfo.reportNumber"/>
+								name="projectInfo.reportNumber" value="<s:property value='projectInfo.reportNumber'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">总师审核:</label> <input
 								class="width100Input"
-								name="projectInfo.masterJudgeComments"/>
+								name="projectInfo.masterJudgeComments" value="<s:property value='projectInfo.masterJudgeComments'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
 								class="width100Input"
-								name="projectInfo.achiveReceiver"/>
+								name="projectInfo.achiveReceiver" value="<s:property value='projectInfo.achiveReceiver'/>"/>
 							</li>
 						</ul></div>
 						<div id="projectType2" style="display:none;">
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
 								class="width100Input"
-								name="projectInfo.proxyInvest"/>
+								name="projectInfo.proxyInvest" value="<s:property value='projectInfo.proxyInvest'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">建安量:</label> <input
 								class="width100Input"
-								name="projectInfo.proxyQuantity"/>
+								name="projectInfo.proxyQuantity" value="<s:property value='projectInfo.proxyQuantity'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">中标金额:</label> <input
 								class="width100Input"
-								name="projectInfo.proxyBiddingAmount"/>
+								name="projectInfo.proxyBiddingAmount" value="<s:property value='projectInfo.proxyBiddingAmount'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">征询单日期:</label> <input
 								class="Wdate width100Input" name="projectInfo.proxyConsult"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.proxyConsultPage' format='yyyy-MM-dd' />"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">代理开始日:</label> <input
 								class="Wdate width100Input" name="projectInfo.proxyStartDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.proxyStartDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">开、评标日:</label> <input
 								class="Wdate width100Input" name="projectInfo.proxyOpenEvalDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.proxyOpenEvalDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">评价:</label> <input
 								class="width100Input"
-								name="projectInfo.proxyEvaluate"/>
+								name="projectInfo.proxyEvaluate" value="<s:property value='projectInfo.proxyEvaluate'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
 								class="Wdate width100Input" name="projectInfo.proxyArchiveDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.proxyArchiveDate' format='yyyy-MM-dd' />"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">中标书编号:</label> <input
 								class="width100Input"
-								name="projectInfo.proxyBiddingIdentity"/>
+								name="projectInfo.proxyBiddingIdentity" value="<s:property value='projectInfo.proxyBiddingIdentity'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">中标书发出:</label> <input
 								class="width100Input"
-								name="projectInfo.proxyBiddingSend"/>
+								name="projectInfo.proxyBiddingSend" value="<s:property value='projectInfo.proxyBiddingSend'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
 								class="width100Input"
-								name="projectInfo.proxyArchiveRecipient"/>
+								name="projectInfo.proxyArchiveRecipient" value="<s:property value='projectInfo.proxyArchiveRecipient'/>"/>
 							</li>
 						</ul></div>
 						<div id="projectType3" style="display:none;">
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
 								class="width100Input"
-								name="projectInfo.supervisorInvest"/>
+								name="projectInfo.supervisorInvest" value="<s:property value='projectInfo.supervisorInvest'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">建安量:</label> <input
 								class="width100Input"
-								name="projectInfo.supervisorQuantity"/>
+								name="projectInfo.supervisorQuantity" value="<s:property value='projectInfo.supervisorQuantity'/>"/>
 							</li>
 							<li class="width200Li"><label class="width10Lb">投资监理大纲及成果:</label> <input
 								class="width250Input"
-								name="projectInfo.supervisorOutline"/>
+								name="projectInfo.supervisorOutline" value="<s:property value='projectInfo.supervisorOutline'/>"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">开始日:</label>
 							<input class="Wdate width100Input" name="projectInfo.supervisorStartDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.supervisorStartDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">实际完成日:</label> 
 							<input class="Wdate width100Input" name="projectInfo.supervisorFinishDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.supervisorFinishDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
 								class="Wdate width100Input" name="projectInfo.supervisorArchiveDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.supervisorArchiveDate' format='yyyy-MM-dd' />"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">征询评价1:</label> <input
 								class="width100Input"
-								name="projectInfo.supervisorConsultOne"/>
+								name="projectInfo.supervisorConsultOne" value="<s:property value='projectInfo.supervisorConsultOne'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">征询评价2:</label> <input
 								class="width100Input"
-								name="projectInfo.supervisorConsultTwo"/>
+								name="projectInfo.supervisorConsultTwo" value="<s:property value='projectInfo.supervisorConsultTwo'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
 								class="width100Input"
-								name="projectInfo.supervisorArchiveRecipient"/>
+								name="projectInfo.supervisorArchiveRecipient" value="<s:property value='projectInfo.supervisorArchiveRecipient'/>"/>
 							</li>
 						</ul></div>
 						<div id="projectType4" style="display:none;">
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
 								class="width100Input"
-								name="projectInfo.consultInvest"/>
+								name="projectInfo.consultInvest" value="<s:property value='projectInfo.consultInvest'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">建安量:</label> <input
 								class="width100Input"
-								name="projectInfo.consultQuantity"/>
+								name="projectInfo.consultQuantity" value="<s:property value='projectInfo.consultQuantity'/>"/>
 							</li>
 							<li class="width200Li"><label class="width9Lb">咨询成果主要内容:</label> <input
 								class="width250Input"
-								name="projectInfo.consultResultContent"/>
+								name="projectInfo.consultResultContent" value="<s:property value='projectInfo.consultResultContent'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">发布日:</label> <input
 								class="Wdate width100Input" name="projectInfo.consultAnnounceDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultAnnounceDate' format='yyyy-MM-dd' />"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">咨询开始日:</label> <input
 								class="Wdate width100Input" name="projectInfo.consultStartDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultStartDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">咨询完成日:</label> <input
 								class="Wdate width100Input" name="projectInfo.consultFinishDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultFinishDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
 								class="Wdate width100Input" name="projectInfo.consultArchiveDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultArchiveDate' format='yyyy-MM-dd' />"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">评审日期:</label> <input
 								class="Wdate width100Input" name="projectInfo.consultReviewDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultReviewDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">专家名单:</label> <input
 								class="width100Input"
-								name="projectInfo.consultExpertList"/>
+								name="projectInfo.consultExpertList" value="<s:property value='projectInfo.consultExpertList'/>"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
 								class="width100Input"
-								name="projectInfo.consultArchiveRecipient"/>
+								name="projectInfo.consultArchiveRecipient" value="<s:property value='projectInfo.consultArchiveRecipient'/>"/>
 							</li>
 						</ul></div>
 						<h4 class="title">合同信息</h4>
