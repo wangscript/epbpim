@@ -99,7 +99,6 @@ function changeTitleBackground(){
 	<%
 		String userid = String.valueOf((Long)session.getAttribute(Constants.LOGIN_USER_ID));
 		List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE+Constants.LOGIN_USER_ID+userid);
-		System.out.println(menus==null?0:menus.size());
 		request.setAttribute("menus", menus);
 	%>
 	<s:if test="#request.menus!=null && #request.menus.size()>0">
