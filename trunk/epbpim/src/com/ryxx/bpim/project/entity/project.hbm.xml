@@ -43,6 +43,39 @@
 		<property name="invoiceNumber" column="INVOICE_NUMBER" type="java.lang.String"></property>
 		<property name="invoicePrice" column="INVOICE_PRICE" type="java.lang.String"></property>
 		<property name="status" column="STATUS" type="java.lang.String"></property>
+		
+		<property name="proxyInvest" column="PROXYINVEST" type="java.lang.String"></property>
+		<property name="proxyQuantity" column="PROXYQUANTITY" type="java.lang.String"></property>
+		<property name="proxyBiddingAmount" column="PROXYBIDDINGAMOUNT" type="java.lang.String"></property>
+		<property name="proxyConsult" column="PROXYCONSULT" type="java.sql.Timestamp"></property>
+		<property name="proxyStartDate" column="PROXYSTARTDATE" type="java.sql.Timestamp"></property>
+		<property name="proxyOpenEvalDate" column="PROXYOPENEVALDATE" type="java.sql.Timestamp"></property>
+		<property name="proxyEvaluate" column="PROXYEVALUATE" type="java.lang.String"></property>
+		<property name="proxyArchiveDate" column="PROXYARCHIVEDATE" type="java.sql.Timestamp"></property>
+		<property name="proxyBiddingIdentity" column="PROXYBIDDINGIDENTITY" type="java.lang.String"></property>
+		<property name="proxyBiddingSend" column="PROXYBIDDINGSEND" type="java.lang.String"></property>
+		<property name="proxyArchiveRecipient" column="PROXYARCHIVERECIPIENT" type="java.lang.String"></property>
+
+    	<property name="supervisorInvest" column="SUPERVISORINVEST" type="java.lang.String"></property>
+		<property name="supervisorQuantity" column="SUPERVISORQUANTITY" type="java.lang.String"></property>
+		<property name="supervisorOutline" column="SUPERVISOROUTLINE" type="java.lang.String"></property>
+		<property name="supervisorStartDate" column="SUPERVISORSTARTDATE" type="java.sql.Timestamp"></property>
+		<property name="supervisorFinishDate" column="SUPERVISORFINISHDATE" type="java.sql.Timestamp"></property>
+		<property name="supervisorArchiveDate" column="SUPERVISORARCHIVEDATE" type="java.sql.Timestamp"></property>
+		<property name="supervisorConsultOne" column="SUPERVISORCONSULTONE" type="java.lang.String"></property>
+		<property name="supervisorConsultTwo" column="SUPERVISORCONSULTTWO" type="java.lang.String"></property>
+		<property name="supervisorArchiveRecipient" column="SUPERVISORARCHIVERECIPIENT" type="java.lang.String"></property>
+    
+    	<property name="consultInvest" column="CONSULTINVEST" type="java.lang.String"></property>
+		<property name="consultQuantity" column="CONSULTQUANTITY" type="java.lang.String"></property>
+		<property name="consultResultContent" column="CONSULTRESULTCONTENT" type="java.lang.String"></property>
+		<property name="consultAnnounceDate" column="CONSULTANNOUNCEDATE" type="java.sql.Timestamp"></property>
+		<property name="consultStartDate" column="CONSULTSTARTDATE" type="java.sql.Timestamp"></property>
+		<property name="consultFinishDate" column="CONSULTFINISHDATE" type="java.sql.Timestamp"></property>
+		<property name="consultArchiveDate" column="CONSULTARCHIVEDATE" type="java.sql.Timestamp"></property>
+		<property name="consultReviewDate" column="CONSULTREVIEWDATE" type="java.sql.Timestamp"></property>
+		<property name="consultExpertList" column="CONSULTEXPERTLIST" type="java.lang.String"></property>
+		<property name="consultArchiveRecipient" column="CONSULTARCHIVERECIPIENT" type="java.lang.String"></property>
 		<many-to-one name="dept" class="com.ryxx.bpim.user.entity.AdminDept" column="DEPT"></many-to-one>
 		<many-to-one name="owner" class="com.ryxx.bpim.user.entity.UserInfo" column="OWNER"></many-to-one>
 		<many-to-one name="submitter" class="com.ryxx.bpim.user.entity.UserInfo" column="SUBMITTER"></many-to-one>
