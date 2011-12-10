@@ -50,7 +50,7 @@
 				<div class="mainbar">
 					<h3 class="title">项目录入</h3>
 					<div id="addProjectTable">
-						<form id="addForm" action="addProject.do" method="post" onsubmit="return validate(this);">
+						<s:form id="addForm" action="addProject.do" method="post" onsubmit="return validate(this);">
 						<h4 class="title">项目基本信息</h4>
 						<ul class="fullScreenUl">
 							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
@@ -390,7 +390,7 @@
 							</li>
 							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
 						</ul>
-						</form>
+						</s:form>
 					</div>
 
 					<div></div>
