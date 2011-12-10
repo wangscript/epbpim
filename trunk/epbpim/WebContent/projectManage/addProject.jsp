@@ -13,6 +13,34 @@
 			$("addForm").submit();
 		}
  	}
+ 	function changeProjectType() {
+ 		var type = document.getElementById("projectType").value;
+ 		var dispDiv1 = document.getElementById("projectType1");
+ 		var dispDiv2 = document.getElementById("projectType2");
+ 		var dispDiv3 = document.getElementById("projectType3");
+ 		var dispDiv4 = document.getElementById("projectType4");
+ 		if(type == "投资监理") {
+ 			dispDiv1.style.display="none";
+ 			dispDiv2.style.display="none";
+ 			dispDiv3.style.display="block";
+ 			dispDiv4.style.display="none";
+ 		} else if(type == "招标代理") {
+ 			dispDiv1.style.display="none";
+ 			dispDiv2.style.display="block";
+ 			dispDiv3.style.display="none";
+ 			dispDiv4.style.display="none";
+ 		} else if(type == "工程咨询") {
+ 			dispDiv1.style.display="none";
+ 			dispDiv2.style.display="none";
+ 			dispDiv3.style.display="none";
+ 			dispDiv4.style.display="block";
+ 		} else {
+ 			dispDiv1.style.display="block";
+ 			dispDiv2.style.display="none";
+ 			dispDiv3.style.display="none";
+ 			dispDiv4.style.display="none";
+ 		}
+ 	}
 </script>
 </head>
 <body>
@@ -35,7 +63,7 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width4Lb">工程专业:</label><select
-								id="projectType" name="projectInfo.majorType">
+								id="majorType" name="projectInfo.majorType">
 									<option value="土建">土建</option>
 									<option value="园林">园林</option>
 									<option value="市政">市政</option>
@@ -47,7 +75,7 @@
 							</select>
 							</li>
 							<li class="width250Li"><label class="width4Lb">计价模式:</label><select
-								id="projectType" name="projectInfo.valuationType">
+								id="valuationType" name="projectInfo.valuationType">
 									<option value="清单">清单</option>
 									<option value="2000定额">2000定额</option>
 									<option value="其他">其他</option>
@@ -123,13 +151,14 @@
 						
 						<ul class="fullScreenUl" id="addNewMember">
 							<li class="width200Li" ><label class="width6Lb">项目性质:</label>
-								<select id="projectType" name="projectInfo.projectType">
+								<select id="projectType" name="projectInfo.projectType" onChange="changeProjectType();">
 									<option value="工程审价">工程审价</option>
 									<option value="招标代理">招标代理</option>
 									<option value="投资监理">投资监理</option>
 									<option value="工程咨询">工程咨询</option>
 							</select></li>
 						</ul>
+						<div id="projectType1">
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">送审价:</label> <input
 								class="width100Input"
@@ -179,7 +208,148 @@
 								class="width100Input"
 								name="projectInfo.achiveReceiver"/>
 							</li>
+						</ul></div>
+						<div id="projectType2" style="display:none;">
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
+								class="width100Input"
+								name="projectInfo.judgePrice1"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">建安量:</label> <input
+								class="width100Input"
+								name="projectInfo.judgePrice2"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">中标金额:</label> <input
+								class="width100Input"
+								name="projectInfo.judgeDays"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">征询单日期:</label> <input
+								class="Wdate width100Input" name="projectInfo.reportDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
 						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">代理开始日:</label> <input
+								class="Wdate width100Input" name="projectInfo.reportDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+							<li class="width200Li"><label class="width6Lb">开、评标日:</label> <input
+								class="Wdate width100Input" name="projectInfo.reportDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+							<li class="width200Li"><label class="width6Lb">评价:</label> <input
+								class="width100Input"
+								name="projectInfo.comments"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
+								class="Wdate width100Input" name="projectInfo.achiveDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">中标书编号:</label> <input
+								class="width100Input"
+								name="projectInfo.reportNumber"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">中标书发出:</label> <input
+								class="width100Input"
+								name="projectInfo.masterJudgeComments"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
+								class="width100Input"
+								name="projectInfo.achiveReceiver"/>
+							</li>
+						</ul></div>
+						<div id="projectType3" style="display:none;">
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
+								class="width100Input"
+								name="projectInfo.judgePrice1"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">建安量:</label> <input
+								class="width100Input"
+								name="projectInfo.judgePrice2"/>
+							</li>
+							<li class="width200Li"><label class="width10Lb">投资监理大纲及成果:</label> <input
+								class="width250Input"
+								name="projectInfo.judgeDays"/>
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">开始日:</label> <input
+								class="width100Input"
+								name="projectInfo.plusPrice"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">实际完成日:</label> <input
+								class="width100Input"
+								name="projectInfo.minusPrice"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
+								class="Wdate width100Input" name="projectInfo.achiveDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">征询评价1:</label> <input
+								class="width100Input"
+								name="projectInfo.reportNumber"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">征询评价2:</label> <input
+								class="width100Input"
+								name="projectInfo.masterJudgeComments"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
+								class="width100Input"
+								name="projectInfo.achiveReceiver"/>
+							</li>
+						</ul></div>
+						<div id="projectType4" style="display:none;">
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
+								class="width100Input"
+								name="projectInfo.judgePrice1"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">建安量:</label> <input
+								class="width100Input"
+								name="projectInfo.judgePrice2"/>
+							</li>
+							<li class="width200Li"><label class="width9Lb">咨询成果主要内容:</label> <input
+								class="width250Input"
+								name="projectInfo.judgeDays"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">发布日:</label> <input
+								class="Wdate width100Input" name="projectInfo.reportDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">咨询开始日:</label> <input
+								class="Wdate width100Input" name="projectInfo.achiveDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+							<li class="width200Li"><label class="width6Lb">咨询完成日:</label> <input
+								class="Wdate width100Input" name="projectInfo.achiveDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
+								class="Wdate width100Input" name="projectInfo.achiveDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">评审日期:</label> <input
+								class="Wdate width100Input" name="projectInfo.achiveDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+							<li class="width200Li"><label class="width6Lb">专家名单:</label> <input
+								class="width100Input"
+								name="projectInfo.masterJudgeComments"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
+								class="width100Input"
+								name="projectInfo.achiveReceiver"/>
+							</li>
+						</ul></div>
 						<h4 class="title">合同信息</h4>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">合同编号:</label> <input

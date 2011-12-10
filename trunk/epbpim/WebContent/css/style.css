@@ -555,6 +555,10 @@ ol li .send {
 	float: left;
 	width: 114px;
 }
+.width10Lb {
+	float: left;
+	width: 126px;
+}
 
 .mediumRightButton {
 	cursor: pointer;
