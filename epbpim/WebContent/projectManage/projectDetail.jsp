@@ -226,6 +226,12 @@
 									request.setAttribute("delBonus", true);
 								}
 								if(menu.getId() == 38){
+									request.setAttribute("qryCost", true);
+								}
+								if(menu.getId() == 39){
+									request.setAttribute("qryBonus", true);
+								}
+								if(menu.getId() == 40){
 									request.setAttribute("closeProject", true);
 								}
 							}
@@ -245,26 +251,28 @@
 									</s:if>
 								</ul>
 								<s:iterator value="projectInfo.projectStreams" status="st">
-									<ul class="fullScreenUl">
-										<s:if test="type == 1">
-											<li class="width200Li"><label>成本</label></li>
-										</s:if>
-										<s:else>
-											<li class="width200Li"><label>奖金</label></li>
-										</s:else>
-										<li class="width200Li"><s:property value="money" /></li>
-										<li class="width200Li"><s:date name='streamDate' format='yyyy-MM-dd' /></li>
-										<li class="width200Li"><s:property value="comments" /></li>
-										<s:if test="(#request.delCost == true && type == 1) || (#request.delBonus == true && type == 2)">
-											<li class="width50Li">
-												<form action="delProjectStream.do" method="post" id='delProjectStream<s:property value="id" />'>											
-													<input type="hidden" name="projectStream.id" value='<s:property value="id" />' />
-													<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
-													<input type="button" <s:if test="projectInfo.status == 2">disabled</s:if> onclick='delProjectStream("delProjectStream"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
-												</form>
-											</li>
-										</s:if>
-									</ul>
+									<s:if test="(#request.qryCost == true && type == 1) || (#request.qryBonus == true && type == 2)">
+										<ul class="fullScreenUl">
+											<s:if test="type == 1">
+												<li class="width200Li"><label>成本</label></li>
+											</s:if>
+											<s:else>
+												<li class="width200Li"><label>奖金</label></li>
+											</s:else>
+											<li class="width200Li"><s:property value="money" /></li>
+											<li class="width200Li"><s:date name='streamDate' format='yyyy-MM-dd' /></li>
+											<li class="width200Li"><s:property value="comments" /></li>
+											<s:if test="(#request.delCost == true && type == 1) || (#request.delBonus == true && type == 2)">
+												<li class="width50Li">
+													<form action="delProjectStream.do" method="post" id='delProjectStream<s:property value="id" />'>											
+														<input type="hidden" name="projectStream.id" value='<s:property value="id" />' />
+														<input type="hidden" name="projectStream.projectID" value="<s:property value='projectInfo.id'/>" />
+														<input type="button" <s:if test="projectInfo.status == 2">disabled</s:if> onclick='delProjectStream("delProjectStream"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+													</form>
+												</li>
+											</s:if>
+										</ul>
+									</s:if>
 								</s:iterator>
 							</div>
 						</s:if>
