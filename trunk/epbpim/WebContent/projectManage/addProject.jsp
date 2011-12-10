@@ -82,7 +82,7 @@
 							</select>
 							</li>
 							<li class="width250Li"><label class="width4Lb">开始时间:</label> <input
-								class="Wdate width150Input" name="projectInfo.startDate"
+								class="Wdate width150Input" name="projectInfo.startDatePage"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 							<li class="width200Li"><label class="width4Lb">质量要求:</label> <input
@@ -173,7 +173,7 @@
 								name="projectInfo.judgeDays"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">报告日/文号:</label> <input
-								class="Wdate width100Input" name="projectInfo.reportDate"
+								class="Wdate width100Input" name="projectInfo.reportDatePage"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 						</ul>
@@ -191,7 +191,7 @@
 								name="projectInfo.comments"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.achiveDate"
+								class="Wdate width100Input" name="projectInfo.achiveDatePage"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 						</ul>
@@ -242,7 +242,7 @@
 								name="projectInfo.proxyEvaluate"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.proxyArchiveDate"
+								class="Wdate width100Input" name="projectInfo.proxyArchiveDatePage"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 						</ul>
