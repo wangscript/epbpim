@@ -87,7 +87,7 @@
 							</select>
 							</li>
 							<li class="width250Li"><label class="width4Lb">开始时间:</label> <input
-								class="Wdate width150Input" name="projectInfo.startDatePage"
+								class="Wdate width150Input" name="projectInfo.startDate"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.startDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width4Lb">质量要求:</label> <input
@@ -196,7 +196,7 @@
 								name="projectInfo.comments"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.achiveDatePage"
+								class="Wdate width100Input" name="projectInfo.achiveDate"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 						</ul>
@@ -229,7 +229,7 @@
 								name="projectInfo.proxyBiddingAmount"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">征询单日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.proxyConsultPage"
+								class="Wdate width100Input" name="projectInfo.proxyConsult"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 							</li>
 						</ul>
@@ -372,7 +372,7 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.invoiceDatePage"
+								class="Wdate width100Input" name="projectInfo.invoiceDate"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.invoiceDate' format='yyyy-MM-dd' />"/>
 							</li>
 							<li class="width200Li"><label class="width6Lb">发票单号:</label> <input
