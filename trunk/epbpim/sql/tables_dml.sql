@@ -11,94 +11,97 @@ VALUES(5,'系统管理','',0,1,5);
 
 
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(10,'营业执照','../publicInfo/businessLicense.jsp',1,1,1);
+VALUES(101,'营业执照','../publicInfo/businessLicense.jsp',1,1,1);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(11,'税务登记执照','../publicInfo/taxLicense.jsp',1,1,2);
+VALUES(102,'税务登记执照','../publicInfo/taxLicense.jsp',1,1,2);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(12,'ISO文件查询','../publicInfo/schIsoList.do',1,1,3);
+VALUES(103,'ISO文件查询','../publicInfo/schIsoList.do',1,1,3);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(13,'典型工程查询','../publicInfo/queryHistoryProject.jsp',1,1,4);
+VALUES(104,'典型工程查询','../publicInfo/queryHistoryProject.jsp',1,1,4);
 
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(20,'文件上传','../businessFile/uploadBusinessFile.jsp',2,1,1);
+VALUES(201,'文件上传','../businessFile/uploadBusinessFile.jsp',2,1,1);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(21,'文件查询','../businessFile/schBusinessFileList.do',2,1,2);
+VALUES(202,'文件查询','../businessFile/schBusinessFileList.do',2,1,2);
  
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(30,'录入项目','../projectManage/preAddProject.do',3,1,1);
+VALUES(301,'录入项目','../projectManage/preAddProject.do',3,1,1);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(31,'查询自己项目','../projectManage/schProjectList.do?projectInfo.queryType=1',3,1,2);
+VALUES(302,'查询自己项目','../projectManage/schProjectList.do?projectInfo.queryType=1',3,1,2);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(32,'查询部门项目','../projectManage/schProjectList.do?projectInfo.queryType=2',3,1,3);
+VALUES(303,'查询部门项目','../projectManage/schProjectList.do?projectInfo.queryType=2',3,1,3);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(33,'查询全部项目','../projectManage/schProjectList.do?projectInfo.queryType=3',3,1,4);
+VALUES(304,'查询全部项目','../projectManage/schProjectList.do?projectInfo.queryType=3',3,1,4);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(34,'填写部门成本','',3,1,5);
+VALUES(305,'填写部门成本','',3,1,5);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(35,'删除部门奖金','',3,1,6);
+VALUES(306,'显示部门成本','',3,1,6);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(36,'填写部门成本','',3,1,7);
+VALUES(307,'删除部门奖金','',3,1,7);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(37,'删除部门奖金','',3,1,8);
+VALUES(308,'填写部门成本','',3,1,8);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(38,'显示部门成本','',3,1,9);
+VALUES(309,'显示部门奖金','',3,1,9);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(39,'显示部门奖金','',3,1,10);
+VALUES(310,'删除部门奖金','',3,1,10);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(40,'结束项目','',3,1,11);
+VALUES(311,'结束项目','',3,1,11);
 
 
-INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(40,'新增员工','../employeeManage/newUserInfo.do',4,1,1);
-INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(41,'查询员工','../employeeManage/listUserInfo.do',4,1,2);
-INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(42,'新增职务','../employeeManage/addRole.jsp',4,1,3);
-INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(43,'查询职务','../employeeManage/listRole.do',4,1,4);
-INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(44,'新增部门','../department/addDepartment.jsp',4,1,5);
-INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(45,'查询部门','../department/schAdminDeptList.do',4,1,6);
 
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(51,'ISO文件上传','../systemManage/uploadIsoFile.jsp',5,1,1);
+VALUES(401,'新增员工','../employeeManage/newUserInfo.do',4,1,1);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(52,'发布通知','../systemManage/publishMessage.jsp',5,1,2);
+VALUES(402,'查询员工','../employeeManage/listUserInfo.do',4,1,2);
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
-VALUES(53,'日志查询','../systemManage/queryLog.jsp',5,1,3);
+VALUES(403,'新增职务','../employeeManage/addRole.jsp',4,1,3);
+INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
+VALUES(404,'查询职务','../employeeManage/listRole.do',4,1,4);
+INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
+VALUES(405,'新增部门','../department/addDepartment.jsp',4,1,5);
+INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
+VALUES(406,'查询部门','../department/schAdminDeptList.do',4,1,6);
+
+INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
+VALUES(501,'ISO文件上传','../systemManage/uploadIsoFile.jsp',5,1,1);
+INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
+VALUES(502,'发布通知','../systemManage/publishMessage.jsp',5,1,2);
+INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_INDEX)
+VALUES(503,'日志查询','../systemManage/queryLog.jsp',5,1,3);
 
 insert into ADMIN_ROLE (ROLE_ID, ROLE_NAME, ROLE_COUNT, ROLE_REMARK) values('1','董事长','1','董事长专用');
 
 insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','1');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','10');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','11');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','12');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','13');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','101');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','102');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','103');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','104');
 insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','2');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','20');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','21');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','201');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','202');
 insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','3');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','30');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','31');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','32');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','33');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','34');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','35');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','36');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','37');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','38');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','301');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','302');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','303');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','304');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','305');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','306');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','307');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','308');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','309');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','310');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','311');
 insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','4');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','40');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','41');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','42');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','43');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','44');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','45');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','401');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','402');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','403');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','404');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','405');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','406');
 insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','5');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','51');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','52');
-insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','53');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','501');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','502');
+insert into ROLE_MENU_RESTRACTION (`ROLE_ID`, `MENU_ID`) values('1','503');
 
 insert into USER_INFO (`USER_ID`, `USER_REAL_NAME`, `USER_IDENTIFIER`, `USER_NAME`, `USER_SEX`, `USER_IDCARD`, `HUMEN_FILES`, `USER_BIRTHDAY`, `FAMILY_ADDRESS`, `PHONE`, `MOBILE_PHONE`, `PARTY`, `EDU_BACKGROUND`, `SCHOOL`, `MAJOR`, `EDU_COUNTINU`, `GRADUATE_DATE`, `ONBOARD_DATE`, `LEAVE_DATE`, `USER_RELATION`, `USER_STATUS`, `INSURANCE_TYPE`, `USER_REMARK`, `USER_PASSWORD`, `REGISTER_DATE`, `EMAIL`, `ROLE_ID`, `DEPT_ID`, `CERTIFICATION_ID`, `USER_TITLE`) values('1','','','chairman','0','','','0000-00-00 00:00:00','','','','','0','','','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00','','0','0','','e10adc3949ba59abbe56e057f20f883e','0000-00-00 00:00:00',NULL,1,NULL,NULL,'0');
 
