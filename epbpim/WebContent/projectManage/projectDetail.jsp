@@ -247,25 +247,27 @@
 							String userid = String.valueOf((Long)session.getAttribute(Constants.LOGIN_USER_ID));
 							List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE+Constants.LOGIN_USER_ID+userid);
 							for(AdminMenu menu:menus){
-								if(menu.getId() == 34){
+								if(menu.getId() == 305){
 									request.setAttribute("addCost", true);
 								}
-								if(menu.getId() == 35){
-									request.setAttribute("delCost", true);
-								}
-								if(menu.getId() == 36){
-									request.setAttribute("addBonus", true);
-								}
-								if(menu.getId() == 37){
-									request.setAttribute("delBonus", true);
-								}
-								if(menu.getId() == 38){
+								if(menu.getId() == 306){
 									request.setAttribute("qryCost", true);
 								}
-								if(menu.getId() == 39){
+								if(menu.getId() == 307){
+									request.setAttribute("delCost", true);
+								}
+								
+								if(menu.getId() == 308){
+									request.setAttribute("addBonus", true);
+								}
+								if(menu.getId() == 309){
 									request.setAttribute("qryBonus", true);
 								}
-								if(menu.getId() == 40){
+								if(menu.getId() == 310){
+									request.setAttribute("delBonus", true);
+								}
+								
+								if(menu.getId() == 311){
 									request.setAttribute("closeProject", true);
 								}
 							}
