@@ -18,7 +18,7 @@
 			proType.options[2].selected = true;
 		} else if(proType.value == "工程咨询") {
 			proType.options[4].selected = true;
-		} else {alert(1);
+		} else {
 			proType.options[1].selected = true;
 		}
 		changeProjectType();
