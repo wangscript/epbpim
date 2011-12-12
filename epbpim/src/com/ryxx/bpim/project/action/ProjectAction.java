@@ -2,6 +2,8 @@ package com.ryxx.bpim.project.action;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.project.entity.ProjectInfo;
 import com.ryxx.bpim.project.entity.ProjectStream;
@@ -190,7 +192,7 @@ public class ProjectAction extends ActionSupportBase
     
     private void dealwithQueryType(ProjectInfo projectInfo)
     {
-        if ("1".equals(projectInfo.getQueryType()))
+        if ("1".equals(projectInfo.getQueryType()) || StringUtils.isEmpty(projectInfo.getQueryType()))
         {
             long userID = (Long)session.get(Constants.LOGIN_USER_ID);
             UserInfo userInfo = new UserInfo();
