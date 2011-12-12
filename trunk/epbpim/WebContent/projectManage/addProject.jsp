@@ -270,7 +270,7 @@
 								class="width100Input"
 								name="projectInfo.supervisorQuantity"/>
 							</li>
-							<li class="width200Li"><label class="width10Lb">投资监理大纲及成果:</label> <input
+							<li class="width400Li"><label class="width10Lb">投资监理大纲及成果:</label> <input
 								class="width250Input"
 								name="projectInfo.supervisorOutline"/>
 							</li>
@@ -313,10 +313,12 @@
 								class="width100Input"
 								name="projectInfo.consultQuantity"/>
 							</li>
-							<li class="width200Li"><label class="width9Lb">咨询成果主要内容:</label> <input
+							<li class="width400Li"><label class="width9Lb">咨询成果主要内容:</label> <input
 								class="width250Input"
 								name="projectInfo.consultResultContent"/>
 							</li>
+						</ul>
+						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">发布日:</label> <input
 								class="Wdate width100Input" name="projectInfo.consultAnnounceDate"
 								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
