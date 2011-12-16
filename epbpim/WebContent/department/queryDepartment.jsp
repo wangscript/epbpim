@@ -30,54 +30,53 @@
 								</li>
 							</ul>
 						</div>
-					</form>
-					
-					<s:if test="adminDeptList==null || adminDeptList.size()==0">
-						<tr>
-							<td>
-							<h3><s:text name="Common.Nodata" /></h3>
-							</td>
-						</tr>
-					</s:if>
-					<s:else>
-						<div class="searchResult" id="searchResult">
-							<ul class="fullScreenUl">
-								<li class="width100Li"><label>部门名称</label>
-								</li>
-								<li class="width600Li"><label>部门说明</label>
-								</li>
-								<li class="width50Li"><label><s:text name="Common.Update" /></label>
-								</li>
-								<li class="width50Li"><label><s:text name="Common.Delete" /></label>
-								</li>
-							</ul>
-							<s:iterator value="adminDeptList" status="st">
+						
+						<s:if test="adminDeptList==null || adminDeptList.size()==0">
+							<tr>
+								<td>
+								<h3><s:text name="Common.Nodata" /></h3>
+								</td>
+							</tr>
+						</s:if>
+						<s:else>
+							<div class="searchResult" id="searchResult">
 								<ul class="fullScreenUl">
-									<li class="width100Li"><s:property value="name" /></li>
-									<li class="width600Li"><s:property value="remark" /></li>
-									<li class="width50Li">
-										<form action="preModAdminDept.do" method="post" id='preModDept<s:property value="id" />'>
-											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
-											<input type="button" onclick='preModDept("preModDept"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
-										</form>
+									<li class="width100Li"><label>部门名称</label>
 									</li>
-									<li class="width50Li">
-										<form action="delAdminDept.do" method="post" id='deleteDept<s:property value="id" />'>
-											<input type="hidden" name="adminDept.id" value='<s:property value="id" />' />
-											<input type="button" onclick='deleteDept("deleteDept"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
-										</form>
+									<li class="width600Li"><label>部门说明</label>
+									</li>
+									<li class="width50Li"><label><s:text name="Common.Update" /></label>
+									</li>
+									<li class="width50Li"><label><s:text name="Common.Delete" /></label>
 									</li>
 								</ul>
-							</s:iterator>
-							<ul class="fullScreenUl">
-								<s:form id="paginationForm">
+								<s:iterator value="adminDeptList" status="st">
+									<ul class="fullScreenUl">
+										<li class="width100Li"><s:property value="name" /></li>
+										<li class="width600Li"><s:property value="remark" /></li>
+										<li class="width50Li">
+												<input type="button" onclick='preModDept(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
+										</li>
+										<li class="width50Li">
+												<input type="button" onclick='deleteDept(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+										</li>
+									</ul>
+								</s:iterator>
+								<ul class="fullScreenUl">
 									<jsp:include page="../common/pagination.jsp" flush="true">
 										<jsp:param name="action_page" value="department/schAdminDeptList.do" />
 									</jsp:include>
-								</s:form>
-							</ul>
-						</div>
-					</s:else>
+								</ul>
+							</div>
+						</s:else>
+					</form>
+					<form action="preModAdminDept.do" method="post" id="preModDept">
+						<input type="hidden" name="adminDept.id" id="premod.adminDept.id" value="" />
+					</form>		
+					<form action="delAdminDept.do" method="post" id="deleteDept">
+						<input type="hidden" name="adminDept.id" id="del.adminDept.id" value="" />
+					</form>	
+					
 				<div class="clr"></div>
 			</div>
 		</div>
@@ -85,14 +84,16 @@
 	<!-- end #page -->
 	<jsp:include page="../common/footer.jsp" /></div>
 </body>
-<script type="text/javascript">
+<script type="text/javascript">	
 	function deleteDept(id){
 		if(confirm('<s:text name="AdminRole.IfDelete" />')){
-			document.getElementById(id).submit();
+			document.getElementById("del.adminDept.id").value=id;
+			document.getElementById("deleteDept").submit();
 		}
 	}
 	function preModDept(id){
-		document.getElementById(id).submit();
-	}	
+		document.getElementById("premod.adminDept.id").value=id;
+		document.getElementById("preModDept").submit();
+	}
 </script>
 </html>
