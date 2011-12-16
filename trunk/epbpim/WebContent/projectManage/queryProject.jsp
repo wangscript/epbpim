@@ -63,59 +63,57 @@
 			<li><input type="submit" class="mediumRightButton" style="float:right" class="button" value="查询"></li>
 		</ul>
 	</div>
-</form>
-<div class="searchResult">
-	<s:if test="projectInfoList==null || projectInfoList.size()==0">
-		<tr>
-			<td>
-			<h3><s:text name="Common.Nodata" /></h3>
-			</td>
-		</tr>
-	</s:if>
-	<s:else>
-		<div class="searchResult" id="searchResult">
-			<ul class="fullScreenUl">
-				<li class="width300Li"><label>项目名称</label></li>
-				<li class="width100Li"><label>项目编号</label></li>
-				<li class="width100Li"><label>承接部门</label></li>
-				<li class="width100Li"><label>合同金额</label></li>
-				<li class="width100Li"><label>财务金额</label></li>
-				<li class="width100Li"><label>结算金额</label></li>
-				<li class="width50Li"><label><s:text name="Common.Update" /></label></li>
-				<li class="width50Li"><label><s:text name="Common.Delete" /></label></li>
-			</ul>
-			<s:iterator value="projectInfoList" status="st">
+	<div class="searchResult">
+		<s:if test="projectInfoList==null || projectInfoList.size()==0">
+			<tr>
+				<td>
+				<h3><s:text name="Common.Nodata" /></h3>
+				</td>
+			</tr>
+		</s:if>
+		<s:else>
+			<div class="searchResult" id="searchResult">
 				<ul class="fullScreenUl">
-					<li class="width300Li"><a href="schProject.do?projectInfo.id=<s:property value='id' />"><s:property value="name" /></a></li>
-					<li class="width100Li"><s:property value="number" /></li>
-					<li class="width100Li"><s:property value="dept.name" /></li>
-					<li class="width100Li"><s:property value="contractMoney" /></li>
-					<li class="width100Li"><s:property value="" /></li>
-					<li class="width100Li"><s:property value="" /></li>
-					<li class="width50Li">
-						<form action="preModProject.do" method="post" id='preModProject<s:property value="id" />'>
-							<input type="hidden" name="projectInfo.id" value='<s:property value="id" />' />
-							<input type="button" <s:if test="status == 2">disabled</s:if> onclick='preModProject("preModProject"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
-						</form>
-					</li>
-					<li class="width50Li">
-						<form action="delProject.do" method="post" id='delProject<s:property value="id" />'>
-							<input type="hidden" name="projectInfo.id" value='<s:property value="id" />' />
-							<input type="button" onclick='delProject("delProject"+<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
-						</form>
-					</li>
+					<li class="width300Li"><label>项目名称</label></li>
+					<li class="width100Li"><label>项目编号</label></li>
+					<li class="width100Li"><label>承接部门</label></li>
+					<li class="width100Li"><label>合同金额</label></li>
+					<li class="width100Li"><label>财务金额</label></li>
+					<li class="width100Li"><label>结算金额</label></li>
+					<li class="width50Li"><label><s:text name="Common.Update" /></label></li>
+					<li class="width50Li"><label><s:text name="Common.Delete" /></label></li>
 				</ul>
-			</s:iterator>
-			<ul class="fullScreenUl">
-				<s:form id="paginationForm">
+				<s:iterator value="projectInfoList" status="st">
+					<ul class="fullScreenUl">
+						<li class="width300Li"><a href="schProject.do?projectInfo.id=<s:property value='id' />"><s:property value="name" /></a></li>
+						<li class="width100Li"><s:property value="number" /></li>
+						<li class="width100Li"><s:property value="dept.name" /></li>
+						<li class="width100Li"><s:property value="contractMoney" /></li>
+						<li class="width100Li"><s:property value="" /></li>
+						<li class="width100Li"><s:property value="" /></li>
+						<li class="width50Li">
+								<input type="button" <s:if test="status == 2">disabled</s:if> onclick='preModProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
+						</li>
+						<li class="width50Li">
+								<input type="button" onclick='delProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+						</li>
+					</ul>
+				</s:iterator>
+				<ul class="fullScreenUl">
 					<jsp:include page="../common/pagination.jsp" flush="true">
 						<jsp:param name="action_page" value="projectManage/schProjectList.do" />
 					</jsp:include>
-				</s:form>
-			</ul>
-		</div>
-	</s:else>
-</div>
+				</ul>
+			</div>
+		</s:else>
+	</div>
+</form>
+<form action="preModProject.do" method="post" id="preModProject">
+	<input type="hidden" name="projectInfo.id" id="premod.projectInfo.id" value="" />
+</form>		
+<form action="delProject.do" method="post" id="delProject">
+	<input type="hidden" name="projectInfo.id" id="del.projectInfo.id" value="" />
+</form>	
 <div></div>
 
 
@@ -135,11 +133,13 @@
 	}
 	function delProject(id){
 		if(confirm('<s:text name="AdminRole.IfDelete" />')){
-			document.getElementById(id).submit();
+			document.getElementById("del.projectInfo.id").value=id;
+			document.getElementById("delProject").submit();
 		}
 	}
 	function preModProject(id){
-		document.getElementById(id).submit();
+		document.getElementById("premod.projectInfo.id").value=id;
+		document.getElementById("preModProject").submit();
 	}
 </script>
 </html>
