@@ -28,6 +28,7 @@
 		document.getElementById("modForm").submit();
 	}
 	function changeProjectType() {
+		document.getElementById("projectType").value = "<s:property value='projectInfo.projectType'/>";
  		var type = document.getElementById("projectType").value;
  		var dispDiv1 = document.getElementById("projectType1");
  		var dispDiv2 = document.getElementById("projectType2");
