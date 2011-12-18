@@ -36,7 +36,7 @@
 								</a>
 							</dd>
 							<dd>
-								客服邮箱：<a href="mailto:jcjyonet@163.com">jcjyonet@163.com</a>
+								客服邮箱：<a href="mailto:jcjyonet@163.com">jcjyonet@163.com</a> 如需申请使用，发送申请邮件到此邮箱
 							</dd>
 							<dt>补充说明</dt>
 							<dd>为了能更及时回复大家的问题，避免QQ软件因好友过多而无法工作，在线客服不接受加QQ好友请求，请大家谅解
