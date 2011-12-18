@@ -11,16 +11,8 @@
 	{
 		document.getElementById("majorType").value="<s:property value='projectInfo.majorType'/>";
 		document.getElementById("valuationType").value="<s:property value='projectInfo.valuationType'/>";	
-		var proType = document.getElementById("projectType");
-		if(proType.value == "投资监理") {
-			proType.options[3].selected = true;
-		} else if(proType.value == "招标代理") {
-			proType.options[2].selected = true;
-		} else if(proType.value == "工程咨询") {
-			proType.options[4].selected = true;
-		} else {
-			proType.options[1].selected = true;
-		}
+		document.getElementById("projectType").value = "<s:property value='projectInfo.projectType'/>";
+		
 		changeProjectType();
 	}
 	function modProjectInfo(statusValue){
@@ -28,7 +20,6 @@
 		document.getElementById("modForm").submit();
 	}
 	function changeProjectType() {
-		document.getElementById("projectType").value = "<s:property value='projectInfo.projectType'/>";
  		var type = document.getElementById("projectType").value;
  		var dispDiv1 = document.getElementById("projectType1");
  		var dispDiv2 = document.getElementById("projectType2");
