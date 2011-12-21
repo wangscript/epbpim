@@ -19,9 +19,19 @@ public class ProjectInvoice extends VoBase
     
     private Timestamp invoiceDate;
     
-    private String invoiceDatePage;
-    
     private String invoiceNumber;
+    
+    private String invoicePrice;
+    
+    public String getInvoicePrice()
+    {
+        return invoicePrice;
+    }
+    
+    public void setInvoicePrice(String invoicePrice)
+    {
+        this.invoicePrice = invoicePrice;
+    }
     
     public Timestamp getInvoiceDate()
     {
@@ -31,16 +41,6 @@ public class ProjectInvoice extends VoBase
     public void setInvoiceDate(Timestamp invoiceDate)
     {
         this.invoiceDate = invoiceDate;
-    }
-    
-    public String getInvoiceDatePage()
-    {
-        return invoiceDatePage;
-    }
-    
-    public void setInvoiceDatePage(String invoiceDatePage)
-    {
-        this.invoiceDatePage = invoiceDatePage;
     }
     
     public String getInvoiceNumber()
