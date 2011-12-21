@@ -89,8 +89,8 @@
 						<li class="width100Li"><s:property value="number" /></li>
 						<li class="width100Li"><s:property value="dept.name" /></li>
 						<li class="width100Li"><s:property value="contractMoney" /></li>
-						<li class="width100Li"><s:property value="" /></li>
-						<li class="width100Li"><s:property value="" /></li>
+						<li class="width100Li"><s:property value="subInvoice" /></li>
+						<li class="width100Li"><s:property value="subCost" /></li>
 						<li class="width50Li">
 								<input type="button" <s:if test="status == 2">disabled</s:if> onclick='preModProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
 						</li>

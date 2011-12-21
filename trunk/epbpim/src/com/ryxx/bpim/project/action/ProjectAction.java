@@ -22,326 +22,314 @@ import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 
-public class ProjectAction extends ActionSupportBase
-{
-    
-    /** 序列号  */
-    private static final long serialVersionUID = 273482916839420012L;
-    
-    private ProjectInfo projectInfo;
-    
-    private List<ProjectInfo> projectInfoList;
-    
-    private ProjectService projectService;
-    
-    private List<AdminDept> adminDeptList;
-    
-    private AdminDeptService adminDeptService;
-    
-    private List<UserInfo> userInfoList;
-    
-    private UserInfoService userInfoService;
-    
-    private ProjectStreamService projectStreamService;
-    
-    private PageTools page;
-    
-    public String schProjectInfoList()
-    {
-        try
-        {
-            if (null == projectInfo)
-            {
-                projectInfo = new ProjectInfo();
-            }
-            int pageNo = ParamTools.getIntParameter(request, Constants.PARA_PAGE_NO, 1);
-            int pageSize = ParamTools.getIntParameter(request, Constants.PARA_PAGE_SIZE, 10);
-            PageTools page = new PageTools(pageNo, pageSize);
-            projectInfo.setRowCount(pageNo);
-            projectInfo.setPageSize(pageSize);
-            dealwithQueryType(projectInfo);
-            projectInfoList = projectService.listProjectInfo(projectInfo, page);
-            if (projectInfoList != null && projectInfoList.size() > 0)
-            {
-                this.page = page;
-            }
-            else
-            {
-                super.addNotFoundErrorMsg();
-            }
-        }
-        catch (Exception e)
-        {
-            LOG.warn(e);
-            return ERROR;
-        }
-        return SUCCESS;
-    }
-    
-    public String findProjectInfo()
-    {
-        try
-        {
-            projectInfo = projectService.findProjectInfo(projectInfo);
-            wrapInvoiceList(projectInfo);
-            ProjectStream projectStream = new ProjectStream();
-            projectStream.setProjectID(projectInfo.getId());
-            projectInfo.setProjectStreams(projectStreamService.listProjectStream(projectStream));
-        }
-        catch (Exception e)
-        {
-            LOG.warn(e);
-            return ERROR;
-        }
-        return SUCCESS;
-    }
-    
-    public String preAddProjectInfo()
-    {
-        try
-        {
-            wrapDeptAndUserList();
-        }
-        catch (Exception e)
-        {
-            LOG.warn(e);
-            return ERROR;
-        }
-        return SUCCESS;
-    }
-    
-    public String addProjectInfo()
-    {
-        try
-        {
-            UserInfo userinfo = new UserInfo();
-            userinfo.setId((Long)session.get(Constants.LOGIN_USER_ID));
-            projectInfo.setSubmitter(userinfo);
-            
-            projectService.saveProjectInfo(projectInfo);
-        }
-        catch (Exception e)
-        {
-            LOG.warn(e);
-            return ERROR;
-        }
-        return SUCCESS;
-    }
-    
-    public String preModProjectInfo()
-    {
-        try
-        {
-            wrapDeptAndUserList();
-            findProjectInfo();
-        }
-        catch (Exception e)
-        {
-            LOG.warn(e);
-            return ERROR;
-        }
-        return SUCCESS;
-    }
-    
-    public String modProjectInfo()
-    {
-        try
-        {
-            projectService.updateProjectInfo(projectInfo);
-        }
-        catch (Exception e)
-        {
-            LOG.warn(e);
-            return ERROR;
-        }
-        
-        return SUCCESS;
-    }
-    
-    public String closeProjectInfo()
-    {
-        try
-        {
-            projectInfo = projectService.fetchById(projectInfo.getId());
-            projectInfo.setStatus("2");
-            projectService.updateProjectInfo(projectInfo);
-        }
-        catch (Exception e)
-        {
-            LOG.warn(e);
-            return ERROR;
-        }
-        
-        return SUCCESS;
-    }
-    
-    public String delProjectInfo()
-    {
-        try
-        {
-            projectService.deleteProjectInfo(projectInfo);
-        }
-        catch (Exception e)
-        {
-            LOG.warn(e);
-            return ERROR;
-        }
-        return SUCCESS;
-    }
-    
-    private void wrapDeptAndUserList()
-    {
-        userInfoList = userInfoService.findAll();
-        UserInfo userInfo = userInfoService.fetchById((Long)session.get(Constants.LOGIN_USER_ID));
-        adminDeptList = userInfo.getDepts();
-    }
-    
-    private void wrapInvoiceList(ProjectInfo projectInfo)
-    {
-        int invoiceCount = projectInfo.getInvoiceDate().split(",").length;
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
-        List<ProjectInvoice> projectInvoices = new ArrayList<ProjectInvoice>();
-        
-        for (int i = 0; i < invoiceCount; i++)
-        {
-            ProjectInvoice projectInvoice = new ProjectInvoice();
-            try
-            {
-                if (!StringUtils.isEmpty(projectInfo.getInvoiceDate().split(",")[i])
-                    && !StringUtils.isEmpty(projectInfo.getInvoiceDate().split(",")[i].trim()))
-                {
-                    Date invoiceDate = sdf.parse(projectInfo.getInvoiceDate().split(",")[i]);
-                    projectInvoice.setInvoiceDate(new Timestamp(invoiceDate.getTime()));
-                }
-                projectInvoice.setInvoiceNumber(projectInfo.getInvoiceNumber().split(",")[i]);
-                projectInvoice.setInvoicePrice(projectInfo.getInvoicePrice().split(",")[i]);                
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-            projectInvoices.add(projectInvoice);
-        }
-        
-        projectInfo.setProjectInvoices(projectInvoices);
-        
-    }
-    
-    private void dealwithQueryType(ProjectInfo projectInfo)
-    {
-        if ("1".equals(projectInfo.getQueryType()) || StringUtils.isEmpty(projectInfo.getQueryType()))
-        {
-            long userID = (Long)session.get(Constants.LOGIN_USER_ID);
-            UserInfo userInfo = new UserInfo();
-            userInfo.setId(userID);
-            projectInfo.setSubmitter(userInfo);
-        }
-        else if ("2".equals(projectInfo.getQueryType()))
-        {
-            UserInfo userInfo = userInfoService.fetchById((Long)session.get(Constants.LOGIN_USER_ID));
-            StringBuffer strb = new StringBuffer();
-            for (AdminDept adminDept : userInfo.getDepts())
-            {
-                strb.append(adminDept.getId()).append(",");
-            }
-            if (strb.length() > 0)
-            {
-                strb.deleteCharAt(strb.length() - 1);
-            }
-            projectInfo.setDeptIDs(strb.toString());
-        }
-    }
-    
-    public ProjectInfo getProjectInfo()
-    {
-        return projectInfo;
-    }
-    
-    public void setProjectInfo(ProjectInfo projectInfo)
-    {
-        this.projectInfo = projectInfo;
-    }
-    
-    public List<ProjectInfo> getProjectInfoList()
-    {
-        return projectInfoList;
-    }
-    
-    public void setProjectInfoList(List<ProjectInfo> projectInfoList)
-    {
-        this.projectInfoList = projectInfoList;
-    }
-    
-    public ProjectService getProjectService()
-    {
-        return projectService;
-    }
-    
-    public void setProjectService(ProjectService projectService)
-    {
-        this.projectService = projectService;
-    }
-    
-    public List<AdminDept> getAdminDeptList()
-    {
-        return adminDeptList;
-    }
-    
-    public void setAdminDeptList(List<AdminDept> adminDeptList)
-    {
-        this.adminDeptList = adminDeptList;
-    }
-    
-    public AdminDeptService getAdminDeptService()
-    {
-        return adminDeptService;
-    }
-    
-    public void setAdminDeptService(AdminDeptService adminDeptService)
-    {
-        this.adminDeptService = adminDeptService;
-    }
-    
-    public List<UserInfo> getUserInfoList()
-    {
-        return userInfoList;
-    }
-    
-    public void setUserInfoList(List<UserInfo> userInfoList)
-    {
-        this.userInfoList = userInfoList;
-    }
-    
-    public UserInfoService getUserInfoService()
-    {
-        return userInfoService;
-    }
-    
-    public void setUserInfoService(UserInfoService userInfoService)
-    {
-        this.userInfoService = userInfoService;
-    }
-    
-    public ProjectStreamService getProjectStreamService()
-    {
-        return projectStreamService;
-    }
-    
-    public void setProjectStreamService(ProjectStreamService projectStreamService)
-    {
-        this.projectStreamService = projectStreamService;
-    }
-    
-    public PageTools getPage()
-    {
-        return page;
-    }
-    
-    public void setPage(PageTools page)
-    {
-        this.page = page;
-    }
-    
+public class ProjectAction extends ActionSupportBase {
+
+	/** 序列号 */
+	private static final long serialVersionUID = 273482916839420012L;
+
+	private ProjectInfo projectInfo;
+
+	private List<ProjectInfo> projectInfoList;
+
+	private ProjectService projectService;
+
+	private List<AdminDept> adminDeptList;
+
+	private AdminDeptService adminDeptService;
+
+	private List<UserInfo> userInfoList;
+
+	private UserInfoService userInfoService;
+
+	private ProjectStreamService projectStreamService;
+
+	private PageTools page;
+
+	public String schProjectInfoList() {
+		try {
+			if (null == projectInfo) {
+				projectInfo = new ProjectInfo();
+			}
+			int pageNo = ParamTools.getIntParameter(request,
+					Constants.PARA_PAGE_NO, 1);
+			int pageSize = ParamTools.getIntParameter(request,
+					Constants.PARA_PAGE_SIZE, 10);
+			PageTools page = new PageTools(pageNo, pageSize);
+			projectInfo.setRowCount(pageNo);
+			projectInfo.setPageSize(pageSize);
+			dealwithQueryType(projectInfo);
+			projectInfoList = projectService.listProjectInfo(projectInfo, page);
+			projectInfoList = executeData(projectInfoList);
+			if (projectInfoList != null && projectInfoList.size() > 0) {
+				this.page = page;
+			} else {
+				super.addNotFoundErrorMsg();
+			}
+		} catch (Exception e) {
+			LOG.warn(e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+
+	/**
+	 * @param projectInfoList2
+	 * @return
+	 */
+	private List<ProjectInfo> executeData(List<ProjectInfo> projectInfoList) {
+		for (ProjectInfo project : projectInfoList) {
+			wrapInvoiceList(project);
+
+			Double subInvoice = (double) 0;
+			if (project.getProjectInvoices() != null) {
+				Double invoicePrice = (double) 0;
+				for (ProjectInvoice invoice : project.getProjectInvoices()) {
+					if (invoice.getInvoicePrice() != null
+							&& !"".equals(invoice.getInvoicePrice())) {
+						try {
+							invoicePrice = Double.valueOf(invoice
+									.getInvoicePrice());
+							subInvoice = subInvoice + invoicePrice;
+						} catch (Exception e) {
+							continue;
+						}
+					}
+				}
+			}
+			project.setSubInvoice(subInvoice);
+
+			Double subCost = (double) 0;
+			if (project.getProjectStreams() != null) {
+
+				for (ProjectStream projectStream : project.getProjectStreams()) {
+					if (projectStream.getType() == 1) {
+						subCost = subCost + projectStream.getMoney();
+					}
+				}
+			}
+			project.setSubCost(subCost);
+
+			project.setBalance(subInvoice - subCost);
+		}
+		return projectInfoList;
+	}
+
+	public String findProjectInfo() {
+		try {
+			projectInfo = projectService.findProjectInfo(projectInfo);
+			wrapInvoiceList(projectInfo);
+			ProjectStream projectStream = new ProjectStream();
+			projectStream.setProjectID(projectInfo.getId());
+			projectInfo.setProjectStreams(projectStreamService
+					.listProjectStream(projectStream));
+		} catch (Exception e) {
+			LOG.warn(e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+
+	public String preAddProjectInfo() {
+		try {
+			wrapDeptAndUserList();
+		} catch (Exception e) {
+			LOG.warn(e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+
+	public String addProjectInfo() {
+		try {
+			UserInfo userinfo = new UserInfo();
+			userinfo.setId((Long) session.get(Constants.LOGIN_USER_ID));
+			projectInfo.setSubmitter(userinfo);
+
+			projectService.saveProjectInfo(projectInfo);
+		} catch (Exception e) {
+			LOG.warn(e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+
+	public String preModProjectInfo() {
+		try {
+			wrapDeptAndUserList();
+			findProjectInfo();
+		} catch (Exception e) {
+			LOG.warn(e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+
+	public String modProjectInfo() {
+		try {
+			projectService.updateProjectInfo(projectInfo);
+		} catch (Exception e) {
+			LOG.warn(e);
+			return ERROR;
+		}
+
+		return SUCCESS;
+	}
+
+	public String closeProjectInfo() {
+		try {
+			projectInfo = projectService.fetchById(projectInfo.getId());
+			projectInfo.setStatus("2");
+			projectService.updateProjectInfo(projectInfo);
+		} catch (Exception e) {
+			LOG.warn(e);
+			return ERROR;
+		}
+
+		return SUCCESS;
+	}
+
+	public String delProjectInfo() {
+		try {
+			projectService.deleteProjectInfo(projectInfo);
+		} catch (Exception e) {
+			LOG.warn(e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+
+	private void wrapDeptAndUserList() {
+		userInfoList = userInfoService.findAll();
+		UserInfo userInfo = userInfoService.fetchById((Long) session
+				.get(Constants.LOGIN_USER_ID));
+		adminDeptList = userInfo.getDepts();
+	}
+
+	private void wrapInvoiceList(ProjectInfo projectInfo) {
+		int invoiceCount = projectInfo.getInvoiceDate().split(",").length;
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		List<ProjectInvoice> projectInvoices = new ArrayList<ProjectInvoice>();
+
+		for (int i = 0; i < invoiceCount; i++) {
+			ProjectInvoice projectInvoice = new ProjectInvoice();
+			try {
+				if (!StringUtils.isEmpty(projectInfo.getInvoiceDate()
+						.split(",")[i])
+						&& !StringUtils.isEmpty(projectInfo.getInvoiceDate()
+								.split(",")[i].trim())) {
+					Date invoiceDate = sdf.parse(projectInfo.getInvoiceDate()
+							.split(",")[i]);
+					projectInvoice.setInvoiceDate(new Timestamp(invoiceDate
+							.getTime()));
+				}
+				projectInvoice.setInvoiceNumber(projectInfo.getInvoiceNumber()
+						.split(",")[i]);
+				projectInvoice.setInvoicePrice(projectInfo.getInvoicePrice()
+						.split(",")[i]);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			projectInvoices.add(projectInvoice);
+		}
+
+		projectInfo.setProjectInvoices(projectInvoices);
+
+	}
+
+	private void dealwithQueryType(ProjectInfo projectInfo) {
+		if ("1".equals(projectInfo.getQueryType())
+				|| StringUtils.isEmpty(projectInfo.getQueryType())) {
+			long userID = (Long) session.get(Constants.LOGIN_USER_ID);
+			UserInfo userInfo = new UserInfo();
+			userInfo.setId(userID);
+			projectInfo.setSubmitter(userInfo);
+		} else if ("2".equals(projectInfo.getQueryType())) {
+			UserInfo userInfo = userInfoService.fetchById((Long) session
+					.get(Constants.LOGIN_USER_ID));
+			StringBuffer strb = new StringBuffer();
+			for (AdminDept adminDept : userInfo.getDepts()) {
+				strb.append(adminDept.getId()).append(",");
+			}
+			if (strb.length() > 0) {
+				strb.deleteCharAt(strb.length() - 1);
+			}
+			projectInfo.setDeptIDs(strb.toString());
+		}
+	}
+
+	public ProjectInfo getProjectInfo() {
+		return projectInfo;
+	}
+
+	public void setProjectInfo(ProjectInfo projectInfo) {
+		this.projectInfo = projectInfo;
+	}
+
+	public List<ProjectInfo> getProjectInfoList() {
+		return projectInfoList;
+	}
+
+	public void setProjectInfoList(List<ProjectInfo> projectInfoList) {
+		this.projectInfoList = projectInfoList;
+	}
+
+	public ProjectService getProjectService() {
+		return projectService;
+	}
+
+	public void setProjectService(ProjectService projectService) {
+		this.projectService = projectService;
+	}
+
+	public List<AdminDept> getAdminDeptList() {
+		return adminDeptList;
+	}
+
+	public void setAdminDeptList(List<AdminDept> adminDeptList) {
+		this.adminDeptList = adminDeptList;
+	}
+
+	public AdminDeptService getAdminDeptService() {
+		return adminDeptService;
+	}
+
+	public void setAdminDeptService(AdminDeptService adminDeptService) {
+		this.adminDeptService = adminDeptService;
+	}
+
+	public List<UserInfo> getUserInfoList() {
+		return userInfoList;
+	}
+
+	public void setUserInfoList(List<UserInfo> userInfoList) {
+		this.userInfoList = userInfoList;
+	}
+
+	public UserInfoService getUserInfoService() {
+		return userInfoService;
+	}
+
+	public void setUserInfoService(UserInfoService userInfoService) {
+		this.userInfoService = userInfoService;
+	}
+
+	public ProjectStreamService getProjectStreamService() {
+		return projectStreamService;
+	}
+
+	public void setProjectStreamService(
+			ProjectStreamService projectStreamService) {
+		this.projectStreamService = projectStreamService;
+	}
+
+	public PageTools getPage() {
+		return page;
+	}
+
+	public void setPage(PageTools page) {
+		this.page = page;
+	}
+
 }
