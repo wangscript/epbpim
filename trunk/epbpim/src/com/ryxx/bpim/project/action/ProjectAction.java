@@ -1,11 +1,16 @@
 package com.ryxx.bpim.project.action;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.project.entity.ProjectInfo;
+import com.ryxx.bpim.project.entity.ProjectInvoice;
 import com.ryxx.bpim.project.entity.ProjectStream;
 import com.ryxx.bpim.project.service.ProjectService;
 import com.ryxx.bpim.project.service.ProjectStreamService;
@@ -78,6 +83,7 @@ public class ProjectAction extends ActionSupportBase
         try
         {
             projectInfo = projectService.findProjectInfo(projectInfo);
+            wrapInvoiceList(projectInfo);
             ProjectStream projectStream = new ProjectStream();
             projectStream.setProjectID(projectInfo.getId());
             projectInfo.setProjectStreams(projectStreamService.listProjectStream(projectStream));
@@ -188,6 +194,39 @@ public class ProjectAction extends ActionSupportBase
         userInfoList = userInfoService.findAll();
         UserInfo userInfo = userInfoService.fetchById((Long)session.get(Constants.LOGIN_USER_ID));
         adminDeptList = userInfo.getDepts();
+    }
+    
+    private void wrapInvoiceList(ProjectInfo projectInfo)
+    {
+        int invoiceCount = projectInfo.getInvoiceDate().split(",").length;
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        
+        List<ProjectInvoice> projectInvoices = new ArrayList<ProjectInvoice>();
+        
+        for (int i = 0; i < invoiceCount; i++)
+        {
+            ProjectInvoice projectInvoice = new ProjectInvoice();
+            try
+            {
+                if (!StringUtils.isEmpty(projectInfo.getInvoiceDate().split(",")[i])
+                    && !StringUtils.isEmpty(projectInfo.getInvoiceDate().split(",")[i].trim()))
+                {
+                    Date invoiceDate = sdf.parse(projectInfo.getInvoiceDate().split(",")[i]);
+                    projectInvoice.setInvoiceDate(new Timestamp(invoiceDate.getTime()));
+                }
+                projectInvoice.setInvoiceNumber(projectInfo.getInvoiceNumber().split(",")[i]);
+                projectInvoice.setInvoicePrice(projectInfo.getInvoicePrice().split(",")[i]);                
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            projectInvoices.add(projectInvoice);
+        }
+        
+        projectInfo.setProjectInvoices(projectInvoices);
+        
     }
     
     private void dealwithQueryType(ProjectInfo projectInfo)
