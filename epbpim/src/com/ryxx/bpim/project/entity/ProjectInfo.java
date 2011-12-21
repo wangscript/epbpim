@@ -107,6 +107,8 @@ public class ProjectInfo extends VoBase
     
     private String invoicePrice;
     
+    private List<ProjectInvoice> projectInvoices;
+    
     private String status;
     
     private UserInfo submitter;
@@ -592,6 +594,16 @@ public class ProjectInfo extends VoBase
     public void setInvoicePrice(String invoicePrice)
     {
         this.invoicePrice = invoicePrice;
+    }
+    
+    public List<ProjectInvoice> getProjectInvoices()
+    {
+        return projectInvoices;
+    }
+    
+    public void setProjectInvoices(List<ProjectInvoice> projectInvoices)
+    {
+        this.projectInvoices = projectInvoices;
     }
     
     public String getStatus()
