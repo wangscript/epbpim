@@ -234,14 +234,18 @@
 							<li class="width500Li"><label class="width6Lb">合同摘要:</label><s:property value='projectInfo.contractAbstract' />
 							</li>
 						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">开票日期:</label><s:date name='projectInfo.invoiceDate' format='yyyy-MM-dd' />
-							</li>
-							<li class="width200Li"><label class="width6Lb">发票单号:</label><s:property value='projectInfo.invoiceNumber' />
-							</li>
-							<li class="width500Li"><label class="width6Lb">开票金额:</label><s:property value='projectInfo.invoicePrice' />
-							</li>
-						</ul>						
+						<s:if test="projectInfo.projectInvoices != null && projectInfo.projectInvoices.size() > 0">
+							<s:iterator value="projectInfo.projectInvoices" status="st">
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">开票日期:</label><s:date name='invoiceDate' format='yyyy-MM-dd' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">发票单号:</label><s:property value='invoiceNumber' />
+									</li>
+									<li class="width500Li"><label class="width6Lb">开票金额:</label><s:property value='invoicePrice' />
+									</li>
+								</ul>	
+							</s:iterator>
+						</s:if>					
 						
 						<%
 							String userid = String.valueOf((Long)session.getAttribute(Constants.LOGIN_USER_ID));

@@ -47,6 +47,18 @@
  			dispDiv4.style.display="none";
  		}
  	}
+	function addInvoice()
+ 	{
+ 		var invoiceULObj=document.getElementById("invoiceUL").cloneNode(true);
+ 		invoiceULObj.id="";
+ 		invoiceULObj.style.display="inline";
+ 		document.getElementById("invoiceDIV").appendChild(invoiceULObj);
+ 	}
+ 	function delInvoice(obj)
+ 	{
+ 		var invoiceULObj=obj.parentNode.parentNode;
+ 		invoiceULObj.parentNode.removeChild(invoiceULObj);
+ 	}
 </script>
 </head>
 <body onload="setSelectValue()">
@@ -368,24 +380,34 @@
 								class="width100Input"
 								name="projectInfo.contractMoney" value="<s:property value='projectInfo.contractMoney' />"/>
 							</li>
-							<li class="width500Li"><label class="width6Lb">合同摘要:</label> <input
-								class="width400Input"
+							<li class="width400Li"><label class="width6Lb">合同摘要:</label> <input
+								class="width300Input"
 								name="projectInfo.contractAbstract" value="<s:property value='projectInfo.contractAbstract' />"/>
 							</li>
 						</ul>
+						<div id="invoiceDIV">
+							<s:if test="projectInfo.projectInvoices != null && projectInfo.projectInvoices.size() > 0">
+								<s:iterator value="projectInfo.projectInvoices" status="st">
+									<ul class="fullScreenUl">
+										<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
+											class="Wdate width100Input" name="projectInfo.invoiceDate"
+											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='invoiceDate' format='yyyy-MM-dd' />"/>
+										</li>
+										<li class="width200Li"><label class="width6Lb">发票单号:</label> <input
+											class="width100Input"
+											name="projectInfo.invoiceNumber" value="<s:property value='invoiceNumber' />"/>
+										</li>
+										<li class="width400Li"><label class="width6Lb">开票金额:</label> <input
+											class="width300Input"
+											name="projectInfo.invoicePrice" value="<s:property value='invoicePrice' />"/>
+										</li>
+										<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
+									</ul>
+								</s:iterator>
+							</s:if>
+						</div>
 						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.invoiceDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.invoiceDate' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">发票单号:</label> <input
-								class="width100Input"
-								name="projectInfo.invoiceNumber" value="<s:property value='projectInfo.invoiceNumber' />"/>
-							</li>
-							<li class="width500Li"><label class="width6Lb">开票金额:</label> <input
-								class="width400Input"
-								name="projectInfo.invoicePrice" value="<s:property value='projectInfo.invoicePrice' />"/>
-							</li>
+							<li><input type="button" class="mediumLeftButton" onclick="addInvoice()" value="新增发票"></li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li><input type="button" id="addProject"
@@ -400,6 +422,21 @@
 							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
 						</ul>
 						</s:form>
+						<ul id="invoiceUL" class="fullScreenUl" style="display: none">
+							<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
+								class="Wdate width100Input" name="projectInfo.invoiceDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+							<li class="width200Li"><label class="width6Lb">发票单号:</label> <input
+								class="width100Input"
+								name="projectInfo.invoiceNumber"/>
+							</li>
+							<li class="width400Li"><label class="width6Lb">开票金额:</label> <input
+								class="width300Input"
+								name="projectInfo.invoicePrice"/>
+							</li>
+							<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
+						</ul>
 					</div>
 					<div></div>
 				</div>
