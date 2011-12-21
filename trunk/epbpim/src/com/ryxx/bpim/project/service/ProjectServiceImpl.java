@@ -78,11 +78,6 @@ public class ProjectServiceImpl extends AbstractService<ProjectInfo, ProjectDAO,
                 Date achiveDate = sdf.parse(projectInfo.getAchiveDatePage());
                 projectInfo.setAchiveDate(new Timestamp(achiveDate.getTime()));
             }
-            if (!StringUtils.isEmpty(projectInfo.getInvoiceDatePage()))
-            {
-                Date invoiceDate = sdf.parse(projectInfo.getInvoiceDatePage());
-                projectInfo.setInvoiceDate(new Timestamp(invoiceDate.getTime()));
-            }
         }
         catch (ParseException e)
         {
