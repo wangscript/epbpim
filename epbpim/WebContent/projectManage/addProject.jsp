@@ -386,13 +386,13 @@
 									class="Wdate width100Input" name="projectInfo.invoiceDate"
 									onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 								</li>
-								<li class="width200Li"><label class="width6Lb">发票单号:</label> <input
-									class="width100Input"
-									name="projectInfo.invoiceNumber"/>
-								</li>
-								<li class="width400Li"><label class="width6Lb">开票金额:</label> <input
+								<li class="width200Li"><label class="width6Lb">开票金额:</label> <input
 									class="width300Input"
 									name="projectInfo.invoicePrice"/>
+								</li>
+								<li class="width400Li"><label class="width6Lb">发票单号:</label> <input
+									class="width100Input"
+									name="projectInfo.invoiceNumber"/>
 								</li>
 								<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
 							</ul>

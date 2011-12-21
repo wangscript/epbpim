@@ -186,6 +186,13 @@ public class ProjectInfo extends VoBase
     
     private String consultArchiveRecipient; //档案接收人
     
+    
+    private Double subInvoice;//合同金额累加
+    
+    private Double subCost;//成本金额累加
+    
+    private Double balance;
+    
     public Long getId()
     {
         return id;
@@ -1029,4 +1036,49 @@ public class ProjectInfo extends VoBase
     {
         this.consultArchiveRecipient = consultArchiveRecipient;
     }
+
+	/**
+	 * @return the subInvoice
+	 */
+	public Double getSubInvoice() {
+		return subInvoice;
+	}
+
+	/**
+	 * @param subInvoice the subInvoice to set
+	 */
+	public void setSubInvoice(Double subInvoice) {
+		this.subInvoice = subInvoice;
+	}
+
+	/**
+	 * @return the subCost
+	 */
+	public Double getSubCost() {
+		return subCost;
+	}
+
+	/**
+	 * @param subCost the subCost to set
+	 */
+	public void setSubCost(Double subCost) {
+		this.subCost = subCost;
+	}
+
+	/**
+	 * @return the balance
+	 */
+	public Double getBalance() {
+		return balance;
+	}
+
+	/**
+	 * @param balance the balance to set
+	 */
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	
+    
 }
