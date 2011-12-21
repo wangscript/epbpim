@@ -39,7 +39,7 @@
 		<property name="contractNumber" column="CONTRACT_NUMBER" type="java.lang.String"></property>
 		<property name="contractMoney" column="CONTRACT_MONEY" type="java.lang.String"></property>
 		<property name="contractAbstract" column="CONTRACT_ABSTRACT" type="java.lang.String"></property>
-		<property name="invoiceDate" column="INVOICE_DATE" type="java.sql.Timestamp"></property>
+		<property name="invoiceDate" column="INVOICE_DATE" type="java.lang.String"></property>
 		<property name="invoiceNumber" column="INVOICE_NUMBER" type="java.lang.String"></property>
 		<property name="invoicePrice" column="INVOICE_PRICE" type="java.lang.String"></property>
 		<property name="status" column="STATUS" type="java.lang.String"></property>
