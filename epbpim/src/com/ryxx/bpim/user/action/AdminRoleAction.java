@@ -58,9 +58,9 @@ public class AdminRoleAction extends ActionSupportBase {
 		log.setLogTime(new Timestamp(System.currentTimeMillis()));
 		log.setModuleId(14);
 		log.setActionType(Constants.OPER_TYPE_CREATE);
-		log.setUserName("Admin");   //session.get(Constants.LOGIN_UID).toString());
+		log.setUserName(session.get(Constants.LOGIN_USER_NAME).toString());   //;
 		log.setUserIp(request.getRemoteAddr());
-		log.setRemark("add role '" + name + "' success");
+		log.setRemark("添加职务 '" + name + "' 成功");
 		adminLogService.save(log);
 		return SUCCESS;
 	}
@@ -77,9 +77,9 @@ public class AdminRoleAction extends ActionSupportBase {
 		log.setLogTime(new Timestamp(System.currentTimeMillis()));
 		log.setModuleId(15);
 		log.setActionType(Constants.OPER_TYPE_DELETE);
-		log.setUserName("Admin");   //session.get(Constants.LOGIN_UID).toString());
+		log.setUserName(session.get(Constants.LOGIN_USER_NAME).toString());   //;
 		log.setUserIp(request.getRemoteAddr());
-		log.setRemark("delete node (Id: '" + id + "') success");
+		log.setRemark("删除职务 (Id: '" + id + "') 成功");
 		adminLogService.save(log);
 		return SUCCESS;
 	}
@@ -122,9 +122,9 @@ public class AdminRoleAction extends ActionSupportBase {
 		log.setLogTime(new Timestamp(System.currentTimeMillis()));
 		log.setModuleId(15);
 		log.setActionType(Constants.OPER_TYPE_UPDATE);
-		log.setUserName("Admin");   //session.get(Constants.LOGIN_UID).toString());
+		log.setUserName(session.get(Constants.LOGIN_USER_NAME).toString());   //;
 		log.setUserIp(request.getRemoteAddr());
-		log.setRemark("update role '" + name + "' success");
+		log.setRemark("更新职务 '" + name + "' 成功");
 		adminLogService.save(log);
 		return SUCCESS;
 	}

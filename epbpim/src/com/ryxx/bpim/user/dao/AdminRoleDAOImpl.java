@@ -11,7 +11,7 @@ import com.ryxx.bpim.user.entity.AdminRole;
 
 public class AdminRoleDAOImpl extends AbstractBaseDAO<AdminRole, Long> implements AdminRoleDAO{
 	public List<AdminRole> findByRoleName(String name) {
-		Criterion[] crits = {Restrictions.eq("name", 1)};
+		Criterion[] crits = {Restrictions.eq("name", name)};
 		return findByCriteria(crits);
 	}
 }

@@ -3,6 +3,8 @@ package com.ryxx.bpim.user.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.service.AbstractService;
 import com.ryxx.bpim.user.dao.AdminRoleDAO;
@@ -12,7 +14,7 @@ import com.ryxx.util.cache.CacheMap;
 
 public class AdminRoleServiceImpl  extends AbstractService<AdminRole,AdminRoleDAO, Long> implements AdminRoleService{
 	public List<AdminRole> findByRoleName(String name) {
-		if(name != null) {
+		if(StringUtils.isNotEmpty(name)) {
 			return this.getDao().findByRoleName(name);
 		} else {
 			return this.getDao().findAll();

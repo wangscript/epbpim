@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%out.clear();%><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
+<%out.clear();%><s:if test="page.pageList.size gt 0"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 		  <tr>
 			<td width="1%"><div class="list_12">&nbsp;<% if("true".equals(request.getParameter("show_button"))){%><a href="javascript:deleteData(null)" class="change1">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:addData()" class="change1">添加</a><%} %></div></td>
 			<td width="99%" align="center">共有记录:<s:property value="page.recordCount"/> 条&nbsp;&nbsp;当前:<s:property value="page.pageNo"/>/<s:property value="page.pageCount"/>页
@@ -27,8 +27,11 @@
 		            <option value="50"<s:if test="50 == page.pageSize"> selected</s:if>>50</option>
 	          	</select>
 				&nbsp;&nbsp;转到第&nbsp;
-				<s:select list="page.pageList" value="page.pageNo" onchange="gotoPage(this)" name="pn" id="pn">
-				</s:select>&nbsp;页
+				
+					<s:select list="page.pageList" value="page.pageNo" onchange="gotoPage(this)" name="pn" id="pn">
+					</s:select>&nbsp;页
+				
           	</td>
 		  </tr>
 	</table>
+</s:if>

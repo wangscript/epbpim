@@ -26,18 +26,19 @@
 			<div class="content_resize">
 				<div class="mainbar">
 					<h3 class="title"><s:text name="AdminRole.QueryRole" /></h3>
+					<s:form action="listRole.do">
 					<div id="searchCondition">
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width4Lb"><s:text name="AdminRole.RoleName" />:</label>
-								<input class="width100Input" name="projectBean.deptName"
-								id="deptName" />
+								<s:textfield cssClass="width100Input" name="name" id="name"/>
 							</li>
-							<li><input type="button" id="searchProject"
-								class="mediumRightButton" onclick="displayResult();"
+							<li><input type="submit" id="searchProject"
+								class="mediumRightButton"
 								class="button" value="<s:text name="Common.Query" />">
 							</li>
 						</ul>
 					</div>
+					</s:form>
 					
 					<s:if test="roleList==null || roleList.size()==0">
 						<tr>
