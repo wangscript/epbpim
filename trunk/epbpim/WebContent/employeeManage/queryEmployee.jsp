@@ -38,11 +38,11 @@ function clearPage(updateId){
 <body>
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
 		<div class="content">
-			<div class="content_resize">
+			<div class="content_resize"><s:form id="paginationForm" action="listUserInfo.do" method="post"
+	name="paginationForm">
 				<div class="mainbar">
 					<h3 class="title">员工查询</h3>
 					<div id="searchCondition">
-					<s:form>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width2Lb">部门:</label>
 								<s:select name="userInfo.deptId" list="userInfo.depts"
@@ -51,22 +51,20 @@ function clearPage(updateId){
 									headerValue="--------请选择-------" />
 							</li>
 							<li class="width200Li"><label class="width4Lb">员工编号:</label>
-								<input class="width100Input" name="userInfo.identity"
-								id="userInfo.identity" /></li>
+								<s:textfield cssClass="width100Input" name="userInfo.identity" id="userInfo.identity"/>
+							</li>
 							<li class="width200Li"><label class="width3Lb">姓名:</label>
-								<input class="width100Input" name="userInfo.realName"
-								id="userInfo.realName" /></li>
+								<s:textfield cssClass="width100Input" name="userInfo.realName" id="userInfo.realName"/>
+							</li>
 								
 							<li class="width250Li"><label class="width2Lb">状态:</label>
 								<%
 									UserStatusEnum[] userStatus = UserStatusEnum.values();
 									request.setAttribute("userStatus", userStatus);
 								%>
-								<select id="status" name="status">
-									<s:iterator value="#request.userStatus" status="st">
-										<option value="<s:property value='key'/>"><s:property value='value'/></option>
-									</s:iterator>
-								</select>
+								<s:select name="status" list="#request.userStatus"
+									listKey="key" listValue="value" multiple="false"
+									required="true" onchange="" headerKey="0"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
@@ -82,17 +80,14 @@ function clearPage(updateId){
 									CertificationTypeEnum[] certifiTypes = CertificationTypeEnum.values();
 									request.setAttribute("certifiTypes", certifiTypes);
 								%>
-								<select id="certifies[0].selectId" name="certifies[0].selectId">
-									<s:iterator value="#request.certifiTypes" status="st">
-										<option value="<s:property value='key'/>"><s:property value='value'/></option>
-									</s:iterator>
-								</select>
+								<s:select name="certifies[0].selectId" list="#request.certifiTypes"
+									listKey="key" listValue="value" multiple="false"
+									required="true" onchange="" headerKey="0"/>
 							</li>
 							<li><input type="submit" id="searchProject"
 								class="mediumRightButton"
 								class="button" value="查询"></li>
 						</ul>
-						</s:form>
 					</div>
 					<div class="searchResult" id="searchResult">
 						<ul class="fullScreenUl">
@@ -144,17 +139,15 @@ function clearPage(updateId){
 							</ul>
 						</s:iterator>
 						<ul class="fullScreenUl">
-							<s:form id="paginationForm">
 								<jsp:include page="../common/pagination.jsp" flush="true">
 									<jsp:param name="action_page" value="employeeManage/listUserInfo.do" />
 								</jsp:include>
-							</s:form>
 						</ul>
 					</div>
 					<div></div>
 				</div>
 
-
+</s:form>
 				<div class="clr"></div>
 			</div>
 		</div>
