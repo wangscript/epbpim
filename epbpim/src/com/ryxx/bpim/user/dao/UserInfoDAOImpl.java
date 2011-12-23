@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 
 import com.ryxx.bpim.dao.AbstractBaseDAO;
 import com.ryxx.bpim.user.entity.UserInfo;
+import com.ryxx.bpim.user.enums.CertificationTypeEnum;
 
 public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements UserInfoDAO{
 	@SuppressWarnings("unchecked")
@@ -50,6 +51,12 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 			}
 			if(userInfo.getRoleId() != null && userInfo.getRoleId()>0L) {
 				criteria.createCriteria("roles").add(Restrictions.in("id", new Object[]{userInfo.getRoleId()}));
+			}
+			if(userInfo.getCertifieId() > 0) {
+				criteria.createCriteria("certifies").add(Restrictions.in("typeId", new Object[]{CertificationTypeEnum.getType(userInfo.getCertifieId())}));
+			}
+			if(userInfo.getStatus() != null && userInfo.getStatus().getKey() != 0) {
+				criteria.add(Restrictions.eq("status", userInfo.getStatus()));
 			}
 		}
 		return criteria;

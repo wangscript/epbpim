@@ -80,7 +80,7 @@ function clearPage(updateId){
 									CertificationTypeEnum[] certifiTypes = CertificationTypeEnum.values();
 									request.setAttribute("certifiTypes", certifiTypes);
 								%>
-								<s:select name="certifies[0].selectId" list="#request.certifiTypes" cssClass="width150Select"
+								<s:select name="certifies[0].selectId" list="#request.certifiTypes" cssClass="width100Select"
 									listKey="key" listValue="value" multiple="false"
 									required="true" onchange="" headerKey="0"/>
 							</li>
