@@ -65,7 +65,11 @@ public class ProjectInfo extends VoBase
     
     private UserInfo owner;
     
+    private UserInfo manager;
+    
     private String projectType;
+    
+    private String projectTypeComment;
     
     private String judgePrice1;
     
@@ -185,7 +189,6 @@ public class ProjectInfo extends VoBase
     private String consultExpertList; //专家名单
     
     private String consultArchiveRecipient; //档案接收人
-    
     
     private Double subInvoice;//合同金额累加
     
@@ -393,6 +396,16 @@ public class ProjectInfo extends VoBase
         this.owner = owner;
     }
     
+    public UserInfo getManager()
+    {
+        return manager;
+    }
+    
+    public void setManager(UserInfo manager)
+    {
+        this.manager = manager;
+    }
+    
     public String getProjectType()
     {
         return projectType;
@@ -401,6 +414,16 @@ public class ProjectInfo extends VoBase
     public void setProjectType(String projectType)
     {
         this.projectType = projectType;
+    }
+    
+    public String getProjectTypeComment()
+    {
+        return projectTypeComment;
+    }
+    
+    public void setProjectTypeComment(String projectTypeComment)
+    {
+        this.projectTypeComment = projectTypeComment;
     }
     
     public String getJudgePrice1()
@@ -1036,49 +1059,53 @@ public class ProjectInfo extends VoBase
     {
         this.consultArchiveRecipient = consultArchiveRecipient;
     }
-
-	/**
-	 * @return the subInvoice
-	 */
-	public Double getSubInvoice() {
-		return subInvoice;
-	}
-
-	/**
-	 * @param subInvoice the subInvoice to set
-	 */
-	public void setSubInvoice(Double subInvoice) {
-		this.subInvoice = subInvoice;
-	}
-
-	/**
-	 * @return the subCost
-	 */
-	public Double getSubCost() {
-		return subCost;
-	}
-
-	/**
-	 * @param subCost the subCost to set
-	 */
-	public void setSubCost(Double subCost) {
-		this.subCost = subCost;
-	}
-
-	/**
-	 * @return the balance
-	 */
-	public Double getBalance() {
-		return balance;
-	}
-
-	/**
-	 * @param balance the balance to set
-	 */
-	public void setBalance(Double balance) {
-		this.balance = balance;
-	}
-
-	
+    
+    /**
+     * @return the subInvoice
+     */
+    public Double getSubInvoice()
+    {
+        return subInvoice;
+    }
+    
+    /**
+     * @param subInvoice the subInvoice to set
+     */
+    public void setSubInvoice(Double subInvoice)
+    {
+        this.subInvoice = subInvoice;
+    }
+    
+    /**
+     * @return the subCost
+     */
+    public Double getSubCost()
+    {
+        return subCost;
+    }
+    
+    /**
+     * @param subCost the subCost to set
+     */
+    public void setSubCost(Double subCost)
+    {
+        this.subCost = subCost;
+    }
+    
+    /**
+     * @return the balance
+     */
+    public Double getBalance()
+    {
+        return balance;
+    }
+    
+    /**
+     * @param balance the balance to set
+     */
+    public void setBalance(Double balance)
+    {
+        this.balance = balance;
+    }
     
 }
