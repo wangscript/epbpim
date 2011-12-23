@@ -109,10 +109,14 @@
 							</li>
 							<li class="width200Li"><label class="width4Lb">负责人:</label><s:property value='projectInfo.owner.realName' />
 							</li>
+							<li class="width200Li"><label class="width4Lb">项目经理:</label><s:property value='projectInfo.manager.realName' />
+							</li>
 						</ul>
 						
 						<ul class="fullScreenUl" id="addNewMember">
 							<li class="width200Li"><label class="width6Lb">项目性质:</label><label id="projectType"><s:property value='projectInfo.projectType'/></label>
+							</li>
+							<li class="width400Li"><label class="width6Lb">服务内容:</label><s:property value='projectInfo.projectTypeComment' />
 							</li>
 						</ul>
 						<div id="projectType1">
