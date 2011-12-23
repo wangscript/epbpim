@@ -38,8 +38,8 @@ function clearPage(updateId){
 <body>
 	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
 		<div class="content">
-			<div class="content_resize"><s:form id="paginationForm" action="listUserInfo.do" method="post"
-	name="paginationForm">
+			<div class="content_resize">
+			<s:form action="listUserInfo.do" method="post">
 				<div class="mainbar">
 					<h3 class="title">员工查询</h3>
 					<div id="searchCondition">
@@ -128,14 +128,11 @@ function clearPage(updateId){
 									</label>
 								</li>
 								<li class="width50Li">
-									<form action="showUser.do" id='showUser<s:property value="id"/>' method="post">
-										<input type="submit" id="searchProject" class="mediumRightButton" class="button" value="修改"><s:hidden name="id" />
-									</form>
+									<input type="button" onclick='preModUser(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
 								</li>
-									<li class="width50Li">
-									<form action="deleteUser.do">
-										<input type="submit" id="deleteProject"	class="mediumRightButton" class="button" value="删除"><s:hidden name="id" />
-									</form></li>
+								<li class="width50Li">
+									<input type="button" onclick='delUser(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+								</li>
 							</ul>
 						</s:iterator>
 						<ul class="fullScreenUl">
@@ -146,8 +143,13 @@ function clearPage(updateId){
 					</div>
 					<div></div>
 				</div>
-
-</s:form>
+				</s:form>
+				<form action="showUser.do" method="post" id="preModUser">
+					<input type="hidden" name="id" id="premod.id" value="" />
+				</form>		
+				<form action="deleteUser.do" method="post" id="delUser">
+					<input type="hidden" name="id" id="del.id" value="" />
+				</form>	
 				<div class="clr"></div>
 			</div>
 		</div>
@@ -155,9 +157,20 @@ function clearPage(updateId){
 		<jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
-	function displayResult(){
+	function displayResult()
+	{
 		document.getElementById("searchResult").style.display="block";
 	}
-
+	
+	function delUser(id){
+		if(confirm('<s:text name="AdminRole.IfDelete" />')){
+			document.getElementById("del.id").value=id;
+			document.getElementById("delUser").submit();
+		}
+	}
+	function preModUser(id){
+		document.getElementById("premod.id").value=id;
+		document.getElementById("preModUser").submit();
+	}
 </script>
 </html>
