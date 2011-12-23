@@ -267,11 +267,10 @@ public class UserInfoAction extends ActionSupportBase {
 			}
 			userInfo1.setRealName(userInfo.getRealName());
 			userInfo1.setIdentity(userInfo.getIdentity());
-			userInfo.setStatus(UserStatusEnum.getType(status==null?0:status));
+			userInfo1.setStatus(UserStatusEnum.getType(status==null?0:status));
 			if(certifies != null) {
-				certifies.get(0).setTypeId(CertificationTypeEnum.getType(certifies.get(0).getSelectId()));
+				userInfo1.setCertifieId(certifies.get(0).getSelectId());
 			}
-			userInfo1.setCertifies(certifies);
 			userInfo1.setRowCount(pageNo);
 			userInfo1.setPageSize(pageSize);
 			userInfos = userInfoService.listPage(userInfo1, page);

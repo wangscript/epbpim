@@ -52,6 +52,7 @@ public class UserInfo extends VoBase {
 	private List<UserCertification> certifies;
 	private Long roleId;
 	private Long deptId;
+	private int certifieId;
 	
 	public Long getId() {
 		return id;
@@ -288,5 +289,19 @@ public class UserInfo extends VoBase {
 	public int hashCode() {
 		return new HashCodeBuilder().append(getId()).toHashCode();
 	}
+	/**
+	 * @return the certifieId
+	 */
+	public int getCertifieId() {
+		return certifieId;
+	}
+	/**
+	 * @param certifieId the certifieId to set
+	 */
+	public void setCertifieId(int certifieId) {
+		this.certifieId = certifieId;
+	}
+	
+	
 }
 

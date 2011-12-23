@@ -92,7 +92,7 @@ function changeTitleBackground(){
 </ul>
 </div>
 <div class="logo">
-<h1><s:text name="Product.Name" /> <small>欢迎您！尊敬的用户。</small> <small></small></h1>
+<h1><s:text name="上海建惠建设咨询有限公司管理系统" /> <small>欢迎您！尊敬的用户。</small> <small></small></h1>
 </div>
 <div class="categoryDiv">
 <ul class="category">
