@@ -50,12 +50,10 @@
 				<option value="人防">人防</option>
 				<option value="房修">房修</option>
 			</select></li>
-			<li class="width200Li"><label class="width4Lb">计价模式:&nbsp;</label><select id="projectInfo.valuationType" name="projectInfo.valuationType" >
-				<option value="">--请选择--</option>
-				<option value="清单">清单</option>
-				<option value="2000定额">2000定额</option>
-				<option value="其他">其他</option>
-			</select></li>
+			<li class="width200Li"><label class="width4Lb">项目经理:</label>
+				<s:select cssClass="width100Select" id="projectInfo.manager.id" name="projectInfo.manager.id"
+						list="userInfoList" listKey="id" listValue="realName" multiple="false" required="true" headerKey="0" />	
+			</li>
 			<li class="width200Li"><label class="width2Lb">从:</label>
 			<input class="Wdate width150Input" name="projectInfo.startDateFrom" id="projectInfo.startDateFrom" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:property value='projectInfo.startDateFrom'/>"/></li>
 			<li class="width200Li"><label class="width2Lb">到:</label>
@@ -129,7 +127,15 @@
 	function setSearchValue()
 	{
 		document.getElementById("projectInfo.majorType").value="<s:property value='projectInfo.majorType'/>";
-		document.getElementById("projectInfo.valuationType").value="<s:property value='projectInfo.valuationType'/>";		
+		
+		var option=new Option("--请选择--","0");
+		if(""=="<s:property value='projectInfo.manager.id'/>" || "0"=="<s:property value='projectInfo.manager.id'/>")
+		{
+			option.selected = true;
+		}		
+		document.getElementById("projectInfo.manager.id").add(option);
+		
+		
 	}
 	function delProject(id){
 		if(confirm('<s:text name="AdminRole.IfDelete" />')){
