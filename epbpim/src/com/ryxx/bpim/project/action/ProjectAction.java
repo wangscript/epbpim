@@ -65,6 +65,9 @@ public class ProjectAction extends ActionSupportBase {
 			} else {
 				super.addNotFoundErrorMsg();
 			}
+			
+			wrapDeptAndUserList();
+			
 		} catch (Exception e) {
 			LOG.warn(e);
 			return ERROR;
