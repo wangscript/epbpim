@@ -45,7 +45,7 @@ function clearPage(updateId){
 					<div id="searchCondition">
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width2Lb">部门:</label>
-								<s:select name="userInfo.deptId" list="userInfo.depts"
+								<s:select name="userInfo.deptId" list="userInfo.depts" cssClass="width150Select"
 									listKey="id" listValue="name" multiple="false"
 									required="true" onchange="" headerKey="0"
 									headerValue="--------请选择-------" />
@@ -69,7 +69,7 @@ function clearPage(updateId){
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width2Lb">职务:</label>
-							<s:select name="userInfo.roleId" list="userInfo.roles"
+							<s:select name="userInfo.roleId" list="userInfo.roles" cssClass="width150Select"
 									listKey="id" listValue="name" multiple="false"
 									required="true" onchange="" headerKey="0"
 									headerValue="--------请选择-------" />
@@ -80,7 +80,7 @@ function clearPage(updateId){
 									CertificationTypeEnum[] certifiTypes = CertificationTypeEnum.values();
 									request.setAttribute("certifiTypes", certifiTypes);
 								%>
-								<s:select name="certifies[0].selectId" list="#request.certifiTypes"
+								<s:select name="certifies[0].selectId" list="#request.certifiTypes" cssClass="width150Select"
 									listKey="key" listValue="value" multiple="false"
 									required="true" onchange="" headerKey="0"/>
 							</li>

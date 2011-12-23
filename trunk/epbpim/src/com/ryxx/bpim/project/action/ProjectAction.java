@@ -98,12 +98,16 @@ public class ProjectAction extends ActionSupportBase {
 			}
 			project.setSubInvoice(subInvoice);
 
+			ProjectStream projectStream = new ProjectStream();
+			projectStream.setProjectID(project.getId());
+			List<ProjectStream> streams = projectStreamService
+					.listProjectStream(projectStream);
 			Double subCost = (double) 0;
-			if (project.getProjectStreams() != null) {
+			if (streams != null) {
 
-				for (ProjectStream projectStream : project.getProjectStreams()) {
-					if (projectStream.getType() == 1) {
-						subCost = subCost + projectStream.getMoney();
+				for (ProjectStream stream : streams) {
+					if (stream.getType() == 1) {
+						subCost = subCost + stream.getMoney();
 					}
 				}
 			}
