@@ -25,6 +25,7 @@
 		<property name="biddingContact" column="BIDDING_CONTACT" type="java.lang.String"></property>
 		<property name="deptTransferNumber" column="DEPT_TRANSFER_NUMBER" type="java.lang.String"></property>
 		<property name="projectType" column="PROJECT_TYPE" type="java.lang.String"></property>
+		<property name="projectTypeComment" column="PROJECT_TYPE_COMMENT" type="java.lang.String"></property>
 		<property name="judgePrice1" column="JUDGE_PRICE1" type="java.lang.String"></property>
 		<property name="judgePrice2" column="JUDGE_PRICE2" type="java.lang.String"></property>
 		<property name="judgeDays" column="JUDGE_DAYS" type="java.lang.String"></property>
@@ -78,6 +79,7 @@
 		<property name="consultArchiveRecipient" column="CONSULTARCHIVERECIPIENT" type="java.lang.String"></property>
 		<many-to-one name="dept" class="com.ryxx.bpim.user.entity.AdminDept" column="DEPT"></many-to-one>
 		<many-to-one name="owner" class="com.ryxx.bpim.user.entity.UserInfo" column="OWNER"></many-to-one>
+		<many-to-one name="manager" class="com.ryxx.bpim.user.entity.UserInfo" column="MANAGER"></many-to-one>
 		<many-to-one name="submitter" class="com.ryxx.bpim.user.entity.UserInfo" column="SUBMITTER"></many-to-one>
 	</class>	
 	
