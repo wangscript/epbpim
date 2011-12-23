@@ -78,7 +78,7 @@
 					<li class="width100Li"><label>项目编号</label></li>
 					<li class="width100Li"><label>承接部门</label></li>
 					<li class="width100Li"><label>合同金额</label></li>
-					<li class="width100Li"><label>财务金额</label></li>
+					<li class="width100Li"><label>开票金额</label></li>
 					<li class="width100Li"><label>结算金额</label></li>
 					<li class="width50Li"><label><s:text name="Common.Update" /></label></li>
 					<li class="width50Li"><label><s:text name="Common.Delete" /></label></li>

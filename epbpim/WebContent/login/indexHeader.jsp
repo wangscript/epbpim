@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <body>
@@ -14,7 +15,7 @@
         </ul>
       </div>
       <div class="clr"></div>
-      <div class="logo"><h1><s:text name="Product.Name" /><small></small></h1></div>
+      <div class="logo"><h1><s:text name="上海建惠建设咨询有限公司管理系统" /><small></small></h1></div>
     </div>
   </div>
 </body>
