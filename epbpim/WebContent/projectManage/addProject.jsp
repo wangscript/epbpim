@@ -160,6 +160,10 @@
 								<s:select cssClass="width100Select" id="projectInfo.owner.id" name="projectInfo.owner.id"
 										list="userInfoList" listKey="id" listValue="realName" multiple="false" required="true" headerKey="0" />	
 							</li>
+							<li class="width200Li"><label class="width4Lb">项目经理:</label>
+								<s:select cssClass="width100Select" id="projectInfo.manager.id" name="projectInfo.manager.id"
+										list="userInfoList" listKey="id" listValue="realName" multiple="false" required="true" headerKey="0" />	
+							</li>
 						</ul>
 						
 						<ul class="fullScreenUl" id="addNewMember">
@@ -170,6 +174,10 @@
 									<option value="投资监理">投资监理</option>
 									<option value="工程咨询">工程咨询</option>
 							</select></li>
+							<li class="width400Li"><label class="width6Lb">服务内容:</label><input
+								class="width300Input"
+								name="projectInfo.projectTypeComment"/>
+							</li>
 						</ul>
 						<div id="projectType1">
 						<ul class="fullScreenUl">
