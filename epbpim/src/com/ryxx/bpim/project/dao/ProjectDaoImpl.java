@@ -104,6 +104,11 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
                 
             }
             
+            if (null != projectInfo.getManager() && 0 != projectInfo.getManager().getId())
+            {
+                criteria.createCriteria("manager").add(Restrictions.eq("id", projectInfo.getSubmitter().getId()));
+            }
+            
             if (!StringUtils.isEmpty(projectInfo.getName()))
             {
                 criteria.add(Restrictions.like("name", "%" + projectInfo.getName() + "%"));
