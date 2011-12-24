@@ -200,6 +200,8 @@ public class ProjectInfo extends VoBase
     
     private String fileName;
     
+    private String oldFileName;
+    
     private String filePath;
     
     private List<ProjectFile> projectFiles;
@@ -1126,6 +1128,16 @@ public class ProjectInfo extends VoBase
         this.fileName = fileName;
     }
     
+    public String getOldFileName()
+    {
+        return oldFileName;
+    }
+    
+    public void setOldFileName(String oldFileName)
+    {
+        this.oldFileName = oldFileName;
+    }
+    
     public String getFilePath()
     {
         return filePath;
@@ -1145,20 +1157,21 @@ public class ProjectInfo extends VoBase
     {
         this.projectFiles = projectFiles;
     }
-
-	/**
-	 * @return the invoiceMoneyArrival
-	 */
-	public String getInvoiceMoneyArrival() {
-		return invoiceMoneyArrival;
-	}
-
-	/**
-	 * @param invoiceMoneyArrival the invoiceMoneyArrival to set
-	 */
-	public void setInvoiceMoneyArrival(String invoiceMoneyArrival) {
-		this.invoiceMoneyArrival = invoiceMoneyArrival;
-	}
     
+    /**
+     * @return the invoiceMoneyArrival
+     */
+    public String getInvoiceMoneyArrival()
+    {
+        return invoiceMoneyArrival;
+    }
+    
+    /**
+     * @param invoiceMoneyArrival the invoiceMoneyArrival to set
+     */
+    public void setInvoiceMoneyArrival(String invoiceMoneyArrival)
+    {
+        this.invoiceMoneyArrival = invoiceMoneyArrival;
+    }
     
 }
