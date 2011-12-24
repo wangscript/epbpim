@@ -51,7 +51,9 @@
 			<div class="content_resize">
 				<div class="content_resize">
 				<div class="mainbar">
-					<h3 class="title">项目录入</h3>
+					<!--startprint-->
+					
+					<h3 class="title">项目详情</h3>
 					<div id="addProjectTable">
 						<h4 class="title">项目基本信息</h4>
 						<ul class="fullScreenUl">
@@ -249,8 +251,9 @@
 									</li>
 								</ul>	
 							</s:iterator>
-						</s:if>					
-						
+						</s:if>		
+						<!--endprint-->
+						<input 	type="button" class="mediumRightButton"value="打印项目详情" onClick="doPrint()">
 						<%
 							String userid = String.valueOf((Long)session.getAttribute(Constants.LOGIN_USER_ID));
 							List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE+Constants.LOGIN_USER_ID+userid);
@@ -391,6 +394,17 @@
 			document.getElementById(id).submit();
 		}
 	}
+ 	function doPrint() { 
+ 		bdhtml=window.document.body.innerHTML; 
+ 		currentHtml = bdhtml;
+ 		sprnstr="<!--startprint-->"; 
+ 		eprnstr="<!--endprint-->"; 
+ 		prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); 
+ 		prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); 
+ 		window.document.body.innerHTML=prnhtml; 
+ 		window.print(); 
+ 		setTimeout("window.document.body.innerHTML=currentHtml",3000);
+ 	}
 
 </script>
 </html>
