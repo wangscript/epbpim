@@ -370,6 +370,11 @@ public class ProjectAction extends ActionSupportBase
     
     private void wrapFileList(ProjectInfo projectInfo)
     {
+        if (StringUtils.isEmpty(projectInfo.getFileName()))
+        {
+            return;
+        }
+        
         int invoiceCount = projectInfo.getFileName().split(",").length;
         
         List<ProjectFile> projectFiles = new ArrayList<ProjectFile>();
