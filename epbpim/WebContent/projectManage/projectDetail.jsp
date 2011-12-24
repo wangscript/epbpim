@@ -231,6 +231,17 @@
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label><s:property value='projectInfo.consultArchiveRecipient' />
 							</li>
 						</ul></div>
+						<h4 class="title">附件信息</h4>
+						<div id="attachmentDIV">
+							<s:if test="projectInfo.projectInvoices != null && projectInfo.projectInvoices.size() > 0">
+								<s:iterator value="projectInfo.projectInvoices" status="st">
+									<ul class="fullScreenUl">
+										<li class="width200Li"><a href="<s:property value='filePath' />"><s:property value='fileName' /></a></li>
+									</ul>
+								</s:iterator>
+							</s:if>
+						</div>		
+						
 						<!--endprint-->
 						<ul class="fullScreenUl">
 							<li class="width100Li">
