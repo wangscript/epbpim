@@ -397,7 +397,7 @@
 							<s:if test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
 								<s:iterator value="projectInfo.projectFiles" status="st">
 									<ul class="fullScreenUl">
-										<li class="width200Li"><a href="<s:property value='filePath' />"><s:property value='fileName' /></a></li>
+										<li class="width400Li"><a href="<s:property value='filePath' />"><s:property value='fileName' /></a></li>
 										<li class="width200Li"><input type="hidden" name="projectInfo.fileName" id="projectInfo.fileName" value="<s:property value='fileName' />"></li>										
 										<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
 									</ul>
@@ -418,7 +418,7 @@
 								onclick="modProjectInfo('0')"
 								value="保存">
 							</li>
-							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
+							<li><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
 						</ul>
 						</s:form>
 						<ul id="attachmentUL" class="fullScreenUl" style="display: none">
