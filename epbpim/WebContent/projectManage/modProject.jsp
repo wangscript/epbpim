@@ -393,21 +393,20 @@
 							</li>
 						</ul></div>
 						
-						 <h4 class="title">附件信息</h4>
+						<h4 class="title">附件信息</h4>
 						<div id="attachmentDIV">
 							<s:if test="projectInfo.projectInvoices != null && projectInfo.projectInvoices.size() > 0">
 								<s:iterator value="projectInfo.projectInvoices" status="st">
 									<ul class="fullScreenUl">
-										<li class="width200Li"><a href="<s:property value='filePath' />"><s:property value='fileName' /></a></li>										
+										<li class="width200Li"><a href="<s:property value='filePath' />"><s:property value='fileName' /></a></li>
+										<li class="width200Li"><input type="hidden" name="projectInfo.fileName" id="projectInfo.fileName" value="<s:property value='fileName' />"></li>										
 										<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
 									</ul>
 								</s:iterator>
 							</s:if>
 						</div>			
-						
 						<ul class="fullScreenUl">
 							<li><input type="button" class="mediumLeftButton" onclick="addAttachment()" value="新增附件"></li>
-							
 						</ul>
 						
 						<ul class="fullScreenUl">
