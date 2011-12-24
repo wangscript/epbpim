@@ -105,7 +105,8 @@ public class AdminFileAction extends ActionSupportBase
         try
         {
             String fileDir =
-                request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + adminFile.getFileModule();
+                request.getSession().getServletContext().getRealPath("/") + FILE_SEAPRATOR + "uploadfile"
+                    + FILE_SEAPRATOR + adminFile.getFileModule();
             
             String filePath = adminFile.getFilePath();
             if (null != filePath)
