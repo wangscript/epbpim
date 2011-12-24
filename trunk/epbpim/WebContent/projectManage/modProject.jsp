@@ -395,8 +395,8 @@
 						
 						<h4 class="title">附件信息</h4>
 						<div id="attachmentDIV">
-							<s:if test="projectInfo.projectInvoices != null && projectInfo.projectInvoices.size() > 0">
-								<s:iterator value="projectInfo.projectInvoices" status="st">
+							<s:if test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
+								<s:iterator value="projectInfo.projectFiles" status="st">
 									<ul class="fullScreenUl">
 										<li class="width200Li"><a href="<s:property value='filePath' />"><s:property value='fileName' /></a></li>
 										<li class="width200Li"><input type="hidden" name="projectInfo.fileName" id="projectInfo.fileName" value="<s:property value='fileName' />"></li>										
