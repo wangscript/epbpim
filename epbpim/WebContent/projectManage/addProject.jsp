@@ -42,18 +42,6 @@
  		}
  	}
  	
- 	function addInvoice()
- 	{
- 		var invoiceULObj=document.getElementById("invoiceUL").cloneNode(true);
- 		invoiceULObj.id="";
- 		invoiceULObj.style.display="inline";
- 		document.getElementById("invoiceDIV").appendChild(invoiceULObj);
- 	}
- 	function delInvoice(obj)
- 	{
- 		var invoiceULObj=obj.parentNode.parentNode;
- 		invoiceULObj.parentNode.removeChild(invoiceULObj);
- 	}
 </script>
 </head>
 <body>
@@ -376,42 +364,7 @@
 								name="projectInfo.consultArchiveRecipient"/>
 							</li>
 						</ul></div>
-						<h4 class="title">合同信息</h4>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">合同编号:</label> <input
-								class="width100Input"
-								name="projectInfo.contractNumber"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">合同金额:</label> <input
-								class="width100Input"
-								name="projectInfo.contractMoney"/>
-							</li>
-							<li class="width400Li"><label class="width6Lb">合同摘要:</label> <input
-								class="width300Input"
-								name="projectInfo.contractAbstract"/>
-							</li>
-						</ul>
-						<div id="invoiceDIV">
-							<ul class="fullScreenUl">
-								<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
-									class="Wdate width100Input" name="projectInfo.invoiceDate"
-									onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-								</li>
-								<li class="width200Li"><label class="width6Lb">开票金额:</label> <input
-									class="width100Input"
-									name="projectInfo.invoicePrice"/>
-								</li>
-								<li class="width400Li"><label class="width6Lb">发票单号:</label> <input
-									class="width300Input"
-									name="projectInfo.invoiceNumber"/>
-								</li>
-								<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
-							</ul>
-						</div>
-						<ul class="fullScreenUl">
-							<li><input type="button" class="mediumLeftButton" onclick="addInvoice()" value="新增发票"></li>
-							
-						</ul>
+						
 						
 						<ul class="fullScreenUl">
 							<li><input type="button" id="addProject"

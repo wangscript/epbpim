@@ -111,6 +111,8 @@ public class ProjectInfo extends VoBase
     
     private String invoicePrice;
     
+    private String invoiceMoneyArrival;
+    
     private List<ProjectInvoice> projectInvoices;
     
     private String status;
@@ -1143,4 +1145,20 @@ public class ProjectInfo extends VoBase
     {
         this.projectFiles = projectFiles;
     }
+
+	/**
+	 * @return the invoiceMoneyArrival
+	 */
+	public String getInvoiceMoneyArrival() {
+		return invoiceMoneyArrival;
+	}
+
+	/**
+	 * @param invoiceMoneyArrival the invoiceMoneyArrival to set
+	 */
+	public void setInvoiceMoneyArrival(String invoiceMoneyArrival) {
+		this.invoiceMoneyArrival = invoiceMoneyArrival;
+	}
+    
+    
 }
