@@ -415,7 +415,7 @@
 						</s:form>
 						<ul id="attachmentUL" class="fullScreenUl" style="display: none">
 							<li class="width300Li">
-								<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile()" />
+								<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile(this)" />
 								<input type="hidden" name="projectInfo.fileName" id="projectInfo.fileName">
 							</li>
 							<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
