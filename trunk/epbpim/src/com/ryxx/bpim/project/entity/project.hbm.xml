@@ -43,6 +43,8 @@
 		<property name="invoiceDate" column="INVOICE_DATE" type="java.lang.String"></property>
 		<property name="invoiceNumber" column="INVOICE_NUMBER" type="java.lang.String"></property>
 		<property name="invoicePrice" column="INVOICE_PRICE" type="java.lang.String"></property>
+		<property name="invoiceMoneyArrival" column="INVOICE_MONEY_ARRIVAL" type="java.lang.String"></property>
+		
 		<property name="status" column="STATUS" type="java.lang.String"></property>
 		
 		<property name="proxyInvest" column="PROXYINVEST" type="java.lang.String"></property>

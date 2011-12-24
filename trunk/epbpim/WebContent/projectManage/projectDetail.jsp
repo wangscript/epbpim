@@ -231,29 +231,12 @@
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label><s:property value='projectInfo.consultArchiveRecipient' />
 							</li>
 						</ul></div>
-						<h4 class="title">合同信息</h4>
+						<!--endprint-->
 						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">合同编号:</label><s:property value='projectInfo.contractNumber' />
-							</li>
-							<li class="width200Li"><label class="width6Lb">合同金额:</label><s:property value='projectInfo.contractMoney' />
-							</li>
-							<li class="width500Li"><label class="width6Lb">合同摘要:</label><s:property value='projectInfo.contractAbstract' />
+							<li class="width100Li">
+								<input 	type="button" class="mediumRightButton"value="打印项目详情" onClick="doPrint()">
 							</li>
 						</ul>
-						<s:if test="projectInfo.projectInvoices != null && projectInfo.projectInvoices.size() > 0">
-							<s:iterator value="projectInfo.projectInvoices" status="st">
-								<ul class="fullScreenUl">
-									<li class="width200Li"><label class="width6Lb">开票日期:</label><s:date name='invoiceDate' format='yyyy-MM-dd' />
-									</li>
-									<li class="width200Li"><label class="width6Lb">发票单号:</label><s:property value='invoiceNumber' />
-									</li>
-									<li class="width500Li"><label class="width6Lb">开票金额:</label><s:property value='invoicePrice' />
-									</li>
-								</ul>	
-							</s:iterator>
-						</s:if>		
-						<!--endprint-->
-						<input 	type="button" class="mediumRightButton"value="打印项目详情" onClick="doPrint()">
 						<%
 							String userid = String.valueOf((Long)session.getAttribute(Constants.LOGIN_USER_ID));
 							List<AdminMenu> menus = (List)CacheMap.getInstance().getCache(Constants.MENU_CACHE+Constants.LOGIN_USER_ID+userid);
@@ -284,7 +267,81 @@
 							}
 							
 						%>
+						<s:if test="projectInfo.status != 2">
+							<s:if test="#request.addCost == true">
+						<h4 class="title">合同信息</h4>
+						<s:form id="modForm" action="modProjectContractAndInvoices.do" method="post" >
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width6Lb">合同编号:</label> <input
+								class="width100Input"
+								name="projectInfo.contractNumber" value="<s:property value='projectInfo.contractNumber' />"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">合同金额:</label> <input
+								class="width100Input"
+								name="projectInfo.contractMoney" value="<s:property value='projectInfo.contractMoney' />"/>
+							</li>
+							<li class="width400Li"><label class="width6Lb">合同摘要:</label> <input
+								class="width300Input"
+								name="projectInfo.contractAbstract" value="<s:property value='projectInfo.contractAbstract' />"/>
+							</li>
+						</ul>
+						<div id="invoiceDIV">
+							<s:if test="projectInfo.projectInvoices != null && projectInfo.projectInvoices.size() > 0">
+								<s:iterator value="projectInfo.projectInvoices" status="st">
+									<ul class="fullScreenUl">
+										<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
+											class="Wdate width100Input" name="projectInfo.invoiceDate"
+											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='invoiceDate' format='yyyy-MM-dd' />"/>
+										</li>
+										<li class="width200Li"><label class="width6Lb">开票金额:</label> <input
+											class="width100Input"
+											name="projectInfo.invoicePrice" value="<s:property value='invoicePrice' />"/>
+										</li>
+										<li class="width250Li"><label class="width6Lb">发票单号:</label> <input
+											class="width150Input"
+											name="projectInfo.invoiceNumber" value="<s:property value='invoiceNumber' />"/>
+										</li>
+										<li class="width150Li"><label class="width6Lb">是否到账:</label> <input
+											class="width50Input" type="checkbox"
+											name="projectInfo.invoiceMoneyArrival" value="<s:property value='invoiceMoneyArrival' />"/>
+										</li>
+										<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
+									</ul>
+								</s:iterator>
+							</s:if>
+						</div>
+						<ul class="fullScreenUl">
+							<li><input type="button" class="mediumLeftButton" onclick="addInvoice()" value="新增发票"></li>
+						</ul>
+						<ul id="invoiceUL" class="fullScreenUl" style="display: none">
+							<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
+								class="Wdate width100Input" name="projectInfo.invoiceDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+							<li class="width200Li"><label class="width6Lb">开票金额:</label> <input
+								class="width100Input"
+								name="projectInfo.invoicePrice"/>
+							</li>
+							<li class="width250Li"><label class="width6Lb">发票单号:</label> <input
+								class="width150Input"
+								name="projectInfo.invoiceNumber"/>
+							</li>
+							<li class="width150Li"><label class="width6Lb">是否到账:</label> <input
+									class="width50Input" type="checkbox"
+									name="projectInfo.invoiceMoneyArrival" value="<s:property value='invoiceMoneyArrival' />"/>
+							</li>
+							<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width100Li">
+								<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>" />
+								<input type="submit" class="mediumRightButton"value="保存" >
+							</li>
+						</ul>
+						</s:form>
 						
+						</s:if>
+						</s:if>
 						<s:if test="projectInfo.projectStreams != null && projectInfo.projectStreams.size() > 0">
 							<h4 class="title">成本/奖金信息</h4>
 							<div class="searchResult" id="searchResult">
@@ -394,6 +451,19 @@
 			document.getElementById(id).submit();
 		}
 	}
+
+ 	function addInvoice()
+ 	{
+ 		var invoiceULObj=document.getElementById("invoiceUL").cloneNode(true);
+ 		invoiceULObj.id="";
+ 		invoiceULObj.style.display="inline";
+ 		document.getElementById("invoiceDIV").appendChild(invoiceULObj);
+ 	}
+ 	function delInvoice(obj)
+ 	{
+ 		var invoiceULObj=obj.parentNode.parentNode;
+ 		invoiceULObj.parentNode.removeChild(invoiceULObj);
+ 	}
  	function doPrint() { 
  		bdhtml=window.document.body.innerHTML; 
  		currentHtml = bdhtml;

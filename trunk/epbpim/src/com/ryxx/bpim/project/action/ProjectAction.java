@@ -223,6 +223,35 @@ public class ProjectAction extends ActionSupportBase
         return SUCCESS;
     }
     
+    public String modProjectContractAndInvoices(){
+		if(projectInfo!=null){
+			ProjectInfo preProjectInfo = projectService.findProjectInfo(projectInfo);
+			if(!StringUtils.isBlank(projectInfo.getContractNumber())){
+				preProjectInfo.setContractNumber(projectInfo.getContractNumber());
+			}
+			if(!StringUtils.isBlank(projectInfo.getContractMoney())){
+				preProjectInfo.setContractMoney(projectInfo.getContractMoney());
+			}
+			if(!StringUtils.isBlank(projectInfo.getContractAbstract())){
+				preProjectInfo.setContractAbstract(projectInfo.getContractAbstract());
+			}
+			if(!StringUtils.isBlank(projectInfo.getInvoiceDate())){
+				preProjectInfo.setInvoiceDate(projectInfo.getInvoiceDate());
+			}
+			if(!StringUtils.isBlank(projectInfo.getInvoiceNumber())){
+				preProjectInfo.setInvoiceNumber(projectInfo.getInvoiceNumber().replaceAll(", ", ","));
+			}
+			if(!StringUtils.isBlank(projectInfo.getInvoicePrice())){
+				preProjectInfo.setInvoicePrice(projectInfo.getInvoicePrice().replaceAll(", ", ","));
+			}
+			if(!StringUtils.isBlank(projectInfo.getInvoiceMoneyArrival())){
+				preProjectInfo.setInvoiceMoneyArrival(projectInfo.getInvoiceMoneyArrival().replaceAll(", ", ","));
+			}
+			projectService.updateProjectInfo(preProjectInfo);
+		}
+		return SUCCESS;
+	}
+    
     public String closeProjectInfo()
     {
         try
