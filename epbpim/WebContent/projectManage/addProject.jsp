@@ -387,7 +387,7 @@
 							</li>
 						</ul></div>
 						
-						 <h4 class="title">附件信息</h4>
+						<h4 class="title">附件信息</h4>
 						<div id="attachmentDIV">
 							<ul class="fullScreenUl">
 								<li class="width300Li">
@@ -396,11 +396,9 @@
 								</li>
 								<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
 							</ul>
-						</div>			
-						
+						</div>
 						<ul class="fullScreenUl">
 							<li><input type="button" class="mediumLeftButton" onclick="addAttachment()" value="新增附件"></li>
-							
 						</ul>
 						
 						<ul class="fullScreenUl">
