@@ -312,16 +312,14 @@
 											class="width150Input"
 											name="projectInfo.invoiceNumber" value="<s:property value='invoiceNumber' />"/>
 										</li>
-										<s:property value='invoiceMoneyArrival' />
 										<li class="width150Li"><label class="width6Lb">是否到账:</label> 
 											<select name="projectInfo.invoiceMoneyArrival" >
-											<s:if test="<s:property value='invoiceMoneyArrival' />==null"><option value="" selected="selected">请选择</option><option value="1">是</option>
+											<s:if test="invoiceMoneyArrival!= 1&&invoiceMoneyArrival!= 0"><option value=" " selected="selected">请选择</option><option value="1">是</option>
 												<option value="0">否</option></s:if>
-											<s:if test="<s:property value='invoiceMoneyArrival' />==1"><option value="" >请选择</option><option value="1" selected="selected">是</option>
+											<s:if test="invoiceMoneyArrival==1"><option value="" >请选择</option><option value="1" selected="selected">是</option>
 												<option value="0">否</option></s:if>
-											<s:if test="<s:property value='invoiceMoneyArrival' />==0"><option value="" >请选择</option><option value="1">是</option>
+											<s:if test="invoiceMoneyArrival==0"><option value="" >请选择</option><option value="1">是</option>
 												<option value="0" selected="selected">否</option></s:if>
-												<option value="">请选择</option>
 												
 											</select></li>
 										<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
@@ -347,7 +345,7 @@
 							</li>
 							<li class="width150Li"><label class="width6Lb">是否到账:</label> 
 								<select name="projectInfo.invoiceMoneyArrival" >
-									<option value="" >请选择</option>
+									<option value=" " >请选择</option>
 									<option value="1">是</option>
 									<option value="0">否</option>
 								</select></li>

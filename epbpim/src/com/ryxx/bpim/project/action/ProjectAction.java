@@ -245,7 +245,7 @@ public class ProjectAction extends ActionSupportBase
 				preProjectInfo.setInvoicePrice(projectInfo.getInvoicePrice().replaceAll(", ", ","));
 			}
 			if(!StringUtils.isBlank(projectInfo.getInvoiceMoneyArrival())){
-				preProjectInfo.setInvoiceMoneyArrival(projectInfo.getInvoiceMoneyArrival().replaceAll(", ", ",")+",");
+				preProjectInfo.setInvoiceMoneyArrival(projectInfo.getInvoiceMoneyArrival().replaceAll(", ", ","));
 			}
 			projectService.updateProjectInfo(preProjectInfo);
 		}
