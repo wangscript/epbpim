@@ -47,6 +47,29 @@
  			dispDiv4.style.display="none";
  		}
  	}
+	
+	function addAttachment()
+ 	{
+ 		var invoiceULObj=document.getElementById("attachmentUL").cloneNode(true);
+ 		invoiceULObj.id="";
+ 		invoiceULObj.style.display="inline";
+ 		document.getElementById("attachmentDIV").appendChild(invoiceULObj);
+ 	}
+ 	function delAttachment(obj)
+ 	{
+ 		var invoiceULObj=obj.parentNode.parentNode;
+ 		invoiceULObj.parentNode.removeChild(invoiceULObj);
+ 	}
+ 	function chooseFile(obj)
+ 	{
+ 		var uploadFiles = $('uploadFiles');
+ 		var filePath=uploadFiles.value;
+ 	    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length); 	    
+		var reg = /,/g;
+		fileName = fileName.replace(reg, "");
+		obj.nextSibling.nextSibling.value = fileName;
+ 	}
+ 	
 </script>
 </head>
 <body onload="setSelectValue()">
@@ -370,6 +393,23 @@
 							</li>
 						</ul></div>
 						
+						 <h4 class="title">附件信息</h4>
+						<div id="attachmentDIV">
+							<s:if test="projectInfo.projectInvoices != null && projectInfo.projectInvoices.size() > 0">
+								<s:iterator value="projectInfo.projectInvoices" status="st">
+									<ul class="fullScreenUl">
+										<li class="width200Li"><a href="<s:property value='filePath' />"><s:property value='fileName' /></a></li>										
+										<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
+									</ul>
+								</s:iterator>
+							</s:if>
+						</div>			
+						
+						<ul class="fullScreenUl">
+							<li><input type="button" class="mediumLeftButton" onclick="addAttachment()" value="新增附件"></li>
+							
+						</ul>
+						
 						<ul class="fullScreenUl">
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
@@ -383,7 +423,13 @@
 							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
 						</ul>
 						</s:form>
-						
+						<ul id="attachmentUL" class="fullScreenUl" style="display: none">
+							<li class="width300Li">
+								<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile()" />
+								<input type="hidden" name="projectInfo.fileName" id="projectInfo.fileName">
+							</li>
+							<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
+						</ul>
 					</div>
 					<div></div>
 				</div>
