@@ -62,8 +62,7 @@
  	}
  	function chooseFile(obj)
  	{
- 		var uploadFiles = $('uploadFiles');
- 		var filePath=uploadFiles.value;
+ 		var filePath=obj.value;
  	    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length); 	    
 		var reg = /,/g;
 		fileName = fileName.replace(reg, "");
