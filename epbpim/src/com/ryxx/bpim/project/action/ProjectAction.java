@@ -428,6 +428,10 @@ public class ProjectAction extends ActionSupportBase
     {
         if (null == uploadFiles)
         {
+            if (!StringUtils.isEmpty(projectInfo.getOldFileName()))
+            {
+                projectInfo.setFileName(projectInfo.getOldFileName());
+            }           
             return null;
         }
         
