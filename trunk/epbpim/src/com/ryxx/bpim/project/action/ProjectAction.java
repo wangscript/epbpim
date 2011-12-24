@@ -421,6 +421,11 @@ public class ProjectAction extends ActionSupportBase
     private File[] dealWithUploadFiles()
         throws Exception
     {
+        if (null == uploadFiles)
+        {
+            return null;
+        }
+        
         File[] newUploadFiles = new File[uploadFiles.length];
         
         StringBuffer filePath = new StringBuffer();
