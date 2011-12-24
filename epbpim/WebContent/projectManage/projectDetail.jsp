@@ -21,12 +21,12 @@
  		var dispDiv2 = document.getElementById("projectType2");
  		var dispDiv3 = document.getElementById("projectType3");
  		var dispDiv4 = document.getElementById("projectType4");
- 		if(type == "投资监理") {
+ 		if(type == "投资监理" || type=="财务监理") {
  			dispDiv1.style.display="none";
  			dispDiv2.style.display="none";
  			dispDiv3.style.display="block";
  			dispDiv4.style.display="none";
- 		} else if(type == "招标代理") {
+ 		} else if(type == "招标代理" || type=="政府采购") {
  			dispDiv1.style.display="none";
  			dispDiv2.style.display="block";
  			dispDiv3.style.display="none";
