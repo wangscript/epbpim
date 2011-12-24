@@ -244,7 +244,7 @@
 						
 						<!--endprint-->
 						<ul class="fullScreenUl">
-							<li class="width100Li">
+							<li>
 								<input 	type="button" class="mediumRightButton"value="打印项目详情" onClick="doPrint()">
 							</li>
 						</ul>
@@ -312,10 +312,18 @@
 											class="width150Input"
 											name="projectInfo.invoiceNumber" value="<s:property value='invoiceNumber' />"/>
 										</li>
-										<li class="width150Li"><label class="width6Lb">是否到账:</label> <input
-											class="width50Input" type="checkbox"
-											name="projectInfo.invoiceMoneyArrival" value="<s:property value='invoiceMoneyArrival' />"/>
-										</li>
+										<s:property value='invoiceMoneyArrival' />
+										<li class="width150Li"><label class="width6Lb">是否到账:</label> 
+											<select name="projectInfo.invoiceMoneyArrival" >
+											<s:if test="<s:property value='invoiceMoneyArrival' />==null"><option value="" selected="selected">请选择</option><option value="1">是</option>
+												<option value="0">否</option></s:if>
+											<s:if test="<s:property value='invoiceMoneyArrival' />==1"><option value="" >请选择</option><option value="1" selected="selected">是</option>
+												<option value="0">否</option></s:if>
+											<s:if test="<s:property value='invoiceMoneyArrival' />==0"><option value="" >请选择</option><option value="1">是</option>
+												<option value="0" selected="selected">否</option></s:if>
+												<option value="">请选择</option>
+												
+											</select></li>
 										<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
 									</ul>
 								</s:iterator>
@@ -337,14 +345,16 @@
 								class="width150Input"
 								name="projectInfo.invoiceNumber"/>
 							</li>
-							<li class="width150Li"><label class="width6Lb">是否到账:</label> <input
-									class="width50Input" type="checkbox"
-									name="projectInfo.invoiceMoneyArrival" value="<s:property value='invoiceMoneyArrival' />"/>
-							</li>
+							<li class="width150Li"><label class="width6Lb">是否到账:</label> 
+								<select name="projectInfo.invoiceMoneyArrival" >
+									<option value="" >请选择</option>
+									<option value="1">是</option>
+									<option value="0">否</option>
+								</select></li>
 							<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li class="width100Li">
+							<li>
 								<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>" />
 								<input type="submit" class="mediumRightButton"value="保存" >
 							</li>
