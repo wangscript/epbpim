@@ -200,6 +200,8 @@ public class ProjectInfo extends VoBase
     
     private String filePath;
     
+    private List<ProjectFile> projectFiles;
+    
     public Long getId()
     {
         return id;
@@ -1130,5 +1132,15 @@ public class ProjectInfo extends VoBase
     public void setFilePath(String filePath)
     {
         this.filePath = filePath;
+    }
+    
+    public List<ProjectFile> getProjectFiles()
+    {
+        return projectFiles;
+    }
+    
+    public void setProjectFiles(List<ProjectFile> projectFiles)
+    {
+        this.projectFiles = projectFiles;
     }
 }
