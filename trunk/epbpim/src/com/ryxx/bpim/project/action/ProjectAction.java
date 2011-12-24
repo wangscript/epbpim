@@ -20,6 +20,7 @@ import com.ryxx.bpim.user.entity.UserInfo;
 import com.ryxx.bpim.user.service.AdminDeptService;
 import com.ryxx.bpim.user.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.io.FileUtil;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 
@@ -28,6 +29,9 @@ public class ProjectAction extends ActionSupportBase
     
     /** 序列号 */
     private static final long serialVersionUID = 273482916839420012L;
+    
+    /** 目录分隔符 */
+    private final String FILE_SEAPRATOR = System.getProperty("file.separator");
     
     private ProjectInfo projectInfo;
     
@@ -313,6 +317,52 @@ public class ProjectAction extends ActionSupportBase
             }
             projectInfo.setDeptIDs(strb.toString());
         }
+    }
+    
+    private File[] dealWithUploadFiles()
+        throws Exception
+    {
+        File[] newUploadFiles = new File[uploadFiles.length];
+        
+        StringBuffer filePath = new StringBuffer();
+        for (int i = 0; i < uploadFiles.length; i++)
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+            String newFileName = sdf.format(new Date());
+            
+            String oldFileName = projectInfo.getFileName().split(",")[i];
+            if (oldFileName.contains("."))
+            {
+                newFileName += oldFileName.substring(oldFileName.lastIndexOf("."), oldFileName.length());
+            }
+            
+            String fileDir =
+                request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + projectInfo.getId();
+            
+            File fileDirFile = new File(fileDir);
+            if (!fileDirFile.exists())
+            {
+                fileDirFile.mkdirs();
+            }
+            File newUploadFile = new File(fileDir + FILE_SEAPRATOR + newFileName);
+            newUploadFiles[i] = newUploadFile;
+            
+            FileUtil.copy(uploadFiles[i], newUploadFile, false);
+            
+            String filePathPer =
+                "http://" + request.getLocalAddr() + ":" + request.getLocalPort() + request.getContextPath()
+                    + "/uploadfile/" + projectInfo.getId() + "/" + newFileName;
+            filePath.append(filePathPer).append(",");
+        }
+        if (0 < filePath.length())
+        {
+            filePath.deleteCharAt(filePath.length() - 1);
+        }
+        
+        projectInfo.setFilePath(filePath.toString());
+        
+        return newUploadFiles;
+        
     }
     
     public ProjectInfo getProjectInfo()
