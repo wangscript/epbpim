@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 
 import com.ryxx.bpim.common.Constants;
+import com.ryxx.bpim.project.entity.ProjectFile;
 import com.ryxx.bpim.project.entity.ProjectInfo;
 import com.ryxx.bpim.project.entity.ProjectInvoice;
 import com.ryxx.bpim.project.entity.ProjectStream;
@@ -149,6 +150,7 @@ public class ProjectAction extends ActionSupportBase
         {
             projectInfo = projectService.findProjectInfo(projectInfo);
             wrapInvoiceList(projectInfo);
+            wrapFileList(projectInfo);
             ProjectStream projectStream = new ProjectStream();
             projectStream.setProjectID(projectInfo.getId());
             projectInfo.setProjectStreams(projectStreamService.listProjectStream(projectStream));
@@ -177,17 +179,27 @@ public class ProjectAction extends ActionSupportBase
     
     public String addProjectInfo()
     {
+        File[] newUploadFiles = null;
         try
         {
             UserInfo userinfo = new UserInfo();
             userinfo.setId((Long)session.get(Constants.LOGIN_USER_ID));
             projectInfo.setSubmitter(userinfo);
             
+            newUploadFiles = dealWithUploadFiles();
             projectService.saveProjectInfo(projectInfo);
         }
         catch (Exception e)
         {
             LOG.warn(e);
+            if (null != newUploadFiles)
+            {
+                for (int i = 0; i < newUploadFiles.length; i++)
+                {
+                    newUploadFiles[i].delete();
+                }
+                
+            }
             return ERROR;
         }
         return SUCCESS;
@@ -210,47 +222,66 @@ public class ProjectAction extends ActionSupportBase
     
     public String modProjectInfo()
     {
+        File[] newUploadFiles = null;
         try
         {
+            newUploadFiles = dealWithUploadFiles();
             projectService.updateProjectInfo(projectInfo);
         }
         catch (Exception e)
         {
             LOG.warn(e);
+            if (null != newUploadFiles)
+            {
+                for (int i = 0; i < newUploadFiles.length; i++)
+                {
+                    newUploadFiles[i].delete();
+                }
+                
+            }
             return ERROR;
         }
         
         return SUCCESS;
     }
     
-    public String modProjectContractAndInvoices(){
-		if(projectInfo!=null){
-			ProjectInfo preProjectInfo = projectService.findProjectInfo(projectInfo);
-			if(!StringUtils.isBlank(projectInfo.getContractNumber())){
-				preProjectInfo.setContractNumber(projectInfo.getContractNumber());
-			}
-			if(!StringUtils.isBlank(projectInfo.getContractMoney())){
-				preProjectInfo.setContractMoney(projectInfo.getContractMoney());
-			}
-			if(!StringUtils.isBlank(projectInfo.getContractAbstract())){
-				preProjectInfo.setContractAbstract(projectInfo.getContractAbstract());
-			}
-			if(!StringUtils.isBlank(projectInfo.getInvoiceDate())){
-				preProjectInfo.setInvoiceDate(projectInfo.getInvoiceDate());
-			}
-			if(!StringUtils.isBlank(projectInfo.getInvoiceNumber())){
-				preProjectInfo.setInvoiceNumber(projectInfo.getInvoiceNumber().replaceAll(", ", ","));
-			}
-			if(!StringUtils.isBlank(projectInfo.getInvoicePrice())){
-				preProjectInfo.setInvoicePrice(projectInfo.getInvoicePrice().replaceAll(", ", ","));
-			}
-			if(!StringUtils.isBlank(projectInfo.getInvoiceMoneyArrival())){
-				preProjectInfo.setInvoiceMoneyArrival(projectInfo.getInvoiceMoneyArrival().replaceAll(", ", ","));
-			}
-			projectService.updateProjectInfo(preProjectInfo);
-		}
-		return SUCCESS;
-	}
+    public String modProjectContractAndInvoices()
+    {
+        if (projectInfo != null)
+        {
+            ProjectInfo preProjectInfo = projectService.findProjectInfo(projectInfo);
+            if (!StringUtils.isBlank(projectInfo.getContractNumber()))
+            {
+                preProjectInfo.setContractNumber(projectInfo.getContractNumber());
+            }
+            if (!StringUtils.isBlank(projectInfo.getContractMoney()))
+            {
+                preProjectInfo.setContractMoney(projectInfo.getContractMoney());
+            }
+            if (!StringUtils.isBlank(projectInfo.getContractAbstract()))
+            {
+                preProjectInfo.setContractAbstract(projectInfo.getContractAbstract());
+            }
+            if (!StringUtils.isBlank(projectInfo.getInvoiceDate()))
+            {
+                preProjectInfo.setInvoiceDate(projectInfo.getInvoiceDate());
+            }
+            if (!StringUtils.isBlank(projectInfo.getInvoiceNumber()))
+            {
+                preProjectInfo.setInvoiceNumber(projectInfo.getInvoiceNumber().replaceAll(", ", ","));
+            }
+            if (!StringUtils.isBlank(projectInfo.getInvoicePrice()))
+            {
+                preProjectInfo.setInvoicePrice(projectInfo.getInvoicePrice().replaceAll(", ", ","));
+            }
+            if (!StringUtils.isBlank(projectInfo.getInvoiceMoneyArrival()))
+            {
+                preProjectInfo.setInvoiceMoneyArrival(projectInfo.getInvoiceMoneyArrival().replaceAll(", ", ","));
+            }
+            projectService.updateProjectInfo(preProjectInfo);
+        }
+        return SUCCESS;
+    }
     
     public String closeProjectInfo()
     {
@@ -323,6 +354,31 @@ public class ProjectAction extends ActionSupportBase
         
     }
     
+    private void wrapFileList(ProjectInfo projectInfo)
+    {
+        int invoiceCount = projectInfo.getFileName().split(",").length;
+        
+        List<ProjectFile> projectFiles = new ArrayList<ProjectFile>();
+        
+        for (int i = 0; i < invoiceCount; i++)
+        {
+            ProjectFile projectFile = new ProjectFile();
+            try
+            {
+                projectFile.setFileName(projectInfo.getFileName().split(",")[i]);
+                projectFile.setFilePath(projectInfo.getFilePath().split(",")[i]);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            projectFiles.add(projectFile);
+        }
+        
+        projectInfo.setProjectFiles(projectFiles);
+        
+    }
+    
     private void dealwithQueryType(ProjectInfo projectInfo)
     {
         if ("1".equals(projectInfo.getQueryType()) || StringUtils.isEmpty(projectInfo.getQueryType()))
@@ -366,7 +422,8 @@ public class ProjectAction extends ActionSupportBase
             }
             
             String fileDir =
-                request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + projectInfo.getId();
+                request.getSession().getServletContext().getRealPath("/") + FILE_SEAPRATOR + "uploadfile"
+                    + FILE_SEAPRATOR + projectInfo.getId();
             
             File fileDirFile = new File(fileDir);
             if (!fileDirFile.exists())
