@@ -42,6 +42,28 @@
  		}
  	}
  	
+ 	function addAttachment()
+ 	{
+ 		var invoiceULObj=document.getElementById("attachmentUL").cloneNode(true);
+ 		invoiceULObj.id="";
+ 		invoiceULObj.style.display="inline";
+ 		document.getElementById("attachmentDIV").appendChild(invoiceULObj);
+ 	}
+ 	function delAttachment(obj)
+ 	{
+ 		var invoiceULObj=obj.parentNode.parentNode;
+ 		invoiceULObj.parentNode.removeChild(invoiceULObj);
+ 	}
+ 	function chooseFile(obj)
+ 	{
+ 		var uploadFiles = $('uploadFiles');
+ 		var filePath=uploadFiles.value;
+ 	    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length); 	    
+		var reg = /,/g;
+		fileName = fileName.replace(reg, "");
+		obj.nextSibling.nextSibling.value = fileName;
+ 	}
+ 	
 </script>
 </head>
 <body>
@@ -365,6 +387,21 @@
 							</li>
 						</ul></div>
 						
+						 <h4 class="title">附件信息</h4>
+						<div id="attachmentDIV">
+							<ul class="fullScreenUl">
+								<li class="width300Li">
+									<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile(this)" />
+									<input type="hidden" name="projectInfo.fileName" id="projectInfo.fileName">
+								</li>
+								<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
+							</ul>
+						</div>			
+						
+						<ul class="fullScreenUl">
+							<li><input type="button" class="mediumLeftButton" onclick="addAttachment()" value="新增附件"></li>
+							
+						</ul>
 						
 						<ul class="fullScreenUl">
 							<li><input type="button" id="addProject"
@@ -378,29 +415,16 @@
 							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
 						</ul>
 						</s:form>
-						<ul id="invoiceUL" class="fullScreenUl" style="display: none">
-							<li class="width200Li"><label class="width6Lb">开票日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.invoiceDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+						<ul id="attachmentUL" class="fullScreenUl" style="display: none">
+							<li class="width300Li">
+								<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile()" />
+								<input type="hidden" name="projectInfo.fileName" id="projectInfo.fileName">
 							</li>
-							<li class="width200Li"><label class="width6Lb">开票金额:</label> <input
-								class="width100Input"
-								name="projectInfo.invoicePrice"/>
-							</li>
-							<li class="width400Li"><label class="width6Lb">发票单号:</label> <input
-								class="width300Input"
-								name="projectInfo.invoiceNumber"/>
-							</li>
-							<li><input type="button" class="mediumLeftButton" onclick="delInvoice(this)" value="删除"></li>
+							<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
 						</ul>
 					</div>
-
 					<div></div>
-
-
 				</div>
-
-
 				<div class="clr"></div>
 			</div>
 		</div>
