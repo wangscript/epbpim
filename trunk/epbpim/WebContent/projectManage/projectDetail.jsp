@@ -231,17 +231,16 @@
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label><s:property value='projectInfo.consultArchiveRecipient' />
 							</li>
 						</ul></div>
-						<h4 class="title">附件信息</h4>
-						<div id="attachmentDIV">
-							<s:if test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
+						<s:if test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
+							<h4 class="title">附件信息</h4>
+							<div id="attachmentDIV">							
 								<s:iterator value="projectInfo.projectFiles" status="st">
 									<ul class="fullScreenUl">
 										<li class="width400Li"><a href="<s:property value='filePath' />" <s:if test="fileName.contains('.jpg') || fileName.contains('.JPG')">target="blank"</s:if> ><s:property value='fileName' /></a></li>
 									</ul>
-								</s:iterator>
-							</s:if>
-						</div>		
-						
+								</s:iterator>							
+							</div>		
+						</s:if>
 						<!--endprint-->
 						<ul class="fullScreenUl">
 							<li>
