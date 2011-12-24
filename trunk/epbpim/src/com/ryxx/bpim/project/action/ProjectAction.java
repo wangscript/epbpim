@@ -436,8 +436,7 @@ public class ProjectAction extends ActionSupportBase
             }
             
             String fileDir =
-                request.getSession().getServletContext().getRealPath("/") + FILE_SEAPRATOR + "uploadfile"
-                    + FILE_SEAPRATOR + projectInfo.getId();
+                request.getSession().getServletContext().getRealPath("/") + FILE_SEAPRATOR + "uploadfile/project";
             
             File fileDirFile = new File(fileDir);
             if (!fileDirFile.exists())
@@ -451,15 +450,27 @@ public class ProjectAction extends ActionSupportBase
             
             String filePathPer =
                 "http://" + request.getLocalAddr() + ":" + request.getLocalPort() + request.getContextPath()
-                    + "/uploadfile/" + projectInfo.getId() + "/" + newFileName;
+                    + "uploadfile/project/" + newFileName;
             filePath.append(filePathPer).append(",");
         }
+        
         if (0 < filePath.length())
         {
             filePath.deleteCharAt(filePath.length() - 1);
         }
+        if (!StringUtils.isEmpty(projectInfo.getOldFileName()))
+        {
+            projectInfo.setFileName(projectInfo.getOldFileName() + "," + projectInfo.getFileName());
+        }
         
-        projectInfo.setFilePath(filePath.toString());
+        if (!StringUtils.isEmpty(projectInfo.getFilePath()))
+        {
+            projectInfo.setFilePath(projectInfo.getFilePath() + "," + filePath.toString());
+        }
+        else
+        {
+            projectInfo.setFilePath(filePath.toString());
+        }
         
         return newUploadFiles;
         
