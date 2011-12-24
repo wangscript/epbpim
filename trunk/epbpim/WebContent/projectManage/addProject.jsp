@@ -19,12 +19,12 @@
  		var dispDiv2 = document.getElementById("projectType2");
  		var dispDiv3 = document.getElementById("projectType3");
  		var dispDiv4 = document.getElementById("projectType4");
- 		if(type == "投资监理") {
+ 		if(type == "投资监理" || type=="财务监理") {
  			dispDiv1.style.display="none";
  			dispDiv2.style.display="none";
  			dispDiv3.style.display="block";
  			dispDiv4.style.display="none";
- 		} else if(type == "招标代理") {
+ 		} else if(type == "招标代理" || type=="政府采购") {
  			dispDiv1.style.display="none";
  			dispDiv2.style.display="block";
  			dispDiv3.style.display="none";
@@ -169,9 +169,12 @@
 						<ul class="fullScreenUl" id="addNewMember">
 							<li class="width200Li" ><label class="width6Lb">项目性质:</label>
 								<select id="projectType" name="projectInfo.projectType" onChange="changeProjectType();">
-									<option value="工程审价">工程审价</option>
+									<option value="预算审价">预算审价</option>
+									<option value="决算审价">决算审价</option>
 									<option value="招标代理">招标代理</option>
+									<option value="政府采购">政府采购</option>
 									<option value="投资监理">投资监理</option>
+									<option value="财务监理">财务监理</option>
 									<option value="工程咨询">工程咨询</option>
 							</select></li>
 							<li class="width400Li"><label class="width6Lb">服务内容:</label><input
