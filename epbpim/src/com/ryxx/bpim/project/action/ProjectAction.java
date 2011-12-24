@@ -450,7 +450,7 @@ public class ProjectAction extends ActionSupportBase
             
             String filePathPer =
                 "http://" + request.getLocalAddr() + ":" + request.getLocalPort() + request.getContextPath()
-                    + "uploadfile/project/" + newFileName;
+                    + "/uploadfile/project/" + newFileName;
             filePath.append(filePathPer).append(",");
         }
         
