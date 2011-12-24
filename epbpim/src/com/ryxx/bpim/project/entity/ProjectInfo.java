@@ -196,6 +196,10 @@ public class ProjectInfo extends VoBase
     
     private Double balance;
     
+    private String fileName;
+    
+    private String filePath;
+    
     public Long getId()
     {
         return id;
@@ -1108,4 +1112,23 @@ public class ProjectInfo extends VoBase
         this.balance = balance;
     }
     
+    public String getFileName()
+    {
+        return fileName;
+    }
+    
+    public void setFileName(String fileName)
+    {
+        this.fileName = fileName;
+    }
+    
+    public String getFilePath()
+    {
+        return filePath;
+    }
+    
+    public void setFilePath(String filePath)
+    {
+        this.filePath = filePath;
+    }
 }
