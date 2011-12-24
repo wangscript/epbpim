@@ -397,7 +397,7 @@
 							<s:if test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
 								<s:iterator value="projectInfo.projectFiles" status="st">
 									<ul class="fullScreenUl">
-										<li class="width400Li"><a href="<s:property value='filePath' />"><s:property value='fileName' /></a></li>
+										<li class="width400Li"><a href="<s:property value='filePath' />" <s:if test="fileName.contains('.jpg') || fileName.contains('.JPG')">target="blank"</s:if> ><s:property value='fileName' /></a></li>
 										<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
 									</ul>
 								</s:iterator>
