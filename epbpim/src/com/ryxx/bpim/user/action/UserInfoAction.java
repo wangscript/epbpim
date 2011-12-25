@@ -1,9 +1,7 @@
 package com.ryxx.bpim.user.action;
 
-import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.httpclient.util.DateUtil;
@@ -16,6 +14,7 @@ import com.ryxx.bpim.user.entity.AdminDept;
 import com.ryxx.bpim.user.entity.AdminRole;
 import com.ryxx.bpim.user.entity.UserCertification;
 import com.ryxx.bpim.user.entity.UserInfo;
+import com.ryxx.bpim.user.entity.WorkingExperience;
 import com.ryxx.bpim.user.enums.CertificationTypeEnum;
 import com.ryxx.bpim.user.enums.EduBackgroundEnum;
 import com.ryxx.bpim.user.enums.InsuranceTypeEnum;
@@ -57,6 +56,7 @@ public class UserInfoAction extends ActionSupportBase {
 	
 	private List<AdminRole> allRoles;
 	private List<AdminDept> allDepts;
+	private List<WorkingExperience> experiences;
 	
 	private List<Long> deptGroup;
 	private List<Long> roleGroup;
@@ -138,6 +138,15 @@ public class UserInfoAction extends ActionSupportBase {
 			certification.setSelectId(certification.getTypeId().getKey());
 			certification.setExpireDateFromPage(DateUtil.formatDate(certification.getExpireDate(), "yyyy-MM-dd"));
 		}
+		for(WorkingExperience experience: userInfo.getWorkingExperiences()) {
+			if(experience.getStartDate() != null) {
+				experience.setStartDateTemp(DateUtil.formatDate(experience.getStartDate(), "yyyy-MM-dd"));
+			}
+			if(experience.getEndDate() != null) {
+				experience.setEndDateTemp(DateUtil.formatDate(experience.getEndDate(), "yyyy-MM-dd"));
+			}
+		}
+		setExperiences(userInfo.getWorkingExperiences());
 		setCertifies(userInfo.getCertifies());
 		userInfo.setBirthdayTmp(userInfo.getBirthday()!=null?DateTools.date2string(userInfo.getBirthday(), "yyyy-MM-dd"):null);
 		userInfo.setGraduateDateTmp(userInfo.getGraduateDate()!=null?DateTools.date2string(userInfo.getGraduateDate(), "yyyy-MM-dd"):null);
@@ -158,6 +167,19 @@ public class UserInfoAction extends ActionSupportBase {
 				}
 			}
 			userInfo.setCertifies(certifs);
+		}
+		if(experiences != null) {
+			List<WorkingExperience> expers = new ArrayList<WorkingExperience>();
+			for(WorkingExperience experience: experiences) {
+				if(StringUtils.isNotEmpty(experience.getStartDateTemp())) {
+					experience.setStartDate(new Timestamp(StringTools.string2date(experience.getStartDateTemp()+" 00:00:00").getTime()));
+				}
+				if(StringUtils.isNotEmpty(experience.getEndDateTemp())) {
+					experience.setEndDate(new Timestamp(StringTools.string2date(experience.getEndDateTemp()+" 00:00:00").getTime()));
+				}
+				expers.add(experience);
+			}
+			userInfo.setWorkingExperiences(expers);
 		}
 		userInfo.setEduBackground(EduBackgroundEnum.getType(eduBackGround));
 		userInfo.setTitle(UserTitleEnum.getType(title));
@@ -195,13 +217,28 @@ public class UserInfoAction extends ActionSupportBase {
 		if(certifies != null) {
 			List<UserCertification> certifs = new ArrayList<UserCertification>();
 			for(UserCertification certification: certifies) {
-				if(certification.getSelectId()>0) {
+				if(certification != null && certification.getSelectId()>0) {
 					certification.setTypeId(CertificationTypeEnum.getType(certification.getSelectId()));
 					certification.setExpireDate(new Timestamp(StringTools.string2date(certification.getExpireDateFromPage()+" 00:00:00").getTime()));
 					certifs.add(certification);
 				}
 			}
 			userInfo.setCertifies(certifs);
+		}
+		if(experiences != null) {
+			List<WorkingExperience> expers = new ArrayList<WorkingExperience>();
+			for(WorkingExperience experience: experiences) {
+				if(experience != null) {
+					if(StringUtils.isNotEmpty(experience.getStartDateTemp())) {
+						experience.setStartDate(new Timestamp(StringTools.string2date(experience.getStartDateTemp()+" 00:00:00").getTime()));
+					}
+					if(StringUtils.isNotEmpty(experience.getEndDateTemp())) {
+						experience.setEndDate(new Timestamp(StringTools.string2date(experience.getEndDateTemp()+" 00:00:00").getTime()));
+					}
+				}
+				expers.add(experience);
+			}
+			userInfo.setWorkingExperiences(expers);
 		}
 		userInfo.setEduBackground(EduBackgroundEnum.getType(eduBackGround));
 		userInfo.setTitle(UserTitleEnum.getType(title));
@@ -439,4 +476,13 @@ public class UserInfoAction extends ActionSupportBase {
 	public void setAllDepts(List<AdminDept> allDepts) {
 		this.allDepts = allDepts;
 	}
+
+	public List<WorkingExperience> getExperiences() {
+		return experiences;
+	}
+
+	public void setExperiences(List<WorkingExperience> experiences) {
+		this.experiences = experiences;
+	}
+	
 }

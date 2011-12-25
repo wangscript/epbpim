@@ -516,6 +516,11 @@ ol li .send {
 	width: 50px;
 }
 
+.width1OLb {
+	float: left;
+	width: 18px;
+}
+
 .width2Lb {
 	float: left;
 	width: 30px;
