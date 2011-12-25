@@ -153,7 +153,7 @@ public class UserInfoAction extends ActionSupportBase {
 		userInfo.setGraduateDateTmp(userInfo.getGraduateDate()!=null?DateTools.date2string(userInfo.getGraduateDate(), "yyyy-MM-dd"):null);
 		userInfo.setLeaveDateTmp(userInfo.getLeaveDate()!=null?DateTools.date2string(userInfo.getLeaveDate(), "yyyy-MM-dd"):null);
 		userInfo.setOnboardDateTmp(userInfo.getOnboardDate()!=null?DateTools.date2string(userInfo.getOnboardDate(), "yyyy-MM-dd"):null);
-		userInfo.setEduCountiuneTemp(userInfo.getOnboardDate()!=null?DateTools.date2string(userInfo.getEduCountinue(), "yyyy-MM-dd"):null);
+		userInfo.setEduCountiuneTemp(userInfo.getEduCountinue()!=null?DateTools.date2string(userInfo.getEduCountinue(), "yyyy-MM-dd"):null);
 		setRoleGroup(roleGp);
 		return SUCCESS;
 	}
