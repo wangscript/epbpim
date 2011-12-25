@@ -126,11 +126,8 @@
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">继续教育情况:</label>
-										<select id="userInfo.eduCountinue" name="userInfo.eduCountinue">
-											<option value="0">---请选择---</option>
-											<option value="1">通过</option>
-											<option value="2">不通过</option>
-									</select>
+										<input class="Wdate width100Input" name="userInfo.eduCountiuneTemp"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 									</li>
 								</ul>
 							</dd>
