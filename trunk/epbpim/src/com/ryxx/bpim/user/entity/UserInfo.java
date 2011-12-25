@@ -53,6 +53,7 @@ public class UserInfo extends VoBase {
 	private Long roleId;
 	private Long deptId;
 	private int certifieId;
+	private List<WorkingExperience> workingExperiences;
 	
 	public Long getId() {
 		return id;
@@ -301,7 +302,12 @@ public class UserInfo extends VoBase {
 	public void setCertifieId(int certifieId) {
 		this.certifieId = certifieId;
 	}
-	
+	public List<WorkingExperience> getWorkingExperiences() {
+		return workingExperiences;
+	}
+	public void setWorkingExperiences(List<WorkingExperience> workingExperiences) {
+		this.workingExperiences = workingExperiences;
+	}
 	
 }
 

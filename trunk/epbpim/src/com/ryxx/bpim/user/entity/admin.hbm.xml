@@ -137,6 +137,22 @@
 			</key>
 			<one-to-many class="UserCertification" />
 		</bag>
+		<bag name="workingExperiences" table="WORKING_EXPERIENCE" cascade="all">
+			<key>
+				<column name="USER_ID" />
+			</key>
+			<one-to-many class="WorkingExperience" />
+		</bag>
+	</class>
+
+	<class name="WorkingExperience" table="WORKING_EXPERIENCE">
+		<id name="id" column="WORKING_ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="startDate" column="WORKING_START_DATE" type="java.sql.Timestamp"></property>
+		<property name="endDate" column="WORKING_END_DATE" type="java.sql.Timestamp"></property>
+		<property name="company" column="WORKING_COMPANY" type="java.lang.String"></property>
+		<property name="title" column="WORKING_TITLE" type="java.lang.String"></property>
 	</class>
 	
 	<class name="AdminFile" table="ADMIN_FILE">

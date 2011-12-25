@@ -136,6 +136,39 @@
 							</dd>
 							<dt>
 								<h4 class="title">
+									<h4 class="title">工作经历</h4>
+								</h4>
+							</dt>
+							<dd>
+								<div id="experiencesLicences">
+									<ul class="fullScreenUl" id="working1">
+										<li class="width250Li">
+											<label class="width4Lb">所在单位:</label>
+											<input class="width150Input" name="experiences[0].company" id="experiences[0].company" />
+										</li>
+										<li class="width200Li">
+											<label class="width2Lb">职务:</label>
+											<input class="width150Input" name="experiences[0].title" id="experiences[0].title" />
+										</li>
+										<li class="width300Li">
+											<label class='width2Lb'>时间:</label>
+											<input class='Wdate width100Input' name='experiences[0].startDateTemp' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+											<label class='width1OLb'>到</label>
+											<input class='Wdate width100Input' name='experiences[0].endDateTemp' onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+										</li>
+										<li class="width50Li"><input type="button"
+											class="mediumLeftButton" onclick="deleteWorkingLicense('working1');"
+											value="删除">
+										</li>
+									</ul>
+								</div>
+								<ul class="fullScreenUl">
+									<li><input type="button" class="mediumLeftButton"
+										onclick="addWorkingLicense();" value="新增工作经历"></li>
+								</ul>
+							</dd>
+							<dt>
+								<h4 class="title">
 									<h4 class="title">工作信息</h4>
 								</h4>
 							</dt>
@@ -216,7 +249,7 @@
 							</dt>
 							<dd>
 								<div id="employeeLicences">
-									<ul class="fullScreenUl" id="1">
+									<ul class="fullScreenUl" id="licence1">
 										<li class="width250Li"><label class="width4Lb">执业资格:</label>
 										<%
 											CertificationTypeEnum[] certifiTypes = CertificationTypeEnum.values();
@@ -240,7 +273,7 @@
 											id="certifies[0].remark" />
 										</li>
 										<li class="width50Li"><input type="button"
-											class="mediumLeftButton" onclick="deleteLicense(1);"
+											class="mediumLeftButton" onclick="deleteLicense('licence1');"
 											value="删除">
 										</li>
 									</ul>
@@ -293,8 +326,8 @@
 		var li5 = document.createElement("li");
 		var t = employeeLicences.children.length;
 		var id = "licence" + (t + 1);
-		li5.innerHTML = "<input type='button' class='mediumLeftButton' onclick='deleteLicense("
-				+ id + ")' value='删除'>";
+		li5.innerHTML = "<input type='button' class='mediumLeftButton' onclick='deleteLicense(\""
+				+ id + "\")' value='删除'>";
 		li1.className = "width250Li";
 		li2.className = "width250Li";
 		li3.className = "width200Li";
@@ -311,46 +344,46 @@
 
 	function deleteLicense(id) {
 		if (confirm("确定删除该职业资质？")) {
-			var employeeLicences = document.getElementById("employeeLicences");
-			employeeLicences.removeChild(id);
+			var employeeLicences = document.getElementById(id);
+			employeeLicences.parentNode.removeChild(employeeLicences);
 		}
 	}
-
-	function addDept() {
-		var ul = document.getElementById("dept");
-		var li = document.createElement("li");
-		var t = ul.childNodes.length;
-		var id = "dept" + (t + 1);
-		li.innerHTML = "<select id='projectType' name='userInfo.majorType'><option >----请选择----</option><option >咨询1部</option><option >咨询2部</option><option >咨询3部</option></select><input type='button' class='mediumRightButton' onclick='deleteDeptItem("
-				+ id + ")' value='删除'>";
-		li.className = "width150Li";
-		li.setAttribute("id", id);
-		ul.appendChild(li);
+	
+	var experiencesCount = 0;
+	function addWorkingLicense() {
+		++experiencesCount;
+		var experiencesLicences = document.getElementById("experiencesLicences");
+		var ul = document.createElement("ul");
+		ul.className = "fullScreenUl";
+		var li1 = document.createElement("li");
+		li1.innerHTML = "<label class='width4Lb'>所在单位:</label>"
+				+ '<input class="width150Input" name="experiences['+experiencesCount+'].company" id="experiences['+experiencesCount+'].company" />';
+		var li2 = document.createElement("li");
+		li2.innerHTML = "<label class='width2Lb'>职务:</label><input class='width150Input' name='experiences["+experiencesCount+"].title' id='experiences["+experiencesCount+"].title' />";
+		var li3 = document.createElement("li");
+		li3.innerHTML = "<label class='width2Lb'>时间:</label><input class='Wdate width100Input' name='experiences["+experiencesCount+"].startDateTemp' onfocus=WdatePicker({dateFmt:'yyyy-MM-dd'}) />"
+			          + "<label class='width1OLb'>到</label><input class='Wdate width100Input' name='experiences["+experiencesCount+"].endDateTemp' onfocus=WdatePicker({dateFmt:'yyyy-MM-dd'}) />";
+		var li4 = document.createElement("li");
+		var t = experiencesLicences.children.length;
+		var id = "working" + (t + 1);
+		li4.innerHTML = "<input type='button' class='mediumLeftButton' onclick='deleteWorkingLicense(\""
+				+ id + "\")' value='删除'>";
+		li1.className = "width250Li";
+		li2.className = "width200Li";
+		li3.className = "width300Li";
+		li4.className = "width50Li";
+		ul.appendChild(li1);
+		ul.appendChild(li2);
+		ul.appendChild(li3);
+		ul.appendChild(li4);
+		ul.setAttribute("id", id);
+		experiencesLicences.appendChild(ul);
 	}
 
-	function addRole() {
-		var ul = document.getElementById("role");
-		var li = document.createElement("li");
-		var t = ul.childNodes.length;
-		var id = "role" + (t + 1);
-		li.innerHTML = "<select id='projectType' name='userInfo.majorType'><option >----请选择----</option><option >咨询1部</option><option >咨询2部</option><option >咨询3部</option></select><input type='button' class='mediumRightButton' onclick='deleteRoleItem("
-				+ id + ")' value='删除'>";
-		li.className = "width150Li";
-		li.setAttribute("id", id);
-		ul.appendChild(li);
-	}
-
-	function deleteDeptItem(id) {
-		if (confirm("确定删除该部门归属？")) {
-			var ul = document.getElementById("dept");
-			ul.removeChild(id);
-		}
-	}
-
-	function deleteRoleItem(id) {
-		if (confirm("确定删除该职务归属？")) {
-			var ul = $("role");
-			ul.removeChild(id);
+	function deleteWorkingLicense(id) {
+		if (confirm("确定删除该工作经历？")) {
+			var experiencesLicences = document.getElementById(id);
+			experiencesLicences.parentNode.removeChild(experiencesLicences);
 		}
 	}
 </script>
