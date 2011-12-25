@@ -111,7 +111,8 @@ public class UserInfoAction extends ActionSupportBase {
 		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
 		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
 		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
-		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+		userInfo.setEduCountinue(new Timestamp(StringTools.string2date(userInfo.getEduCountiuneTemp()+" 00:00:00").getTime()));
+		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));	
 		return SUCCESS;
 	}
 	
@@ -152,6 +153,7 @@ public class UserInfoAction extends ActionSupportBase {
 		userInfo.setGraduateDateTmp(userInfo.getGraduateDate()!=null?DateTools.date2string(userInfo.getGraduateDate(), "yyyy-MM-dd"):null);
 		userInfo.setLeaveDateTmp(userInfo.getLeaveDate()!=null?DateTools.date2string(userInfo.getLeaveDate(), "yyyy-MM-dd"):null);
 		userInfo.setOnboardDateTmp(userInfo.getOnboardDate()!=null?DateTools.date2string(userInfo.getOnboardDate(), "yyyy-MM-dd"):null);
+		userInfo.setEduCountiuneTemp(userInfo.getOnboardDate()!=null?DateTools.date2string(userInfo.getEduCountinue(), "yyyy-MM-dd"):null);
 		setRoleGroup(roleGp);
 		return SUCCESS;
 	}
@@ -207,6 +209,7 @@ public class UserInfoAction extends ActionSupportBase {
 		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
 		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
 		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
+		userInfo.setEduCountinue(new Timestamp(StringTools.string2date(userInfo.getEduCountiuneTemp()+" 00:00:00").getTime()));
 		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
 		userInfo.setPassword(StringTools.md5("123456"));
 		userInfoService.save(userInfo);
@@ -273,6 +276,9 @@ public class UserInfoAction extends ActionSupportBase {
 		}
 		if(StringUtils.isNotEmpty(userInfo.getOnboardDateTmp())) {
 			userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
+		}
+		if(StringUtils.isNotEmpty(userInfo.getEduCountiuneTemp())) {
+			userInfo.setEduCountinue(new Timestamp(StringTools.string2date(userInfo.getEduCountiuneTemp()+" 00:00:00").getTime()));
 		}
 		userInfo.setId(id);
 		UserInfo newUserInfo = userInfoService.fetchById(id);

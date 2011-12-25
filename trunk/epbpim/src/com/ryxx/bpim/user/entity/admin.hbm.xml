@@ -95,7 +95,7 @@
 	    </property>
 		<property name="school" 		column="SCHOOL" 			type="java.lang.String"></property>
 		<property name="major" 			column="MAJOR" 				type="java.lang.String"></property>
-		<property name="eduCountinue" 	column="EDU_COUNTINU" 		type="java.lang.Integer"></property>
+		<property name="eduCountinue" 	column="EDU_COUNTINU" 		type="java.sql.Timestamp"></property>
 		<property name="graduateDate" 	column="GRADUATE_DATE" 		type="java.sql.Timestamp"></property>
 		<property name="onboardDate" 	column="ONBOARD_DATE" 		type="java.sql.Timestamp"></property>
 		<property name="leaveDate" 		column="LEAVE_DATE" 		type="java.sql.Timestamp"></property>

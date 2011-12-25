@@ -31,7 +31,8 @@ public class UserInfo extends VoBase {
 	private EduBackgroundEnum eduBackground;
 	private String school;
 	private String major;
-	private Integer eduCountinue;
+	private Timestamp eduCountinue;
+	private String eduCountiuneTemp;
 	private Timestamp graduateDate;
 	private String graduateDateTmp;
 	private Timestamp onboardDate;
@@ -139,10 +140,10 @@ public class UserInfo extends VoBase {
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	public Integer getEduCountinue() {
+	public Timestamp getEduCountinue() {
 		return eduCountinue;
 	}
-	public void setEduCountinue(Integer eduCountinue) {
+	public void setEduCountinue(Timestamp eduCountinue) {
 		this.eduCountinue = eduCountinue;
 	}
 	public Timestamp getGraduateDate() {
@@ -307,6 +308,12 @@ public class UserInfo extends VoBase {
 	}
 	public void setWorkingExperiences(List<WorkingExperience> workingExperiences) {
 		this.workingExperiences = workingExperiences;
+	}
+	public String getEduCountiuneTemp() {
+		return eduCountiuneTemp;
+	}
+	public void setEduCountiuneTemp(String eduCountiuneTemp) {
+		this.eduCountiuneTemp = eduCountiuneTemp;
 	}
 	
 }

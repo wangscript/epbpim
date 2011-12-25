@@ -129,12 +129,7 @@
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">继续教育情况:</label>
-										<s:select name="userInfo.eduCountinue"
-									       list="#{'0':'---请选择---','1':'通过','2':'不通过'}"
-									       listKey="key"
-									       listValue="value"
-									       multiple="false"
-					       				   onchange=""/>
+										<s:textfield cssClass="Wdate width100Input" name="userInfo.eduCountiuneTemp" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 									</li>
 								</ul>
 							</dd>

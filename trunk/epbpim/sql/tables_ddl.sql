@@ -89,7 +89,7 @@ CREATE TABLE USER_INFO
 	EDU_BACKGROUND INT(5),					 	 -- 学历
 	SCHOOL VARCHAR(50),							 -- 学校名称
 	MAJOR VARCHAR(50),							 -- 专业
-	EDU_COUNTINU TINYINT(1), 					 -- 继续教育情况
+	EDU_COUNTINU DATETIME, 					 -- 继续教育情况
 	GRADUATE_DATE DATETIME,	-- 毕业日期
 	ONBOARD_DATE DATETIME,	-- 入职日期
 	LEAVE_DATE DATETIME,	-- 离职日期
