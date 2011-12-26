@@ -398,11 +398,11 @@
 								<s:iterator value="projectInfo.projectFiles" status="st">
 									<ul class="fullScreenUl">
 										<li class="width400Li"><a href="<s:property value='filePath' />" <s:if test="fileName.contains('.jpg') || fileName.contains('.JPG')">target="blank"</s:if> ><s:property value='fileName' /></a></li>
+										<li class="width200Li"><input type="hidden" id="projectInfo.oldFileName" name="projectInfo.oldFileName" value="<s:property value='fileName' />"/></li>
 										<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
 									</ul>
 								</s:iterator>
 							</s:if>
-							<input type="hidden" id="projectInfo.oldFileName" name="projectInfo.oldFileName" value="<s:property value='projectInfo.fileName' />"/>
 							<input type="hidden" id="projectInfo.filePath" name="projectInfo.filePath" value="<s:property value='projectInfo.filePath' />"/>
 						</div>			
 						<ul class="fullScreenUl">
