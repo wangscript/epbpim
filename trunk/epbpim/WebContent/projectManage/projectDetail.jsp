@@ -236,7 +236,7 @@
 							<div id="attachmentDIV">							
 								<s:iterator value="projectInfo.projectFiles" status="st">
 									<ul class="fullScreenUl">
-										<li class="width400Li"><a href="<s:property value='filePath' />" <s:if test="fileName.contains('.jpg') || fileName.contains('.JPG')">target="blank"</s:if> ><s:property value='fileName' /></a></li>
+										<li class="width400Li"><a onclick="downloadFile('<s:property value='filePath' />','<s:property value='fileName' />')" ><s:property value='fileName' /></a></li>
 									</ul>
 								</s:iterator>							
 							</div>		
@@ -494,5 +494,16 @@
  		setTimeout("window.document.body.innerHTML=currentHtml",3000);
  	}
 
+ 	function downloadFile(filePath,fileName){
+ 		if(fileName.indexOf("jpg")>0||fileName.indexOf("JPG")>0){
+ 			window.location.target="blank";  
+ 			window.location.href= filePath;
+ 		}if(fileName.indexOf("sbf")>0||fileName.indexOf("SBF")>0){
+ 			alert("不支持此类型文件直接下载，请使用'右键-另存为'来保存");
+ 		}else{
+ 			window.location.target="blank";  
+ 			window.location.href= filePath;
+ 		}
+ 	}
 </script>
 </html>
