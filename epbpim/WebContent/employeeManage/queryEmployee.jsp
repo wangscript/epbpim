@@ -82,7 +82,7 @@ function clearPage(updateId){
 								%>
 								<s:select name="certifies[0].selectId" list="#request.certifiTypes" cssClass="width100Select"
 									listKey="key" listValue="value" multiple="false"
-									required="true" onchange="" headerKey="0"/>
+									required="true" onchange=""/>
 							</li>
 							<li><input type="submit" id="searchProject"
 								class="mediumRightButton"
