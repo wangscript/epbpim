@@ -444,7 +444,7 @@
 								</form>
 							</s:if>
 							
-							<s:if test="#request.closeProject = true">
+							<s:if test="#request.closeProject == true">
 								<form action="closeProject.do" method="post">
 									<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>" />
 									<ul class="fullScreenUl">								
