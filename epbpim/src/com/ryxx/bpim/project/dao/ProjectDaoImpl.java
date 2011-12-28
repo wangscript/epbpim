@@ -26,7 +26,7 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
     @Override
     public void updateProjectInfo(ProjectInfo projectInfo)
     {
-        save(projectInfo);
+        merge(projectInfo);
         
     }
     
