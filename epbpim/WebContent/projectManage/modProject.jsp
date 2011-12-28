@@ -80,6 +80,7 @@
 					<div id="addProjectTable">
 					<s:form id="modForm" action="modProject.do" enctype="multipart/form-data" method="post" onsubmit="return validate(this);">
 						<h4 class="title">项目基本信息</h4>
+						<input type="hidden" name="projectInfo.queryType" value="<s:property value='projectInfo.queryType'/>"/>
 						<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>"/>
 						<input type="hidden" name="projectInfo.submitter.id" value="<s:property value='projectInfo.submitter.id'/>"/>
 						<ul class="fullScreenUl">
