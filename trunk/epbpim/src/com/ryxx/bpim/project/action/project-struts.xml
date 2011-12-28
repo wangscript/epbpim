@@ -18,7 +18,7 @@
 			<result>/projectManage/modProject.jsp</result>
 		</action>
 		<action name="modProject" method="modProjectInfo" class="projectAction">
-			<result type="redirect-action">schProjectList.do</result>
+			<result type="redirect">schProjectList.do?projectInfo.queryType=${projectInfo.queryType}</result>
 		</action>
 		<action name="modProjectContractAndInvoices" method="modProjectContractAndInvoices" class="projectAction">
 			<result type="redirect-action">schProjectList.do</result>
