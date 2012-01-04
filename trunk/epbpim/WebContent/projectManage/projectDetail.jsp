@@ -281,6 +281,7 @@
 							<s:if test="#request.addCost == true">
 						<h4 class="title">合同信息</h4>
 						<s:form id="modForm" action="modProjectContractAndInvoices.do" method="post" >
+						<input type="hidden" name="projectInfo.queryType" value="<s:property value='projectInfo.queryType'/>"/>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">合同编号:</label> <input
 								class="width100Input"
@@ -446,6 +447,7 @@
 							
 							<s:if test="#request.closeProject == true">
 								<form action="closeProject.do" method="post">
+									<input type="hidden" name="projectInfo.queryType" value="<s:property value='projectInfo.queryType'/>"/>
 									<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>" />
 									<ul class="fullScreenUl">								
 										<li><input type="submit" id="closeProject" class="mediumRightButton" value="结项"></li>
