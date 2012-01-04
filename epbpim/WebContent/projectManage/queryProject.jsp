@@ -78,7 +78,6 @@
 					<li class="width100Li"><label>合同金额</label></li>
 					<li class="width100Li"><label>开票金额</label></li>
 					<li class="width100Li"><label>结算金额</label></li>
-					<li class="width50Li"><label>项目状态</label></li>
 					<li class="width50Li"><label><s:text name="Common.Update" /></label></li>
 					<li class="width50Li"><label><s:text name="Common.Delete" /></label></li>
 				</ul>
@@ -90,13 +89,8 @@
 						<li class="width100Li"><s:property value="contractMoney" /></li>
 						<li class="width100Li"><s:property value="subInvoice" /></li>
 						<li class="width100Li"><s:property value="subCost" /></li>
-						<li class="width50Li">					
-							<s:if test="status == 0">已保存</s:if>
-							<s:elseif test="status == 1">已提交</s:elseif>
-							<s:else><font size="1" color="red">已结项</font></></s:else>
-						</li>
 						<li class="width50Li">
-								<input type="button" <s:if test="projectInfo.queryType!=3 && (status == 1 || status == 2)">disabled</s:if> onclick='preModProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
+								<input type="button" <s:if test="projectInfo.queryType!=3 && (status == 1 || status == 2)">disabled</s:if> onclick='preModProject(<s:property value="id" />);' class="mediumRightButton" class="button" value='<s:if test="status == 2">已结项</s:if><s:else>修  改</s:else>'>
 						</li>
 						<li class="width50Li">
 								<input type="button" <s:if test="projectInfo.queryType!=3 && (status == 1 || status == 2)">disabled</s:if> onclick='delProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
