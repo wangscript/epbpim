@@ -72,29 +72,35 @@
 		<s:else>
 			<div class="searchResult" id="searchResult">
 				<ul class="fullScreenUl">
-					<li class="width300Li"><label>项目名称</label></li>
+					<li class="width200Li"><label>项目名称</label></li>
 					<li class="width100Li"><label>项目编号</label></li>
 					<li class="width100Li"><label>承接部门</label></li>
 					<li class="width100Li"><label>合同金额</label></li>
 					<li class="width100Li"><label>开票金额</label></li>
 					<li class="width100Li"><label>结算金额</label></li>
+					<li class="width50Li"><label>项目状态</label></li>
 					<li class="width50Li"><label><s:text name="Common.Update" /></label></li>
 					<li class="width50Li"><label><s:text name="Common.Delete" /></label></li>
 				</ul>
 				<s:iterator value="projectInfoList" status="st">
 					<ul class="fullScreenUl">
-						<li class="width300Li"><a href="schProject.do?projectInfo.id=<s:property value='id' />"><s:property value="name" /></a></li>
+						<li class="width200Li"><a href="schProject.do?projectInfo.id=<s:property value='id' />"><s:property value="name" /></a></li>
 						<li class="width100Li"><s:property value="number" /></li>
 						<li class="width100Li"><s:property value="dept.name" /></li>
 						<li class="width100Li"><s:property value="contractMoney" /></li>
 						<li class="width100Li"><s:property value="subInvoice" /></li>
 						<li class="width100Li"><s:property value="subCost" /></li>
+						<li class="width50Li">					
+							<s:if test="status == 0">已保存</s:if>
+							<s:elseif test="status == 1">已提交</s:elseif>
+							<s:else><font size="1" color="red">已结项</font></></s:else>
+						</li>
 						<li class="width50Li">
 								<input type="button" <s:if test="projectInfo.queryType!=3 && (status == 1 || status == 2)">disabled</s:if> onclick='preModProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Update" />">
 						</li>
 						<li class="width50Li">
 								<input type="button" <s:if test="projectInfo.queryType!=3 && (status == 1 || status == 2)">disabled</s:if> onclick='delProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
-						</li>
+						</li>	
 					</ul>
 				</s:iterator>
 				<ul class="fullScreenUl">
