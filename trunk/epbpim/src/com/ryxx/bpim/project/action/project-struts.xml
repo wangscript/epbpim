@@ -21,10 +21,10 @@
 			<result type="redirect">schProjectList.do?projectInfo.queryType=${projectInfo.queryType}</result>
 		</action>
 		<action name="modProjectContractAndInvoices" method="modProjectContractAndInvoices" class="projectAction">
-			<result type="redirect-action">schProjectList.do</result>
+			<result type="redirect">schProjectList.do?projectInfo.queryType=${projectInfo.queryType}</result>
 		</action>
 		<action name="closeProject" method="closeProjectInfo" class="projectAction">
-			<result type="redirect-action">schProjectList.do</result>
+			<result type="redirect">schProjectList.do?projectInfo.queryType=${projectInfo.queryType}</result>
 		</action>
 		<action name="schProjectList" method="schProjectInfoList" class="projectAction">
 			<result>/projectManage/queryProject.jsp</result>

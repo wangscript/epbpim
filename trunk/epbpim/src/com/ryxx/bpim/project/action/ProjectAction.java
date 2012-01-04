@@ -142,7 +142,9 @@ public class ProjectAction extends ActionSupportBase
     {
         try
         {
+            String queryType = projectInfo.getQueryType();
             projectInfo = projectService.findProjectInfo(projectInfo);
+            projectInfo.setQueryType(queryType);
             wrapInvoiceList(projectInfo);
             wrapFileList(projectInfo);
             ProjectStream projectStream = new ProjectStream();
@@ -204,9 +206,7 @@ public class ProjectAction extends ActionSupportBase
         try
         {
             wrapDeptAndUserList();
-            String queryType = projectInfo.getQueryType();
             findProjectInfo();
-            projectInfo.setQueryType(queryType);
         }
         catch (Exception e)
         {
@@ -245,6 +245,7 @@ public class ProjectAction extends ActionSupportBase
     {
         if (projectInfo != null)
         {
+            String queryType = projectInfo.getQueryType();
             ProjectInfo preProjectInfo = projectService.findProjectInfo(projectInfo);
             if (!StringUtils.isBlank(projectInfo.getContractNumber()))
             {
@@ -275,6 +276,7 @@ public class ProjectAction extends ActionSupportBase
                 preProjectInfo.setInvoiceMoneyArrival(projectInfo.getInvoiceMoneyArrival().replaceAll(", ", ","));
             }
             projectService.updateProjectInfo(preProjectInfo);
+            projectInfo.setQueryType(queryType);
         }
         return SUCCESS;
     }
@@ -283,9 +285,11 @@ public class ProjectAction extends ActionSupportBase
     {
         try
         {
+            String queryType = projectInfo.getQueryType();
             projectInfo = projectService.fetchById(projectInfo.getId());
             projectInfo.setStatus("2");
             projectService.updateProjectInfo(projectInfo);
+            projectInfo.setQueryType(queryType);
         }
         catch (Exception e)
         {
