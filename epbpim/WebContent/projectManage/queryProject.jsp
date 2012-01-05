@@ -72,6 +72,9 @@
 		<s:else>
 			<div class="searchResult" id="searchResult">
 				<ul class="fullScreenUl">
+					<s:if test="projectInfo.queryType==3">
+					<li class="width50Li"><label></label></li>
+					</s:if>
 					<li class="width200Li"><label>项目名称</label></li>
 					<li class="width100Li"><label>项目编号</label></li>
 					<li class="width100Li"><label>承接部门</label></li>
@@ -82,7 +85,10 @@
 					<li class="width50Li"><label><s:text name="Common.Delete" /></label></li>
 				</ul>
 				<s:iterator value="projectInfoList" status="st">
-					<ul class="fullScreenUl">
+					<ul class="fullScreenUl" style='background-color:<s:if test="projectInfo.queryType==3 && #st.odd">#F0F0F0</s:if><s:elseif test="projectInfo.queryType==3 && #st.even">#C0C0C0</s:elseif>'>
+						<s:if test="projectInfo.queryType==3">
+						<li class="width50Li"><s:property value="#st.index+1" /></li>
+						</s:if>
 						<li class="width200Li"><a href="schProject.do?projectInfo.queryType=<s:property value='projectInfo.queryType' />&projectInfo.id=<s:property value='id' />"><s:property value="name" /></a></li>
 						<li class="width100Li"><s:property value="number" /></li>
 						<li class="width100Li"><s:property value="dept.name" /></li>
