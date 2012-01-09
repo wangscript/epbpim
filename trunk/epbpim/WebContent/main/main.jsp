@@ -16,30 +16,38 @@
 <body>
 <div id="main"><jsp:include page="mainHeader.jsp" />
 <div class="content">
-<div class="content_resize">
-	<div class="mainbar">
-		<div class="entry">
-			<s:if test="newsAnnounces!=null && newsAnnounces.size()!=0">
-				<h3 class="title">最新公告</h3>
-				<table style="width:900px">
-					<s:iterator value="newsAnnounces" status="st">
-						<s:if test="#st.index<3">
-							<tr>
-								<td align="left"><s:hidden name="id" /><h3><s:property value="newsTitle" /></h3></td>
-							</tr>
-							<tr>
-								<td align="left"><s:date name="addTimeTemp" format="yyyy-MM-dd" /><s:hidden	name="addTime" /></td>
-							</tr>
-							<tr>
-								<td align="left" style="text-align:left"><s:property value="content"/></td>
-							</tr>
-						</s:if>
-					</s:iterator>
-				</table>
-			</s:if>
+			<div class="content_resize">
+				<div class="mainbar">
+					<div class="entry">
+						<s:if test="newsAnnounces==null || newsAnnounces.size()==0"></s:if>
+						<s:else>
+							<h3 class="title">最新公告</h3>
+							<s:iterator value="newsAnnounces" status="st">
+								<ul class="fullScreenUl">
+									<li>
+										<h4>
+											<s:property value="newsTitle" />
+											(
+											<s:date name="addTime" format="yyyy-MM-dd" />
+											)
+										</h4></li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li>&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="content" />
+									</li>
+								</ul>
+
+							</s:iterator>
+						</s:else>
+						
+					</div>
+				</div>
+			</div>
+			<!-- end #content -->
+
+
+			<div class="clr"></div>
 		</div>
-	</div>
-</div>
 <!-- end #content -->
 
 

@@ -72,9 +72,7 @@
 		<s:else>
 			<div class="searchResult" id="searchResult">
 				<ul class="fullScreenUl">
-					<s:if test="projectInfo.queryType==3">
-					<li class="width50Li"><label></label></li>
-					</s:if>
+					<li class="width50Li"><label>序号</label></li>
 					<li class="width200Li"><label>项目名称</label></li>
 					<li class="width100Li"><label>项目编号</label></li>
 					<li class="width100Li"><label>承接部门</label></li>
@@ -86,9 +84,7 @@
 				</ul>
 				<s:iterator value="projectInfoList" status="st">
 					<ul class="fullScreenUl" style='background-color:<s:if test="projectInfo.queryType==3 && #st.odd">#F0F0F0</s:if><s:elseif test="projectInfo.queryType==3 && #st.even">#C0C0C0</s:elseif>'>
-						<s:if test="projectInfo.queryType==3">
 						<li class="width50Li"><s:property value="#st.index+1" /></li>
-						</s:if>
 						<li class="width200Li"><a href="schProject.do?projectInfo.queryType=<s:property value='projectInfo.queryType' />&projectInfo.id=<s:property value='id' />"><s:property value="name" /></a></li>
 						<li class="width100Li"><s:property value="number" /></li>
 						<li class="width100Li"><s:property value="dept.name" /></li>
@@ -103,10 +99,22 @@
 						</li>	
 					</ul>
 				</s:iterator>
+				
 				<ul class="fullScreenUl">
 					<jsp:include page="../common/pagination.jsp" flush="true">
 						<jsp:param name="action_page" value="projectManage/schProjectList.do" />
 					</jsp:include>
+				</ul>
+				<ul class="fullScreenUl">
+				</ul>
+				<ul class="fullScreenUl">
+					<li class="width50Li">合计</li>
+					<li class="width200Li"></li>
+					<li class="width100Li"></li>
+					<li class="width100Li"></li>
+					<li class="width100Li"><s:property value="subContractMoneys" /></li>
+					<li class="width100Li"><s:property value="subInvoices" /></li>
+					<li class="width100Li"><s:property value="subCosts" /></li>
 				</ul>
 			</div>
 		</s:else>
