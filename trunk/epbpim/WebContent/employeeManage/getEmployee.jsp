@@ -338,6 +338,26 @@
 								<ul class="fullScreenUl">
 									<li><input type="button" class="mediumLeftButton"
 										onclick="addLicense();" value="新增执业资格"></li>
+								</ul>								
+							</dd>
+							<dt>
+								<h4 class="title">附件信息</h4>
+							</dt>
+							<dd>
+								<div id="attachmentDIV">
+									<s:if test="userInfo.projectFiles != null && userInfo.projectFiles.size() > 0">
+										<s:iterator value="userInfo.projectFiles" status="st">
+											<ul class="fullScreenUl">
+												<li class="width400Li"><a href="<s:property value='filePath' />" <s:if test="fileName.contains('.jpg') || fileName.contains('.JPG')">target="blank"</s:if> ><s:property value='fileName' /></a></li>
+												<li class="width200Li"><input type="hidden" id="userInfo.oldFileName" name="userInfo.oldFileName" value="<s:property value='fileName' />"/></li>
+												<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
+											</ul>
+										</s:iterator>
+									</s:if>
+									<input type="hidden" id="userInfo.filePath" name="userInfo.filePath" value="<s:property value='userInfo.filePath' />"/>
+								</div>			
+								<ul class="fullScreenUl">
+									<li><input type="button" class="mediumLeftButton" onclick="addAttachment()" value="新增附件"></li>
 								</ul>
 							</dd>
 						</dl>
@@ -346,10 +366,15 @@
 							</li>
 						</ul>
 					</div>
-
 					<div></div>
-
 				</s:form>
+				<ul id="attachmentUL" class="fullScreenUl" style="display: none">
+					<li class="width300Li">
+						<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile(this)" />
+						<input type="hidden" name="userInfo.fileName" id="userInfo.fileName">
+					</li>
+					<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
+				</ul>
 				</div>
 
 
@@ -442,6 +467,27 @@
 			experiencesLicences.parentNode.removeChild(experiencesLicences);
 		}
 	}
+	
+	function addAttachment()
+ 	{
+ 		var invoiceULObj=document.getElementById("attachmentUL").cloneNode(true);
+ 		invoiceULObj.id="";
+ 		invoiceULObj.style.display="inline";
+ 		document.getElementById("attachmentDIV").appendChild(invoiceULObj);
+ 	}
+ 	function delAttachment(obj)
+ 	{
+ 		var invoiceULObj=obj.parentNode.parentNode;
+ 		invoiceULObj.parentNode.removeChild(invoiceULObj);
+ 	}
+ 	function chooseFile(obj)
+ 	{
+ 		var filePath=obj.value;
+ 	    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length); 	    
+		var reg = /,/g;
+		fileName = fileName.replace(reg, "");
+		obj.nextSibling.nextSibling.value = fileName;
+ 	}
 </script>
 
 
