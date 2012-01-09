@@ -119,6 +119,8 @@
 	            <param name="enumClass">com.ryxx.bpim.user.enums.UserTitleEnum</param>         
 	        </type>
 	    </property>
+	    <property name="fileName" column="FILE_NAME" type="java.lang.String"></property>
+		<property name="filePath" column="FILE_PATH" type="java.lang.String"></property>
 		<bag name="roles" table="ROLE_USER_RESTRACTION" fetch="select" lazy="true" inverse="false">
 			<key>
 				<column name="USER_ID" />
