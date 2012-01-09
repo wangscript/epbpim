@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="com.ryxx.bpim.system.dao.NewsAnnounceDAO" class="com.ryxx.bpim.system.dao.NewsAnnounceDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="newAnnounceAction" class="com.ryxx.bpim.system.action.NewAnnounceAction" scope="prototype">
+		<property name="service">
+			<ref local="com.ryxx.bpim.system.service.NewsAnnounceService"/>
+		</property>
+	</bean>
+	<bean id="com.ryxx.bpim.system.service.NewsAnnounceService" parent="baseTransactionProxyCdm">
+		<property name="target" ref="com.ryxx.bpim.system.service.NewsAnnounceService.target" />
+	</bean>
+	<bean id="com.ryxx.bpim.system.service.NewsAnnounceService.target" class="com.ryxx.bpim.system.service.NewsAnnounceServiceImpl"></bean>
+</beans>

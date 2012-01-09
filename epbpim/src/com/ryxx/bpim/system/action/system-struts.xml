@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="bpim-adminuser" namespace="/systemManage" extends="bpim-default">
+		<action name="listNews" method="listNewsAnnounces" class="newAnnounceAction">
+			<result>/systemManage/listNews.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="addNews" method="insertNewsAnnounces" class="newAnnounceAction">
+			<result type="redirect-action">listNews.do</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="showNews" method="getDetailNewsAnnounces" class="newAnnounceAction">
+			<result>/systemManage/updateNews.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>						  
+		<action name="updateNews" method="updateNewsAnnounces" class="newAnnounceAction">
+			<result type="redirect-action">listNews.do</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="deleteNews" method="deleteNewsAnnounces" class="newAnnounceAction">
+			<result type="redirect-action">listNews.do</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="preAddNews">
+			<result>/systemManage/addNews.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+</struts>

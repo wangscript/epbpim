@@ -111,7 +111,7 @@
 			<result type="redirect-action">main.do</result>
 			<interceptor-ref name="user"/>
 		</action>
-		<action name="main">
+		<action name="main" method="listNewsAnnounces" class="newAnnounceAction">
 			<result>/main/main.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>

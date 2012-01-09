@@ -41,6 +41,7 @@
     <!-- <include file="bpim-struts.xml"/> -->
     <include file="com/ryxx/bpim/user/action/admin-struts.xml"/>
     <include file="com/ryxx/bpim/project/action/project-struts.xml"/>
+    <include file="com/ryxx/bpim/system/action/system-struts.xml"/>
 	
     <!-- Add packages or include other files here -->
 

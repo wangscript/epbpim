@@ -54,6 +54,13 @@ public class ProjectAction extends ActionSupportBase
     
     private File[] uploadFiles;
     
+    private Double subContractMoneys = (double) 0 ;
+    
+    private Double subInvoices = (double) 0 ;
+    
+    private Double subCosts = (double) 0 ;
+    
+    
     public String schProjectInfoList()
     {
         try
@@ -96,6 +103,12 @@ public class ProjectAction extends ActionSupportBase
      */
     private List<ProjectInfo> executeData(List<ProjectInfo> projectInfoList)
     {
+    	subContractMoneys = (double) 0 ;
+    	    
+    	subInvoices = (double) 0 ;
+    	    
+    	subCosts = (double) 0 ;
+    			
         for (ProjectInfo project : projectInfoList)
         {
             wrapInvoiceList(project);
@@ -120,6 +133,8 @@ public class ProjectAction extends ActionSupportBase
                     }
                 }
             }
+            
+            subInvoices = subInvoices + subInvoice;
             project.setSubInvoice(subInvoice);
             
             Double subCost = (double)0;
@@ -131,9 +146,16 @@ public class ProjectAction extends ActionSupportBase
                     subCost = subCost + stream.getMoney();
                 }
             }
+            
+            subCosts = subCosts + subCost;
             project.setSubCost(subCost);
             
             project.setBalance(subInvoice - subCost);
+            
+            if(!StringUtils.isEmpty(project.getContractMoney())){
+            	subContractMoneys = subContractMoneys + Double.valueOf(project.getContractMoney());
+            }
+            
         }
         return projectInfoList;
     }
@@ -589,5 +611,47 @@ public class ProjectAction extends ActionSupportBase
     {
         this.uploadFiles = uploadFiles;
     }
+
+	/**
+	 * @return the subContractMoneys
+	 */
+	public Double getSubContractMoneys() {
+		return subContractMoneys;
+	}
+
+	/**
+	 * @param subContractMoneys the subContractMoneys to set
+	 */
+	public void setSubContractMoneys(Double subContractMoneys) {
+		this.subContractMoneys = subContractMoneys;
+	}
+
+	/**
+	 * @return the subInvoices
+	 */
+	public Double getSubInvoices() {
+		return subInvoices;
+	}
+
+	/**
+	 * @param subInvoices the subInvoices to set
+	 */
+	public void setSubInvoices(Double subInvoices) {
+		this.subInvoices = subInvoices;
+	}
+
+	/**
+	 * @return the subCosts
+	 */
+	public Double getSubCosts() {
+		return subCosts;
+	}
+
+	/**
+	 * @param subCosts the subCosts to set
+	 */
+	public void setSubCosts(Double subCosts) {
+		this.subCosts = subCosts;
+	}
     
 }
