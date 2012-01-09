@@ -121,6 +121,7 @@
 	    </property>
 	    <property name="fileName" column="FILE_NAME" type="java.lang.String"></property>
 		<property name="filePath" column="FILE_PATH" type="java.lang.String"></property>
+		<property name="firstLogin" column="FIRST_LOGIN" type="java.lang.Integer"></property>
 		<bag name="roles" table="ROLE_USER_RESTRACTION" fetch="select" lazy="true" inverse="false">
 			<key>
 				<column name="USER_ID" />
