@@ -42,7 +42,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="saveUsers.do" method="post" onsubmit="return validate(this);">
+					<s:form action="saveUsers.do" enctype="multipart/form-data" method="post" onsubmit="return validate(this);">
 					<h3 class="title">新增员工</h3>
 					<div id="addProjectTable">
 						<dl>
