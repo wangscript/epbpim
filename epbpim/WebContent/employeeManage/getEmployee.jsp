@@ -44,7 +44,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<s:form action="updateUser.do" method="post" onsubmit="return validate(this);">
+					<s:form action="updateUser.do" enctype="multipart/form-data" method="post" onsubmit="return validate(this);">
 					<h3 class="title">修改员工</h3>
 					<div id="addProjectTable">
 						<dl>
@@ -345,8 +345,8 @@
 							</dt>
 							<dd>
 								<div id="attachmentDIV">
-									<s:if test="userInfo.projectFiles != null && userInfo.projectFiles.size() > 0">
-										<s:iterator value="userInfo.projectFiles" status="st">
+									<s:if test="userInfo.userFiles != null && userInfo.userFiles.size() > 0">
+										<s:iterator value="userInfo.userFiles" status="st">
 											<ul class="fullScreenUl">
 												<li class="width400Li"><a href="<s:property value='filePath' />" <s:if test="fileName.contains('.jpg') || fileName.contains('.JPG')">target="blank"</s:if> ><s:property value='fileName' /></a></li>
 												<li class="width200Li"><input type="hidden" id="userInfo.oldFileName" name="userInfo.oldFileName" value="<s:property value='fileName' />"/></li>
