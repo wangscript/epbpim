@@ -1,7 +1,10 @@
 package com.ryxx.bpim.user.action;
 
+import java.io.File;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.httpclient.util.DateUtil;
@@ -13,6 +16,7 @@ import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.user.entity.AdminDept;
 import com.ryxx.bpim.user.entity.AdminRole;
 import com.ryxx.bpim.user.entity.UserCertification;
+import com.ryxx.bpim.user.entity.UserFile;
 import com.ryxx.bpim.user.entity.UserInfo;
 import com.ryxx.bpim.user.entity.WorkingExperience;
 import com.ryxx.bpim.user.enums.CertificationTypeEnum;
@@ -27,468 +31,752 @@ import com.ryxx.bpim.user.service.UserCertificationService;
 import com.ryxx.bpim.user.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.date.DateTools;
+import com.ryxx.util.io.FileUtil;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 import com.ryxx.util.string.StringTools;
 
-public class UserInfoAction extends ActionSupportBase {
-	private static final long serialVersionUID = -5620230655376038210L;
-
-	private static final Log LOG = LogFactory.getLog(UserInfoAction.class);
-
-	private UserInfoService userInfoService;
-	private AdminRoleService adminRoleService;
-	private AdminDeptService adminDeptService;
-	private UserCertificationService userCertificationService;
-	private AdminLogService adminLogService;
-	
-	private Long id;
-	private Integer eduBackGround;
-	private Integer title;
-	private Integer status;
-	private Integer type;
-	private List<Integer> certifiTypes;
-	private Timestamp stamp;
-	
-	private List<UserInfo> userInfos;
-	private UserInfo userInfo;
-	private List<UserCertification> certifies;
-	
-	private List<AdminRole> allRoles;
-	private List<AdminDept> allDepts;
-	private List<WorkingExperience> experiences;
-	
-	private List<Long> deptGroup;
-	private List<Long> roleGroup;
-	
-	private String realName;
-	private String identify;
-	
-	public String getRealName() {
-		return realName;
-	}
-
-	public void setRealName(String realName) {
-		this.realName = realName;
-	}
-
-	public String getIdentify() {
-		return identify;
-	}
-
-	public void setIdentify(String identify) {
-		this.identify = identify;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	private PageTools page;
-	public PageTools getPage() {
-		return page;
-	}
-
-	public void setPage(PageTools page) {
-		this.page = page;
-	}
-	
-	public String save() {
-		return SUCCESS;
-	}
-	
-	public String newUserInfo() {
-		List<AdminRole> roles = adminRoleService.findAll();
-		userInfo = new UserInfo();
-		setAllRoles(roles);
-		List<AdminDept> depts = adminDeptService.findAll();
-		setAllDepts(depts);
-		userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
-		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
-		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
-		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
-		userInfo.setEduCountinue(new Timestamp(StringTools.string2date(userInfo.getEduCountiuneTemp()+" 00:00:00").getTime()));
-		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));	
-		return SUCCESS;
-	}
-	
-	public String showUser() {
-		List<AdminRole> roles = adminRoleService.findAll();
-		setAllRoles(roles);
-		List<AdminDept> depts = adminDeptService.findAll();
-		setAllDepts(depts);
-		setUserInfo(userInfoService.fetchById(id));
-		setEduBackGround(userInfo.getEduBackground().getKey());
-		setTitle(userInfo.getTitle().getKey());
-		setStatus(userInfo.getStatus().getKey());
-		setType(userInfo.getInsuranceType().getKey());
-		List<Long> deptGp = new ArrayList<Long>();
-		for(AdminDept dept: userInfo.getDepts()) {
-			deptGp.add(dept.getId());
-		}
-		setDeptGroup(deptGp);
-		List<Long> roleGp = new ArrayList<Long>();
-		for(AdminRole role: userInfo.getRoles()) {
-			roleGp.add(role.getId());
-		}
-		for(UserCertification certification: userInfo.getCertifies()) {
-			certification.setSelectId(certification.getTypeId().getKey());
-			certification.setExpireDateFromPage(DateUtil.formatDate(certification.getExpireDate(), "yyyy-MM-dd"));
-		}
-		for(WorkingExperience experience: userInfo.getWorkingExperiences()) {
-			if(experience.getStartDate() != null) {
-				experience.setStartDateTemp(DateUtil.formatDate(experience.getStartDate(), "yyyy-MM-dd"));
-			}
-			if(experience.getEndDate() != null) {
-				experience.setEndDateTemp(DateUtil.formatDate(experience.getEndDate(), "yyyy-MM-dd"));
-			}
-		}
-		setExperiences(userInfo.getWorkingExperiences());
-		setCertifies(userInfo.getCertifies());
-		userInfo.setBirthdayTmp(userInfo.getBirthday()!=null?DateTools.date2string(userInfo.getBirthday(), "yyyy-MM-dd"):null);
-		userInfo.setGraduateDateTmp(userInfo.getGraduateDate()!=null?DateTools.date2string(userInfo.getGraduateDate(), "yyyy-MM-dd"):null);
-		userInfo.setLeaveDateTmp(userInfo.getLeaveDate()!=null?DateTools.date2string(userInfo.getLeaveDate(), "yyyy-MM-dd"):null);
-		userInfo.setOnboardDateTmp(userInfo.getOnboardDate()!=null?DateTools.date2string(userInfo.getOnboardDate(), "yyyy-MM-dd"):null);
-		userInfo.setEduCountiuneTemp(userInfo.getEduCountinue()!=null?DateTools.date2string(userInfo.getEduCountinue(), "yyyy-MM-dd"):null);
-		setRoleGroup(roleGp);
-		return SUCCESS;
-	}
-	
-	public String saveUsers() {
-		if(certifies != null) {
-			List<UserCertification> certifs = new ArrayList<UserCertification>();
-			for(UserCertification certification: certifies) {
-				if(certification.getSelectId()>0) {
-					certification.setTypeId(CertificationTypeEnum.getType(certification.getSelectId()));
-					certification.setExpireDate(new Timestamp(StringTools.string2date(certification.getExpireDateFromPage()+" 00:00:00").getTime()));
-					certifs.add(certification);
-				}
-			}
-			userInfo.setCertifies(certifs);
-		}
-		if(experiences != null) {
-			List<WorkingExperience> expers = new ArrayList<WorkingExperience>();
-			for(WorkingExperience experience: experiences) {
-				if(StringUtils.isNotEmpty(experience.getStartDateTemp())) {
-					experience.setStartDate(new Timestamp(StringTools.string2date(experience.getStartDateTemp()+" 00:00:00").getTime()));
-				}
-				if(StringUtils.isNotEmpty(experience.getEndDateTemp())) {
-					experience.setEndDate(new Timestamp(StringTools.string2date(experience.getEndDateTemp()+" 00:00:00").getTime()));
-				}
-				expers.add(experience);
-			}
-			userInfo.setWorkingExperiences(expers);
-		}
-		userInfo.setEduBackground(EduBackgroundEnum.getType(eduBackGround));
-		userInfo.setTitle(UserTitleEnum.getType(title));
-		userInfo.setStatus(UserStatusEnum.getType(status));
-		userInfo.setInsuranceType(InsuranceTypeEnum.getType(type));
-		if(deptGroup != null) {
-			List<AdminDept> depts = new ArrayList<AdminDept>();
-			for(Long id: deptGroup) {
-				AdminDept dept = new AdminDept();
-				dept.setId(id);
-				depts.add(dept);
-			}
-			userInfo.setDepts(depts);
-		}
-		if(roleGroup != null) {
-			List<AdminRole> roles = new ArrayList<AdminRole>();
-			for(Long id: roleGroup) {
-				AdminRole role = new AdminRole();
-				role.setId(id);
-				roles.add(role);
-			}
-			userInfo.setRoles(roles);
-		}
-		userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
-		userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
-		userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
-		userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
-		userInfo.setEduCountinue(new Timestamp(StringTools.string2date(userInfo.getEduCountiuneTemp()+" 00:00:00").getTime()));
-		userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
-		userInfo.setPassword(StringTools.md5("123456"));
-		userInfoService.save(userInfo);
-		return SUCCESS;
-	}
-	
-	public String updateUser() {
-		if(certifies != null) {
-			List<UserCertification> certifs = new ArrayList<UserCertification>();
-			for(UserCertification certification: certifies) {
-				if(certification != null && certification.getSelectId()>0) {
-					certification.setTypeId(CertificationTypeEnum.getType(certification.getSelectId()));
-					certification.setExpireDate(new Timestamp(StringTools.string2date(certification.getExpireDateFromPage()+" 00:00:00").getTime()));
-					certifs.add(certification);
-				}
-			}
-			userInfo.setCertifies(certifs);
-		}
-		if(experiences != null) {
-			List<WorkingExperience> expers = new ArrayList<WorkingExperience>();
-			for(WorkingExperience experience: experiences) {
-				if(experience != null) {
-					if(StringUtils.isNotEmpty(experience.getStartDateTemp())) {
-						experience.setStartDate(new Timestamp(StringTools.string2date(experience.getStartDateTemp()+" 00:00:00").getTime()));
-					}
-					if(StringUtils.isNotEmpty(experience.getEndDateTemp())) {
-						experience.setEndDate(new Timestamp(StringTools.string2date(experience.getEndDateTemp()+" 00:00:00").getTime()));
-					}
-				}
-				expers.add(experience);
-			}
-			userInfo.setWorkingExperiences(expers);
-		}
-		userInfo.setEduBackground(EduBackgroundEnum.getType(eduBackGround));
-		userInfo.setTitle(UserTitleEnum.getType(title));
-		userInfo.setStatus(UserStatusEnum.getType(status));
-		userInfo.setInsuranceType(InsuranceTypeEnum.getType(type));
-		if(deptGroup != null) {
-			List<AdminDept> depts = new ArrayList<AdminDept>();
-			for(Long id: deptGroup) {
-				AdminDept dept = new AdminDept();
-				dept.setId(id);
-				depts.add(dept);
-			}
-			userInfo.setDepts(depts);
-		}
-		if(roleGroup != null) {
-			List<AdminRole> roles = new ArrayList<AdminRole>();
-			for(Long id: roleGroup) {
-				AdminRole role = new AdminRole();
-				role.setId(id);
-				roles.add(role);
-			}
-			userInfo.setRoles(roles);
-		}
-		if(StringUtils.isNotEmpty(userInfo.getBirthdayTmp())) {
-			userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp()+" 00:00:00").getTime()));
-		}
-		if(StringUtils.isNotEmpty(userInfo.getGraduateDateTmp())) {
-			userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp()+" 00:00:00").getTime()));
-		}
-		if(StringUtils.isNotEmpty(userInfo.getLeaveDateTmp())) {
-			userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp()+" 00:00:00").getTime()));
-		}
-		if(StringUtils.isNotEmpty(userInfo.getOnboardDateTmp())) {
-			userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp()+" 00:00:00").getTime()));
-		}
-		if(StringUtils.isNotEmpty(userInfo.getEduCountiuneTemp())) {
-			userInfo.setEduCountinue(new Timestamp(StringTools.string2date(userInfo.getEduCountiuneTemp()+" 00:00:00").getTime()));
-		}
-		userInfo.setId(id);
-		UserInfo newUserInfo = userInfoService.fetchById(id);
-		userInfo.setPassword(newUserInfo.getPassword());
-		userInfoService.save(userInfo);
-		return SUCCESS;
-	}
-
-	public String listUserInfo() {
-		try {
-			int pageNo = ParamTools.getIntParameter(request,
-					Constants.PARA_PAGE_NO, 1);
-			int pageSize = ParamTools.getIntParameter(request,
-					Constants.PARA_PAGE_SIZE, 0);
-			PageTools page = new PageTools(pageNo, pageSize);
-			UserInfo userInfo1 = new UserInfo();
-			if(userInfo == null) {
-				userInfo = new UserInfo();
-			}
-			List<AdminRole> roles = adminRoleService.findAll();
-			userInfo.setRoles(roles);
-			List<AdminDept> depts = adminDeptService.findAll();
-			userInfo.setDepts(depts);
-			if(userInfo.getDeptId() != null && userInfo.getDeptId()>0L) {
-				userInfo1.setDeptId(userInfo.getDeptId());
-			}
-			if(userInfo.getRoleId() != null && userInfo.getRoleId()>0L) {
-				userInfo1.setRoleId(userInfo.getRoleId());
-			}
-			userInfo1.setRealName(userInfo.getRealName());
-			userInfo1.setIdentity(userInfo.getIdentity());
-			userInfo1.setStatus(UserStatusEnum.getType(status==null?0:status));
-			if(certifies != null) {
-				userInfo1.setCertifieId(certifies.get(0).getSelectId());
-			}
-			userInfo1.setRowCount(pageNo);
-			userInfo1.setPageSize(pageSize);
-			userInfos = userInfoService.listPage(userInfo1, page);
-			if (userInfos != null && userInfos.size() > 0) {
-				this.page = page;
-			} else {
-//				super.addNotFoundErrorMsg();
-				return SUCCESS;
-			}
-		} catch (Exception ex) {
-			LOG.error("UserInfoAction error: ", ex);
-			super.addErrorMsg(ex.getMessage());
-			ex.printStackTrace();
-			return ERROR;
-		}
-		return SUCCESS;
-	}
-	
-	public String delete() {
-		userInfoService.delete(id);
-		return SUCCESS;
-	}
-	
-	public UserInfoService getUserInfoService() {
-		return userInfoService;
-	}
-
-	public void setUserInfoService(UserInfoService userInfoService) {
-		this.userInfoService = userInfoService;
-	}
-
-	public List<UserInfo> getUserInfos() {
-		return userInfos;
-	}
-
-	public void setUserInfos(List<UserInfo> userInfos) {
-		this.userInfos = userInfos;
-	}
-
-	public UserInfo getUserInfo() {
-		return userInfo;
-	}
-
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
-	}
-
-	public AdminRoleService getAdminRoleService() {
-		return adminRoleService;
-	}
-
-	public void setAdminRoleService(AdminRoleService adminRoleService) {
-		this.adminRoleService = adminRoleService;
-	}
-
-	public AdminDeptService getAdminDeptService() {
-		return adminDeptService;
-	}
-
-	public void setAdminDeptService(AdminDeptService adminDeptService) {
-		this.adminDeptService = adminDeptService;
-	}
-
-	public AdminLogService getAdminLogService() {
-		return adminLogService;
-	}
-
-	public void setAdminLogService(AdminLogService adminLogService) {
-		this.adminLogService = adminLogService;
-	}
-
-	
-	public Integer getEduBackGround() {
-		return eduBackGround;
-	}
-
-	public void setEduBackGround(Integer eduBackGround) {
-		this.eduBackGround = eduBackGround;
-	}
-
-	public Integer getTitle() {
-		return title;
-	}
-
-	public void setTitle(Integer title) {
-		this.title = title;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public Integer getType() {
-		return type;
-	}
-
-	public void setType(Integer type) {
-		this.type = type;
-	}
-
-	public List<Integer> getCertifiTypes() {
-		return certifiTypes;
-	}
-
-	public void setCertifiTypes(List<Integer> certifiTypes) {
-		this.certifiTypes = certifiTypes;
-	}
-
-	public List<UserCertification> getCertifies() {
-		return certifies;
-	}
-
-	public void setCertifies(List<UserCertification> certifies) {
-		this.certifies = certifies;
-	}
-
-	public UserCertificationService getUserCertificationService() {
-		return userCertificationService;
-	}
-
-	public void setUserCertificationService(
-			UserCertificationService userCertificationService) {
-		this.userCertificationService = userCertificationService;
-	}
-
-	public Timestamp getStamp() {
-		return stamp;
-	}
-
-	public void setStamp(Timestamp stamp) {
-		this.stamp = stamp;
-	}
-
-	public List<Long> getDeptGroup() {
-		return deptGroup;
-	}
-
-	public void setDeptGroup(List<Long> deptGroup) {
-		this.deptGroup = deptGroup;
-	}
-
-	public List<Long> getRoleGroup() {
-		return roleGroup;
-	}
-
-	public void setRoleGroup(List<Long> roleGroup) {
-		this.roleGroup = roleGroup;
-	}
-
-	public List<AdminRole> getAllRoles() {
-		return allRoles;
-	}
-
-	public void setAllRoles(List<AdminRole> allRoles) {
-		this.allRoles = allRoles;
-	}
-
-	public List<AdminDept> getAllDepts() {
-		return allDepts;
-	}
-
-	public void setAllDepts(List<AdminDept> allDepts) {
-		this.allDepts = allDepts;
-	}
-
-	public List<WorkingExperience> getExperiences() {
-		return experiences;
-	}
-
-	public void setExperiences(List<WorkingExperience> experiences) {
-		this.experiences = experiences;
-	}
-	
+public class UserInfoAction extends ActionSupportBase
+{
+    private static final long serialVersionUID = -5620230655376038210L;
+    
+    private static final Log LOG = LogFactory.getLog(UserInfoAction.class);
+    
+    /** 目录分隔符 */
+    private final String FILE_SEAPRATOR = System.getProperty("file.separator");
+    
+    private UserInfoService userInfoService;
+    
+    private AdminRoleService adminRoleService;
+    
+    private AdminDeptService adminDeptService;
+    
+    private UserCertificationService userCertificationService;
+    
+    private AdminLogService adminLogService;
+    
+    private Long id;
+    
+    private Integer eduBackGround;
+    
+    private Integer title;
+    
+    private Integer status;
+    
+    private Integer type;
+    
+    private List<Integer> certifiTypes;
+    
+    private Timestamp stamp;
+    
+    private List<UserInfo> userInfos;
+    
+    private UserInfo userInfo;
+    
+    private List<UserCertification> certifies;
+    
+    private List<AdminRole> allRoles;
+    
+    private List<AdminDept> allDepts;
+    
+    private List<WorkingExperience> experiences;
+    
+    private List<Long> deptGroup;
+    
+    private List<Long> roleGroup;
+    
+    private String realName;
+    
+    private String identify;
+    
+    private File[] uploadFiles;
+    
+    public File[] getUploadFiles()
+    {
+        return uploadFiles;
+    }
+    
+    public void setUploadFiles(File[] uploadFiles)
+    {
+        this.uploadFiles = uploadFiles;
+    }
+    
+    public String getRealName()
+    {
+        return realName;
+    }
+    
+    public void setRealName(String realName)
+    {
+        this.realName = realName;
+    }
+    
+    public String getIdentify()
+    {
+        return identify;
+    }
+    
+    public void setIdentify(String identify)
+    {
+        this.identify = identify;
+    }
+    
+    public Long getId()
+    {
+        return id;
+    }
+    
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+    
+    private PageTools page;
+    
+    public PageTools getPage()
+    {
+        return page;
+    }
+    
+    public void setPage(PageTools page)
+    {
+        this.page = page;
+    }
+    
+    public String save()
+    {
+        return SUCCESS;
+    }
+    
+    public String newUserInfo()
+    {
+        List<AdminRole> roles = adminRoleService.findAll();
+        userInfo = new UserInfo();
+        setAllRoles(roles);
+        List<AdminDept> depts = adminDeptService.findAll();
+        setAllDepts(depts);
+        userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp() + " 00:00:00").getTime()));
+        userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp() + " 00:00:00")
+            .getTime()));
+        userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp() + " 00:00:00").getTime()));
+        userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp() + " 00:00:00")
+            .getTime()));
+        userInfo.setEduCountinue(new Timestamp(StringTools.string2date(userInfo.getEduCountiuneTemp() + " 00:00:00")
+            .getTime()));
+        userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+        return SUCCESS;
+    }
+    
+    public String showUser()
+    {
+        List<AdminRole> roles = adminRoleService.findAll();
+        setAllRoles(roles);
+        List<AdminDept> depts = adminDeptService.findAll();
+        setAllDepts(depts);
+        setUserInfo(userInfoService.fetchById(id));
+        setEduBackGround(userInfo.getEduBackground().getKey());
+        setTitle(userInfo.getTitle().getKey());
+        setStatus(userInfo.getStatus().getKey());
+        setType(userInfo.getInsuranceType().getKey());
+        List<Long> deptGp = new ArrayList<Long>();
+        for (AdminDept dept : userInfo.getDepts())
+        {
+            deptGp.add(dept.getId());
+        }
+        setDeptGroup(deptGp);
+        List<Long> roleGp = new ArrayList<Long>();
+        for (AdminRole role : userInfo.getRoles())
+        {
+            roleGp.add(role.getId());
+        }
+        for (UserCertification certification : userInfo.getCertifies())
+        {
+            certification.setSelectId(certification.getTypeId().getKey());
+            certification.setExpireDateFromPage(DateUtil.formatDate(certification.getExpireDate(), "yyyy-MM-dd"));
+        }
+        for (WorkingExperience experience : userInfo.getWorkingExperiences())
+        {
+            if (experience.getStartDate() != null)
+            {
+                experience.setStartDateTemp(DateUtil.formatDate(experience.getStartDate(), "yyyy-MM-dd"));
+            }
+            if (experience.getEndDate() != null)
+            {
+                experience.setEndDateTemp(DateUtil.formatDate(experience.getEndDate(), "yyyy-MM-dd"));
+            }
+        }
+        setExperiences(userInfo.getWorkingExperiences());
+        setCertifies(userInfo.getCertifies());
+        userInfo.setBirthdayTmp(userInfo.getBirthday() != null ? DateTools.date2string(userInfo.getBirthday(),
+            "yyyy-MM-dd") : null);
+        userInfo.setGraduateDateTmp(userInfo.getGraduateDate() != null ? DateTools.date2string(userInfo.getGraduateDate(),
+            "yyyy-MM-dd")
+            : null);
+        userInfo.setLeaveDateTmp(userInfo.getLeaveDate() != null ? DateTools.date2string(userInfo.getLeaveDate(),
+            "yyyy-MM-dd") : null);
+        userInfo.setOnboardDateTmp(userInfo.getOnboardDate() != null ? DateTools.date2string(userInfo.getOnboardDate(),
+            "yyyy-MM-dd") : null);
+        userInfo.setEduCountiuneTemp(userInfo.getEduCountinue() != null ? DateTools.date2string(userInfo.getEduCountinue(),
+            "yyyy-MM-dd")
+            : null);
+        setRoleGroup(roleGp);
+        return SUCCESS;
+    }
+    
+    public String saveUsers()
+    {
+        if (certifies != null)
+        {
+            List<UserCertification> certifs = new ArrayList<UserCertification>();
+            for (UserCertification certification : certifies)
+            {
+                if (certification.getSelectId() > 0)
+                {
+                    certification.setTypeId(CertificationTypeEnum.getType(certification.getSelectId()));
+                    certification.setExpireDate(new Timestamp(
+                        StringTools.string2date(certification.getExpireDateFromPage() + " 00:00:00").getTime()));
+                    certifs.add(certification);
+                }
+            }
+            userInfo.setCertifies(certifs);
+        }
+        if (experiences != null)
+        {
+            List<WorkingExperience> expers = new ArrayList<WorkingExperience>();
+            for (WorkingExperience experience : experiences)
+            {
+                if (StringUtils.isNotEmpty(experience.getStartDateTemp()))
+                {
+                    experience.setStartDate(new Timestamp(StringTools.string2date(experience.getStartDateTemp()
+                        + " 00:00:00").getTime()));
+                }
+                if (StringUtils.isNotEmpty(experience.getEndDateTemp()))
+                {
+                    experience.setEndDate(new Timestamp(StringTools.string2date(experience.getEndDateTemp()
+                        + " 00:00:00").getTime()));
+                }
+                expers.add(experience);
+            }
+            userInfo.setWorkingExperiences(expers);
+        }
+        userInfo.setEduBackground(EduBackgroundEnum.getType(eduBackGround));
+        userInfo.setTitle(UserTitleEnum.getType(title));
+        userInfo.setStatus(UserStatusEnum.getType(status));
+        userInfo.setInsuranceType(InsuranceTypeEnum.getType(type));
+        if (deptGroup != null)
+        {
+            List<AdminDept> depts = new ArrayList<AdminDept>();
+            for (Long id : deptGroup)
+            {
+                AdminDept dept = new AdminDept();
+                dept.setId(id);
+                depts.add(dept);
+            }
+            userInfo.setDepts(depts);
+        }
+        if (roleGroup != null)
+        {
+            List<AdminRole> roles = new ArrayList<AdminRole>();
+            for (Long id : roleGroup)
+            {
+                AdminRole role = new AdminRole();
+                role.setId(id);
+                roles.add(role);
+            }
+            userInfo.setRoles(roles);
+        }
+        userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp() + " 00:00:00").getTime()));
+        userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp() + " 00:00:00")
+            .getTime()));
+        userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp() + " 00:00:00").getTime()));
+        userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp() + " 00:00:00")
+            .getTime()));
+        userInfo.setEduCountinue(new Timestamp(StringTools.string2date(userInfo.getEduCountiuneTemp() + " 00:00:00")
+            .getTime()));
+        userInfo.setRegisterDate(new Timestamp(System.currentTimeMillis()));
+        userInfo.setPassword(StringTools.md5("123456"));
+        
+        File[] newUploadFiles = null;
+        try
+        {
+            newUploadFiles = dealWithUploadFiles();
+            userInfoService.save(userInfo);
+        }
+        catch (Exception e)
+        {
+            LOG.warn(e);
+            if (null != newUploadFiles)
+            {
+                for (int i = 0; i < newUploadFiles.length; i++)
+                {
+                    newUploadFiles[i].delete();
+                }
+                
+            }
+        }
+        return SUCCESS;
+    }
+    
+    public String updateUser()
+    {
+        if (certifies != null)
+        {
+            List<UserCertification> certifs = new ArrayList<UserCertification>();
+            for (UserCertification certification : certifies)
+            {
+                if (certification != null && certification.getSelectId() > 0)
+                {
+                    certification.setTypeId(CertificationTypeEnum.getType(certification.getSelectId()));
+                    certification.setExpireDate(new Timestamp(
+                        StringTools.string2date(certification.getExpireDateFromPage() + " 00:00:00").getTime()));
+                    certifs.add(certification);
+                }
+            }
+            userInfo.setCertifies(certifs);
+        }
+        if (experiences != null)
+        {
+            List<WorkingExperience> expers = new ArrayList<WorkingExperience>();
+            for (WorkingExperience experience : experiences)
+            {
+                if (experience != null)
+                {
+                    if (StringUtils.isNotEmpty(experience.getStartDateTemp()))
+                    {
+                        experience.setStartDate(new Timestamp(StringTools.string2date(experience.getStartDateTemp()
+                            + " 00:00:00").getTime()));
+                    }
+                    if (StringUtils.isNotEmpty(experience.getEndDateTemp()))
+                    {
+                        experience.setEndDate(new Timestamp(StringTools.string2date(experience.getEndDateTemp()
+                            + " 00:00:00").getTime()));
+                    }
+                }
+                expers.add(experience);
+            }
+            userInfo.setWorkingExperiences(expers);
+        }
+        userInfo.setEduBackground(EduBackgroundEnum.getType(eduBackGround));
+        userInfo.setTitle(UserTitleEnum.getType(title));
+        userInfo.setStatus(UserStatusEnum.getType(status));
+        userInfo.setInsuranceType(InsuranceTypeEnum.getType(type));
+        if (deptGroup != null)
+        {
+            List<AdminDept> depts = new ArrayList<AdminDept>();
+            for (Long id : deptGroup)
+            {
+                AdminDept dept = new AdminDept();
+                dept.setId(id);
+                depts.add(dept);
+            }
+            userInfo.setDepts(depts);
+        }
+        if (roleGroup != null)
+        {
+            List<AdminRole> roles = new ArrayList<AdminRole>();
+            for (Long id : roleGroup)
+            {
+                AdminRole role = new AdminRole();
+                role.setId(id);
+                roles.add(role);
+            }
+            userInfo.setRoles(roles);
+        }
+        if (StringUtils.isNotEmpty(userInfo.getBirthdayTmp()))
+        {
+            userInfo.setBirthday(new Timestamp(StringTools.string2date(userInfo.getBirthdayTmp() + " 00:00:00")
+                .getTime()));
+        }
+        if (StringUtils.isNotEmpty(userInfo.getGraduateDateTmp()))
+        {
+            userInfo.setGraduateDate(new Timestamp(StringTools.string2date(userInfo.getGraduateDateTmp() + " 00:00:00")
+                .getTime()));
+        }
+        if (StringUtils.isNotEmpty(userInfo.getLeaveDateTmp()))
+        {
+            userInfo.setLeaveDate(new Timestamp(StringTools.string2date(userInfo.getLeaveDateTmp() + " 00:00:00")
+                .getTime()));
+        }
+        if (StringUtils.isNotEmpty(userInfo.getOnboardDateTmp()))
+        {
+            userInfo.setOnboardDate(new Timestamp(StringTools.string2date(userInfo.getOnboardDateTmp() + " 00:00:00")
+                .getTime()));
+        }
+        if (StringUtils.isNotEmpty(userInfo.getEduCountiuneTemp()))
+        {
+            userInfo.setEduCountinue(new Timestamp(
+                StringTools.string2date(userInfo.getEduCountiuneTemp() + " 00:00:00").getTime()));
+        }
+        userInfo.setId(id);
+        UserInfo newUserInfo = userInfoService.fetchById(id);
+        userInfo.setPassword(newUserInfo.getPassword());
+        File[] newUploadFiles = null;
+        try
+        {
+            newUploadFiles = dealWithUploadFiles();
+            userInfoService.save(userInfo);
+        }
+        catch (Exception e)
+        {
+            LOG.warn(e);
+            if (null != newUploadFiles)
+            {
+                for (int i = 0; i < newUploadFiles.length; i++)
+                {
+                    newUploadFiles[i].delete();
+                }
+                
+            }
+        }
+        
+        return SUCCESS;
+    }
+    
+    public String listUserInfo()
+    {
+        try
+        {
+            int pageNo = ParamTools.getIntParameter(request, Constants.PARA_PAGE_NO, 1);
+            int pageSize = ParamTools.getIntParameter(request, Constants.PARA_PAGE_SIZE, 0);
+            PageTools page = new PageTools(pageNo, pageSize);
+            UserInfo userInfo1 = new UserInfo();
+            if (userInfo == null)
+            {
+                userInfo = new UserInfo();
+            }
+            List<AdminRole> roles = adminRoleService.findAll();
+            userInfo.setRoles(roles);
+            List<AdminDept> depts = adminDeptService.findAll();
+            userInfo.setDepts(depts);
+            if (userInfo.getDeptId() != null && userInfo.getDeptId() > 0L)
+            {
+                userInfo1.setDeptId(userInfo.getDeptId());
+            }
+            if (userInfo.getRoleId() != null && userInfo.getRoleId() > 0L)
+            {
+                userInfo1.setRoleId(userInfo.getRoleId());
+            }
+            userInfo1.setRealName(userInfo.getRealName());
+            userInfo1.setIdentity(userInfo.getIdentity());
+            userInfo1.setStatus(UserStatusEnum.getType(status == null ? 0 : status));
+            if (certifies != null)
+            {
+                userInfo1.setCertifieId(certifies.get(0).getSelectId());
+            }
+            userInfo1.setRowCount(pageNo);
+            userInfo1.setPageSize(pageSize);
+            userInfos = userInfoService.listPage(userInfo1, page);
+            if (userInfos != null && userInfos.size() > 0)
+            {
+                this.page = page;
+            }
+            else
+            {
+                //				super.addNotFoundErrorMsg();
+                return SUCCESS;
+            }
+        }
+        catch (Exception ex)
+        {
+            LOG.error("UserInfoAction error: ", ex);
+            super.addErrorMsg(ex.getMessage());
+            ex.printStackTrace();
+            return ERROR;
+        }
+        return SUCCESS;
+    }
+    
+    private File[] dealWithUploadFiles()
+        throws Exception
+    {
+        if (null == uploadFiles)
+        {
+            if (!StringUtils.isEmpty(userInfo.getOldFileName()))
+            {
+                userInfo.setFileName(userInfo.getOldFileName());
+            }
+            return null;
+        }
+        
+        File[] newUploadFiles = new File[uploadFiles.length];
+        
+        StringBuffer filePath = new StringBuffer();
+        for (int i = 0; i < uploadFiles.length; i++)
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+            String newFileName = sdf.format(new Date());
+            
+            String oldFileName = userInfo.getFileName().split(",")[i];
+            if (oldFileName.contains("."))
+            {
+                newFileName += oldFileName.substring(oldFileName.lastIndexOf("."), oldFileName.length());
+            }
+            
+            String fileDir =
+                request.getSession().getServletContext().getRealPath("/") + FILE_SEAPRATOR + "uploadfile/user";
+            
+            File fileDirFile = new File(fileDir);
+            if (!fileDirFile.exists())
+            {
+                fileDirFile.mkdirs();
+            }
+            File newUploadFile = new File(fileDir + FILE_SEAPRATOR + newFileName);
+            newUploadFiles[i] = newUploadFile;
+            
+            FileUtil.copy(uploadFiles[i], newUploadFile, false);
+            
+            String filePathPer =
+                "http://" + request.getLocalAddr() + ":" + request.getLocalPort() + request.getContextPath()
+                    + "/uploadfile/user/" + newFileName;
+            filePath.append(filePathPer).append(",");
+        }
+        
+        if (0 < filePath.length())
+        {
+            filePath.deleteCharAt(filePath.length() - 1);
+        }
+        if (!StringUtils.isEmpty(userInfo.getOldFileName()))
+        {
+            userInfo.setFileName(userInfo.getOldFileName() + "," + userInfo.getFileName());
+        }
+        
+        if (!StringUtils.isEmpty(userInfo.getFilePath()))
+        {
+            userInfo.setFilePath(userInfo.getFilePath() + "," + filePath.toString());
+        }
+        else
+        {
+            userInfo.setFilePath(filePath.toString());
+        }
+        
+        return newUploadFiles;
+        
+    }
+    
+    private void wrapFileList(UserInfo userInfo)
+    {
+        if (StringUtils.isEmpty(userInfo.getFileName()))
+        {
+            return;
+        }
+        
+        int invoiceCount = userInfo.getFileName().split(",").length;
+        
+        List<UserFile> userFiles = new ArrayList<UserFile>();
+        
+        for (int i = 0; i < invoiceCount; i++)
+        {
+            UserFile userFile = new UserFile();
+            try
+            {
+                userFile.setFileName(userInfo.getFileName().split(",")[i]);
+                userFile.setFilePath(userInfo.getFilePath().split(",")[i]);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            userFiles.add(userFile);
+        }
+        
+        userInfo.setUserFiles(userFiles);
+        
+    }
+    
+    public String delete()
+    {
+        userInfoService.delete(id);
+        return SUCCESS;
+    }
+    
+    public UserInfoService getUserInfoService()
+    {
+        return userInfoService;
+    }
+    
+    public void setUserInfoService(UserInfoService userInfoService)
+    {
+        this.userInfoService = userInfoService;
+    }
+    
+    public List<UserInfo> getUserInfos()
+    {
+        return userInfos;
+    }
+    
+    public void setUserInfos(List<UserInfo> userInfos)
+    {
+        this.userInfos = userInfos;
+    }
+    
+    public UserInfo getUserInfo()
+    {
+        return userInfo;
+    }
+    
+    public void setUserInfo(UserInfo userInfo)
+    {
+        this.userInfo = userInfo;
+    }
+    
+    public AdminRoleService getAdminRoleService()
+    {
+        return adminRoleService;
+    }
+    
+    public void setAdminRoleService(AdminRoleService adminRoleService)
+    {
+        this.adminRoleService = adminRoleService;
+    }
+    
+    public AdminDeptService getAdminDeptService()
+    {
+        return adminDeptService;
+    }
+    
+    public void setAdminDeptService(AdminDeptService adminDeptService)
+    {
+        this.adminDeptService = adminDeptService;
+    }
+    
+    public AdminLogService getAdminLogService()
+    {
+        return adminLogService;
+    }
+    
+    public void setAdminLogService(AdminLogService adminLogService)
+    {
+        this.adminLogService = adminLogService;
+    }
+    
+    public Integer getEduBackGround()
+    {
+        return eduBackGround;
+    }
+    
+    public void setEduBackGround(Integer eduBackGround)
+    {
+        this.eduBackGround = eduBackGround;
+    }
+    
+    public Integer getTitle()
+    {
+        return title;
+    }
+    
+    public void setTitle(Integer title)
+    {
+        this.title = title;
+    }
+    
+    public Integer getStatus()
+    {
+        return status;
+    }
+    
+    public void setStatus(Integer status)
+    {
+        this.status = status;
+    }
+    
+    public Integer getType()
+    {
+        return type;
+    }
+    
+    public void setType(Integer type)
+    {
+        this.type = type;
+    }
+    
+    public List<Integer> getCertifiTypes()
+    {
+        return certifiTypes;
+    }
+    
+    public void setCertifiTypes(List<Integer> certifiTypes)
+    {
+        this.certifiTypes = certifiTypes;
+    }
+    
+    public List<UserCertification> getCertifies()
+    {
+        return certifies;
+    }
+    
+    public void setCertifies(List<UserCertification> certifies)
+    {
+        this.certifies = certifies;
+    }
+    
+    public UserCertificationService getUserCertificationService()
+    {
+        return userCertificationService;
+    }
+    
+    public void setUserCertificationService(UserCertificationService userCertificationService)
+    {
+        this.userCertificationService = userCertificationService;
+    }
+    
+    public Timestamp getStamp()
+    {
+        return stamp;
+    }
+    
+    public void setStamp(Timestamp stamp)
+    {
+        this.stamp = stamp;
+    }
+    
+    public List<Long> getDeptGroup()
+    {
+        return deptGroup;
+    }
+    
+    public void setDeptGroup(List<Long> deptGroup)
+    {
+        this.deptGroup = deptGroup;
+    }
+    
+    public List<Long> getRoleGroup()
+    {
+        return roleGroup;
+    }
+    
+    public void setRoleGroup(List<Long> roleGroup)
+    {
+        this.roleGroup = roleGroup;
+    }
+    
+    public List<AdminRole> getAllRoles()
+    {
+        return allRoles;
+    }
+    
+    public void setAllRoles(List<AdminRole> allRoles)
+    {
+        this.allRoles = allRoles;
+    }
+    
+    public List<AdminDept> getAllDepts()
+    {
+        return allDepts;
+    }
+    
+    public void setAllDepts(List<AdminDept> allDepts)
+    {
+        this.allDepts = allDepts;
+    }
+    
+    public List<WorkingExperience> getExperiences()
+    {
+        return experiences;
+    }
+    
+    public void setExperiences(List<WorkingExperience> experiences)
+    {
+        this.experiences = experiences;
+    }
+    
 }
