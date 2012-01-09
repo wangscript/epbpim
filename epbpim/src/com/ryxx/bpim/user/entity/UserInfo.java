@@ -7,6 +7,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import com.ryxx.bpim.entity.VoBase;
+import com.ryxx.bpim.project.entity.ProjectFile;
 import com.ryxx.bpim.user.enums.EduBackgroundEnum;
 import com.ryxx.bpim.user.enums.InsuranceTypeEnum;
 import com.ryxx.bpim.user.enums.UserStatusEnum;
@@ -101,6 +102,18 @@ public class UserInfo extends VoBase
     private String oldFileName;
     
     private String filePath;
+    
+    private List<UserFile> userFiles;
+    
+    public List<UserFile> getUserFiles()
+    {
+        return userFiles;
+    }
+    
+    public void setUserFiles(List<UserFile> userFiles)
+    {
+        this.userFiles = userFiles;
+    }
     
     public String getFileName()
     {
