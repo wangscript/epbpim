@@ -220,6 +220,7 @@ public class UserInfoAction extends ActionSupportBase
             "yyyy-MM-dd")
             : null);
         setRoleGroup(roleGp);
+        wrapFileList(userInfo);
         return SUCCESS;
     }
     
