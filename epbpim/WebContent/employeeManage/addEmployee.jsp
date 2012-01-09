@@ -278,8 +278,24 @@
 								<ul class="fullScreenUl">
 									<li><input type="button" class="mediumLeftButton"
 										onclick="addLicense();" value="新增执业资格"></li>
+								</ul>						
+							</dd>
+							<dt>
+								<h4 class="title">附件信息</h4>
+							</dt>
+							<dd>
+								<div id="attachmentDIV">
+									<ul class="fullScreenUl">
+										<li class="width300Li">
+											<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile(this)" />
+											<input type="hidden" name="userInfo.fileName" id="userInfo.fileName">
+										</li>
+										<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
+									</ul>
+								</div>
+								<ul class="fullScreenUl">
+									<li><input type="button" class="mediumLeftButton" onclick="addAttachment()" value="新增附件"></li>
 								</ul>
-
 							</dd>
 						</dl>
 						<ul class="fullScreenUl">
@@ -291,6 +307,13 @@
 					<div></div>
 
 				</s:form>
+				<ul id="attachmentUL" class="fullScreenUl" style="display: none">
+					<li class="width300Li">
+						<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile(this)" />
+						<input type="hidden" name="userInfo.fileName" id="userInfo.fileName">
+					</li>
+					<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
+				</ul>				
 				</div>
 
 
@@ -383,6 +406,27 @@
 			experiencesLicences.parentNode.removeChild(experiencesLicences);
 		}
 	}
+	
+	function addAttachment()
+ 	{
+ 		var invoiceULObj=document.getElementById("attachmentUL").cloneNode(true);
+ 		invoiceULObj.id="";
+ 		invoiceULObj.style.display="inline";
+ 		document.getElementById("attachmentDIV").appendChild(invoiceULObj);
+ 	}
+ 	function delAttachment(obj)
+ 	{
+ 		var invoiceULObj=obj.parentNode.parentNode;
+ 		invoiceULObj.parentNode.removeChild(invoiceULObj);
+ 	}
+ 	function chooseFile(obj)
+ 	{
+ 		var filePath=obj.value;
+ 	    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length); 	    
+		var reg = /,/g;
+		fileName = fileName.replace(reg, "");
+		obj.nextSibling.nextSibling.value = fileName;
+ 	}
 </script>
 
 
