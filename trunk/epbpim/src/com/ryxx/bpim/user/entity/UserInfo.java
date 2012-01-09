@@ -104,6 +104,18 @@ public class UserInfo extends VoBase
     
     private List<UserFile> userFiles;
     
+    private Integer firstLogin;
+    
+    public Integer getFirstLogin()
+    {
+        return firstLogin;
+    }
+    
+    public void setFirstLogin(Integer firstLogin)
+    {
+        this.firstLogin = firstLogin;
+    }
+    
     public List<UserFile> getUserFiles()
     {
         return userFiles;
