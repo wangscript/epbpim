@@ -98,7 +98,11 @@
 			<key>
 				<column name="USER_ID" />
 			</key>
-			<many-to-many class="AdminMenu" column="MENU_ID"/>
+			<composite-element class="UserMenuReg">
+	            <property name="registerDate" column="REGISTER_DATE" type="java.sql.Timestamp"/>  
+	            <property name="expireDate" column="EXPIRE_DATE" type="java.sql.Timestamp"/>
+	            <many-to-one name="adminMenu" class="AdminMenu" column="MENU_ID" lazy="false" />
+	         </composite-element>
 		</bag>
 	</class>
 	<class name="AdminMenu" table="ADMIN_MENU">

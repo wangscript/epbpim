@@ -88,6 +88,7 @@ function changeTitleBackground(){
 					<li id="userAdvice"><a href="preAddUserAdvic.do">用户反馈</a></li>
 					<li id="backToMain"><a href="main.do">查看公告</a></li>
 					<li id="userInfoManage"><a href="get.do"><s:text name="Header.UserManage" /></a></li>
+					<li id="backToMain"><a href="showSubscribe.do">订阅查询</a></li>
 					<li id="help"><a href="#">用户手册</a></li>
 					<li id="index"><a id="logoutLink" href="../login/logout.do"><s:text name="Header.Logout" /></a></li>
 				</ul>

@@ -28,7 +28,7 @@ public class UserInfo extends VoBase {
 	private RoleEnum roleType;
 	private Integer enable;
 	private String remark;
-	private List<AdminMenu> menus;
+	private List<UserMenuReg> menus;
 	private EnterpriseInfo enterpriseInfo;
 	private List<ProvinceCity> provinceCities;
 	public Long getId() {
@@ -127,7 +127,7 @@ public class UserInfo extends VoBase {
 	public void setEnable(Integer enable) {
 		this.enable = enable;
 	}
-	public List<AdminMenu> getMenus() {
+	public List<UserMenuReg> getMenus() {
 		return menus;
 	}
 	public Timestamp getRegisterDateTmp() {
@@ -136,7 +136,7 @@ public class UserInfo extends VoBase {
 	public void setRegisterDateTmp(Timestamp registerDateTmp) {
 		this.registerDateTmp = registerDateTmp;
 	}
-	public void setMenus(List<AdminMenu> menus) {
+	public void setMenus(List<UserMenuReg> menus) {
 		this.menus = menus;
 	}
 	

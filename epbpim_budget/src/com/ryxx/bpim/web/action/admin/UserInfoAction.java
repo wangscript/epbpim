@@ -2,17 +2,19 @@ package com.ryxx.bpim.web.action.admin;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.mail.EmailException;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ryxx.bpim.entity.AdminMenu;
 import com.ryxx.bpim.entity.EnterpriseInfo;
 import com.ryxx.bpim.entity.ProvinceCity;
 import com.ryxx.bpim.entity.UserInfo;
+import com.ryxx.bpim.entity.UserMenuReg;
 import com.ryxx.bpim.enums.RoleEnum;
 import com.ryxx.bpim.service.AdminMenuService;
 import com.ryxx.bpim.service.EnterpriseInfoService;
@@ -20,7 +22,6 @@ import com.ryxx.bpim.service.ProvinceCityService;
 import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.cache.CacheMap;
-import com.ryxx.util.email.EmailTools;
 import com.ryxx.util.string.StringTools;
 
 public class UserInfoAction extends ActionSupportBase {
@@ -93,7 +94,30 @@ public class UserInfoAction extends ActionSupportBase {
 		List<AdminMenu> menus = adminMenuService.getMenuListById(listCheck);
 		
 		try{
-			userInfo.setMenus(menus);
+			List<UserMenuReg> regs = new ArrayList<UserMenuReg>();
+			for(AdminMenu adminMenu: menus) {
+				UserMenuReg reg = new UserMenuReg();
+				reg.setAdminMenu(adminMenu);
+				if(userInfo.getMenus() == null || userInfo.getMenus().size() == 0) {
+					reg.setRegisterDate(new Timestamp(new Date().getTime()));
+					reg.setExpireDate(new Timestamp(DateUtils.addYears(new Date(), 1).getTime()));
+				} else {
+					for(int i=0;i<userInfo.getMenus().size();i++) {
+						UserMenuReg userMenuReg = userInfo.getMenus().get(i);
+						if(userMenuReg.getAdminMenu().getId().equals(adminMenu.getId())) {
+							reg.setRegisterDate(userMenuReg.getRegisterDate());
+							reg.setExpireDate(userMenuReg.getExpireDate());
+							break;
+						}
+						if(i==userInfo.getMenus().size()) {
+							reg.setRegisterDate(new Timestamp(new Date().getTime()));
+							reg.setExpireDate(new Timestamp(DateUtils.addYears(new Date(), 1).getTime()));
+						}
+					}
+				}
+				regs.add(reg);
+			}
+			userInfo.setMenus(regs);
 			UserInfo user = userInfoService.merge(userInfo);
 			CacheMap.getInstance().addCache(RoleEnum.NORMAL_USER+userInfo.getIdentifier(), adminMenuService.list(userInfo.getProvinceCities(),userInfo.getId()));
 		}catch (Exception e){
@@ -130,8 +154,8 @@ public class UserInfoAction extends ActionSupportBase {
 			regionCheck.add(provinces.getId());
 		}
 		listCheck = new ArrayList();
-		for(AdminMenu menu: userInfo.getMenus()) {
-			listCheck.add(menu.getId());
+		for(UserMenuReg userMenuReg: userInfo.getMenus()) {
+			listCheck.add(userMenuReg.getAdminMenu().getId());
 		}
 		seteId(userInfo.getEnterpriseInfo().getId());
 		return SUCCESS;
@@ -263,5 +287,9 @@ public class UserInfoAction extends ActionSupportBase {
 
 	public void setRegionCheck(List regionCheck) {
 		this.regionCheck = regionCheck;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(DateUtils.addYears(new Date(), 1));
 	}
 }

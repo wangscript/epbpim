@@ -2,9 +2,11 @@ package com.ryxx.bpim.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.mail.EmailException;
 
 import com.ryxx.bpim.common.Constants;
@@ -13,6 +15,7 @@ import com.ryxx.bpim.entity.AdminMenu;
 import com.ryxx.bpim.entity.EnterpriseInfo;
 import com.ryxx.bpim.entity.ProvinceCity;
 import com.ryxx.bpim.entity.UserInfo;
+import com.ryxx.bpim.entity.UserMenuReg;
 import com.ryxx.bpim.enums.RoleEnum;
 import com.ryxx.util.email.EmailTools;
 import com.ryxx.util.page.PageTools;
@@ -91,7 +94,15 @@ public class UserInfoServiceImpl extends
 							+ (Long.parseLong(maxIdentify.substring(2)) + 1));
 				}
 				try {
-					userInfo.setMenus(menus);
+					List<UserMenuReg> regs = new ArrayList<UserMenuReg>();
+					for(AdminMenu adminMenu: menus) {
+						UserMenuReg reg = new UserMenuReg();
+						reg.setAdminMenu(adminMenu);
+						reg.setRegisterDate(new Timestamp(new Date().getTime()));
+						reg.setExpireDate(new Timestamp(DateUtils.addYears(new Date(), 1).getTime()));
+						regs.add(reg);
+					}
+					userInfo.setMenus(regs);
 					UserInfo user = getDao().save(userInfo);
 					users.add(userInfo);
 				} catch (Exception e) {
