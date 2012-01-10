@@ -73,7 +73,7 @@
 
 							<ul class="fullScreenUl">
 								<li class="width100Li"><input type="submit" class="button"
-									onclick="validateCommit();" value="保存"></li>
+									onclick="" value="保存"></li>
 							</ul>
 						</div>
 

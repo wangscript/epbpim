@@ -134,6 +134,15 @@ public class UserInfoAction extends ActionSupportBase
         return SUCCESS;
     }
     
+    public String showSubscribe() {
+    	Long id = (Long)session.get(Constants.LOGIN_USER_ID);
+        if (id != null && id != 0)
+        {
+            userInfo = userInfoService.findById(id);
+        }
+    	return SUCCESS;
+    }
+    
     public String updateUserInfo()
     {
         UserInfo userInfoForUpdate = new UserInfo();

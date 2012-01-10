@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.entity.AdminMenu;
 import com.ryxx.bpim.entity.UserInfo;
+import com.ryxx.bpim.entity.UserMenuReg;
 
 public class EmailTools {
 	private static Logger logger = Logger.getLogger(EmailTools.class);
@@ -95,8 +96,8 @@ public class EmailTools {
 			sb.append("<td style='border: 1px solid #c0c0c0;'>"
 					+ userInfo.getRoleType().getValue() + "</td>");
 			sb.append("<td style='border: 1px solid #c0c0c0;'>");
-			for (AdminMenu menu : userInfo.getMenus()) {
-				sb.append(menu.getTitle()+"&nbsp;&nbsp;&nbsp;");
+			for(UserMenuReg userMenuReg: userInfo.getMenus()) {
+				sb.append(userMenuReg.getAdminMenu().getTitle()+"&nbsp;&nbsp;&nbsp;");
 			}
 			sb.append("</td>");
 			sb.append("</tr>");
