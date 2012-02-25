@@ -206,12 +206,12 @@
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>		
-		<property name="guidepriceType" column="GUIDEPRICE_TYPE" type="java.lang.String"></property>
-		<property name="guidepriceClass" column="GUIDEPRICE_CLASS" type="java.lang.String"></property>
+		<property name="guidePriceType" column="GUIDEPRICE_TYPE" type="java.lang.String"></property>
+		<property name="guidePriceClass" column="GUIDEPRICE_CLASS" type="java.lang.String"></property>
 		<property name="name" column="NAME" type="java.lang.String"></property>
 		<property name="unit" column="UNIT" type="java.lang.String"></property>
 		<property name="price" column="PRICE" type="java.lang.Double"></property>
-		<property name="price_comment" column="PRICE_COMMENT" type="java.lang.String"></property>
+		<property name="priceComment" column="PRICE_COMMENT" type="java.lang.String"></property>
 		<property name="guidePriceDate" column="GUIDEPRICE_DATE" type="java.sql.Timestamp"></property>
 		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
 		<property name="comment" column="COMMENT" type="java.lang.String"></property>
