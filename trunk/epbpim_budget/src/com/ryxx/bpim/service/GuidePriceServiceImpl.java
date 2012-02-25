@@ -90,7 +90,7 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
         for (Sheet sheet : allSheet)
         {
             
-            if (!"名称与规格".equals(getValue(sheet.getRow(0).getCell(0))))
+            if ("机价说明".equals(sheet.getSheetName()))
             {
                 continue;
             }
