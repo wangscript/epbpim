@@ -105,37 +105,37 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
                 data.setPrice(row.getCell(3).getNumericCellValue());
                 if ("公路机械".equals(sheet.getSheetName()))
                 {
-                    StringBuffer sb = new StringBuffer();                    
+                    StringBuffer sb = new StringBuffer();
                     sb.append("不变费用(元)：")
-                        .append(getValue(row.getCell(4)))
+                        .append(row.getCell(4).getNumericCellValue())
                         .append("，可变费用(元)：")
-                        .append(getValue(row.getCell(5)))
+                        .append(row.getCell(5).getNumericCellValue())
                         .append("，折旧费(元)：")
-                        .append(getValue(row.getCell(6)))
+                        .append(row.getCell(6).getNumericCellValue())
                         .append("，大修理费(元)：")
-                        .append(getValue(row.getCell(7)))
+                        .append(row.getCell(7).getNumericCellValue())
                         .append("，经修费(元)：")
-                        .append(getValue(row.getCell(8)))
+                        .append(row.getCell(8).getNumericCellValue())
                         .append("，安拆辅设(元)：")
-                        .append(getValue(row.getCell(9)))
+                        .append(row.getCell(9).getNumericCellValue())
                         .append("，人工(工日)：")
-                        .append(getValue(row.getCell(10)))
+                        .append(row.getCell(10).getNumericCellValue())
                         .append("，汽油(kg)：")
-                        .append(getValue(row.getCell(11)))
+                        .append(row.getCell(11).getNumericCellValue())
                         .append("，柴油(kg)：")
-                        .append(getValue(row.getCell(12)))
+                        .append(row.getCell(12).getNumericCellValue())
                         .append("，重油(kg)：")
-                        .append(getValue(row.getCell(13)))
+                        .append(row.getCell(13).getNumericCellValue())
                         .append("，煤(kg)：")
-                        .append(getValue(row.getCell(14)))
+                        .append(row.getCell(14).getNumericCellValue())
                         .append("，电(kw.h)：")
-                        .append(getValue(row.getCell(15)))
+                        .append(row.getCell(15).getNumericCellValue())
                         .append("，水(m3)：")
-                        .append(getValue(row.getCell(16)))
+                        .append(row.getCell(16).getNumericCellValue())
                         .append("，木柴(kg)：")
-                        .append(getValue(row.getCell(17)))
+                        .append(row.getCell(17).getNumericCellValue())
                         .append("，养路费及车船使用税：")
-                        .append(getValue(row.getCell(18)));
+                        .append(row.getCell(18).getNumericCellValue());
                     
                     data.setPriceComment(sb.toString());
                 }
