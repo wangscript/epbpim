@@ -60,7 +60,7 @@
 								<li class="width200Li">
 									<select class="width150Select" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType">
 										<option value="市政">市政</option>
-										<option value="市政">公路</option>
+										<option value="公路">公路</option>
 									</select>
 								</li>
 							</ul>
