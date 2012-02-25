@@ -51,10 +51,10 @@
 			document.getElementById("guidePrice.name").value=name;
 		}
 		
-		var  guidePriceDate='<s:date name="guidePriceDate" format="yyyy-MM" />';
-		if(guidePriceDate != "")
+		var  guidePriceDatePage = "<s:property value="guidePrice.guidePriceDatePage"/>";
+		if(guidePriceDatePage != "")
 		{
-			document.getElementById("guidePrice.guidePriceDatePage").value=guidePriceDate;
+			document.getElementById("guidePrice.guidePriceDatePage").value=guidePriceDatePage;
 		}	
 	}
 	
@@ -105,7 +105,7 @@
 				<select class="width150Select" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType" onchange="changeSuperClass(this.options[this.selectedIndex].value)">
 					<option value="">不限</option>
 					<option value="市政">市政</option>
-					<option value="市政">公路</option>
+					<option value="公路">公路</option>
 				</select>						  
 			</li>
 			<li class="width200Li">分类：
@@ -134,19 +134,19 @@
 	<s:else>
 		<div class="searchResult" id="searchResult">
 			<ul class="fullScreenResultUl">
-				<li class="width150Li"><s:text name="名称规格" /></li>	
-				<li class="width150Li"><s:text name="单位" /></li>		
-				<li class="width150Li"><s:text name="价格（元）" /></li>
-				<li class="width150Li"><s:text name="价格说明" /></li>
-				<li class="width150Li"><s:text name="时间" /></li>
+				<li class="width250Li"><s:text name="名称规格" /></li>	
+				<li class="width100Li"><s:text name="单位" /></li>		
+				<li class="width100Li"><s:text name="价格（元）" /></li>
+				<li class="width300Li"><s:text name="价格说明" /></li>
+				<li class="width100Li"><s:text name="时间" /></li>
 			</ul>
 			<s:iterator value="datas" status="st">
 				<ul class="fullScreenResultUl"> 
-					<li class="width150Li"><s:property value="name" /></li>
-					<li class="width150Li"><s:property value="unint" /></li>				
-					<li class="width150Li"><s:property value="price" /></li>
-					<li class="width150Li"><s:property value="priceComment" /></li>
-					<li class="width150Li"><s:date name="guidePriceDate" format="yyyy-MM" /></li>
+					<li class="width250Li"><s:property value="name" /></li>
+					<li class="width100Li"><s:property value="unint" /></li>				
+					<li class="width100Li"><s:property value="price" /></li>
+					<li class="width300Li"><s:property value="priceComment" /></li>
+					<li class="width100Li"><s:date name="guidePriceDate" format="yyyy-MM" /></li>
 				</ul>
 			</s:iterator>
 			<ul class="fullScreenResultUl">
