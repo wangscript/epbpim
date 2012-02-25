@@ -33,6 +33,8 @@ public class GuidePrice extends VoBase
     
     private String comment;
     
+    private String guidePriceDatePage;
+    
     private String guidePriceFileName;
     
     public Long getId()
@@ -143,6 +145,16 @@ public class GuidePrice extends VoBase
     public void setComment(String comment)
     {
         this.comment = comment;
+    }
+    
+    public String getGuidePriceDatePage()
+    {
+        return guidePriceDatePage;
+    }
+    
+    public void setGuidePriceDatePage(String guidePriceDatePage)
+    {
+        this.guidePriceDatePage = guidePriceDatePage;
     }
     
     public String getGuidePriceFileName()
