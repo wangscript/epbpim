@@ -93,14 +93,14 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
             }
             
             int countRow = sheet.getLastRowNum();
-            for (int i = 1; i <= countRow; i++)
+            for (int i = 3; i <= countRow; i++)
             {
                 row = sheet.getRow(i);
                 GuidePrice data = new GuidePrice();
                 data.setName(getValue(row.getCell(0)));
                 data.setUnit(getValue(row.getCell(1)));
                 data.setComment(getValue(row.getCell(2)));
-                data.setPrice(Double.valueOf(getValue(row.getCell(3))));
+                data.setPrice(row.getCell(3).getNumericCellValue());
                 data.setPriceComment(getValue(row.getCell(4)));
                 data.setGuidePriceClass(sheet.getSheetName());
                 data.setGuidePriceType(guidePrice.getGuidePriceType());
