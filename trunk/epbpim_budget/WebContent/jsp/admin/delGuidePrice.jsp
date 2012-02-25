@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>信息价删除</title>
+<title>工料机价删除</title>
 <link rel="stylesheet"
 	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
@@ -37,7 +37,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h4 class="title">信息价删除:</h4>
+					<h4 class="title">工料机价删除:</h4>
 					<div class="entry">
 						<s:form action="deleteGuidePrice.do" method="post" id="deleteGuidePriceForm" onsubmit="return confirm('是否删除');">
 							<ul class="fullScreenUl">
@@ -49,12 +49,12 @@
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width100Li">专业：</li>
-								<li class="width200Li"><select
-									id="guidePrice.guidePriceType"
-									name="guidePrice.guidePriceType" class="width150Select">
-										<option value="1">市政</option>
-										<option value="2">园林</option>
-								</select></li>
+								<li class="width200Li">
+									<select class="width150Select" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType">
+										<option value="市政">市政</option>
+										<option value="市政">公路</option>
+									</select>
+								</li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width100Li">时间：</li>
@@ -64,8 +64,7 @@
 									onclick="WdatePicker({dateFmt:'yyyy-MM'})" /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width200Li"><input type="submit" class="button" value="删除">
-								</li>
+								<li class="width200Li"><input type="submit" class="button" value="删除"></li>
 							</ul>
 
 						</s:form>

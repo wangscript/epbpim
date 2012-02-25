@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>信息价导入</title>
+<title>工料机价导入</title>
 <link rel="stylesheet"
 	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
@@ -45,7 +45,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h4 class="title">信息价导入:</h4>
+					<h4 class="title">工料机价导入:</h4>
 					<div class="entry">
 						<s:form action="importGuidePrice.do" method="post" id="importGuidePriceForm" enctype="multipart/form-data">
 							<ul class="fullScreenUl">
@@ -58,8 +58,10 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li">专业：</li>
 								<li class="width200Li">
-								<s:select cssClass="width150Select" id="guidePrice.major.id" name="guidePrice.major.id"
-										list="majors" listKey="id" listValue="name" multiple="false" required="true" onchange="" headerKey="0" />
+									<select class="width150Select" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType">
+										<option value="市政">市政</option>
+										<option value="市政">公路</option>
+									</select>
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
