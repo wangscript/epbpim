@@ -94,7 +94,6 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
             {
                 continue;
             }
-            
             int countRow = sheet.getLastRowNum();
             for (int i = 3; i <= countRow; i++)
             {
@@ -104,7 +103,47 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
                 data.setUnit(getValue(row.getCell(1)));
                 data.setComment(getValue(row.getCell(2)));
                 data.setPrice(row.getCell(3).getNumericCellValue());
-                data.setPriceComment(getValue(row.getCell(4)));
+                if ("公路机械".equals(sheet.getSheetName()))
+                {
+                    StringBuffer sb = new StringBuffer();                    
+                    sb.append("不变费用(元)：")
+                        .append(getValue(row.getCell(4)))
+                        .append("，可变费用(元)：")
+                        .append(getValue(row.getCell(5)))
+                        .append("，折旧费(元)：")
+                        .append(getValue(row.getCell(6)))
+                        .append("，大修理费(元)：")
+                        .append(getValue(row.getCell(7)))
+                        .append("，经修费(元)：")
+                        .append(getValue(row.getCell(8)))
+                        .append("，安拆辅设(元)：")
+                        .append(getValue(row.getCell(9)))
+                        .append("，人工(工日)：")
+                        .append(getValue(row.getCell(10)))
+                        .append("，汽油(kg)：")
+                        .append(getValue(row.getCell(11)))
+                        .append("，柴油(kg)：")
+                        .append(getValue(row.getCell(12)))
+                        .append("，重油(kg)：")
+                        .append(getValue(row.getCell(13)))
+                        .append("，煤(kg)：")
+                        .append(getValue(row.getCell(14)))
+                        .append("，电(kw.h)：")
+                        .append(getValue(row.getCell(15)))
+                        .append("，水(m3)：")
+                        .append(getValue(row.getCell(16)))
+                        .append("，木柴(kg)：")
+                        .append(getValue(row.getCell(17)))
+                        .append("，养路费及车船使用税：")
+                        .append(getValue(row.getCell(18)));
+                    
+                    data.setPriceComment(sb.toString());
+                }
+                else
+                {
+                    data.setPriceComment(getValue(row.getCell(4)));
+                }
+                
                 data.setGuidePriceClass(sheet.getSheetName());
                 data.setGuidePriceType(guidePrice.getGuidePriceType());
                 data.setGuidePriceDate(new Timestamp(sdf.parse(guidePrice.getGuidePriceDatePage()).getTime()));
