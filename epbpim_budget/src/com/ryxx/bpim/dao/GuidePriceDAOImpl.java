@@ -1,10 +1,6 @@
 package com.ryxx.bpim.dao;
 
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -42,29 +38,19 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
     {
         Criteria criteria = getSession().createCriteria(GuidePrice.class);
         
-        if (guidePrice.getProvinceCity()!=null&&0!=guidePrice.getProvinceCity().getId())
+        if (guidePrice.getProvinceCity() != null && 0 != guidePrice.getProvinceCity().getId())
         {
             criteria.add(Restrictions.eq("provinceCity.id", guidePrice.getProvinceCity().getId()));
         }
         
-        if (guidePrice.getMajor()!=null&&guidePrice.getMajor().getId()!=0)
+        if (!StringUtils.isEmpty(guidePrice.getGuidePriceType()))
         {
-            criteria.add(Restrictions.eq("major.id", guidePrice.getMajor().getId()));
+            criteria.add(Restrictions.eq("guidePriceType", guidePrice.getGuidePriceType()));
         }
         
-        if (!StringUtils.isEmpty(guidePrice.getGuidePriceDatePage()))
+        if (null != guidePrice.getGuidePriceDate())
         {
-            try
-            {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-                Date periodicalDate = sdf.parse(guidePrice.getGuidePriceDatePage());
-                criteria.add(Restrictions.eq("guidePriceDate", new Timestamp(periodicalDate.getTime())));
-            }
-            catch (ParseException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            criteria.add(Restrictions.eq("guidePriceDate", guidePrice.getGuidePriceDate()));
         }
         
         return criteria.list();
@@ -83,44 +69,34 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
         if (guidePrice != null)
         {
             
+            if (guidePrice.getProvinceCity() != null && 0 != guidePrice.getProvinceCity().getId())
+            {
+                Criterion criterion4 = Restrictions.eq("provinceCity.id", guidePrice.getProvinceCity().getId());
+                list.add(criterion4);
+            }
+            
+            if (!StringUtils.isEmpty(guidePrice.getGuidePriceType()))
+            {
+                Criterion criterion3 = Restrictions.eq("guidePriceType", guidePrice.getGuidePriceType());
+                list.add(criterion3);
+            }
+            
+            if (!StringUtils.isEmpty(guidePrice.getGuidePriceClass()))
+            {
+                Criterion criterion3 = Restrictions.eq("guidePriceClass", guidePrice.getGuidePriceClass());
+                list.add(criterion3);
+            }
+            
             if (!StringUtils.isEmpty(guidePrice.getName()))
             {
                 Criterion criterion1 = Restrictions.like("name", "%" + guidePrice.getName() + "%");
                 list.add(criterion1);
             }
             
-            if (!StringUtils.isEmpty(guidePrice.getCode()))
+            if (null != guidePrice.getGuidePriceDate())
             {
-                Criterion criterion2 = Restrictions.like("code", guidePrice.getCode() + "%");
-                list.add(criterion2);
-            }
-            
-            if (guidePrice.getMajor()!=null&&guidePrice.getMajor().getId()!=0)
-            {
-            	 Criterion criterion3 = Restrictions.eq("major.id", guidePrice.getMajor().getId());
-            	 list.add(criterion3);
-            }
-            
-            if (guidePrice.getProvinceCity()!=null&&0!=guidePrice.getProvinceCity().getId())
-            {
-            	Criterion criterion4 = Restrictions.eq("provinceCity.id", guidePrice.getProvinceCity().getId());
-            	list.add(criterion4);
-            }
-            
-            if (!StringUtils.isEmpty(guidePrice.getGuidePriceDatePage()))
-            {
-                try
-                {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-                    Date periodicalDate = sdf.parse(guidePrice.getGuidePriceDatePage());
-                    Criterion criterion5 = Restrictions.eq("guidePriceDate", new Timestamp(periodicalDate.getTime()));
-                    list.add(criterion5);
-                }
-                catch (ParseException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                Criterion criterion5 = Restrictions.eq("guidePriceDate", guidePrice.getGuidePriceDate());
+                list.add(criterion5);
             }
         }
         

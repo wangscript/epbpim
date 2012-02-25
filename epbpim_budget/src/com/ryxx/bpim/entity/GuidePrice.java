@@ -11,15 +11,11 @@ public class GuidePrice extends VoBase
     /** 序列号 */
     private static final long serialVersionUID = 2859075908176503625L;
     
-    private String guidePriceFileName;
-    
-    private Timestamp guidePriceDate;
-    
-    private String guidePriceDatePage;
-    
     private Long id;
     
-    private String code;
+    private String guidePriceType;
+    
+    private String guidePriceClass;
     
     private String name;
     
@@ -27,77 +23,17 @@ public class GuidePrice extends VoBase
     
     private double price;
     
-    private String unName;
+    private String priceComment;
     
-    private String tag;
+    private Timestamp guidePriceDate;
     
     private Timestamp uploadDate;
     
     private ProvinceCity provinceCity;
     
-    private Major major;
+    private String comment;
     
-    
-    
-    /**
-	 * @return the major
-	 */
-	public Major getMajor() {
-		return major;
-	}
-
-	/**
-	 * @param major the major to set
-	 */
-	public void setMajor(Major major) {
-		this.major = major;
-	}
-    
-    
-    
-    /**
-	 * @return the provinceCity
-	 */
-	public ProvinceCity getProvinceCity() {
-		return provinceCity;
-	}
-
-	/**
-	 * @param provinceCity the provinceCity to set
-	 */
-	public void setProvinceCity(ProvinceCity provinceCity) {
-		this.provinceCity = provinceCity;
-	}
-
-	public String getGuidePriceFileName()
-    {
-        return guidePriceFileName;
-    }
-    
-    public void setGuidePriceFileName(String guidePriceFileName)
-    {
-        this.guidePriceFileName = guidePriceFileName;
-    }
-    
-    public Timestamp getGuidePriceDate()
-    {
-        return guidePriceDate;
-    }
-    
-    public void setGuidePriceDate(Timestamp guidePriceDate)
-    {
-        this.guidePriceDate = guidePriceDate;
-    }
-    
-    public String getGuidePriceDatePage()
-    {
-        return guidePriceDatePage;
-    }
-    
-    public void setGuidePriceDatePage(String guidePriceDatePage)
-    {
-        this.guidePriceDatePage = guidePriceDatePage;
-    }
+    private String guidePriceFileName;
     
     public Long getId()
     {
@@ -109,24 +45,24 @@ public class GuidePrice extends VoBase
         this.id = id;
     }
     
-    public Timestamp getUploadDate()
+    public String getGuidePriceType()
     {
-        return uploadDate;
+        return guidePriceType;
     }
     
-    public void setUploadDate(Timestamp uploadDate)
+    public void setGuidePriceType(String guidePriceType)
     {
-        this.uploadDate = uploadDate;
+        this.guidePriceType = guidePriceType;
     }
     
-    public String getCode()
+    public String getGuidePriceClass()
     {
-        return code;
+        return guidePriceClass;
     }
     
-    public void setCode(String code)
+    public void setGuidePriceClass(String guidePriceClass)
     {
-        this.code = code;
+        this.guidePriceClass = guidePriceClass;
     }
     
     public String getName()
@@ -149,16 +85,6 @@ public class GuidePrice extends VoBase
         this.unit = unit;
     }
     
-    public String getTag()
-    {
-        return tag;
-    }
-    
-    public void setTag(String tag)
-    {
-        this.tag = tag;
-    }
-    
     public double getPrice()
     {
         return price;
@@ -169,13 +95,64 @@ public class GuidePrice extends VoBase
         this.price = price;
     }
     
-    public String getUnName()
+    public String getPriceComment()
     {
-        return unName;
+        return priceComment;
     }
     
-    public void setUnName(String unName)
+    public void setPriceComment(String priceComment)
     {
-        this.unName = unName;
+        this.priceComment = priceComment;
     }
+    
+    public Timestamp getGuidePriceDate()
+    {
+        return guidePriceDate;
+    }
+    
+    public void setGuidePriceDate(Timestamp guidePriceDate)
+    {
+        this.guidePriceDate = guidePriceDate;
+    }
+    
+    public Timestamp getUploadDate()
+    {
+        return uploadDate;
+    }
+    
+    public void setUploadDate(Timestamp uploadDate)
+    {
+        this.uploadDate = uploadDate;
+    }
+    
+    public ProvinceCity getProvinceCity()
+    {
+        return provinceCity;
+    }
+    
+    public void setProvinceCity(ProvinceCity provinceCity)
+    {
+        this.provinceCity = provinceCity;
+    }
+    
+    public String getComment()
+    {
+        return comment;
+    }
+    
+    public void setComment(String comment)
+    {
+        this.comment = comment;
+    }
+    
+    public String getGuidePriceFileName()
+    {
+        return guidePriceFileName;
+    }
+    
+    public void setGuidePriceFileName(String guidePriceFileName)
+    {
+        this.guidePriceFileName = guidePriceFileName;
+    }
+    
 }
