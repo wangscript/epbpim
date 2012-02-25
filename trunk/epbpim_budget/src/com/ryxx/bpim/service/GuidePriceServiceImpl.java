@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -82,6 +83,8 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
         Sheet[] allSheet = getWb(uploadfile, guidePrice.getGuidePriceFileName());
         
         Row row = null;
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
         Timestamp uploadDate = new Timestamp(new Date().getTime());
         
         for (Sheet sheet : allSheet)
@@ -104,7 +107,7 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
                 data.setPriceComment(getValue(row.getCell(4)));
                 data.setGuidePriceClass(sheet.getSheetName());
                 data.setGuidePriceType(guidePrice.getGuidePriceType());
-                data.setGuidePriceDate(guidePrice.getGuidePriceDate());
+                data.setGuidePriceDate(new Timestamp(sdf.parse(guidePrice.getGuidePriceDatePage()).getTime()));
                 data.setUploadDate(uploadDate);
                 data.setProvinceCity(guidePrice.getProvinceCity());
                 resultList.add(data);
