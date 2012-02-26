@@ -1,11 +1,15 @@
 package com.ryxx.bpim.system.action;
 
+import java.io.File;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.ryxx.bpim.system.entity.NewsAnnouncement;
 import com.ryxx.bpim.system.service.NewsAnnounceService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
+import com.ryxx.util.io.FileUtil;
 import com.ryxx.util.string.StringTools;
 
 public class NewAnnounceAction extends ActionSupportBase
@@ -25,6 +29,10 @@ public class NewAnnounceAction extends ActionSupportBase
     private Timestamp addTime;
     
     private Timestamp addTimeTemp;
+    
+    private File uploadFile;
+    
+    private String fileName;
     
     public Timestamp getAddTimeTemp()
     {
@@ -82,9 +90,11 @@ public class NewAnnounceAction extends ActionSupportBase
     {
         try
         {
+        	String path = dealWithUploadFile();
             NewsAnnouncement ewsAnnounce = new NewsAnnouncement();
             ewsAnnounce.setNewsTitle(title);
             ewsAnnounce.setContent(content);
+            ewsAnnounce.setImagePath(path);
             service.saveNews(ewsAnnounce);
             return SUCCESS;
         }
@@ -97,14 +107,50 @@ public class NewAnnounceAction extends ActionSupportBase
         }
     }
     
+    private final String FILE_SEAPRATOR = System.getProperty("file.separator");
+    
+    
+    private String dealWithUploadFile()
+            throws Exception
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+            String newFileName = sdf.format(new Date());
+            
+            String oldFileName = fileName;
+            if (oldFileName.contains("."))
+            {
+                newFileName += oldFileName.substring(oldFileName.lastIndexOf("."), oldFileName.length());
+            }
+            
+            String fileDir =
+                request.getRealPath("/") + FILE_SEAPRATOR + "uploadfile" + FILE_SEAPRATOR + fileName;
+            
+            File fileDirFile = new File(fileDir);
+            if (!fileDirFile.exists())
+            {
+                fileDirFile.mkdirs();
+            }
+            File newUploadFile = new File(fileDir + FILE_SEAPRATOR + newFileName);
+            
+            FileUtil.copy(uploadFile, newUploadFile, false);
+            
+            String filePath =
+                "http://" + request.getLocalAddr() + ":" + request.getLocalPort() + request.getContextPath()
+                    + "/uploadfile/" + fileName + "/" + newFileName;
+            
+            return filePath;
+            
+        }
+    
     public String updateNewsAnnounces()
     {
         try
         {
+        	String path = dealWithUploadFile();
             NewsAnnouncement ewsAnnounce = new NewsAnnouncement();
-            ewsAnnounce.setId(id);
             ewsAnnounce.setNewsTitle(title);
             ewsAnnounce.setContent(content);
+            ewsAnnounce.setImagePath(path);
             service.updateNews(ewsAnnounce);
             return SUCCESS;
         }
@@ -194,4 +240,34 @@ public class NewAnnounceAction extends ActionSupportBase
     {
         this.service = service;
     }
+
+	/**
+	 * @return the uploadFile
+	 */
+	public File getUploadFile() {
+		return uploadFile;
+	}
+
+	/**
+	 * @param uploadFile the uploadFile to set
+	 */
+	public void setUploadFile(File uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
+	/**
+	 * @return the fileName
+	 */
+	public String getFileName() {
+		return fileName;
+	}
+
+	/**
+	 * @param fileName the fileName to set
+	 */
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+    
+    
 }

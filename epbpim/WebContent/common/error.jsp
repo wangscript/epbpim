@@ -22,6 +22,9 @@
 <h2 class="title">出错了，请联系管理员</h2>
 <a href="../index.jsp">返回首页</a>
 </div>
+<div style="color:red">
+    <s:fielderror />
+</div>
 <jsp:include page="../login/advertisement.jsp" />
 
 <div class="clr"></div>

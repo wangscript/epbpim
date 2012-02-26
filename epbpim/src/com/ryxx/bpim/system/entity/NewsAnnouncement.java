@@ -10,6 +10,7 @@ public class NewsAnnouncement extends VoBase {
 	private Long id;
 	private String newsTitle;
 	private String content;
+	private String imagePath;
 	private Timestamp addTime;
 	private Timestamp addTimeTemp;
 	
@@ -43,5 +44,18 @@ public class NewsAnnouncement extends VoBase {
 	public void setAddTimeTemp(Timestamp addTimeTemp) {
 		this.addTimeTemp = addTimeTemp;
 	}
+	/**
+	 * @return the imagePath
+	 */
+	public String getImagePath() {
+		return imagePath;
+	}
+	/**
+	 * @param imagePath the imagePath to set
+	 */
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	
 	
 }

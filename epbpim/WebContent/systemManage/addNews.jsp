@@ -5,6 +5,8 @@
 
 <html>
 <head>
+<script language="javascript" type="text/javascript"
+	src="../js/common.js"></script>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>公告信息</title>
 </head>
@@ -14,7 +16,7 @@
 			<div class="content_resize">
 				<div class="mainbar">
 					<h4 class="title">新增公告:</h4>
-					<s:form action="addNews.do" name="addNewsForm" method="post"
+					<s:form action="addNews.do" name="addNewsForm" method="post" enctype="multipart/form-data"
 						id="addNewsForm">
 						<div>
 							<ul class="fullScreenUl">
@@ -28,6 +30,13 @@
 								<li class="width50Li"><label>内容:</label></li>
 								<li class="width300Li"><textarea name="content" ></textarea></li>
 								<li></li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width50Li"><label>图片:</label></li>
+								<li class="width300Li"><s:file name="uploadFile"
+									id="uploadFile" size="30" onchange="chooseFile()" /> <input
+								type="hidden" name="fileName" id="fileName">
+							</li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width50Li"><s:submit cssClass="button"
@@ -45,4 +54,14 @@
 		<!-- end #page -->
 		<jsp:include page="../common/footer.jsp" /></div>
 </body>
+<script type="text/javascript">
+function chooseFile()
+{
+	var uploadFile = $('uploadFile');
+	var filePath=uploadFile.value;
+    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length);
+    document.getElementById('fileName').value=fileName;
+}
+</script>
 </html>
+

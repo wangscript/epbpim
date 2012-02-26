@@ -10,10 +10,10 @@
 <title>消息发布</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
-<link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
-<link rel="stylesheet"  
-            href="../js/My97DatePicker/skin/default/datepicker.css"  
-            type="text/css"></link> 
+<link href="../css/main.css" rel="stylesheet" type="text/css"
+	media="screen" />
+<link rel="stylesheet"
+	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
 <script type='text/javascript' src='../dwr/engine.js'></script>
@@ -21,44 +21,56 @@
 <script type='text/javascript' src='../dwr/interface/UserInfoService.js'></script>
 </head>
 <body>
-<div id="main"><jsp:include page="../main/mainHeader.jsp" />
-<div class="content">
-<div class="content_resize">
-<div class="mainbar">
-<h3 class="title">消息发布</h3>
-<div id="addMessage">
-<ul class="fullScreenUl">
-	<li class="width400Li"><label>消息标题:</label>
-	<input class="width300Input" name="projectBean.name" id="projectName" /></li>
-</ul>
-<ul class="fullScreenUl" style="height:260px;"> 
-	<li class="width400Li"><label>消息内容:</label>
-	<textarea class="width500Input" name="projectBean.name" id="projectName" ></textarea></li>
-</ul>
-<ul class="fullScreenUl"> 
-	<li class="width600Li"><input type="button" id="addProject" 
-		onclick="window.location.href='main.jsp'" class="button" value="发布"></li>
-</ul>
-</div>
+	<div id="main"><jsp:include page="../main/mainHeader.jsp" />
+		<div class="content">
+			<div class="content_resize">
+				<div class="mainbar">
+					<h3 class="title">消息发布</h3>
+					<div id="addMessage">
+						<ul class="fullScreenUl">
+							<li class="width400Li"><label>消息标题:</label> <input
+								class="width300Input" name="projectBean.name" id="projectName" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl" style="height: 260px;">
+							<li class="width400Li"><label>消息内容:</label> <textarea
+									class="width500Input" name="projectBean.name" id="projectName"></textarea>
+							</li>
 
-<div></div>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width300Li"><s:file name="uploadFile"
+									id="uploadFile" size="30" onchange="chooseFile()" /> <input
+								type="hidden" name="adminFile.fileName" id="adminFile.fileName">
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width600Li"><input type="button" id="addProject"
+								onclick="window.location.href='main.jsp'" class="button"
+								value="发布">
+							</li>
+						</ul>
+					</div>
+
+					<div></div>
 
 
-</div>
+				</div>
 
 
-<div class="clr"></div>
-</div>
-</div>
-<!-- end #page --> <jsp:include page="../common/footer.jsp" /></div>
+				<div class="clr"></div>
+			</div>
+		</div>
+		<!-- end #page -->
+		<jsp:include page="../common/footer.jsp" /></div>
 </body>
 <script type="text/javascript">
- 	function addContract(){
- 		document.getElementById("contract2").style.display="block";
- 	}
- 	function removeContract(id){
- 		document.getElementById(id).style.display="none";
- 	}
-
+	function chooseFile()
+	{
+		var uploadFile = $('uploadFile');
+		var filePath=uploadFile.value;
+	    var fileName=filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length);
+	    document.getElementById('adminFile.fileName').value=fileName;
+	}
 </script>
 </html>
