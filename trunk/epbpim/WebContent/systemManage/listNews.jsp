@@ -31,9 +31,15 @@
 						<s:else>
 							<s:iterator value="newsAnnounces" status="st">
 								<ul class="fullScreenUl">
-									<li class="width300Li"><s:hidden name="id" /><a
+									<li class="width300Li"><s:hidden name="id" />
+									
+									<!-- <a
 										href="showNews.do?id=<s:property value="id" />"><s:property
-												value="newsTitle" /> </a></li>
+												value="newsTitle" /> </a> -->
+									<s:property
+												value="newsTitle" />			
+												
+												</li>
 									<li class="width200Li"><s:date name="addTime"
 											format="yyyy-MM-dd" /></li>
 									<li class="width200Li">

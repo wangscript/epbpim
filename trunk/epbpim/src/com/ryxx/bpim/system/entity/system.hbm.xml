@@ -7,6 +7,7 @@
 		</id>
 		<property name="newsTitle" column="NEWS_TITLE" type="java.lang.String"></property>
 		<property name="content" column="NEWS_CONTENT" type="java.lang.String"></property>
+		<property name="imagePath" column="IMAGE_PATH" type="java.lang.String"></property>
 		<property name="addTime" column="ADD_TIME" type="java.sql.Timestamp"></property>
 	</class>
 </hibernate-mapping>

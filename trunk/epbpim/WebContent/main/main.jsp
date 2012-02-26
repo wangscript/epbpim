@@ -36,7 +36,10 @@
 									<li>&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="content" />
 									</li>
 								</ul>
-
+								<ul class="fullScreenUl">
+									<li><img alt="" src="<s:property value="imagePath" />" height="auto" width="auto">
+									</li>
+								</ul>
 							</s:iterator>
 						</s:else>
 						
