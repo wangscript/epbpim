@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>工料机价删除</title>
+<title>指导价删除</title>
 <link rel="stylesheet"
 	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
 <script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
@@ -37,7 +37,7 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h4 class="title">工料机价删除:</h4>
+					<h4 class="title">指导价删除:</h4>
 					<div class="entry">
 						<s:form action="deleteGuidePrice.do" method="post" id="deleteGuidePriceForm" onsubmit="return confirm('是否删除');">
 							<ul class="fullScreenUl">
@@ -50,9 +50,9 @@
 							<ul class="fullScreenUl">
 								<li class="width100Li">专业：</li>
 								<li class="width200Li">
-									<select class="width150Select" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType">
-										<option value="市政">市政</option>
-										<option value="公路">公路</option>
+									<select class="width150Select" id="guidePrice.major.id" name="guidePrice.major.id">
+										<option value="3">市政</option>
+										<option value="9">公路</option>
 									</select>
 								</li>
 							</ul>
