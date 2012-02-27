@@ -8,7 +8,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>工料机价查询</title>
+<title>指导价查询</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="../css/main.css" rel="stylesheet" type="text/css" media="screen" />
 <link rel="stylesheet" href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
@@ -96,18 +96,20 @@
 <div class="content">
 <div class="content_resize">
 <div class="mainbar">
-<h3 class="title">工料机价查询：</h3>
+<h3 class="title">指导价查询：</h3>
 <s:form id="searchGuidePriceForm" action="searchGuidePrice.do" method="post">
 	<div id="searchCondition">
 		<input type="hidden" name="guidePrice.provinceCity.id" value="<s:property value='guidePrice.provinceCity.id'/>">
 		<ul class="fullScreenUl">
-			<li class="width200Li">专业：
-				<select class="width150Select" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType" onchange="changeSuperClass(this.options[this.selectedIndex].value)">
-					<option value="">不限</option>
-					<option value="市政">市政</option>
-					<option value="公路">公路</option>
-				</select>						  
-			</li>
+			<!-- 
+				<li class="width200Li">专业：
+					<select class="width150Select" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType" onchange="changeSuperClass(this.options[this.selectedIndex].value)">
+						<option value="">不限</option>
+						<option value="2">市政</option>
+						<option value="9">公路</option>
+					</select>						  
+				</li>
+			 -->
 			<li class="width200Li">分类：
 				<select class="width150Select" id="guidePrice.guidePriceClass" name="guidePrice.guidePriceClass">
 				</select>						  
