@@ -17,20 +17,9 @@
 <script type='text/javascript' src='../js/common.js'></script>
 <script type="text/javascript">
 	function setSearchValue() {
-		var guidePriceType = "<s:property value="guidePrice.guidePriceType"/>";
-		changeSuperClass(guidePriceType);
-		if(guidePriceType != "")
-		{
-			var superClassNumObj=document.getElementById("guidePrice.guidePriceType");
-			for(var i=0;i<superClassNumObj.options.length;i++)
-			{
-				if(guidePriceType == superClassNumObj.options[i].value)
-				{
-					superClassNumObj.options[i].selected=true;
-					break;
-				}				
-			}
-		}
+		var guidePriceMajorID = "<s:property value="guidePrice.major.id"/>";
+		changeSuperClass(guidePriceMajorID);
+		
 		var guidePriceClass = "<s:property value="guidePrice.guidePriceClass"/>";
 		if(guidePriceClass != "")
 		{
@@ -62,18 +51,18 @@
 
 	subcat = new Array();
 
-	subcat[0] = new Array("市政人工", "市政", "市政人工");
-	subcat[1] = new Array("市政材料", "市政", "市政材料");
-	subcat[2] = new Array("市政机械", "市政", "市政机械");
-	subcat[3] = new Array("安拆费", "市政", "安拆费");
-	subcat[4] = new Array("场外运输", "市政", "场外运输");
-	subcat[5] = new Array("泥土外运", "市政", "泥土外运");
+	subcat[0] = new Array("市政人工", "3", "市政人工");
+	subcat[1] = new Array("市政材料", "3", "市政材料");
+	subcat[2] = new Array("市政机械", "3", "市政机械");
+	subcat[3] = new Array("安拆费", "3", "安拆费");
+	subcat[4] = new Array("场外运输", "3", "场外运输");
+	subcat[5] = new Array("泥土外运", "3", "泥土外运");
 
-	subcat[6] = new Array("公路人工", "公路", "公路人工");
-	subcat[7] = new Array("公路材料", "公路", "公路材料");
-	subcat[8] = new Array("公路机械", "公路", "公路机械");
-	subcat[9] = new Array("市郊地材", "公路", "市郊地材");
-	subcat[10] = new Array("崇明地材", "公路", "崇明地材");
+	subcat[6] = new Array("公路人工", "9", "公路人工");
+	subcat[7] = new Array("公路材料", "9", "公路材料");
+	subcat[8] = new Array("公路机械", "9", "公路机械");
+	subcat[9] = new Array("市郊地材", "9", "市郊地材");
+	subcat[10] = new Array("崇明地材", "9", "崇明地材");
 
 	onecount = 11;
 
@@ -100,21 +89,13 @@
 <s:form id="searchGuidePriceForm" action="searchGuidePrice.do" method="post">
 	<div id="searchCondition">
 		<input type="hidden" name="guidePrice.provinceCity.id" value="<s:property value='guidePrice.provinceCity.id'/>">
-		<ul class="fullScreenUl">
-			<!-- 
-				<li class="width200Li">专业：
-					<select class="width150Select" id="guidePrice.guidePriceType" name="guidePrice.guidePriceType" onchange="changeSuperClass(this.options[this.selectedIndex].value)">
-						<option value="">不限</option>
-						<option value="2">市政</option>
-						<option value="9">公路</option>
-					</select>						  
-				</li>
-			 -->
-			<li class="width200Li">分类：
+		<input type="hidden" name="guidePrice.major.id" value="<s:property value='guidePrice.major.id'/>">
+		<ul class="fullScreenUl">		
+			<li class="width300Li">分类：
 				<select class="width150Select" id="guidePrice.guidePriceClass" name="guidePrice.guidePriceClass">
 				</select>						  
 			</li>
-			<li class="width200Li"><label class="lb">名称：</label>
+			<li class="width300Li"><label class="lb">名称：</label>
 				<input type="text" id="guidePrice.name" name="guidePrice.name" />
 			</li>
 			<li class="width200Li"><label class="lb">时间：</label>
