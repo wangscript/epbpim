@@ -206,7 +206,6 @@
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>
 		</id>		
-		<property name="guidePriceType" column="GUIDEPRICE_TYPE" type="java.lang.String"></property>
 		<property name="guidePriceClass" column="GUIDEPRICE_CLASS" type="java.lang.String"></property>
 		<property name="name" column="NAME" type="java.lang.String"></property>
 		<property name="unit" column="UNIT" type="java.lang.String"></property>
@@ -216,6 +215,7 @@
 		<property name="uploadDate" column="UPLOAD_DATE" type="java.sql.Timestamp"></property>
 		<property name="comment" column="COMMENT" type="java.lang.String"></property>
 		<many-to-one name="provinceCity" class="ProvinceCity" column="GUIDEPRICE_PROVICE"></many-to-one>
+		<many-to-one name="major" class="Major" column="GUIDEPRICE_TYPE"></many-to-one>
 	</class>
 	<class name="GuideData" table="GUIDE_DATA">
 		<id name="id" column="ID" type="java.lang.Long">
