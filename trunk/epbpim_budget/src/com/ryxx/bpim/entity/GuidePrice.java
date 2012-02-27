@@ -13,8 +13,6 @@ public class GuidePrice extends VoBase
     
     private Long id;
     
-    private String guidePriceType;
-    
     private String guidePriceClass;
     
     private String name;
@@ -31,6 +29,8 @@ public class GuidePrice extends VoBase
     
     private ProvinceCity provinceCity;
     
+    private Major major;
+    
     private String comment;
     
     private String guidePriceDatePage;
@@ -45,16 +45,6 @@ public class GuidePrice extends VoBase
     public void setId(Long id)
     {
         this.id = id;
-    }
-    
-    public String getGuidePriceType()
-    {
-        return guidePriceType;
-    }
-    
-    public void setGuidePriceType(String guidePriceType)
-    {
-        this.guidePriceType = guidePriceType;
     }
     
     public String getGuidePriceClass()
@@ -135,6 +125,16 @@ public class GuidePrice extends VoBase
     public void setProvinceCity(ProvinceCity provinceCity)
     {
         this.provinceCity = provinceCity;
+    }
+    
+    public Major getMajor()
+    {
+        return major;
+    }
+    
+    public void setMajor(Major major)
+    {
+        this.major = major;
     }
     
     public String getComment()

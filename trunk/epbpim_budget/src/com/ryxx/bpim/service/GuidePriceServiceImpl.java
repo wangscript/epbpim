@@ -145,10 +145,10 @@ public class GuidePriceServiceImpl extends AbstractService<GuidePrice, GuidePric
                 }
                 
                 data.setGuidePriceClass(sheet.getSheetName());
-                data.setGuidePriceType(guidePrice.getGuidePriceType());
                 data.setGuidePriceDate(new Timestamp(sdf.parse(guidePrice.getGuidePriceDatePage()).getTime()));
                 data.setUploadDate(uploadDate);
                 data.setProvinceCity(guidePrice.getProvinceCity());
+                data.setMajor(guidePrice.getMajor());
                 resultList.add(data);
             }
         }
