@@ -168,5 +168,5 @@ VALUES(804,'信息价查询','searchGuideData.do?guideData.major.id=8&guideData.
 
 -- 公路
 INSERT INTO ADMIN_MENU (MENU_ID,MENU_NAME,MENU_URL,PARENT_MENU_ID,MENU_ENABLE,MENU_DEFAULT,MENU_REGION,MENU_INDEX,MENU_PRICE,TITLE,DESCRIPTION,REGISTER_DATE,ADVICE_DATE)
-VALUES(902,'指导价查询','searchGuidePrice.do?guidePrice.major.id=3',9,1,0,3,2,300,'公路指导价查询','公路指导价查询说明',NOW(),NOW());
+VALUES(902,'指导价查询','searchGuidePrice.do?guidePrice.major.id=9',9,1,0,3,2,300,'公路指导价查询','公路指导价查询说明',NOW(),NOW());
 
