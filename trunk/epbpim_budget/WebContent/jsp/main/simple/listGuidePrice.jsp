@@ -119,17 +119,20 @@
 			<ul class="fullScreenResultUl">
 				<li class="width250Li"><s:text name="名称规格" /></li>	
 				<li class="width100Li"><s:text name="单位" /></li>		
+				<li class="width100Li"><s:text name="备注" /></li>
 				<li class="width100Li"><s:text name="价格（元）" /></li>
-				<li class="width300Li"><s:text name="价格说明" /></li>
+				<li class="width200Li"><s:text name="价格说明" /></li>
 				<li class="width100Li"><s:text name="时间" /></li>
 			</ul>
 			<s:iterator value="datas" status="st">
 				<ul class="fullScreenResultUl"> 
 					<li class="width250Li"><s:property value="name" /></li>
-					<li class="width100Li"><s:property value="unint" /></li>				
+					<li class="width100Li"><s:property value="unit" /></li>
+					<li class="width100Li"><s:property value="comment" /></li>					
 					<li class="width100Li"><s:property value="price" /></li>
-					<li class="width300Li"><s:property value="priceComment" /></li>
+					<li class="width200Li"><s:property value="priceComment" /></li>
 					<li class="width100Li"><s:date name="guidePriceDate" format="yyyy-MM" /></li>
+					
 				</ul>
 			</s:iterator>
 			<ul class="fullScreenResultUl">
