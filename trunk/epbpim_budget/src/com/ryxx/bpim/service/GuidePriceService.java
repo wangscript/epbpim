@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
+import org.jfree.data.time.TimeSeriesCollection;
+
 import com.ryxx.bpim.dao.GuidePriceDAO;
 import com.ryxx.bpim.entity.GuidePrice;
 import com.ryxx.util.page.PageTools;
@@ -24,5 +26,11 @@ public interface GuidePriceService extends BaseService<GuidePrice, GuidePriceDAO
     
     List<GuidePrice> listGuidePrice(GuidePrice guidePrice, PageTools page)
         throws SQLException;
+
+	/**
+	 * @param guidePrice
+	 * @return
+	 */
+	TimeSeriesCollection getDateSet(GuidePrice guidePrice);
     
 }

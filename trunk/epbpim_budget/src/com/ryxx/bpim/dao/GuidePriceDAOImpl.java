@@ -99,7 +99,7 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
                 list.add(criterion3);
             }
             
-            if (!StringUtils.isEmpty(guidePrice.getName()))
+            if (!StringUtils.isEmpty(guidePrice.getName())&&StringUtils.isEmpty(guidePrice.getGuidePriceDateFromPage()))
             {
                 Criterion criterion4 = Restrictions.like("name", "%" + guidePrice.getName() + "%");
                 list.add(criterion4);
@@ -119,6 +119,26 @@ public class GuidePriceDAOImpl extends AbstractBaseDAO<GuidePrice, Long> impleme
                 {
                     e.printStackTrace();
                 }
+            }
+            if (!StringUtils.isEmpty(guidePrice.getGuidePriceDateFromPage())&&!StringUtils.isEmpty(guidePrice.getGuidePriceDateToPage()))
+            {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+                try
+                {
+                    Criterion criterion6 =
+                        Restrictions.between("guidePriceDate", new Timestamp(sdf.parse(guidePrice.getGuidePriceDateFromPage()).getTime()),new Timestamp(sdf.parse(guidePrice.getGuidePriceDateToPage()).getTime()));
+                    list.add(criterion6);
+                }
+                catch (ParseException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            
+            if (!StringUtils.isEmpty(guidePrice.getName())&&!StringUtils.isEmpty(guidePrice.getGuidePriceDateFromPage())&&!StringUtils.isEmpty(guidePrice.getGuidePriceDateToPage()))
+            {
+                Criterion criterion7 = Restrictions.eq("name", guidePrice.getName());
+                list.add(criterion7);
             }
         }
         
