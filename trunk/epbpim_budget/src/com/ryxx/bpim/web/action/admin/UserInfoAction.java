@@ -22,6 +22,7 @@ import com.ryxx.bpim.service.ProvinceCityService;
 import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.cache.CacheMap;
+import com.ryxx.util.date.DateTools;
 import com.ryxx.util.string.StringTools;
 
 public class UserInfoAction extends ActionSupportBase {
@@ -42,6 +43,7 @@ public class UserInfoAction extends ActionSupportBase {
 	private String userName;
 	private String password;
 	private Integer userCount;
+	private String expireDateTmp;
 	private List listCheck;
 	private List regionCheck;
 	private Long eId;
@@ -104,15 +106,19 @@ public class UserInfoAction extends ActionSupportBase {
 				} else {
 					for(int i=0;i<userInfo.getMenus().size();i++) {
 						UserMenuReg userMenuReg = userInfo.getMenus().get(i);
-						if(userMenuReg.getAdminMenu().getId().equals(adminMenu.getId())) {
-							reg.setRegisterDate(userMenuReg.getRegisterDate());
-							reg.setExpireDate(userMenuReg.getExpireDate());
-							break;
-						}
-						if(i==userInfo.getMenus().size()) {
-							reg.setRegisterDate(new Timestamp(new Date().getTime()));
-							reg.setExpireDate(new Timestamp(DateUtils.addYears(new Date(), 1).getTime()));
-						}
+						reg.setRegisterDate(userMenuReg.getRegisterDate());
+						//reg.setExpireDate(userMenuReg.getExpireDate());
+						reg.setExpireDate(new Timestamp(DateTools.string2Date(expireDateTmp,"yyyy-MM-dd").getTime()));
+//						if(userMenuReg.getAdminMenu().getId().equals(adminMenu.getId())) {
+//							reg.setRegisterDate(userMenuReg.getRegisterDate());
+//							//reg.setExpireDate(userMenuReg.getExpireDate());
+//							reg.setExpireDate(new Timestamp(StringTools.string2date(userInfo.getExpireDateTmp()).getTime()));
+//							break;
+//						}
+//						if(i==userInfo.getMenus().size()) {
+//							reg.setRegisterDate(new Timestamp(new Date().getTime()));
+//							reg.setExpireDate(new Timestamp(DateUtils.addYears(new Date(), 1).getTime()));
+//						}
 					}
 				}
 				regs.add(reg);
@@ -156,6 +162,7 @@ public class UserInfoAction extends ActionSupportBase {
 		listCheck = new ArrayList();
 		for(UserMenuReg userMenuReg: userInfo.getMenus()) {
 			listCheck.add(userMenuReg.getAdminMenu().getId());
+			setExpireDateTmp(DateTools.date2string(userMenuReg.getExpireDate(), "yyyy-MM-dd"));
 		}
 		seteId(userInfo.getEnterpriseInfo().getId());
 		return SUCCESS;
@@ -289,7 +296,16 @@ public class UserInfoAction extends ActionSupportBase {
 		this.regionCheck = regionCheck;
 	}
 	
+	public String getExpireDateTmp() {
+		return expireDateTmp;
+	}
+
+	public void setExpireDateTmp(String expireDateTmp) {
+		this.expireDateTmp = expireDateTmp;
+	}
+
 	public static void main(String[] args) {
-		System.out.println(DateUtils.addYears(new Date(), 1));
+		String str = "2012-03-29";
+		System.out.println(new Timestamp(DateTools.string2Date(str,"yyyy-MM-dd").getTime()));
 	}
 }

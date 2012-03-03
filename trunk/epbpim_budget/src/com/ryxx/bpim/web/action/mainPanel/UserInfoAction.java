@@ -1,5 +1,6 @@
 package com.ryxx.bpim.web.action.mainPanel;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -18,6 +19,7 @@ import com.ryxx.bpim.service.AdminMenuService;
 import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.cache.CacheMap;
+import com.ryxx.util.date.DateTools;
 import com.ryxx.util.email.EmailTools;
 import com.ryxx.util.string.StringTools;
 
@@ -97,6 +99,9 @@ public class UserInfoAction extends ActionSupportBase
                 if (userInfo.getProvinceCities() == null)
                 {
                     super.addFieldError("name", "该用户未订阅任何应用。请订阅应用后再登录。");
+                    return INPUT;
+                } else if(userInfo.getMenus().get(0).getExpireDate().getTime() > new Date().getTime()) {
+                	super.addFieldError("name", "该用户订阅已经过期。请重新订阅应用后再登录。");
                     return INPUT;
                 }
                 else
