@@ -29,6 +29,12 @@
 								<li class="width100Li">价格</li>
 								<li class="width500Li">应用说明</li>
 							</ul>
+							<h4>过期日期	:</h4>
+							<ul class="fullScreenUl">
+								<li class="width200Li">
+									<s:textfield onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" cssClass="Wdate width150Input" name="expireDateTmp" id="expireDateTmp"/>
+								</li>
+							</ul>
 							<s:iterator value="provinceCities" status="st1">
 								<ul><li>
 									<input type="checkbox" name="regionCheck" value="<s:property value="id"/>"

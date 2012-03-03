@@ -12,6 +12,16 @@
 	media="screen" />
 <script type="text/javascript" src="../js/common.js"></script>
 <script type='text/javascript' src='../js/validation.js'></script>
+<link rel="stylesheet"
+	href="../js/My97DatePicker/skin/default/datepicker.css" type="text/css"></link>
+<link href="../images/logo.ico" rel="SHORTCUT ICON" />
+<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
+<link rel="stylesheet"
+	href="../js/My97DatePicker/dev/skin/WdatePicker.css" type="text/css"></link>
+<script type='text/javascript' src='../js/common.js'></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/delgado.pack.js"></script>
+<script type='text/javascript' src='../js/validation.js'></script>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 <body>
