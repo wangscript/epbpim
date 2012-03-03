@@ -242,6 +242,13 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
+	<package name="bpim-analyseGuidePrice" namespace="/main" extends="bpim-default">
+		<action name="analyseGuidePrice" method="analyseGuidePrice" class="guidePriceAction">
+			<result>/jsp/main/simple/analyseGuidePrice.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
 	<package name="bpim-searchGuideData" namespace="/main" extends="bpim-default">
 		<action name="searchGuideData" method="searchGuideData" class="guideDataAction">
 			<result>/jsp/main/simple/listGuideData.jsp</result>

@@ -37,6 +37,10 @@ public class GuidePrice extends VoBase
     
     private String guidePriceFileName;
     
+    private String guidePriceDateFromPage;
+    
+    private String guidePriceDateToPage;
+    
     public Long getId()
     {
         return id;
@@ -166,5 +170,34 @@ public class GuidePrice extends VoBase
     {
         this.guidePriceFileName = guidePriceFileName;
     }
+
+	/**
+	 * @return the guidePriceDateFromPage
+	 */
+	public String getGuidePriceDateFromPage() {
+		return guidePriceDateFromPage;
+	}
+
+	/**
+	 * @param guidePriceDateFromPage the guidePriceDateFromPage to set
+	 */
+	public void setGuidePriceDateFromPage(String guidePriceDateFromPage) {
+		this.guidePriceDateFromPage = guidePriceDateFromPage;
+	}
+
+	/**
+	 * @return the guidePriceDateToPage
+	 */
+	public String getGuidePriceDateToPage() {
+		return guidePriceDateToPage;
+	}
+
+	/**
+	 * @param guidePriceDateToPage the guidePriceDateToPage to set
+	 */
+	public void setGuidePriceDateToPage(String guidePriceDateToPage) {
+		this.guidePriceDateToPage = guidePriceDateToPage;
+	}
+    
     
 }

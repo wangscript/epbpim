@@ -17,6 +17,7 @@
 	media="screen" />
 <link href="../images/logo.ico" rel="SHORTCUT ICON" />
 <script type="text/javascript" src="../js/common.js"></script>
+<script type='text/javascript' src='../js/validation.js'></script>
 </head>
 <script type="text/javascript">
 function changeTitleBackground(){
