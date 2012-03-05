@@ -100,7 +100,7 @@ public class UserInfoAction extends ActionSupportBase
                 {
                     super.addFieldError("name", "该用户未订阅任何应用。请订阅应用后再登录。");
                     return INPUT;
-                } else if(userInfo.getMenus().get(0).getExpireDate().getTime() > new Date().getTime()) {
+                } else if(userInfo.getMenus().get(0).getExpireDate().getTime() < new Date().getTime()) {
                 	super.addFieldError("name", "该用户订阅已经过期。请重新订阅应用后再登录。");
                     return INPUT;
                 }
