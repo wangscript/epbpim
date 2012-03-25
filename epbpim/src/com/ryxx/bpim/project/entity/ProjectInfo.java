@@ -204,6 +204,14 @@ public class ProjectInfo extends VoBase
     
     private String filePath;
     
+    private Timestamp submitTime;
+    
+    private Timestamp deptApproveTime;
+    
+    private Timestamp masterApproveTime;
+    
+    private Timestamp managerApproveTIme;
+    
     private List<ProjectFile> projectFiles;
     
     public Long getId()
@@ -1173,5 +1181,63 @@ public class ProjectInfo extends VoBase
     {
         this.invoiceMoneyArrival = invoiceMoneyArrival;
     }
+
+	/**
+	 * @return the submitTime
+	 */
+	public Timestamp getSubmitTime() {
+		return submitTime;
+	}
+
+	/**
+	 * @param submitTime the submitTime to set
+	 */
+	public void setSubmitTime(Timestamp submitTime) {
+		this.submitTime = submitTime;
+	}
+
+	/**
+	 * @return the deptApproveTime
+	 */
+	public Timestamp getDeptApproveTime() {
+		return deptApproveTime;
+	}
+
+	/**
+	 * @param deptApproveTime the deptApproveTime to set
+	 */
+	public void setDeptApproveTime(Timestamp deptApproveTime) {
+		this.deptApproveTime = deptApproveTime;
+	}
+
+	/**
+	 * @return the masterApproveTime
+	 */
+	public Timestamp getMasterApproveTime() {
+		return masterApproveTime;
+	}
+
+	/**
+	 * @param masterApproveTime the masterApproveTime to set
+	 */
+	public void setMasterApproveTime(Timestamp masterApproveTime) {
+		this.masterApproveTime = masterApproveTime;
+	}
+
+	/**
+	 * @return the managerApproveTIme
+	 */
+	public Timestamp getManagerApproveTIme() {
+		return managerApproveTIme;
+	}
+
+	/**
+	 * @param managerApproveTIme the managerApproveTIme to set
+	 */
+	public void setManagerApproveTIme(Timestamp managerApproveTIme) {
+		this.managerApproveTIme = managerApproveTIme;
+	}
+    
+    
     
 }

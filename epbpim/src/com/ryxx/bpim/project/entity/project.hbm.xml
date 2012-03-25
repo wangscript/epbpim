@@ -81,6 +81,11 @@
 		<property name="consultArchiveRecipient" column="CONSULTARCHIVERECIPIENT" type="java.lang.String"></property>
 		<property name="fileName" column="FILE_NAME" type="java.lang.String"></property>
 		<property name="filePath" column="FILE_PATH" type="java.lang.String"></property>
+		<property name="submitTime" column="SUBMIT_TIME" type="java.sql.Timestamp"></property>
+		<property name="deptApproveTime" column="DEPT_APPROVE_TIME" type="java.sql.Timestamp"></property>
+		<property name="masterApproveTime" column="MASTER_APPROVE_TIME" type="java.sql.Timestamp"></property>
+		<property name="managerApproveTIme" column="MANAGER_APPROVE_TIME" type="java.sql.Timestamp"></property>
+		
 		<many-to-one name="dept" class="com.ryxx.bpim.user.entity.AdminDept" column="DEPT"></many-to-one>
 		<many-to-one name="owner" class="com.ryxx.bpim.user.entity.UserInfo" column="OWNER"></many-to-one>
 		<many-to-one name="manager" class="com.ryxx.bpim.user.entity.UserInfo" column="MANAGER"></many-to-one>

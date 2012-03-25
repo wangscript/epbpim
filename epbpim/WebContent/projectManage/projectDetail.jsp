@@ -276,7 +276,7 @@ h4 {
 									<s:property value='projectInfo.supervisorInvest' /></li>
 									<li class="width200Li"><label class="width6Lb">建安量:</label>
 									<s:property value='projectInfo.supervisorQuantity' /></li>
-									<li class="width200Li"><label class="width10Lb">投资监理大纲及成果:</label>
+									<li class="width400Li"><label class="width10Lb">投资监理大纲及成果:</label>
 									<s:property value='projectInfo.supervisorOutline' /></li>
 								</ul>
 								<ul class="fullScreenUl">
