@@ -233,7 +233,7 @@ public class ProjectAction extends ActionSupportBase {
 	private void changeStatus() {
 		String currentStatus = projectInfo.getStatus();
 		if (!StringUtils.isEmpty(status) && !StringUtils.isEmpty(currentStatus)
-				&& currentStatus != status) {
+				&& !currentStatus.equals(status) ) {
 			projectInfo.setStatus(status);
 			if (Integer.valueOf(status) > Integer.valueOf(currentStatus)) {
 				Timestamp time = new Timestamp(new Date().getTime());
