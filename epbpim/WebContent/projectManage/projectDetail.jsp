@@ -197,7 +197,46 @@ h4 {
 								<li class="width200Li"><label class="width4Lb">项目经理:</label>
 								<s:property value='projectInfo.manager.realName' /></li>
 							</ul>
+							
+							<%
+								String userid = String.valueOf((Long) session
+										.getAttribute(Constants.LOGIN_USER_ID));
+								List<AdminMenu> menus = (List) CacheMap.getInstance().getCache(
+										Constants.MENU_CACHE + Constants.LOGIN_USER_ID + userid);
+								for (AdminMenu menu : menus) {
+									if (menu.getId() == 305) {
+										request.setAttribute("addCost", true);
+									}
+									if (menu.getId() == 306) {
+										request.setAttribute("qryCost", true);
+									}
+									if (menu.getId() == 307) {
+										request.setAttribute("delCost", true);
+									}
 
+									if (menu.getId() == 308) {
+										request.setAttribute("addBonus", true);
+									}
+									if (menu.getId() == 309) {
+										request.setAttribute("qryBonus", true);
+									}
+									if (menu.getId() == 310) {
+										request.setAttribute("delBonus", true);
+									}
+									if (menu.getId() == 311) {
+										request.setAttribute("closeProject", true);
+									}									
+									if (menu.getId() == 315) {
+										request.setAttribute("contractManage", true);
+									}									
+									if (menu.getId() == 316) {
+										request.setAttribute("projectTypeManage", true);
+									}
+								}
+							%>
+							
+							<!-- 业务权限人员,查看项目性质 -->
+							<s:if test="#request.projectTypeManage == true">
 							<ul class="fullScreenUl" id="addNewMember">
 								<li class="width200Li"><label class="width6Lb">项目性质:</label><label
 									id="projectType"><s:property
@@ -352,39 +391,11 @@ h4 {
 							<ul class="fullScreenUl">
 								<li><input type="button" class="mediumRightButton"
 									value="打印项目详情" onClick="doPrint()"></li>
-							</ul>
-							<%
-								String userid = String.valueOf((Long) session
-										.getAttribute(Constants.LOGIN_USER_ID));
-								List<AdminMenu> menus = (List) CacheMap.getInstance().getCache(
-										Constants.MENU_CACHE + Constants.LOGIN_USER_ID + userid);
-								for (AdminMenu menu : menus) {
-									if (menu.getId() == 305) {
-										request.setAttribute("addCost", true);
-									}
-									if (menu.getId() == 306) {
-										request.setAttribute("qryCost", true);
-									}
-									if (menu.getId() == 307) {
-										request.setAttribute("delCost", true);
-									}
-
-									if (menu.getId() == 308) {
-										request.setAttribute("addBonus", true);
-									}
-									if (menu.getId() == 309) {
-										request.setAttribute("qryBonus", true);
-									}
-									if (menu.getId() == 310) {
-										request.setAttribute("delBonus", true);
-									}
-
-									if (menu.getId() == 311) {
-										request.setAttribute("closeProject", true);
-									}
-								}
-							%>
-							<s:if test="projectInfo.status != 2">
+							</ul>							
+							</s:if>		
+							
+							<!-- 财务人员,操作合同信息权限 -->							
+							<s:if test="#request.contractManage == true && projectInfo.status != 9">
 								<s:if test="#request.addCost == true">
 									<h4 class="title">合同信息</h4>
 									<s:form id="modForm" action="modProjectContractAndInvoices.do"
@@ -542,7 +553,7 @@ h4 {
 																type="hidden" name="projectStream.projectID"
 																value="<s:property value='projectInfo.id'/>" /> <input
 																type="button"
-																<s:if test="projectInfo.status == 2">disabled</s:if>
+																<s:if test="projectInfo.status == 9">disabled</s:if>
 																onclick='delProjectStream("delProjectStream"+<s:property value="id" />);'
 																class="mediumRightButton" class="button"
 																value="<s:text name="Common.Delete" />">
@@ -554,7 +565,7 @@ h4 {
 								</div>
 							</s:if>
 
-							<s:if test="projectInfo.status != 2">
+							<s:if test="projectInfo.status != 9">
 								<s:if test="#request.addCost == true">
 									<h4 class="title">增加成本</h4>
 									<form action="addProjectStream.do" method="post">

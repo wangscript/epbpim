@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="com.ryxx.util.cache.CacheMap"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.ryxx.bpim.common.Constants"%>
+<%@ page import="com.ryxx.bpim.user.entity.AdminMenu"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -107,6 +111,19 @@
 				</ul>
 				<ul class="fullScreenUl">
 				</ul>
+				<%
+					String userid = String.valueOf((Long) session
+							.getAttribute(Constants.LOGIN_USER_ID));
+					List<AdminMenu> menus = (List) CacheMap.getInstance().getCache(
+							Constants.MENU_CACHE + Constants.LOGIN_USER_ID + userid);
+					for (AdminMenu menu : menus) {
+						
+						if (menu.getId() == 314) {
+							request.setAttribute("managerApprove", true);
+						}
+					}
+				%>
+				<s:if test="#request.managerApprove == true">
 				<ul class="fullScreenUl">
 					<li class="width50Li">合计</li>
 					<li class="width200Li"></li>
@@ -116,6 +133,7 @@
 					<li class="width100Li"><s:property value="subInvoices" /></li>
 					<li class="width100Li"><s:property value="subCosts" /></li>
 				</ul>
+				</s:if>
 			</div>
 		</s:else>
 	</div>
