@@ -16,6 +16,12 @@
 		changeProjectType();
 	}
 	function changeProjectType() {
+		
+		if(!document.getElementById("projectType"))
+		{
+			return;
+		}
+		
  		var type = document.getElementById("projectType").innerHTML;
  		var dispDiv1 = document.getElementById("projectType1");
  		var dispDiv2 = document.getElementById("projectType2");
@@ -227,9 +233,6 @@ h4 {
 										request.setAttribute("closeProject", true);
 									}									
 									if (menu.getId() == 315) {
-										request.setAttribute("contractManage", true);
-									}									
-									if (menu.getId() == 316) {
 										request.setAttribute("projectTypeManage", true);
 									}
 								}
@@ -238,9 +241,7 @@ h4 {
 							<!-- 业务权限人员,查看项目性质 -->
 							<s:if test="#request.projectTypeManage == true">
 							<ul class="fullScreenUl" id="addNewMember">
-								<li class="width200Li"><label class="width6Lb">项目性质:</label><label
-									id="projectType"><s:property
-											value='projectInfo.projectType' />
+								<li class="width200Li"><label class="width6Lb">项目性质:</label><label id="projectType"><s:property value='projectInfo.projectType' />
 								</label></li>
 								<li class="width400Li"><label class="width6Lb">服务内容:</label>
 								<s:property value='projectInfo.projectTypeComment' /></li>
@@ -395,7 +396,7 @@ h4 {
 							</s:if>		
 							
 							<!-- 财务人员,操作合同信息权限 -->							
-							<s:if test="#request.contractManage == true && projectInfo.status != 9">
+							<s:if test="projectInfo.status != 9">
 								<s:if test="#request.addCost == true">
 									<h4 class="title">合同信息</h4>
 									<s:form id="modForm" action="modProjectContractAndInvoices.do"
@@ -611,8 +612,34 @@ h4 {
 										</ul>
 									</form>
 								</s:if>
+								
+								<h4 class="title">项目状态信息</h4>						
+								<ul class="fullScreenUl">
+									<s:if test="projectInfo.status==0">
+										<li><label class="width6Lb">项目状态:</label>未提交</li>
+									</s:if>
+									<s:elseif test="projectInfo.status==1">
+										<li><label class="width6Lb">项目状态:</label>提交</li>
+										<li><label class="width6Lb">提交时间:</label><s:date name='projectInfo.submitTime' format='yyyy-MM-dd hh:mm:ss' /></li>
+									</s:elseif>
+									<s:elseif test="projectInfo.status==2">
+										<li><label class="width6Lb">项目状态:</label>部门经理审批通过</li>
+										<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.deptApproveTime' format='yyyy-MM-dd hh:mm:ss' /></li>
+									</s:elseif>
+									<s:elseif test="projectInfo.status==3">
+										<li><label class="width6Lb">项目状态:</label>总师审批通过</li>
+										<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.masterApproveTime' format='yyyy-MM-dd hh:mm:ss' /></li>
+									</s:elseif>
+									<s:elseif test="projectInfo.status==4">
+										<li><label class="width6Lb">项目状态:</label>总经理审批通过</li>
+										<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.managerApproveTIme' format='yyyy-MM-dd hh:mm:ss' /></li>
+									</s:elseif>
+									<s:elseif test="projectInfo.status==9">
+										<li><label class="width6Lb">项目状态:</label>结项</li>
+									</s:elseif>
+								</ul>
 
-								<s:if test="#request.closeProject == true">
+								<s:if test="#request.closeProject == true && projectInfo.status == 4">
 									<form action="closeProject.do" method="post">
 										<input type="hidden" name="projectInfo.queryType"
 											value="<s:property value='projectInfo.queryType'/>" /> <input

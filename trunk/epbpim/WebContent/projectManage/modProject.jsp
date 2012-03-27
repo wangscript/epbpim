@@ -397,7 +397,7 @@
 							</li>
 						</ul></div>
 						
-						<h4 class="title">附件信息</h4>
+						<h4 class="title">项目附件信息</h4>
 						<div id="attachmentDIV">
 							<s:if test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
 								<s:iterator value="projectInfo.projectFiles" status="st">
@@ -412,6 +412,32 @@
 						</div>			
 						<ul class="fullScreenUl">
 							<li><input type="button" class="mediumLeftButton" onclick="addAttachment()" value="新增附件"></li>
+						</ul>
+						
+						<h4 class="title">项目状态信息</h4>						
+						<ul class="fullScreenUl">
+							<s:if test="projectInfo.status==0">
+								<li><label class="width6Lb">项目状态:</label>未提交</li>
+							</s:if>
+							<s:elseif test="projectInfo.status==1">
+								<li><label class="width6Lb">项目状态:</label>提交</li>
+								<li><label class="width6Lb">提交时间:</label><s:date name='projectInfo.submitTime' format='yyyy-MM-dd hh:mm:ss' /></li>
+							</s:elseif>
+							<s:elseif test="projectInfo.status==2">
+								<li><label class="width6Lb">项目状态:</label>部门经理审批通过</li>
+								<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.deptApproveTime' format='yyyy-MM-dd hh:mm:ss' /></li>
+							</s:elseif>
+							<s:elseif test="projectInfo.status==3">
+								<li><label class="width6Lb">项目状态:</label>总师审批通过</li>
+								<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.masterApproveTime' format='yyyy-MM-dd hh:mm:ss' /></li>
+							</s:elseif>
+							<s:elseif test="projectInfo.status==4">
+								<li><label class="width6Lb">项目状态:</label>总经理审批通过</li>
+								<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.managerApproveTIme' format='yyyy-MM-dd hh:mm:ss' /></li>
+							</s:elseif>
+							<s:elseif test="projectInfo.status==9">
+								<li><label class="width6Lb">项目状态:</label>结项</li>
+							</s:elseif>
 						</ul>
 						
 						<ul class="fullScreenUl">
@@ -484,6 +510,10 @@
 							</li>
 						</s:if>
 							<li><input type="hidden" id="projectInfo.status" name="projectInfo.status" value="<s:property value='projectInfo.status'/>"/> </li>
+							<li><input type="hidden" id="projectInfo.submitTime" name="projectInfo.submitTime" value="<s:property value='projectInfo.submitTime'/>"/> </li>
+							<li><input type="hidden" id="projectInfo.deptApproveTime" name="projectInfo.deptApproveTime" value="<s:property value='projectInfo.deptApproveTime'/>"/> </li>
+							<li><input type="hidden" id="projectInfo.masterApproveTime" name="projectInfo.masterApproveTime" value="<s:property value='projectInfo.masterApproveTime'/>"/> </li>
+							<li><input type="hidden" id="projectInfo.managerApproveTIme" name="projectInfo.managerApproveTIme" value="<s:property value='projectInfo.managerApproveTIme'/>"/> </li>
 							<li><input type="hidden" id="status" name="status"/> </li>
 						</ul>
 						</s:form>
