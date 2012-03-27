@@ -449,39 +449,41 @@
 						<s:if test="projectInfo.status==1 && #request.deptApprove == true">
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
-								onclick="modProjectInfo('2')" 
-								value="审批通过">
-								<input type="button" id="addProject"
-								class="mediumRightButton" 
 								onclick="modProjectInfo('0')"
 								value="审批不通过">
+								<input type="button" id="addProject"
+								class="mediumRightButton" 
+								onclick="modProjectInfo('2')" 
+								value="审批通过">
 							</li>
 						</s:if>
 						
 						<s:if test="projectInfo.status==2 && #request.masterApprove == true">
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
-								onclick="modProjectInfo('3')" 
-								value="审批通过">
-								<input type="button" id="addProject"
-								class="mediumRightButton" 
 								onclick="modProjectInfo('1')"
 								value="审批不通过">
+								<input type="button" id="addProject"
+								class="mediumRightButton" 
+								onclick="modProjectInfo('3')" 
+								value="审批通过">
+								
 							</li>
 						</s:if>
 						
 						<s:if test="projectInfo.status==3 && #request.managerApprove == true">
 							<li><input type="button" id="addProject"
 								class="mediumRightButton" 
-								onclick="modProjectInfo('4')" 
-								value="审批通过">
-								<input type="button" id="addProject"
-								class="mediumRightButton" 
 								onclick="modProjectInfo('2')"
 								value="审批不通过">
+								<input type="button" id="addProject"
+								class="mediumRightButton" 
+								onclick="modProjectInfo('4')" 
+								value="审批通过">
+								
 							</li>
 						</s:if>
-							<li><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
+							<li><input type="hidden" id="projectInfo.status" name="projectInfo.status" value="<s:property value='projectInfo.status'/>"/> </li>
 							<li><input type="hidden" id="status" name="status"/> </li>
 						</ul>
 						</s:form>
