@@ -96,10 +96,10 @@
 						<li class="width100Li"><s:property value="subInvoice" /></li>
 						<li class="width100Li"><s:property value="subCost" /></li>
 						<li class="width50Li">
-								<input type="button" <s:if test="projectInfo.queryType!=3 && (status == 1 || status == 2)">disabled</s:if> onclick='preModProject(<s:property value="id" />);' class="mediumRightButton" class="button" value='<s:if test="status == 2">结项</s:if><s:else>修改</s:else>'>
+								<input type="button" <s:if test="status == 4 || status == 9">disabled</s:if> onclick='preModProject(<s:property value="id" />);' class="mediumRightButton" class="button" value='<s:if test="status == 2">结项</s:if><s:else>修改</s:else>'>
 						</li>
 						<li class="width50Li">
-								<input type="button" <s:if test="projectInfo.queryType!=3 && (status == 1 || status == 2)">disabled</s:if> onclick='delProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+								<input type="button" <s:if test="projectInfo.queryType==1 && status != 0">disabled</s:if> onclick='delProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
 						</li>	
 					</ul>
 				</s:iterator>
