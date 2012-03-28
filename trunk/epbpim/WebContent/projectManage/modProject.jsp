@@ -82,447 +82,575 @@
 				<div class="mainbar">
 					<h3 class="title">项目录入</h3>
 					<div id="addProjectTable">
-					<s:form id="modForm" action="modProject.do" enctype="multipart/form-data" method="post" onsubmit="return validate(this);">
-						<h4 class="title">项目基本信息</h4>
-						<input type="hidden" name="projectInfo.queryType" value="<s:property value='projectInfo.queryType'/>"/>
-						<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id'/>"/>
-						<input type="hidden" name="projectInfo.submitter.id" value="<s:property value='projectInfo.submitter.id'/>"/>
-						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
-								class="width350Input" name="projectInfo.name" value="<s:property value='projectInfo.name'/>"/>
-								<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
-							</li>
-							<li class="width400Li"><label class="width4Lb">项目编号:</label> <input
-								class="width300Input" name="projectInfo.number" value="<s:property value='projectInfo.number'/>"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width4Lb">工程专业:</label><select
-								id="majorType" name="projectInfo.majorType">
-									<option value="土建">土建</option>
-									<option value="园林">园林</option>
-									<option value="市政">市政</option>
-									<option value="安装">安装</option>
-									<option value="公用">公用</option>
-									<option value="水利">水利</option>
-									<option value="人防">人防</option>
-									<option value="房修">房修</option>
-							</select>
-							</li>
-							<li class="width250Li"><label class="width4Lb">计价模式:</label><select
-								id="valuationType" name="projectInfo.valuationType">
-									<option value="清单">清单</option>
-									<option value="2000定额">2000定额</option>
-									<option value="其他">其他</option>
-							</select>
-							</li>
-							<li class="width250Li"><label class="width4Lb">开始时间:</label> <input
-								class="Wdate width150Input" name="projectInfo.startDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.startDate' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width4Lb">质量要求:</label> <input
-								class="width100Input" name="projectInfo.quality" value="<s:property value='projectInfo.quality' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width7Lb">委托(建设)单位:</label> <input
-								class="width350Input" name="projectInfo.customerCompany" value="<s:property value='projectInfo.customerCompany' />"/>
-							</li>
-							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.customerContactor" value="<s:property value='projectInfo.customerContactor' />"/>
-							</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.customerContact" value="<s:property value='projectInfo.customerContact' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width7Lb">相关(关系)单位:</label> <input
-								class="width350Input" name="projectInfo.mediatorCompany" value="<s:property value='projectInfo.mediatorCompany' />"/>
-							</li>
-							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.mediatorContactor" value="<s:property value='projectInfo.mediatorContactor' />"/>
-							</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.mediatorContact" value="<s:property value='projectInfo.mediatorContact' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width7Lb">送审(施工)单位:</label> <input
-								class="width350Input" name="projectInfo.vendorCompany" value="<s:property value='projectInfo.vendorCompany' />"/>
-							</li>
-							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.vendorContactor" value="<s:property value='projectInfo.vendorContactor' />"/>
-							</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.vendorContact" value="<s:property value='projectInfo.vendorContact' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width7Lb">中标单位:</label> <input
-								class="width350Input" name="projectInfo.biddingCompany" value="<s:property value='projectInfo.biddingCompany' />"/>
-							</li>
-							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.biddingContactor" value="<s:property value='projectInfo.biddingContactor' />"/>
-							</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.biddingContact" value="<s:property value='projectInfo.biddingContact' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width7Lb">承接部门:</label>
-								<s:select cssClass="width100Select" id="projectInfo.dept.id" name="projectInfo.dept.id"
-										list="adminDeptList" listKey="id" listValue="name" multiple="false" required="true" headerKey="0" />
-							</li>
-							<li class="width250Li"><label class="width6Lb">部门流转单号:</label> <input
-								class="width150Input"
-								id="contractNumber"
-								name="projectInfo.deptTransferNumber" value="<s:property value='projectInfo.deptTransferNumber' />"/>
-							</li>
-							<li class="width200Li"><label class="width4Lb">负责人:</label>
-								<s:select cssClass="width100Select" id="projectInfo.owner.id" name="projectInfo.owner.id"
-										list="userInfoList" listKey="id" listValue="realName" multiple="false" required="true" headerKey="0" />	
-							</li>
-							<li class="width200Li"><label class="width4Lb">项目经理:</label>
-								<s:select cssClass="width100Select" id="projectInfo.manager.id" name="projectInfo.manager.id"
-										list="userInfoList" listKey="id" listValue="realName" multiple="false" required="true" headerKey="0" />	
-							</li>
-						</ul>
-						
-						<ul class="fullScreenUl">
-							<li class="width200Li" ><label class="width6Lb">项目性质:</label>
-								<select id="projectType" name="projectInfo.projectType" onChange="changeProjectType();">
-									<option value="预算审价">预算审价</option>
-									<option value="决算审价">决算审价</option>
-									<option value="招标代理">招标代理</option>
-									<option value="政府采购">政府采购</option>
-									<option value="投资监理">投资监理</option>
-									<option value="财务监理">财务监理</option>
-									<option value="工程咨询">工程咨询</option>
-							</select></li>
-							<li class="width400Li"><label class="width6Lb">服务内容:</label><input
-								class="width300Input"
-								name="projectInfo.projectTypeComment" value="<s:property value='projectInfo.projectTypeComment'/>"/>
-							</li>
-						</ul>
-						<div id="projectType1">
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">送审价:</label> <input
-								class="width100Input"
-								name="projectInfo.judgePrice1" value="<s:property value='projectInfo.judgePrice1'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">审定价:</label> <input
-								class="width100Input"
-								name="projectInfo.judgePrice2" value="<s:date name='projectInfo.judgePrice2' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">审定天数:</label> <input
-								class="width100Input"
-								name="projectInfo.judgeDays" value="<s:date name='projectInfo.judgeDays' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">报告日/文号:</label> <input
-								class="Wdate width100Input" name="projectInfo.reportDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.reportDate' format='yyyy-MM-dd' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">核增额:</label> <input
-								class="width100Input"
-								name="projectInfo.plusPrice" value="<s:property value='projectInfo.plusPrice'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">核减额:</label> <input
-								class="width100Input"
-								name="projectInfo.minusPrice" value="<s:property value='projectInfo.minusPrice'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">征询日/评价:</label> <input
-								class="width100Input"
-								name="projectInfo.comments" value="<s:property value='projectInfo.comments'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.achiveDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.achiveDatePage' format='yyyy-MM-dd' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">报告编号:</label> <input
-								class="width100Input"
-								name="projectInfo.reportNumber" value="<s:property value='projectInfo.reportNumber'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">总师审核:</label> <input
-								class="width100Input"
-								name="projectInfo.masterJudgeComments" value="<s:property value='projectInfo.masterJudgeComments'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
-								class="width100Input"
-								name="projectInfo.achiveReceiver" value="<s:property value='projectInfo.achiveReceiver'/>"/>
-							</li>
-						</ul></div>
-						<div id="projectType2" style="display:none;">
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
-								class="width100Input"
-								name="projectInfo.proxyInvest" value="<s:property value='projectInfo.proxyInvest'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">建安量:</label> <input
-								class="width100Input"
-								name="projectInfo.proxyQuantity" value="<s:property value='projectInfo.proxyQuantity'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">中标金额:</label> <input
-								class="width100Input"
-								name="projectInfo.proxyBiddingAmount" value="<s:property value='projectInfo.proxyBiddingAmount'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">征询单日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.proxyConsult"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.proxyConsultPage' format='yyyy-MM-dd' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">代理开始日:</label> <input
-								class="Wdate width100Input" name="projectInfo.proxyStartDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.proxyStartDate' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">开、评标日:</label> <input
-								class="Wdate width100Input" name="projectInfo.proxyOpenEvalDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.proxyOpenEvalDate' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">评价:</label> <input
-								class="width100Input"
-								name="projectInfo.proxyEvaluate" value="<s:property value='projectInfo.proxyEvaluate'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.proxyArchiveDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.proxyArchiveDate' format='yyyy-MM-dd' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">中标书编号:</label> <input
-								class="width100Input"
-								name="projectInfo.proxyBiddingIdentity" value="<s:property value='projectInfo.proxyBiddingIdentity'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">中标书发出:</label> <input
-								class="width100Input"
-								name="projectInfo.proxyBiddingSend" value="<s:property value='projectInfo.proxyBiddingSend'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
-								class="width100Input"
-								name="projectInfo.proxyArchiveRecipient" value="<s:property value='projectInfo.proxyArchiveRecipient'/>"/>
-							</li>
-						</ul></div>
-						<div id="projectType3" style="display:none;">
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
-								class="width100Input"
-								name="projectInfo.supervisorInvest" value="<s:property value='projectInfo.supervisorInvest'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">建安量:</label> <input
-								class="width100Input"
-								name="projectInfo.supervisorQuantity" value="<s:property value='projectInfo.supervisorQuantity'/>"/>
-							</li>
-							<li class="width400Li"><label class="width10Lb">投资监理大纲及成果:</label> <input
-								class="width250Input"
-								name="projectInfo.supervisorOutline" value="<s:property value='projectInfo.supervisorOutline'/>"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">开始日:</label>
-							<input class="Wdate width100Input" name="projectInfo.supervisorStartDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.supervisorStartDate' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">实际完成日:</label> 
-							<input class="Wdate width100Input" name="projectInfo.supervisorFinishDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.supervisorFinishDate' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.supervisorArchiveDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.supervisorArchiveDate' format='yyyy-MM-dd' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">征询评价1:</label> <input
-								class="width100Input"
-								name="projectInfo.supervisorConsultOne" value="<s:property value='projectInfo.supervisorConsultOne'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">征询评价2:</label> <input
-								class="width100Input"
-								name="projectInfo.supervisorConsultTwo" value="<s:property value='projectInfo.supervisorConsultTwo'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
-								class="width100Input"
-								name="projectInfo.supervisorArchiveRecipient" value="<s:property value='projectInfo.supervisorArchiveRecipient'/>"/>
-							</li>
-						</ul></div>
-						<div id="projectType4" style="display:none;">
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
-								class="width100Input"
-								name="projectInfo.consultInvest" value="<s:property value='projectInfo.consultInvest'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">建安量:</label> <input
-								class="width100Input"
-								name="projectInfo.consultQuantity" value="<s:property value='projectInfo.consultQuantity'/>"/>
-							</li>
-							<li class="width200Li"><label class="width9Lb">咨询成果主要内容:</label> <input
-								class="width250Input"
-								name="projectInfo.consultResultContent" value="<s:property value='projectInfo.consultResultContent'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">发布日:</label> <input
-								class="Wdate width100Input" name="projectInfo.consultAnnounceDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultAnnounceDate' format='yyyy-MM-dd' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">咨询开始日:</label> <input
-								class="Wdate width100Input" name="projectInfo.consultStartDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultStartDate' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">咨询完成日:</label> <input
-								class="Wdate width100Input" name="projectInfo.consultFinishDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultFinishDate' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.consultArchiveDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultArchiveDate' format='yyyy-MM-dd' />"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width6Lb">评审日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.consultReviewDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.consultReviewDate' format='yyyy-MM-dd' />"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">专家名单:</label> <input
-								class="width100Input"
-								name="projectInfo.consultExpertList" value="<s:property value='projectInfo.consultExpertList'/>"/>
-							</li>
-							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
-								class="width100Input"
-								name="projectInfo.consultArchiveRecipient" value="<s:property value='projectInfo.consultArchiveRecipient'/>"/>
-							</li>
-						</ul></div>
-						
-						<h4 class="title">项目附件信息</h4>
-						<div id="attachmentDIV">
-							<s:if test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
-								<s:iterator value="projectInfo.projectFiles" status="st">
-									<ul class="fullScreenUl">
-										<li class="width400Li"><a href="<s:property value='filePath' />" <s:if test="fileName.contains('.jpg') || fileName.contains('.JPG')">target="blank"</s:if> ><s:property value='fileName' /></a></li>
-										<li class="width200Li"><input type="hidden" id="projectInfo.oldFileName" name="projectInfo.oldFileName" value="<s:property value='fileName' />"/></li>
-										<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
-									</ul>
-								</s:iterator>
-							</s:if>
-							<input type="hidden" id="projectInfo.filePath" name="projectInfo.filePath" value="<s:property value='projectInfo.filePath' />"/>
-						</div>			
-						<ul class="fullScreenUl">
-							<li><input type="button" class="mediumLeftButton" onclick="addAttachment()" value="新增附件"></li>
-						</ul>
-						
-						<h4 class="title">项目状态信息</h4>						
-						<ul class="fullScreenUl">
-							<s:if test="projectInfo.status==0">
-								<li><label class="width6Lb">项目状态:</label>未提交</li>
-							</s:if>
-							<s:elseif test="projectInfo.status==1">
-								<li><label class="width6Lb">项目状态:</label>提交</li>
-								<li><label class="width6Lb">提交时间:</label><s:date name='projectInfo.submitTime' format='yyyy-MM-dd hh:mm:ss' /></li>
-							</s:elseif>
-							<s:elseif test="projectInfo.status==2">
-								<li><label class="width6Lb">项目状态:</label>部门经理审批通过</li>
-								<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.deptApproveTime' format='yyyy-MM-dd hh:mm:ss' /></li>
-							</s:elseif>
-							<s:elseif test="projectInfo.status==3">
-								<li><label class="width6Lb">项目状态:</label>总师审批通过</li>
-								<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.masterApproveTime' format='yyyy-MM-dd hh:mm:ss' /></li>
-							</s:elseif>
-							<s:elseif test="projectInfo.status==4">
-								<li><label class="width6Lb">项目状态:</label>总经理审批通过</li>
-								<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.managerApproveTIme' format='yyyy-MM-dd hh:mm:ss' /></li>
-							</s:elseif>
-							<s:elseif test="projectInfo.status==9">
-								<li><label class="width6Lb">项目状态:</label>结项</li>
-							</s:elseif>
-						</ul>
-						
-						<ul class="fullScreenUl">
-						<%
-								String userid = String.valueOf((Long) session
-										.getAttribute(Constants.LOGIN_USER_ID));
-								List<AdminMenu> menus = (List) CacheMap.getInstance().getCache(
-										Constants.MENU_CACHE + Constants.LOGIN_USER_ID + userid);
-								for (AdminMenu menu : menus) {
-									if (menu.getId() == 301) {
-										request.setAttribute("submitProject", true);
-									}
-									if (menu.getId() == 312) {
-										request.setAttribute("deptApprove", true);
-									}
-									if (menu.getId() == 313) {
-										request.setAttribute("masterApprove", true);
-									}
-									if (menu.getId() == 314) {
-										request.setAttribute("managerApprove", true);
-									}
-								}
-							%>
-						<s:if test="projectInfo.status==0 && #request.submitProject == true">
-							<li><input type="button" id="addProject"
-								class="mediumRightButton" 
-								onclick="modProjectInfo('1')" 
-								value="提交项目">
-								<input type="button" id="addProject"
-								class="mediumRightButton" 
-								onclick="modProjectInfo('0')"
-								value="保存">
-							</li>
-							</s:if>
-						<s:if test="projectInfo.status==1 && #request.deptApprove == true">
-							<li><input type="button" id="addProject"
-								class="mediumRightButton" 
-								onclick="modProjectInfo('0')"
-								value="审批不通过">
-								<input type="button" id="addProject"
-								class="mediumRightButton" 
-								onclick="modProjectInfo('2')" 
-								value="审批通过">
-							</li>
-						</s:if>
-						
-						<s:if test="projectInfo.status==2 && #request.masterApprove == true">
-							<li><input type="button" id="addProject"
-								class="mediumRightButton" 
-								onclick="modProjectInfo('1')"
-								value="审批不通过">
-								<input type="button" id="addProject"
-								class="mediumRightButton" 
-								onclick="modProjectInfo('3')" 
-								value="审批通过">
-								
-							</li>
-						</s:if>
-						
-						<s:if test="projectInfo.status==3 && #request.managerApprove == true">
-							<li><input type="button" id="addProject"
-								class="mediumRightButton" 
-								onclick="modProjectInfo('2')"
-								value="审批不通过">
-								<input type="button" id="addProject"
-								class="mediumRightButton" 
-								onclick="modProjectInfo('4')" 
-								value="审批通过">
-								
-							</li>
-						</s:if>
-							<li><input type="hidden" id="projectInfo.status" name="projectInfo.status" value="<s:property value='projectInfo.status'/>"/> </li>
-							<li><input type="hidden" id="projectInfo.submitTime" name="projectInfo.submitTime" value="<s:property value='projectInfo.submitTime'/>"/> </li>
-							<li><input type="hidden" id="projectInfo.deptApproveTime" name="projectInfo.deptApproveTime" value="<s:property value='projectInfo.deptApproveTime'/>"/> </li>
-							<li><input type="hidden" id="projectInfo.masterApproveTime" name="projectInfo.masterApproveTime" value="<s:property value='projectInfo.masterApproveTime'/>"/> </li>
-							<li><input type="hidden" id="projectInfo.managerApproveTIme" name="projectInfo.managerApproveTIme" value="<s:property value='projectInfo.managerApproveTIme'/>"/> </li>
-							<li><input type="hidden" id="status" name="status"/> </li>
-						</ul>
+						<s:form id="modForm" action="modProject.do"
+							enctype="multipart/form-data" method="post"
+							onsubmit="return validate(this);">
+							<h4 class="title">项目基本信息</h4>
+							<input type="hidden" name="projectInfo.queryType"
+								value="<s:property value='projectInfo.queryType'/>" />
+							<input type="hidden" name="projectInfo.id"
+								value="<s:property value='projectInfo.id'/>" />
+							<input type="hidden" name="projectInfo.submitter.id"
+								value="<s:property value='projectInfo.submitter.id'/>" />
+							<ul class="fullScreenUl">
+								<li class="width450Li"><label class="width4Lb">项目名称:</label>
+									<input <s:if test="projectInfo.status!=0">disabled</s:if>
+									class="width350Input" name="projectInfo.name"
+									value="<s:property value='projectInfo.name'/>" /> <textValidate
+										field="projectInfo.name" lableText="<s:text name='项目名称' />"
+										isValidate="true" min="0" max="100">
+								</li>
+								<li class="width400Li"><label class="width4Lb">项目编号:</label>
+									<input class="width300Input" name="projectInfo.number"
+									value="<s:property value='projectInfo.number'/>" /></li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width200Li"><label class="width4Lb">工程专业:</label>
+									<select id="majorType" name="projectInfo.majorType"
+									<s:if test="projectInfo.status!=0">disabled</s:if>>
+										<option value="土建">土建</option>
+										<option value="园林">园林</option>
+										<option value="市政">市政</option>
+										<option value="安装">安装</option>
+										<option value="公用">公用</option>
+										<option value="水利">水利</option>
+										<option value="人防">人防</option>
+										<option value="房修">房修</option>
+								</select></li>
+								<li class="width250Li"><label class="width4Lb">计价模式:</label>
+									<select id="valuationType" name="projectInfo.valuationType"
+									<s:if test="projectInfo.status!=0">disabled</s:if>>
+										<option value="清单">清单</option>
+										<option value="2000定额">2000定额</option>
+										<option value="其他">其他</option>
+								</select></li>
+								<li class="width250Li"><label class="width4Lb">开始时间:</label>
+									<input class="Wdate width150Input" name="projectInfo.startDate"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+									value="<s:date name='projectInfo.startDate' format='yyyy-MM-dd' />" />
+								</li>
+								<li class="width200Li"><label class="width4Lb">质量要求:</label>
+									<input class="width100Input" name="projectInfo.quality"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.quality' />" /></li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width450Li"><label class="width7Lb">委托(建设)单位:</label>
+									<input class="width350Input" name="projectInfo.customerCompany"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.customerCompany' />" />
+								</li>
+								<li class="width250Li"><label class="width4Lb">联系人:</label>
+									<input class="width150Input"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									name="projectInfo.customerContactor"
+									value="<s:property value='projectInfo.customerContactor' />" />
+								</li>
+								<li class="width200Li"><label class="width2Lb">电话:</label>
+									<input class="width150Input" name="projectInfo.customerContact"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.customerContact' />" />
+								</li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width450Li"><label class="width7Lb">相关(关系)单位:</label>
+									<input class="width350Input" name="projectInfo.mediatorCompany"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.mediatorCompany' />" />
+								</li>
+								<li class="width250Li"><label class="width4Lb">联系人:</label>
+									<input class="width150Input"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									name="projectInfo.mediatorContactor"
+									value="<s:property value='projectInfo.mediatorContactor' />" />
+								</li>
+								<li class="width200Li"><label class="width2Lb">电话:</label>
+									<input class="width150Input" name="projectInfo.mediatorContact"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.mediatorContact' />" />
+								</li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width450Li"><label class="width7Lb">送审(施工)单位:</label>
+									<input class="width350Input" name="projectInfo.vendorCompany"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.vendorCompany' />" /></li>
+								<li class="width250Li"><label class="width4Lb">联系人:</label>
+									<input class="width150Input" name="projectInfo.vendorContactor"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.vendorContactor' />" />
+								</li>
+								<li class="width200Li"><label class="width2Lb">电话:</label>
+									<input class="width150Input" name="projectInfo.vendorContact"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.vendorContact' />" /></li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width450Li"><label class="width7Lb">中标单位:</label>
+									<input class="width350Input" name="projectInfo.biddingCompany"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.biddingCompany' />" /></li>
+								<li class="width250Li"><label class="width4Lb">联系人:</label>
+									<input class="width150Input"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									name="projectInfo.biddingContactor"
+									value="<s:property value='projectInfo.biddingContactor' />" />
+								</li>
+								<li class="width200Li"><label class="width2Lb">电话:</label>
+									<input class="width150Input" name="projectInfo.biddingContact"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									value="<s:property value='projectInfo.biddingContact' />" /></li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width200Li"><label class="width7Lb">承接部门:</label>
+									<s:if test="projectInfo.status!=0">
+										<s:select cssClass="width100Select" id="projectInfo.dept.id"
+											disabled = "true" name="projectInfo.dept.id"
+											list="adminDeptList" listKey="id" listValue="name"
+											multiple="false" required="true" headerKey="0" />
+									</s:if> <s:if test="projectInfo.status==0">
+										<s:select cssClass="width100Select" id="projectInfo.dept.id"
+											name="projectInfo.dept.id" list="adminDeptList" listKey="id"
+											listValue="name" multiple="false" required="true"
+											headerKey="0" />
+									</s:if>
+								</li>
+								<li class="width250Li"><label class="width6Lb">部门流转单号:</label>
+									<input class="width150Input" id="contractNumber"
+									<s:if test="projectInfo.status!=0">disabled</s:if>
+									name="projectInfo.deptTransferNumber"
+									value="<s:property value='projectInfo.deptTransferNumber' />" />
+								</li>
+								<li class="width200Li"><label class="width4Lb">负责人:</label>
+									<s:if test="projectInfo.status!=0">
+										<s:select cssClass="width100Select" id="projectInfo.owner.id"
+											disabled = "true" name="projectInfo.owner.id"
+											list="userInfoList" listKey="id" listValue="realName"
+											multiple="false" required="true" headerKey="0" />
+									</s:if> <s:if test="projectInfo.status==0">
+										<s:select cssClass="width100Select" id="projectInfo.owner.id"
+											name="projectInfo.owner.id" list="userInfoList" listKey="id"
+											listValue="realName" multiple="false" required="true"
+											headerKey="0" />
+									</s:if></li>
+								<li class="width200Li"><label class="width4Lb">项目经理:</label>
+									<s:if test="projectInfo.status!=0">
+										<s:select cssClass="width100Select"
+											id="projectInfo.manager.id" disabled = "true"
+											name="projectInfo.manager.id" list="userInfoList"
+											listKey="id" listValue="realName" multiple="false"
+											required="true" headerKey="0" />
+									</s:if> <s:if test="projectInfo.status==0">
+										<s:select cssClass="width100Select"
+											id="projectInfo.manager.id" name="projectInfo.manager.id"
+											list="userInfoList" listKey="id" listValue="realName"
+											multiple="false" required="true" headerKey="0" />
+									</s:if></li>
+							</ul>
+
+							<ul class="fullScreenUl">
+								<li class="width200Li"><label class="width6Lb">项目性质:</label>
+									<select id="projectType" name="projectInfo.projectType"
+									onChange="changeProjectType();">
+										<option value="预算审价">预算审价</option>
+										<option value="决算审价">决算审价</option>
+										<option value="招标代理">招标代理</option>
+										<option value="政府采购">政府采购</option>
+										<option value="投资监理">投资监理</option>
+										<option value="财务监理">财务监理</option>
+										<option value="工程咨询">工程咨询</option>
+								</select>
+								</li>
+								<li class="width400Li"><label class="width6Lb">服务内容:</label><input
+									class="width300Input" name="projectInfo.projectTypeComment"
+									value="<s:property value='projectInfo.projectTypeComment'/>" />
+								</li>
+							</ul>
+							<div id="projectType1">
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">送审价:</label>
+										<input class="width100Input" name="projectInfo.judgePrice1"
+										value="<s:property value='projectInfo.judgePrice1'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">审定价:</label>
+										<input class="width100Input" name="projectInfo.judgePrice2"
+										value="<s:date name='projectInfo.judgePrice2' format='yyyy-MM-dd' />" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">审定天数:</label>
+										<input class="width100Input" name="projectInfo.judgeDays"
+										value="<s:date name='projectInfo.judgeDays' format='yyyy-MM-dd' />" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">报告日/文号:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.reportDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.reportDate' format='yyyy-MM-dd' />" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">核增额:</label>
+										<input class="width100Input" name="projectInfo.plusPrice"
+										value="<s:property value='projectInfo.plusPrice'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">核减额:</label>
+										<input class="width100Input" name="projectInfo.minusPrice"
+										value="<s:property value='projectInfo.minusPrice'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">征询日/评价:</label>
+										<input class="width100Input" name="projectInfo.comments"
+										value="<s:property value='projectInfo.comments'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">归档日期:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.achiveDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.achiveDatePage' format='yyyy-MM-dd' />" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">报告编号:</label>
+										<input class="width100Input" name="projectInfo.reportNumber"
+										value="<s:property value='projectInfo.reportNumber'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">总师审核:</label>
+										<input class="width100Input"
+										name="projectInfo.masterJudgeComments"
+										value="<s:property value='projectInfo.masterJudgeComments'/>" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">档案接收人:</label>
+										<input class="width100Input" name="projectInfo.achiveReceiver"
+										value="<s:property value='projectInfo.achiveReceiver'/>" /></li>
+								</ul>
+							</div>
+							<div id="projectType2" style="display: none;">
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">总投资:</label>
+										<input class="width100Input" name="projectInfo.proxyInvest"
+										value="<s:property value='projectInfo.proxyInvest'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">建安量:</label>
+										<input class="width100Input" name="projectInfo.proxyQuantity"
+										value="<s:property value='projectInfo.proxyQuantity'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">中标金额:</label>
+										<input class="width100Input"
+										name="projectInfo.proxyBiddingAmount"
+										value="<s:property value='projectInfo.proxyBiddingAmount'/>" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">征询单日期:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.proxyConsult"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.proxyConsultPage' format='yyyy-MM-dd' />" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">代理开始日:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.proxyStartDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.proxyStartDate' format='yyyy-MM-dd' />" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">开、评标日:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.proxyOpenEvalDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.proxyOpenEvalDate' format='yyyy-MM-dd' />" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">评价:</label>
+										<input class="width100Input" name="projectInfo.proxyEvaluate"
+										value="<s:property value='projectInfo.proxyEvaluate'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">归档日期:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.proxyArchiveDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.proxyArchiveDate' format='yyyy-MM-dd' />" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">中标书编号:</label>
+										<input class="width100Input"
+										name="projectInfo.proxyBiddingIdentity"
+										value="<s:property value='projectInfo.proxyBiddingIdentity'/>" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">中标书发出:</label>
+										<input class="width100Input"
+										name="projectInfo.proxyBiddingSend"
+										value="<s:property value='projectInfo.proxyBiddingSend'/>" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">档案接收人:</label>
+										<input class="width100Input"
+										name="projectInfo.proxyArchiveRecipient"
+										value="<s:property value='projectInfo.proxyArchiveRecipient'/>" />
+									</li>
+								</ul>
+							</div>
+							<div id="projectType3" style="display: none;">
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">总投资:</label>
+										<input class="width100Input"
+										name="projectInfo.supervisorInvest"
+										value="<s:property value='projectInfo.supervisorInvest'/>" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">建安量:</label>
+										<input class="width100Input"
+										name="projectInfo.supervisorQuantity"
+										value="<s:property value='projectInfo.supervisorQuantity'/>" />
+									</li>
+									<li class="width400Li"><label class="width10Lb">投资监理大纲及成果:</label>
+										<input class="width250Input"
+										name="projectInfo.supervisorOutline"
+										value="<s:property value='projectInfo.supervisorOutline'/>" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">开始日:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.supervisorStartDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.supervisorStartDate' format='yyyy-MM-dd' />" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">实际完成日:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.supervisorFinishDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.supervisorFinishDate' format='yyyy-MM-dd' />" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">归档日期:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.supervisorArchiveDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.supervisorArchiveDate' format='yyyy-MM-dd' />" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">征询评价1:</label>
+										<input class="width100Input"
+										name="projectInfo.supervisorConsultOne"
+										value="<s:property value='projectInfo.supervisorConsultOne'/>" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">征询评价2:</label>
+										<input class="width100Input"
+										name="projectInfo.supervisorConsultTwo"
+										value="<s:property value='projectInfo.supervisorConsultTwo'/>" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">档案接收人:</label>
+										<input class="width100Input"
+										name="projectInfo.supervisorArchiveRecipient"
+										value="<s:property value='projectInfo.supervisorArchiveRecipient'/>" />
+									</li>
+								</ul>
+							</div>
+							<div id="projectType4" style="display: none;">
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">总投资:</label>
+										<input class="width100Input" name="projectInfo.consultInvest"
+										value="<s:property value='projectInfo.consultInvest'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">建安量:</label>
+										<input class="width100Input"
+										name="projectInfo.consultQuantity"
+										value="<s:property value='projectInfo.consultQuantity'/>" />
+									</li>
+									<li class="width200Li"><label class="width9Lb">咨询成果主要内容:</label>
+										<input class="width250Input"
+										name="projectInfo.consultResultContent"
+										value="<s:property value='projectInfo.consultResultContent'/>" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">发布日:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.consultAnnounceDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.consultAnnounceDate' format='yyyy-MM-dd' />" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">咨询开始日:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.consultStartDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.consultStartDate' format='yyyy-MM-dd' />" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">咨询完成日:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.consultFinishDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.consultFinishDate' format='yyyy-MM-dd' />" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">归档日期:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.consultArchiveDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.consultArchiveDate' format='yyyy-MM-dd' />" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">评审日期:</label>
+										<input class="Wdate width100Input"
+										name="projectInfo.consultReviewDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.consultReviewDate' format='yyyy-MM-dd' />" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">专家名单:</label>
+										<input class="width100Input"
+										name="projectInfo.consultExpertList"
+										value="<s:property value='projectInfo.consultExpertList'/>" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">档案接收人:</label>
+										<input class="width100Input"
+										name="projectInfo.consultArchiveRecipient"
+										value="<s:property value='projectInfo.consultArchiveRecipient'/>" />
+									</li>
+								</ul>
+							</div>
+
+							<h4 class="title">项目附件信息</h4>
+							<div id="attachmentDIV">
+								<s:if
+									test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
+									<s:iterator value="projectInfo.projectFiles" status="st">
+										<ul class="fullScreenUl">
+											<li class="width400Li"><a
+												href="<s:property value='filePath' />"
+												<s:if test="fileName.contains('.jpg') || fileName.contains('.JPG')">target="blank"</s:if>><s:property
+														value='fileName' /> </a>
+											</li>
+											<li class="width200Li"><input type="hidden"
+												id="projectInfo.oldFileName" name="projectInfo.oldFileName"
+												value="<s:property value='fileName' />" />
+											</li>
+											<li><input type="button" class="mediumLeftButton"
+												onclick="delAttachment(this)" value="删除">
+											</li>
+										</ul>
+									</s:iterator>
+								</s:if>
+								<input type="hidden" id="projectInfo.filePath"
+									name="projectInfo.filePath"
+									value="<s:property value='projectInfo.filePath' />" />
+							</div>
+							<ul class="fullScreenUl">
+								<li><input type="button" class="mediumLeftButton"
+									onclick="addAttachment()" value="新增附件">
+								</li>
+							</ul>
+
+							<h4 class="title">项目状态信息</h4>
+							<ul class="fullScreenUl">
+								<s:if test="projectInfo.status==0">
+									<li><label class="width6Lb">项目状态:</label>未提交</li>
+								</s:if>
+								<s:elseif test="projectInfo.status==1">
+									<li><label class="width6Lb">项目状态:</label>提交</li>
+									<li><label class="width6Lb">提交时间:</label> <s:date
+											name='projectInfo.submitTime' format='yyyy-MM-dd hh:mm:ss' />
+									</li>
+								</s:elseif>
+								<s:elseif test="projectInfo.status==2">
+									<li><label class="width6Lb">项目状态:</label>部门经理审批通过</li>
+									<li><label class="width6Lb">审批时间:</label> <s:date
+											name='projectInfo.deptApproveTime'
+											format='yyyy-MM-dd hh:mm:ss' />
+									</li>
+								</s:elseif>
+								<s:elseif test="projectInfo.status==3">
+									<li><label class="width6Lb">项目状态:</label>总师审批通过</li>
+									<li><label class="width6Lb">审批时间:</label> <s:date
+											name='projectInfo.masterApproveTime'
+											format='yyyy-MM-dd hh:mm:ss' />
+									</li>
+								</s:elseif>
+								<s:elseif test="projectInfo.status==4">
+									<li><label class="width6Lb">项目状态:</label>总经理审批通过</li>
+									<li><label class="width6Lb">审批时间:</label> <s:date
+											name='projectInfo.managerApproveTIme'
+											format='yyyy-MM-dd hh:mm:ss' />
+									</li>
+								</s:elseif>
+								<s:elseif test="projectInfo.status==9">
+									<li><label class="width6Lb">项目状态:</label>结项</li>
+								</s:elseif>
+							</ul>
+
+							<ul class="fullScreenUl">
+								<%
+									String userid = String.valueOf((Long) session
+												.getAttribute(Constants.LOGIN_USER_ID));
+										List<AdminMenu> menus = (List) CacheMap.getInstance()
+												.getCache(
+														Constants.MENU_CACHE + Constants.LOGIN_USER_ID
+																+ userid);
+										for (AdminMenu menu : menus) {
+											if (menu.getId() == 301) {
+												request.setAttribute("submitProject", true);
+											}
+											if (menu.getId() == 312) {
+												request.setAttribute("deptApprove", true);
+											}
+											if (menu.getId() == 313) {
+												request.setAttribute("masterApprove", true);
+											}
+											if (menu.getId() == 314) {
+												request.setAttribute("managerApprove", true);
+											}
+										}
+								%>
+								<s:if
+									test="projectInfo.status==0 && #request.submitProject == true">
+									<li><input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('1')"
+										value="提交项目"> <input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('0')"
+										value="保存"></li>
+								</s:if>
+								<s:if
+									test="projectInfo.status==1 && #request.deptApprove == true">
+									<li><input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('0')"
+										value="审批不通过"> <input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('2')"
+										value="审批通过"></li>
+								</s:if>
+
+								<s:if
+									test="projectInfo.status==2 && #request.masterApprove == true">
+									<li><input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('1')"
+										value="审批不通过"> <input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('3')"
+										value="审批通过"></li>
+								</s:if>
+
+								<s:if
+									test="projectInfo.status==3 && #request.managerApprove == true">
+									<li><input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('2')"
+										value="审批不通过"> <input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('4')"
+										value="审批通过"></li>
+								</s:if>
+								<li><input type="hidden" id="projectInfo.status"
+									name="projectInfo.status"
+									value="<s:property value='projectInfo.status'/>" /></li>
+								<li><input type="hidden" id="projectInfo.submitTime"
+									name="projectInfo.submitTime"
+									value="<s:property value='projectInfo.submitTime'/>" /></li>
+								<li><input type="hidden" id="projectInfo.deptApproveTime"
+									name="projectInfo.deptApproveTime"
+									value="<s:property value='projectInfo.deptApproveTime'/>" /></li>
+								<li><input type="hidden" id="projectInfo.masterApproveTime"
+									name="projectInfo.masterApproveTime"
+									value="<s:property value='projectInfo.masterApproveTime'/>" />
+								</li>
+								<li><input type="hidden"
+									id="projectInfo.managerApproveTIme"
+									name="projectInfo.managerApproveTIme"
+									value="<s:property value='projectInfo.managerApproveTIme'/>" />
+								</li>
+								<li><input type="hidden" id="status" name="status" /></li>
+							</ul>
 						</s:form>
 						<ul id="attachmentUL" class="fullScreenUl" style="display: none">
-							<li class="width300Li">
-								<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile(this)" />
-								<input type="hidden" name="projectInfo.fileName" id="projectInfo.fileName">
+							<li class="width300Li"><s:file name="uploadFiles"
+									id="uploadFiles" size="30" onchange="chooseFile(this)" /> <input
+								type="hidden" name="projectInfo.fileName"
+								id="projectInfo.fileName"></li>
+							<li><input type="button" class="mediumLeftButton"
+								onclick="delAttachment(this)" value="删除">
 							</li>
-							<li><input type="button" class="mediumLeftButton" onclick="delAttachment(this)" value="删除"></li>
 						</ul>
 					</div>
 					<div></div>
