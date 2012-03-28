@@ -8,6 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>上海建惠建设咨询有限公司</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
 	function setSelectValue()
@@ -73,67 +74,78 @@ h4 {
 .width50Li {
 	float: left;
 	width: 50px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width100Li {
 	float: left;
 	width: 100px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width150Li {
 	float: left;
 	width: 150px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width200Li {
 	float: left;
 	width: 200px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width250Li {
 	float: left;
 	width: 250px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width300Li {
 	float: left;
 	width: 300px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width350Li {
 	float: left;
 	width: 350px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width400Li {
 	float: left;
 	width: 400px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width450Li {
 	float: left;
 	width: 450px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width500Li {
 	float: left;
 	width: 500px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .width600Li {
 	float: left;
 	width: 600px;
-	min-height: 21px;
+	min-height: 29px;
+	
 }
 
 .widthAutoLi {
@@ -146,61 +158,61 @@ h4 {
 						<div id="addProjectTable">
 							<h4 class="title">项目基本信息</h4>
 							<ul class="fullScreenUl">
-								<li class="width450Li"><label class="width4Lb">项目名称:</label>
+								<li class="width450Li" ><label class="width4Lb">项目名称:</label>
 								<s:property value='projectInfo.name' /></li>
-								<li class="width400Li"><label class="width4Lb">项目编号:</label>
+								<li class="width400Li" ><label class="width4Lb">项目编号:</label>
 								<s:property value='projectInfo.number' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width200Li"><label class="width4Lb">工程专业:</label>
+								<li class="width200Li" ><label class="width4Lb">工程专业:</label>
 								<s:property value='projectInfo.majorType' /></li>
-								<li class="width250Li"><label class="width4Lb">计价模式:</label>
+								<li class="width250Li" ><label class="width4Lb">计价模式:</label>
 								<s:property value='projectInfo.valuationType' /></li>
-								<li class="width250Li"><label class="width4Lb">开始时间:</label>
+								<li class="width200Li" ><label class="width4Lb">开始时间:</label>
 								<s:date name='projectInfo.startDate' format='yyyy-MM-dd' /></li>
-								<li class="width200Li"><label class="width4Lb">质量要求:</label>
+								<li class="width200Li" ><label class="width4Lb">质量要求:</label>
 								<s:property value='projectInfo.quality' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width450Li"><label class="width7Lb">委托(建设)单位:</label>
+								<li class="width450Li" ><label class="width7Lb">委托(建设)单位:</label>
 								<s:property value='projectInfo.customerCompany' /></li>
-								<li class="width250Li"><label class="width4Lb">联系人:</label>
+								<li class="width200Li" ><label class="width4Lb">联系人:</label>
 								<s:property value='projectInfo.customerContactor' /></li>
-								<li class="width200Li"><label class="width2Lb">电话:</label>
+								<li class="width200Li" ><label class="width2Lb">电话:</label>
 								<s:property value='projectInfo.customerContact' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width450Li"><label class="width7Lb">相关(关系)单位:</label>
+								<li class="width450Li" ><label class="width7Lb">相关(关系)单位:</label>
 								<s:property value='projectInfo.mediatorCompany' /></li>
-								<li class="width250Li"><label class="width4Lb">联系人:</label>
+								<li class="width200Li" ><label class="width4Lb">联系人:</label>
 								<s:property value='projectInfo.mediatorContactor' /></li>
-								<li class="width200Li"><label class="width2Lb">电话:</label>
+								<li class="width200Li" ><label class="width2Lb">电话:</label>
 								<s:property value='projectInfo.mediatorContact' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width450Li"><label class="width7Lb">送审(施工)单位:</label>
+								<li class="width450Li" ><label class="width7Lb">送审(施工)单位:</label>
 								<s:property value='projectInfo.vendorCompany' /></li>
-								<li class="width250Li"><label class="width4Lb">联系人:</label>
+								<li class="width200Li" ><label class="width4Lb">联系人:</label>
 								<s:property value='projectInfo.vendorContactor' /></li>
-								<li class="width200Li"><label class="width2Lb">电话:</label>
+								<li class="width200Li" ><label class="width2Lb">电话:</label>
 								<s:property value='projectInfo.vendorContact' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width450Li"><label class="width7Lb">中标单位:</label>
+								<li class="width450Li" ><label class="width7Lb">中标单位:</label>
 								<s:property value='projectInfo.biddingCompany' /></li>
-								<li class="width250Li"><label class="width4Lb">联系人:</label>
+								<li class="width200Li" ><label class="width4Lb">联系人:</label>
 								<s:property value='projectInfo.biddingContactor' /></li>
-								<li class="width200Li"><label class="width2Lb">电话:</label>
+								<li class="width200Li" ><label class="width2Lb">电话:</label>
 								<s:property value='projectInfo.vendorContact' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width200Li"><label class="width7Lb">承接部门:</label>
+								<li class="width200Li" ><label class="width7Lb">承接部门:</label>
 								<s:property value='projectInfo.dept.name' /></li>
-								<li class="width250Li"><label class="width6Lb">部门流转单号:</label>
+								<li class="width250Li" ><label class="width6Lb">部门流转单号:</label>
 								<s:property value='projectInfo.deptTransferNumber' /></li>
-								<li class="width200Li"><label class="width4Lb">负责人:</label>
+								<li class="width200Li" ><label class="width4Lb">负责人:</label>
 								<s:property value='projectInfo.owner.realName' /></li>
-								<li class="width200Li"><label class="width4Lb">项目经理:</label>
+								<li class="width200Li" ><label class="width4Lb">项目经理:</label>
 								<s:property value='projectInfo.manager.realName' /></li>
 							</ul>
 							
@@ -691,7 +703,7 @@ h4 {
  		prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); 
  		window.document.body.innerHTML=prnhtml; 
  		window.print(); 
- 		setTimeout("window.document.body.innerHTML=currentHtml",3000);
+ 		setTimeout("window.document.body.innerHTML=currentHtml",1000);
  	}
 
  	function downloadFile(filePath,fileName){
