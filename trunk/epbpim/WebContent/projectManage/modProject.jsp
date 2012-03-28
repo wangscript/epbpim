@@ -102,7 +102,7 @@
 								</li>
 								<li class="width400Li"><label class="width4Lb">项目编号:</label>
 									<input class="width300Input" name="projectInfo.number"
-									<s:if test="projectInfo.status!=4">disabled</s:if>
+									<s:if test="(projectInfo.status!=4)||(projectInfo.status!=5)">disabled</s:if>
 									value="<s:property value='projectInfo.number'/>" /></li>
 							</ul>
 							<ul class="fullScreenUl">
@@ -207,7 +207,7 @@
 								<li class="width200Li"><label class="width7Lb">承接部门:</label>
 									<s:if test="projectInfo.status!=0">
 										<s:select cssClass="width100Select" id="projectInfo.dept.id"
-											disabled = "true" name="projectInfo.dept.id"
+											disabled="true" name="projectInfo.dept.id"
 											list="adminDeptList" listKey="id" listValue="name"
 											multiple="false" required="true" headerKey="0" />
 									</s:if> <s:if test="projectInfo.status==0">
@@ -226,7 +226,7 @@
 								<li class="width200Li"><label class="width4Lb">负责人:</label>
 									<s:if test="projectInfo.status!=0">
 										<s:select cssClass="width100Select" id="projectInfo.owner.id"
-											disabled = "true" name="projectInfo.owner.id"
+											disabled="true" name="projectInfo.owner.id"
 											list="userInfoList" listKey="id" listValue="realName"
 											multiple="false" required="true" headerKey="0" />
 									</s:if> <s:if test="projectInfo.status==0">
@@ -238,7 +238,7 @@
 								<li class="width200Li"><label class="width4Lb">项目经理:</label>
 									<s:if test="projectInfo.status!=0">
 										<s:select cssClass="width100Select"
-											id="projectInfo.manager.id" disabled = "true"
+											id="projectInfo.manager.id" disabled="true"
 											name="projectInfo.manager.id" list="userInfoList"
 											listKey="id" listValue="realName" multiple="false"
 											required="true" headerKey="0" />
@@ -587,6 +587,9 @@
 											if (menu.getId() == 314) {
 												request.setAttribute("managerApprove", true);
 											}
+											if (menu.getId() == 315) {
+												request.setAttribute("directorFillNo", true);
+											}
 										}
 								%>
 								<s:if
@@ -623,6 +626,17 @@
 										class="mediumRightButton" onclick="modProjectInfo('4')"
 										value="审批通过"></li>
 								</s:if>
+
+								<s:if
+									test="projectInfo.status==4 && #request.directorFillNo == true">
+									<li><input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('5')"
+										value="保存"></li>
+								</s:if>
+
+
+
+
 								<li><input type="hidden" id="projectInfo.status"
 									name="projectInfo.status"
 									value="<s:property value='projectInfo.status'/>" /></li>
