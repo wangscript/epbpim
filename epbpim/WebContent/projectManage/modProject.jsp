@@ -600,6 +600,14 @@
 										class="mediumRightButton" onclick="modProjectInfo('0')"
 										value="保存"></li>
 								</s:if>
+								
+								<s:if
+									test="projectInfo.status==5 && #request.submitProject == true">
+									<li><input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('5')"
+										value="保存"></li>
+								</s:if>
+								
 								<s:if
 									test="projectInfo.status==1 && #request.deptApprove == true">
 									<li><input type="button" id="addProject"
