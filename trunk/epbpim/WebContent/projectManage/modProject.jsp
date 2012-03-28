@@ -593,7 +593,7 @@
 										}
 								%>
 								<s:if
-									test="projectInfo.status==0 && #request.submitProject == true">
+									test="projectInfo.status==0 && #request.submitProject == true && projectInfo.submiter==#userid" >
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('1')"
 										value="提交项目"> <input type="button" id="addProject"
