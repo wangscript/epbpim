@@ -574,6 +574,7 @@
 												.getCache(
 														Constants.MENU_CACHE + Constants.LOGIN_USER_ID
 																+ userid);
+										request.setAttribute("userid", userid);
 										for (AdminMenu menu : menus) {
 											if (menu.getId() == 301) {
 												request.setAttribute("submitProject", true);
@@ -593,7 +594,7 @@
 										}
 								%>
 								<s:if
-									test="projectInfo.status==0 && #request.submitProject == true && projectInfo.submitter.id==#userid" >
+									test="projectInfo.status==0 && #request.submitProject == true && projectInfo.submitter.id==#request.userid" >
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('1')"
 										value="提交项目"> <input type="button" id="addProject"
