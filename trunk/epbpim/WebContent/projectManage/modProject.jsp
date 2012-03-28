@@ -102,6 +102,7 @@
 								</li>
 								<li class="width400Li"><label class="width4Lb">项目编号:</label>
 									<input class="width300Input" name="projectInfo.number"
+									<s:if test="projectInfo.status!=4">disabled</s:if>
 									value="<s:property value='projectInfo.number'/>" /></li>
 							</ul>
 							<ul class="fullScreenUl">
