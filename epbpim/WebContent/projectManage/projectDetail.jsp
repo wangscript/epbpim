@@ -9,7 +9,6 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>项目详情</title>
 <script type="text/javascript">
 	function setSelectValue()
 	{
@@ -142,7 +141,8 @@ h4 {
 	width: auto;
 }
 </style>
-						<h3 class="title">项目详情</h3>
+						<h2 class="middle_title" style="margin-left:300px">上海建惠建设咨询有限公司</h2>
+						<h3 class="middle_title" style="margin-left:350px"><s:property value='projectInfo.projectType' />项目计划任务书</h3>
 						<div id="addProjectTable">
 							<h4 class="title">项目基本信息</h4>
 							<ul class="fullScreenUl">
