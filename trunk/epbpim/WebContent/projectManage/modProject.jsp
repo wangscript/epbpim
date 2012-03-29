@@ -103,8 +103,7 @@
 								<li class="width400Li"><label class="width4Lb">项目编号:</label>
 									<input class="width300Input" name="projectInfo.number"
 									<s:if test="(projectInfo.status!=4)||(projectInfo.status!=5)">readonly</s:if>
-									value="<s:property value='projectInfo.number'/>" />
-								</li>
+									value="<s:property value='projectInfo.number'/>" /></li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width200Li"><label class="width4Lb">工程专业:</label>
@@ -121,8 +120,7 @@
 								</select> <s:if test="projectInfo.status!=0">
 										<input type="hidden" name="projectInfo.majorType"
 											value="<s:property value='projectInfo.majorType'/>">
-									</s:if>
-								</li>
+									</s:if></li>
 								<li class="width250Li"><label class="width4Lb">计价模式:</label>
 									<select id="valuationType" name="projectInfo.valuationType"
 									<s:if test="projectInfo.status!=0">disabled</s:if>>
@@ -132,7 +130,8 @@
 								</select> <s:if test="projectInfo.status!=0">
 										<input type="hidden" name="projectInfo.valuationType"
 											value="<s:property value='projectInfo.valuationType'/>">
-									</s:if></li>
+									</s:if>
+								</li>
 								<li class="width250Li"><label class="width4Lb">开始时间:</label>
 									<input class="Wdate width150Input" name="projectInfo.startDate"
 									<s:if test="projectInfo.status!=0">readonly</s:if>
@@ -142,8 +141,7 @@
 								<li class="width200Li"><label class="width4Lb">质量要求:</label>
 									<input class="width100Input" name="projectInfo.quality"
 									<s:if test="projectInfo.status!=0">readonly</s:if>
-									value="<s:property value='projectInfo.quality' />" />
-								</li>
+									value="<s:property value='projectInfo.quality' />" /></li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width450Li"><label class="width7Lb">委托(建设)单位:</label>
@@ -185,8 +183,7 @@
 								<li class="width450Li"><label class="width7Lb">送审(施工)单位:</label>
 									<input class="width350Input" name="projectInfo.vendorCompany"
 									<s:if test="projectInfo.status!=0">readonly</s:if>
-									value="<s:property value='projectInfo.vendorCompany' />" />
-								</li>
+									value="<s:property value='projectInfo.vendorCompany' />" /></li>
 								<li class="width250Li"><label class="width4Lb">联系人:</label>
 									<input class="width150Input" name="projectInfo.vendorContactor"
 									<s:if test="projectInfo.status!=0">readonly</s:if>
@@ -195,15 +192,13 @@
 								<li class="width200Li"><label class="width2Lb">电话:</label>
 									<input class="width150Input" name="projectInfo.vendorContact"
 									<s:if test="projectInfo.status!=0">readonly</s:if>
-									value="<s:property value='projectInfo.vendorContact' />" />
-								</li>
+									value="<s:property value='projectInfo.vendorContact' />" /></li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width450Li"><label class="width7Lb">中标单位:</label>
 									<input class="width350Input" name="projectInfo.biddingCompany"
 									<s:if test="projectInfo.status!=0">readonly</s:if>
-									value="<s:property value='projectInfo.biddingCompany' />" />
-								</li>
+									value="<s:property value='projectInfo.biddingCompany' />" /></li>
 								<li class="width250Li"><label class="width4Lb">联系人:</label>
 									<input class="width150Input"
 									<s:if test="projectInfo.status!=0">readonly</s:if>
@@ -213,22 +208,23 @@
 								<li class="width200Li"><label class="width2Lb">电话:</label>
 									<input class="width150Input" name="projectInfo.biddingContact"
 									<s:if test="projectInfo.status!=0">readonly</s:if>
-									value="<s:property value='projectInfo.biddingContact' />" />
-								</li>
+									value="<s:property value='projectInfo.biddingContact' />" /></li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width200Li"><label class="width7Lb">承接部门:</label>
 									<select id="projectInfo.dept.id" name="projectInfo.dept.id"
 									<s:if test="projectInfo.status!=0">disabled</s:if>>
 										<s:iterator value="adminDeptList" status="st">
-											<option value="dept.id">
+											<option value="<s:property value='id' />"
+											<s:if test="id==projectInfo.dept.id">selected</s:if>>
 												<s:property value="name" />
 											</option>
 										</s:iterator>
 								</select> <s:if test="projectInfo.status!=0">
 										<input type="hidden" name="projectInfo.dept.id"
 											value="<s:property value='projectInfo.dept.id'/>">
-									</s:if></li>
+									</s:if>
+								</li>
 								<li class="width250Li"><label class="width6Lb">部门流转单号:</label>
 									<input class="width150Input" id="contractNumber"
 									<s:if test="projectInfo.status!=0">readonly</s:if>
@@ -239,27 +235,31 @@
 									<select id="projectInfo.owner.id" name="projectInfo.owner.id"
 									<s:if test="projectInfo.status!=0">disabled</s:if>>
 										<s:iterator value="userInfoList" status="st">
-											<option value="owner.id">
+											<option value="<s:property value='id' />"
+												<s:if test="id==projectInfo.owner.id">selected</s:if>>
 												<s:property value="realName" />
 											</option>
 										</s:iterator>
 								</select> <s:if test="projectInfo.status!=0">
 										<input type="hidden" name="projectInfo.owner.id"
 											value="<s:property value='projectInfo.owner.id'/>">
-									</s:if></li>
+									</s:if>
+								</li>
 								<li class="width200Li"><label class="width4Lb">项目经理:</label>
 									<select id="projectInfo.manager.id"
 									name="projectInfo.manager.id"
 									<s:if test="projectInfo.status!=0">disabled</s:if>>
 										<s:iterator value="userInfoList" status="st">
-											<option value="manager.id">
+											<option value="<s:property value='id' />"
+											<s:if test="id==projectInfo.manager.id">selected</s:if>>
 												<s:property value="realName" />
 											</option>
 										</s:iterator>
 								</select> <s:if test="projectInfo.status!=0">
 										<input type="hidden" name="projectInfo.manager.id"
 											value="<s:property value='projectInfo.manager.id'/>">
-									</s:if></li>
+									</s:if>
+								</li>
 							</ul>
 
 							<ul class="fullScreenUl">
@@ -273,7 +273,8 @@
 										<option value="投资监理">投资监理</option>
 										<option value="财务监理">财务监理</option>
 										<option value="工程咨询">工程咨询</option>
-								</select></li>
+								</select>
+								</li>
 								<li class="width400Li"><label class="width6Lb">服务内容:</label><input
 									class="width300Input" name="projectInfo.projectTypeComment"
 									value="<s:property value='projectInfo.projectTypeComment'/>" />
@@ -283,8 +284,7 @@
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">送审价:</label>
 										<input class="width100Input" name="projectInfo.judgePrice1"
-										value="<s:property value='projectInfo.judgePrice1'/>" />
-									</li>
+										value="<s:property value='projectInfo.judgePrice1'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">审定价:</label>
 										<input class="width100Input" name="projectInfo.judgePrice2"
 										value="<s:date name='projectInfo.judgePrice2' format='yyyy-MM-dd' />" />
@@ -303,16 +303,13 @@
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">核增额:</label>
 										<input class="width100Input" name="projectInfo.plusPrice"
-										value="<s:property value='projectInfo.plusPrice'/>" />
-									</li>
+										value="<s:property value='projectInfo.plusPrice'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">核减额:</label>
 										<input class="width100Input" name="projectInfo.minusPrice"
-										value="<s:property value='projectInfo.minusPrice'/>" />
-									</li>
+										value="<s:property value='projectInfo.minusPrice'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">征询日/评价:</label>
 										<input class="width100Input" name="projectInfo.comments"
-										value="<s:property value='projectInfo.comments'/>" />
-									</li>
+										value="<s:property value='projectInfo.comments'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">归档日期:</label>
 										<input class="Wdate width100Input"
 										name="projectInfo.achiveDate"
@@ -323,8 +320,7 @@
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">报告编号:</label>
 										<input class="width100Input" name="projectInfo.reportNumber"
-										value="<s:property value='projectInfo.reportNumber'/>" />
-									</li>
+										value="<s:property value='projectInfo.reportNumber'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">总师审核:</label>
 										<input class="width100Input"
 										name="projectInfo.masterJudgeComments"
@@ -332,20 +328,17 @@
 									</li>
 									<li class="width200Li"><label class="width6Lb">档案接收人:</label>
 										<input class="width100Input" name="projectInfo.achiveReceiver"
-										value="<s:property value='projectInfo.achiveReceiver'/>" />
-									</li>
+										value="<s:property value='projectInfo.achiveReceiver'/>" /></li>
 								</ul>
 							</div>
 							<div id="projectType2" style="display: none;">
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">总投资:</label>
 										<input class="width100Input" name="projectInfo.proxyInvest"
-										value="<s:property value='projectInfo.proxyInvest'/>" />
-									</li>
+										value="<s:property value='projectInfo.proxyInvest'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">建安量:</label>
 										<input class="width100Input" name="projectInfo.proxyQuantity"
-										value="<s:property value='projectInfo.proxyQuantity'/>" />
-									</li>
+										value="<s:property value='projectInfo.proxyQuantity'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">中标金额:</label>
 										<input class="width100Input"
 										name="projectInfo.proxyBiddingAmount"
@@ -373,8 +366,7 @@
 									</li>
 									<li class="width200Li"><label class="width6Lb">评价:</label>
 										<input class="width100Input" name="projectInfo.proxyEvaluate"
-										value="<s:property value='projectInfo.proxyEvaluate'/>" />
-									</li>
+										value="<s:property value='projectInfo.proxyEvaluate'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">归档日期:</label>
 										<input class="Wdate width100Input"
 										name="projectInfo.proxyArchiveDate"
@@ -460,8 +452,7 @@
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">总投资:</label>
 										<input class="width100Input" name="projectInfo.consultInvest"
-										value="<s:property value='projectInfo.consultInvest'/>" />
-									</li>
+										value="<s:property value='projectInfo.consultInvest'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">建安量:</label>
 										<input class="width100Input"
 										name="projectInfo.consultQuantity"
@@ -528,12 +519,15 @@
 											<li class="width400Li"><a
 												href="<s:property value='filePath' />"
 												<s:if test="fileName.contains('.jpg') || fileName.contains('.JPG')">target="blank"</s:if>><s:property
-														value='fileName' /> </a></li>
+														value='fileName' /> </a>
+											</li>
 											<li class="width200Li"><input type="hidden"
 												id="projectInfo.oldFileName" name="projectInfo.oldFileName"
-												value="<s:property value='fileName' />" /></li>
+												value="<s:property value='fileName' />" />
+											</li>
 											<li><input type="button" class="mediumLeftButton"
-												onclick="delAttachment(this)" value="删除"></li>
+												onclick="delAttachment(this)" value="删除">
+											</li>
 										</ul>
 									</s:iterator>
 								</s:if>
@@ -543,7 +537,8 @@
 							</div>
 							<ul class="fullScreenUl">
 								<li><input type="button" class="mediumLeftButton"
-									onclick="addAttachment()" value="新增附件"></li>
+									onclick="addAttachment()" value="新增附件">
+								</li>
 							</ul>
 
 							<h4 class="title">项目状态信息</h4>
@@ -561,19 +556,22 @@
 									<li><label class="width6Lb">项目状态:</label>部门经理审批通过</li>
 									<li><label class="width6Lb">审批时间:</label> <s:date
 											name='projectInfo.deptApproveTime'
-											format='yyyy-MM-dd hh:mm:ss' /></li>
+											format='yyyy-MM-dd hh:mm:ss' />
+									</li>
 								</s:elseif>
 								<s:elseif test="projectInfo.status==3">
 									<li><label class="width6Lb">项目状态:</label>总师审批通过</li>
 									<li><label class="width6Lb">审批时间:</label> <s:date
 											name='projectInfo.masterApproveTime'
-											format='yyyy-MM-dd hh:mm:ss' /></li>
+											format='yyyy-MM-dd hh:mm:ss' />
+									</li>
 								</s:elseif>
 								<s:elseif test="projectInfo.status==4">
 									<li><label class="width6Lb">项目状态:</label>总经理审批通过</li>
 									<li><label class="width6Lb">审批时间:</label> <s:date
 											name='projectInfo.managerApproveTIme'
-											format='yyyy-MM-dd hh:mm:ss' /></li>
+											format='yyyy-MM-dd hh:mm:ss' />
+									</li>
 								</s:elseif>
 								<s:elseif test="projectInfo.status==9">
 									<li><label class="width6Lb">项目状态:</label>结项</li>
@@ -613,16 +611,14 @@
 										class="mediumRightButton" onclick="modProjectInfo('1')"
 										value="提交项目"> <input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('0')"
-										value="保存">
-									</li>
+										value="保存"></li>
 								</s:if>
 
 								<s:if
 									test="projectInfo.status==5 && #request.submitProject == true">
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('5')"
-										value="保存">
-									</li>
+										value="保存"></li>
 								</s:if>
 
 								<s:if
@@ -631,8 +627,7 @@
 										class="mediumRightButton" onclick="modProjectInfo('0')"
 										value="审批不通过"> <input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('2')"
-										value="审批通过">
-									</li>
+										value="审批通过"></li>
 								</s:if>
 
 								<s:if
@@ -641,8 +636,7 @@
 										class="mediumRightButton" onclick="modProjectInfo('1')"
 										value="审批不通过"> <input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('3')"
-										value="审批通过">
-									</li>
+										value="审批通过"></li>
 								</s:if>
 
 								<s:if
@@ -651,16 +645,14 @@
 										class="mediumRightButton" onclick="modProjectInfo('2')"
 										value="审批不通过"> <input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('4')"
-										value="审批通过">
-									</li>
+										value="审批通过"></li>
 								</s:if>
 
 								<s:if
 									test="projectInfo.status==4 && #request.directorFillNo == true">
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('5')"
-										value="保存">
-									</li>
+										value="保存"></li>
 								</s:if>
 
 
@@ -668,16 +660,13 @@
 
 								<li><input type="hidden" id="projectInfo.status"
 									name="projectInfo.status"
-									value="<s:property value='projectInfo.status'/>" />
-								</li>
+									value="<s:property value='projectInfo.status'/>" /></li>
 								<li><input type="hidden" id="projectInfo.submitTime"
 									name="projectInfo.submitTime"
-									value="<s:property value='projectInfo.submitTime'/>" />
-								</li>
+									value="<s:property value='projectInfo.submitTime'/>" /></li>
 								<li><input type="hidden" id="projectInfo.deptApproveTime"
 									name="projectInfo.deptApproveTime"
-									value="<s:property value='projectInfo.deptApproveTime'/>" />
-								</li>
+									value="<s:property value='projectInfo.deptApproveTime'/>" /></li>
 								<li><input type="hidden" id="projectInfo.masterApproveTime"
 									name="projectInfo.masterApproveTime"
 									value="<s:property value='projectInfo.masterApproveTime'/>" />
@@ -687,18 +676,17 @@
 									name="projectInfo.managerApproveTIme"
 									value="<s:property value='projectInfo.managerApproveTIme'/>" />
 								</li>
-								<li><input type="hidden" id="status" name="status" />
-								</li>
+								<li><input type="hidden" id="status" name="status" /></li>
 							</ul>
 						</s:form>
 						<ul id="attachmentUL" class="fullScreenUl" style="display: none">
 							<li class="width300Li"><s:file name="uploadFiles"
 									id="uploadFiles" size="30" onchange="chooseFile(this)" /> <input
 								type="hidden" name="projectInfo.fileName"
-								id="projectInfo.fileName">
-							</li>
+								id="projectInfo.fileName"></li>
 							<li><input type="button" class="mediumLeftButton"
-								onclick="delAttachment(this)" value="删除"></li>
+								onclick="delAttachment(this)" value="删除">
+							</li>
 						</ul>
 					</div>
 					<div></div>
