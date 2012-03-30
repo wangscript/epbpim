@@ -247,15 +247,9 @@ h4 {
 								</li>
 								<s:if test="projectInfo.participants != null && projectInfo.participants.size() > 0">
 									<s:iterator value="projectInfo.participants" status="st">
-										<li id="participantLI" class="width200Li"><select
-											id="projectInfo.participant" name="projectInfo.participant" class="width100Input" disabled>
-											<s:iterator value="userInfoList" status="st">
-												<option value="<s:property value='id' />"
-													<s:if test="id==participant">selected</s:if>>
-													<s:property value="realName" />
-												</option>
-											</s:iterator>
-										</select>
+										<li id="participantLI" class="width200Li">
+											<s:property value="participantName" />
+										</li>
 									</s:iterator>
 								</s:if>
 							</ul>
@@ -689,14 +683,7 @@ h4 {
 											<fieldset><legend>成本报销</legend>											 
 												<ul class="fullScreenUl">
 													<li class="width200Li"><label class="width6Lb">领款人:</label>
-														<select id="projectInfo.costRemittee" name="projectInfo.costRemittee" class="width100Input" disabled>
-														<s:iterator value="userInfoList" status="st">
-															<option value="<s:property value='id' />"
-																<s:if test="id==remittee">selected</s:if>>
-																<s:property value="realName" />
-															</option>
-														</s:iterator>
-														</select>
+														<s:property value="remitteeName" />
 													</li>
 													<li class="width200Li"><label class="width6Lb">结算日期:</label>
 														<s:date name='remitteeDate' format='yyyy-MM-dd' />

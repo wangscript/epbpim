@@ -319,12 +319,12 @@
 											<s:if test="projectInfo.status!=0">disabled</s:if>>
 											<s:iterator value="userInfoList" status="st">
 												<option value="<s:property value='id' />"
-													<s:if test="id==participant">selected</s:if>>
+													<s:if test="id==participantID">selected</s:if>>
 												<s:property value="realName" /></option>
 											</s:iterator>
 										</select><s:if test="projectInfo.status!=0">
 											<input type="hidden" name="projectInfo.participants"
-												value="<s:property value='participant'/>">
+												value="<s:property value='participantID'/>">
 										</s:if> <input type="button" class="mediumLeftButton"
 											onclick="delParticipant(this)" value="删除"></li>
 									</s:iterator>
@@ -1004,7 +1004,7 @@
 														<select id="projectInfo.costRemittee" name="projectInfo.costRemittee" class="width100Input">
 														<s:iterator value="userInfoList" status="st">
 															<option value="<s:property value='id' />"
-																<s:if test="id==remittee">selected</s:if>>
+																<s:if test="id==remitteeID">selected</s:if>>
 																<s:property value="realName" />
 															</option>
 														</s:iterator>
