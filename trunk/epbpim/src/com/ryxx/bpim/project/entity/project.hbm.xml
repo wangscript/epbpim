@@ -111,7 +111,7 @@
 		<property name="expertPayDate" column="EXPERTPAYDATE" type="java.sql.Timestamp"></property>
 		<property name="expertPrice" column="EXPERTPRICE" type="java.lang.String"></property>
 		<property name="expertPerson" column="EXPERTPERSON" type="java.lang.String"></property>
-		<property name="costRemittee" column="COSTREMITTEE;" type="java.lang.String"></property>
+		<property name="costRemittee" column="COSTREMITTEE" type="java.lang.String"></property>
 		<property name="costSettleDate" column="COSTSETTLEDATE" type="java.lang.String"></property>
 		<property name="costPrice" column="COSTPRICE" type="java.lang.String"></property>
 		<property name="costAccount" column="COSTACCOUNT" type="java.lang.String"></property>
