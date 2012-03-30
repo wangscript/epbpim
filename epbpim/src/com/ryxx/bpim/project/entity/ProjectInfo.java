@@ -103,18 +103,6 @@ public class ProjectInfo extends VoBase
     
     private String contractAbstract;
     
-    private String invoiceDate;
-    
-    private String invoiceDatePage;
-    
-    private String invoiceNumber;
-    
-    private String invoicePrice;
-    
-    private String invoiceMoneyArrival;
-    
-    private List<ProjectInvoice> projectInvoices;
-    
     private String status;
     
     private UserInfo submitter;
@@ -213,6 +201,632 @@ public class ProjectInfo extends VoBase
     private Timestamp managerApproveTIme;
     
     private List<ProjectFile> projectFiles;
+    
+    // 业务人员和账务人员权限更改
+    
+    private UserInfo formater;
+    
+    private UserInfo verifier;
+    
+    private String participant;
+    
+    private List<ProjectParticipant> participants;
+    
+    private UserInfo earnestInDrawer;
+    
+    private Timestamp earnestInInvoiceDate;
+    
+    private String earnestInNumber;
+    
+    private String earnestInPrice;
+    
+    private UserInfo earnestUndertaker;
+    
+    private Timestamp tenderReceiveDate;
+    
+    private String tenderInvoiceNumber;
+    
+    private String tenderInvoicePrice;
+    
+    private UserInfo tenderUndertaker;
+    
+    private UserInfo agentInvoiceDrawer;
+    
+    private Timestamp agentInvoiceDate;
+    
+    private String agentInvoiceNumber;
+    
+    private String agentInvoicePrice;
+    
+    private UserInfo agentInvoiceHolder;
+    
+    private Timestamp agentReceiveDate;
+    
+    private String agentReceivePrice;
+    
+    private String agentAccount;
+    
+    private String agentComment;
+    
+    private UserInfo vendorInvoiceDrawer;
+    
+    private Timestamp vendorInvoiceDate;
+    
+    private String vendorInvoiceNumber;
+    
+    private String vendorInvoicePrice;
+    
+    private UserInfo vendorInvoiceHolder;
+    
+    private Timestamp vendorReceiveDate;
+    
+    private String vendorReceivePrice;
+    
+    private String vendorAccount;
+    
+    private String vendorComment;
+    
+    private UserInfo earnestOutRefunder;
+    
+    private Timestamp earnestOutRefundDate;
+    
+    private String earnestOutType;
+    
+    private String earnestOutPrice;
+    
+    private UserInfo earnestOutUndertaker;
+    
+    private UserInfo meetingPlacePayer;
+    
+    private Timestamp meetingPlacePayDate;
+    
+    private String meetingPlacePrice;
+    
+    private UserInfo meetingPlaceUndertaker;
+    
+    private String meetingPlaceAddress;
+    
+    private UserInfo expertPayer;
+    
+    private Timestamp expertPayDate;
+    
+    private String expertPrice;
+    
+    private UserInfo expertUndertaker;
+    
+    private String expertPerson;
+    
+    private String costRemittee;
+    
+    private String costSettleDate;
+    
+    private String costPrice;
+    
+    private String costAccount;
+    
+    private String costComment;
+    
+    private List<ProjectCost> costs;
+    
+    public UserInfo getFormater()
+    {
+        return formater;
+    }
+    
+    public void setFormater(UserInfo formater)
+    {
+        this.formater = formater;
+    }
+    
+    public UserInfo getVerifier()
+    {
+        return verifier;
+    }
+    
+    public void setVerifier(UserInfo verifier)
+    {
+        this.verifier = verifier;
+    }
+    
+    public String getParticipant()
+    {
+        return participant;
+    }
+    
+    public void setParticipant(String participant)
+    {
+        this.participant = participant;
+    }
+    
+    public List<ProjectParticipant> getParticipants()
+    {
+        return participants;
+    }
+    
+    public void setParticipants(List<ProjectParticipant> participants)
+    {
+        this.participants = participants;
+    }
+    
+    public UserInfo getEarnestInDrawer()
+    {
+        return earnestInDrawer;
+    }
+    
+    public void setEarnestInDrawer(UserInfo earnestInDrawer)
+    {
+        this.earnestInDrawer = earnestInDrawer;
+    }
+    
+    public Timestamp getEarnestInInvoiceDate()
+    {
+        return earnestInInvoiceDate;
+    }
+    
+    public void setEarnestInInvoiceDate(Timestamp earnestInInvoiceDate)
+    {
+        this.earnestInInvoiceDate = earnestInInvoiceDate;
+    }
+    
+    public String getEarnestInNumber()
+    {
+        return earnestInNumber;
+    }
+    
+    public void setEarnestInNumber(String earnestInNumber)
+    {
+        this.earnestInNumber = earnestInNumber;
+    }
+    
+    public String getEarnestInPrice()
+    {
+        return earnestInPrice;
+    }
+    
+    public void setEarnestInPrice(String earnestInPrice)
+    {
+        this.earnestInPrice = earnestInPrice;
+    }
+    
+    public UserInfo getEarnestUndertaker()
+    {
+        return earnestUndertaker;
+    }
+    
+    public void setEarnestUndertaker(UserInfo earnestUndertaker)
+    {
+        this.earnestUndertaker = earnestUndertaker;
+    }
+    
+    public Timestamp getTenderReceiveDate()
+    {
+        return tenderReceiveDate;
+    }
+    
+    public void setTenderReceiveDate(Timestamp tenderReceiveDate)
+    {
+        this.tenderReceiveDate = tenderReceiveDate;
+    }
+    
+    public String getTenderInvoiceNumber()
+    {
+        return tenderInvoiceNumber;
+    }
+    
+    public void setTenderInvoiceNumber(String tenderInvoiceNumber)
+    {
+        this.tenderInvoiceNumber = tenderInvoiceNumber;
+    }
+    
+    public String getTenderInvoicePrice()
+    {
+        return tenderInvoicePrice;
+    }
+    
+    public void setTenderInvoicePrice(String tenderInvoicePrice)
+    {
+        this.tenderInvoicePrice = tenderInvoicePrice;
+    }
+    
+    public UserInfo getTenderUndertaker()
+    {
+        return tenderUndertaker;
+    }
+    
+    public void setTenderUndertaker(UserInfo tenderUndertaker)
+    {
+        this.tenderUndertaker = tenderUndertaker;
+    }
+    
+    public UserInfo getAgentInvoiceDrawer()
+    {
+        return agentInvoiceDrawer;
+    }
+    
+    public void setAgentInvoiceDrawer(UserInfo agentInvoiceDrawer)
+    {
+        this.agentInvoiceDrawer = agentInvoiceDrawer;
+    }
+    
+    public Timestamp getAgentInvoiceDate()
+    {
+        return agentInvoiceDate;
+    }
+    
+    public void setAgentInvoiceDate(Timestamp agentInvoiceDate)
+    {
+        this.agentInvoiceDate = agentInvoiceDate;
+    }
+    
+    public String getAgentInvoiceNumber()
+    {
+        return agentInvoiceNumber;
+    }
+    
+    public void setAgentInvoiceNumber(String agentInvoiceNumber)
+    {
+        this.agentInvoiceNumber = agentInvoiceNumber;
+    }
+    
+    public String getAgentInvoicePrice()
+    {
+        return agentInvoicePrice;
+    }
+    
+    public void setAgentInvoicePrice(String agentInvoicePrice)
+    {
+        this.agentInvoicePrice = agentInvoicePrice;
+    }
+    
+    public UserInfo getAgentInvoiceHolder()
+    {
+        return agentInvoiceHolder;
+    }
+    
+    public void setAgentInvoiceHolder(UserInfo agentInvoiceHolder)
+    {
+        this.agentInvoiceHolder = agentInvoiceHolder;
+    }
+    
+    public Timestamp getAgentReceiveDate()
+    {
+        return agentReceiveDate;
+    }
+    
+    public void setAgentReceiveDate(Timestamp agentReceiveDate)
+    {
+        this.agentReceiveDate = agentReceiveDate;
+    }
+    
+    public String getAgentReceivePrice()
+    {
+        return agentReceivePrice;
+    }
+    
+    public void setAgentReceivePrice(String agentReceivePrice)
+    {
+        this.agentReceivePrice = agentReceivePrice;
+    }
+    
+    public String getAgentAccount()
+    {
+        return agentAccount;
+    }
+    
+    public void setAgentAccount(String agentAccount)
+    {
+        this.agentAccount = agentAccount;
+    }
+    
+    public String getAgentComment()
+    {
+        return agentComment;
+    }
+    
+    public void setAgentComment(String agentComment)
+    {
+        this.agentComment = agentComment;
+    }
+    
+    public UserInfo getVendorInvoiceDrawer()
+    {
+        return vendorInvoiceDrawer;
+    }
+    
+    public void setVendorInvoiceDrawer(UserInfo vendorInvoiceDrawer)
+    {
+        this.vendorInvoiceDrawer = vendorInvoiceDrawer;
+    }
+    
+    public Timestamp getVendorInvoiceDate()
+    {
+        return vendorInvoiceDate;
+    }
+    
+    public void setVendorInvoiceDate(Timestamp vendorInvoiceDate)
+    {
+        this.vendorInvoiceDate = vendorInvoiceDate;
+    }
+    
+    public String getVendorInvoiceNumber()
+    {
+        return vendorInvoiceNumber;
+    }
+    
+    public void setVendorInvoiceNumber(String vendorInvoiceNumber)
+    {
+        this.vendorInvoiceNumber = vendorInvoiceNumber;
+    }
+    
+    public String getVendorInvoicePrice()
+    {
+        return vendorInvoicePrice;
+    }
+    
+    public void setVendorInvoicePrice(String vendorInvoicePrice)
+    {
+        this.vendorInvoicePrice = vendorInvoicePrice;
+    }
+    
+    public UserInfo getVendorInvoiceHolder()
+    {
+        return vendorInvoiceHolder;
+    }
+    
+    public void setVendorInvoiceHolder(UserInfo vendorInvoiceHolder)
+    {
+        this.vendorInvoiceHolder = vendorInvoiceHolder;
+    }
+    
+    public Timestamp getVendorReceiveDate()
+    {
+        return vendorReceiveDate;
+    }
+    
+    public void setVendorReceiveDate(Timestamp vendorReceiveDate)
+    {
+        this.vendorReceiveDate = vendorReceiveDate;
+    }
+    
+    public String getVendorReceivePrice()
+    {
+        return vendorReceivePrice;
+    }
+    
+    public void setVendorReceivePrice(String vendorReceivePrice)
+    {
+        this.vendorReceivePrice = vendorReceivePrice;
+    }
+    
+    public String getVendorAccount()
+    {
+        return vendorAccount;
+    }
+    
+    public void setVendorAccount(String vendorAccount)
+    {
+        this.vendorAccount = vendorAccount;
+    }
+    
+    public String getVendorComment()
+    {
+        return vendorComment;
+    }
+    
+    public void setVendorComment(String vendorComment)
+    {
+        this.vendorComment = vendorComment;
+    }
+    
+    public UserInfo getEarnestOutRefunder()
+    {
+        return earnestOutRefunder;
+    }
+    
+    public void setEarnestOutRefunder(UserInfo earnestOutRefunder)
+    {
+        this.earnestOutRefunder = earnestOutRefunder;
+    }
+    
+    public Timestamp getEarnestOutRefundDate()
+    {
+        return earnestOutRefundDate;
+    }
+    
+    public void setEarnestOutRefundDate(Timestamp earnestOutRefundDate)
+    {
+        this.earnestOutRefundDate = earnestOutRefundDate;
+    }
+    
+    public String getEarnestOutType()
+    {
+        return earnestOutType;
+    }
+    
+    public void setEarnestOutType(String earnestOutType)
+    {
+        this.earnestOutType = earnestOutType;
+    }
+    
+    public String getEarnestOutPrice()
+    {
+        return earnestOutPrice;
+    }
+    
+    public void setEarnestOutPrice(String earnestOutPrice)
+    {
+        this.earnestOutPrice = earnestOutPrice;
+    }
+    
+    public UserInfo getEarnestOutUndertaker()
+    {
+        return earnestOutUndertaker;
+    }
+    
+    public void setEarnestOutUndertaker(UserInfo earnestOutUndertaker)
+    {
+        this.earnestOutUndertaker = earnestOutUndertaker;
+    }
+    
+    public UserInfo getMeetingPlacePayer()
+    {
+        return meetingPlacePayer;
+    }
+    
+    public void setMeetingPlacePayer(UserInfo meetingPlacePayer)
+    {
+        this.meetingPlacePayer = meetingPlacePayer;
+    }
+    
+    public Timestamp getMeetingPlacePayDate()
+    {
+        return meetingPlacePayDate;
+    }
+    
+    public void setMeetingPlacePayDate(Timestamp meetingPlacePayDate)
+    {
+        this.meetingPlacePayDate = meetingPlacePayDate;
+    }
+    
+    public String getMeetingPlacePrice()
+    {
+        return meetingPlacePrice;
+    }
+    
+    public void setMeetingPlacePrice(String meetingPlacePrice)
+    {
+        this.meetingPlacePrice = meetingPlacePrice;
+    }
+    
+    public UserInfo getMeetingPlaceUndertaker()
+    {
+        return meetingPlaceUndertaker;
+    }
+    
+    public void setMeetingPlaceUndertaker(UserInfo meetingPlaceUndertaker)
+    {
+        this.meetingPlaceUndertaker = meetingPlaceUndertaker;
+    }
+    
+    public String getMeetingPlaceAddress()
+    {
+        return meetingPlaceAddress;
+    }
+    
+    public void setMeetingPlaceAddress(String meetingPlaceAddress)
+    {
+        this.meetingPlaceAddress = meetingPlaceAddress;
+    }
+    
+    public UserInfo getExpertPayer()
+    {
+        return expertPayer;
+    }
+    
+    public void setExpertPayer(UserInfo expertPayer)
+    {
+        this.expertPayer = expertPayer;
+    }
+    
+    public Timestamp getExpertPayDate()
+    {
+        return expertPayDate;
+    }
+    
+    public void setExpertPayDate(Timestamp expertPayDate)
+    {
+        this.expertPayDate = expertPayDate;
+    }
+    
+    public String getExpertPrice()
+    {
+        return expertPrice;
+    }
+    
+    public void setExpertPrice(String expertPrice)
+    {
+        this.expertPrice = expertPrice;
+    }
+    
+    public UserInfo getExpertUndertaker()
+    {
+        return expertUndertaker;
+    }
+    
+    public void setExpertUndertaker(UserInfo expertUndertaker)
+    {
+        this.expertUndertaker = expertUndertaker;
+    }
+    
+    public String getExpertPerson()
+    {
+        return expertPerson;
+    }
+    
+    public void setExpertPerson(String expertPerson)
+    {
+        this.expertPerson = expertPerson;
+    }
+    
+    public String getCostRemittee()
+    {
+        return costRemittee;
+    }
+    
+    public void setCostRemittee(String costRemittee)
+    {
+        this.costRemittee = costRemittee;
+    }
+    
+    public String getCostSettleDate()
+    {
+        return costSettleDate;
+    }
+    
+    public void setCostSettleDate(String costSettleDate)
+    {
+        this.costSettleDate = costSettleDate;
+    }
+    
+    public String getCostPrice()
+    {
+        return costPrice;
+    }
+    
+    public void setCostPrice(String costPrice)
+    {
+        this.costPrice = costPrice;
+    }
+    
+    public String getCostAccount()
+    {
+        return costAccount;
+    }
+    
+    public void setCostAccount(String costAccount)
+    {
+        this.costAccount = costAccount;
+    }
+    
+    public String getCostComment()
+    {
+        return costComment;
+    }
+    
+    public void setCostComment(String costComment)
+    {
+        this.costComment = costComment;
+    }
+    
+    public List<ProjectCost> getCosts()
+    {
+        return costs;
+    }
+    
+    public void setCosts(List<ProjectCost> costs)
+    {
+        this.costs = costs;
+    }
     
     public Long getId()
     {
@@ -602,56 +1216,6 @@ public class ProjectInfo extends VoBase
     public void setContractAbstract(String contractAbstract)
     {
         this.contractAbstract = contractAbstract;
-    }
-    
-    public String getInvoiceDate()
-    {
-        return invoiceDate;
-    }
-    
-    public void setInvoiceDate(String invoiceDate)
-    {
-        this.invoiceDate = invoiceDate;
-    }
-    
-    public String getInvoiceDatePage()
-    {
-        return invoiceDatePage;
-    }
-    
-    public void setInvoiceDatePage(String invoiceDatePage)
-    {
-        this.invoiceDatePage = invoiceDatePage;
-    }
-    
-    public String getInvoiceNumber()
-    {
-        return invoiceNumber;
-    }
-    
-    public void setInvoiceNumber(String invoiceNumber)
-    {
-        this.invoiceNumber = invoiceNumber;
-    }
-    
-    public String getInvoicePrice()
-    {
-        return invoicePrice;
-    }
-    
-    public void setInvoicePrice(String invoicePrice)
-    {
-        this.invoicePrice = invoicePrice;
-    }
-    
-    public List<ProjectInvoice> getProjectInvoices()
-    {
-        return projectInvoices;
-    }
-    
-    public void setProjectInvoices(List<ProjectInvoice> projectInvoices)
-    {
-        this.projectInvoices = projectInvoices;
     }
     
     public String getStatus()
@@ -1167,77 +1731,67 @@ public class ProjectInfo extends VoBase
     }
     
     /**
-     * @return the invoiceMoneyArrival
+     * @return the submitTime
      */
-    public String getInvoiceMoneyArrival()
+    public Timestamp getSubmitTime()
     {
-        return invoiceMoneyArrival;
+        return submitTime;
     }
     
     /**
-     * @param invoiceMoneyArrival the invoiceMoneyArrival to set
+     * @param submitTime the submitTime to set
      */
-    public void setInvoiceMoneyArrival(String invoiceMoneyArrival)
+    public void setSubmitTime(Timestamp submitTime)
     {
-        this.invoiceMoneyArrival = invoiceMoneyArrival;
+        this.submitTime = submitTime;
     }
-
-	/**
-	 * @return the submitTime
-	 */
-	public Timestamp getSubmitTime() {
-		return submitTime;
-	}
-
-	/**
-	 * @param submitTime the submitTime to set
-	 */
-	public void setSubmitTime(Timestamp submitTime) {
-		this.submitTime = submitTime;
-	}
-
-	/**
-	 * @return the deptApproveTime
-	 */
-	public Timestamp getDeptApproveTime() {
-		return deptApproveTime;
-	}
-
-	/**
-	 * @param deptApproveTime the deptApproveTime to set
-	 */
-	public void setDeptApproveTime(Timestamp deptApproveTime) {
-		this.deptApproveTime = deptApproveTime;
-	}
-
-	/**
-	 * @return the masterApproveTime
-	 */
-	public Timestamp getMasterApproveTime() {
-		return masterApproveTime;
-	}
-
-	/**
-	 * @param masterApproveTime the masterApproveTime to set
-	 */
-	public void setMasterApproveTime(Timestamp masterApproveTime) {
-		this.masterApproveTime = masterApproveTime;
-	}
-
-	/**
-	 * @return the managerApproveTIme
-	 */
-	public Timestamp getManagerApproveTIme() {
-		return managerApproveTIme;
-	}
-
-	/**
-	 * @param managerApproveTIme the managerApproveTIme to set
-	 */
-	public void setManagerApproveTIme(Timestamp managerApproveTIme) {
-		this.managerApproveTIme = managerApproveTIme;
-	}
     
+    /**
+     * @return the deptApproveTime
+     */
+    public Timestamp getDeptApproveTime()
+    {
+        return deptApproveTime;
+    }
     
+    /**
+     * @param deptApproveTime the deptApproveTime to set
+     */
+    public void setDeptApproveTime(Timestamp deptApproveTime)
+    {
+        this.deptApproveTime = deptApproveTime;
+    }
+    
+    /**
+     * @return the masterApproveTime
+     */
+    public Timestamp getMasterApproveTime()
+    {
+        return masterApproveTime;
+    }
+    
+    /**
+     * @param masterApproveTime the masterApproveTime to set
+     */
+    public void setMasterApproveTime(Timestamp masterApproveTime)
+    {
+        this.masterApproveTime = masterApproveTime;
+    }
+    
+    /**
+     * @return the managerApproveTIme
+     */
+    public Timestamp getManagerApproveTIme()
+    {
+        return managerApproveTIme;
+    }
+    
+    /**
+     * @param managerApproveTIme the managerApproveTIme to set
+     */
+    public void setManagerApproveTIme(Timestamp managerApproveTIme)
+    {
+        this.managerApproveTIme = managerApproveTIme;
+    }
     
 }

@@ -39,12 +39,7 @@
 		<property name="achiveReceiver" column="ACHIVE_RECEIVER" type="java.lang.String"></property>
 		<property name="contractNumber" column="CONTRACT_NUMBER" type="java.lang.String"></property>
 		<property name="contractMoney" column="CONTRACT_MONEY" type="java.lang.String"></property>
-		<property name="contractAbstract" column="CONTRACT_ABSTRACT" type="java.lang.String"></property>
-		<property name="invoiceDate" column="INVOICE_DATE" type="java.lang.String"></property>
-		<property name="invoiceNumber" column="INVOICE_NUMBER" type="java.lang.String"></property>
-		<property name="invoicePrice" column="INVOICE_PRICE" type="java.lang.String"></property>
-		<property name="invoiceMoneyArrival" column="INVOICE_MONEY_ARRIVAL" type="java.lang.String"></property>
-		
+		<property name="contractAbstract" column="CONTRACT_ABSTRACT" type="java.lang.String"></property>		
 		<property name="status" column="STATUS" type="java.lang.String"></property>
 		
 		<property name="proxyInvest" column="PROXYINVEST" type="java.lang.String"></property>
@@ -84,12 +79,64 @@
 		<property name="submitTime" column="SUBMIT_TIME" type="java.sql.Timestamp"></property>
 		<property name="deptApproveTime" column="DEPT_APPROVE_TIME" type="java.sql.Timestamp"></property>
 		<property name="masterApproveTime" column="MASTER_APPROVE_TIME" type="java.sql.Timestamp"></property>
-		<property name="managerApproveTIme" column="MANAGER_APPROVE_TIME" type="java.sql.Timestamp"></property>
+		<property name="managerApproveTIme" column="MANAGER_APPROVE_TIME" type="java.sql.Timestamp"></property>		
+		
+		<property name="participant" column="PARTICIPANT" type="java.lang.String"></property>
+		<property name="earnestInInvoiceDate" column="EARNESTININVOICEDATE" type="java.sql.Timestamp"></property>
+		<property name="earnestInNumber" column="EARNESTINNUMBER" type="java.lang.String"></property>
+		<property name="earnestInPrice" column="EARNESTINPRICE" type="java.lang.String"></property>
+		<property name="tenderReceiveDate" column="TENDERRECEIVEDATE" type="java.sql.Timestamp"></property>
+		<property name="tenderInvoiceNumber" column="TENDERINVOICENUMBER" type="java.lang.String"></property>
+		<property name="tenderInvoicePrice" column="TENDERINVOICEPRICE" type="java.lang.String"></property>
+		<property name="agentInvoiceDate" column="AGENTINVOICEDATE" type="java.sql.Timestamp"></property>
+		<property name="agentInvoiceNumber" column="AGENTINVOICENUMBER" type="java.lang.String"></property>
+		<property name="agentInvoicePrice" column="AGENTINVOICEPRICE" type="java.lang.String"></property>
+		<property name="agentReceiveDate" column="AGENTRECEIVEDATE" type="java.sql.Timestamp"></property>
+		<property name="agentReceivePrice" column="AGENTRECEIVEPRICE" type="java.lang.String"></property>
+		<property name="agentAccount" column="AGENTACCOUNT" type="java.lang.String"></property>
+		<property name="agentComment" column="AGENTCOMMENT" type="java.lang.String"></property>
+		<property name="vendorInvoiceDate" column="VENDORINVOICEDATE" type="java.sql.Timestamp"></property>
+		<property name="vendorInvoiceNumber" column="VENDORINVOICENUMBER" type="java.lang.String"></property>
+		<property name="vendorInvoicePrice" column="VENDORINVOICEPRICE" type="java.lang.String"></property>
+		<property name="vendorReceiveDate" column="VENDORRECEIVEDATE" type="java.sql.Timestamp"></property>
+		<property name="vendorReceivePrice" column="VENDORRECEIVEPRICE" type="java.lang.String"></property>
+		<property name="vendorAccount" column="VENDORACCOUNT" type="java.lang.String"></property>
+		<property name="vendorComment" column="VENDORCOMMENT" type="java.lang.String"></property>
+		<property name="earnestOutRefundDate" column="EARNESTOUTREFUNDDATE" type="java.sql.Timestamp"></property>
+		<property name="earnestOutType" column="EARNESTOUTTYPE" type="java.lang.String"></property>
+		<property name="earnestOutPrice" column="EARNESTOUTPRICE" type="java.lang.String"></property>
+		<property name="meetingPlacePayDate" column="MEETINGPLACEPAYDATE" type="java.sql.Timestamp"></property>
+		<property name="meetingPlacePrice" column="MEETINGPLACEPRICE" type="java.lang.String"></property>
+		<property name="meetingPlaceAddress" column="MEETINGPLACEADDRESS" type="java.lang.String"></property>
+		<property name="expertPayDate" column="EXPERTPAYDATE" type="java.sql.Timestamp"></property>
+		<property name="expertPrice" column="EXPERTPRICE" type="java.lang.String"></property>
+		<property name="expertPerson" column="EXPERTPERSON" type="java.lang.String"></property>
+		<property name="costRemittee" column="COSTREMITTEE;" type="java.lang.String"></property>
+		<property name="costSettleDate" column="COSTSETTLEDATE" type="java.lang.String"></property>
+		<property name="costPrice" column="COSTPRICE" type="java.lang.String"></property>
+		<property name="costAccount" column="COSTACCOUNT" type="java.lang.String"></property>
+		<property name="costComment" column="COSTCOMMENT" type="java.lang.String"></property>	
 		
 		<many-to-one name="dept" class="com.ryxx.bpim.user.entity.AdminDept" column="DEPT"></many-to-one>
 		<many-to-one name="owner" class="com.ryxx.bpim.user.entity.UserInfo" column="OWNER"></many-to-one>
 		<many-to-one name="manager" class="com.ryxx.bpim.user.entity.UserInfo" column="MANAGER"></many-to-one>
 		<many-to-one name="submitter" class="com.ryxx.bpim.user.entity.UserInfo" column="SUBMITTER"></many-to-one>
+		<many-to-one name="formater" class="com.ryxx.bpim.user.entity.UserInfo" column="FORMATER"></many-to-one>
+		<many-to-one name="verifier" class="com.ryxx.bpim.user.entity.UserInfo" column="VERIFIER"></many-to-one>
+		<many-to-one name="earnestInDrawer" class="com.ryxx.bpim.user.entity.UserInfo" column="EARNESTINDRAWER"></many-to-one>
+		<many-to-one name="earnestUndertaker" class="com.ryxx.bpim.user.entity.UserInfo" column="EARNESTUNDERTAKER"></many-to-one>
+		<many-to-one name="tenderUndertaker" class="com.ryxx.bpim.user.entity.UserInfo" column="TENDERUNDERTAKER"></many-to-one>
+		<many-to-one name="agentInvoiceDrawer" class="com.ryxx.bpim.user.entity.UserInfo" column="AGENTINVOICEDRAWER"></many-to-one>
+		<many-to-one name="agentInvoiceHolder" class="com.ryxx.bpim.user.entity.UserInfo" column="AGENTINVOICEHOLDER"></many-to-one>
+		<many-to-one name="vendorInvoiceHolder" class="com.ryxx.bpim.user.entity.UserInfo" column="VENDORINVOICEHOLDER"></many-to-one>
+		<many-to-one name="vendorInvoiceDrawer" class="com.ryxx.bpim.user.entity.UserInfo" column="VENDORINVOICEDRAWER"></many-to-one>
+		<many-to-one name="earnestOutRefunder" class="com.ryxx.bpim.user.entity.UserInfo" column="EARNESTOUTREFUNDER"></many-to-one>
+		<many-to-one name="earnestOutUndertaker" class="com.ryxx.bpim.user.entity.UserInfo" column="EARNESTOUTUNDERTAKER"></many-to-one>
+		<many-to-one name="meetingPlacePayer" class="com.ryxx.bpim.user.entity.UserInfo" column="MEETINGPLACEPAYER"></many-to-one>
+		<many-to-one name="meetingPlaceUndertaker" class="com.ryxx.bpim.user.entity.UserInfo" column="MEETINGPLACEUNDERTAKER"></many-to-one>
+		<many-to-one name="expertPayer" class="com.ryxx.bpim.user.entity.UserInfo" column="EXPERTPAYER"></many-to-one>
+		<many-to-one name="expertUndertaker" class="com.ryxx.bpim.user.entity.UserInfo" column="EXPERTUNDERTAKER"></many-to-one>
+				
 		<bag name="projectStreams" table="PROJECT_STREAM" cascade="all">
 			<key>
 				<column name="PROJECT_ID" />

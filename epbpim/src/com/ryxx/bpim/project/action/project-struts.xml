@@ -20,9 +20,6 @@
 		<action name="modProject" method="modProjectInfo" class="projectAction">
 			<result type="redirect">schProjectList.do?projectInfo.queryType=${projectInfo.queryType}</result>
 		</action>
-		<action name="modProjectContractAndInvoices" method="modProjectContractAndInvoices" class="projectAction">
-			<result type="redirect">schProjectList.do?projectInfo.queryType=${projectInfo.queryType}</result>
-		</action>
 		<action name="closeProject" method="closeProjectInfo" class="projectAction">
 			<result type="redirect">schProjectList.do?projectInfo.queryType=${projectInfo.queryType}</result>
 		</action>
