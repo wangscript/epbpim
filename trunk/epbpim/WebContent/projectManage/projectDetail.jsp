@@ -158,15 +158,19 @@ h4 {
 						<div id="addProjectTable">
 							<h4 class="title">项目基本信息</h4>
 							<ul class="fullScreenUl">
-								<li class="width450Li" ><label class="width4Lb">项目名称:</label>
+								<li class="width200Li" ><label class="width7Lb">承接部门:</label>
+								<s:property value='projectInfo.dept.name' /></li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width400Li" ><label class="width4Lb">项目名称:</label>
 								<s:property value='projectInfo.name' /></li>
-								<li class="width400Li" ><label class="width4Lb">项目编号:</label>
+								<li class="width200Li" ><label class="width4Lb">项目编号:</label>
 								<s:property value='projectInfo.number' /></li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width200Li" ><label class="width4Lb">工程专业:</label>
 								<s:property value='projectInfo.majorType' /></li>
-								<li class="width250Li" ><label class="width4Lb">计价模式:</label>
+								<li class="width200Li" ><label class="width4Lb">计价模式:</label>
 								<s:property value='projectInfo.valuationType' /></li>
 								<li class="width200Li" ><label class="width4Lb">开始时间:</label>
 								<s:date name='projectInfo.startDate' format='yyyy-MM-dd' /></li>
@@ -174,7 +178,54 @@ h4 {
 								<s:property value='projectInfo.quality' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width450Li" ><label class="width7Lb">委托(建设)单位:</label>
+								<li class="width200Li"><label class="width4Lb">项目经理:</label>
+									<s:property value='projectInfo.manager.realName' /></li>
+								<li class="width200Li"><label class="width5Lb">部门负责人:</label>
+									<s:property value='projectInfo.owner.realName' /></li>
+								<li class="width200Li"><label class="width5Lb">编制人:</label>
+									<s:property value='projectInfo.formater.realName' /></li>
+								<li class="width200Li"><label class="width5Lb">审核人:</label>
+									<s:property value='projectInfo.verifier.realName' /></li>
+							</ul>
+							<ul id="participantUL" class="fullScreenUl">
+								<li class="width100Li">
+									<label class="width5Lb">项目参与人:</label> 
+								</li>
+								<s:if test="projectInfo.participants != null && projectInfo.participants.size() > 0">
+									<s:iterator value="projectInfo.participants" status="st">
+										<li id="participantLI" class="width200Li"><select
+											id="projectInfo.participant" name="projectInfo.participant" class="width100Input" disabled>
+											<s:iterator value="userInfoList" status="st">
+												<option value="<s:property value='id' />"
+													<s:if test="id==participant">selected</s:if>>
+													<s:property value="realName" />
+												</option>
+											</s:iterator>
+										</select>
+									</s:iterator>
+								</s:if>
+							</ul>
+							
+							<ul class="fullScreenUl">
+								<li class="width200Li"><label class="width4Lb">合同编号:</label>
+									<s:property value='projectInfo.contractNumber' />
+								</li>
+								<li class="width200Li"><label class="width5Lb">合同金额:</label>
+									<s:property value='projectInfo.contractMoney' />
+								</li>
+								<li class="width200Li"><label class="width6Lb">部门流转单号:</label>
+									<s:property value='projectInfo.deptTransferNumber' />
+								</li>
+							</ul>
+							<ul class="fullScreenUl">
+								<li class="width800Li"><label class="width7Lb">合同摘要:</label>
+									<textarea style="height: 40px; width: 500px;" disabled><s:property value='projectInfo.contractAbstract' /></textarea>
+								</li>
+								<li><br></li>
+							</ul>	
+													
+							<ul class="fullScreenUl">
+								<li class="width400Li" ><label class="width7Lb">委托(建设)单位:</label>
 								<s:property value='projectInfo.customerCompany' /></li>
 								<li class="width200Li" ><label class="width4Lb">联系人:</label>
 								<s:property value='projectInfo.customerContactor' /></li>
@@ -182,7 +233,7 @@ h4 {
 								<s:property value='projectInfo.customerContact' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width450Li" ><label class="width7Lb">相关(关系)单位:</label>
+								<li class="width400Li" ><label class="width7Lb">相关(关系)单位:</label>
 								<s:property value='projectInfo.mediatorCompany' /></li>
 								<li class="width200Li" ><label class="width4Lb">联系人:</label>
 								<s:property value='projectInfo.mediatorContactor' /></li>
@@ -190,7 +241,7 @@ h4 {
 								<s:property value='projectInfo.mediatorContact' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width450Li" ><label class="width7Lb">送审(施工)单位:</label>
+								<li class="width400Li" ><label class="width7Lb">送审(施工)单位:</label>
 								<s:property value='projectInfo.vendorCompany' /></li>
 								<li class="width200Li" ><label class="width4Lb">联系人:</label>
 								<s:property value='projectInfo.vendorContactor' /></li>
@@ -198,22 +249,12 @@ h4 {
 								<s:property value='projectInfo.vendorContact' /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width450Li" ><label class="width7Lb">中标单位:</label>
+								<li class="width400Li" ><label class="width7Lb">中标单位:</label>
 								<s:property value='projectInfo.biddingCompany' /></li>
 								<li class="width200Li" ><label class="width4Lb">联系人:</label>
 								<s:property value='projectInfo.biddingContactor' /></li>
 								<li class="width200Li" ><label class="width2Lb">电话:</label>
 								<s:property value='projectInfo.vendorContact' /></li>
-							</ul>
-							<ul class="fullScreenUl">
-								<li class="width200Li" ><label class="width7Lb">承接部门:</label>
-								<s:property value='projectInfo.dept.name' /></li>
-								<li class="width250Li" ><label class="width6Lb">部门流转单号:</label>
-								<s:property value='projectInfo.deptTransferNumber' /></li>
-								<li class="width200Li" ><label class="width4Lb">负责人:</label>
-								<s:property value='projectInfo.owner.realName' /></li>
-								<li class="width200Li" ><label class="width4Lb">项目经理:</label>
-								<s:property value='projectInfo.manager.realName' /></li>
 							</ul>
 							
 							<%
@@ -244,20 +285,24 @@ h4 {
 									if (menu.getId() == 311) {
 										request.setAttribute("closeProject", true);
 									}									
-									if (menu.getId() == 315) {
-										request.setAttribute("projectTypeManage", true);
+									if (menu.getId() == 316) {
+										request.setAttribute("businessManage", true);
+									}
+									if (menu.getId() == 317) {
+										request.setAttribute("accountManage", true);
 									}
 								}
 							%>
 							
-							<!-- 业务权限人员,查看项目性质 -->
-							<s:if test="#request.projectTypeManage == true">
+							<h4 class="title">项目业务信息</h4>
 							<ul class="fullScreenUl" id="addNewMember">
 								<li class="width200Li"><label class="width6Lb">项目性质:</label><label id="projectType"><s:property value='projectInfo.projectType' />
 								</label></li>
 								<li class="width400Li"><label class="width6Lb">服务内容:</label>
 								<s:property value='projectInfo.projectTypeComment' /></li>
 							</ul>
+							<!-- 业务权限人员,查看项目业务信息  -->
+							<s:if test="#request.businessManage == true">							
 							<div id="projectType1">
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">送审价:</label>
@@ -385,8 +430,243 @@ h4 {
 									<s:property value='projectInfo.consultArchiveRecipient' /></li>
 								</ul>
 							</div>
-							<s:if
-								test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
+							</s:if>	
+							
+							<!-- 账务权限人员,查看项目账务信息 -->
+							<s:if test="true || #request.accountManage == true">
+							<h4 class="title">项目账务信息</h4>
+							<br>
+							<ul class="fullScreenUl">
+								<li class="width200Li"><h5 class="title">收入部分</h5></li>															
+							</ul>
+							<div id="earnestInPart">
+							<fieldset><legend>保证金</legend>						 
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">开票人:</label>
+										<s:property value='projectInfo.earnestInDrawer.realName' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">开票日期:</label>
+										<s:date name='projectInfo.earnestInInvoiceDate' format='yyyy-MM-dd' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">发票编号:</label>
+										<s:property value='projectInfo.earnestInNumber'/>
+									</li>	
+									<li class="width200Li"><label class="width6Lb">开票金额:</label>
+										<s:property value='projectInfo.earnestInPrice'/>
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">承办人:</label>
+										<s:property value='projectInfo.earnestUndertaker.realName' />										
+									</li>
+								</ul>							
+							</fieldset>
+							</div>
+							<div id="tenderPart">
+							<fieldset><legend>标书费</legend>						 
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">收款日期:</label>
+										<s:date name='projectInfo.tenderReceiveDate' format='yyyy-MM-dd' />
+									</li>									
+									<li class="width200Li"><label class="width6Lb">发票编号:</label>
+										<s:property value='projectInfo.tenderInvoiceNumber'/>
+									</li>	
+									<li class="width200Li"><label class="width6Lb">金额:</label>
+										<s:property value='projectInfo.tenderInvoicePrice'/>
+									</li>
+									<li class="width200Li"><label class="width6Lb">承办人:</label>
+										<s:property value='projectInfo.tenderUndertaker' />
+									</li>									
+								</ul>							
+							</fieldset>
+							</div>
+							<div id="agentPart">
+								<fieldset><legend>委托单位</legend>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">开票人:</label>
+									<s:property value='projectInfo.agentInvoiceDrawer.realName' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">开票日期:</label>
+										<s:date name='projectInfo.agentInvoiceDate' format='yyyy-MM-dd' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">发票编号:</label>
+										<s:property value='projectInfo.agentInvoiceNumber'/>
+									</li>	
+									<li class="width200Li"><label class="width6Lb">开票金额:</label>
+										<s:property value='projectInfo.agentInvoicePrice'/>
+									</li>								
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">领票人:</label>
+										<s:property value='projectInfo.agentInvoiceHolder.realName' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">到款日期:</label>
+										<s:date name='projectInfo.agentReceiveDate' format='yyyy-MM-dd' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">到款金额:</label>
+										<s:property value='projectInfo.agentReceivePrice'/>
+									</li>
+									<li class="width200Li"><label class="width6Lb">财务:</label>
+										<s:property value='projectInfo.agentAccount'/>
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">备注:</label>
+										<s:property value='projectInfo.agentComment'/>
+									</li>
+								</ul>
+								</fieldset>
+							</div>
+							<div id="vendorPart">
+								<fieldset><legend>送审单位</legend>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">开票人:</label>
+										<s:property value='projectInfo.vendorInvoiceDrawer.realName' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">开票日期:</label>
+										<s:date name='projectInfo.vendorInvoiceDate' format='yyyy-MM-dd' />
+									</li>									
+									<li class="width200Li"><label class="width6Lb">发票编号:</label>
+										<s:property value='projectInfo.vendorInvoiceNumber'/>
+									</li>	
+									<li class="width200Li"><label class="width6Lb">开票金额:</label>
+										<s:property value='projectInfo.vendorInvoicePrice'/>
+									</li>								
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">领票人:</label>
+										<s:property value='projectInfo.vendorInvoiceHolder.realName' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">到款日期:</label>
+										<s:date name='projectInfo.vendorReceiveDate' format='yyyy-MM-dd' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">到款金额:</label>
+										<s:property value='projectInfo.vendorReceivePrice'/>
+									</li>
+									<li class="width200Li"><label class="width6Lb">财务:</label>
+										<s:property value='projectInfo.vendorAccount'/>
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">备注:</label>
+										<s:property value='projectInfo.vendorComment'/>
+									</li>
+								</ul>
+								</fieldset>
+							</div>
+							<br>
+							<ul class="fullScreenUl">
+								<li class="width200Li"><h5 class="title">支出部分</h5></li>														
+							</ul>
+							<div id="earnestOutPart">
+							<fieldset><legend>保证金</legend>						 
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">退款人:</label>
+										<s:property value='projectInfo.earnestOutRefunder.realName' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">退款日期:</label>
+										<s:date name='projectInfo.earnestOutRefundDate' format='yyyy-MM-dd' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">支票\现金:</label>
+										<s:property value='"projectInfo.earnestOutType"'/>
+									</li>	
+									<li class="width200Li"><label class="width6Lb">金额:</label>
+										<s:property value='projectInfo.earnestOutPrice'/>
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">承办人:</label>
+										<s:property value='projectInfo.earnestOutUndertaker.realName' />
+									</li>
+								</ul>							
+							</fieldset>
+							</div>
+							<div id="meetingPlacePart">
+							<fieldset><legend>会场费</legend>						 
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">支付人:</label>
+										<s:property value='projectInfo.meetingPlacePayer.realName' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">支付日期:</label>
+										<s:date name='projectInfo.meetingPlacePayDate' format='yyyy-MM-dd' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">金额:</label>
+										<s:property value='projectInfo.meetingPlacePrice'/>
+									</li>
+									<li class="width200Li"><label class="width6Lb">承办人:</label>
+										<s:property value='projectInfo.meetingPlaceUndertaker.realName' />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">会场地址:</label>
+										<s:property value='projectInfo.meetingPlaceAddress'/>
+									</li>	
+								</ul>							
+							</fieldset>
+							</div>
+							<div id="expertPart">
+							<fieldset><legend>专家费</legend>						 
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">支付人:</label>
+										<s:property value='projectInfo.expertPayer.realName' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">支付日期:</label>
+										<s:date name='projectInfo.expertPayDate' format='yyyy-MM-dd' />
+									</li>
+									<li class="width200Li"><label class="width6Lb">金额:</label>
+										<s:property value='projectInfo.expertPrice'/>
+									</li>
+									<li class="width200Li"><label class="width6Lb">承办人:</label>
+										<s:property value='projectInfo.expertUndertaker.realName' />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">人员情况:</label>
+										<s:property value='projectInfo.expertPerson'/>
+									</li>	
+								</ul>	
+							</fieldset>
+							</div>
+							
+							<div id="costPart">
+								<s:if test="projectInfo.costs != null && projectInfo.costs.size() > 0">
+									<s:iterator value="projectInfo.costs" status="st">
+										<div>
+											<fieldset><legend>成本报销</legend>											 
+												<ul class="fullScreenUl">
+													<li class="width200Li"><label class="width6Lb">领款人:</label>
+														<select id="projectInfo.costRemittee" name="projectInfo.costRemittee" class="width100Input" disabled>
+														<s:iterator value="userInfoList" status="st">
+															<option value="<s:property value='id' />"
+																<s:if test="id==remittee">selected</s:if>>
+																<s:property value="realName" />
+															</option>
+														</s:iterator>
+														</select>
+													</li>
+													<li class="width200Li"><label class="width6Lb">结算日期:</label>
+														<s:date name='remitteeDate' format='yyyy-MM-dd' />
+													</li>
+													<li class="width200Li"><label class="width6Lb">金额:</label>
+														<s:property value='price' />
+													</li>
+													<li class="width200Li"><label class="width6Lb">账务:</label>
+														<s:property value='account' />
+													</li>
+												</ul>
+												<ul class="fullScreenUl">
+													<li class="width200Li"><label class="width6Lb">备注:</label>
+														<s:property value='comment' />
+													</li>	
+												</ul>
+											</fieldset>
+										</div>
+									</s:iterator>
+								</s:if>
+							</div>
+							<br>
+							</s:if>							
+							<s:if test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
 								<h4 class="title">附件信息</h4>
 								<div id="attachmentDIV">
 									<s:iterator value="projectInfo.projectFiles" status="st">
@@ -400,122 +680,12 @@ h4 {
 									</s:iterator>
 								</div>
 							</s:if>
-							<!--endprint-->
+							
 							<ul class="fullScreenUl">
 								<li><input type="button" class="mediumRightButton"
 									value="打印项目详情" onClick="doPrint()"></li>
 							</ul>							
-							</s:if>		
-							
-							<!-- 财务人员,操作合同信息权限 -->							
-							<s:if test="projectInfo.status != 9">
-								<s:if test="#request.addCost == true">
-									<h4 class="title">合同信息</h4>
-									<s:form id="modForm" action="modProjectContractAndInvoices.do"
-										method="post">
-										<input type="hidden" name="projectInfo.queryType"
-											value="<s:property value='projectInfo.queryType'/>" />
-										<ul class="fullScreenUl">
-											<li class="width200Li"><label class="width6Lb">合同编号:</label>
-												<input class="width100Input"
-												name="projectInfo.contractNumber"
-												value="<s:property value='projectInfo.contractNumber' />" />
-											</li>
-											<li class="width200Li"><label class="width6Lb">合同金额:</label>
-												<input class="width100Input"
-												name="projectInfo.contractMoney"
-												value="<s:property value='projectInfo.contractMoney' />" />
-											</li>
-											<li class="width400Li"><label class="width6Lb">合同摘要:</label>
-												<input class="width300Input"
-												name="projectInfo.contractAbstract"
-												value="<s:property value='projectInfo.contractAbstract' />" />
-											</li>
-										</ul>
-										<div id="invoiceDIV">
-											<s:if
-												test="projectInfo.projectInvoices != null && projectInfo.projectInvoices.size() > 0">
-												<s:iterator value="projectInfo.projectInvoices" status="st">
-													<ul class="fullScreenUl">
-														<li class="width200Li"><label class="width6Lb">开票日期:</label>
-															<input class="Wdate width100Input"
-															name="projectInfo.invoiceDate"
-															onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
-															value="<s:date name='invoiceDate' format='yyyy-MM-dd' />" />
-														</li>
-														<li class="width200Li"><label class="width6Lb">开票金额:</label>
-															<input class="width100Input"
-															name="projectInfo.invoicePrice"
-															value="<s:property value='invoicePrice' />" /></li>
-														<li class="width250Li"><label class="width6Lb">发票单号:</label>
-															<input class="width150Input"
-															name="projectInfo.invoiceNumber"
-															value="<s:property value='invoiceNumber' />" /></li>
-														<li class="width150Li"><label class="width6Lb">是否到账:</label>
-															<select name="projectInfo.invoiceMoneyArrival">
-																<s:if
-																	test="invoiceMoneyArrival!= 1&&invoiceMoneyArrival!= 0">
-																	<option value=" " selected="selected">请选择</option>
-																	<option value="1">是</option>
-																	<option value="0">否</option>
-																</s:if>
-																<s:if test="invoiceMoneyArrival==1">
-																	<option value="">请选择</option>
-																	<option value="1" selected="selected">是</option>
-																	<option value="0">否</option>
-																</s:if>
-																<s:if test="invoiceMoneyArrival==0">
-																	<option value="">请选择</option>
-																	<option value="1">是</option>
-																	<option value="0" selected="selected">否</option>
-																</s:if>
-
-														</select>
-														</li>
-														<li><input type="button" class="mediumLeftButton"
-															onclick="delInvoice(this)" value="删除">
-														</li>
-													</ul>
-												</s:iterator>
-											</s:if>
-										</div>
-										<ul class="fullScreenUl">
-											<li><input type="button" class="mediumLeftButton"
-												onclick="addInvoice()" value="新增发票">
-											</li>
-										</ul>
-										<ul id="invoiceUL" class="fullScreenUl" style="display: none">
-											<li class="width200Li"><label class="width6Lb">开票日期:</label>
-												<input class="Wdate width100Input"
-												name="projectInfo.invoiceDate"
-												onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
-											<li class="width200Li"><label class="width6Lb">开票金额:</label>
-												<input class="width100Input" name="projectInfo.invoicePrice" />
-											</li>
-											<li class="width250Li"><label class="width6Lb">发票单号:</label>
-												<input class="width150Input"
-												name="projectInfo.invoiceNumber" /></li>
-											<li class="width150Li"><label class="width6Lb">是否到账:</label>
-												<select name="projectInfo.invoiceMoneyArrival">
-													<option value="">请选择</option>
-													<option value="1">是</option>
-													<option value="0">否</option>
-											</select>
-											</li>
-											<li><input type="button" class="mediumLeftButton"
-												onclick="delInvoice(this)" value="删除">
-											</li>
-										</ul>
-										<ul class="fullScreenUl">
-											<li><input type="hidden" name="projectInfo.id"
-												value="<s:property value='projectInfo.id'/>" /> <input
-												type="submit" class="mediumRightButton" value="保存">
-											</li>
-										</ul>
-									</s:form>
-
-								</s:if>
-							</s:if>
+														
 							<s:if
 								test="projectInfo.projectStreams != null && projectInfo.projectStreams.size() > 0">
 								<h4 class="title">成本/奖金信息</h4>
@@ -681,19 +851,7 @@ h4 {
 			document.getElementById(id).submit();
 		}
 	}
-
- 	function addInvoice()
- 	{
- 		var invoiceULObj=document.getElementById("invoiceUL").cloneNode(true);
- 		invoiceULObj.id="";
- 		invoiceULObj.style.display="inline";
- 		document.getElementById("invoiceDIV").appendChild(invoiceULObj);
- 	}
- 	function delInvoice(obj)
- 	{
- 		var invoiceULObj=obj.parentNode.parentNode;
- 		invoiceULObj.parentNode.removeChild(invoiceULObj);
- 	}
+ 	
  	function doPrint() { 
  		bdhtml=window.document.body.innerHTML; 
  		currentHtml = bdhtml;
