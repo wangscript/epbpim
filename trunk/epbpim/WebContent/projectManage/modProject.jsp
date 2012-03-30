@@ -59,7 +59,7 @@
 	 		}
 		}
 		// 拥有财务权限
-		if(document.getElementById("projectType1"))
+		if(document.getElementById("earnestInPart"))
 		{
 			
 			var earnestInPartObj = document.getElementById("earnestInPart");
@@ -706,10 +706,16 @@
 									</li>
 								</ul>
 							</div>
+							<br>
+							<br>
+							<ul class="fullScreenUl">
+								<li class="width500Li">业务档案校对时间: _______________________</li>
+								<li class="width300Li">档案接收人书面签字: _______________________</li>
+							</ul>
 							</s:if>
 							<!-- 财务权限人员,查看项目财务信息  -->
-							<s:if test="true || #request.accountManage == true">
-							<h4 class="title">项目账务信息</h4>
+							<s:if test="#request.accountManage == true">
+							<h4 class="title">项目财务信息</h4>
 							<br>
 							<ul class="fullScreenUl">
 								<li class="width200Li"><h5 class="title">收入部分</h5></li>															
@@ -1012,19 +1018,22 @@
 													</li>
 													<li class="width200Li"><label class="width6Lb">结算日期:</label>
 														<input class="Wdate width100Input" name="projectInfo.costSettleDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" 
-															value="<s:date name='remitteeDate' format='yyyy-MM-dd' />" />
+															value="<s:date name='settleDate' format='yyyy-MM-dd' />" />
 													</li>
 													<li class="width200Li"><label class="width6Lb">金额:</label>
 														<input class="width100Input" name="projectInfo.costPrice" value="<s:property value='price' />" />
 													</li>
-													<li class="width200Li"><label class="width6Lb">账务:</label>
+													<li class="width200Li"><label class="width6Lb">财务:</label>
 														<input class="width100Input" name="projectInfo.costAccount" value="<s:property value='account' />" />
 													</li>
 												</ul>
 												<ul class="fullScreenUl">
 													<li class="width200Li"><label class="width6Lb">备注:</label>
 														<input class="width100Input" name="projectInfo.costComment" value="<s:property value='comment' />" />
-													</li>	
+													</li>
+													<li>
+														<input type="button" class="mediumLeftButton" onclick="delCost(this)" value="删除">
+													</li>
 												</ul>
 											</fieldset>
 										</div>
@@ -1036,6 +1045,12 @@
 								<li><input type="button" class="mediumLeftButton"
 									onclick="addCost()" value="新增成本报销">
 								</li>
+							</ul>
+							<br>
+							<br>
+							<ul class="fullScreenUl">
+								<li class="width500Li">财务档案校对时间: _______________________</li>
+								<li class="width300Li">财务总监书面签字: _______________________</li>
 							</ul>
 							</s:if>
 							
@@ -1213,7 +1228,7 @@
 									<li class="width200Li"><label class="width6Lb">金额:</label>
 										<input class="width100Input" name="projectInfo.costPrice" />
 									</li>
-									<li class="width200Li"><label class="width6Lb">账务:</label>
+									<li class="width200Li"><label class="width6Lb">财务:</label>
 										<input class="width100Input" name="projectInfo.costAccount" value="<s:property value='account' />" />
 									</li>
 								</ul>
