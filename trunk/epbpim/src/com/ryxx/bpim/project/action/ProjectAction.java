@@ -12,7 +12,8 @@ import org.apache.commons.lang.StringUtils;
 import com.ryxx.bpim.common.Constants;
 import com.ryxx.bpim.project.entity.ProjectFile;
 import com.ryxx.bpim.project.entity.ProjectInfo;
-import com.ryxx.bpim.project.entity.ProjectInvoice;
+import com.ryxx.bpim.project.entity.ProjectCost;
+import com.ryxx.bpim.project.entity.ProjectParticipant;
 import com.ryxx.bpim.project.entity.ProjectStream;
 import com.ryxx.bpim.project.service.ProjectService;
 import com.ryxx.bpim.project.service.ProjectStreamService;
@@ -112,55 +113,6 @@ public class ProjectAction extends ActionSupportBase
         
         subCosts = (double)0;
         
-        for (ProjectInfo project : projectInfoList)
-        {
-            wrapInvoiceList(project);
-            
-            Double subInvoice = (double)0;
-            if (project.getProjectInvoices() != null)
-            {
-                Double invoicePrice = (double)0;
-                for (ProjectInvoice invoice : project.getProjectInvoices())
-                {
-                    if (invoice.getInvoicePrice() != null && !"".equals(invoice.getInvoicePrice()))
-                    {
-                        try
-                        {
-                            invoicePrice = Double.valueOf(invoice.getInvoicePrice());
-                            subInvoice = subInvoice + invoicePrice;
-                        }
-                        catch (Exception e)
-                        {
-                            continue;
-                        }
-                    }
-                }
-            }
-            
-            subInvoices = subInvoices + subInvoice;
-            project.setSubInvoice(subInvoice);
-            
-            Double subCost = (double)0;
-            
-            for (ProjectStream stream : project.getProjectStreams())
-            {
-                if (stream.getType() == 1)
-                {
-                    subCost = subCost + stream.getMoney();
-                }
-            }
-            
-            subCosts = subCosts + subCost;
-            project.setSubCost(subCost);
-            
-            project.setBalance(subInvoice - subCost);
-            
-            if (!StringUtils.isEmpty(project.getContractMoney()))
-            {
-                subContractMoneys = subContractMoneys + Double.valueOf(project.getContractMoney());
-            }
-            
-        }
         return projectInfoList;
     }
     
@@ -171,7 +123,7 @@ public class ProjectAction extends ActionSupportBase
             String queryType = projectInfo.getQueryType();
             projectInfo = projectService.findProjectInfo(projectInfo);
             projectInfo.setQueryType(queryType);
-            wrapInvoiceList(projectInfo);
+            wrapCostList(projectInfo);
             wrapFileList(projectInfo);
             ProjectStream projectStream = new ProjectStream();
             projectStream.setProjectID(projectInfo.getId());
@@ -325,46 +277,6 @@ public class ProjectAction extends ActionSupportBase
         }
     }
     
-    public String modProjectContractAndInvoices()
-    {
-        if (projectInfo != null)
-        {
-            String queryType = projectInfo.getQueryType();
-            ProjectInfo preProjectInfo = projectService.findProjectInfo(projectInfo);
-            if (!StringUtils.isBlank(projectInfo.getContractNumber()))
-            {
-                preProjectInfo.setContractNumber(projectInfo.getContractNumber());
-            }
-            if (!StringUtils.isBlank(projectInfo.getContractMoney()))
-            {
-                preProjectInfo.setContractMoney(projectInfo.getContractMoney());
-            }
-            if (!StringUtils.isBlank(projectInfo.getContractAbstract()))
-            {
-                preProjectInfo.setContractAbstract(projectInfo.getContractAbstract());
-            }
-            if (!StringUtils.isBlank(projectInfo.getInvoiceDate()))
-            {
-                preProjectInfo.setInvoiceDate(projectInfo.getInvoiceDate().replaceAll(", ", ","));
-            }
-            if (!StringUtils.isBlank(projectInfo.getInvoiceNumber()))
-            {
-                preProjectInfo.setInvoiceNumber(projectInfo.getInvoiceNumber().replaceAll(", ", ","));
-            }
-            if (!StringUtils.isBlank(projectInfo.getInvoicePrice()))
-            {
-                preProjectInfo.setInvoicePrice(projectInfo.getInvoicePrice().replaceAll(", ", ","));
-            }
-            if (!StringUtils.isBlank(projectInfo.getInvoiceMoneyArrival()))
-            {
-                preProjectInfo.setInvoiceMoneyArrival(projectInfo.getInvoiceMoneyArrival().replaceAll(", ", ","));
-            }
-            projectService.updateProjectInfo(preProjectInfo);
-            projectInfo.setQueryType(queryType);
-        }
-        return SUCCESS;
-    }
-    
     public String closeProjectInfo()
     {
         try
@@ -405,38 +317,73 @@ public class ProjectAction extends ActionSupportBase
         adminDeptList = userInfo.getDepts();
     }
     
-    private void wrapInvoiceList(ProjectInfo projectInfo)
+    private void wrapParticipantList(ProjectInfo projectInfo)
     {
-        if (!StringUtils.isBlank(projectInfo.getInvoiceDate()))
+        if (!StringUtils.isBlank(projectInfo.getParticipant()))
         {
-            int invoiceCount = projectInfo.getInvoiceDate().split(",").length;
+            int invoiceCount = projectInfo.getParticipant().split(",").length;
             
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            
-            List<ProjectInvoice> projectInvoices = new ArrayList<ProjectInvoice>();
+            List<ProjectParticipant> participants = new ArrayList<ProjectParticipant>();
             
             for (int i = 0; i < invoiceCount; i++)
             {
-                ProjectInvoice projectInvoice = new ProjectInvoice();
+                ProjectParticipant participant = new ProjectParticipant();
                 try
                 {
-                    if (!StringUtils.isEmpty(projectInfo.getInvoiceDate().split(",")[i])
-                        && !StringUtils.isEmpty(projectInfo.getInvoiceDate().split(",")[i].trim()))
+                    
+                    if (!StringUtils.isEmpty(projectInfo.getParticipant().split(",")[i]))
                     {
-                        Date invoiceDate = sdf.parse(projectInfo.getInvoiceDate().split(",")[i]);
-                        projectInvoice.setInvoiceDate(new Timestamp(invoiceDate.getTime()));
+                        participant.setParticipant(projectInfo.getParticipant().split(",")[i]);
                     }
-                    if (!StringUtils.isEmpty(projectInfo.getInvoiceNumber().split(",")[i]))
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                participants.add(participant);
+            }
+            
+            projectInfo.setParticipants(participants);
+        }
+        
+    }
+    
+    private void wrapCostList(ProjectInfo projectInfo)
+    {
+        if (!StringUtils.isBlank(projectInfo.getCostRemittee()))
+        {
+            int invoiceCount = projectInfo.getCostRemittee().split(",").length;
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            
+            List<ProjectCost> projectCosts = new ArrayList<ProjectCost>();
+            
+            for (int i = 0; i < invoiceCount; i++)
+            {
+                ProjectCost projectCost = new ProjectCost();
+                try
+                {
+                    if (!StringUtils.isEmpty(projectInfo.getCostSettleDate().split(",")[i])
+                        && !StringUtils.isEmpty(projectInfo.getCostSettleDate().split(",")[i].trim()))
                     {
-                        projectInvoice.setInvoiceNumber(projectInfo.getInvoiceNumber().split(",")[i]);
+                        Date invoiceDate = sdf.parse(projectInfo.getCostSettleDate().split(",")[i]);
+                        projectCost.setSettleDate(new Timestamp(invoiceDate.getTime()));
                     }
-                    if (!StringUtils.isEmpty(projectInfo.getInvoicePrice().split(",")[i]))
+                    if (!StringUtils.isEmpty(projectInfo.getCostRemittee().split(",")[i]))
                     {
-                        projectInvoice.setInvoicePrice(projectInfo.getInvoicePrice().split(",")[i]);
+                        projectCost.setRemittee(projectInfo.getCostRemittee().split(",")[i]);
                     }
-                    if (!StringUtils.isEmpty(projectInfo.getInvoiceMoneyArrival().split(",")[i]))
+                    if (!StringUtils.isEmpty(projectInfo.getCostPrice().split(",")[i]))
                     {
-                        projectInvoice.setInvoiceMoneyArrival(projectInfo.getInvoiceMoneyArrival().split(",")[i]);
+                        projectCost.setPrice(projectInfo.getCostPrice().split(",")[i]);
+                    }
+                    if (!StringUtils.isEmpty(projectInfo.getCostAccount().split(",")[i]))
+                    {
+                        projectCost.setAccount(projectInfo.getCostAccount().split(",")[i]);
+                    }
+                    if (!StringUtils.isEmpty(projectInfo.getCostComment().split(",")[i]))
+                    {
+                        projectCost.setComment(projectInfo.getCostComment().split(",")[i]);
                     }
                     
                 }
@@ -444,10 +391,10 @@ public class ProjectAction extends ActionSupportBase
                 {
                     e.printStackTrace();
                 }
-                projectInvoices.add(projectInvoice);
+                projectCosts.add(projectCost);
             }
             
-            projectInfo.setProjectInvoices(projectInvoices);
+            projectInfo.setCosts(projectCosts);
         }
         
     }
