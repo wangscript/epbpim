@@ -388,36 +388,36 @@ public class ProjectAction extends ActionSupportBase
             
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             
-            List<ProjectCost> projectCosts = new ArrayList<ProjectCost>();
+            List<ProjectCost> costs = new ArrayList<ProjectCost>();
             
             for (int i = 0; i < invoiceCount; i++)
             {
-                ProjectCost projectCost = new ProjectCost();
+                ProjectCost cost = new ProjectCost();
                 try
                 {
                     if (!StringUtils.isEmpty(projectInfo.getCostSettleDate().split(",")[i])
                         && !StringUtils.isEmpty(projectInfo.getCostSettleDate().split(",")[i].trim()))
                     {
                         Date invoiceDate = sdf.parse(projectInfo.getCostSettleDate().split(",")[i]);
-                        projectCost.setSettleDate(new Timestamp(invoiceDate.getTime()));
+                        cost.setSettleDate(new Timestamp(invoiceDate.getTime()));
                     }
                     if (!StringUtils.isEmpty(projectInfo.getCostRemittee().split(",")[i]))
                     {
                         long remitteeID = Long.valueOf(projectInfo.getCostRemittee().split(",")[i]);
-                        projectCost.setRemitteeID(remitteeID);
-                        projectCost.setRemitteeName(userInfoService.fetchById(remitteeID).getRealName());
+                        cost.setRemitteeID(remitteeID);
+                        cost.setRemitteeName(userInfoService.fetchById(remitteeID).getRealName());
                     }
                     if (!StringUtils.isEmpty(projectInfo.getCostPrice().split(",")[i]))
                     {
-                        projectCost.setPrice(projectInfo.getCostPrice().split(",")[i]);
+                        cost.setPrice(projectInfo.getCostPrice().split(",")[i]);
                     }
                     if (!StringUtils.isEmpty(projectInfo.getCostAccount().split(",")[i]))
                     {
-                        projectCost.setAccount(projectInfo.getCostAccount().split(",")[i]);
+                        cost.setAccount(projectInfo.getCostAccount().split(",")[i]);
                     }
                     if (!StringUtils.isEmpty(projectInfo.getCostComment().split(",")[i]))
                     {
-                        projectCost.setComment(projectInfo.getCostComment().split(",")[i]);
+                        cost.setComment(projectInfo.getCostComment().split(",")[i]);
                     }
                     
                 }
@@ -425,10 +425,10 @@ public class ProjectAction extends ActionSupportBase
                 {
                     e.printStackTrace();
                 }
-                projectCosts.add(projectCost);
+                costs.add(cost);
             }
             
-            projectInfo.setCosts(projectCosts);
+            projectInfo.setCosts(costs);
         }
         
     }
