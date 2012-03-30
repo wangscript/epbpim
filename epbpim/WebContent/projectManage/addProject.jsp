@@ -42,6 +42,34 @@
  		}
  	}
  	
+ 	
+ 	function addParticipant(obj)
+ 	{
+ 		var participantLIObj=document.getElementById("participantLI").cloneNode(true);
+ 		participantLIObj.id="";
+ 		document.getElementById("participantUL").removeChild(obj.parentNode); 		
+ 		document.getElementById("participantUL").appendChild(participantLIObj);
+ 		document.getElementById("participantUL").appendChild(obj.parentNode);
+ 	}
+ 	function delParticipant(obj)
+ 	{
+ 		document.getElementById("participantUL").removeChild(obj.parentNode);
+ 	}
+ 	
+	
+	function addCost()
+ 	{
+ 		var costDivObj=document.getElementById("costDiv").cloneNode(true);
+ 		costDivObj.id="";
+ 		costDivObj.style.display="inline";
+ 		document.getElementById("costPart").appendChild(costDivObj);
+ 	}
+ 	function delCost(obj)
+ 	{
+ 		var costDivObj=obj.parentNode.parentNode.parentNode;
+ 		costDivObj.parentNode.removeChild(costDivObj);
+ 	}
+ 	
  	function addAttachment()
  	{
  		var invoiceULObj=document.getElementById("attachmentUL").cloneNode(true);
@@ -73,19 +101,30 @@
 					<h3 class="title">项目录入</h3>
 					<div id="addProjectTable">
 						<s:form id="addForm" action="addProject.do" enctype="multipart/form-data" method="post" onsubmit="return validate(this);">
-						<h4 class="title">项目基本信息</h4>
-						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width4Lb">项目名称:</label> <input
-								class="width350Input" name="projectInfo.name"/>
-								<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
-							</li>
-							<li class="width400Li" style="display: none"><label class="width4Lb">项目编号:</label> <input
-								class="width300Input" name="projectInfo.number"/>
+						<h4 class="title">项目基本信息</h4>				
+						<ul class="fullScreenUl">	
+							<li class="width200Li"><label class="width4Lb">承接部门:</label>
+								<select id="projectInfo.dept.id" name="projectInfo.dept.id" class="width100Input">
+									<s:iterator value="adminDeptList" status="st">
+										<option value="<s:property value='id' />">
+											<s:property value="name" />
+										</option>
+									</s:iterator>
+								</select>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width4Lb">工程专业:</label><select
-								id="majorType" name="projectInfo.majorType">
+							<li class="width400Li"><label class="width4Lb">项目名称:</label>
+								<input  class="width300Input" name="projectInfo.name">
+								<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
+							</li>
+							<li class="width200Li"><label class="width4Lb">项目编号:</label>
+								<input class="width100Input" name="projectInfo.number" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width4Lb">工程专业:</label>
+								<select id="majorType" name="projectInfo.majorType" class="width100Input">
 									<option value="土建">土建</option>
 									<option value="园林">园林</option>
 									<option value="市政">市政</option>
@@ -94,87 +133,125 @@
 									<option value="水利">水利</option>
 									<option value="人防">人防</option>
 									<option value="房修">房修</option>
-							</select>
+								</select>
 							</li>
-							<li class="width250Li"><label class="width4Lb">计价模式:</label><select
-								id="valuationType" name="projectInfo.valuationType">
+							<li class="width200Li"><label class="width5Lb">计价模式:</label>
+								<select id="valuationType" name="projectInfo.valuationType" class="width100Input">
 									<option value="清单">清单</option>
 									<option value="2000定额">2000定额</option>
 									<option value="其他">其他</option>
-							</select>
-							</li>
-							<li class="width250Li"><label class="width4Lb">开始时间:</label> <input
-								class="Wdate width150Input" name="projectInfo.startDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-							</li>
-							<li class="width200Li"><label class="width4Lb">质量要求:</label> <input
-								class="width100Input" name="projectInfo.quality"/>
-							</li>
-						</ul>
+								</select>
+							</li>					
+							<li class="width200Li"><label class="width4Lb">开始时间:</label>
+								<input class="Wdate width100Input" name="projectInfo.startDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+							</li>			
+							<li class="width200Li"><label class="width4Lb">质量要求:</label>
+								<input class="width100Input" name="projectInfo.quality"/></li>
+						</ul>							
 						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width7Lb">委托(建设)单位:</label> <input
-								class="width350Input" name="projectInfo.customerCompany"/>
-							</li>
-							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.customerContactor"/>
-							</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.customerContact"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width7Lb">相关(关系)单位:</label> <input
-								class="width350Input" name="projectInfo.mediatorCompany"/>
-							</li>
-							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.mediatorContactor"/>
-							</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.mediatorContact"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width7Lb">送审(施工)单位:</label> <input
-								class="width350Input" name="projectInfo.vendorCompany"/>
-							</li>
-							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.vendorContactor"/>
-							</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.vendorContact"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width450Li"><label class="width7Lb">中标单位:</label> <input
-								class="width350Input" name="projectInfo.biddingCompany"/>
-							</li>
-							<li class="width250Li"><label class="width4Lb">联系人:</label> <input
-								class="width150Input" name="projectInfo.biddingContactor"/>
-							</li>
-							<li class="width200Li"><label class="width2Lb">电话:</label> <input
-								class="width150Input" name="projectInfo.biddingContact"/>
-							</li>
-						</ul>
-						<ul class="fullScreenUl">
-							<li class="width200Li"><label class="width7Lb">承接部门:</label>
-								<s:select cssClass="width100Select" id="projectInfo.dept.id" name="projectInfo.dept.id"
-										list="adminDeptList" listKey="id" listValue="name" multiple="false" required="true" headerKey="0" />	
-							</li>
-							<li class="width250Li"><label class="width6Lb">部门流转单号:</label> <input
-								class="width150Input"
-								name="projectInfo.deptTransferNumber"
-								id="contractNumber" />
-							</li>
-							<li class="width200Li"><label class="width4Lb">负责人:</label>
-								<s:select cssClass="width100Select" id="projectInfo.owner.id" name="projectInfo.owner.id"
-										list="userInfoList" listKey="id" listValue="realName" multiple="false" required="true" headerKey="0" />	
-							</li>
 							<li class="width200Li"><label class="width4Lb">项目经理:</label>
-								<s:select cssClass="width100Select" id="projectInfo.manager.id" name="projectInfo.manager.id"
-										list="userInfoList" listKey="id" listValue="realName" multiple="false" required="true" headerKey="0" />	
+								<select id="projectInfo.manager.id" name="projectInfo.manager.id" class="width100Input">
+									<s:iterator value="userInfoList" status="st">
+										<option value="<s:property value='id' />">
+											<s:property value="realName" />
+										</option>
+									</s:iterator>
+								</select>
 							</li>
+							<li class="width200Li"><label class="width5Lb">部门负责人:</label>
+								<select id="projectInfo.owner.id" name="projectInfo.owner.id" class="width100Input">
+									<s:iterator value="userInfoList" status="st">
+										<option value="<s:property value='id' />">
+											<s:property value="realName" />
+										</option>
+									</s:iterator>
+								</select>
+							</li>
+							<li class="width200Li"><label class="width5Lb">编制人:</label>
+								<select id="projectInfo.formater.id" name="projectInfo.formater.id" class="width100Input">
+									<s:iterator value="userInfoList" status="st">
+										<option value="<s:property value='id' />">
+											<s:property value="realName" />
+										</option>
+									</s:iterator>
+								</select>
+							</li>
+							<li class="width200Li"><label class="width5Lb">审核人:</label>
+								<select id="projectInfo.verifier.id" name="projectInfo.verifier.id" class="width100Input">
+									<s:iterator value="userInfoList" status="st">
+										<option value="<s:property value='id' />">
+											<s:property value="realName" />
+										</option>
+									</s:iterator>
+								</select>
+							</li>
+						</ul>
+						<ul id="participantUL" class="fullScreenUl">
+							<li class="width100Li">
+								<label class="width5Lb">项目参与人:</label> 
+							</li>							
+							<li class="width100Li">
+								<input type="button" class="mediumLeftButton" onclick="addParticipant(this)" value="新增参与人">
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width200Li"><label class="width4Lb">合同编号:</label>
+								<input class="width100Input" name="projectInfo.contractNumber"/>
+							</li>
+							<li class="width200Li"><label class="width5Lb">合同金额:</label>
+								<input class="width100Input" name="projectInfo.contractMoney"/>
+							</li>
+							<li class="width200Li"><label class="width6Lb">部门流转单号:</label>
+								<input class="width100Input" id="contractNumber" name="projectInfo.deptTransferNumber"/>
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width800Li"><label class="width7Lb">合同摘要:</label><textarea style="height: 40px; width: 500px;"  name="projectInfo.contractAbstract"></textarea>
+							</li>
+							<li><br></li>
+						</ul>							
+						<ul class="fullScreenUl">
+							<li class="width400Li"><label class="width7Lb">委托(建设)单位:</label>
+								<input class="width300Input" name="projectInfo.customerCompany" />
+							</li>
+							<li class="width200Li"><label class="width4Lb">联系人:</label>
+								<input class="width100Input" name="projectInfo.customerContactor"/>
+							</li>
+							<li class="width200Li"><label class="width2Lb">电话:</label>
+								<input class="width100Input" name="projectInfo.customerContact"/>
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width400Li"><label class="width7Lb">相关(关系)单位:</label>
+								<input class="width300Input" name="projectInfo.mediatorCompany"/>
+							</li>
+							<li class="width200Li"><label class="width4Lb">联系人:</label>
+								<input class="width100Input" name="projectInfo.mediatorContactor"/>
+							</li>
+							<li class="width200Li"><label class="width2Lb">电话:</label>
+								<input class="width100Input" name="projectInfo.mediatorContact"/>
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width400Li"><label class="width7Lb">送审(施工)单位:</label>
+								<input class="width300Input" name="projectInfo.vendorCompany"/></li>
+							<li class="width200Li"><label class="width4Lb">联系人:</label>
+								<input class="width100Input" name="projectInfo.vendorContactor" />" />
+							</li>
+							<li class="width200Li"><label class="width2Lb">电话:</label>
+								<input class="width100Input" name="projectInfo.vendorContact"/>" /></li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width400Li"><label class="width7Lb">中标单位:</label>
+								<input class="width300Input" name="projectInfo.biddingCompany"/></li>
+							<li class="width200Li"><label class="width4Lb">联系人:</label>
+								<input class="width100Input" name="projectInfo.biddingContactor"/>
+							</li>
+							<li class="width200Li"><label class="width2Lb">电话:</label>
+								<input class="width100Input" name="projectInfo.biddingContact"/></li>
 						</ul>
 						
+						<h4 class="title">项目业务信息</h4>
 						<ul class="fullScreenUl" id="addNewMember">
 							<li class="width200Li" ><label class="width6Lb">项目性质:</label>
 								<select id="projectType" name="projectInfo.projectType" onChange="changeProjectType();">
@@ -412,6 +489,53 @@
 							<li ><input type="hidden" id="projectInfo.status" name="projectInfo.status"/> </li>
 						</ul>
 						</s:form>
+						
+						<ul style="display: none">
+							<li id="participantLI" class="width200Li">
+								<select id="projectInfo.participant" name="projectInfo.participant" class="width100Input">
+									<s:iterator value="userInfoList" status="st">
+										<option value="<s:property value='id' />">
+											<s:property value="realName" />
+										</option>
+									</s:iterator>
+								</select>
+								<input type="button" class="mediumLeftButton" onclick="delParticipant(this)" value="删除">						
+							</li>
+						</ul>
+						
+						<div id="costDiv" style="display: none">
+							<fieldset><legend>成本报销</legend>											 
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">领款人:</label>
+										<select id="projectInfo.costRemittee" name="projectInfo.costRemittee" class="width100Input">
+										<s:iterator value="userInfoList" status="st">
+											<option value="<s:property value='id' />">
+												<s:property value="realName" />
+											</option>
+										</s:iterator>
+										</select>
+									</li>
+									<li class="width200Li"><label class="width6Lb">结算日期:</label>
+										<input class="Wdate width100Input" name="projectInfo.costSettleDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">金额:</label>
+										<input class="width100Input" name="projectInfo.costPrice" />
+									</li>
+									<li class="width200Li"><label class="width6Lb">账务:</label>
+										<input class="width100Input" name="projectInfo.costAccount" value="<s:property value='account' />" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">备注:</label>
+										<input class="width100Input" name="projectInfo.costComment" />
+									</li>
+									<li>
+										<input type="button" class="mediumLeftButton" onclick="delCost(this)" value="删除">
+									</li>	
+								</ul>
+							</fieldset>
+						</div>
+						
 						<ul id="attachmentUL" class="fullScreenUl" style="display: none">
 							<li class="width300Li">
 								<s:file name="uploadFiles" id="uploadFiles" size="30" onchange="chooseFile(this)" />
