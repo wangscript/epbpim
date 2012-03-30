@@ -51,7 +51,7 @@
 	 		}
 		}
 		// 拥有财务权限
-		if(document.getElementById("projectType1"))
+		if(document.getElementById("earnestInPart"))
 		{
 			
 			var earnestInPartObj = document.getElementById("earnestInPart");
@@ -247,7 +247,7 @@ h4 {
 								</li>
 								<s:if test="projectInfo.participants != null && projectInfo.participants.size() > 0">
 									<s:iterator value="projectInfo.participants" status="st">
-										<li id="participantLI" class="width200Li">
+										<li id="participantLI" class="width100Li">
 											<s:property value="participantName" />
 										</li>
 									</s:iterator>
@@ -478,11 +478,17 @@ h4 {
 									<s:property value='projectInfo.consultArchiveRecipient' /></li>
 								</ul>
 							</div>
+							<br>
+							<br>
+							<ul class="fullScreenUl">
+								<li class="width500Li">业务档案校对时间: _______________________</li>
+								<li class="width300Li">档案接收人书面签字: _______________________</li>
+							</ul>
 							</s:if>	
 							
 							<!-- 财务权限人员,查看项目财务信息 -->
-							<s:if test="true || #request.accountManage == true">
-							<h4 class="title">项目账务信息</h4>
+							<s:if test="#request.accountManage == true">
+							<h4 class="title">项目财务信息</h4>
 							<br>
 							<ul class="fullScreenUl">
 								<li class="width200Li"><h5 class="title">收入部分</h5></li>															
@@ -691,7 +697,7 @@ h4 {
 													<li class="width200Li"><label class="width6Lb">金额:</label>
 														<s:property value='price' />
 													</li>
-													<li class="width200Li"><label class="width6Lb">账务:</label>
+													<li class="width200Li"><label class="width6Lb">财务:</label>
 														<s:property value='account' />
 													</li>
 												</ul>
@@ -706,6 +712,11 @@ h4 {
 								</s:if>
 							</div>
 							<br>
+							<br>
+							<ul class="fullScreenUl">
+								<li class="width500Li">财务档案校对时间: _______________________</li>
+								<li class="width300Li">财务总监书面签字: _______________________</li>
+							</ul>
 							</s:if>							
 							<s:if test="projectInfo.projectFiles != null && projectInfo.projectFiles.size() > 0">
 								<h4 class="title">附件信息</h4>
