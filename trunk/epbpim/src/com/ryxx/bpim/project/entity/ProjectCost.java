@@ -17,7 +17,9 @@ public class ProjectCost extends VoBase
     /** 序列号 */
     private static final long serialVersionUID = -6899594424877105415L;
     
-    private String remittee;
+    private long remitteeID;
+    
+    private String remitteeName;
     
     private String Price;
     
@@ -27,14 +29,24 @@ public class ProjectCost extends VoBase
     
     private Timestamp settleDate;
     
-    public String getRemittee()
+    public long getRemitteeID()
     {
-        return remittee;
+        return remitteeID;
     }
     
-    public void setRemittee(String remittee)
+    public void setRemitteeID(long remitteeID)
     {
-        this.remittee = remittee;
+        this.remitteeID = remitteeID;
+    }
+    
+    public String getRemitteeName()
+    {
+        return remitteeName;
+    }
+    
+    public void setRemitteeName(String remitteeName)
+    {
+        this.remitteeName = remitteeName;
     }
     
     public String getPrice()
