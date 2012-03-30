@@ -123,6 +123,7 @@ public class ProjectAction extends ActionSupportBase
             String queryType = projectInfo.getQueryType();
             projectInfo = projectService.findProjectInfo(projectInfo);
             projectInfo.setQueryType(queryType);
+            wrapParticipantList(projectInfo);
             wrapCostList(projectInfo);
             wrapFileList(projectInfo);
             ProjectStream projectStream = new ProjectStream();
@@ -227,6 +228,7 @@ public class ProjectAction extends ActionSupportBase
         {
             newUploadFiles = dealWithUploadFiles();
             changeStatus();
+            dealWithMultiValue(projectInfo);
             projectService.updateProjectInfo(projectInfo);
         }
         catch (Exception e)
@@ -274,6 +276,34 @@ public class ProjectAction extends ActionSupportBase
                     projectInfo.setManagerApproveTIme(time);
                 }
             }
+        }
+    }
+    
+    private void dealWithMultiValue(ProjectInfo projectInfo)
+    {
+        if (!StringUtils.isBlank(projectInfo.getParticipant()))
+        {
+            projectInfo.setParticipant(projectInfo.getParticipant().replaceAll(", ", ","));
+        }
+        if (!StringUtils.isBlank(projectInfo.getCostRemittee()))
+        {
+            projectInfo.setCostRemittee(projectInfo.getCostRemittee().replaceAll(", ", ","));
+        }
+        if (!StringUtils.isBlank(projectInfo.getCostSettleDate()))
+        {
+            projectInfo.setCostSettleDate(projectInfo.getCostSettleDate().replaceAll(", ", ","));
+        }
+        if (!StringUtils.isBlank(projectInfo.getCostPrice()))
+        {
+            projectInfo.setCostPrice(projectInfo.getCostPrice().replaceAll(", ", ","));
+        }
+        if (!StringUtils.isBlank(projectInfo.getCostAccount()))
+        {
+            projectInfo.setCostAccount(projectInfo.getCostAccount().replaceAll(", ", ","));
+        }
+        if (!StringUtils.isBlank(projectInfo.getCostComment()))
+        {
+            projectInfo.setCostComment(projectInfo.getCostComment().replaceAll(", ", ","));
         }
     }
     
@@ -333,7 +363,9 @@ public class ProjectAction extends ActionSupportBase
                     
                     if (!StringUtils.isEmpty(projectInfo.getParticipant().split(",")[i]))
                     {
-                        participant.setParticipant(projectInfo.getParticipant().split(",")[i]);
+                        long articipantID = Long.valueOf(projectInfo.getParticipant().split(",")[i]);
+                        participant.setParticipantID(articipantID);
+                        participant.setParticipantName(userInfoService.fetchById(articipantID).getRealName());
                     }
                 }
                 catch (Exception e)
@@ -371,7 +403,9 @@ public class ProjectAction extends ActionSupportBase
                     }
                     if (!StringUtils.isEmpty(projectInfo.getCostRemittee().split(",")[i]))
                     {
-                        projectCost.setRemittee(projectInfo.getCostRemittee().split(",")[i]);
+                        long remitteeID = Long.valueOf(projectInfo.getCostRemittee().split(",")[i]);
+                        projectCost.setRemitteeID(remitteeID);
+                        projectCost.setRemitteeName(userInfoService.fetchById(remitteeID).getRealName());
                     }
                     if (!StringUtils.isEmpty(projectInfo.getCostPrice().split(",")[i]))
                     {
