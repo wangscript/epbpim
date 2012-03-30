@@ -15,39 +15,93 @@
 	{
 		changeProjectType();
 	}
-	function changeProjectType() {
+	
+	function changeProjectType() {			
+		var type = document.getElementById("projectType").value;
 		
-		if(!document.getElementById("projectType"))
+		// 拥有业务权限
+		if(document.getElementById("projectType1"))
 		{
-			return;
+			var dispDiv1 = document.getElementById("projectType1");
+	 		var dispDiv2 = document.getElementById("projectType2");
+	 		var dispDiv3 = document.getElementById("projectType3");
+	 		var dispDiv4 = document.getElementById("projectType4");
+	 		
+	 		
+	 		if(type == "投资监理" || type=="财务监理") {
+	 			dispDiv1.style.display="none";
+	 			dispDiv2.style.display="none";
+	 			dispDiv3.style.display="block";
+	 			dispDiv4.style.display="none";
+	 		} else if(type == "招标代理" || type=="政府采购") {
+	 			dispDiv1.style.display="none";
+	 			dispDiv2.style.display="block";
+	 			dispDiv3.style.display="none";
+	 			dispDiv4.style.display="none";
+	 		} else if(type == "工程咨询") {
+	 			dispDiv1.style.display="none";
+	 			dispDiv2.style.display="none";
+	 			dispDiv3.style.display="none";
+	 			dispDiv4.style.display="block";
+	 		} else {
+	 			dispDiv1.style.display="block";
+	 			dispDiv2.style.display="none";
+	 			dispDiv3.style.display="none";
+	 			dispDiv4.style.display="none";
+	 		}
 		}
-		
- 		var type = document.getElementById("projectType").innerHTML;
- 		var dispDiv1 = document.getElementById("projectType1");
- 		var dispDiv2 = document.getElementById("projectType2");
- 		var dispDiv3 = document.getElementById("projectType3");
- 		var dispDiv4 = document.getElementById("projectType4");
- 		if(type == "投资监理" || type=="财务监理") {
- 			dispDiv1.style.display="none";
- 			dispDiv2.style.display="none";
- 			dispDiv3.style.display="block";
- 			dispDiv4.style.display="none";
- 		} else if(type == "招标代理" || type=="政府采购") {
- 			dispDiv1.style.display="none";
- 			dispDiv2.style.display="block";
- 			dispDiv3.style.display="none";
- 			dispDiv4.style.display="none";
- 		} else if(type == "工程咨询") {
- 			dispDiv1.style.display="none";
- 			dispDiv2.style.display="none";
- 			dispDiv3.style.display="none";
- 			dispDiv4.style.display="block";
- 		} else {
- 			dispDiv1.style.display="block";
- 			dispDiv2.style.display="none";
- 			dispDiv3.style.display="none";
- 			dispDiv4.style.display="none";
- 		}
+		// 拥有财务权限
+		if(document.getElementById("projectType1"))
+		{
+			
+			var earnestInPartObj = document.getElementById("earnestInPart");
+	 		var tenderPartObj = document.getElementById("tenderPart");
+	 		var agentPartObj = document.getElementById("agentPart");
+	 		var vendorPartObj = document.getElementById("vendorPart");
+	 		var earnestOutPartObj = document.getElementById("earnestOutPart");
+	 		var meetingPlacePartObj = document.getElementById("meetingPlacePart");
+	 		var expertPartObj = document.getElementById("expertPart");
+	 		var costPartObj = document.getElementById("costPart");
+	 		
+	 		
+	 		if(type == "投资监理" || type=="财务监理") {
+	 			earnestInPartObj.style.display="none";
+	 			tenderPartObj.style.display="none";
+	 			agentPartObj.style.display="block";
+	 			vendorPartObj.style.display="none";
+	 			earnestOutPartObj.style.display="none";
+	 			meetingPlacePartObj.style.display="none";
+	 			expertPartObj.style.display="none";
+	 			costPartObj.style.display="block";
+	 		} else if(type == "招标代理" || type=="政府采购") {
+	 			earnestInPartObj.style.display="block";
+	 			tenderPartObj.style.display="block";
+	 			agentPartObj.style.display="block";
+	 			vendorPartObj.style.display="none";
+	 			earnestOutPartObj.style.display="block";
+	 			meetingPlacePartObj.style.display="block";
+	 			expertPartObj.style.display="block";
+	 			costPartObj.style.display="block";
+	 		} else if(type == "工程咨询") {
+	 			earnestInPartObj.style.display="none";
+	 			tenderPartObj.style.display="none";
+	 			agentPartObj.style.display="block";
+	 			vendorPartObj.style.display="none";
+	 			earnestOutPartObj.style.display="none";
+	 			meetingPlacePartObj.style.display="none";
+	 			expertPartObj.style.display="none";
+	 			costPartObj.style.display="none";
+	 		} else {
+	 			earnestInPartObj.style.display="none";
+	 			tenderPartObj.style.display="none";
+	 			agentPartObj.style.display="block";
+	 			vendorPartObj.style.display="block";
+	 			earnestOutPartObj.style.display="none";
+	 			meetingPlacePartObj.style.display="none";
+	 			expertPartObj.style.display="none";
+	 			costPartObj.style.display="block";
+	 		}
+		}		
  	}
 </script>
 </head>
@@ -432,14 +486,14 @@ h4 {
 							</div>
 							</s:if>	
 							
-							<!-- 账务权限人员,查看项目账务信息 -->
+							<!-- 财务权限人员,查看项目财务信息 -->
 							<s:if test="true || #request.accountManage == true">
 							<h4 class="title">项目账务信息</h4>
 							<br>
 							<ul class="fullScreenUl">
 								<li class="width200Li"><h5 class="title">收入部分</h5></li>															
 							</ul>
-							<div id="earnestInPart">
+							<div id="earnestInPart" style="display: none">
 							<fieldset><legend>保证金</legend>						 
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">开票人:</label>
@@ -462,7 +516,7 @@ h4 {
 								</ul>							
 							</fieldset>
 							</div>
-							<div id="tenderPart">
+							<div id="tenderPart" style="display: none">
 							<fieldset><legend>标书费</legend>						 
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">收款日期:</label>
@@ -480,7 +534,7 @@ h4 {
 								</ul>							
 							</fieldset>
 							</div>
-							<div id="agentPart">
+							<div id="agentPart" style="display: none">
 								<fieldset><legend>委托单位</legend>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">开票人:</label>
@@ -517,7 +571,7 @@ h4 {
 								</ul>
 								</fieldset>
 							</div>
-							<div id="vendorPart">
+							<div id="vendorPart" style="display: none">
 								<fieldset><legend>送审单位</legend>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">开票人:</label>
@@ -558,7 +612,7 @@ h4 {
 							<ul class="fullScreenUl">
 								<li class="width200Li"><h5 class="title">支出部分</h5></li>														
 							</ul>
-							<div id="earnestOutPart">
+							<div id="earnestOutPart" style="display: none">
 							<fieldset><legend>保证金</legend>						 
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">退款人:</label>
@@ -581,7 +635,7 @@ h4 {
 								</ul>							
 							</fieldset>
 							</div>
-							<div id="meetingPlacePart">
+							<div id="meetingPlacePart" style="display: none">
 							<fieldset><legend>会场费</legend>						 
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">支付人:</label>
@@ -604,7 +658,7 @@ h4 {
 								</ul>							
 							</fieldset>
 							</div>
-							<div id="expertPart">
+							<div id="expertPart" style="display: none">
 							<fieldset><legend>专家费</legend>						 
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">支付人:</label>
@@ -628,7 +682,7 @@ h4 {
 							</fieldset>
 							</div>
 							
-							<div id="costPart">
+							<div id="costPart" style="display: none">
 								<s:if test="projectInfo.costs != null && projectInfo.costs.size() > 0">
 									<s:iterator value="projectInfo.costs" status="st">
 										<div>
