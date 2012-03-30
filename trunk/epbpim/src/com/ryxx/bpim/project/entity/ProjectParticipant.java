@@ -15,16 +15,28 @@ public class ProjectParticipant extends VoBase
     /** 序列号 */
     private static final long serialVersionUID = 7769144412814247787L;
     
-    private String participant;
+    private long participantID;
     
-    public String getParticipant()
+    private String participantName;
+    
+    public long getParticipantID()
     {
-        return participant;
+        return participantID;
     }
     
-    public void setParticipant(String participant)
+    public void setParticipantID(long participantID)
     {
-        this.participant = participant;
+        this.participantID = participantID;
+    }
+    
+    public String getParticipantName()
+    {
+        return participantName;
+    }
+    
+    public void setParticipantName(String participantName)
+    {
+        this.participantName = participantName;
     }
     
 }
