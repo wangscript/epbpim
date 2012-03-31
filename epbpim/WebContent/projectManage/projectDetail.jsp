@@ -218,7 +218,7 @@ h4 {
 							<ul class="fullScreenUl">
 								<li class="width400Li" ><label class="width4Lb">项目名称:</label>
 								<s:property value='projectInfo.name' /></li>
-								<li class="width200Li" ><label class="width4Lb">项目编号:</label>
+								<li class="width400Li" ><label class="width4Lb">项目编号:</label>
 								<s:property value='projectInfo.number' /></li>
 							</ul>
 							<ul class="fullScreenUl">
