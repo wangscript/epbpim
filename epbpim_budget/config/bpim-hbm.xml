@@ -202,6 +202,26 @@
 		<property name="bookRealName" column="BOOK_REAL_NAME" type="java.lang.String"></property>
 		<many-to-one name="provinceCity" class="ProvinceCity" column="BOOK_PROVICE"></many-to-one>
 	</class>
+	<class name="PriceIndexPicture" table="PRICE_INDEX_PICTURE">
+		<id name="id" column="ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="fileName" column="FILE_NAME" type="java.lang.String"></property>
+		<property name="realName" column="REAL_NAME" type="java.lang.String"></property>
+		<property name="priceIndexDate" column="PRICE_INDEX_DATE" type="java.sql.Timestamp"></property>
+		<many-to-one name="provinceCity" class="ProvinceCity" column="PRICE_INDEX_PROVICE"></many-to-one>
+		<many-to-one name="major" class="Major" column="PRICE_INDEX_PICTURE_TYPE"></many-to-one>
+	</class>
+	<class name="PriceHighLowTopPicture" table="PRICE_HIGH_LOW_TOP_PICTURE">
+		<id name="id" column="ID" type="java.lang.Long">
+			<generator class="identity"></generator>
+		</id>
+		<property name="fileName" column="FILE_NAME" type="java.lang.String"></property>
+		<property name="realName" column="REAL_NAME" type="java.lang.String"></property>
+		<property name="priceHighLowTopDate" column="PRICE_HIGH_LOW_TOP_DATE" type="java.sql.Timestamp"></property>
+		<many-to-one name="provinceCity" class="ProvinceCity" column="PRICE_HIGH_LOW_TOP_PROVICE"></many-to-one>
+		<many-to-one name="major" class="Major" column="PRICE_HIGH_LOW_TOP_PICTURE_TYPE"></many-to-one>
+	</class>
 	<class name="GuidePrice" table="GUIDE_PRICE">
 		<id name="id" column="ID" type="java.lang.Long">
 			<generator class="identity"></generator>

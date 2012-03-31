@@ -19,8 +19,6 @@
 <link rel="stylesheet"
 	href="../js/My97DatePicker/dev/skin/WdatePicker.css" type="text/css"></link>
 <script type='text/javascript' src='../js/common.js'></script>
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/delgado.pack.js"></script>
 <script type='text/javascript' src='../js/validation.js'></script>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
@@ -38,12 +36,14 @@
 			<li id="adminDeleteGuideData"><a href="preDeleteGuidePrice.do">指导价删除</a></li>
 			<li id="adminGovernmentFileImport"><a href="preImportGovernmentFile.do">文件导入</a></li>
 			<li id="adminPeriodicalFileImport"><a href="preImportPeriodicalFile.do">电子杂志导入</a></li>
-			<li id="adminPricePackageFileUpload"><a href="preUploadPricePackageFile.do">价格包上传</a></li>
-			<li id="adminBookUpload"><a href="preUploadBook.do">专业书籍上传</a></li>
 		 </ul>
 		 <ul class="fullScreenUl">
+		 	<li id="adminPricePackageFileUpload"><a href="preUploadPricePackageFile.do">价格包上传</a></li>
+			<li id="adminBookUpload"><a href="preUploadBook.do">专业书籍上传</a></li>
 			<li id="adminUserAdvice"><a href="listUserAdvice.do">用户反馈</a></li>
 			<li id="preSendEmailToUser"><a href="preSendEmailToUser.do">发送邮件</a></li>
+			<li id="preUploadPriceIndexPicture"><a href="preUploadPriceIndexPicture.do">价格指数上传</a></li>
+			<li id="preUploadPriceHighLowTopPicture"><a href="preUploadPriceHighLowTopPicture.do">价格涨跌上传</a></li>
 		 </ul>
       </div>
       <div class="logo"><h1><small></small></h1></div>

@@ -124,6 +124,14 @@
 			<result type="redirect">preUploadBook.do?msg=${msg}</result>
 			<interceptor-ref name="manager"/>
 		</action>
+		<action name="uploadPriceIndexPicture" method="uploadPriceIndexPicture" class="priceIndexPictureAction">
+			<result type="redirect">preUploadPriceIndexPicture.do?msg=${msg}</result>
+			<interceptor-ref name="manager"/>
+		</action>
+		<action name="uploadPriceHighLowTopPicture" method="uploadPriceHighLowTopPicture" class="priceHighLowTopPictureAction">
+			<result type="redirect">preUploadPriceHighLowTopPicture.do?msg=${msg}</result>
+			<interceptor-ref name="manager"/>
+		</action>
 		<action name="preAddNews">
 			<result>/jsp/admin/addNews.jsp</result>
 			<interceptor-ref name="manager"/>
@@ -158,6 +166,14 @@
 		</action>	
 		<action name="preUploadBook" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
 			<result>/jsp/admin/uploadBook.jsp</result>
+			<interceptor-ref name="manager"/>
+		</action>
+		<action name="preUploadPriceIndexPicture" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
+			<result>/jsp/admin/uploadPriceIndexPicture.jsp</result>
+			<interceptor-ref name="manager"/>
+		</action>
+		<action name="preUploadPriceHighLowTopPicture" method="listProvinceAndMajor" class="listProvinceAndMajorAction">
+			<result>/jsp/admin/uploadPriceHighLowTopPicture.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
 	</package>
@@ -279,7 +295,35 @@
 	</package>
 	<package name="bpim-viewBook" namespace="/main" extends="bpim-default">
 		<action name="viewBook" method="viewBook" class="bookAction">
-			<result>/jsp/main/simple/showBookDetail.jsp</result>
+			<result>/jsp/main/simple/showFlashDetail.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-searchPriceHighLowTopPicture" namespace="/main" extends="bpim-default">
+		<action name="searchPriceHighLowTopPicture" method="searchPriceHighLowTopPicture" class="priceHighLowTopPictureAction">
+			<result>/jsp/main/simple/listPriceHighLowTopPicture.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-viewPriceHighLowTopPicture" namespace="/main" extends="bpim-default">
+		<action name="viewPriceHighLowTopPicture" method="viewPriceHighLowTopPicture" class="priceHighLowTopPictureAction">
+			<result>/jsp/main/simple/showFlashDetail.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-searchPriceIndexPicture" namespace="/main" extends="bpim-default">
+		<action name="searchPriceIndexPicture" method="searchPriceIndexPicture" class="priceIndexPictureAction">
+			<result>/jsp/main/simple/listPriceIndexPicture.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+	</package>
+	<package name="bpim-viewPriceIndexPicture" namespace="/main" extends="bpim-default">
+		<action name="viewPriceIndexPicture" method="viewPriceIndexPicture" class="priceIndexPictureAction">
+			<result>/jsp/main/simple/showFlashDetail.jsp</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>

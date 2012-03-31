@@ -5,17 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>价格包上传</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../css/admin.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="../images/logo.ico" rel="SHORTCUT ICON" />
-<script language="javascript" type="text/javascript"
-	src="../js/common.js"></script>
-<script type='text/javascript' src='../js/My97DatePicker/WdatePicker.js'></script>
-<script type='text/javascript' src='../dwr/engine.js'></script>
-<script type='text/javascript' src='../dwr/util.js'></script>
+<title>价格涨跌上传</title>
 <script type="text/javascript">
 	function checkError() 
 	{
@@ -37,7 +27,7 @@
 		var filePath = uploadFile.value;
 		var fileName = filePath.substring(filePath.lastIndexOf('\\') + 1,
 				filePath.length);
-		document.getElementById('pricePackageFile.pricePackageName').value = fileName;
+		document.getElementById('priceHighLowTopPicture.realName').value = fileName;
 	}
 </script>
 </head>
@@ -46,40 +36,39 @@
 		<div class="content">
 			<div class="content_resize">
 				<div class="mainbar">
-					<h4 class="title">价格包上传</h4>
+					<h4 class="title">价格涨跌上传</h4>
 					<div id="">
-						<s:form action="uploadPricePackageFile.do"
+						<s:form action="uploadPriceHighLowTopPicture.do" id="uploadBookForm"
 							enctype="multipart/form-data" method="post">
 							<ul class="fullScreenUl">
 								<li class="width100Li">省份：</li>
 								<li class="width200Li">
-									<s:select cssClass="width150Select" id="pricePackageFile.provinceCity.id" name="pricePackageFile.provinceCity.id"
+									<s:select cssClass="width150Select" id="priceHighLowTopPicture.provinceCity.id" name="priceHighLowTopPicture.provinceCity.id"
 										list="provinceCities" listKey="id" listValue="city" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width100Li">专业：</li>
-								<li class="width200Li"><s:select cssClass="width150Select" id="pricePackageFile.major.id" name="pricePackageFile.major.id"
+								<li class="width200Li"><s:select cssClass="width150Select" id="priceHighLowTopPicture.major.id" name="priceHighLowTopPicture.major.id"
 										list="majors" listKey="id" listValue="name" multiple="false" required="true" onchange="" headerKey="0" />
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
 								<li class="width100Li">时间：</li>
-								<li class="width200Li"><input class="Wdate width100Input"
-									id="pricePackageFile.pricePackageDatePage"
-									name="pricePackageFile.pricePackageDatePage"
+								<li class="width100Li"><input class="Wdate width100Input"
+									id="priceHighLowTopPicture.priceHighLowTopDatePage"
+									name="priceHighLowTopPicture.priceHighLowTopDatePage"
 									onclick="WdatePicker({dateFmt:'yyyy-MM'})" /></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width100Li">价格包：</li>
-								<li class="width200Li"><s:file name="uploadFile"
-										cssClass="width300Input" id="uploadFile"
-										onchange="chooseFile()" /> <input type="hidden"
-									name="pricePackageFile.pricePackageName"
-									id="pricePackageFile.pricePackageName"></li>
+								<li class="width100Li">文件：</li>
+								<li class="width300Li"><s:file name="uploadFile" cssClass="width300Input"
+										id="uploadFile"  onchange="chooseFile()" /> <input
+									type="hidden" name="priceHighLowTopPicture.realName"
+									id="priceHighLowTopPicture.realName"></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li class="width200Li"><input type="submit" class="button"
+								<li class="width200Li"><input type="button" class="button" onclick="checkAndSubmit()"
 									value="上传"></li>
 							</ul>
 						</s:form>
@@ -94,4 +83,17 @@
 	</div>
 
 </body>
+	<script type="text/javascript">
+		function checkAndSubmit(){
+			if($("uploadFile").value==null){
+				alert("请选择文件");
+			}
+			else if(!$("uploadFile").value.endWith("swf")&&!$("uploadFile").value.endWith("SWF")){
+				alert("请上传swf文件");
+			}else{
+				$("uploadBookForm").submit();
+			}
+		}
+	</script>
+
 </html>
