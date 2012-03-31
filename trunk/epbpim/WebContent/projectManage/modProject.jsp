@@ -893,7 +893,7 @@
 										<input class="Wdate width100Input" name="projectInfo.earnestOutRefundDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:date name='projectInfo.earnestOutRefundDate' format='yyyy-MM-dd' />" />
 									</li>
 									<li class="width200Li"><label class="width6Lb">支票\现金:</label>
-										<input class="width100Input" name="projectInfo.earnestOutType" value="<s:property value='"projectInfo.earnestOutType"'/>" />
+										<input class="width100Input" name="projectInfo.earnestOutType" value="<s:property value='projectInfo.earnestOutType'/>" />
 									</li>	
 									<li class="width200Li"><label class="width6Lb">金额:</label>
 										<input class="width100Input" name="projectInfo.earnestOutPrice"value="<s:property value='projectInfo.earnestOutPrice'/>" />
