@@ -69,6 +69,8 @@ public class GuidePriceAction extends ActionSupportBase
     
     private String fileName = null;
     
+    private String hasData = "false";
+    
     public String importGuidePrice()
     {
         try
@@ -119,7 +121,7 @@ public class GuidePriceAction extends ActionSupportBase
     	XYDataset dataset = this.createDateSet();//建立数据集
 		//建立JFreeChart
 		JFreeChart chart = ChartFactory.createTimeSeriesChart(
-			"价格分析曲线图", // title
+			"", // title
 			"Date", // x-axis label
 			"Price", // y-axis label
 			dataset, // data
@@ -132,15 +134,14 @@ public class GuidePriceAction extends ActionSupportBase
 		chart.setBackgroundPaint(p);//设置曲线图背景色
 		//设置字体大小，形状
 		Font font = new Font("宋体", Font.BOLD, 16);
-		TextTitle title = new TextTitle("价格分析曲线图", font);
+		TextTitle title = new TextTitle("", font);
 		chart.setTitle(title);
 		//副标题
-		if(!StringUtils.isEmpty(guidePrice.getName())){
-			TextTitle subtitle =
-					new TextTitle(guidePrice.getName(), new Font("黑体", Font.BOLD, 12));
-			chart.addSubtitle(subtitle);
-		}
-		chart.setTitle(title); //标题
+		//if(!StringUtils.isEmpty(guidePrice.getName())){
+		//	TextTitle subtitle =
+		//			new TextTitle(guidePrice.getName(), new Font("黑体", Font.BOLD, 12));
+		//	chart.addSubtitle(subtitle);
+		//}
 		
 		//设置图示标题字符
 		//TimeSeries s1 = new TimeSeries("历史曲线", Day.class);该中文字符
@@ -199,7 +200,15 @@ public class GuidePriceAction extends ActionSupportBase
 		TimeSeriesCollection dataset = new TimeSeriesCollection();
 		if(guidePrice!=null&&!StringUtils.isEmpty(guidePrice.getName())){
 			dataset = service.getDateSet(guidePrice);
+			if(dataset.getSeries()!=null&&dataset.getSeries().size()>0 &&!dataset.getSeries(0).isEmpty()){
+				hasData = "true";
+			}else{
+				hasData = "false";
+			}
+		}else{
+			hasData = "false";
 		}
+		
 		return dataset;
 	}
     
@@ -303,6 +312,20 @@ public class GuidePriceAction extends ActionSupportBase
 	 */
 	public void setFileUrl(String fileUrl) {
 		this.fileUrl = fileUrl;
+	}
+
+	/**
+	 * @return the hasData
+	 */
+	public String getHasData() {
+		return hasData;
+	}
+
+	/**
+	 * @param hasData the hasData to set
+	 */
+	public void setHasData(String hasData) {
+		this.hasData = hasData;
 	}
     
     

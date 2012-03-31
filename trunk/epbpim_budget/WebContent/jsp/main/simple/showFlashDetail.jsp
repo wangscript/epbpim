@@ -24,7 +24,7 @@
 		<div class="content_resize">
 			<div class="mainbar">
 				<embed width="950px" height="600px;"
-					src="<s:property value='bookFileUrl' />"></embed>
+					src="<s:property value='flashFileUrl' />"></embed>
 			</div>
 			<div class="clr"></div>
 		</div>

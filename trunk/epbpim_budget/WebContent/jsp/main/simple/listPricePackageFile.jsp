@@ -21,7 +21,7 @@
 <div class="content_resize">
 <div class="mainbar">
 <h3 class="title">价格包下载</h3> 
-<s:if test="dates==null || dates.size()==0">
+<s:if test="datas==null || datas.size()==0">
 	<tr>
 		<td>
 		<h3><s:text name="Common.Nodata" /></h3>
@@ -36,7 +36,7 @@
 			<li class="width200Li"><s:text name="时间" /></li>
 			<li class="width50Li"><s:text name="下载" /></li>
 		</ul>
-		<s:iterator value="dates" status="st">
+		<s:iterator value="datas" status="st">
 			<ul class="fullScreenResultUl">
 				<li class="width400Li"><s:property value="pricePackageName" /></li>
 				<li class="width200Li"><s:property value="major.name" /></li>

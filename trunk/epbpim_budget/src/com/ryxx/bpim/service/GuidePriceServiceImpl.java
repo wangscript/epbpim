@@ -210,7 +210,7 @@ public class GuidePriceServiceImpl extends
 		guidePrice.setPageSize(100);
 		List<GuidePrice> datas = getDao().listGuidePrice(guidePrice);
 		TimeSeriesCollection dataset = new TimeSeriesCollection();// 时间曲线数据集合
-		TimeSeries s1 = new TimeSeries("历史曲线", Day.class);// 创建时间数据源，每一个//TimeSeries在图上是一条曲线
+		TimeSeries s1 = new TimeSeries("", Day.class);// 创建时间数据源，每一个//TimeSeries在图上是一条曲线
 		// s1.add(new Day(day,month,year),value),添加数据点信息
 		int year = 0;
 		int month = 0;

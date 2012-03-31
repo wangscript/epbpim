@@ -6,17 +6,13 @@
 <html>
 <head>
 <title>Insert title here</title>
-</head>
-<body>
+<title> JFreeChart使用例子</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <%
 LineXYChart xyChart=new LineXYChart();
 String fileName=xyChart.getLineXYChart(session,new PrintWriter(out));
 String graphURL = request.getContextPath() + "/servlet/DisplayChart?filename=" + fileName;
 %>
-<html>
-</head>
-<title> JFreeChart使用例子</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
 <body>
 <img src="<%= graphURL %>" width=500 height=300 border=0 usemap="<%= fileName %>">

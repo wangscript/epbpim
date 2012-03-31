@@ -1,6 +1,8 @@
 package com.ryxx.bpim.web.action.admin;
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,23 +11,23 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.ryxx.bpim.common.Constants;
-import com.ryxx.bpim.entity.Book;
+import com.ryxx.bpim.entity.PriceIndexPicture;
 import com.ryxx.bpim.entity.ProvinceCity;
-import com.ryxx.bpim.service.BookService;
+import com.ryxx.bpim.service.PriceIndexPictureService;
 import com.ryxx.bpim.service.ProvinceCityService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.io.FileUtil;
 import com.ryxx.util.page.PageTools;
 import com.ryxx.util.request.ParamTools;
 
-public class BookAction extends ActionSupportBase {
+public class PriceIndexPictureAction extends ActionSupportBase {
 	private static final long serialVersionUID = -1781372665512868821L;
 
-	private static final Log LOG = LogFactory.getLog(BookAction.class);
+	private static final Log LOG = LogFactory.getLog(PriceIndexPictureAction.class);
 
-	private Book book;
+	private PriceIndexPicture priceIndexPicture;
 
-	private List<Book> datas = new ArrayList<Book>();
+	private List<PriceIndexPicture> datas = new ArrayList<PriceIndexPicture>();
 
 	private File uploadFile;
 
@@ -33,7 +35,7 @@ public class BookAction extends ActionSupportBase {
 
 	private PageTools page;
 
-	private BookService service;
+	private PriceIndexPictureService service;
 	
 	private ProvinceCityService provinceCityService;
 
@@ -41,12 +43,12 @@ public class BookAction extends ActionSupportBase {
 	
 	private List<ProvinceCity> provinceCities;
 
-	public String uploadBook() {
+	public String uploadPriceIndexPicture() {
 		String fileName = new Date().getTime() + ".swf";
 		File newUploadFile = null;
 		try {
 			msg = "true";
-			String uploadRealPath = request.getRealPath("/") + "book" + "/";
+			String uploadRealPath = request.getRealPath("/") + "priceIndexPicture" + "/";
 			File uploadDir = new File(uploadRealPath);
 			if (!uploadDir.exists()) {
 				uploadDir.mkdirs();
@@ -57,10 +59,13 @@ public class BookAction extends ActionSupportBase {
 				FileUtil.copy(uploadFile, newUploadFile, false);
 			}
 
-			book.setBookRealName(book.getBookRealName().substring(0,
-					book.getBookRealName().indexOf(".")));
-			book.setFileName(fileName);
-			service.save(book);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+			Date priceHighLowTopDate = sdf.parse(priceIndexPicture.getPriceIndexPagePage());
+			priceIndexPicture.setPriceIndexDate(new Timestamp(priceHighLowTopDate.getTime()));
+			priceIndexPicture.setRealName(priceIndexPicture.getRealName().substring(0,
+					priceIndexPicture.getRealName().indexOf(".")));
+			priceIndexPicture.setFileName(fileName);
+			service.save(priceIndexPicture);
 
 		} catch (Exception e) {
 			if (newUploadFile != null && newUploadFile.exists()) {
@@ -72,22 +77,22 @@ public class BookAction extends ActionSupportBase {
 		return SUCCESS;
 	}
 
-	public String searchBook() {
+	public String searchPriceIndexPicture() {
 		try {
-			if (book == null) {
-				book = new Book();
+			if (priceIndexPicture == null) {
+				priceIndexPicture = new PriceIndexPicture();
 				ProvinceCity proviceCity = new ProvinceCity();
 				proviceCity.setId((long) 3);
-				book.setProvinceCity(proviceCity);
+				priceIndexPicture.setProvinceCity(proviceCity);
 			}
 			int pageNo = ParamTools.getIntParameter(request,
 					Constants.PARA_PAGE_NO, 1);
 			int pageSize = ParamTools.getIntParameter(request,
 					Constants.PARA_PAGE_SIZE, 0);
 			PageTools page = new PageTools(pageNo, pageSize);
-			book.setRowCount(pageNo);
-			book.setPageSize(pageSize);
-			datas = service.listBooks(book, page);
+			priceIndexPicture.setRowCount(pageNo);
+			priceIndexPicture.setPageSize(pageSize);
+			datas = service.listPriceIndexPictures(priceIndexPicture, page);
 			if (datas != null && datas.size() > 0) {
 				this.page = page;
 			} else {
@@ -101,25 +106,38 @@ public class BookAction extends ActionSupportBase {
 		return SUCCESS;
 	}
 
-	public String viewBook() {
-		String bookFileName = request.getParameter("bookFileName");
-		flashFileUrl = "../book/" + bookFileName;
+	public String viewPriceIndexPicture() {
+		String priceIndexPictureFileName = request.getParameter("priceIndexPictureFileName");
+		flashFileUrl = "../priceIndexPicture/" + priceIndexPictureFileName;
 		return SUCCESS;
 	}
 
 	/**
-	 * @return the book
+	 * @return the priceIndexPicture
 	 */
-	public Book getBook() {
-		return book;
+	public PriceIndexPicture getPriceIndexPicture() {
+		return priceIndexPicture;
 	}
 
 	/**
-	 * @param book
-	 *            the book to set
+	 * @param priceIndexPicture the priceIndexPicture to set
 	 */
-	public void setBook(Book book) {
-		this.book = book;
+	public void setPriceIndexPicture(PriceIndexPicture priceIndexPicture) {
+		this.priceIndexPicture = priceIndexPicture;
+	}
+
+	/**
+	 * @return the datas
+	 */
+	public List<PriceIndexPicture> getDatas() {
+		return datas;
+	}
+
+	/**
+	 * @param datas the datas to set
+	 */
+	public void setDatas(List<PriceIndexPicture> datas) {
+		this.datas = datas;
 	}
 
 	/**
@@ -130,8 +148,7 @@ public class BookAction extends ActionSupportBase {
 	}
 
 	/**
-	 * @param uploadFile
-	 *            the uploadFile to set
+	 * @param uploadFile the uploadFile to set
 	 */
 	public void setUploadFile(File uploadFile) {
 		this.uploadFile = uploadFile;
@@ -145,8 +162,7 @@ public class BookAction extends ActionSupportBase {
 	}
 
 	/**
-	 * @param msg
-	 *            the msg to set
+	 * @param msg the msg to set
 	 */
 	public void setMsg(String msg) {
 		this.msg = msg;
@@ -160,8 +176,7 @@ public class BookAction extends ActionSupportBase {
 	}
 
 	/**
-	 * @param page
-	 *            the page to set
+	 * @param page the page to set
 	 */
 	public void setPage(PageTools page) {
 		this.page = page;
@@ -170,30 +185,15 @@ public class BookAction extends ActionSupportBase {
 	/**
 	 * @return the service
 	 */
-	public BookService getService() {
+	public PriceIndexPictureService getService() {
 		return service;
 	}
 
 	/**
-	 * @param service
-	 *            the service to set
+	 * @param service the service to set
 	 */
-	public void setService(BookService service) {
+	public void setService(PriceIndexPictureService service) {
 		this.service = service;
-	}
-
-	/**
-	 * @return the datas
-	 */
-	public List<Book> getDatas() {
-		return datas;
-	}
-
-	/**
-	 * @param datas the datas to set
-	 */
-	public void setDatas(List<Book> datas) {
-		this.datas = datas;
 	}
 
 	/**
@@ -239,5 +239,6 @@ public class BookAction extends ActionSupportBase {
 		this.provinceCities = provinceCities;
 	}
 
+	
 	
 }

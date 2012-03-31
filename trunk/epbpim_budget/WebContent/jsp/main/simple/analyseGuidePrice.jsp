@@ -32,11 +32,12 @@
 					<s:form id="analyseGuidePriceForm" action="analyseGuidePrice.do"
 						method="post" onsubmit="return validate(this);">
 						<div id="searchCondition">
-						<input type="hidden" name="guidePrice.major.id" value="<s:property value='guidePrice.major.id'/>">
+							<input type="hidden" name="guidePrice.major.id"
+								value="<s:property value='guidePrice.major.id'/>">
 							<ul class="fullScreenUl">
 								<li class="width300Li"><label class="lb">名称：</label> <input
-									value="<s:property value='guidePrice.name'/>" type="text" id="guidePrice.name"
-									name="guidePrice.name" /> <textValidate
+									value="<s:property value='guidePrice.name'/>" type="text"
+									id="guidePrice.name" name="guidePrice.name" /> <textValidate
 										field="guidePrice.name" labelText="名称" isValidate="true"
 										min="0" max="30">
 								</li>
@@ -45,9 +46,9 @@
 									class="Wdate width100Input"
 									id="guidePrice.guidePriceDateFromPage"
 									name="guidePrice.guidePriceDateFromPage"
-									onclick="WdatePicker({dateFmt:'yyyy-MM'})" />
-								<textValidate field="guidePrice.guidePriceDateFromPage"
-										labelText="时间起点" isValidate="true" min="0" max="30">
+									onclick="WdatePicker({dateFmt:'yyyy-MM'})" /> <textValidate
+										field="guidePrice.guidePriceDateFromPage" labelText="时间起点"
+										isValidate="true" min="0" max="30">
 								</li>
 								<li class="width200Li"><label class="lb">时间终点：</label> <input
 									value="<s:property value='guidePrice.guidePriceDateToPage'/>"
@@ -66,8 +67,19 @@
 						<ul class="fullScreenUl">
 						</ul>
 						<div class="searchResult" id="searchResult">
-							<img src="<s:property value='fileUrl'/>" width=900 height=400
-								border=0 usemap="<s:property value='fileName'/>">
+							<s:if test="hasData=='false'">
+								<tr>
+									<td>
+										<h3>
+											<s:text name="Common.Nodata" />
+										</h3>
+									</td>
+								</tr>
+							</s:if>
+							<s:else>
+								<img src="<s:property value='fileUrl'/>" width=900 height=400
+									border=0 usemap="<s:property value='fileName'/>">
+							</s:else>
 						</div>
 
 					</s:form>
