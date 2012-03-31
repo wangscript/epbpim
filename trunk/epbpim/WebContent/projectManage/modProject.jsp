@@ -214,7 +214,7 @@
 									value="<s:property value='projectInfo.name'/>" />
 									<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
 								</li>
-								<li class="width200Li" <s:if test="(projectInfo.status!=4) ||(projectInfo.status!=5)">style="display: none"</s:if>><label class="width4Lb">项目编号:</label>
+								<li class="width200Li" <s:if test="projectInfo.status != 4 && projectInfo.status != 5">style="display: none"</s:if>><label class="width4Lb">项目编号:</label>
 									<input class="width100Input" name="projectInfo.number"
 									value="<s:property value='projectInfo.number'/>" /></li>
 							</ul>
@@ -473,11 +473,11 @@
 										value="<s:property value='projectInfo.judgePrice1'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">审定价:</label>
 										<input class="width100Input" name="projectInfo.judgePrice2"
-										value="<s:date name='projectInfo.judgePrice2' format='yyyy-MM-dd' />" />
+										value="<s:property value='projectInfo.judgePrice2' />" />
 									</li>
 									<li class="width200Li"><label class="width6Lb">审定天数:</label>
 										<input class="width100Input" name="projectInfo.judgeDays"
-										value="<s:date name='projectInfo.judgeDays' format='yyyy-MM-dd' />" />
+										value="<s:property value='projectInfo.judgeDays' />" />
 									</li>
 									<li class="width200Li"><label class="width6Lb">报告日/文号:</label>
 										<input class="Wdate width100Input"
@@ -497,10 +497,9 @@
 										<input class="width100Input" name="projectInfo.comments"
 										value="<s:property value='projectInfo.comments'/>" /></li>
 									<li class="width200Li"><label class="width6Lb">归档日期:</label>
-										<input class="Wdate width100Input"
-										name="projectInfo.achiveDate"
+										<input class="Wdate width100Input" name="projectInfo.achiveDate"
 										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
-										value="<s:date name='projectInfo.achiveDatePage' format='yyyy-MM-dd' />" />
+										value="<s:date name='projectInfo.achiveDate' format='yyyy-MM-dd' />" />
 									</li>
 								</ul>
 								<ul class="fullScreenUl">

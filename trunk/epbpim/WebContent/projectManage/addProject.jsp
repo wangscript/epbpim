@@ -118,7 +118,7 @@
 								<input  class="width300Input" name="projectInfo.name">
 								<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
 							</li>
-							<li class="width200Li"><label class="width4Lb">项目编号:</label>
+							<li class="width200Li" style="display: none"><label class="width4Lb">项目编号:</label>
 								<input class="width100Input" name="projectInfo.number" />
 							</li>
 						</ul>
