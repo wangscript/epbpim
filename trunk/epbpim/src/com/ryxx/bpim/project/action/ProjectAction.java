@@ -160,7 +160,7 @@ public class ProjectAction extends ActionSupportBase
             UserInfo userinfo = new UserInfo();
             userinfo.setId((Long)session.get(Constants.LOGIN_USER_ID));
             projectInfo.setSubmitter(userinfo);
-            
+            projectInfo.setUpdateTime( new Timestamp(new Date().getTime()));
             newUploadFiles = dealWithUploadFiles();
             projectService.saveProjectInfo(projectInfo);
         }
@@ -275,6 +275,8 @@ public class ProjectAction extends ActionSupportBase
                 {
                     projectInfo.setManagerApproveTIme(time);
                 }
+                
+                projectInfo.setUpdateTime(time);
             }
         }
     }
@@ -314,6 +316,7 @@ public class ProjectAction extends ActionSupportBase
             String queryType = projectInfo.getQueryType();
             projectInfo = projectService.fetchById(projectInfo.getId());
             projectInfo.setStatus("9");
+            projectInfo.setUpdateTime( new Timestamp(new Date().getTime()));
             projectService.updateProjectInfo(projectInfo);
             projectInfo.setQueryType(queryType);
         }
