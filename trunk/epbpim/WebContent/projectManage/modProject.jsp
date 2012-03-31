@@ -20,6 +20,16 @@
 		changeProjectType();
 	}
 	function modProjectInfo(statusValue){
+		
+		if('4' == statusValue  || '5' == statusValue)
+		{
+			if(!document.getElementById("projectInfo.number").value)
+			{
+				alert("请输入项目编号！");
+				return;
+			}
+		}
+		
 		document.getElementById("status").value=statusValue;
 		removeObjDisabled();
 		document.getElementById("modForm").submit();
@@ -215,7 +225,7 @@
 									<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
 								</li>
 								<li class="width400Li" <s:if test="projectInfo.status != 4 && projectInfo.status != 5">style="display: none"</s:if>><label class="width4Lb">项目编号:</label>
-									<input class="width300Input" name="projectInfo.number" value="<s:property value='projectInfo.number'/>" />
+									<input class="width300Input" id="projectInfo.number" name="projectInfo.number" value="<s:property value='projectInfo.number'/>" />
 								</li>
 							</ul>
 							<ul class="fullScreenUl">
@@ -1128,14 +1138,7 @@
 										value="提交项目"> <input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('0')"
 										value="保存"></li>
-								</s:if>
-
-								<s:if
-									test="projectInfo.status==5 && #request.submitProject == true">
-									<li><input type="button" id="addProject"
-										class="mediumRightButton" onclick="modProjectInfo('5')"
-										value="保存"></li>
-								</s:if>
+								</s:if>				
 
 								<s:if
 									test="projectInfo.status==1 && #request.deptApprove == true">
@@ -1165,19 +1168,12 @@
 								</s:if>
 
 								<s:if
-									test="projectInfo.status==4 && #request.directorFillNo == true">
+									test="(projectInfo.status==4 || projectInfo.status==5) && #request.directorFillNo == true">
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('5')"
 										value="保存"></li>
 								</s:if>
-
-								<s:if
-									test="projectInfo.status==5 && #request.directorFillNo == true">
-									<li><input type="button" id="addProject"
-										class="mediumRightButton" onclick="modProjectInfo('5')"
-										value="保存"></li>
-								</s:if>
-
+								
 								<li><input type="hidden" id="projectInfo.status"
 									name="projectInfo.status"
 									value="<s:property value='projectInfo.status'/>" /></li>
