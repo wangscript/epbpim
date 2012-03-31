@@ -236,10 +236,11 @@
 							<li class="width400Li"><label class="width7Lb">送审(施工)单位:</label>
 								<input class="width300Input" name="projectInfo.vendorCompany"/></li>
 							<li class="width200Li"><label class="width4Lb">联系人:</label>
-								<input class="width100Input" name="projectInfo.vendorContactor" />" />
+								<input class="width100Input" name="projectInfo.vendorContactor" />
 							</li>
 							<li class="width200Li"><label class="width2Lb">电话:</label>
-								<input class="width100Input" name="projectInfo.vendorContact"/>" /></li>
+								<input class="width100Input" name="projectInfo.vendorContact"/>
+							</li>
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width400Li"><label class="width7Lb">中标单位:</label>
