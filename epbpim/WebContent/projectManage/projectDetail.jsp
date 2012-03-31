@@ -302,7 +302,7 @@ h4 {
 								<li class="width200Li" ><label class="width4Lb">联系人:</label>
 								<s:property value='projectInfo.biddingContactor' /></li>
 								<li class="width200Li" ><label class="width2Lb">电话:</label>
-								<s:property value='projectInfo.vendorContact' /></li>
+								<s:property value='projectInfo.biddingContact' /></li>
 							</ul>
 							
 							<%
@@ -692,7 +692,7 @@ h4 {
 														<s:property value="remitteeName" />
 													</li>
 													<li class="width200Li"><label class="width6Lb">结算日期:</label>
-														<s:date name='remitteeDate' format='yyyy-MM-dd' />
+														<s:date name='settleDate' format='yyyy-MM-dd' />
 													</li>
 													<li class="width200Li"><label class="width6Lb">金额:</label>
 														<s:property value='price' />
