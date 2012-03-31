@@ -161,6 +161,11 @@ public class ProjectAction extends ActionSupportBase
             userinfo.setId((Long)session.get(Constants.LOGIN_USER_ID));
             projectInfo.setSubmitter(userinfo);
             projectInfo.setUpdateTime( new Timestamp(new Date().getTime()));
+            // 处理项目参与人
+            if (!StringUtils.isBlank(projectInfo.getParticipant()))
+            {
+                projectInfo.setParticipant(projectInfo.getParticipant().replaceAll(", ", ","));
+            }
             newUploadFiles = dealWithUploadFiles();
             projectService.saveProjectInfo(projectInfo);
         }
