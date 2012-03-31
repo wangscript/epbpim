@@ -192,6 +192,8 @@ public class ProjectInfo extends VoBase
     
     private String filePath;
     
+    private Timestamp updateTime;
+    
     private Timestamp submitTime;
     
     private Timestamp deptApproveTime;
@@ -1728,6 +1730,16 @@ public class ProjectInfo extends VoBase
     public void setProjectFiles(List<ProjectFile> projectFiles)
     {
         this.projectFiles = projectFiles;
+    }
+    
+    public Timestamp getUpdateTime()
+    {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime)
+    {
+        this.updateTime = updateTime;
     }
     
     /**

@@ -76,6 +76,7 @@
 		<property name="consultArchiveRecipient" column="CONSULTARCHIVERECIPIENT" type="java.lang.String"></property>
 		<property name="fileName" column="FILE_NAME" type="java.lang.String"></property>
 		<property name="filePath" column="FILE_PATH" type="java.lang.String"></property>
+		<property name="updateTime" column="UPDATE_TIME" type="java.sql.Timestamp"></property>
 		<property name="submitTime" column="SUBMIT_TIME" type="java.sql.Timestamp"></property>
 		<property name="deptApproveTime" column="DEPT_APPROVE_TIME" type="java.sql.Timestamp"></property>
 		<property name="masterApproveTime" column="MASTER_APPROVE_TIME" type="java.sql.Timestamp"></property>
