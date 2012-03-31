@@ -233,6 +233,7 @@ public class ProjectAction extends ActionSupportBase
         {
             newUploadFiles = dealWithUploadFiles();
             changeStatus();
+            projectInfo.setUpdateTime( new Timestamp(new Date().getTime()));
             dealWithMultiValue(projectInfo);
             projectService.updateProjectInfo(projectInfo);
         }
@@ -280,8 +281,6 @@ public class ProjectAction extends ActionSupportBase
                 {
                     projectInfo.setManagerApproveTIme(time);
                 }
-                
-                projectInfo.setUpdateTime(time);
             }
         }
     }
