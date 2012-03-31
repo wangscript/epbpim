@@ -214,7 +214,7 @@
 									value="<s:property value='projectInfo.name'/>" />
 									<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
 								</li>
-								<li class="width200Li" <s:if test="(projectInfo.status!=4)||(projectInfo.status!=5)">style="display: none"</s:if>><label class="width4Lb">项目编号:</label>
+								<li class="width200Li" <s:if test="(projectInfo.status!=4) ||(projectInfo.status!=5)">style="display: none"</s:if>><label class="width4Lb">项目编号:</label>
 									<input class="width100Input" name="projectInfo.number"
 									value="<s:property value='projectInfo.number'/>" /></li>
 							</ul>
@@ -1077,9 +1077,11 @@
 							<ul class="fullScreenUl">
 								<s:if test="projectInfo.status==0">
 									<li><label class="width6Lb">项目状态:</label>未提交</li>
+									<li><label class="width6Lb">保存时间:</label> <s:date
+											name='projectInfo.updateTime' format='yyyy-MM-dd hh:mm:ss' />
 								</s:if>
 								<s:elseif test="projectInfo.status==1">
-									<li><label class="width6Lb">项目状态:</label>提交</li>
+									<li><label class="width6Lb">项目状态:</label>已提交</li>
 									<li><label class="width6Lb">提交时间:</label> <s:date
 											name='projectInfo.submitTime' format='yyyy-MM-dd hh:mm:ss' />
 									</li>
@@ -1105,8 +1107,17 @@
 											format='yyyy-MM-dd hh:mm:ss' />
 									</li>
 								</s:elseif>
+								<s:elseif test="projectInfo.status==5">
+									<li><label class="width6Lb">项目状态:</label>项目编号已提供</li>
+									<li><label class="width6Lb">提供时间:</label> <s:date
+											name='projectInfo.updateTime'
+											format='yyyy-MM-dd hh:mm:ss' />
+									</li>
+								</s:elseif>
 								<s:elseif test="projectInfo.status==9">
-									<li><label class="width6Lb">项目状态:</label>结项</li>
+									<li><label class="width6Lb">项目状态:</label>已结项</li>
+									<li><label class="width6Lb">结项时间:</label> <s:date
+											name='projectInfo.updateTime' format='yyyy-MM-dd hh:mm:ss' />
 								</s:elseif>
 							</ul>
 
@@ -1161,8 +1172,12 @@
 										value="保存"></li>
 								</s:if>
 
-
-
+								<s:if
+									test="projectInfo.status==5 && #request.directorFillNo == true">
+									<li><input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('5')"
+										value="保存"></li>
+								</s:if>
 
 								<li><input type="hidden" id="projectInfo.status"
 									name="projectInfo.status"

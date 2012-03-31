@@ -851,6 +851,7 @@ h4 {
 								<ul class="fullScreenUl">
 									<s:if test="projectInfo.status==0">
 										<li><label class="width6Lb">项目状态:</label>未提交</li>
+										<li><label class="width6Lb">保存时间:</label><s:date name='projectInfo.updateTime' format='yyyy-MM-dd hh:mm:ss' /></li>
 									</s:if>
 									<s:elseif test="projectInfo.status==1">
 										<li><label class="width6Lb">项目状态:</label>提交</li>
@@ -868,12 +869,18 @@ h4 {
 										<li><label class="width6Lb">项目状态:</label>总经理审批通过</li>
 										<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.managerApproveTIme' format='yyyy-MM-dd hh:mm:ss' /></li>
 									</s:elseif>
+									<s:elseif test="projectInfo.status==5">
+										<li><label class="width6Lb">项目状态:</label>项目编号已提供</li>
+										<li><label class="width6Lb">提供时间:</label><s:date name='projectInfo.updateTime' format='yyyy-MM-dd hh:mm:ss' /></li>
+									</s:elseif>
 									<s:elseif test="projectInfo.status==9">
-										<li><label class="width6Lb">项目状态:</label>结项</li>
+										<li><label class="width6Lb">项目状态:</label>已结项</li>
+										<li><label class="width6Lb">结项时间:</label> <s:date
+												name='projectInfo.updateTime' format='yyyy-MM-dd hh:mm:ss' />
 									</s:elseif>
 								</ul>
 
-								<s:if test="#request.closeProject == true && projectInfo.status == 4">
+								<s:if test="#request.closeProject == true && projectInfo.status == 5">
 									<form action="closeProject.do" method="post">
 										<input type="hidden" name="projectInfo.queryType"
 											value="<s:property value='projectInfo.queryType'/>" /> <input
