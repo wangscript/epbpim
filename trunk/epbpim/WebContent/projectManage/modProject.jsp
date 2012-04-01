@@ -21,7 +21,7 @@
 	}
 	function modProjectInfo(statusValue){
 		
-		if('4' == statusValue  || '5' == statusValue)
+		if('5' == statusValue)
 		{
 			if(!document.getElementById("projectInfo.number").value)
 			{
@@ -121,7 +121,7 @@
 	 			earnestOutPartObj.style.display="none";
 	 			meetingPlacePartObj.style.display="none";
 	 			expertPartObj.style.display="none";
-	 			costPartObj.style.display="none";
+	 			costPartObj.style.display="block";
 	 		} else {
 	 			earnestInPartObj.style.display="none";
 	 			tenderPartObj.style.display="none";
@@ -326,7 +326,7 @@
 												<s:property value="realName" /></option>
 											</s:iterator>
 										</select>
-										<input type="button" class="mediumLeftButton" onclick="delParticipant(this)" value="删除"></li>
+										<input type="button" class="mediumLeftButton" <s:if test="projectInfo.status!=0">disabled</s:if> onclick="delParticipant(this)" value="删除"></li>
 									</s:iterator>
 								</s:if>
 								<li class="width100Li">
