@@ -282,10 +282,7 @@
 										<option value="清单">清单</option>
 										<option value="2000定额">2000定额</option>
 										<option value="其他">其他</option>
-								</select> <s:if test="projectInfo.status!=0">
-										<input type="hidden" name="projectInfo.valuationType"
-											value="<s:property value='projectInfo.valuationType'/>">
-									</s:if>
+								</select>
 								</li>					
 								<li class="width200Li"><label class="width4Lb">开始时间:</label>
 									<input class="Wdate width100Input" name="projectInfo.startDate"
@@ -1119,7 +1116,7 @@
 									</li>
 								</s:elseif>
 								<s:elseif test="projectInfo.status==5">
-									<li><label class="width6Lb">项目状态:</label>项目编号已提供</li>
+									<li><label class="width6Lb">项目状态:</label>正式立项</li>
 									<li><label class="width6Lb">提供时间:</label> <s:date
 											name='projectInfo.updateTime'
 											format='yyyy-MM-dd hh:mm:ss' />

@@ -103,6 +103,20 @@
 	 		}
 		}		
  	}
+	
+	function clearNoNum(obj)
+	{
+		//先把非数字的都替换掉，除了数字和.
+		obj.value = obj.value.replace(/[^\d.]/g,"");
+		//必须保证第一个为数字而不是.
+		obj.value = obj.value.replace(/^\./g,"");
+		//保证只有出现一个.而没有多个.
+		obj.value = obj.value.replace(/\.{2,}/g,".");
+		//保证.只出现一次，而不能出现两次以上
+		obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+	}
+
+	
 </script>
 </head>
 <body onload="changeProjectType()">
@@ -803,37 +817,37 @@ h4 {
 							<s:if test="projectInfo.status != 9">
 								<s:if test="#request.addCost == true">
 									<h4 class="title">增加成本</h4>
-									<form action="addProjectStream.do" method="post">
+									<s:form action="addProjectStream.do" method="post">
 										<input type="hidden" name="projectStream.projectID"
 											value="<s:property value='projectInfo.id'/>" /> <input
 											type="hidden" name="projectStream.type" value="1" />
 										<ul class="fullScreenUl">
 											<li class="width200Li"><label class="width6Lb">成本:</label>
 												<input class="width100Input" name="projectStream.money"
-												id="projectStream.money" /></li>
+												id="projectStream.money" onkeyup="clearNoNum(this)" /></li>
 											<li class="width200Li"><label class="width6Lb">时间:</label>
 												<input class="Wdate width100Input"
 												name="projectStream.streamDate"
 												onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></li>
 											<li class="width400Li"><label class="width6Lb">备注:</label>
-												<input class="width300Input" name="projectStream.comments" "/>
+												<input class="width300Input" name="projectStream.comments"/>
 											</li>
 											<li class="width100Li"><input type="submit"
 												class="mediumRightButton" value="增加成本"></li>
 										</ul>
-									</form>
+									</s:form>
 								</s:if>
 
 								<s:if test="#request.addBonus == true">
 									<h4 class="title">增加奖金</h4>
-									<form action="addProjectStream.do" method="post">
+									<s:form action="addProjectStream.do" method="post">
 										<input type="hidden" name="projectStream.projectID"
 											value="<s:property value='projectInfo.id'/>" /> <input
 											type="hidden" name="projectStream.type" value="2" />
 										<ul class="fullScreenUl">
 											<li class="width200Li"><label class="width6Lb">奖金:</label>
 												<input class="width100Input" name="projectStream.money"
-												id="projectStream.money" /></li>
+												id="projectStream.money" onkeyup="clearNoNum(this)" /></li>
 											<li class="width200Li"><label class="width6Lb">时间:</label>
 												<input class="Wdate width100Input"
 												name="projectStream.streamDate"
@@ -844,7 +858,7 @@ h4 {
 											<li class="width100Li"><input type="submit"
 												class="mediumRightButton" value="增加奖金"></li>
 										</ul>
-									</form>
+									</s:form>
 								</s:if>
 								
 								<h4 class="title">项目状态信息</h4>						
@@ -870,7 +884,7 @@ h4 {
 										<li><label class="width6Lb">审批时间:</label><s:date name='projectInfo.managerApproveTIme' format='yyyy-MM-dd hh:mm:ss' /></li>
 									</s:elseif>
 									<s:elseif test="projectInfo.status==5">
-										<li><label class="width6Lb">项目状态:</label>项目编号已提供</li>
+										<li><label class="width6Lb">项目状态:</label>正式立项</li>
 										<li><label class="width6Lb">提供时间:</label><s:date name='projectInfo.updateTime' format='yyyy-MM-dd hh:mm:ss' /></li>
 									</s:elseif>
 									<s:elseif test="projectInfo.status==9">

@@ -96,20 +96,20 @@
 						<li class="width100Li"><s:property value="contractMoney" /></li>
 						<li class="width100Li"><s:property value="subInvoice" /></li>
 						<li class="width100Li"><s:property value="subCost" /></li>
-						<li class="width50Li" title="<s:if test="status==0">未提交</s:if><s:elseif test="status==1">已提交</s:elseif><s:elseif test="status==2">部门经理审批通过</s:elseif><s:elseif test="status==3">总师审批通过</s:elseif><s:elseif test="status==4">总经理审批通过</s:elseif><s:elseif test="status==5">项目编号已提供</s:elseif><s:elseif test="status==9">已结项</s:elseif>">
+						<li class="width50Li" title="<s:if test="status==0">未提交</s:if><s:elseif test="status==1">已提交</s:elseif><s:elseif test="status==2">部门经理审批通过</s:elseif><s:elseif test="status==3">总师审批通过</s:elseif><s:elseif test="status==4">总经理审批通过</s:elseif><s:elseif test="status==5">正式立项</s:elseif><s:elseif test="status==9">已结项</s:elseif>">
 							<s:if test="status==0">未提交</s:if>
 							<s:elseif test="status==1">已提交</s:elseif>
 							<s:elseif test="status==2">部门...</s:elseif>
 							<s:elseif test="status==3">总师...</s:elseif>
 							<s:elseif test="status==4">总经...</s:elseif>
-							<s:elseif test="status==5">项目...</s:elseif>
+							<s:elseif test="status==5">正式...</s:elseif>
 							<s:elseif test="status==9">已结项</s:elseif>
 						</li>
 						<li class="width50Li">
 								<input type="button" <s:if test="status == 9">disabled</s:if> onclick='preModProject(<s:property value="id" />);' class="mediumRightButton" class="button" value='修改'>
 						</li>
 						<li class="width50Li">
-								<input type="button" <s:if test="projectInfo.queryType != 3 && status != 0">disabled</s:if> onclick='delProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+								<input type="button" <s:if test="#request.managerApprove != true || status != 0">disabled</s:if> onclick='delProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
 						</li>	
 					</ul>
 				</s:iterator>
