@@ -217,6 +217,40 @@
 									</select>
 								</li>
 							</ul>
+							
+							<%
+								String userid = String.valueOf((Long) session
+											.getAttribute(Constants.LOGIN_USER_ID));
+									List<AdminMenu> menus = (List) CacheMap.getInstance()
+											.getCache(
+													Constants.MENU_CACHE + Constants.LOGIN_USER_ID
+															+ userid);
+									request.setAttribute("userid", userid);
+									for (AdminMenu menu : menus) {
+										if (menu.getId() == 301) {
+											request.setAttribute("submitProject", true);
+										}
+										if (menu.getId() == 312) {
+											request.setAttribute("deptApprove", true);
+										}
+										if (menu.getId() == 313) {
+											request.setAttribute("masterApprove", true);
+										}
+										if (menu.getId() == 314) {
+											request.setAttribute("managerApprove", true);
+										}
+										if (menu.getId() == 315) {
+											request.setAttribute("directorFillNo", true);
+										}
+										if (menu.getId() == 316) {
+											request.setAttribute("businessManage", true);
+										}
+										if (menu.getId() == 317) {
+											request.setAttribute("accountManage", true);
+										}
+									}
+							%>
+							
 							<ul class="fullScreenUl">
 								<li class="width400Li"><label class="width4Lb">项目名称:</label>
 									<input <s:if test="projectInfo.status!=0">disabled</s:if>
@@ -224,7 +258,7 @@
 									value="<s:property value='projectInfo.name'/>" />
 									<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
 								</li>
-								<li class="width400Li" <s:if test="projectInfo.status != 4 && projectInfo.status != 5">style="display: none"</s:if>><label class="width4Lb">项目编号:</label>
+								<li class="width400Li" <s:if test="projectInfo.status != 4 && projectInfo.status != 5">style="display: none"</s:if> <s:if test="#request.directorFillNo == true">disabled</s:if>><label class="width4Lb">项目编号:</label>
 									<input class="width300Input" id="projectInfo.number" name="projectInfo.number" value="<s:property value='projectInfo.number'/>" />
 								</li>
 							</ul>
@@ -423,38 +457,6 @@
 									value="<s:property value='projectInfo.biddingContact' />" /></li>
 							</ul>
 							
-							<%
-								String userid = String.valueOf((Long) session
-											.getAttribute(Constants.LOGIN_USER_ID));
-									List<AdminMenu> menus = (List) CacheMap.getInstance()
-											.getCache(
-													Constants.MENU_CACHE + Constants.LOGIN_USER_ID
-															+ userid);
-									request.setAttribute("userid", userid);
-									for (AdminMenu menu : menus) {
-										if (menu.getId() == 301) {
-											request.setAttribute("submitProject", true);
-										}
-										if (menu.getId() == 312) {
-											request.setAttribute("deptApprove", true);
-										}
-										if (menu.getId() == 313) {
-											request.setAttribute("masterApprove", true);
-										}
-										if (menu.getId() == 314) {
-											request.setAttribute("managerApprove", true);
-										}
-										if (menu.getId() == 315) {
-											request.setAttribute("directorFillNo", true);
-										}
-										if (menu.getId() == 316) {
-											request.setAttribute("businessManage", true);
-										}
-										if (menu.getId() == 317) {
-											request.setAttribute("accountManage", true);
-										}
-									}
-							%>
 							<h4 class="title">项目业务信息</h4>
 							<ul class="fullScreenUl">
 								<li class="width200Li"><label class="width6Lb">项目性质:</label>
@@ -1167,12 +1169,18 @@
 										value="审批通过"></li>
 								</s:if>
 
-								<s:if
-									test="(projectInfo.status==4 || projectInfo.status==5) && #request.directorFillNo == true">
+								<s:if test="projectInfo.status==4 && #request.directorFillNo == true">
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('5')"
 										value="保存"></li>
 								</s:if>
+								
+								<s:if test="projectInfo.status==5 && (#request.businessManage == true || #request.accountManage == true)">
+									<li><input type="button" id="addProject"
+										class="mediumRightButton" onclick="modProjectInfo('5')"
+										value="保存"></li>
+								</s:if>
+								
 								
 								<li><input type="hidden" id="projectInfo.status"
 									name="projectInfo.status"
