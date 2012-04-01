@@ -258,7 +258,7 @@
 									value="<s:property value='projectInfo.name'/>" />
 									<textValidate field="projectInfo.name" lableText="<s:text name='项目名称' />" isValidate="true" min="0" max="100">
 								</li>
-								<li class="width400Li" <s:if test="projectInfo.status != 4 && projectInfo.status != 5">style="display: none"</s:if> <s:if test="#request.directorFillNo == true">disabled</s:if>><label class="width4Lb">项目编号:</label>
+								<li class="width400Li" <s:if test="projectInfo.status != 4 && projectInfo.status != 5">style="display: none"</s:if> <s:if test="#request.directorFillNo != true">disabled</s:if>><label class="width4Lb">项目编号:</label>
 									<input class="width300Input" id="projectInfo.number" name="projectInfo.number" value="<s:property value='projectInfo.number'/>" />
 								</li>
 							</ul>
@@ -1175,7 +1175,7 @@
 										value="保存"></li>
 								</s:if>
 								
-								<s:if test="projectInfo.status==5 && (#request.businessManage == true || #request.accountManage == true)">
+								<s:if test="projectInfo.status==5">
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('5')"
 										value="保存"></li>
