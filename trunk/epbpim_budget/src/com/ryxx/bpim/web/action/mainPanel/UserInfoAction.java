@@ -1,6 +1,5 @@
 package com.ryxx.bpim.web.action.mainPanel;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,7 +18,6 @@ import com.ryxx.bpim.service.AdminMenuService;
 import com.ryxx.bpim.service.UserInfoService;
 import com.ryxx.bpim.web.action.ActionSupportBase;
 import com.ryxx.util.cache.CacheMap;
-import com.ryxx.util.date.DateTools;
 import com.ryxx.util.email.EmailTools;
 import com.ryxx.util.string.StringTools;
 
@@ -71,10 +69,11 @@ public class UserInfoAction extends ActionSupportBase
             
             session.put(Constants.LOGIN_USER_NAME, identifier);
             session.put(Constants.LOGIN_USER_ID, userInfo.getId());
+            session.put(Constants.USER_LOGIN_IP, request.getRemoteAddr());
             session.put(Constants.USER_LOGIN_TIME, new Date().getTime());
             session.put(Constants.USER, userInfo);
             
-            // 保存当前用户登录session，用户处理不可能有多个用户同时登录
+            // 保存当前用户登录session，处理多个用户在不同的IP同时登录
             saveUserSession(session);
             if (CacheMap.getInstance().getCache(Constants.USER + userInfo.getId()) != null)
             {
@@ -100,8 +99,10 @@ public class UserInfoAction extends ActionSupportBase
                 {
                     super.addFieldError("name", "该用户未订阅任何应用。请订阅应用后再登录。");
                     return INPUT;
-                } else if(userInfo.getMenus().get(0).getExpireDate().getTime() < new Date().getTime()) {
-                	super.addFieldError("name", "该用户订阅已经过期。请重新订阅应用后再登录。");
+                }
+                else if (userInfo.getMenus().get(0).getExpireDate().getTime() < new Date().getTime())
+                {
+                    super.addFieldError("name", "该用户订阅已经过期。请重新订阅应用后再登录。");
                     return INPUT;
                 }
                 else
@@ -139,13 +140,14 @@ public class UserInfoAction extends ActionSupportBase
         return SUCCESS;
     }
     
-    public String showSubscribe() {
-    	Long id = (Long)session.get(Constants.LOGIN_USER_ID);
+    public String showSubscribe()
+    {
+        Long id = (Long)session.get(Constants.LOGIN_USER_ID);
         if (id != null && id != 0)
         {
             userInfo = userInfoService.findById(id);
         }
-    	return SUCCESS;
+        return SUCCESS;
     }
     
     public String updateUserInfo()
