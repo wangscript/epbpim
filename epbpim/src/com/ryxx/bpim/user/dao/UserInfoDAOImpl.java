@@ -40,6 +40,9 @@ public class UserInfoDAOImpl extends AbstractBaseDAO<UserInfo, Long> implements 
 	private Criteria createSelection(UserInfo userInfo) {
 		Criteria criteria = getSession().createCriteria(UserInfo.class);
 		if(userInfo != null) {
+		    
+		    criteria.add(Restrictions.ne("userName", "chairman"));
+		    
 			if(!StringUtils.isEmpty(userInfo.getRealName())) {
 				criteria.add(Restrictions.like("realName", "%" + userInfo.getRealName() + "%"));
 			}
