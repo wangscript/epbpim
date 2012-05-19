@@ -915,6 +915,10 @@ h4 {
 				</div>
 			</div>
 		</div>
+		<form id="printProjectForm" action="printProject.do" method="post" target="_blank">
+			<input type="hidden" name="projectInfo.queryType" value="<s:property value='projectInfo.queryType' />">
+			<input type="hidden" name="projectInfo.id" value="<s:property value='projectInfo.id' />">
+		</form>
 		<!-- end #page -->
 		<jsp:include page="../common/footer.jsp" /></div>
 </body>
@@ -926,6 +930,16 @@ h4 {
 	}
  	
  	function doPrint() { 
+ 		
+ 		var projectType = "<s:property value='projectInfo.projectType' />";
+ 		
+ 		if("决算审价"==projectType || "预算审价"==projectType)
+ 		{
+ 			document.getElementById("printProjectForm").submit();
+ 			return;
+ 		}
+ 		
+ 		
  		bdhtml=window.document.body.innerHTML; 
  		currentHtml = bdhtml;
  		sprnstr="<!--startprint-->"; 
