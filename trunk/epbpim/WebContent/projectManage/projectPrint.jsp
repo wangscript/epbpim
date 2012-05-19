@@ -113,6 +113,7 @@
 		<s:if test="#request.businessManage == true">
 			<input type="button" class="mediumRightButton" value="打印业务信息" onClick="doPrint('business')">	
 		</s:if>
+		<br><br>
 	</div>
 	<div align="center"><h1>上海建惠建设咨询有限公司</h1></div>
 	<div align="center"><font size="1">预决算、审价项目计划任务书（财务流转单）</font></div>
