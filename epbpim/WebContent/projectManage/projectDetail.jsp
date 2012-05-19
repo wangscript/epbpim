@@ -868,7 +868,7 @@ h4 {
 										<li><label class="width6Lb">保存时间:</label><s:date name='projectInfo.updateTime' format='yyyy-MM-dd hh:mm:ss' /></li>
 									</s:if>
 									<s:elseif test="projectInfo.status==1">
-										<li><label class="width6Lb">项目状态:</label>提交</li>
+										<li><label class="width6Lb">项目状态:</label>已提交</li>
 										<li><label class="width6Lb">提交时间:</label><s:date name='projectInfo.submitTime' format='yyyy-MM-dd hh:mm:ss' /></li>
 									</s:elseif>
 									<s:elseif test="projectInfo.status==2">
@@ -885,7 +885,7 @@ h4 {
 									</s:elseif>
 									<s:elseif test="projectInfo.status==5">
 										<li><label class="width6Lb">项目状态:</label>正式立项</li>
-										<li><label class="width6Lb">提供时间:</label><s:date name='projectInfo.updateTime' format='yyyy-MM-dd hh:mm:ss' /></li>
+										<li><label class="width6Lb">立项时间:</label><s:date name='projectInfo.updateTime' format='yyyy-MM-dd hh:mm:ss' /></li>
 									</s:elseif>
 									<s:elseif test="projectInfo.status==9">
 										<li><label class="width6Lb">项目状态:</label>已结项</li>

@@ -266,6 +266,7 @@
 								<li class="width200Li"><label class="width4Lb">工程专业:</label>
 									<select id="majorType" name="projectInfo.majorType" class="width100Input"
 									<s:if test="projectInfo.status!=0">disabled</s:if>>
+										<!-- 修改专业  按照住建部的要求进行调整
 										<option value="土建">土建</option>
 										<option value="园林">园林</option>
 										<option value="市政">市政</option>
@@ -274,6 +275,30 @@
 										<option value="水利">水利</option>
 										<option value="人防">人防</option>
 										<option value="房修">房修</option>
+										-->
+										<option value="房屋建筑工程">房屋建筑工程</option>
+										<option value="市政工程">市政工程</option>
+										<option value="公路工程">公路工程</option>
+										<option value="铁路工程">铁路工程</option>
+										<option value="城市轨道交通工程">城市轨道交通工程</option>
+										<option value="航空工程">航空工程</option>
+										<option value="航天工程">航天工程</option>
+										<option value="火电工程">火电工程</option>
+										<option value="水电工程">水电工程</option>
+										<option value="核工业工程">核工业工程</option>
+										<option value="新能源工程">新能源工程</option>
+										<option value="水利工程">水利工程</option>
+										<option value="水运工程">水运工程</option>
+										<option value="矿山工程">矿山工程</option>
+										<option value="冶金工程">冶金工程</option>
+										<option value="石油天然气工程">石油天然气工程</option>
+										<option value="石化工程">石化工程</option>
+										<option value="化工\医药工程">化工\医药工程</option>
+										<option value="农业工程">农业工程</option>
+										<option value="林业工程">林业工程</option>
+										<option value="电子\通信工程">电子\通信工程</option>
+										<option value="广播影视电视工程">广播影视电视工程</option>
+										<option value="其他">其他</option>
 									</select>
 								</li>
 								<li class="width200Li"><label class="width5Lb">计价模式:</label>
@@ -1117,7 +1142,7 @@
 								</s:elseif>
 								<s:elseif test="projectInfo.status==5">
 									<li><label class="width6Lb">项目状态:</label>正式立项</li>
-									<li><label class="width6Lb">提供时间:</label> <s:date
+									<li><label class="width6Lb">立项时间:</label> <s:date
 											name='projectInfo.updateTime'
 											format='yyyy-MM-dd hh:mm:ss' />
 									</li>
@@ -1143,27 +1168,27 @@
 									test="projectInfo.status==1 && #request.deptApprove == true">
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('0')"
-										value="审批不通过"> <input type="button" id="addProject"
+										value="部门经理审批不通过"> <input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('2')"
-										value="审批通过"></li>
+										value="部门经理审批通过"></li>
 								</s:if>
 
 								<s:if
 									test="projectInfo.status==2 && #request.masterApprove == true">
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('1')"
-										value="审批不通过"> <input type="button" id="addProject"
+										value="总师审批不通过"> <input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('3')"
-										value="审批通过"></li>
+										value="总师审批通过"></li>
 								</s:if>
 
 								<s:if
 									test="projectInfo.status==3 && #request.managerApprove == true">
 									<li><input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('2')"
-										value="审批不通过"> <input type="button" id="addProject"
+										value="总经理审批不通过"> <input type="button" id="addProject"
 										class="mediumRightButton" onclick="modProjectInfo('4')"
-										value="审批通过"></li>
+										value="总经理审批通过"></li>
 								</s:if>
 
 								<s:if test="projectInfo.status==4 && #request.directorFillNo == true">
