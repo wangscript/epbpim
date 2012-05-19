@@ -117,6 +117,10 @@ public class ProjectDaoImpl extends AbstractBaseDAO<ProjectInfo, Long> implement
             {
                 criteria.add(Restrictions.eq("number", projectInfo.getNumber()));
             }
+            if (!StringUtils.isEmpty(projectInfo.getStatus()))
+            {
+                criteria.add(Restrictions.eq("status", projectInfo.getStatus()));
+            }
             
             if (!StringUtils.isEmpty(projectInfo.getMajorType()))
             {
