@@ -39,6 +39,18 @@
 		td {
 			text-align: left;
 		}
+		
+		.mediumRightButton {
+			cursor: pointer;
+			height: 25px;
+			margin-right: 4px;
+			display: block;
+			float: right;
+			text-align: center;
+			background: url(../images/a_bg.gif) repeat-x center center;
+			text-decoration: none;
+			color: #5F5F5F;
+		}		
 	</style>
 	<%
 		String userid = String.valueOf((Long) session
@@ -65,22 +77,17 @@
 			document.getElementById("accountTable").style.display="none";
 			var businessManage="<%=businessManage%>";
 			var accountManage="<%=accountManage%>";
-			if(businessManage && accountManage)
+			if(businessManage)
 			{
 				document.getElementById("businessTable").style.display="";
 			}
-			else if(businessManage)
-			{
-				document.getElementById("businessTable").style.display="";
-			}
-			else if(accountManage)
+			if(accountManage)
 			{
 				document.getElementById("accountTable").style.display="";
 			}
-			
 		}
 		
-		function selectPrint(printType)
+		function doPrint(printType)
 		{
 			document.getElementById("businessTable").style.display="none";
 			document.getElementById("accountTable").style.display="none";
@@ -92,15 +99,21 @@
 			{
 				document.getElementById("accountTable").style.display="";
 			}
+			document.getElementById("printDiv").style.display="none";
+			window.print();
 		}
 		
-		function hideSelectDiv()
-		{
-			document.getElementById("selectDiv").style.display="none";
-		}
 	</script>
 </head>
 <body onload="initInfo()">
+	<div id="printDiv" align="right">
+		<s:if test="#request.accountManage == true">
+			<input type="button" class="mediumRightButton" value="打印财务信息" onClick="doPrint('account')">	
+		</s:if>
+		<s:if test="#request.businessManage == true">
+			<input type="button" class="mediumRightButton" value="打印业务信息" onClick="doPrint('business')">	
+		</s:if>
+	</div>
 	<div align="center"><h1>上海建惠建设咨询有限公司</h1></div>
 	<div align="center"><font size="1">预决算、审价项目计划任务书（财务流转单）</font></div>
 	<div align="center">
@@ -319,8 +332,8 @@
 	<!-- 项目财务信息表格 -->		
 	<table id="accountTable" width="80%" cellpadding="0" cellspacing="0">
 		<tr>
-			<td style="text-align: center" class="blr">收    入</td>
-			<td style="text-align: center" class="br">支    出</td>
+			<td style="text-align: center" class="tblr">收    入</td>
+			<td style="text-align: center" class="tbr">支    出</td>
 		</tr>
 		<tr>
 			<td width="50%" class="blr">
@@ -510,7 +523,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" class="tblr">
+			<td colspan="2" class="blr">
 				<table width="100%">
 					<tr>
 						<td colspan="3">备注：</td>
@@ -525,14 +538,6 @@
 			</td>
 		</tr>
 	</table>
-	<s:if test="#request.businessManage == true && #request.accountManage == true">
-	<div id="selectDiv">
-		<a href="javascript: selectPrint('business')">打印业务信息</a>
-		<a href="javascript: selectPrint('account')">打印财务信息</a>
-		<a href="javascript: hideSelectDiv()">隐藏</a>
-	</div>
-	</s:if>
-	</div>
-	
+	</div>	
 </body>
 </html>
