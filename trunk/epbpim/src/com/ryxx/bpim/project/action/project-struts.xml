@@ -29,6 +29,9 @@
 		<action name="schProject" method="findProjectInfo" class="projectAction">
 			<result>/projectManage/projectDetail.jsp</result>
 		</action>
+		<action name="printProject" method="findProjectInfo" class="projectAction">
+			<result>/projectManage/projectPrint.jsp</result>
+		</action>
 		<action name="addProjectStream" method="addProjectStream" class="projectStreamAction">
 			<result type="redirect">schProject.do?projectInfo.id=${projectID}</result>
 		</action>
