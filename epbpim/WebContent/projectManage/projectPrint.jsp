@@ -75,8 +75,8 @@
 		{
 			document.getElementById("businessTable").style.display="none";
 			document.getElementById("accountTable").style.display="none";
-			var businessManage="<%=businessManage%>";
-			var accountManage="<%=accountManage%>";
+			var businessManage=<%=businessManage%>;
+			var accountManage=<%=accountManage%>;
 			if(businessManage)
 			{
 				document.getElementById("businessTable").style.display="";
