@@ -148,7 +148,7 @@
 				审批时间&nbsp;&nbsp;：<s:date name='projectInfo.deptApproveTime' format='yyyy-MM-dd hh:mm:ss' />
 			</td>
 			<td class="br">
-				公司批准人：<s:elseif test="projectInfo.status==4 || projectInfo.status==5 || projectInfo.status==9">周家俅</s:elseif><br>
+				公司批准人：<s:if test="projectInfo.status==4 || projectInfo.status==5 || projectInfo.status==9">周家俅</s:if><br>
 				审批时间&nbsp;&nbsp;：<s:date name='projectInfo.managerApproveTIme' format='yyyy-MM-dd hh:mm:ss' /></td>
 		</tr>
 		<tr>
