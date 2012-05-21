@@ -29,17 +29,19 @@
 					<tr>
 						<td><label>文件类别：</label></td>
 						<td>
-							<div class="width300Li" id="moveSpan1">
-								<select id="devmodelBak" name="mainDevInfo.deviceModelId" onchange="fillFileType(this)">
-									<option value="">--请选择--</option>
-									<option value="董事会文件">董事会文件</option>
-									<option value="财税文件">财税文件</option>
-									<option value="工商文件">工商文件</option>
-					     			<s:iterator id="model" value="#request.mainDevInfo" status="stats">
-					         			<option value="${model.deviceModelId }"><s:property value="#model.deviceModelName"/></option>
-									</s:iterator>
-								</select>
-								<input id="adminFile.fileType" name="adminFile.fileType" type="text" value="请输入文件类别"
+							<div id="moveSpan1" style="position:relative;" >
+							<span style="margin-left:147px;width:175px;overflow:hidden;position:relative;" id="devmodelNamespan">
+							<select id="devmodelBak" name="mainDevInfo.deviceModelId" style="width:165px;margin-left:-147px;BORDER-LEFT:#9DE4FF 1px solid;BORDER-RIGHT:#9DE4FF 1px solid;FONT-SIZE: 9pt;HEIGHT:21px;"  onchange="fillFileType(this)">
+								<option value="">--请选择--</option>
+								<option value="董事会文件">董事会文件</option>
+								<option value="财税文件">财税文件</option>
+								<option value="工商文件">工商文件</option>
+				     			<s:iterator id="model" value="#request.mainDevInfo" status="stats">
+				         			<option value="${model.deviceModelId }"><s:property value="#model.deviceModelName"/></option>
+								</s:iterator>
+							</select>
+							</span>
+							<input id="adminFile.fileType" name="adminFile.fileType" type="text" style="width:142px;position:absolute;left:0px;BORDER-RIGHT:#9DE4FF 1px solid;FONT-SIZE: 9pt;HEIGHT:15px;color: #cdcdcd;" value="<s:text name='请输入文件类别'/>"
 									onclick="clearValue(this)" onblur="setValue(this)" maxlength="50"/>
 							</div>
 						</td>
