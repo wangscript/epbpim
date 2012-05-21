@@ -75,15 +75,19 @@
 		{
 			document.getElementById("businessTable").style.display="none";
 			document.getElementById("accountTable").style.display="none";
+			document.getElementById("businessDiv").style.display="none";
+			document.getElementById("accountDiv").style.display="none";
 			var businessManage=<%=businessManage%>;
 			var accountManage=<%=accountManage%>;
 			if(businessManage)
 			{
 				document.getElementById("businessTable").style.display="";
+				document.getElementById("businessDiv").style.display="";
 			}
 			if(accountManage)
 			{
 				document.getElementById("accountTable").style.display="";
+				document.getElementById("accountDiv").style.display="";
 			}
 		}
 		
@@ -91,13 +95,17 @@
 		{
 			document.getElementById("businessTable").style.display="none";
 			document.getElementById("accountTable").style.display="none";
+			document.getElementById("businessDiv").style.display="none";
+			document.getElementById("accountDiv").style.display="none";
 			if("business"==printType)
 			{
-				document.getElementById("businessTable").style.display="";		
+				document.getElementById("businessTable").style.display="";	
+				document.getElementById("businessDiv").style.display="";
 			}
 			else if("account"==printType)
 			{
 				document.getElementById("accountTable").style.display="";
+				document.getElementById("accountDiv").style.display="";
 			}
 			document.getElementById("printDiv").style.display="none";
 			window.print();
@@ -116,29 +124,35 @@
 		<br><br>
 	</div>
 	<div align="center"><h1>上海建惠建设咨询有限公司</h1></div>
-	<div align="center"><font size="1">预决算、审价项目计划任务书（财务流转单）</font></div>
+	<div align="center" id="businessDiv"><font size="1">预决算、审价项目计划任务书（业务流转单）</font></div>
+	<div align="center" id="accountDiv"><font size="1">预决算、审价项目计划任务书（财务流转单）</font></div>
 	<div align="center">
-	<table width="80%">
+	<table width="98%">
 		<tr>
 			<td >承接部门：<font style="text-decoration:underline"><s:property value='projectInfo.dept.name' /></font></td>
 			<td style="text-align: right">项目编号：<font style="text-decoration:underline"><s:property value='projectInfo.number' /></font></td>
 		</tr>
 	</table>
 	<!-- 项目基本信息表格 -->	
-	<table width="80%" cellpadding="0" cellspacing="0">
+	<table width="98%" cellpadding="0" cellspacing="0">
 		<tr>
-			<td colspan="4" class="tblr">项目名称：<s:property value='projectInfo.name' /></td>
+			<td colspan="3" class="tblr">项目名称：<s:property value='projectInfo.name' /></td>
 		</tr>
 		<tr>
-			<td colspan="4" class="blr">工程专业：<s:property value='projectInfo.majorType' /></td>
+			<td colspan="3" class="blr">工程专业：<s:property value='projectInfo.majorType' /></td>
 		</tr>
 		<tr>
 			<td class="blr">项目经理：<s:property value='projectInfo.manager.realName' /></td>
-			<td class="br">部门负责人：<s:property value='projectInfo.owner.realName' /></td>
-			<td colspan="2" class="br">公司批准人：<s:property value='projectInfo.verifier.realName' /></td>
+			<td class="br">
+				部门负责人：<s:property value='projectInfo.owner.realName' /><br>
+				审批时间&nbsp;&nbsp;：<s:date name='projectInfo.deptApproveTime' format='yyyy-MM-dd hh:mm:ss' />
+			</td>
+			<td class="br">
+				公司批准人：<s:property value='projectInfo.verifier.realName' /><br>
+				审批时间&nbsp;&nbsp;：<s:date name='projectInfo.managerApproveTIme' format='yyyy-MM-dd hh:mm:ss' /></td>
 		</tr>
 		<tr>
-			<td colspan="4" class="blr">项目参与人：
+			<td colspan="3" class="blr">项目参与人：
 				<s:if test="projectInfo.participants != null && projectInfo.participants.size() > 0">
 					<s:iterator value="projectInfo.participants" status="st">
 						<li id="participantLI" class="width100Li">
@@ -149,17 +163,16 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" class="blr">合同编号：<s:property value='projectInfo.contractNumber' /></td>
+			<td class="blr">合同编号：<s:property value='projectInfo.contractNumber' /></td>
 			<td colspan="2" class="br">合同金额：<s:property value='projectInfo.contractMoney' /></td>
 		</tr>
 		<tr>
-			<td colspan="4" class="blr">合同内容概要：<s:property value='projectInfo.contractAbstract' /></td>
+			<td colspan="3" class="blr">合同内容概要：<s:property value='projectInfo.contractAbstract' /></td>
 		</tr>
 		<tr>
-			<td width="25%" style="text-align: center" class="blr">委托（建设）单位</td>
-			<td width="25%" style="text-align: center" class="br">相关（关系）单位</td>
-			<td width="25%" style="text-align: center" class="br">送审（施工）单位</td>
-			<td width="25%" style="text-align: center" class="br">中标单位</td>
+			<td width="33%" style="text-align: center" class="blr">委托（建设）单位</td>
+			<td width="33%" style="text-align: center" class="br">相关（关系）单位</td>
+			<td width="34%" style="text-align: center" class="br">送审（施工）单位</td>
 		</tr>
 		<tr>
 			<td class="blr">
@@ -200,24 +213,11 @@
 						<td>电话：<s:property value='projectInfo.vendorContact' /></td>
 					</tr>
 				</table>
-			</td>			
-			<td class="br">
-				<table width="100%">
-					<tr>
-						<td colspan="2">名称：<s:property value='projectInfo.biddingCompany' /></td>
-					</tr>
-					<tr>
-						<td>联系人：<s:property value='projectInfo.biddingContactor' /></td>
-					</tr>
-					<tr>
-						<td>电话：<s:property value='projectInfo.biddingContact' /></td>
-					</tr>
-				</table>
 			</td>
 		</tr>
 	</table>
 	<!-- 项目业务信息表格 -->	
-	<table id="businessTable" width="80%" cellpadding="0" cellspacing="0">
+	<table id="businessTable" width="98%" cellpadding="0" cellspacing="0">
 		<tr>
 			<td style="text-align: center" class="tblr">送审价</td>
 			<td style="text-align: center" class="tbr">审定价</td>
@@ -232,7 +232,7 @@
 			<td style="text-align: center" class="br"><br><s:property value='projectInfo.plusPrice' /><br><br></td>
 			<td style="text-align: center" class="br"><br><s:property value='projectInfo.minusPrice' /><br><br></td>
 			<td style="text-align: center" class="br"><br><br><br></td>
-			<td style="text-align: center" class="br"><br><s:property value='projectInfo.achiveReceiver' /><br><br></td>			
+			<td style="text-align: center" class="br"><br><br><br></td>			
 		</tr>
 		<tr>
 			<td style="text-align: center" class="blr">审定天数</td>
@@ -331,7 +331,7 @@
 		</tr>
 	</table>
 	<!-- 项目财务信息表格 -->		
-	<table id="accountTable" width="80%" cellpadding="0" cellspacing="0">
+	<table id="accountTable" width="98%" cellpadding="0" cellspacing="0">
 		<tr>
 			<td style="text-align: center" class="tblr">收    入</td>
 			<td style="text-align: center" class="tbr">支    出</td>
