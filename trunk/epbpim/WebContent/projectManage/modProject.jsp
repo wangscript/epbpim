@@ -513,12 +513,10 @@
 										<input class="width100Input" name="projectInfo.judgeDays"
 										value="<s:property value='projectInfo.judgeDays' />" />
 									</li>
-									<li class="width200Li"><label class="width6Lb">报告日/文号:</label>
-										<input class="Wdate width100Input"
-										name="projectInfo.reportDate"
-										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
-										value="<s:date name='projectInfo.reportDate' format='yyyy-MM-dd' />" />
-									</li>
+									<li class="width200Li"><label class="width6Lb">征询日/评价:</label>
+										<input class="width100Input" name="projectInfo.comments"
+										value="<s:property value='projectInfo.comments'/>" /></li>
+									
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">核增额:</label>
@@ -527,9 +525,25 @@
 									<li class="width200Li"><label class="width6Lb">核减额:</label>
 										<input class="width100Input" name="projectInfo.minusPrice"
 										value="<s:property value='projectInfo.minusPrice'/>" /></li>
-									<li class="width200Li"><label class="width6Lb">征询日/评价:</label>
-										<input class="width100Input" name="projectInfo.comments"
-										value="<s:property value='projectInfo.comments'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">核增额:</label>
+										<input class="width100Input" name="projectInfo.plusPriceRate"
+										value="<s:property value='projectInfo.plusPriceRate'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">核减额:</label>
+										<input class="width100Input" name="projectInfo.minusPriceRate"
+										value="<s:property value='projectInfo.minusPriceRate'/>" /></li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">报告编号:</label>
+										<input class="width100Input" name="projectInfo.reportNumber"
+										value="<s:property value='projectInfo.reportNumber'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">报告文号:</label>
+										<input class="width100Input" name="projectInfo.reportReferNumber"
+										value="<s:property value='projectInfo.reportReferNumber'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">报告日:</label>
+										<input class="Wdate width100Input" name="projectInfo.reportDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.reportDate' format='yyyy-MM-dd' />" />
+									</li>
 									<li class="width200Li"><label class="width6Lb">归档日期:</label>
 										<input class="Wdate width100Input" name="projectInfo.achiveDate"
 										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
@@ -537,17 +551,23 @@
 									</li>
 								</ul>
 								<ul class="fullScreenUl">
-									<li class="width200Li"><label class="width6Lb">报告编号:</label>
-										<input class="width100Input" name="projectInfo.reportNumber"
-										value="<s:property value='projectInfo.reportNumber'/>" /></li>
-									<li class="width200Li"><label class="width6Lb">总师审核:</label>
-										<input class="width100Input"
-										name="projectInfo.masterJudgeComments"
-										value="<s:property value='projectInfo.masterJudgeComments'/>" />
-									</li>
 									<li class="width200Li"><label class="width6Lb">档案接收人:</label>
 										<input class="width100Input" name="projectInfo.achiveReceiver"
 										value="<s:property value='projectInfo.achiveReceiver'/>" /></li>
+									<li class="width200Li"><label class="width6Lb">档案接收日期:</label>
+										<input class="Wdate width100Input" name="projectInfo.achiveReceiveDate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+										value="<s:date name='projectInfo.achiveReceiveDate' format='yyyy-MM-dd' />" />
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width800Li"><label class="width7Lb">总师审核意见:</label><textarea style="height: 40px; width: 500px;" name="projectInfo.masterJudgeComments"><s:property value='projectInfo.masterJudgeComments' /></textarea>
+									</li>
+								</ul>
+								<ul class="fullScreenUl">
+									<li class="width800Li"><label class="width7Lb">整改情况:</label><textarea style="height: 40px; width: 500px;" name="projectInfo.corrective"><s:property value='projectInfo.corrective' /></textarea>
+									</li>
+									<li><br></li>
 								</ul>
 							</div>
 							<div id="projectType2" style="display: none;">
@@ -1029,10 +1049,9 @@
 											<fieldset><legend>成本报销</legend>											 
 												<ul class="fullScreenUl">
 													<li class="width200Li"><label class="width6Lb">领款人:</label>
-														<select id="projectInfo.costRemittee" name="projectInfo.costRemittee" class="width100Input">
+														<select name="projectInfo.costRemittee" class="width100Input">
 														<s:iterator value="userInfoList" status="st">
-															<option value="<s:property value='id' />"
-																<s:if test="id==remitteeID">selected</s:if>>
+															<option value="<s:property value='id' />" <s:if test="id==remitteeID">selected</s:if>>
 																<s:property value="realName" />
 															</option>
 														</s:iterator>
@@ -1050,6 +1069,19 @@
 													</li>
 												</ul>
 												<ul class="fullScreenUl">
+													<li class="width200Li"><label class="width6Lb">批准人:</label>
+														<select name="projectInfo.costApprover" class="width100Input">
+														<s:iterator value="userInfoList" status="st">
+															<option value="<s:property value='id' />" <s:if test="id==approverID">selected</s:if>>
+																<s:property value="realName" />
+															</option>
+														</s:iterator>
+														</select>
+													</li>
+													<li class="width200Li"><label class="width6Lb">批准日期:</label>
+														<input class="Wdate width100Input" name="projectInfo.costApproveDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" 
+															value="<s:date name='approveDate' format='yyyy-MM-dd' />" />
+													</li>
 													<li class="width200Li"><label class="width6Lb">备注:</label>
 														<input class="width100Input" name="projectInfo.costComment" value="<s:property value='comment' />" />
 													</li>
@@ -1243,7 +1275,7 @@
 							<fieldset><legend>成本报销</legend>											 
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">领款人:</label>
-										<select id="projectInfo.costRemittee" name="projectInfo.costRemittee" class="width100Input">
+										<select name="projectInfo.costRemittee" class="width100Input">
 										<s:iterator value="userInfoList" status="st">
 											<option value="<s:property value='id' />">
 												<s:property value="realName" />
@@ -1262,6 +1294,18 @@
 									</li>
 								</ul>
 								<ul class="fullScreenUl">
+									<li class="width200Li"><label class="width6Lb">批准人:</label>
+										<select name="projectInfo.costApprover" class="width100Input">
+										<s:iterator value="userInfoList" status="st">
+											<option value="<s:property value='id' />">
+												<s:property value="realName" />
+											</option>
+										</s:iterator>
+										</select>
+									</li>
+									<li class="width200Li"><label class="width6Lb">批准日期:</label>
+										<input class="Wdate width100Input" name="projectInfo.costApproveDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+									</li>
 									<li class="width200Li"><label class="width6Lb">备注:</label>
 										<input class="width100Input" name="projectInfo.costComment" />
 									</li>

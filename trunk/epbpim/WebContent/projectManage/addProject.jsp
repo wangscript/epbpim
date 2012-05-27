@@ -56,20 +56,6 @@
  		document.getElementById("participantUL").removeChild(obj.parentNode);
  	}
  	
-	
-	function addCost()
- 	{
- 		var costDivObj=document.getElementById("costDiv").cloneNode(true);
- 		costDivObj.id="";
- 		costDivObj.style.display="inline";
- 		document.getElementById("costPart").appendChild(costDivObj);
- 	}
- 	function delCost(obj)
- 	{
- 		var costDivObj=obj.parentNode.parentNode.parentNode;
- 		costDivObj.parentNode.removeChild(costDivObj);
- 	}
- 	
  	function addAttachment()
  	{
  		var invoiceULObj=document.getElementById("attachmentUL").cloneNode(true);
@@ -308,10 +294,11 @@
 								class="width100Input"
 								name="projectInfo.judgeDays"/>
 							</li>
-							<li class="width200Li"><label class="width6Lb">报告日/文号:</label> <input
-								class="Wdate width100Input" name="projectInfo.reportDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							<li class="width200Li"><label class="width6Lb">征询日/评价:</label> <input
+								class="width100Input"
+								name="projectInfo.comments"/>
 							</li>
+							
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">核增额:</label> <input
@@ -322,13 +309,13 @@
 								class="width100Input"
 								name="projectInfo.minusPrice"/>
 							</li>
-							<li class="width200Li"><label class="width6Lb">征询日/评价:</label> <input
+							<li class="width200Li"><label class="width6Lb">核增率:</label> <input
 								class="width100Input"
-								name="projectInfo.comments"/>
+								name="projectInfo.plusPriceRate"/>
 							</li>
-							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
-								class="Wdate width100Input" name="projectInfo.achiveDate"
-								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							<li class="width200Li"><label class="width6Lb">核减率:</label> <input
+								class="width100Input"
+								name="projectInfo.minusPriceRate"/>
 							</li>
 						</ul>
 						<ul class="fullScreenUl">
@@ -336,15 +323,39 @@
 								class="width100Input"
 								name="projectInfo.reportNumber"/>
 							</li>
-							<li class="width200Li"><label class="width6Lb">总师审核:</label> <input
+							<li class="width200Li"><label class="width6Lb">报告文号:</label> <input
 								class="width100Input"
-								name="projectInfo.masterJudgeComments"/>
+								name="projectInfo.reportReferNumber"/>
 							</li>
+							<li class="width200Li"><label class="width6Lb">报告日:</label> <input
+								class="Wdate width100Input" name="projectInfo.reportDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+							<li class="width200Li"><label class="width6Lb">归档日期:</label> <input
+								class="Wdate width100Input" name="projectInfo.achiveDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">档案接收人:</label> <input
 								class="width100Input"
 								name="projectInfo.achiveReceiver"/>
 							</li>
-						</ul></div>
+							<li class="width200Li"><label class="width6Lb">档案接收日期:</label> <input
+								class="Wdate width100Input" name="projectInfo.achiveReceiveDate"
+								onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width800Li"><label class="width7Lb">总师审核意见:</label><textarea style="height: 40px; width: 500px;"  name="projectInfo.masterJudgeComments"></textarea>
+							</li>
+						</ul>
+						<ul class="fullScreenUl">
+							<li class="width800Li"><label class="width7Lb">整改情况:</label><textarea style="height: 40px; width: 500px;"  name="projectInfo.corrective"></textarea>
+							</li>
+							<li><br></li>
+						</ul>
+						</div>
 						<div id="projectType2" style="display:none;">
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">总投资:</label> <input
@@ -528,39 +539,6 @@
 								<input type="button" class="mediumLeftButton" onclick="delParticipant(this)" value="删除">						
 							</li>
 						</ul>
-						
-						<div id="costDiv" style="display: none">
-							<fieldset><legend>成本报销</legend>											 
-								<ul class="fullScreenUl">
-									<li class="width200Li"><label class="width6Lb">领款人:</label>
-										<select id="projectInfo.costRemittee" name="projectInfo.costRemittee" class="width100Input">
-										<s:iterator value="userInfoList" status="st">
-											<option value="<s:property value='id' />">
-												<s:property value="realName" />
-											</option>
-										</s:iterator>
-										</select>
-									</li>
-									<li class="width200Li"><label class="width6Lb">结算日期:</label>
-										<input class="Wdate width100Input" name="projectInfo.costSettleDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-									</li>
-									<li class="width200Li"><label class="width6Lb">金额:</label>
-										<input class="width100Input" name="projectInfo.costPrice" />
-									</li>
-									<li class="width200Li"><label class="width6Lb">账务:</label>
-										<input class="width100Input" name="projectInfo.costAccount" value="<s:property value='account' />" />
-									</li>
-								</ul>
-								<ul class="fullScreenUl">
-									<li class="width200Li"><label class="width6Lb">备注:</label>
-										<input class="width100Input" name="projectInfo.costComment" />
-									</li>
-									<li>
-										<input type="button" class="mediumLeftButton" onclick="delCost(this)" value="删除">
-									</li>	
-								</ul>
-							</fieldset>
-						</div>
 						
 						<ul id="attachmentUL" class="fullScreenUl" style="display: none">
 							<li class="width300Li">
