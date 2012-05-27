@@ -308,6 +308,15 @@ function $(id){
 	return document.getElementById(id);
 }
 
+function displayOrNotDisplay(id){
+	if(id.style.display=="block"){
+		id.style.display="none";
+	}else{
+		id.style.display="block";
+	}
+	
+}
+
 String.prototype.endWith=function(str){
 	if(str==null||str==""||this.length==0||str.length>this.length)
 	  return false;
