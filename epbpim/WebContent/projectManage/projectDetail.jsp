@@ -373,27 +373,46 @@ h4 {
 									<s:property value='projectInfo.judgePrice2' /></li>
 									<li class="width200Li"><label class="width6Lb">审定天数:</label>
 									<s:property value='projectInfo.judgeDays' /></li>
-									<li class="width200Li"><label class="width6Lb">报告日/文号:</label>
-									<s:date name='projectInfo.reportDate' format='yyyy-MM-dd' /></li>
+									<li class="width200Li"><label class="width6Lb">征询日/评价:</label>
+									<s:property value='projectInfo.comments' /></li>
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">核增额:</label>
 									<s:property value='projectInfo.plusPrice' /></li>
 									<li class="width200Li"><label class="width6Lb">核减额:</label>
 									<s:property value='projectInfo.minusPrice' /></li>
-									<li class="width200Li"><label class="width6Lb">征询日/评价:</label>
-									<s:property value='projectInfo.comments' /></li>
-									<li class="width200Li"><label class="width6Lb">归档日期:</label>
-									<s:date name='projectInfo.achiveDate' format='yyyy-MM-dd' /></li>
+									<li class="width200Li"><label class="width6Lb">核增额:</label>
+									<s:property value='projectInfo.plusPriceRate' /></li>
+									<li class="width200Li"><label class="width6Lb">核减额:</label>
+									<s:property value='projectInfo.minusPriceRate' /></li>
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">报告编号:</label>
 									<s:property value='projectInfo.reportNumber' /></li>
-									<li class="width200Li"><label class="width6Lb">总师审核:</label>
-									<s:property value='projectInfo.masterJudgeComments' /></li>
+									<li class="width200Li"><label class="width6Lb">报告编号:</label>
+									<s:property value='projectInfo.reportReferNumber' /></li>
+									<li class="width200Li"><label class="width6Lb">报告日:</label>
+									<s:date name='projectInfo.reportDate' format='yyyy-MM-dd' /></li>
+									<li class="width200Li"><label class="width6Lb">归档日期:</label>
+									<s:date name='projectInfo.achiveDate' format='yyyy-MM-dd' /></li>
+								</ul>
+								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">档案接收人:</label>
 									<s:property value='projectInfo.achiveReceiver' /></li>
+									<li class="width200Li"><label class="width6Lb">档案接收日期:</label>
+									<s:date name='projectInfo.achiveReceiveDate' format='yyyy-MM-dd' /></li>
 								</ul>
+								<ul class="fullScreenUl">
+								<li class="width800Li"><label class="width7Lb">总师审核意见:</label>
+									<textarea style="height: 40px; width: 500px;" disabled><s:property value='projectInfo.masterJudgeComments' /></textarea>
+								</li>
+							</ul>	
+							<ul class="fullScreenUl">
+								<li class="width800Li"><label class="width7Lb">整改情况:</label>
+									<textarea style="height: 40px; width: 500px;" disabled><s:property value='projectInfo.corrective' /></textarea>
+								</li>
+								<li><br></li>
+							</ul>	
 							</div>
 							<div id="projectType2" style="display: none;">
 								<ul class="fullScreenUl">
@@ -716,6 +735,12 @@ h4 {
 													</li>
 												</ul>
 												<ul class="fullScreenUl">
+													<li class="width200Li"><label class="width6Lb">批准人:</label>
+														<s:property value="approverName" />
+													</li>
+													<li class="width200Li"><label class="width6Lb">批准日期:</label>
+														<s:date name='approveDate' format='yyyy-MM-dd' />
+													</li>
 													<li class="width200Li"><label class="width6Lb">备注:</label>
 														<s:property value='comment' />
 													</li>	

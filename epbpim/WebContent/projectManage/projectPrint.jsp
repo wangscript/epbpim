@@ -229,10 +229,10 @@
 		<tr>
 			<td style="text-align: center" class="blr"><br><s:property value='projectInfo.judgePrice1' /><br><br></td>
 			<td style="text-align: center" class="br"><br><s:property value='projectInfo.judgePrice1' /><br><br></td>
-			<td style="text-align: center" class="br"><br><s:property value='projectInfo.plusPrice' /><br><br></td>
-			<td style="text-align: center" class="br"><br><s:property value='projectInfo.minusPrice' /><br><br></td>
+			<td style="text-align: center" class="br"><br><s:property value='projectInfo.plusPrice' />/<s:property value='projectInfo.plusPriceRate' /><br><br></td>
+			<td style="text-align: center" class="br"><br><s:property value='projectInfo.minusPrice' />/<s:property value='projectInfo.minusPriceRate' /><br><br></td>
 			<td style="text-align: center" class="br"><br><br><br></td>
-			<td style="text-align: center" class="br"><br><br><br></td>			
+			<td style="text-align: center" class="br"><s:property value='projectInfo.achiveReceiver' /><br><br></td>			
 		</tr>
 		<tr>
 			<td style="text-align: center" class="blr">审定天数</td>
@@ -245,10 +245,10 @@
 		<tr>
 			<td style="text-align: center" class="blr"><br><s:property value='projectInfo.judgeDays' /><br><br></td>
 			<td style="text-align: center" class="br"><br><s:date name='projectInfo.reportDate' format='yyyy-MM-dd' /><br><br></td>
-			<td style="text-align: center" class="br"><br><s:date name='projectInfo.reportDate' format='yyyy-MM-dd' /><br><br></td>
+			<td style="text-align: center" class="blr"><br><s:property value='projectInfo.reportReferNumber' /><br><br></td>
 			<td style="text-align: center" class="br"><br><s:property value='projectInfo.comments' /><br></td>
 			<td style="text-align: center" class="br"><br><s:date name='projectInfo.achiveDate' format='yyyy-MM-dd' /><br><br></td>
-			<td style="text-align: center" class="br"><br><br><br></td>			
+			<td style="text-align: center" class="br"><s:date name='projectInfo.achiveReceiveDate' format='yyyy-MM-dd' /><br><br></td>			
 		</tr>
 		<tr>
 			<td colspan="6" class="blr">
@@ -257,19 +257,7 @@
 						<td colspan="3">总师审核意见：</td>
 					</tr>
 					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
+						<td colspan="3"><s:property value='projectInfo.masterJudgeComments' /></td>
 					</tr>
 					<tr>
 						<td colspan="3"><br></td>
@@ -289,19 +277,7 @@
 						<td colspan="3">整改情况：</td>
 					</tr>
 					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
+						<td colspan="3"><s:property value='projectInfo.corrective' /></td>
 					</tr>
 					<tr>
 						<td colspan="3"><br></td>
@@ -374,7 +350,7 @@
 			<td width="50%" class="br">
 				<s:if test="projectInfo.costs != null && projectInfo.costs.size() > 0">
 					<s:iterator value="projectInfo.costs" status="st">
-						<s:if test="#st.index==1">
+						<s:if test="#st.index==0">
 						<table width="100%" cellpadding="0" cellspacing="0">
 							<tr>
 								<td width="7" class="r" rowspan="10">成本报销</td>
@@ -484,7 +460,7 @@
 			<td width="50%" class="br">
 				<s:if test="projectInfo.costs != null && projectInfo.costs.size() > 1">
 					<s:iterator value="projectInfo.costs" status="st">
-						<s:if test="#st.index==2">
+						<s:if test="#st.index==1">
 						<table width="100%" cellpadding="0" cellspacing="0">
 							<tr>
 								<td width="7" class="r" rowspan="10">成本报销</td>
