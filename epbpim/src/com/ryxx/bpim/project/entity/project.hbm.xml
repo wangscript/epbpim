@@ -32,11 +32,16 @@
 		<property name="reportDate" column="REPORT_DATE" type="java.sql.Timestamp"></property>
 		<property name="plusPrice" column="PLUS_PRICE" type="java.lang.String"></property>
 		<property name="minusPrice" column="MINUS_PRICE" type="java.lang.String"></property>
+		<property name="plusPriceRate" column="PLUS_PRICE_RATE" type="java.lang.String"></property>
+		<property name="minusPriceRate" column="MINUS_PRICE_RATE" type="java.lang.String"></property>
 		<property name="comments" column="COMMENTS" type="java.lang.String"></property>
 		<property name="achiveDate" column="ACHIVE_DATE" type="java.sql.Timestamp"></property>
 		<property name="reportNumber" column="REPORT_NUMBER" type="java.lang.String"></property>
+		<property name="reportReferNumber" column="REPORT_REFER_NUMBER" type="java.lang.String"></property>
 		<property name="masterJudgeComments" column="MASTER_JUDGE_COMMENTS" type="java.lang.String"></property>
+		<property name="corrective" column="CORRECTIVE" type="java.lang.String"></property>
 		<property name="achiveReceiver" column="ACHIVE_RECEIVER" type="java.lang.String"></property>
+		<property name="achiveReceiveDate" column="ACHIVE_RECEIVE_DATE" type="java.sql.Timestamp"></property>
 		<property name="contractNumber" column="CONTRACT_NUMBER" type="java.lang.String"></property>
 		<property name="contractMoney" column="CONTRACT_MONEY" type="java.lang.String"></property>
 		<property name="contractAbstract" column="CONTRACT_ABSTRACT" type="java.lang.String"></property>		
@@ -114,6 +119,8 @@
 		<property name="expertPerson" column="EXPERTPERSON" type="java.lang.String"></property>
 		<property name="costRemittee" column="COSTREMITTEE" type="java.lang.String"></property>
 		<property name="costSettleDate" column="COSTSETTLEDATE" type="java.lang.String"></property>
+		<property name="costApprover" column="COSTAPPROVER" type="java.lang.String"></property>
+		<property name="costApproveDate" column="COSTAPPROVEDATE" type="java.lang.String"></property>
 		<property name="costPrice" column="COSTPRICE" type="java.lang.String"></property>
 		<property name="costAccount" column="COSTACCOUNT" type="java.lang.String"></property>
 		<property name="costComment" column="COSTCOMMENT" type="java.lang.String"></property>	
