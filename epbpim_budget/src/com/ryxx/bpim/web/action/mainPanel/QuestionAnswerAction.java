@@ -80,8 +80,10 @@ public class QuestionAnswerAction extends ActionSupportBase {
 
 	public String viewQA() {
 		try {
+			String type = questionAnswer.getType();
 			questionAnswer = questionAnswerService.findById(questionAnswer
 					.getId());
+			questionAnswer.setType(type);
 		} catch (Exception e) {
 			Log.error(e);
 		}

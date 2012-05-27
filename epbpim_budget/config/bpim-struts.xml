@@ -406,7 +406,7 @@
 			<interceptor-ref name="user"/>
 		</action>
 		<action name="addQuestion" method="addQA" class="questionAnswerAction">
-			<result type="redirect-action">listQA.do</result>
+			<result type="redirect">listQA.do?questionAnswer.type=${questionAnswer.type}</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
@@ -421,12 +421,12 @@
 			<interceptor-ref name="user"/>
 		</action>
 		<action name="delQuestion" method="delQA" class="questionAnswerAction">
-			<result>/jsp/main/simple/listQAForExpert.jsp</result>
+			<result type="redirect">expertAnswer.do?questionAnswer.type=${questionAnswer.type}</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
 		<action name="updateQuestion" method="updateQA" class="questionAnswerAction">
-			<result>/jsp/main/simple/listQAForExpert.jsp</result>
+			<result type="redirect">expertAnswer.do?questionAnswer.type=${questionAnswer.type}</result>
 			<result name="nosession" type="redirect">/index.jsp</result>
 			<interceptor-ref name="user"/>
 		</action>
