@@ -32,7 +32,7 @@
 							id="searchQAForm">
 							<ul class="fullScreenResultUl">
 								<li class="width200Li"><label class="lb">类型：</label> <select
-									id="type" name="questionAnswer.type">
+									id="questionAnswerType" name="questionAnswer.type">
 										<option value="2"
 											<s:if test="questionAnswer.type==2">selected="selected"</s:if>>未回答的问题</option>
 										<option value="3"
@@ -64,9 +64,8 @@
 									<li class="width100Li"><h3>问题</h3>
 									<li class="width700Li"><h3>
 											<s:if test="answer==null">
-												<a
-													href="viewQuestion.do?questionAnswer.id=<s:property
-											value="id"/>">
+												<a onclick="viewQuestion(<s:property
+													value="id"/>)">
 													<s:property value='question' /> </a>
 
 											</s:if>
@@ -112,10 +111,16 @@
 
 <script type="text/javascript">
 	function delQuestion(id){
-		if(window.confirm("是否删除?"))
-		window.location.href = "delQuestion.do?questionAnswer.id="+id;
+		if(window.confirm("是否删除?")){
+			var type = $("questionAnswerType").value;
+		}
+			
+		window.location.href = "delQuestion.do?questionAnswer.id="+id+"&questionAnswer.type="+type;
 	}	
-	
+	function viewQuestion(id){
+		var type= $("questionAnswerType").value;
+		window.location.href="viewQuestion.do?questionAnswer.id="+id+"&questionAnswer.type="+type;
+	}
 	
 	</script>
 </html>

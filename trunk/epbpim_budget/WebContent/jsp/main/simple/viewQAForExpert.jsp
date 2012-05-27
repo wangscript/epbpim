@@ -19,7 +19,7 @@
 							<li class="width50Li"><s:hidden name="questionAnswer.id" />
 							<s:hidden name="questionAnswer.question" />
 							<s:hidden name="questionAnswer.questionUser.id" />
-							
+							<s:hidden name="questionAnswer.type" />
 							<label>问题:</label>
 							</li>
 							<li class="width350Li"><s:property

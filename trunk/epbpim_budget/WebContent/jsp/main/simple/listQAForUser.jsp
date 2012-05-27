@@ -25,7 +25,7 @@
 							id="searchQAForm">
 							<ul class="fullScreenResultUl">
 								<li class="width200Li"><label class="lb">类型：</label> <select
-									id="type" name="questionAnswer.type">
+									id="questionType" name="questionAnswer.type">
 										<option value="0" <s:if test="questionAnswer.type==0">selected="selected"</s:if>>全部问题</option>
 										<option value="1" <s:if test="questionAnswer.type==1">selected="selected"</s:if>>我的问题</option>
 								</select></li>
@@ -84,8 +84,9 @@
 										name="questionAnswer.question"></textarea></li>
 							</ul>
 							<ul class="fullScreenUl">
-								<li><input type="submit" class="leftButton" value="提交">
+								<li><input type="button" onclick="submitNewQuestion()" class="leftButton" value="提交">
 								</li>
+								<input type="hidden" id="questionTypeHidden" name="questionAnswer.type"/>
 							</ul>
 							<!-- end #content -->
 						</s:form>
@@ -99,4 +100,11 @@
 		<!-- end #page -->
 		<jsp:include page="../../common/footer.jsp" /></div>
 </body>
+<script type="text/javascript">
+	function submitNewQuestion(){
+		$("questionTypeHidden").value= $("questionType").value;
+		$("addQuestionForm").submit();
+		alert('提交成功，专家回答后，您的问题会出现在列表之中。感谢您的参与！');
+	}
+</script>
 </html>
