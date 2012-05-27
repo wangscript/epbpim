@@ -176,6 +176,10 @@
 			<result>/jsp/admin/uploadPriceHighLowTopPicture.jsp</result>
 			<interceptor-ref name="manager"/>
 		</action>
+		<action name="listExpert" method="listExpert" class="userInfoAction">
+			<result>/jsp/admin/listExpert.jsp</result>
+			<interceptor-ref name="manager"/>
+		</action>
 	</package>
 	<package name="bpim-enterpriseinfo" namespace="/admin" extends="bpim-default">
 		<action name="listEnterpriseInfo" method="list" class="enterpriseInfoAction">
@@ -395,5 +399,40 @@
 			<interceptor-ref name="user"/>
 		</action>
 	</package>
+	<package name="bpim-questionAnswer" namespace="/main" extends="bpim-default">
+		<action name="listQA" method="listQA" class="questionAnswerAction">
+			<result>/jsp/main/simple/listQAForUser.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="addQuestion" method="addQA" class="questionAnswerAction">
+			<result type="redirect-action">listQA.do</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="expertAnswer" method="listQA" class="questionAnswerAction">
+			<result>/jsp/main/simple/listQAForExpert.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="viewQuestion" method="viewQA" class="questionAnswerAction">
+			<result>/jsp/main/simple/viewQAForExpert.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="delQuestion" method="delQA" class="questionAnswerAction">
+			<result>/jsp/main/simple/listQAForExpert.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+		<action name="updateQuestion" method="updateQA" class="questionAnswerAction">
+			<result>/jsp/main/simple/listQAForExpert.jsp</result>
+			<result name="nosession" type="redirect">/index.jsp</result>
+			<interceptor-ref name="user"/>
+		</action>
+		
+	</package>
+	
+	
 	
 </struts>

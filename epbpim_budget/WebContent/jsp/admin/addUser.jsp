@@ -8,8 +8,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>新增用户及订阅应用
-</title>
+<title>新增用户及订阅应用</title>
 </head>
 <body>
 	<div id="main"><jsp:include page="adminHeader.jsp" />
@@ -24,66 +23,67 @@
 						</h4>
 						<div id="addRoleTable">
 							<ul class="fullScreenUl">
-								<li class="width300Li"><label class="width9Lb">创建人数:<s:hidden name="eId"/></label>
-								<s:textfield cssClass="width150Input" name="userCount" />
-								<textValidate
-										field="userCount"
-										lableText="<s:text name='userCount' />"
+								<li class="width300Li"><label class="width9Lb">创建人数:<s:hidden
+											name="eId" />
+								</label> <s:textfield cssClass="width150Input" name="userCount" /> <textValidate
+										field="userCount" lableText="<s:text name='userCount' />"
 										isValidate="true" min="0" max="3" maxValue="100"
 										dataType="int">
 								</li>
 							</ul>
-							<h5>应用列表	:</h5>
+							<h5>应用列表 :</h5>
 							<ul class="fullScreenUl">
 								<li class="width200Li">应用名称</li>
 								<li class="width100Li">价格</li>
 								<li class="width500Li">应用说明</li>
 							</ul>
 							<s:iterator value="provinceCities" status="st1">
-								<ul><li class="width100Li">
-									<input type="checkbox" name="regionCheck" value="<s:property value="id"/>" onclick='selectAllApps(<s:property value='id'/>)'
-										id="<s:property value="id"/>" /><h5><s:property value="city" /></h5>
-								</li></ul>
-								
+								<ul>
+									<li class="width100Li"><input type="checkbox"
+										name="regionCheck" value="<s:property value="id"/>"
+										onclick='selectAllApps(<s:property value='id'/>)'
+										id="<s:property value="id"/>" />
+									<h5>
+											<s:property value="city" />
+										</h5></li>
+								</ul>
+
 								<s:iterator value="modules" status="st">
-									<s:if test="provinceCities[#st1.index].id eq modules[#st.index].region.id">
-									<s:if test="parentId != 0">
-									<ul class="fullScreenUl">
-											<li class="width200Li"><h5>
-											<s:if test="price != 0">
-													<input type="checkbox" 
-														name="listCheck" value="<s:property value="id"/>"
-														id="<s:property value="region.id"/>area_${st.index}app" />
-											</s:if>
-											<s:if test="price == 0">
-													<input type="checkbox" readonly="readonly" checked="checked" 
-														name="listCheck" value="<s:property value="id"/>"
-														 />
-											</s:if>
-													<s:property value="title" /></h5></li>
-											<li class="width100Li">
-											<s:if test="price == 0">
+									<s:if
+										test="provinceCities[#st1.index].id eq modules[#st.index].region.id">
+										<s:if test="parentId != 0">
+											<ul class="fullScreenUl">
+												<li class="width200Li"><h5>
+														<s:if test="price != 0">
+															<input type="checkbox" name="listCheck"
+																value="<s:property value="id"/>"
+																id="<s:property value="region.id"/>area_${st.index}app" />
+														</s:if>
+														<s:if test="price == 0">
+															<input type="checkbox" readonly="readonly"
+																checked="checked" name="listCheck"
+																value="<s:property value="id"/>" />
+														</s:if>
+														<s:property value="title" />
+													</h5>
+												</li>
+												<li class="width100Li"><s:if test="price == 0">
 													免费
-											</s:if>
-											<s:if test="price != 0">
-													<s:property value="price" />/年
-											</s:if>
-												
-											</li>
-											<li class="width500Li">
-													<s:property value="description" />
-												
-											</li>
-									</ul>
-									</s:if>
+											</s:if> <s:if test="price != 0">
+														<s:property value="price" />/年
+											</s:if></li>
+												<li class="width500Li"><s:property value="description" />
+
+												</li>
+											</ul>
+										</s:if>
 									</s:if>
 								</s:iterator>
-								
+
 							</s:iterator>
 							<ul class="fullScreenUl">
-								<li><input type="submit" id="addProject"
-									class="button" value="<s:text name="Common.Save" />">
-								</li>
+								<li><input type="submit" id="addProject" class="button"
+									value="<s:text name="Common.Save" />"></li>
 							</ul>
 						</div>
 						<div></div>

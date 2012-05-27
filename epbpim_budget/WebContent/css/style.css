@@ -522,6 +522,14 @@ ol li .send {
 	width: 600px;
 }
 
+.width700Li {
+	width: 700px;
+}
+
+.width800Li {
+	width: 800px;
+}
+
 .widthAutoLi {
 	width: auto;
 }
