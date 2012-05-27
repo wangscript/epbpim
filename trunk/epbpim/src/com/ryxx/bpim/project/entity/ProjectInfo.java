@@ -85,6 +85,10 @@ public class ProjectInfo extends VoBase
     
     private String minusPrice;
     
+    private String plusPriceRate;
+    
+    private String minusPriceRate;
+    
     private String comments;
     
     private Timestamp achiveDate;
@@ -93,9 +97,15 @@ public class ProjectInfo extends VoBase
     
     private String reportNumber;
     
+    private String reportReferNumber;
+    
     private String masterJudgeComments;
     
+    private String corrective;
+    
     private String achiveReceiver;
+    
+    private Timestamp achiveReceiveDate;
     
     private String contractNumber;
     
@@ -301,6 +311,10 @@ public class ProjectInfo extends VoBase
     private String costRemittee;
     
     private String costSettleDate;
+    
+    private String costApprover;
+    
+    private String costApproveDate;
     
     private String costPrice;
     
@@ -788,6 +802,26 @@ public class ProjectInfo extends VoBase
     public void setCostSettleDate(String costSettleDate)
     {
         this.costSettleDate = costSettleDate;
+    }
+    
+    public String getCostApprover()
+    {
+        return costApprover;
+    }
+    
+    public void setCostApprover(String costApprover)
+    {
+        this.costApprover = costApprover;
+    }
+    
+    public String getCostApproveDate()
+    {
+        return costApproveDate;
+    }
+    
+    public void setCostApproveDate(String costApproveDate)
+    {
+        this.costApproveDate = costApproveDate;
     }
     
     public String getCostPrice()
@@ -1736,7 +1770,7 @@ public class ProjectInfo extends VoBase
     {
         return updateTime;
     }
-
+    
     public void setUpdateTime(Timestamp updateTime)
     {
         this.updateTime = updateTime;
@@ -1806,4 +1840,53 @@ public class ProjectInfo extends VoBase
         this.managerApproveTIme = managerApproveTIme;
     }
     
+    public String getPlusPriceRate()
+    {
+        return plusPriceRate;
+    }
+    
+    public void setPlusPriceRate(String plusPriceRate)
+    {
+        this.plusPriceRate = plusPriceRate;
+    }
+    
+    public String getMinusPriceRate()
+    {
+        return minusPriceRate;
+    }
+    
+    public void setMinusPriceRate(String minusPriceRate)
+    {
+        this.minusPriceRate = minusPriceRate;
+    }
+    
+    public String getReportReferNumber()
+    {
+        return reportReferNumber;
+    }
+    
+    public void setReportReferNumber(String reportReferNumber)
+    {
+        this.reportReferNumber = reportReferNumber;
+    }
+    
+    public String getCorrective()
+    {
+        return corrective;
+    }
+    
+    public void setCorrective(String corrective)
+    {
+        this.corrective = corrective;
+    }
+    
+    public Timestamp getAchiveReceiveDate()
+    {
+        return achiveReceiveDate;
+    }
+    
+    public void setAchiveReceiveDate(Timestamp achiveReceiveDate)
+    {
+        this.achiveReceiveDate = achiveReceiveDate;
+    }
 }

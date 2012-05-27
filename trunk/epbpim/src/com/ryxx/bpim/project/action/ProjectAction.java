@@ -10,9 +10,9 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 
 import com.ryxx.bpim.common.Constants;
+import com.ryxx.bpim.project.entity.ProjectCost;
 import com.ryxx.bpim.project.entity.ProjectFile;
 import com.ryxx.bpim.project.entity.ProjectInfo;
-import com.ryxx.bpim.project.entity.ProjectCost;
 import com.ryxx.bpim.project.entity.ProjectParticipant;
 import com.ryxx.bpim.project.entity.ProjectStream;
 import com.ryxx.bpim.project.service.ProjectService;
@@ -160,7 +160,7 @@ public class ProjectAction extends ActionSupportBase
             UserInfo userinfo = new UserInfo();
             userinfo.setId((Long)session.get(Constants.LOGIN_USER_ID));
             projectInfo.setSubmitter(userinfo);
-            projectInfo.setUpdateTime( new Timestamp(new Date().getTime()));
+            projectInfo.setUpdateTime(new Timestamp(new Date().getTime()));
             // 处理项目参与人
             if (!StringUtils.isBlank(projectInfo.getParticipant()))
             {
@@ -233,7 +233,7 @@ public class ProjectAction extends ActionSupportBase
         {
             newUploadFiles = dealWithUploadFiles();
             changeStatus();
-            projectInfo.setUpdateTime( new Timestamp(new Date().getTime()));
+            projectInfo.setUpdateTime(new Timestamp(new Date().getTime()));
             dealWithMultiValue(projectInfo);
             projectService.updateProjectInfo(projectInfo);
         }
@@ -299,6 +299,14 @@ public class ProjectAction extends ActionSupportBase
         {
             projectInfo.setCostSettleDate(projectInfo.getCostSettleDate().replaceAll(", ", ","));
         }
+        if (!StringUtils.isBlank(projectInfo.getCostApprover()))
+        {
+            projectInfo.setCostApprover(projectInfo.getCostApprover().replaceAll(", ", ","));
+        }
+        if (!StringUtils.isBlank(projectInfo.getCostApproveDate()))
+        {
+            projectInfo.setCostApproveDate(projectInfo.getCostApproveDate().replaceAll(", ", ","));
+        }
         if (!StringUtils.isBlank(projectInfo.getCostPrice()))
         {
             projectInfo.setCostPrice(projectInfo.getCostPrice().replaceAll(", ", ","));
@@ -320,7 +328,7 @@ public class ProjectAction extends ActionSupportBase
             String queryType = projectInfo.getQueryType();
             projectInfo = projectService.fetchById(projectInfo.getId());
             projectInfo.setStatus("9");
-            projectInfo.setUpdateTime( new Timestamp(new Date().getTime()));
+            projectInfo.setUpdateTime(new Timestamp(new Date().getTime()));
             projectService.updateProjectInfo(projectInfo);
             projectInfo.setQueryType(queryType);
         }
@@ -405,14 +413,26 @@ public class ProjectAction extends ActionSupportBase
                     if (!StringUtils.isEmpty(projectInfo.getCostSettleDate().split(",")[i])
                         && !StringUtils.isEmpty(projectInfo.getCostSettleDate().split(",")[i].trim()))
                     {
-                        Date invoiceDate = sdf.parse(projectInfo.getCostSettleDate().split(",")[i]);
-                        cost.setSettleDate(new Timestamp(invoiceDate.getTime()));
+                        Date aettleDate = sdf.parse(projectInfo.getCostSettleDate().split(",")[i]);
+                        cost.setSettleDate(new Timestamp(aettleDate.getTime()));
                     }
                     if (!StringUtils.isEmpty(projectInfo.getCostRemittee().split(",")[i]))
                     {
                         long remitteeID = Long.valueOf(projectInfo.getCostRemittee().split(",")[i]);
                         cost.setRemitteeID(remitteeID);
                         cost.setRemitteeName(userInfoService.fetchById(remitteeID).getRealName());
+                    }
+                    if (!StringUtils.isEmpty(projectInfo.getCostApproveDate().split(",")[i])
+                        && !StringUtils.isEmpty(projectInfo.getCostApproveDate().split(",")[i].trim()))
+                    {
+                        Date approveDate = sdf.parse(projectInfo.getCostApproveDate().split(",")[i]);
+                        cost.setApproveDate(new Timestamp(approveDate.getTime()));
+                    }
+                    if (!StringUtils.isEmpty(projectInfo.getCostApprover().split(",")[i]))
+                    {
+                        long approverID = Long.valueOf(projectInfo.getCostApprover().split(",")[i]);
+                        cost.setApproverID(approverID);
+                        cost.setApproverName(userInfoService.fetchById(approverID).getRealName());
                     }
                     if (!StringUtils.isEmpty(projectInfo.getCostPrice().split(",")[i]))
                     {

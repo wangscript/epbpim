@@ -19,7 +19,11 @@ public class ProjectCost extends VoBase
     
     private long remitteeID;
     
+    private long approverID;
+    
     private String remitteeName;
+    
+    private String approverName;
     
     private String Price;
     
@@ -28,6 +32,38 @@ public class ProjectCost extends VoBase
     private String comment;
     
     private Timestamp settleDate;
+    
+    private Timestamp approveDate;
+    
+    public long getApproverID()
+    {
+        return approverID;
+    }
+    
+    public void setApproverID(long approverID)
+    {
+        this.approverID = approverID;
+    }
+    
+    public String getApproverName()
+    {
+        return approverName;
+    }
+    
+    public void setApproverName(String approverName)
+    {
+        this.approverName = approverName;
+    }
+    
+    public Timestamp getApproveDate()
+    {
+        return approveDate;
+    }
+    
+    public void setApproveDate(Timestamp approveDate)
+    {
+        this.approveDate = approveDate;
+    }
     
     public long getRemitteeID()
     {
