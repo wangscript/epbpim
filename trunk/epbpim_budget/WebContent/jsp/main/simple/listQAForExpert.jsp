@@ -37,11 +37,14 @@
 											<s:if test="questionAnswer.type==2">selected="selected"</s:if>>未回答的问题</option>
 										<option value="3"
 											<s:if test="questionAnswer.type==3">selected="selected"</s:if>>全部问题</option>
-								</select></li>
+								</select>
+								</li>
 								<li class="width200Li"><label class="lb">问题关键字：</label><input
-									class="width100Input" name="questionAnswer.keyword" value="<s:property
+									class="width100Input" name="questionAnswer.keyword"
+									value="<s:property
 											value="questionAnswer.keyword" />"
-									id="keyword"></li>
+									id="keyword">
+								</li>
 								<li class="width50Li"><input name="searchButton"
 									type="submit" id="searchButton" class="button" value="查询">
 								</li>
@@ -53,8 +56,7 @@
 							<li class="width200Li">
 								<h3>
 									<s:text name="Common.Nodata" />
-								</h3>
-							</li>
+								</h3></li>
 						</ul>
 					</s:if>
 					<s:else>
@@ -62,22 +64,16 @@
 							<s:iterator value="datas" status="st">
 								<ul class="fullScreenResultUl">
 									<li class="width100Li"><h3>问题</h3>
-									<li class="width700Li"><h3>
-											<s:if test="answer==null">
-												<a onclick="viewQuestion(<s:property
-													value="id"/>)">
-													<s:property value='question' /> </a>
-
-											</s:if>
-
-											<s:if test="answer!=null">
-												<a
-													onclick="displayOrNotDisplay(answer<s:property
+									<li class="width600Li"><h3>
+											<a
+												onclick="displayOrNotDisplay(answer<s:property
 											value="id" />)"><s:property
-														value="question" /> </a>
-											</s:if>
-
-										</h3></li>
+													value="question" /> </a>
+										</h3>
+									</li>
+									<li class="width50Li"><input type="button" class="button"
+										value="编辑" onclick="viewQuestion(<s:property value="id"/>)">
+									</li>
 									<li class="width50Li"><input type="button" class="button"
 										value="删除" onclick="delQuestion(<s:property value="id"/>)">
 									</li>
@@ -87,9 +83,15 @@
 												value="id" />"
 									style="display: none">
 									<li class="width100Li"><h3>回答</h3>
-									<li class="width700Li"><h3>
-											<s:property value="answer" />
-										</h3></li>
+									<li class="width600Li"><s:if test="answer==null">
+											<h3>暂无答案</h3>
+
+										</s:if> <s:if test="answer!=null">
+											<h3>
+												<s:property value="answer" />
+											</h3>
+										</s:if>
+									</li>
 								</ul>
 							</s:iterator>
 							<ul class="fullScreenResultUl">
