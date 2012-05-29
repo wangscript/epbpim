@@ -197,6 +197,7 @@
 <form action="preModProject.do" method="post" id="preModProject">
 	<input type="hidden" name="projectInfo.id" id="premod.projectInfo.id" value="" />
 	<input type="hidden" name="projectInfo.queryType" value="<s:property value='projectInfo.queryType'/>"/>
+	<input type="hidden" name="projectInfo.rowCount" value="<s:property value='projectInfo.rowCount'/>"/>
 </form>		
 <form action="delProject.do" method="post" id="delProject">
 	<input type="hidden" name="projectInfo.id" id="del.projectInfo.id" value="" />

@@ -200,6 +200,8 @@
 							<h4 class="title">项目基本信息</h4>
 							<input type="hidden" name="projectInfo.queryType"
 								value="<s:property value='projectInfo.queryType'/>" />
+							<input type="hidden" name="projectInfo.rowCount" 
+								value="<s:property value='projectInfo.rowCount'/>"/>
 							<input type="hidden" name="projectInfo.id"
 								value="<s:property value='projectInfo.id'/>" />
 							<input type="hidden" name="projectInfo.submitter.id"
