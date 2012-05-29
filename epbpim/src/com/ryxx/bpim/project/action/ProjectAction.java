@@ -73,7 +73,18 @@ public class ProjectAction extends ActionSupportBase
             {
                 projectInfo = new ProjectInfo();
             }
-            int pageNo = ParamTools.getIntParameter(request, Constants.PARA_PAGE_NO, 1);
+            
+            // 如果没有保存的查询页数,则从分页中获取
+            int pageNo = 1;
+            if (0 != projectInfo.getRowCount())
+            {
+                pageNo = projectInfo.getRowCount();
+            }
+            else
+            {
+                pageNo = ParamTools.getIntParameter(request, Constants.PARA_PAGE_NO, 1);
+            }
+            
             int pageSize = ParamTools.getIntParameter(request, Constants.PARA_PAGE_SIZE, 10);
             PageTools page = new PageTools(pageNo, pageSize);
             projectInfo.setRowCount(pageNo);
@@ -121,8 +132,10 @@ public class ProjectAction extends ActionSupportBase
         try
         {
             String queryType = projectInfo.getQueryType();
+            int rowCount = projectInfo.getRowCount();
             projectInfo = projectService.findProjectInfo(projectInfo);
             projectInfo.setQueryType(queryType);
+            projectInfo.setRowCount(rowCount);
             wrapParticipantList(projectInfo);
             wrapCostList(projectInfo);
             wrapFileList(projectInfo);
@@ -326,11 +339,13 @@ public class ProjectAction extends ActionSupportBase
         try
         {
             String queryType = projectInfo.getQueryType();
+            int rowCount = projectInfo.getRowCount();
             projectInfo = projectService.fetchById(projectInfo.getId());
             projectInfo.setStatus("9");
             projectInfo.setUpdateTime(new Timestamp(new Date().getTime()));
             projectService.updateProjectInfo(projectInfo);
             projectInfo.setQueryType(queryType);
+            projectInfo.setRowCount(rowCount);
         }
         catch (Exception e)
         {
