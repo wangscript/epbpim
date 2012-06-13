@@ -32,6 +32,13 @@
 		
 		document.getElementById("status").value=statusValue;
 		removeObjDisabled();
+		
+		var modProjectBtns=document.getElementsByName("modProject");
+		for(i = 0; i < modProjectBtns.length; i++)
+		{
+			modProjectBtns[i].disabled = true;
+		}
+		
 		document.getElementById("modForm").submit();
 	}
 	
@@ -185,6 +192,18 @@
 		obj.nextSibling.nextSibling.value = fileName;
  	}
  	
+	function clearNoNum(obj)
+	{
+		//先把非数字的都替换掉，除了数字和.
+		obj.value = obj.value.replace(/[^\d.]/g,"");
+		//必须保证第一个为数字而不是.
+		obj.value = obj.value.replace(/^\./g,"");
+		//保证只有出现一个.而没有多个.
+		obj.value = obj.value.replace(/\.{2,}/g,".");
+		//保证.只出现一次，而不能出现两次以上
+		obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+	}
+ 	
 </script>
 </head>
 <body onload="setSelectValue()">
@@ -193,7 +212,7 @@
 			<div class="content_resize">
 				<div class="mainbar">
 					<h3 class="title">项目录入</h3>
-					<div id="addProjectTable">
+					<div>
 						<s:form id="modForm" action="modProject.do"
 							enctype="multipart/form-data" method="post"
 							onsubmit="return validate(this);">
@@ -398,9 +417,9 @@
 									value="<s:property value='projectInfo.contractNumber' />" />
 								</li>
 								<li class="width200Li"><label class="width5Lb">合同金额:</label>
-									<input <s:if test="projectInfo.status!=0">disabled</s:if> class="width100Input"
-									name="projectInfo.contractMoney"
-									value="<s:property value='projectInfo.contractMoney' />" />
+									<input <s:if test="projectInfo.status!=0">disabled</s:if> class="width80Input"
+									name="projectInfo.contractMoney" onkeyup="clearNoNum(this)"
+									value="<s:property value='projectInfo.contractMoney' />" />万元
 								</li>
 								<li class="width200Li"><label class="width6Lb">部门流转单号:</label>
 									<input <s:if test="projectInfo.status!=0">disabled</s:if>  class="width100Input" id="contractNumber"									
@@ -505,11 +524,11 @@
 							<div id="projectType1">
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">送审价:</label>
-										<input class="width100Input" name="projectInfo.judgePrice1"
-										value="<s:property value='projectInfo.judgePrice1'/>" /></li>
+										<input class="width80Input" name="projectInfo.judgePrice1" onkeyup="clearNoNum(this)"
+										value="<s:property value='projectInfo.judgePrice1'/>" />万元</li>
 									<li class="width200Li"><label class="width6Lb">审定价:</label>
-										<input class="width100Input" name="projectInfo.judgePrice2"
-										value="<s:property value='projectInfo.judgePrice2' />" />
+										<input class="width80Input" name="projectInfo.judgePrice2" onkeyup="clearNoNum(this)"
+										value="<s:property value='projectInfo.judgePrice2' />" />万元
 									</li>
 									<li class="width200Li"><label class="width6Lb">审定天数:</label>
 										<input class="width100Input" name="projectInfo.judgeDays"
@@ -522,11 +541,11 @@
 								</ul>
 								<ul class="fullScreenUl">
 									<li class="width200Li"><label class="width6Lb">核增额:</label>
-										<input class="width100Input" name="projectInfo.plusPrice"
-										value="<s:property value='projectInfo.plusPrice'/>" /></li>
+										<input class="width80Input" name="projectInfo.plusPrice" onkeyup="clearNoNum(this)"
+										value="<s:property value='projectInfo.plusPrice'/>" />万元</li>
 									<li class="width200Li"><label class="width6Lb">核减额:</label>
-										<input class="width100Input" name="projectInfo.minusPrice"
-										value="<s:property value='projectInfo.minusPrice'/>" /></li>
+										<input class="width80Input" name="projectInfo.minusPrice" onkeyup="clearNoNum(this)"
+										value="<s:property value='projectInfo.minusPrice'/>" />万元</li>
 									<li class="width200Li"><label class="width6Lb">核增额:</label>
 										<input class="width100Input" name="projectInfo.plusPriceRate"
 										value="<s:property value='projectInfo.plusPriceRate'/>" /></li>
@@ -1191,48 +1210,48 @@
 							<ul class="fullScreenUl">
 								<s:if
 									test="projectInfo.status==0 && #request.submitProject == true && projectInfo.submitter.id==#request.userid">
-									<li><input type="button" id="addProject"
+									<li><input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('1')"
-										value="提交项目"> <input type="button" id="addProject"
+										value="提交项目"> <input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('0')"
 										value="保存"></li>
 								</s:if>				
 
 								<s:if
 									test="projectInfo.status==1 && #request.deptApprove == true">
-									<li><input type="button" id="addProject"
+									<li><input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('0')"
-										value="部门经理审批不通过"> <input type="button" id="addProject"
+										value="部门经理审批不通过"> <input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('2')"
 										value="部门经理审批通过"></li>
 								</s:if>
 
 								<s:if
 									test="projectInfo.status==2 && #request.masterApprove == true">
-									<li><input type="button" id="addProject"
+									<li><input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('1')"
-										value="总师审批不通过"> <input type="button" id="addProject"
+										value="总师审批不通过"> <input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('3')"
 										value="总师审批通过"></li>
 								</s:if>
 
 								<s:if
 									test="projectInfo.status==3 && #request.managerApprove == true">
-									<li><input type="button" id="addProject"
+									<li><input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('2')"
-										value="总经理审批不通过"> <input type="button" id="addProject"
+										value="总经理审批不通过"> <input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('4')"
 										value="总经理审批通过"></li>
 								</s:if>
 
 								<s:if test="projectInfo.status==4 && #request.directorFillNo == true">
-									<li><input type="button" id="addProject"
+									<li><input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('5')"
 										value="保存"></li>
 								</s:if>
 								
 								<s:if test="projectInfo.status==5">
-									<li><input type="button" id="addProject"
+									<li><input type="button" name="modProject"
 										class="mediumRightButton" onclick="modProjectInfo('5')"
 										value="保存"></li>
 								</s:if>
