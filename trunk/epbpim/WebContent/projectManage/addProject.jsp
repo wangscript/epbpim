@@ -77,6 +77,18 @@
 		obj.nextSibling.nextSibling.value = fileName;
  	}
  	
+	function clearNoNum(obj)
+	{
+		//先把非数字的都替换掉，除了数字和.
+		obj.value = obj.value.replace(/[^\d.]/g,"");
+		//必须保证第一个为数字而不是.
+		obj.value = obj.value.replace(/^\./g,"");
+		//保证只有出现一个.而没有多个.
+		obj.value = obj.value.replace(/\.{2,}/g,".");
+		//保证.只出现一次，而不能出现两次以上
+		obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+	}
+ 	
 </script>
 </head>
 <body>
@@ -210,7 +222,7 @@
 								<input class="width100Input" name="projectInfo.contractNumber"/>
 							</li>
 							<li class="width200Li"><label class="width5Lb">合同金额:</label>
-								<input class="width100Input" name="projectInfo.contractMoney"/>
+								<input class="width80Input" name="projectInfo.contractMoney" onkeyup="clearNoNum(this)"/>万元
 							</li>
 							<li class="width200Li"><label class="width6Lb">部门流转单号:</label>
 								<input class="width100Input" id="contractNumber" name="projectInfo.deptTransferNumber"/>
@@ -283,12 +295,12 @@
 						<div id="projectType1">
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">送审价:</label> <input
-								class="width100Input"
-								name="projectInfo.judgePrice1"/>
+								class="width80Input"
+								name="projectInfo.judgePrice1" onkeyup="clearNoNum(this)"/>万元
 							</li>
 							<li class="width200Li"><label class="width6Lb">审定价:</label> <input
-								class="width100Input"
-								name="projectInfo.judgePrice2"/>
+								class="width80Input"
+								name="projectInfo.judgePrice2" onkeyup="clearNoNum(this)"/>万元
 							</li>
 							<li class="width200Li"><label class="width6Lb">审定天数:</label> <input
 								class="width100Input"
@@ -302,12 +314,12 @@
 						</ul>
 						<ul class="fullScreenUl">
 							<li class="width200Li"><label class="width6Lb">核增额:</label> <input
-								class="width100Input"
-								name="projectInfo.plusPrice"/>
+								class="width80Input"
+								name="projectInfo.plusPrice" onkeyup="clearNoNum(this)"/>万元
 							</li>
 							<li class="width200Li"><label class="width6Lb">核减额:</label> <input
-								class="width100Input"
-								name="projectInfo.minusPrice"/>
+								class="width80Input"
+								name="projectInfo.minusPrice" onkeyup="clearNoNum(this)"/>万元
 							</li>
 							<li class="width200Li"><label class="width6Lb">核增率:</label> <input
 								class="width100Input"

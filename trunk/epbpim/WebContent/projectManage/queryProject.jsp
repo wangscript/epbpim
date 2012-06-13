@@ -167,7 +167,7 @@
 								<input type="button" <s:if test="status == 9">disabled</s:if> onclick='preModProject(<s:property value="id" />);' class="mediumRightButton" class="button" value='修改'>
 						</li>
 						<li class="width50Li">
-								<input type="button" <s:if test="(#request.managerApprove != true || status != 0) && #request.chairman != true">disabled</s:if> onclick='delProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
+								<input type="button" <s:if test="(projectInfo.queryType!=1 || status != 0) && (#request.managerApprove != true || status != 0) && #request.chairman != true">disabled</s:if> onclick='delProject(<s:property value="id" />);' class="mediumRightButton" class="button" value="<s:text name="Common.Delete" />">
 						</li>	
 					</ul>
 				</s:iterator>
