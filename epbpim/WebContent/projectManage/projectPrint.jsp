@@ -38,6 +38,7 @@
 		}
 		td {
 			text-align: left;
+			font-size: 9px;
 		}
 		
 		.mediumRightButton {
@@ -124,8 +125,8 @@
 		<br><br>
 	</div>
 	<div align="center"><h1>上海建惠建设咨询有限公司</h1></div>
-	<div align="center" id="businessDiv"><font size="1">预决算、审价项目计划任务书（业务流转单）</font></div>
-	<div align="center" id="accountDiv"><font size="1">预决算、审价项目计划任务书（财务流转单）</font></div>
+	<div align="center" id="businessDiv"><font style="font-size: 11px">预决算、审价项目计划任务书（业务流转单）</font></div>
+	<div align="center" id="accountDiv"><font style="font-size: 11px">预决算、审价项目计划任务书（财务流转单）</font></div>
 	<div align="center">
 	<table width="98%">
 		<tr>
@@ -257,7 +258,7 @@
 						<td colspan="3">总师审核意见：</td>
 					</tr>
 					<tr>
-						<td colspan="3"><s:property value='projectInfo.masterJudgeComments' /></td>
+						<td colspan="3" style="height: 150px"><s:property value='projectInfo.masterJudgeComments' /></td>
 					</tr>
 					<tr>
 						<td colspan="3"><br></td>
@@ -277,7 +278,7 @@
 						<td colspan="3">整改情况：</td>
 					</tr>
 					<tr>
-						<td colspan="3"><s:property value='projectInfo.corrective' /></td>
+						<td colspan="3" style="height: 120px"><s:property value='projectInfo.corrective' /></td>
 					</tr>
 					<tr>
 						<td colspan="3"><br></td>
@@ -297,10 +298,7 @@
 						<td colspan="3">备注：</td>
 					</tr>
 					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
+						<td colspan="3" style="height: 80px"><br></td>
 					</tr>
 				</table>
 			</td>
@@ -316,7 +314,10 @@
 			<td width="50%" class="blr">
 				<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="7" class="r" rowspan="10">委托单位</td>
+						<td width="7" class="r" rowspan="13">委托单位</td>
+					</tr>
+					<tr>
+						<td width="7" class="br" rowspan="6">开票信息</td>
 					</tr>
 					<tr>
 						<td class="b">开票人：<s:property value='projectInfo.agentInvoiceDrawer.realName' /></td>
@@ -334,10 +335,16 @@
 						<td class="b">领票人：<s:property value='projectInfo.agentInvoiceHolder.realName' /></td>
 					</tr>
 					<tr>
+						<td width="7" class="r" rowspan="6">收款信息</td>
+					</tr>
+					<tr>
 						<td class="b">到款日期：<s:date name='projectInfo.agentReceiveDate' format='yyyy-MM-dd' /></td>
 					</tr>
 					<tr>
 						<td class="b">到款金额：<s:property value='projectInfo.agentReceivePrice'/></td>
+					</tr>
+					<tr>
+						<td class="b">支付方式：</td>
 					</tr>
 					<tr>
 						<td class="b">财务：<s:property value='projectInfo.agentAccount'/></td>
@@ -353,7 +360,7 @@
 						<s:if test="#st.index==0">
 						<table width="100%" cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="7" class="r" rowspan="10">成本报销</td>
+								<td width="7" class="r" rowspan="11">成本报销</td>
 							</tr>
 							<tr>
 								<td class="b">结算日期：<s:date name='settleDate' format='yyyy-MM-dd' /></td>
@@ -363,6 +370,9 @@
 							</tr>
 							<tr>
 								<td class="b">领款人：<s:property value="remitteeName" /></td>
+							</tr>
+							<tr>
+								<td class="b">支付方式：</td>
 							</tr>
 							<tr>
 								<td class="b">财务：<s:property value='account' /></td>
@@ -389,7 +399,7 @@
 				<s:else>
 					<table width="100%" cellpadding="0" cellspacing="0">
 						<tr>
-							<td width="7" class="r" rowspan="10">成本报销</td>
+							<td width="7" class="r" rowspan="11">成本报销</td>
 						</tr>
 						<tr>
 							<td class="b">结算日期：</td>
@@ -399,6 +409,9 @@
 						</tr>
 						<tr>
 							<td class="b">领款人：</td>
+						</tr>
+						<tr>
+							<td class="b">支付方式：</td>
 						</tr>
 						<tr>
 							<td class="b">财务：</td>
@@ -426,7 +439,10 @@
 			<td width="50%" class="blr">
 				<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="7" class="r" rowspan="10">送审单位</td>
+						<td width="7" class="r" rowspan="13">送审单位</td>
+					</tr>
+					<tr>
+						<td width="7" class="br" rowspan="6">开票信息</td>
 					</tr>
 					<tr>
 						<td class="b">开票人：<s:property value='projectInfo.vendorInvoiceDrawer.realName' /></td>
@@ -444,10 +460,16 @@
 						<td class="b">领票人：<s:property value='projectInfo.vendorInvoiceHolder.realName' /></td>
 					</tr>
 					<tr>
+						<td width="7" class="r" rowspan="6">收款信息</td>
+					</tr>
+					<tr>
 						<td class="b">到款日期：<s:date name='projectInfo.vendorReceiveDate' format='yyyy-MM-dd' /></td>
 					</tr>
 					<tr>
 						<td class="b">到款金额：<s:property value='projectInfo.vendorReceivePrice'/></td>
+					</tr>
+					<tr>
+						<td class="b">支付方式：</td>
 					</tr>
 					<tr>
 						<td class="b">财务：<s:property value='projectInfo.vendorAccount'/></td>
@@ -463,7 +485,7 @@
 						<s:if test="#st.index==1">
 						<table width="100%" cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="7" class="r" rowspan="10">成本报销</td>
+								<td width="7" class="r" rowspan="11">成本报销</td>
 							</tr>
 							<tr>
 								<td class="b">结算日期：<s:date name='settleDate' format='yyyy-MM-dd' /></td>
@@ -473,6 +495,9 @@
 							</tr>
 							<tr>
 								<td class="b">领款人：<s:property value="remitteeName" /></td>
+							</tr>
+							<tr>
+								<td class="b">支付方式：</td>
 							</tr>
 							<tr>
 								<td class="b">财务：<s:property value='account' /></td>
