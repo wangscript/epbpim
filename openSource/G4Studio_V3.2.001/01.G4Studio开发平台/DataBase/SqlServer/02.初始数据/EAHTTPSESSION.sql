@@ -1,0 +1,2 @@
+INSERT INTO [EAHTTPSESSION] VALUES ('m28u4agx9zod', '开发人员', 'developer', '2012-08-25 11:37:02', '127.0.0.1', '10000001', 'CHROME/18.0.');
+GO
