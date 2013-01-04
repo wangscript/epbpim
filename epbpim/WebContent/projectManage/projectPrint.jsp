@@ -94,39 +94,47 @@
 		
 		function doPrint(printType)
 		{
-			document.getElementById("businessTable").style.display="none";
-			document.getElementById("accountTable").style.display="none";
-			document.getElementById("businessDiv").style.display="none";
-			document.getElementById("accountDiv").style.display="none";
-			if("business"==printType)
-			{
-				document.getElementById("businessTable").style.display="";	
-				document.getElementById("businessDiv").style.display="";
-			}
-			else if("account"==printType)
-			{
-				document.getElementById("accountTable").style.display="";
-				document.getElementById("accountDiv").style.display="";
-			}
+			/*  业务与财务信息合并
+				document.getElementById("businessTable").style.display="none";
+				document.getElementById("accountTable").style.display="none";
+				document.getElementById("businessDiv").style.display="none";
+				document.getElementById("accountDiv").style.display="none";
+				if("business"==printType)
+				{
+					document.getElementById("businessTable").style.display="";	
+					document.getElementById("businessDiv").style.display="";
+				}
+				else if("account"==printType)
+				{
+					document.getElementById("accountTable").style.display="";
+					document.getElementById("accountDiv").style.display="";
+				}
+			*/
 			document.getElementById("printDiv").style.display="none";
 			window.print();
 		}
 		
 	</script>
 </head>
-<body onload="initInfo()">
+<body>
 	<div id="printDiv" align="right">
+		<!-- 业务与财务信息合并
 		<s:if test="#request.accountManage == true">
 			<input type="button" class="mediumRightButton" value="打印财务信息" onClick="doPrint('account')">	
 		</s:if>
 		<s:if test="#request.businessManage == true">
 			<input type="button" class="mediumRightButton" value="打印业务信息" onClick="doPrint('business')">	
 		</s:if>
+		 -->
+		 <input type="button" class="mediumRightButton" value="打印" onClick="doPrint()">
 		<br><br>
 	</div>
 	<div align="center"><h1>上海建惠建设咨询有限公司</h1></div>
+	<!-- 业务与财务信息合并
 	<div align="center" id="businessDiv"><font style="font-size: 11px">预决算、审价项目计划任务书（业务流转单）</font></div>
 	<div align="center" id="accountDiv"><font style="font-size: 11px">预决算、审价项目计划任务书（财务流转单）</font></div>
+	-->
+	<div align="center" id="accountDiv"><font style="font-size: 11px">预决算、审价项目计划任务书（流转单）</font></div>
 	<div align="center">
 	<table width="98%">
 		<tr>
@@ -251,6 +259,7 @@
 			<td style="text-align: center" class="br"><br><s:date name='projectInfo.achiveDate' format='yyyy-MM-dd' /><br><br></td>
 			<td style="text-align: center" class="br"><s:date name='projectInfo.achiveReceiveDate' format='yyyy-MM-dd' /><br><br></td>			
 		</tr>
+		<!-- 业务与财务信息合并
 		<tr>
 			<td colspan="6" class="blr">
 				<table width="100%">
@@ -303,6 +312,7 @@
 				</table>
 			</td>
 		</tr>
+		-->
 	</table>
 	<!-- 项目财务信息表格 -->		
 	<table id="accountTable" width="98%" cellpadding="0" cellspacing="0">
@@ -529,6 +539,24 @@
 				<table width="100%">
 					<tr>
 						<td colspan="3">备注：</td>
+					</tr>
+					<tr>
+						<td colspan="3"><br></td>
+					</tr>
+					<tr>
+						<td colspan="3"><br></td>
+					</tr>
+					<tr>
+						<td colspan="3"><br></td>
+					</tr>
+					<tr>
+						<td colspan="3"><br></td>
+					</tr>
+					<tr>
+						<td colspan="3"><br></td>
+					</tr>
+					<tr>
+						<td colspan="3"><br></td>
 					</tr>
 					<tr>
 						<td colspan="3"><br></td>
