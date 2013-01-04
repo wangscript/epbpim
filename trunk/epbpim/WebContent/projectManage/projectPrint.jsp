@@ -30,6 +30,10 @@
 			border-bottom: 1px solid black;
 			border-right: 1px solid black;
 		}
+		.lr {
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+		}
 		.b {
 			border-bottom: 1px solid black;
 		}
@@ -39,6 +43,7 @@
 		td {
 			text-align: left;
 			font-size: 9px;
+			height: 28px;
 		}
 		
 		.mediumRightButton {
@@ -254,7 +259,7 @@
 		<tr>
 			<td style="text-align: center" class="blr"><br><s:property value='projectInfo.judgeDays' /><br><br></td>
 			<td style="text-align: center" class="br"><br><s:date name='projectInfo.reportDate' format='yyyy-MM-dd' /><br><br></td>
-			<td style="text-align: center" class="blr"><br><s:property value='projectInfo.reportReferNumber' /><br><br></td>
+			<td style="text-align: center" class="br"><br><s:property value='projectInfo.reportReferNumber' /><br><br></td>
 			<td style="text-align: center" class="br"><br><s:property value='projectInfo.comments' /><br></td>
 			<td style="text-align: center" class="br"><br><s:date name='projectInfo.achiveDate' format='yyyy-MM-dd' /><br><br></td>
 			<td style="text-align: center" class="br"><s:date name='projectInfo.achiveReceiveDate' format='yyyy-MM-dd' /><br><br></td>			
@@ -324,43 +329,31 @@
 			<td width="50%" class="blr">
 				<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="7" class="r" rowspan="13">委托单位</td>
+						<td style="text-align: center" width="20" rowspan="5">委托单位</td>
 					</tr>
 					<tr>
-						<td width="7" class="br" rowspan="6">开票信息</td>
+						<td style="text-align: center" class="blr">开票人/日期</td>
+						<td style="text-align: center" class="br">发票号码</td>
+						<td style="text-align: center" class="br">金额</td>
+						<td style="text-align: center" class="b">领票人</td>			
 					</tr>
 					<tr>
-						<td class="b">开票人：<s:property value='projectInfo.agentInvoiceDrawer.realName' /></td>
+						<td style="text-align: center" class="blr"><br><s:property value='projectInfo.agentInvoiceDrawer.realName' />/<s:date name='projectInfo.agentInvoiceDate' format='yyyy-MM-dd' /><br><br></td>
+						<td style="text-align: center" class="br"><br><s:property value='projectInfo.agentInvoiceNumber'/><br><br></td>
+						<td style="text-align: center" class="br"><br><s:property value='projectInfo.agentInvoicePrice'/><br><br></td>
+						<td style="text-align: center" class="b"><s:property value='projectInfo.agentInvoiceHolder.realName' /><br><br></td>			
 					</tr>
 					<tr>
-						<td class="b">开票日期：<s:date name='projectInfo.agentInvoiceDate' format='yyyy-MM-dd' /></td>
+						<td style="text-align: center" class="blr">到款日</td>
+						<td style="text-align: center" class="br">备注</td>
+						<td style="text-align: center" class="br">金额</td>
+						<td style="text-align: center" class="b">财务</td>			
 					</tr>
 					<tr>
-						<td class="b">发票编号：<s:property value='projectInfo.agentInvoiceNumber'/></td>
-					</tr>
-					<tr>
-						<td class="b">金额：<s:property value='projectInfo.agentInvoicePrice'/></td>
-					</tr>
-					<tr>
-						<td class="b">领票人：<s:property value='projectInfo.agentInvoiceHolder.realName' /></td>
-					</tr>
-					<tr>
-						<td width="7" class="r" rowspan="6">收款信息</td>
-					</tr>
-					<tr>
-						<td class="b">到款日期：<s:date name='projectInfo.agentReceiveDate' format='yyyy-MM-dd' /></td>
-					</tr>
-					<tr>
-						<td class="b">到款金额：<s:property value='projectInfo.agentReceivePrice'/></td>
-					</tr>
-					<tr>
-						<td class="b">支付方式：</td>
-					</tr>
-					<tr>
-						<td class="b">财务：<s:property value='projectInfo.agentAccount'/></td>
-					</tr>
-					<tr>
-						<td>备注：<s:property value='projectInfo.agentComment'/></td>
+						<td style="text-align: center" class="lr"><br><s:date name='projectInfo.agentReceiveDate' format='yyyy-MM-dd' /><br><br></td>
+						<td style="text-align: center" class="r"><br><s:property value='projectInfo.agentComment'/><br><br></td>
+						<td style="text-align: center" class="r"><br><s:property value='projectInfo.agentReceivePrice'/><br><br></td>
+						<td style="text-align: center" class=""><s:property value='projectInfo.agentAccount'/><br><br></td>			
 					</tr>
 				</table>
 			</td>
@@ -370,37 +363,27 @@
 						<s:if test="#st.index==0">
 						<table width="100%" cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="7" class="r" rowspan="11">成本报销</td>
+								<td style="text-align: center" width="20" rowspan="5">成本报销</td>
 							</tr>
 							<tr>
-								<td class="b">结算日期：<s:date name='settleDate' format='yyyy-MM-dd' /></td>
+								<td style="text-align: center" class="blr">结算日</td>
+								<td style="text-align: center" class="br">财务</td>
+								<td style="text-align: center" class="br">金额</td>
+								<td style="text-align: center" class="b">领款人</td>			
 							</tr>
 							<tr>
-								<td class="b">金额：<s:property value='price' /></td>
+								<td style="text-align: center" class="blr"><br><s:date name='settleDate' format='yyyy-MM-dd' /><br><br></td>
+								<td style="text-align: center" class="br"><br><s:property value='account' /><br><br></td>
+								<td style="text-align: center" class="br"><br><s:property value='price' /><br><br></td>
+								<td style="text-align: center" class="b"><s:property value="remitteeName" /><br><br></td>			
 							</tr>
 							<tr>
-								<td class="b">领款人：<s:property value="remitteeName" /></td>
+								<td class="lr" colspan="3">说明：</td>
+								<td style="text-align: center" class="b">批准人</td>			
 							</tr>
 							<tr>
-								<td class="b">支付方式：</td>
-							</tr>
-							<tr>
-								<td class="b">财务：<s:property value='account' /></td>
-							</tr>
-							<tr>
-								<td class="b">说明：<s:property value='comment' /></td>
-							</tr>
-							<tr>
-								<td>总经理书面签字处</td>
-							</tr>
-							<tr>
-								<td><br></td>
-							</tr>
-							<tr>
-								<td><br></td>
-							</tr>
-							<tr>
-								<td><br></td>
+								<td class="lr" colspan="3" align="left"><br><s:property value='comment' /><br><br></td>
+								<td style="text-align: center" class=""><br><br><br></td>			
 							</tr>
 						</table>
 						</s:if>
@@ -409,37 +392,27 @@
 				<s:else>
 					<table width="100%" cellpadding="0" cellspacing="0">
 						<tr>
-							<td width="7" class="r" rowspan="11">成本报销</td>
+							<td style="text-align: center" width="20" rowspan="5">成本报销</td>
 						</tr>
 						<tr>
-							<td class="b">结算日期：</td>
+							<td style="text-align: center" class="blr">结算日</td>
+							<td style="text-align: center" class="br">财务</td>
+							<td style="text-align: center" class="br">金额</td>
+							<td style="text-align: center" class="b">领款人</td>			
 						</tr>
 						<tr>
-							<td class="b">金额：</td>
+							<td style="text-align: center" class="blr"><br><s:date name='settleDate' format='yyyy-MM-dd' /><br><br></td>
+							<td style="text-align: center" class="br"><br><s:property value='account' /><br><br></td>
+							<td style="text-align: center" class="br"><br><s:property value='price' /><br><br></td>
+							<td style="text-align: center" class="b"><s:property value="remitteeName" /><br><br></td>			
 						</tr>
 						<tr>
-							<td class="b">领款人：</td>
+							<td class="lr" colspan="3">说明：</td>
+							<td style="text-align: center" class="b">批准人</td>			
 						</tr>
 						<tr>
-							<td class="b">支付方式：</td>
-						</tr>
-						<tr>
-							<td class="b">财务：</td>
-						</tr>
-						<tr>
-							<td class="b">说明：</td>
-						</tr>
-						<tr>
-							<td>总经理书面签字处</td>
-						</tr>
-						<tr>
-							<td><br></td>
-						</tr>
-						<tr>
-							<td><br></td>
-						</tr>
-						<tr>
-							<td><br></td>
+							<td class="lr" colspan="3" align="left"><br><s:property value='comment' /><br><br></td>
+							<td style="text-align: center" class=""><br><br><br></td>			
 						</tr>
 					</table>
 				</s:else>
@@ -449,43 +422,31 @@
 			<td width="50%" class="blr">
 				<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="7" class="r" rowspan="13">送审单位</td>
+						<td style="text-align: center" width="20" rowspan="5">送审单位</td>
 					</tr>
 					<tr>
-						<td width="7" class="br" rowspan="6">开票信息</td>
+						<td style="text-align: center" class="blr">开票人/日期</td>
+						<td style="text-align: center" class="br">发票号码</td>
+						<td style="text-align: center" class="br">金额</td>
+						<td style="text-align: center" class="b">领票人</td>			
 					</tr>
 					<tr>
-						<td class="b">开票人：<s:property value='projectInfo.vendorInvoiceDrawer.realName' /></td>
+						<td style="text-align: center" class="blr"><br><s:property value='projectInfo.vendorInvoiceDrawer.realName' />/<s:date name='projectInfo.vendorInvoiceDate' format='yyyy-MM-dd' /><br><br></td>
+						<td style="text-align: center" class="br"><br><s:property value='projectInfo.vendorInvoiceNumber'/><br><br></td>
+						<td style="text-align: center" class="br"><br><s:property value='projectInfo.vendorInvoicePrice'/><br><br></td>
+						<td style="text-align: center" class="b"><s:property value='projectInfo.vendorInvoiceHolder.realName' /><br><br></td>			
 					</tr>
 					<tr>
-						<td class="b">开票日期：<s:date name='projectInfo.vendorInvoiceDate' format='yyyy-MM-dd' /></td>
+						<td style="text-align: center" class="blr">到款日</td>
+						<td style="text-align: center" class="br">备注</td>
+						<td style="text-align: center" class="br">金额</td>
+						<td style="text-align: center" class="b">财务</td>			
 					</tr>
 					<tr>
-						<td class="b">发票编号：<s:property value='projectInfo.vendorInvoiceNumber'/></td>
-					</tr>
-					<tr>
-						<td class="b">金额：<s:property value='projectInfo.vendorInvoicePrice'/></td>
-					</tr>
-					<tr>
-						<td class="b">领票人：<s:property value='projectInfo.vendorInvoiceHolder.realName' /></td>
-					</tr>
-					<tr>
-						<td width="7" class="r" rowspan="6">收款信息</td>
-					</tr>
-					<tr>
-						<td class="b">到款日期：<s:date name='projectInfo.vendorReceiveDate' format='yyyy-MM-dd' /></td>
-					</tr>
-					<tr>
-						<td class="b">到款金额：<s:property value='projectInfo.vendorReceivePrice'/></td>
-					</tr>
-					<tr>
-						<td class="b">支付方式：</td>
-					</tr>
-					<tr>
-						<td class="b">财务：<s:property value='projectInfo.vendorAccount'/></td>
-					</tr>
-					<tr>
-						<td>备注：<s:property value='projectInfo.vendorComment'/></td>
+						<td style="text-align: center" class="lr"><br><s:date name='projectInfo.vendorReceiveDate' format='yyyy-MM-dd' /><br><br></td>
+						<td style="text-align: center" class="r"><br><s:property value='projectInfo.vendorComment'/><br><br></td>
+						<td style="text-align: center" class="r"><br><s:property value='projectInfo.vendorReceivePrice'/><br><br></td>
+						<td style="text-align: center" class=""><s:property value='projectInfo.vendorAccount'/><br><br></td>			
 					</tr>
 				</table>
 			</td>
@@ -495,37 +456,27 @@
 						<s:if test="#st.index==1">
 						<table width="100%" cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="7" class="r" rowspan="11">成本报销</td>
+								<td style="text-align: center" width="20" rowspan="5">成本报销</td>
 							</tr>
 							<tr>
-								<td class="b">结算日期：<s:date name='settleDate' format='yyyy-MM-dd' /></td>
+								<td style="text-align: center" class="blr">结算日</td>
+								<td style="text-align: center" class="br">财务</td>
+								<td style="text-align: center" class="br">金额</td>
+								<td style="text-align: center" class="b">领款人</td>			
 							</tr>
 							<tr>
-								<td class="b">金额：<s:property value='price' /></td>
+								<td style="text-align: center" class="blr"><br><s:date name='settleDate' format='yyyy-MM-dd' /><br><br></td>
+								<td style="text-align: center" class="br"><br><s:property value='account' /><br><br></td>
+								<td style="text-align: center" class="br"><br><s:property value='price' /><br><br></td>
+								<td style="text-align: center" class="b"><s:property value="remitteeName" /><br><br></td>			
 							</tr>
 							<tr>
-								<td class="b">领款人：<s:property value="remitteeName" /></td>
+								<td class="lr" colspan="3">说明：</td>
+								<td style="text-align: center" class="b">批准人</td>			
 							</tr>
 							<tr>
-								<td class="b">支付方式：</td>
-							</tr>
-							<tr>
-								<td class="b">财务：<s:property value='account' /></td>
-							</tr>
-							<tr>
-								<td class="b">说明：<s:property value='comment' /></td>
-							</tr>
-							<tr>
-								<td>总经理书面签字处</td>
-							</tr>
-							<tr>
-								<td><br></td>
-							</tr>
-							<tr>
-								<td><br></td>
-							</tr>
-							<tr>
-								<td><br></td>
+								<td class="lr" colspan="3" align="left"><br><s:property value='comment' /><br><br></td>
+								<td style="text-align: center" class=""><br><br><br></td>			
 							</tr>
 						</table>
 						</s:if>
@@ -539,27 +490,6 @@
 				<table width="100%">
 					<tr>
 						<td colspan="3">备注：</td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br></td>
 					</tr>
 					<tr>
 						<td colspan="3"><br></td>
