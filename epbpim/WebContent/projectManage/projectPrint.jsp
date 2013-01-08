@@ -43,7 +43,7 @@
 		td {
 			text-align: left;
 			font-size: 9px;
-			height: 28px;
+			height: 26px;
 		}
 		
 		.mediumRightButton {
@@ -184,9 +184,9 @@
 			<td colspan="3" class="blr">合同内容概要：<s:property value='projectInfo.contractAbstract' /></td>
 		</tr>
 		<tr>
-			<td width="33%" style="text-align: center" class="blr">委托（建设）单位</td>
+			<td width="33%" style="text-align: center" class="blr">委托单位（业主）</td>
+			<td width="34%" style="text-align: center" class="br">送审单位（施工）</td>
 			<td width="33%" style="text-align: center" class="br">相关（关系）单位</td>
-			<td width="34%" style="text-align: center" class="br">送审（施工）单位</td>
 		</tr>
 		<tr>
 			<td class="blr">
@@ -205,19 +205,6 @@
 			<td class="br">
 				<table width="100%">
 					<tr>
-						<td colspan="2">名称：<s:property value='projectInfo.mediatorCompany' /></td>
-					</tr>
-					<tr>
-						<td>联系人： <s:property value='projectInfo.mediatorContactor' /></td>
-					</tr>
-					<tr>
-						<td>电话：<s:property value='projectInfo.mediatorContact' /></td>
-					</tr>
-				</table>
-			</td>
-			<td class="br">
-				<table width="100%">
-					<tr>
 						<td colspan="2">名称：<s:property value='projectInfo.vendorCompany' /></td>
 					</tr>
 					<tr>
@@ -225,6 +212,19 @@
 					</tr>
 					<tr>
 						<td>电话：<s:property value='projectInfo.vendorContact' /></td>
+					</tr>
+				</table>
+			</td>
+			<td class="br">
+				<table width="100%">
+					<tr>
+						<td colspan="2">名称：<s:property value='projectInfo.mediatorCompany' /></td>
+					</tr>
+					<tr>
+						<td>联系人： <s:property value='projectInfo.mediatorContactor' /></td>
+					</tr>
+					<tr>
+						<td>电话：<s:property value='projectInfo.mediatorContact' /></td>
 					</tr>
 				</table>
 			</td>
@@ -401,17 +401,17 @@
 							<td style="text-align: center" class="b">领款人</td>			
 						</tr>
 						<tr>
-							<td style="text-align: center" class="blr"><br><s:date name='settleDate' format='yyyy-MM-dd' /><br><br></td>
-							<td style="text-align: center" class="br"><br><s:property value='account' /><br><br></td>
-							<td style="text-align: center" class="br"><br><s:property value='price' /><br><br></td>
-							<td style="text-align: center" class="b"><s:property value="remitteeName" /><br><br></td>			
+							<td style="text-align: center" class="blr"><br><br><br></td>
+							<td style="text-align: center" class="br"><br><br><br></td>
+							<td style="text-align: center" class="br"><br><br><br></td>
+							<td style="text-align: center" class="b"><br><br><br></td>			
 						</tr>
 						<tr>
 							<td class="lr" colspan="3">说明：</td>
 							<td style="text-align: center" class="b">批准人</td>			
 						</tr>
 						<tr>
-							<td class="lr" colspan="3" align="left"><br><s:property value='comment' /><br><br></td>
+							<td class="lr" colspan="3" align="left"><br><br><br></td>
 							<td style="text-align: center" class=""><br><br><br></td>			
 						</tr>
 					</table>
@@ -482,7 +482,33 @@
 						</s:if>
 					</s:iterator>
 				</s:if>
-				<s:else>&nbsp;</s:else>
+				<s:else>
+					<table width="100%" cellpadding="0" cellspacing="0">
+						<tr>
+							<td style="text-align: center" width="20" rowspan="5">成本报销</td>
+						</tr>
+						<tr>
+							<td style="text-align: center" class="blr">结算日</td>
+							<td style="text-align: center" class="br">财务</td>
+							<td style="text-align: center" class="br">金额</td>
+							<td style="text-align: center" class="b">领款人</td>			
+						</tr>
+						<tr>
+							<td style="text-align: center" class="blr"><br><br><br></td>
+							<td style="text-align: center" class="br"><br><br><br></td>
+							<td style="text-align: center" class="br"><br><br><br></td>
+							<td style="text-align: center" class="b"><br><br><br></td>			
+						</tr>
+						<tr>
+							<td class="lr" colspan="3">说明：</td>
+							<td style="text-align: center" class="b">批准人</td>			
+						</tr>
+						<tr>
+							<td class="lr" colspan="3" align="left"><br><br><br></td>
+							<td style="text-align: center" class=""><br><br><br></td>			
+						</tr>
+					</table>
+				</s:else>
 			</td>
 		</tr>
 		<tr>
